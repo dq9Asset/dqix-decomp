@@ -1,0 +1,65 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "std_library_functions.h"
+
+struct Struct0216e9fc {
+    char pad[0x21c];
+    int field21c;
+    unsigned char field220;
+    unsigned char field221;
+    char pad2[2];
+    int field224;
+    int field228;
+    int field22c;
+    int field230;
+    int field234;
+    int field238;
+    int field23c;
+    int field240;
+    int field244;
+    int field248;
+    int field24c;
+    int field250;
+    int field254;
+    int field258;
+    int field25c;
+    unsigned char field260[4];
+    unsigned char field264[0x14];
+    char pad3[0x278 - 0x278];
+    unsigned char field278;
+    char pad4[3];
+    int field27c;
+};
+
+extern "C" void func_020a4a68(void*);
+extern "C" void func_0202dbfc(unsigned int*, unsigned int);
+
+// JPN: func_ov000_0216e9fc  (semantic: ResetSlotState_0216e9fc)
+extern "C" ARM void func_ov000_0216e9fc(struct Struct0216e9fc* obj) {
+    func_020a4a68(obj);
+    func_0202dbfc((unsigned int*)obj, 8);
+    obj->field21c = 0;
+    obj->field220 = 0;
+    obj->field221 = 0;
+    obj->field224 = -1;
+    obj->field228 = 0x1000;
+    obj->field22c = 0x1000;
+    obj->field230 = 0x1000;
+    obj->field234 = 0x1000;
+    obj->field238 = 0;
+    obj->field23c = 0;
+    obj->field240 = 0;
+    obj->field244 = 0;
+    obj->field248 = 0;
+    obj->field24c = 0;
+    obj->field250 = 0;
+    obj->field254 = 0;
+    obj->field25c = 0;
+    obj->field258 = 0;
+    memset(obj->field260, 0, 4);
+    memset(obj->field264, 0, 0x14);
+    obj->field278 = 0;
+    obj->field27c = 0;
+}
+
+#endif

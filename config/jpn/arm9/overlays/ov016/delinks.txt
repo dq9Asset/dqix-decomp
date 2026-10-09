@@ -4,3 +4,63 @@
     .data       start:0x0219cee0 end:0x0219cfa0 kind:data align:32
     .bss        start:0x0219cfa0 end:0x0219d0c0 kind:bss align:32
 
+
+
+src/Jpn/Overlay_16/0218c1c0.cpp:
+    complete
+    .text start:0x0218c1c0 end:0x0218c1e0
+
+
+src/Jpn/Overlay_16/0218c750.cpp:
+    complete
+    .text start:0x0218c750 end:0x0218c76c
+
+
+src/Jpn/Overlay_16/0218c76c.cpp:
+    complete
+    .text start:0x0218c76c end:0x0218c788
+
+
+src/Jpn/Overlay_16/0218c788.cpp:
+    complete
+    .text start:0x0218c788 end:0x0218c7a4
+
+
+src/Jpn/Overlay_16/0218c7a4.cpp:
+    complete
+    .text start:0x0218c7a4 end:0x0218c7c8
+
+
+src/Jpn/Overlay_16/0218c93c.cpp:
+    complete
+    .text start:0x0218c93c end:0x0218c95c
+
+
+src/Jpn/Overlay_16/0218e89c.cpp:
+    complete
+    .text start:0x0218e89c end:0x0218e8b4
+
+
+src/Jpn/Overlay_16/0218e8b4.cpp:
+    complete
+    .text start:0x0218e8b4 end:0x0218e8cc
+
+
+src/Jpn/Overlay_16/0218e8cc.cpp:
+    complete
+    .text start:0x0218e8cc end:0x0218e8e4
+
+
+src/Jpn/Overlay_16/0218f160.cpp:
+    complete
+    .text start:0x0218f160 end:0x0218f184
+
+
+src/Jpn/Overlay_16/0218f510.cpp:
+    complete
+    .text start:0x0218f510 end:0x0218f550
+
+
+src/Jpn/Overlay_16/0218f550.cpp:
+    complete
+    .text start:0x0218f550 end:0x0218f560

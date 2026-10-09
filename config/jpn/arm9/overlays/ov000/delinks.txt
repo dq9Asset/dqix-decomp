@@ -12,3 +12,62 @@ src/Combat/Overlay_0/GetCombatantByID.cpp:
 src/Combat/Overlay_0/UpdateCombatantBuffs.cpp:
 	complete
 	.text start:0x021571d0 end:0x02157614
+
+src/Jpn/Overlay_0/02162660.cpp:
+    complete
+    .text start:0x02162660 end:0x02162668
+
+
+src/Jpn/Overlay_0/02162668.cpp:
+    complete
+    .text start:0x02162668 end:0x02162674
+
+
+src/Jpn/Overlay_0/02162674.cpp:
+    complete
+    .text start:0x02162674 end:0x02162680
+
+
+src/Jpn/Overlay_0/02162680.cpp:
+    complete
+    .text start:0x02162680 end:0x0216268c
+
+
+src/Jpn/Overlay_0/0216268c.cpp:
+    complete
+    .text start:0x0216268c end:0x021626cc
+
+
+src/Jpn/Overlay_0/021626cc.cpp:
+    complete
+    .text start:0x021626cc end:0x02162708
+
+
+src/Jpn/Overlay_0/02162708.cpp:
+    complete
+    .text start:0x02162708 end:0x02162714
+
+
+src/Jpn/Overlay_0/02162714.cpp:
+    complete
+    .text start:0x02162714 end:0x02162728
+
+
+src/Jpn/Overlay_0/02162728.cpp:
+    complete
+    .text start:0x02162728 end:0x02162740
+
+
+src/Jpn/Overlay_0/02162740.cpp:
+    complete
+    .text start:0x02162740 end:0x02162750
+
+
+src/Jpn/Overlay_0/02164c88.cpp:
+    complete
+    .text start:0x02164c88 end:0x02164c90
+
+
+src/Jpn/Overlay_0/02169290.cpp:
+    complete
+    .text start:0x02169290 end:0x02169298

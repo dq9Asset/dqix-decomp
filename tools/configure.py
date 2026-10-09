@@ -16,6 +16,8 @@ parser = argparse.ArgumentParser(description="Generates build.ninja")
 parser.add_argument('-w', type=str, default=DEFAULT_WIBO_PATH, dest="wine", required=False, help="Path to Wine/Wibo (linux only)")
 parser.add_argument("--compiler", type=Path, required=False, help="Path to pre-installed compiler root directory")
 parser.add_argument("--no-extract", action="store_true", help="Skip extract step")
+parser.add_argument("--sources-from-delinks", action="store_true",
+                    help="Compile only sources named in the selected region's delinks (including incomplete units)")
 parser.add_argument("--dsd", type=Path, required=False, help="Path to pre-installed dsd CLI")
 parser.add_argument('version', choices=["usa", "jpn", "eur"], help='Game version')
 args = parser.parse_args()
@@ -188,10 +190,19 @@ class Project:
     def build_rom_config(self) -> Path:
         return self.game_build / "build" / "rom_config.yaml"
 
+    def source_files(self) -> list[Path]:
+        # The full source tree contains units for other regions. Opt in to the
+        # selected region's source set without changing the default USA build.
+        # Incomplete units are needed by objdiff even when dsd links their ROM
+        # objects instead of the compiled source objects.
+        if args.sources_from_delinks:
+            return get_delink_sources(self.delinks_files)
+        return list(get_source_files([src_path, libs_path]))
+
     def source_object_files(self) -> list[str]:
         return [
             str(self.game_build / source_file.with_suffix(".o"))
-            for source_file in get_source_files([src_path, libs_path])
+            for source_file in self.source_files()
         ]
 
     def arm9_lcf(self) -> Path:
@@ -484,7 +495,8 @@ def add_mwld_and_rom_builds(n: ninja_syntax.Writer, project: Project):
 
 
 def add_mwcc_builds(n: ninja_syntax.Writer, project: Project, mwcc_implicit: list[Path]):
-    for source_file in get_asm_files([src_path, libs_path]):
+    sources = project.source_files()
+    for source_file in (source for source in sources if is_asm(source)):
         n.build(
             inputs=str(source_file),
             implicit=[AS] + WINE_DEP,
@@ -494,7 +506,7 @@ def add_mwcc_builds(n: ninja_syntax.Writer, project: Project, mwcc_implicit: lis
         n.newline()
 
     ctx_files = []
-    for source_file in get_c_cpp_files([src_path, libs_path]):
+    for source_file in (source for source in sources if is_cpp(source) or is_c(source)):
         src_obj_path = project.game_build / source_file
         cc_flags = []
         # per-file compiler override (see tools/cc_overrides.txt)
@@ -530,6 +542,23 @@ def add_mwcc_builds(n: ninja_syntax.Writer, project: Project, mwcc_implicit: lis
             outputs=ctx_file,
         )
         n.newline()
+
+
+def get_delink_sources(delinks_files: list[str]) -> list[Path]:
+    """Read active C/C++/assembly unit headers, regardless of complete status."""
+    sources = set()
+    for filename in delinks_files:
+        for line in Path(filename).read_text(encoding="utf-8").splitlines():
+            header = line.split("//", 1)[0].strip()
+            if not header.endswith(":"):
+                continue
+            source = Path(header[:-1])
+            if not (is_cpp(source) or is_c(source) or is_asm(source)):
+                continue
+            if not source.is_file():
+                raise FileNotFoundError(f"{filename}: source unit does not exist: {source}")
+            sources.add(source)
+    return sorted(sources)
 
 
 def get_source_files(dirs: list[Path]):

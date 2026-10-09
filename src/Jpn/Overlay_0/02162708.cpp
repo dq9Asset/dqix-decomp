@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 struct EntrySelection {
-    unsigned char unknown[0x57c8];
+    unsigned char unknown0[0x57c8];
     int index;
 };
 

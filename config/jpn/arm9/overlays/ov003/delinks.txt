@@ -5,3 +5,43 @@
     .data       start:0x0217e500 end:0x0217ef20 kind:data align:32
     .bss        start:0x0217ef20 end:0x0217efa0 kind:bss align:32
 
+
+
+src/Jpn/Overlay_3/02154e60.cpp:
+    complete
+    .text start:0x02154e60 end:0x02154eec
+
+
+src/Jpn/Overlay_3/02154f54.cpp:
+    complete
+    .text start:0x02154f54 end:0x02154fdc
+
+
+src/Jpn/Overlay_3/02155074.cpp:
+    complete
+    .text start:0x02155074 end:0x02155120
+
+
+src/Jpn/Overlay_3/02155bd4.cpp:
+    complete
+    .text start:0x02155bd4 end:0x02155e08
+
+
+src/Jpn/Overlay_3/0215d87c.cpp:
+    complete
+    .text start:0x0215d87c end:0x0215d964
+
+
+src/Jpn/Overlay_3/0215fa80.cpp:
+    complete
+    .text start:0x0215fa80 end:0x0215fb74
+
+
+src/Jpn/Overlay_3/0216712c.cpp:
+    complete
+    .text start:0x0216712c end:0x021671c4
+
+
+src/Jpn/Overlay_3/0217b7ac.cpp:
+    complete
+    .text start:0x0217b7ac end:0x0217b864

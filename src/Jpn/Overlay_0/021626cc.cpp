@@ -2,11 +2,11 @@
 #include <globaldefs.h>
 
 struct Entry40 { unsigned char bytes[0x28]; };
-struct EntryOwner { unsigned char unknown[0x821c]; Entry40 entries[1]; };
+struct EntryOwner { unsigned char unknown0[0x821c]; Entry40 entries[1]; };
 struct EntrySelection {
     unsigned char unknown0[0x218];
     EntryOwner* owner;
-    unsigned char unknown1[0x57c8 - 0x21c];
+    unsigned char unknown21c[0x57c8 - 0x21c];
     int index;
 };
 

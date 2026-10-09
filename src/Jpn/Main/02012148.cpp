@@ -2,9 +2,11 @@
 #include <globaldefs.h>
 
 // JPN: func_02012148
-extern "C" ARM int func_02012148(const unsigned short* flags)
+// Tests the Down button in the current, active-high input snapshot.
+// This is a held-state test; the neighbouring generic helpers compare the previous snapshot for press and release edges.
+extern "C" ARM int IsDownButtonHeld(const unsigned short* heldButtons)
 {
-    return (*flags & 0x80) != 0;
+    return (*heldButtons & 0x80) != 0;
 }
 
 #endif

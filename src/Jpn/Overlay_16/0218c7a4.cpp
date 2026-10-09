@@ -1,16 +1,18 @@
 #if defined(jpn)
 #include <globaldefs.h>
 
-struct Overlay16CounterState {
-    unsigned int reserved[15];
-    unsigned long long frameCount;
+struct MoviePlaybackState {
+    unsigned int unknown0[15];
+    unsigned long long audioBlocksConsumed;
 };
 
-extern Overlay16CounterState data_ov016_0219cfa0;
+extern MoviePlaybackState data_ov016_0219cfa0;
 
 // JPN: func_ov016_0218c7a4
-extern "C" ARM void func_ov016_0218c7a4() {
-    ++data_ov016_0219cfa0.frameCount;
+// Advances the movie player's audio-consumption clock.
+// The callback is registered with the sound setup; one tick is an audio block, not a decoded video frame.
+extern "C" ARM void AdvanceMovieAudioClock() {
+    ++data_ov016_0219cfa0.audioBlocksConsumed;
 }
 
 #endif

@@ -423,3 +423,43 @@ src/Jpn/Main/02012184.cpp:
 src/Jpn/Main/02012198.cpp:
     complete
     .text start:0x02012198 end:0x020121ac
+
+
+src/Jpn/Main/020c2c70.cpp:
+    complete
+    .text start:0x020c2c70 end:0x020c2d30
+
+
+src/Jpn/Main/020c3ba0.cpp:
+    complete
+    .text start:0x020c3ba0 end:0x020c3ca8
+
+
+src/Jpn/Main/020c44b8.cpp:
+    complete
+    .text start:0x020c44b8 end:0x020c46c0
+
+
+src/Jpn/Main/020c49e4.cpp:
+    complete
+    .text start:0x020c49e4 end:0x020c4afc
+
+
+src/Jpn/Main/020b8e38.cpp:
+    complete
+    .text start:0x020b8e38 end:0x020b8ff8
+
+
+src/Jpn/Main/020b8ff8.cpp:
+    complete
+    .text start:0x020b8ff8 end:0x020b9160
+
+
+src/Jpn/Main/020c3368.cpp:
+    complete
+    .text start:0x020c3368 end:0x020c3414
+
+
+src/Jpn/Main/020c3b00.cpp:
+    complete
+    .text start:0x020c3b00 end:0x020c3ba0

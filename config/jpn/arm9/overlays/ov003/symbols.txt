@@ -526,6 +526,7 @@ data_ov003_0217e438 kind:data(any) addr:0x0217e438
 __sinit_ov003_0217e460 kind:function(arm,size=0x88) addr:0x0217e460
 .p__sinit_ov003_0217e460 kind:data(word) addr:0x0217e4e8
 data_ov003_0217e500 kind:data(any) addr:0x0217e500
+data_ov003_0217e500_tbl kind:data(any) addr:0x0217e500
 data_ov003_0217e520 kind:data(any) addr:0x0217e520
 data_ov003_0217e535 kind:data(any) addr:0x0217e535
 data_ov003_0217e550 kind:data(any) addr:0x0217e550

@@ -4,7 +4,7 @@
 extern "C" void* VectorizedMemset(void* destination, int value, unsigned int size);
 
 struct GameStateRecordsToClear {
-    unsigned char unknown[0x621e];
+    unsigned char unknown0[0x621e];
     unsigned char records[0x80];
 };
 

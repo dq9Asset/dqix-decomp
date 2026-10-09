@@ -2,9 +2,11 @@
 #include <globaldefs.h>
 
 // JPN: func_02012120
-extern "C" ARM int func_02012120(const unsigned short* flags)
+// Tests the Right button in the current, active-high input snapshot.
+// This is a held-state test; the neighbouring generic helpers compare the previous snapshot for press and release edges.
+extern "C" ARM int IsRightButtonHeld(const unsigned short* heldButtons)
 {
-    return (*flags & 0x10) != 0;
+    return (*heldButtons & 0x10) != 0;
 }
 
 #endif

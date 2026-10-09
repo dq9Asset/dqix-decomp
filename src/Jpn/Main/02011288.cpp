@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 struct GameStateByteLookup {
-    unsigned char unknown[0x54bd];
+    unsigned char unknown0[0x54bd];
     signed char values[4];
     unsigned char count;
 };

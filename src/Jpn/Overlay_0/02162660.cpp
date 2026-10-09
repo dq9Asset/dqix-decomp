@@ -2,13 +2,13 @@
 #include <globaldefs.h>
 
 struct Field218Holder {
-    unsigned char unknown[0x218];
-    unsigned int field;
+    unsigned char unknown0[0x218];
+    unsigned int unknown218;
 };
 
 // JPN: func_ov000_02162660
 extern "C" ARM unsigned int func_ov000_02162660(const Field218Holder* self) {
-    return self->field;
+    return self->unknown218;
 }
 
 #endif

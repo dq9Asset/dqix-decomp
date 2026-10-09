@@ -6,7 +6,7 @@ struct GameStateRecord {
 };
 
 struct GameStateRecords {
-    unsigned char unknown[0x621e];
+    unsigned char unknown0[0x621e];
     GameStateRecord records[4];
 };
 

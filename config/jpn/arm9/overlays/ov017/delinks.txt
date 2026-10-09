@@ -5,3 +5,28 @@
     .data       start:0x021d77a0 end:0x021d8ba0 kind:data align:32
     .bss        start:0x021d8ba0 end:0x021d9300 kind:bss align:32
 
+
+
+src/Jpn/Overlay_17/021a50cc.cpp:
+    complete
+    .text start:0x021a50cc end:0x021a5174
+
+
+src/Jpn/Overlay_17/021bda38.cpp:
+    complete
+    .text start:0x021bda38 end:0x021bdac8
+
+
+src/Jpn/Overlay_17/021cb12c.cpp:
+    complete
+    .text start:0x021cb12c end:0x021cb358
+
+
+src/Jpn/Overlay_17/021d0578.cpp:
+    complete
+    .text start:0x021d0578 end:0x021d0614
+
+
+src/Jpn/Overlay_17/021cb7a4.cpp:
+    complete
+    .text start:0x021cb7a4 end:0x021cbaa8

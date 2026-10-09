@@ -1,25 +1,27 @@
 #if defined(jpn)
 #include <globaldefs.h>
 
-struct Overlay16StreamCounters {
-    unsigned int reserved[39];
-    unsigned int count;
-    unsigned int limit;
-    unsigned int wrapLimit;
-    unsigned int reservedA8[6];
-    unsigned int ringIndex;
+struct ModsMovie {
+    unsigned int unknown0[39];
+    unsigned int consumedFrameCount;
+    unsigned int decodedFrameCount;
+    unsigned int frameBufferCount;
+    unsigned int unknownA8[6];
+    unsigned int frameReadIndex;
 };
 
 // JPN: func_ov016_0218f510
-extern "C" ARM int func_ov016_0218f510(Overlay16StreamCounters* stream) {
-    unsigned int count = stream->count;
-    unsigned int limit = stream->limit;
-    if (count >= limit) return 0;
-    stream->count = count + 1;
-    unsigned int ringIndex = stream->ringIndex + 1;
-    stream->ringIndex = ringIndex;
-    if (ringIndex == stream->wrapLimit) {
-        stream->ringIndex = 0;
+// Consumes a decoded movie frame without rendering it.
+// Returns zero when the decoded-frame queue is empty, otherwise advances the read index with wraparound.
+extern "C" ARM int SkipDecodedMovieFrame(ModsMovie* movie) {
+    unsigned int consumedFrameCount = movie->consumedFrameCount;
+    unsigned int decodedFrameCount = movie->decodedFrameCount;
+    if (consumedFrameCount >= decodedFrameCount) return 0;
+    movie->consumedFrameCount = consumedFrameCount + 1;
+    unsigned int frameReadIndex = movie->frameReadIndex + 1;
+    movie->frameReadIndex = frameReadIndex;
+    if (frameReadIndex == movie->frameBufferCount) {
+        movie->frameReadIndex = 0;
     }
     return 1;
 }

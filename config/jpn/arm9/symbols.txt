@@ -137,7 +137,7 @@ _fls kind:function(arm,size=0x5c) addr:0x0200bf4c
 _feq kind:function(arm,size=0x68) addr:0x0200bfa8
 _fneq kind:function(arm,size=0x68) addr:0x0200c010
 _fdiv kind:function(arm,size=0x3b8) addr:0x0200c084
-.L_0200c138 kind:data(byte[256]) addr:0x0200c138
+.L_0200c138 kind:label(arm) addr:0x0200c138
 func_0200c43c kind:function(arm,size=0x84) addr:0x0200c43c
 _ffix kind:function(arm,size=0x34) addr:0x0200c4c0
 _ffixu kind:function(arm,size=0x40) addr:0x0200c4f4
@@ -157,7 +157,7 @@ _s32_div_f kind:function(arm,size=0x20c) addr:0x0200ce08
 _u32_div_f kind:function(arm,size=0x1e4) addr:0x0200d014
 .L_0200d01c kind:label(arm) addr:0x0200d01c
 _ddiv kind:function(arm,size=0x544) addr:0x0200d210
-.L_0200d348 kind:data(byte[256]) addr:0x0200d348
+.L_0200d348 kind:label(arm) addr:0x0200d348
 func_0200d754 kind:function(arm,size=0x4) addr:0x0200d754
 func_0200d758 kind:function(arm,size=0x14) addr:0x0200d758
 func_0200d76c kind:function(arm,size=0x14) addr:0x0200d76c

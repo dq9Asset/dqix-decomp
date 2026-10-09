@@ -20,3 +20,83 @@ src/Jpn/Overlay_31/0221b44c.cpp:
 src/Jpn/Overlay_31/0223d3f8.cpp:
     complete
     .text start:0x0223d3f8 end:0x0223d510
+
+
+src/Jpn/Overlay_31/0220d150.cpp:
+    complete
+    .text start:0x0220d150 end:0x0220d268
+
+
+src/Jpn/Overlay_31/0220d2c0.cpp:
+    complete
+    .text start:0x0220d2c0 end:0x0220d4c4
+
+
+src/Jpn/Overlay_31/0220d5d4.cpp:
+    complete
+    .text start:0x0220d5d4 end:0x0220d74c
+
+
+src/Jpn/Overlay_31/0220db10.cpp:
+    complete
+    .text start:0x0220db10 end:0x0220dd20
+
+
+src/Jpn/Overlay_31/0220ddfc.cpp:
+    complete
+    .text start:0x0220ddfc end:0x0220df1c
+
+
+src/Jpn/Overlay_31/0221105c.cpp:
+    complete
+    .text start:0x0221105c end:0x02211168
+
+
+src/Jpn/Overlay_31/022125e8.cpp:
+    complete
+    .text start:0x022125e8 end:0x02212704
+
+
+src/Jpn/Overlay_31/02213520.cpp:
+    complete
+    .text start:0x02213520 end:0x022136c8
+
+
+src/Jpn/Overlay_31/02213ab4.cpp:
+    complete
+    .text start:0x02213ab4 end:0x02213bd8
+
+
+src/Jpn/Overlay_31/02213e74.cpp:
+    complete
+    .text start:0x02213e74 end:0x02213fe0
+
+
+src/Jpn/Overlay_31/02215560.cpp:
+    complete
+    .text start:0x02215560 end:0x02215688
+
+
+src/Jpn/Overlay_31/02233544.cpp:
+    complete
+    .text start:0x02233544 end:0x02233738
+
+
+src/Jpn/Overlay_31/02236a30.cpp:
+    complete
+    .text start:0x02236a30 end:0x02236b44
+
+
+src/Jpn/Overlay_31/02236b44.cpp:
+    complete
+    .text start:0x02236b44 end:0x02236c54
+
+
+src/Jpn/Overlay_31/0223d510.cpp:
+    complete
+    .text start:0x0223d510 end:0x0223d67c
+
+
+src/Jpn/Overlay_31/02246110.cpp:
+    complete
+    .text start:0x02246110 end:0x022462b8

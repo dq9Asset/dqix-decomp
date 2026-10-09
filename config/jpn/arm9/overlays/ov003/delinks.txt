@@ -45,3 +45,33 @@ src/Jpn/Overlay_3/0216712c.cpp:
 src/Jpn/Overlay_3/0217b7ac.cpp:
     complete
     .text start:0x0217b7ac end:0x0217b864
+
+
+src/Jpn/Overlay_3/02157494.cpp:
+    complete
+    .text start:0x02157494 end:0x0215759c
+
+
+src/Jpn/Overlay_3/0215b084.cpp:
+    complete
+    .text start:0x0215b084 end:0x0215b18c
+
+
+src/Jpn/Overlay_3/02167250.cpp:
+    complete
+    .text start:0x02167250 end:0x02167374
+
+
+src/Jpn/Overlay_3/02170e5c.cpp:
+    complete
+    .text start:0x02170e5c end:0x02170f68
+
+
+src/Jpn/Overlay_3/02175834.cpp:
+    complete
+    .text start:0x02175834 end:0x021759f8
+
+
+src/Jpn/Overlay_3/0217b69c.cpp:
+    complete
+    .text start:0x0217b69c end:0x0217b7ac

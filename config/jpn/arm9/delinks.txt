@@ -463,3 +463,78 @@ src/Jpn/Main/020c3368.cpp:
 src/Jpn/Main/020c3b00.cpp:
     complete
     .text start:0x020c3b00 end:0x020c3ba0
+
+
+src/Jpn/Main/02003e44.cpp:
+    complete
+    .text start:0x02003e44 end:0x02003f0c
+
+
+src/Jpn/Main/02003f8c.cpp:
+    complete
+    .text start:0x02003f8c end:0x020040a0
+
+
+src/Jpn/Main/02004158.cpp:
+    complete
+    .text start:0x02004158 end:0x020041c4
+
+
+src/Jpn/Main/020b930c.cpp:
+    complete
+    .text start:0x020b930c end:0x020b9388
+
+
+src/Jpn/Main/020b945c.cpp:
+    complete
+    .text start:0x020b945c end:0x020b94ec
+
+
+src/Jpn/Main/020c3290.cpp:
+    complete
+    .text start:0x020c3290 end:0x020c330c
+
+
+src/Jpn/Main/020c4900.cpp:
+    complete
+    .text start:0x020c4900 end:0x020c4984
+
+
+src/Jpn/Main/020c4984.cpp:
+    complete
+    .text start:0x020c4984 end:0x020c49e4
+
+
+src/Jpn/Main/020c4afc.cpp:
+    complete
+    .text start:0x020c4afc end:0x020c4b78
+
+
+src/Jpn/Main/020c8420.cpp:
+    complete
+    .text start:0x020c8420 end:0x020c8494
+
+
+src/Jpn/Main/020c8498.cpp:
+    complete
+    .text start:0x020c8498 end:0x020c8520
+
+
+src/Jpn/Main/020c85b8.cpp:
+    complete
+    .text start:0x020c85b8 end:0x020c8640
+
+
+src/Jpn/Main/020c8640.cpp:
+    complete
+    .text start:0x020c8640 end:0x020c86cc
+
+
+src/Jpn/Main/020c9080.cpp:
+    complete
+    .text start:0x020c9080 end:0x020c917c
+
+
+src/Jpn/Main/020c928c.cpp:
+    complete
+    .text start:0x020c928c end:0x020c9308

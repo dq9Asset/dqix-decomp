@@ -5464,3 +5464,31 @@ src/Combat/Overlay_31/func_ov031_02238a88.cpp:
 src/Combat/Overlay_31/func_ov031_02238ca8.cpp:
     complete
     .text start:0x02239488 end:0x02239580
+
+src/Combat/Overlay_31/DispatchStateTransition_02206900.cpp:
+    complete
+    .text start:0x022070e0 end:0x022071b0
+
+src/Combat/Overlay_31/CallTailCallThenBdb0_0223be44_0222905c.cpp:
+    complete
+    .text start:0x0222983c end:0x02229904
+
+src/Combat/Overlay_31/CheckFlagsThenDispatch_0222a9c0.cpp:
+    complete
+    .text start:0x0222b1a0 end:0x0222b268
+
+src/Combat/Overlay_31/RunChecksAndSetHandler_022313a0.cpp:
+    complete
+    .text start:0x02231b80 end:0x02231c48
+
+src/Combat/Overlay_31/CheckFlagsThenDispatch_02231e8c.cpp:
+    complete
+    .text start:0x0223266c end:0x02232734
+
+src/Combat/Overlay_31/func_ov031_022357e8.cpp:
+    complete
+    .text start:0x02235fc8 end:0x02236094
+
+src/Combat/Overlay_31/CleanupAndNotify_0223edb4_0223f264.cpp:
+    complete
+    .text start:0x0223fa44 end:0x0223fd08

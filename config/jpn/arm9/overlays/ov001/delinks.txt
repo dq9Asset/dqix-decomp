@@ -1404,3 +1404,35 @@ src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantC_0215fc48.cpp:
 src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantD_0215fd4c.cpp:
     complete
     .text start:0x02161360 end:0x02161464
+
+src/Combat/Overlay_1/CubicPathAdvancement.cpp:
+    complete
+    .text start:0x0215878c end:0x02158c48
+
+src/Combat/Overlay_1/AllocateAndRegisterCombatant_0215ba64.cpp:
+    complete
+    .text start:0x0215d0e8 end:0x0215d1c0
+
+src/Combat/Overlay_1/EnqueueOffsetVec3Payload_0215ded8.cpp:
+    complete
+    .text start:0x0215f55c end:0x0215f648
+
+src/Combat/Overlay_1/ProcessEntryAndClearQueueSlots_0215f740.cpp:
+    complete
+    .text start:0x02160d54 end:0x02160e68
+
+src/Combat/Overlay_1/AllocateAndInitCombatantResource_0216066c.cpp:
+    complete
+    .text start:0x02161c80 end:0x02161d7c
+
+src/Combat/Overlay_1/ReleaseOrResetTableEntry_02161754.cpp:
+    complete
+    .text start:0x02162d68 end:0x02162e60
+
+src/Combat/Overlay_1/AllocateAndInitEntryFromKey_02163b14.cpp:
+    complete
+    .text start:0x021650a0 end:0x021651b4
+
+src/Combat/Overlay_1/02163ccc.cpp:
+    complete
+    .text start:0x02165258 end:0x02165354

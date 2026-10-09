@@ -348,7 +348,7 @@ func_ov023_021eb26c kind:function(arm,size=0x1a8) addr:0x021eb1d0
 _Z18InitFlags_021eb414Pc kind:function(arm,size=0x28) addr:0x021eb378
 func_ov023_021eb43c kind:function(arm,size=0x7c) addr:0x021eb3a0
 _Z29InitBuffersIfFlag431_021eb4b8Pv kind:function(arm,size=0x3c) addr:0x021eb41c
-func_ov023_021eb458 kind:function(arm,size=0x70) addr:0x021eb458
+_Z30CallDispatchIfFlagSet_021eb4f4Pc kind:function(arm,size=0x70) addr:0x021eb458
 func_ov023_021eb564 kind:function(arm,size=0x14) addr:0x021eb4c8
 func_ov023_021eb4dc kind:function(arm,size=0xde8) addr:0x021eb4dc
 _Z31ConfigureSubBg1Control_021ec368iiiii kind:function(arm,size=0x34) addr:0x021ec2c4
@@ -584,9 +584,9 @@ _Z22BlankFunction_021f7d90v kind:function(arm,size=0x4) addr:0x021f7288
 _Z19ReturnZero_021f7d94v kind:function(arm,size=0x8) addr:0x021f728c
 _Z22BlankFunction_021f7d9cv kind:function(arm,size=0x4) addr:0x021f7294
 func_ov023_021f7298 kind:function(arm,size=0x118) addr:0x021f7298
-func_ov023_021f73b0 kind:function(arm,size=0x1d0) addr:0x021f73b0
+func_ov023_021f7eb8 kind:function(arm,size=0x1d0) addr:0x021f73b0
 func_ov023_021f809c kind:function(arm,size=0x84) addr:0x021f7580
-func_ov023_021f7604 kind:function(arm,size=0x10) addr:0x021f7604
+func_ov023_021f8120 kind:function(arm,size=0x10) addr:0x021f7604
 _Z29ResetObjectAtField20_021f8130Pv kind:function(arm,size=0x10) addr:0x021f7614
 func_ov023_021f8140 kind:function(arm,size=0x50) addr:0x021f7624
 _Z22BlankFunction_021f8190v kind:function(arm,size=0x4) addr:0x021f7674
@@ -603,7 +603,7 @@ func_ov023_021f88b8 kind:function(arm,size=0x8c) addr:0x021f7d50
 _Z31SetFieldE2AndMaybeCall_021f8944P14ObjE2_021f8944iii kind:function(arm,size=0x1c) addr:0x021f7ddc
 _Z27SetOffset100Fields_021f8960Pcss kind:function(arm,size=0x10) addr:0x021f7df8
 func_ov023_021f8970 kind:function(arm,size=0x84) addr:0x021f7e08
-func_ov023_021f7e8c kind:function(arm,size=0xe8) addr:0x021f7e8c
+func_ov023_021f89f4 kind:function(arm,size=0xe8) addr:0x021f7e8c
 func_ov023_021f7f74 kind:function(arm,size=0x4) addr:0x021f7f74
 _Z29SetShortsFromDiv4096_021f8aecPvPi kind:function(arm,size=0x44) addr:0x021f7f78
 _Z32SetFixed12PairZeroThird_021f8b30PvS_ kind:function(arm,size=0x48) addr:0x021f7fbc
@@ -958,7 +958,7 @@ data_ov023_021fd8b8 kind:data(any) addr:0x021fd8b8
 data_ov023_021fd8c0 kind:data(any) addr:0x021fd8c0
 data_ov023_021fd8d0 kind:data(any) addr:0x021fd8d0 ambiguous
 data_ov023_021fd9c8 kind:data(any) addr:0x021fd9c8
-data_ov023_021fd9d4 kind:data(any) addr:0x021fd9d4
+data_ov023_021fe708 kind:data(any) addr:0x021fd9d4
 data_ov023_021fdad4 kind:data(any) addr:0x021fdad4
 data_ov023_021fdbd4 kind:data(any) addr:0x021fdbd4
 data_ov023_021fdccc kind:data(any) addr:0x021fdccc

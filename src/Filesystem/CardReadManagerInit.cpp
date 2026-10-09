@@ -10,7 +10,6 @@
 #pragma optimize_for_size off
 
 #if defined(jpn)
-#define func_020ca458 func_020cbf24
 
 #define data_02111860 data_02111500
 #endif

@@ -2036,3 +2036,79 @@ src/Combat/Overlay_17/MaybeUpdateOrDispatchEntry_021959ec.cpp:
 src/Combat/Overlay_17/RecordPositionAndSyncCounters_021aa41c.cpp:
     complete
     .text start:0x021aac84 end:0x021aad34
+
+src/Combat/Overlay_17/func_ov017_021941fc.cpp:
+    complete
+    .text start:0x02194dc4 end:0x02195ddc
+
+src/Combat/Overlay_17/func_ov017_021982ac.cpp:
+    complete
+    .text start:0x02198e5c end:0x02198f90
+
+src/Combat/Overlay_17/func_ov017_02198e30.cpp:
+    complete
+    .text start:0x021999e0 end:0x02199b20
+
+src/Combat/Overlay_17/0219bfb4.cpp:
+    complete
+    .text start:0x0219caa4 end:0x0219d010
+
+src/Combat/Overlay_17/func_ov017_021ab280.cpp:
+    complete
+    .text start:0x021abae0 end:0x021abedc
+
+src/Combat/Overlay_17/021abba8.cpp:
+    complete
+    .text start:0x021ac40c end:0x021acaf8
+
+src/Combat/Overlay_17/ProcessSlotStatesAndNotify_021b0a7c.cpp:
+    complete
+    .text start:0x021b1114 end:0x021b11e4
+
+src/Combat/Overlay_17/AdvanceTimerAndDispatchState_021b58b8.cpp:
+    complete
+    .text start:0x021b5e6c end:0x021b5fd8
+
+src/Combat/Overlay_17/func_ov017_021bc77c.cpp:
+    complete
+    .text start:0x021bcd74 end:0x021bd8e8
+
+src/Combat/Overlay_17/021c0850.cpp:
+    complete
+    .text start:0x021c0df8 end:0x021c1798
+
+src/Combat/Overlay_17/func_ov017_021c1264.cpp:
+    complete
+    .text start:0x021c19ac end:0x021c1bd4
+
+src/Combat/Overlay_17/EnqueueCombatantNibbleEvent_021c41fc.cpp:
+    complete
+    .text start:0x021c46c4 end:0x021c4824
+
+src/Combat/Overlay_17/PackEventBitsIntoStats_021c6ebc.cpp:
+    complete
+    .text start:0x021c736c end:0x021c74a0
+
+src/Combat/Overlay_17/func_ov017_021c7334.cpp:
+    complete
+    .text start:0x021c77e4 end:0x021c7934
+
+src/Combat/Overlay_17/func_ov017_021ca6dc.cpp:
+    complete
+    .text start:0x021cab8c end:0x021caccc
+
+src/Combat/Overlay_17/func_ov017_021cc388.cpp:
+    complete
+    .text start:0x021cc830 end:0x021cc960
+
+src/Combat/Overlay_17/func_ov017_021c4418.cpp:
+    complete
+    .text start:0x021cc9a0 end:0x021ccb34
+
+src/Combat/Overlay_17/DispatchCounterEventAndFlag_021d3c08.cpp:
+    complete
+    .text start:0x021d4058 end:0x021d4190
+
+src/Combat/Overlay_17/func_ov017_021d4e38.cpp:
+    complete
+    .text start:0x021d5288 end:0x021d6544

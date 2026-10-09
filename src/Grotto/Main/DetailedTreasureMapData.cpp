@@ -9,7 +9,6 @@
 #include <asmhacks.h>
 
 #ifdef jpn
-#define _Z19PopStack0AndTriggeri func_020a3bcc
 
 #define _Z18LoadFileIntoMemoryPKcPvPj func_02076224
 #define _Z13GetFileInNarcPKvPKcPS0_Pjj func_02076378

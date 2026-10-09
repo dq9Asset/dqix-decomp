@@ -12744,3 +12744,47 @@ src/Combat/Main/func_020e30f0.cpp:
 src/Combat/Main/ProcessCombatantTagEntry_020e321c.cpp:
     complete
     .text start:0x020e4dbc end:0x020e4ec8
+
+src/World/LoadZoneObjectResource.cpp:
+    complete
+    .text start:0x02014f98 end:0x02015204
+
+src/Combat/Main/func_0201a600.cpp:
+    complete
+    .text start:0x0201a3a0 end:0x0201ac2c
+
+src/World/WarpScriptOpcode69.cpp:
+    complete
+    .text start:0x0201c8ec end:0x0201cb9c
+
+src/Combat/Main/func_02021f88.cpp:
+    complete
+    .text start:0x02021a44 end:0x02022274
+
+src/Combat/Main/func_020227dc.cpp:
+    complete
+    .text start:0x02022274 end:0x02022624
+
+src/Combat/Main/func_02037d88.cpp:
+    complete
+    .text start:0x020377e4 end:0x02037b90
+
+src/Combat/Main/0205faf4.cpp:
+    complete
+    .text start:0x02060de0 end:0x02062ec0
+
+src/Combat/Main/func_02061c04.cpp:
+    complete
+    .text start:0x02062eec end:0x020656cc
+
+src/Combat/Main/func_02084a64.cpp:
+    complete
+    .text start:0x02085380 end:0x0208576c
+
+src/System/ContextLifecycle.cpp:
+    complete
+    .text start:0x020c9080 end:0x020c9350
+
+src/Combat/Main/func_020d9b34.cpp:
+    complete
+    .text start:0x020db538 end:0x020db768

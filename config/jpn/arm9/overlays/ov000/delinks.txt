@@ -1916,3 +1916,147 @@ src/Combat/Overlay_0/func_ov000_0218099c.cpp:
 src/Combat/Overlay_0/func_ov000_02180a64.cpp:
     complete
     .text start:0x02181d90 end:0x02181e68
+
+src/Combat/Overlay_0/func_ov000_021604f0.cpp:
+    complete
+    .text start:0x02161c6c end:0x02161d4c
+
+src/Combat/Overlay_0/HandleFieldStateOnLoad02160ad0.cpp:
+    complete
+    .text start:0x0216224c end:0x021622d0
+
+src/Combat/Overlay_0/CheckCombatantStatusOrTable_02162954.cpp:
+    complete
+    .text start:0x021640c0 end:0x02164158
+
+src/Combat/Overlay_0/func_ov000_021629ec.cpp:
+    complete
+    .text start:0x02164158 end:0x02164218
+
+src/Combat/Overlay_0/ProcessCombatantSlot_02162aac.cpp:
+    complete
+    .text start:0x02164218 end:0x021642dc
+
+src/Combat/Overlay_0/ProcessSlot_02162b90.cpp:
+    complete
+    .text start:0x021642fc end:0x02164380
+
+src/Combat/Overlay_0/InitAndProcessCombat02166880.cpp:
+    complete
+    .text start:0x02167fbc end:0x021680b4
+
+src/Combat/Overlay_0/SyncPairTablesAndFill_0216733c.cpp:
+    complete
+    .text start:0x02168a7c end:0x02168b20
+
+src/Combat/Overlay_0/func_ov000_0216867c.cpp:
+    complete
+    .text start:0x02169db8 end:0x02169e5c
+
+src/Combat/Overlay_0/RunCombatTurnCycle02169770.cpp:
+    complete
+    .text start:0x0216ae9c end:0x0216af7c
+
+src/Combat/Overlay_0/func_ov000_02171138.cpp:
+    complete
+    .text start:0x02172b6c end:0x02172c44
+
+src/Combat/Overlay_0/func_ov000_02171d90.cpp:
+    complete
+    .text start:0x0217363c end:0x0217370c
+
+src/Combat/Overlay_0/func_ov000_0217228c.cpp:
+    complete
+    .text start:0x02173ac0 end:0x02173be4
+
+src/Combat/Overlay_0/func_ov000_02172850.cpp:
+    complete
+    .text start:0x021740b4 end:0x021741a8
+
+src/Combat/Overlay_0/func_ov000_021729ac.cpp:
+    complete
+    .text start:0x02174210 end:0x02174b94
+
+src/Combat/Overlay_0/RegisterCombatEvent_02175b54.cpp:
+    complete
+    .text start:0x02176f1c end:0x02176fac
+
+src/Combat/Overlay_0/func_ov000_02177454.cpp:
+    complete
+    .text start:0x02178a38 end:0x02178b38
+
+src/Combat/Overlay_0/AppendNameList_021775a4.cpp:
+    complete
+    .text start:0x02178b7c end:0x02178c64
+
+src/Combat/Overlay_0/ApplyElemFieldsWithMode_0217768c.cpp:
+    complete
+    .text start:0x02178c64 end:0x02178d6c
+
+src/Combat/Overlay_0/func_ov000_021779b4.cpp:
+    complete
+    .text start:0x02178f7c end:0x02179040
+
+src/Combat/Overlay_0/func_ov000_02177e50.cpp:
+    complete
+    .text start:0x021793a4 end:0x02179478
+
+src/Combat/Overlay_0/func_ov000_02177f74.cpp:
+    complete
+    .text start:0x021794bc end:0x021795bc
+
+src/Combat/Overlay_0/func_ov000_02178ba8.cpp:
+    complete
+    .text start:0x0217a00c end:0x0217a11c
+
+src/Combat/Overlay_0/func_ov000_02179018.cpp:
+    complete
+    .text start:0x0217a474 end:0x0217a584
+
+src/Combat/Overlay_0/func_ov000_021794cc.cpp:
+    complete
+    .text start:0x0217a8d8 end:0x0217a9e8
+
+src/Combat/Overlay_0/func_ov000_0217992c.cpp:
+    complete
+    .text start:0x0217acc0 end:0x0217ada4
+
+src/Combat/Overlay_0/func_ov000_02179b70.cpp:
+    complete
+    .text start:0x0217aef8 end:0x0217aff0
+
+src/Combat/Overlay_0/func_ov000_02179f94.cpp:
+    complete
+    .text start:0x0217b308 end:0x0217b410
+
+src/Combat/Overlay_0/func_ov000_0217a0a4.cpp:
+    complete
+    .text start:0x0217b410 end:0x0217b500
+
+src/Combat/Overlay_0/func_ov000_0217a514.cpp:
+    complete
+    .text start:0x0217b870 end:0x0217b980
+
+src/Combat/Overlay_0/func_ov000_0217a8f4.cpp:
+    complete
+    .text start:0x0217bc00 end:0x0217bd04
+
+src/Combat/Overlay_0/FindMatchingFieldIndex_0217aa78.cpp:
+    complete
+    .text start:0x0217bdcc end:0x0217be9c
+
+src/Combat/Overlay_0/func_ov000_0217e46c.cpp:
+    complete
+    .text start:0x0217f79c end:0x0217f888
+
+src/Combat/Overlay_0/func_ov000_0217f3e4.cpp:
+    complete
+    .text start:0x02180714 end:0x02180794
+
+src/Combat/Overlay_0/func_ov000_02180bac.cpp:
+    complete
+    .text start:0x02181ed8 end:0x02181fd8
+
+src/Combat/Overlay_0/func_ov000_0218124c.cpp:
+    complete
+    .text start:0x02182538 end:0x021825f0

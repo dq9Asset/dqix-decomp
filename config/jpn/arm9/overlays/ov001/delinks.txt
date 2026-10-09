@@ -1384,3 +1384,23 @@ src/Combat/Overlay_1/func_ov001_0215f854.cpp:
 src/Combat/Overlay_1/func_ov001_0215e0dc.cpp:
     complete
     .text start:0x0215f760 end:0x0215f7d0
+
+src/Combat/Overlay_1/DispatchTwoOffsetVec3Pairs_0215d7a8.cpp:
+    complete
+    .text start:0x0215ee2c end:0x0215ef38
+
+src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantA_0215fa40.cpp:
+    complete
+    .text start:0x02161054 end:0x02161158
+
+src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantB_0215fb44.cpp:
+    complete
+    .text start:0x02161158 end:0x0216125c
+
+src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantC_0215fc48.cpp:
+    complete
+    .text start:0x0216125c end:0x02161360
+
+src/Combat/Overlay_1/SetNodeFlagAndNotifyVariantD_0215fd4c.cpp:
+    complete
+    .text start:0x02161360 end:0x02161464

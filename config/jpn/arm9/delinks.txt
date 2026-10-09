@@ -12680,3 +12680,67 @@ src/Graphics/NSBXX/BindPoseScaling.cpp:
 src/Combat/Main/func_0206c010.cpp:
     complete
     .text start:0x0206d164 end:0x0206d24c
+
+src/Combat/Main/HandleBrightnessOrDispatchState02012de8.cpp:
+    complete
+    .text start:0x02012bb0 end:0x02012cc4
+
+src/World/InitializeZoneResourceTree.cpp:
+    complete
+    .text start:0x02017574 end:0x02017834
+
+src/Combat/Main/AddOrIncrementEntry0204027c.cpp:
+    complete
+    .text start:0x02040778 end:0x02040898
+
+src/Combat/Main/DispatchObjectsByDistance.cpp:
+    complete
+    .text start:0x020589d4 end:0x02058b44
+
+src/Combat/Main/func_0205a528.cpp:
+    complete
+    .text start:0x0205b8c4 end:0x0205b9f4
+
+src/Combat/Main/FindMatchingEntryByMask02073ec4.cpp:
+    complete
+    .text start:0x02075050 end:0x02075168
+
+src/Combat/Main/func_020a1bb4.cpp:
+    complete
+    .text start:0x020a392c end:0x020a3a44
+
+src/Combat/Main/func_020a1ccc.cpp:
+    complete
+    .text start:0x020a3a44 end:0x020a3b5c
+
+src/Combat/Main/func_020a7d74.cpp:
+    complete
+    .text start:0x020a9af8 end:0x020a9c3c
+
+src/Combat/Main/SetupObjFieldsAndResetRenderFlags020ae20c.cpp:
+    complete
+    .text start:0x020afcd8 end:0x020afe4c
+
+src/Combat/Main/func_020d63f0.cpp:
+    complete
+    .text start:0x020d7e4c end:0x020d7f78
+
+src/Combat/Main/AdvanceBattleBlockQueue020d66dc.cpp:
+    complete
+    .text start:0x020d8138 end:0x020d828c
+
+src/Combat/Main/LoadObjLoadingGraphicsResources020db0f0.cpp:
+    complete
+    .text start:0x020dcaf8 end:0x020dcc30
+
+src/Combat/Main/func_020dbae0.cpp:
+    complete
+    .text start:0x020dd4e8 end:0x020dd614
+
+src/Combat/Main/func_020e30f0.cpp:
+    complete
+    .text start:0x020e4c90 end:0x020e4dbc
+
+src/Combat/Main/ProcessCombatantTagEntry_020e321c.cpp:
+    complete
+    .text start:0x020e4dbc end:0x020e4ec8

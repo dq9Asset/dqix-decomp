@@ -5416,3 +5416,51 @@ src/Combat/Overlay_31/func_ov031_022276f8.cpp:
 src/Combat/Overlay_31/func_ov031_022323f0.cpp:
     complete
     .text start:0x02232bd0 end:0x02232c9c
+
+src/Combat/Overlay_31/ProcessQueueAndSleepLoop_0220f5b4.cpp:
+    complete
+    .text start:0x0220fd94 end:0x0220fe6c
+
+src/Combat/Overlay_31/func_ov031_02216b90.cpp:
+    complete
+    .text start:0x02217370 end:0x02217480
+
+src/Combat/Overlay_31/AppendFormattedToStream_02218528.cpp:
+    complete
+    .text start:0x02218d08 end:0x02218de4
+
+src/Combat/Overlay_31/func_ov031_022257d4.cpp:
+    complete
+    .text start:0x02225fb4 end:0x02226094
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_0222b094.cpp:
+    complete
+    .text start:0x0222b874 end:0x0222b948
+
+src/Combat/Overlay_31/DispatchByField2aByte_0222d0e0.cpp:
+    complete
+    .text start:0x0222d8c0 end:0x0222d998
+
+src/Combat/Overlay_31/func_ov031_0222d1b8.cpp:
+    complete
+    .text start:0x0222d998 end:0x0222da9c
+
+src/Combat/Overlay_31/SetEntryHalfword4Bits_0223bcc8_022350bc.cpp:
+    complete
+    .text start:0x0223589c end:0x02235974
+
+src/Combat/Overlay_31/func_ov031_02237600.cpp:
+    complete
+    .text start:0x02237de0 end:0x02237ec4
+
+src/Combat/Overlay_31/func_ov031_022389b0.cpp:
+    complete
+    .text start:0x02239190 end:0x02239268
+
+src/Combat/Overlay_31/func_ov031_02238a88.cpp:
+    complete
+    .text start:0x02239268 end:0x02239340
+
+src/Combat/Overlay_31/func_ov031_02238ca8.cpp:
+    complete
+    .text start:0x02239488 end:0x02239580

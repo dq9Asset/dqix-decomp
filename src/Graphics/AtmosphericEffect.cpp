@@ -42,7 +42,6 @@ struct EffectScriptData
 } static effectScriptData;
 
 #if defined(jpn)
-#define _Z16GetPtrField0x114Pv func_02033ad8 
 #define _Z19CheckBits5To9Equal2Pt func_0204cc40 
 #endif
 

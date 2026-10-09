@@ -680,3 +680,43 @@ src/Combat/Overlay_4/SetFlagsOnNodes38And39_0216d720.cpp:
 src/Combat/Overlay_4/CheckOutcomeAndNotify_02167d90.cpp:
     complete
     .text start:0x021681d8 end:0x02168270
+
+src/Combat/Overlay_4/CountBitFlagMatchesAndTotal_02153b6c.cpp:
+    complete
+    .text start:0x02155224 end:0x0215532c
+
+src/Combat/Overlay_4/CheckStatusHistoryEntry_02153c74.cpp:
+    complete
+    .text start:0x0215532c end:0x0215543c
+
+src/Combat/Overlay_4/NotifyChainIfConditions_02154c78.cpp:
+    complete
+    .text start:0x02156300 end:0x02156430
+
+src/Combat/Overlay_4/CheckStatusHistoryEntry_021551a8.cpp:
+    complete
+    .text start:0x02156728 end:0x02156838
+
+src/Combat/Overlay_4/UpdateStatusHistoryEntry_021555b0.cpp:
+    complete
+    .text start:0x02156b30 end:0x02156c5c
+
+src/Combat/Overlay_4/func_ov004_02155a3c.cpp:
+    complete
+    .text start:0x02156fbc end:0x021570ec
+
+src/Combat/Overlay_4/func_ov004_0215951c.cpp:
+    complete
+    .text start:0x0215a5e8 end:0x0215a71c
+
+src/Combat/Overlay_4/func_ov004_0215d384.cpp:
+    complete
+    .text start:0x0215e3f4 end:0x0215e494
+
+src/Combat/Overlay_4/AllocateAndAimAtEntry_02168684.cpp:
+    complete
+    .text start:0x02168af8 end:0x02168bd4
+
+src/Combat/Overlay_4/DispatchFixedSequenceAndSetVec_0216e638.cpp:
+    complete
+    .text start:0x0216ecd8 end:0x0216eec8

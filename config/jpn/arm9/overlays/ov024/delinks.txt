@@ -1030,3 +1030,27 @@ src/Combat/Overlay_24/func_ov024_021da55c.cpp:
 src/Combat/Overlay_24/func_ov024_021fd66c.cpp:
     complete
     .text start:0x021fde38 end:0x021fdf50
+
+src/Combat/Overlay_24/CheckAndClearOrEvaluateFlags_021eb1ec.cpp:
+    complete
+    .text start:0x021eb9b8 end:0x021eba80
+
+src/Combat/Overlay_24/AverageFallbackWithFieldScale_021da404.cpp:
+    complete
+    .text start:0x021dacc4 end:0x021dad3c
+
+src/Combat/Overlay_24/ComputeOffsetFloats_021f72f8.cpp:
+    complete
+    .text start:0x021f7ac4 end:0x021f7b38
+
+src/Combat/Overlay_24/SetCombatantFaceIconByTableValue_021eb3e0.cpp:
+    complete
+    .text start:0x021ebbac end:0x021ebc48
+
+src/Combat/Overlay_24/SumEligibleAttackWithRandomFactor_021da47c.cpp:
+    complete
+    .text start:0x021dad3c end:0x021dae10
+
+src/Combat/Overlay_24/func_ov024_021eb344.cpp:
+    complete
+    .text start:0x021ebb10 end:0x021ebbac

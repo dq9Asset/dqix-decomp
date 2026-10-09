@@ -271,3 +271,15 @@ src/Combat/Overlay_27/RegisterCombatSlot_021da38c.cpp:
 src/Combat/Overlay_27/func_ov027_021d9134.cpp:
     complete
     .text start:0x021d99f4 end:0x021d9ed8
+
+src/Combat/Overlay_27/Trans_021dcd20.cpp:
+    complete
+    .text start:0x021dd5e0 end:0x021dd61c
+
+src/Combat/Overlay_27/InsertSlotEntry_021dd118.cpp:
+    complete
+    .text start:0x021dd9d8 end:0x021dda40
+
+src/Combat/Overlay_27/ValidateAndFillSourceDesc_021da690.cpp:
+    complete
+    .text start:0x021daf50 end:0x021db0c8

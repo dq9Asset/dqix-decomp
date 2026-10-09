@@ -10,7 +10,6 @@
 #include "Graphics/NSBXX/NSBXX.h"
 
 #if defined(jpn)
-#define _Z16GetPtrField0x468Pv func_020112f4
 #define _Z22ResetBigStruct02013750Pvi func_02013518
 #define _Z13Reset02013490Pc func_02013258
 #define _Z17IsInRange0201b5b0i func_0201b328

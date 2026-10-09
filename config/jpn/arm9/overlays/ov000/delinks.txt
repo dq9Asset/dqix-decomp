@@ -1644,3 +1644,47 @@ src/Combat/Overlay_0/GetField02163524.cpp:
 src/Combat/Overlay_0/StoreThreeFields02167b54.cpp:
     complete
     .text start:0x02169290 end:0x02169298
+
+src/Combat/Overlay_0/ProcessCombatTurn.cpp:
+    complete
+    .text start:0x0215edbc end:0x0215fe68
+
+src/Combat/Overlay_0/EquipmentRefresh.cpp:
+    complete
+    .text start:0x021734b0 end:0x0217363c
+
+src/Combat/Overlay_0/func_ov000_02163c80.cpp:
+    complete
+    .text start:0x021653e4 end:0x021654f8
+
+src/Combat/Overlay_0/func_ov000_0217d324.cpp:
+    complete
+    .text start:0x0217e71c end:0x0217e830
+
+src/Combat/Overlay_0/IsIdOrEffectMatchTarget0215fd24.cpp:
+    complete
+    .text start:0x021614a4 end:0x021614fc
+
+src/Combat/Overlay_0/LoadGPCFile02166008.cpp:
+    complete
+    .text start:0x02167744 end:0x021677ac
+
+src/Combat/Overlay_0/UpdateSlotStatField_02175754.cpp:
+    complete
+    .text start:0x02176b1c end:0x02176b74
+
+src/Combat/Overlay_0/Dispatch_0217616c.cpp:
+    complete
+    .text start:0x02177534 end:0x02177590
+
+src/Combat/Overlay_0/GetField150ForFlaggedId_02153710.cpp:
+    complete
+    .text start:0x02154e90 end:0x02154ed8
+
+src/Combat/Overlay_0/SetFlagFromSubField0217c514.cpp:
+    complete
+    .text start:0x0217d868 end:0x0217d8e8
+
+src/Combat/Overlay_0/SetModeAndDispatch_021823dc.cpp:
+    complete
+    .text start:0x02183508 end:0x021835c4

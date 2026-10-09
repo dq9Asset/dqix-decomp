@@ -400,3 +400,43 @@ src/Combat/Overlay_25/func_ov025_021ed564.cpp:
 src/Combat/Overlay_25/func_ov025_021eeca4.cpp:
     complete
     .text start:0x021eef90 end:0x021ef044
+
+src/Combat/Overlay_25/CheckField0218b5b0Not0203b3c0_021e58d4.cpp:
+    complete
+    .text start:0x021e5dc4 end:0x021e5de0
+
+src/Combat/Overlay_25/DispatchEvent021e58b4.cpp:
+    complete
+    .text start:0x021e5da4 end:0x021e5dc4
+
+src/Combat/Overlay_25/DispatchShortEvent021e49e0.cpp:
+    complete
+    .text start:0x021e4ed0 end:0x021e4ef0
+
+src/Combat/Overlay_25/DispatchForwardEvent021e6320.cpp:
+    complete
+    .text start:0x021e67d0 end:0x021e67f0
+
+src/Combat/Overlay_25/SetOrClearBit1048576_021e7fdc.cpp:
+    complete
+    .text start:0x021e847c end:0x021e84a8
+
+src/Combat/Overlay_25/SetOrClearBit8192_021e72f4.cpp:
+    complete
+    .text start:0x021e77a4 end:0x021e77d4
+
+src/Combat/Overlay_25/SetupAndDispatch021e8084.cpp:
+    complete
+    .text start:0x021e8524 end:0x021e8578
+
+src/Combat/Overlay_25/DispatchNodeField_021e8638.cpp:
+    complete
+    .text start:0x021e8ad8 end:0x021e8b10
+
+src/Combat/Overlay_25/SetOrClearBit1024_021e8314.cpp:
+    complete
+    .text start:0x021e87b4 end:0x021e87e4
+
+src/Combat/Overlay_25/DispatchNodeFlagOrClear_021e8670.cpp:
+    complete
+    .text start:0x021e8b10 end:0x021e8b90

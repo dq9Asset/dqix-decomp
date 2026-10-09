@@ -1144,3 +1144,187 @@ src/Combat/Overlay_1/func_ov001_0215c1d0.cpp:
 src/Combat/Overlay_1/func_ov001_0215c468.cpp:
     complete
     .text start:0x0215daec end:0x0215db80
+
+src/Combat/Overlay_1/AdvanceBattleScaleStep_021592bc.cpp:
+    complete
+    .text start:0x0215a994 end:0x0215aae0
+
+src/Combat/Overlay_1/func_ov001_02161f80.cpp:
+    complete
+    .text start:0x02163594 end:0x021636d0
+
+src/Combat/Overlay_1/func_ov001_021603d8.cpp:
+    complete
+    .text start:0x021619ec end:0x02161b18
+
+src/Combat/Overlay_1/func_ov001_02161524.cpp:
+    complete
+    .text start:0x02162b38 end:0x02162c64
+
+src/Combat/Overlay_1/SetByteField490_021609e4.cpp:
+    complete
+    .text start:0x02161ff8 end:0x02162014
+
+src/Combat/Overlay_1/ForwardAndCopyB8ToC0Wrapper_02163994.cpp:
+    complete
+    .text start:0x02164f20 end:0x02164f38
+
+src/Combat/Overlay_1/ForwardFieldC0Wrapper_02163848.cpp:
+    complete
+    .text start:0x02164dd4 end:0x02164dec
+
+src/Combat/Overlay_1/CallForwardToTargetOrDefault_021599b8.cpp:
+    complete
+    .text start:0x0215b090 end:0x0215b0b4
+
+src/Combat/Overlay_1/SetFieldFromGlobalCheck_02161d8c.cpp:
+    complete
+    .text start:0x021633a0 end:0x021633c4
+
+src/Combat/Overlay_1/SetCombatFlagOnCondition_0215aef0.cpp:
+    complete
+    .text start:0x0215c574 end:0x0215c5b8
+
+src/Combat/Overlay_1/Forward2Field0219b578_02160a48.cpp:
+    complete
+    .text start:0x0216205c end:0x02162090
+
+src/Combat/Overlay_1/PushLogAndSetBitAndNotify_0216224c.cpp:
+    complete
+    .text start:0x02163864 end:0x02163894
+
+src/Combat/Overlay_1/SetStateFromGlobalKey_02163aec.cpp:
+    complete
+    .text start:0x02165078 end:0x021650a0
+
+src/Combat/Overlay_1/SetFlagFromInverseBit49c_02161d54.cpp:
+    complete
+    .text start:0x02163368 end:0x021633a0
+
+src/Combat/Overlay_1/SetFlagFromSearchState_02160a00.cpp:
+    complete
+    .text start:0x02162014 end:0x0216205c
+
+src/Combat/Overlay_1/SetFlagIfCombatantBitlear_02162d68_02162d68.cpp:
+    complete
+    .text start:0x021642f4 end:0x0216433c
+
+src/Combat/Overlay_1/SetOrClearField4000Bit_021632a8.cpp:
+    complete
+    .text start:0x02164834 end:0x02164870
+
+src/Combat/Overlay_1/SetOrClearField4Bit800_02163128.cpp:
+    complete
+    .text start:0x021646b4 end:0x021646f0
+
+src/Combat/Overlay_1/TryForwardByIndex_02163a18.cpp:
+    complete
+    .text start:0x02164fa4 end:0x02164fe8
+
+src/Combat/Overlay_1/ClearMultipleFieldBits_02156b20.cpp:
+    complete
+    .text start:0x021581f8 end:0x02158278
+
+src/Combat/Overlay_1/UpdateCounterFromBattleWordAlt_0215b4c0.cpp:
+    complete
+    .text start:0x0215cb44 end:0x0215cb90
+
+src/Combat/Overlay_1/UpdateCounterFromBattleWord_0215b408.cpp:
+    complete
+    .text start:0x0215ca8c end:0x0215cad8
+
+src/Combat/Overlay_1/InitAllocAndClearBits_02163008.cpp:
+    complete
+    .text start:0x02164594 end:0x021645fc
+
+src/Combat/Overlay_1/SetOrClearBitsFromField8_0215f1b0.cpp:
+    complete
+    .text start:0x021607c4 end:0x02160810
+
+src/Combat/Overlay_1/DispatchSlotOrShort_02163564.cpp:
+    complete
+    .text start:0x02164af0 end:0x02164b5c
+
+src/Combat/Overlay_1/ForwardSlotOrClear_021635d0.cpp:
+    complete
+    .text start:0x02164b5c end:0x02164bcc
+
+src/Combat/Overlay_1/NotifyBitWithBiasTest_021633ec.cpp:
+    complete
+    .text start:0x02164978 end:0x021649c4
+
+src/Combat/Overlay_1/EnqueueScaledVec3EventTransformed_0215c900.cpp:
+    complete
+    .text start:0x0215df84 end:0x0215e018
+
+src/Combat/Overlay_1/SetOrClearFieldByMode_0215ee2c.cpp:
+    complete
+    .text start:0x02160440 end:0x021604c4
+
+src/Combat/Overlay_1/DispatchByMode_021637ec.cpp:
+    complete
+    .text start:0x02164d78 end:0x02164dd4
+
+src/Combat/Overlay_1/FindEntryAndSetShort_02163ef4.cpp:
+    complete
+    .text start:0x02165480 end:0x021654ec
+
+src/Combat/Overlay_1/ForwardIndexedSlotAndClear_021638cc.cpp:
+    complete
+    .text start:0x02164e58 end:0x02164ec8
+
+src/Combat/Overlay_1/Func_02163860.cpp:
+    complete
+    .text start:0x02164dec end:0x02164e58
+
+src/Combat/Overlay_1/Func_021639ac.cpp:
+    complete
+    .text start:0x02164f38 end:0x02164fa4
+
+src/Combat/Overlay_1/Func_02163dec.cpp:
+    complete
+    .text start:0x02165378 end:0x021653dc
+
+src/Combat/Overlay_1/SelectModeAndDispatch_02163a5c.cpp:
+    complete
+    .text start:0x02164fe8 end:0x02165040
+
+src/Combat/Overlay_1/SetFieldFromField3ac_0215ef20.cpp:
+    complete
+    .text start:0x02160534 end:0x02160558
+
+src/Combat/Overlay_1/SetOrClearFlag6cForFields_02162174.cpp:
+    complete
+    .text start:0x0216378c end:0x02163828
+
+src/Combat/Overlay_1/SetScaledVec3FieldsAlt_02163f60.cpp:
+    complete
+    .text start:0x021654ec end:0x02165590
+
+src/Combat/Overlay_1/SetScaledVec3Fields_02163e50.cpp:
+    complete
+    .text start:0x021653dc end:0x02165480
+
+src/Combat/Overlay_1/Something_0216227c.cpp:
+    complete
+    .text start:0x02163894 end:0x021638b8
+
+src/Combat/Overlay_1/Something_02163970.cpp:
+    complete
+    .text start:0x02164efc end:0x02164f20
+
+src/Combat/Overlay_1/UpdateCounterAndNotify_0215b2cc.cpp:
+    complete
+    .text start:0x0215c950 end:0x0215c99c
+
+src/Combat/Overlay_1/UpdateCounterAndNotify_0215b50c.cpp:
+    complete
+    .text start:0x0215cb90 end:0x0215cbe4
+
+src/Combat/Overlay_1/DispatchTableEntryEffect_0215cf98.cpp:
+    complete
+    .text start:0x0215e61c end:0x0215e710
+
+src/Combat/Overlay_1/func_ov001_0215ff10.cpp:
+    complete
+    .text start:0x02161524 end:0x021615d4

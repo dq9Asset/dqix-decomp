@@ -7,7 +7,6 @@
 #ifdef jpn
     #define func_020323c4 func_02031efc
 
-    #define func_02012fe4 func_02012dac
     #define _Z17IsInRange0201b588i func_0201b300
 
     #define func_020a3720 func_020a5498

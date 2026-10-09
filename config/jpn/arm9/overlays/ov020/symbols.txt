@@ -1,6 +1,6 @@
-func_ov020_0218c1c0 kind:function(arm,size=0x150) addr:0x0218c1c0
+func_ov020_0218b5a0 kind:function(arm,size=0x150) addr:0x0218c1c0
 func_ov020_0218b700 kind:function(arm,size=0x10) addr:0x0218c310
-func_ov020_0218c320 kind:function(arm,size=0xee0) addr:0x0218c320
+func_ov020_0218b710 kind:function(arm,size=0xee0) addr:0x0218c320
 func_ov020_0218c7bc kind:function(arm,size=0x34) addr:0x0218d200
 func_ov020_0218c7f0 kind:function(arm,size=0x50) addr:0x0218d234
 func_ov020_0218d284 kind:function(arm,size=0x14c) addr:0x0218d284

@@ -15,3 +15,11 @@ src/Combat/Overlay_26/IsFlagBit8Set_021dce1c.cpp:
 src/Combat/Overlay_26/StoreThreeWords_021d8b98.cpp:
     complete
     .text start:0x021d942c end:0x021d9434
+
+src/Combat/Overlay_26/func_ov023_021d8a40_021d8a40.cpp:
+    complete
+    .text start:0x021d9300 end:0x021d9338
+
+src/Combat/Overlay_26/func_ov026_021ddd84.cpp:
+    complete
+    .text start:0x021de3ac end:0x021de3f4

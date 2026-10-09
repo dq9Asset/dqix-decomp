@@ -8,7 +8,6 @@
 #if defined(jpn)
 #define _Z18GetField0x3b0ValueP9GameState func_0200ff18
 #define _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_ func_0202e7f4
-#define func_0205ec34 func_0205ff20
 #define _Z18TestBitInByteArrayiPhi func_0206f104
 #define _Z14GetVec3ByIndexP8Vec3BA28iPiS1_S1_ func_0207c860
 #define _Z11SetFogStateijjt func_020c6f70
@@ -17,8 +16,6 @@
 
 
 #define _Z34SetupCombatantAllocations_021901acv func_ov017_02190d90
-#define func_ov017_021b8468 func_ov017_021b8978
-#define func_ov017_021b8478 func_ov017_021b8988
 #endif
 
 struct FifoCommandInfo

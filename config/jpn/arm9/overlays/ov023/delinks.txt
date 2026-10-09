@@ -1531,3 +1531,147 @@ src/Combat/Overlay_23/func_ov023_021f6c90.cpp:
 src/Combat/Overlay_23/func_ov023_021f9f78.cpp:
     complete
     .text start:0x021f9404 end:0x021f94c4
+
+src/Combat/Overlay_23/SetTextFromCurrentEntry_021ea958.cpp:
+    complete
+    .text start:0x021ea8bc end:0x021ea8dc
+
+src/Combat/Overlay_23/DoThing_021f6590.cpp:
+    complete
+    .text start:0x021f5b04 end:0x021f5b28
+
+src/Combat/Overlay_23/SetRoundedDown100_021ea978.cpp:
+    complete
+    .text start:0x021ea8dc end:0x021ea914
+
+src/Combat/Overlay_23/CallVTableFnAt240_021f66bc.cpp:
+    complete
+    .text start:0x021f5c30 end:0x021f5c64
+
+src/Combat/Overlay_23/ClearNodeMaskById_021f6600.cpp:
+    complete
+    .text start:0x021f5b74 end:0x021f5ba4
+
+src/Combat/Overlay_23/DispatchNodeIfState6_021f6680.cpp:
+    complete
+    .text start:0x021f5bf4 end:0x021f5c30
+
+src/Combat/Overlay_23/ClearBitsAfterLookup_021fae88.cpp:
+    complete
+    .text start:0x021fa268 end:0x021fa2b0
+
+src/Combat/Overlay_23/DispatchNode_021f6630.cpp:
+    complete
+    .text start:0x021f5ba4 end:0x021f5bf4
+
+src/Combat/Overlay_23/SetFieldFromPopcount_021e9b00.cpp:
+    complete
+    .text start:0x021e9a64 end:0x021e9aac
+
+src/Combat/Overlay_23/CheckCombatantMaxHP_021ea77c.cpp:
+    complete
+    .text start:0x021ea6e0 end:0x021ea744
+
+src/Combat/Overlay_23/SumClampedField_021ea7e0.cpp:
+    complete
+    .text start:0x021ea744 end:0x021ea7b8
+
+src/Combat/Overlay_23/NoOp_021f7344.cpp:
+    complete
+    .text start:0x021f6880 end:0x021f6884
+
+src/Combat/Overlay_23/GetLinkedNodeIfKind6_021f9cb8.cpp:
+    complete
+    .text start:0x021f9144 end:0x021f91a0
+
+src/Combat/Overlay_23/AreAllListedCombatantsFlagged_021ed92c.cpp:
+    complete
+    .text start:0x021ed710 end:0x021ed76c
+
+src/Combat/Overlay_23/DispatchIfFlagsOrByteSet_021ed014.cpp:
+    complete
+    .text start:0x021ecf68 end:0x021ecfb8
+
+src/Combat/Overlay_23/GetNodeIfType7_021f6524.cpp:
+    complete
+    .text start:0x021f5a98 end:0x021f5acc
+
+src/Combat/Overlay_23/SetFieldForListedCombatants021f50fc.cpp:
+    complete
+    .text start:0x021f46d4 end:0x021f4728
+
+src/Combat/Overlay_23/CountCombatantsByCondition_021ea3ec.cpp:
+    complete
+    .text start:0x021ea350 end:0x021ea3d0
+
+src/Combat/Overlay_23/CountCombatantsWithNonPositiveHP_021ea630.cpp:
+    complete
+    .text start:0x021ea594 end:0x021ea620
+
+src/Combat/Overlay_23/CountCombatantsWithPositiveHP_021ea5a4.cpp:
+    complete
+    .text start:0x021ea508 end:0x021ea594
+
+src/Combat/Overlay_23/DispatchVTableFnAtD8_021f63f8.cpp:
+    complete
+    .text start:0x021f596c end:0x021f59b8
+
+src/Combat/Overlay_23/SelectAndDispatchPair_021fcd70.cpp:
+    complete
+    .text start:0x021fc068 end:0x021fc0cc
+
+src/Combat/Overlay_23/SetFieldFromCheckField0NonZero_021ea8e8.cpp:
+    complete
+    .text start:0x021ea84c end:0x021ea884
+
+src/Combat/Overlay_23/ClearEntryFlag8IfPending_021fb364.cpp:
+    complete
+    .text start:0x021fa70c end:0x021fa770
+
+src/Combat/Overlay_23/ComputeVecFromNode_021f8b78.cpp:
+    complete
+    .text start:0x021f8004 end:0x021f80a8
+
+src/Combat/Overlay_23/CreateAndInitSlot_021fa078.cpp:
+    complete
+    .text start:0x021f9504 end:0x021f9594
+
+src/Combat/Overlay_23/AppendCombatantTag_021e8e34.cpp:
+    complete
+    .text start:0x021e8d88 end:0x021e8e4c
+
+src/Combat/Overlay_23/InitObjAndRegisterListEntry_021fb2b0.cpp:
+    complete
+    .text start:0x021fa658 end:0x021fa70c
+
+src/Combat/Overlay_23/func_ov023_021e8f28.cpp:
+    complete
+    .text start:0x021e8e8c end:0x021e8f4c
+
+src/Combat/Overlay_23/func_ov023_021fc71c.cpp:
+    complete
+    .text start:0x021fba14 end:0x021fbac0
+
+src/Combat/Overlay_23/ComputeUpdatedPlayClock_021e8fe8.cpp:
+    complete
+    .text start:0x021e8f4c end:0x021e90c0
+
+src/Combat/Overlay_23/func_ov023_021fa108.cpp:
+    complete
+    .text start:0x021f9594 end:0x021f9724
+
+src/Combat/Overlay_23/DispatchBoundsEdges_021f86fc.cpp:
+    complete
+    .text start:0x021f7b94 end:0x021f7d50
+
+src/Combat/Overlay_23/Trans_021ea9b0.cpp:
+    complete
+    .text start:0x021ea914 end:0x021ea940
+
+src/Combat/Overlay_23/func_ov023_021f65d4.cpp:
+    complete
+    .text start:0x021f5b48 end:0x021f5b74
+
+src/Combat/Overlay_23/func_ov023_021e5020.cpp:
+    complete
+    .text start:0x021e5204 end:0x021e55f0

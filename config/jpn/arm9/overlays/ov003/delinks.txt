@@ -340,3 +340,63 @@ src/Combat/Overlay_3/UpdateStateAndMaybeReset_0215bf18.cpp:
 src/Combat/Overlay_3/AllocateBattleWork_021544ec.cpp:
     complete
     .text start:0x02155bd4 end:0x02155e08
+
+src/Combat/Overlay_3/func_ov003_02159d0c.cpp:
+    complete
+    .text start:0x0215b18c end:0x0215ba34
+
+src/Combat/Overlay_3/UpdateEntryAndScale_0215e2a8.cpp:
+    complete
+    .text start:0x0215f580 end:0x0215f6d4
+
+src/Combat/Overlay_3/func_ov003_02160cf8.cpp:
+    complete
+    .text start:0x02160e54 end:0x02160f90
+
+src/Combat/Overlay_3/func_ov003_021696f4.cpp:
+    complete
+    .text start:0x0216951c end:0x02169654
+
+src/Combat/Overlay_3/CheckField0AndBattleState_02160b50.cpp:
+    complete
+    .text start:0x02160cac end:0x02160ce0
+
+src/Combat/Overlay_3/InitObjAndClearFlags_0217f1b8.cpp:
+    complete
+    .text start:0x0217debc end:0x0217df1c
+
+src/Combat/Overlay_3/StepStateMachine0215bd34.cpp:
+    complete
+    .text start:0x0215d05c end:0x0215d148
+
+src/Combat/Overlay_3/CallSetFlagIfFieldCSet_0217f194.cpp:
+    complete
+    .text start:0x0217de98 end:0x0217debc
+
+src/Combat/Overlay_3/DecrementCounterAndConfigureBg_0216fba0.cpp:
+    complete
+    .text start:0x0216f494 end:0x0216f54c
+
+src/Combat/Overlay_3/DispatchOrIssueCommand_021714a0.cpp:
+    complete
+    .text start:0x02170804 end:0x021708b4
+
+src/Combat/Overlay_3/InitCombatSubsystem_0215376c.cpp:
+    complete
+    .text start:0x02154eec end:0x02154f54
+
+src/Combat/Overlay_3/UpdateCounterAndBg_0216ef14.cpp:
+    complete
+    .text start:0x0216e7f8 end:0x0216e8c0
+
+src/Combat/Overlay_3/func_ov003_02161480.cpp:
+    complete
+    .text start:0x02161568 end:0x021615d0
+
+src/Combat/Overlay_3/func_ov003_02171640.cpp:
+    complete
+    .text start:0x021709a0 end:0x02170a58
+
+src/Combat/Overlay_3/func_ov003_0217be40.cpp:
+    complete
+    .text start:0x0217ab68 end:0x0217aca0

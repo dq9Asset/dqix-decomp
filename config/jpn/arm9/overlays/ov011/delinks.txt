@@ -339,3 +339,147 @@ src/Combat/Overlay_11/InvokeTaggedHandlers_02186440.cpp:
 src/Combat/Overlay_11/func_ov011_02184ed0.cpp:
     complete
     .text start:0x02185fd0 end:0x021860b0
+
+src/Combat/Overlay_11/CallVTableFnAt208_02186790.cpp:
+    complete
+    .text start:0x02187868 end:0x021878a4
+
+src/Combat/Overlay_11/CallVTableFnAt60WithTaggedArgs_02185ac0.cpp:
+    complete
+    .text start:0x02186bb4 end:0x02186c04
+
+src/Combat/Overlay_11/DispatchVTableFn200WithFixedArgs_02186650.cpp:
+    complete
+    .text start:0x02187728 end:0x021877b8
+
+src/Combat/Overlay_11/DispatchVTableFn28WithFixedArgs_0218515c.cpp:
+    complete
+    .text start:0x0218625c end:0x021862ec
+
+src/Combat/Overlay_11/ValidateAndDispatchKey_02185948.cpp:
+    complete
+    .text start:0x02186a3c end:0x02186a80
+
+src/Combat/Overlay_11/CallVTableFnAt212_021867cc.cpp:
+    complete
+    .text start:0x021878a4 end:0x021878e0
+
+src/Combat/Overlay_11/CallVTableFnAt68WithTaggedArgs_02186834.cpp:
+    complete
+    .text start:0x0218790c end:0x0218795c
+
+src/Combat/Overlay_11/CallVTableFnAt76WithTaggedArgs_02186d90.cpp:
+    complete
+    .text start:0x02187e68 end:0x02187eb8
+
+src/Combat/Overlay_11/CallVTableFnAt84WithTaggedArgs_02186de0.cpp:
+    complete
+    .text start:0x02187eb8 end:0x02187f08
+
+src/Combat/Overlay_11/SetFieldCBits_021872c8.cpp:
+    complete
+    .text start:0x021883a0 end:0x021883e8
+
+src/Combat/Overlay_11/SetFlagBit1IfTagged_02186f74.cpp:
+    complete
+    .text start:0x0218804c end:0x021880a0
+
+src/Combat/Overlay_11/SetFlagBit4IfTagged_02186eb4.cpp:
+    complete
+    .text start:0x02187f8c end:0x02187fe0
+
+src/Combat/Overlay_11/CallVTableFnAt124WithTaggedArgs_02188108.cpp:
+    complete
+    .text start:0x021891e0 end:0x02189230
+
+src/Combat/Overlay_11/CallVTableFnAt164WithTaggedArgs_02187604.cpp:
+    complete
+    .text start:0x021886e0 end:0x0218872c
+
+src/Combat/Overlay_11/CallVTableFnAt164WithTaggedArgs_02188284.cpp:
+    complete
+    .text start:0x0218935c end:0x021893ac
+
+src/Combat/Overlay_11/CallVTableFnAt176WithTaggedArgs_02188460.cpp:
+    complete
+    .text start:0x02189538 end:0x02189584
+
+src/Combat/Overlay_11/CallVTableFnAt36_021883a8.cpp:
+    complete
+    .text start:0x02189480 end:0x021894c0
+
+src/Combat/Overlay_11/CallVTableFnAt52WithTaggedArgs_021883e8.cpp:
+    complete
+    .text start:0x021894c0 end:0x02189510
+
+src/Combat/Overlay_11/DispatchTaggedDiv34_02187898.cpp:
+    complete
+    .text start:0x02188974 end:0x021889b8
+
+src/Combat/Overlay_11/SetSingleCounterFromTaggedField_02187854.cpp:
+    complete
+    .text start:0x02188930 end:0x02188974
+
+src/Combat/Overlay_11/InitEntry02184640.cpp:
+    complete
+    .text start:0x02185740 end:0x0218576c
+
+src/Combat/Overlay_11/CallVTableFnAt172WithTaggedArgs_02187cd8.cpp:
+    complete
+    .text start:0x02188db0 end:0x02188e1c
+
+src/Combat/Overlay_11/CallVTableFns132And140WithTaggedArgs_021876b4.cpp:
+    complete
+    .text start:0x02188790 end:0x021887fc
+
+src/Combat/Overlay_11/CallVTableFnAt196WithTaggedArgs_02185fa8.cpp:
+    complete
+    .text start:0x02187080 end:0x021870f0
+
+src/Combat/Overlay_11/Trans_02184c7c.cpp:
+    complete
+    .text start:0x02185d7c end:0x02185dc0
+
+src/Combat/Overlay_11/Trans_02186e30.cpp:
+    complete
+    .text start:0x02187f08 end:0x02187f2c
+
+src/Combat/Overlay_11/CreateSlotFromTaggedArgs_02186018.cpp:
+    complete
+    .text start:0x021870f0 end:0x021871fc
+
+src/Combat/Overlay_11/AllocateAndRestorePairTables_02184fb0.cpp:
+    complete
+    .text start:0x021860b0 end:0x02186118
+
+src/Combat/Overlay_11/CallVTableFns64And6cWithTaggedArgs_021874d0.cpp:
+    complete
+    .text start:0x021885ac end:0x02188618
+
+src/Combat/Overlay_11/InitCombatState_0218438c.cpp:
+    complete
+    .text start:0x0218548c end:0x021855a4
+
+src/Combat/Overlay_11/TriggerDispatchIfFlagOrByte55_021884d0.cpp:
+    complete
+    .text start:0x021895a8 end:0x0218960c
+
+src/Combat/Overlay_11/AllocateBuffersAndInitFields_02184550.cpp:
+    complete
+    .text start:0x02185650 end:0x021856c8
+
+src/Combat/Overlay_11/CallVTableFns94And9cWithTaggedArgs_02187c6c.cpp:
+    complete
+    .text start:0x02188d44 end:0x02188db0
+
+src/Combat/Overlay_11/ResetTreeAndGraphicsState_02184770.cpp:
+    complete
+    .text start:0x02185870 end:0x021859a0
+
+src/Combat/Overlay_11/func_ov011_02187f7c.cpp:
+    complete
+    .text start:0x02189054 end:0x021890ec
+
+src/Combat/Overlay_11/func_ov011_02184de4.cpp:
+    complete
+    .text start:0x02185ee4 end:0x02185fd0

@@ -47,3 +47,15 @@ src/Combat/Overlay_5/func_ov005_021538fc.cpp:
 src/Combat/Overlay_5/func_ov005_021553b4.cpp:
     complete
     .text start:0x021569a4 end:0x02156a14
+
+src/Combat/Overlay_5/RunTwoCallbacksAndReset02155d38.cpp:
+    complete
+    .text start:0x02157328 end:0x0215735c
+
+src/Combat/Overlay_5/func_ov005_02153b20.cpp:
+    complete
+    .text start:0x021552a0 end:0x02155324
+
+src/Combat/Overlay_5/func_ov005_02157ae8.cpp:
+    complete
+    .text start:0x021590e0 end:0x0215916c

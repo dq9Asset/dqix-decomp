@@ -5,7 +5,6 @@
 #include <globaldefs.h>
 
 #ifdef jpn
-#define func_02012fe4 func_02012dac
 #endif
 
 extern "C"

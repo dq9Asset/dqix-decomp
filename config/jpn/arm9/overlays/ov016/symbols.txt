@@ -1,6 +1,6 @@
 func_ov016_0218b5a0 kind:function(arm,size=0x20) addr:0x0218c1c0
-func_ov016_0218c1e0 kind:function(arm,size=0x4) addr:0x0218c1e0
-func_ov016_0218c1e4 kind:function(arm,size=0x56c) addr:0x0218c1e4
+func_ov016_0218b5c0 kind:function(arm,size=0x4) addr:0x0218c1e0
+func_ov016_0218b5c4 kind:function(arm,size=0x56c) addr:0x0218c1e4
 _Z24SetPowCnt1Bit15_0218bc70i kind:function(arm,size=0x1c) addr:0x0218c750
 _Z30SafeAllocatorAllocate_0218bc8cj kind:function(arm,size=0x1c) addr:0x0218c76c
 _Z26SafeAllocatorFree_0218bca8Pv kind:function(arm,size=0x1c) addr:0x0218c788

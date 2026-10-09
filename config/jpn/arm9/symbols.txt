@@ -402,7 +402,7 @@ _Z10FreeIfFlagP14AllocatorUnionPvi kind:function(arm,size=0x14) addr:0x02012b84
 _Z19GetMaxAlloc02012dd0P14Struct02012dd0 kind:function(arm,size=0x14) addr:0x02012b98
 _Z17EmptyStub02012de4v kind:function(arm,size=0x4) addr:0x02012bac
 func_02012de8 kind:function(arm,size=0x114) addr:0x02012bb0
-func_02012cc4 kind:function(arm,size=0x28) addr:0x02012cc4
+_Z28InitCombatSubsystems02012efcv kind:function(arm,size=0x28) addr:0x02012cc4
 _Z14LookupKeyValuei kind:function(arm,size=0x44) addr:0x02012cec
 _Z12ConvertIndexi kind:function(arm,size=0x3c) addr:0x02012d30
 _Z19ResetFourSubStructsPc kind:function(arm,size=0x40) addr:0x02012d6c
@@ -462,7 +462,7 @@ func_02016874 kind:function(arm,size=0x518) addr:0x02016614
 func_02016b2c kind:function(arm,size=0x28) addr:0x02016b2c
 func_02016b54 kind:function(arm,size=0x60) addr:0x02016b54
 func_02016bb4 kind:function(arm,size=0x284) addr:0x02016bb4
-func_02016e38 kind:function(arm,size=0x170) addr:0x02016e38
+func_02017098 kind:function(arm,size=0x170) addr:0x02016e38
 func_02016fa8 kind:function(arm,size=0x104) addr:0x02016fa8
 func_020170ac kind:function(arm,size=0x234) addr:0x020170ac
 func_020172e0 kind:function(arm,size=0x23c) addr:0x020172e0
@@ -792,7 +792,7 @@ _Z26AllocateClearArray02028754P13Array02028754P13SafeAllocatori kind:function(ar
 func_02028020 kind:function(arm,size=0xdc) addr:0x02028020
 func_020280fc kind:function(arm,size=0x3c) addr:0x020280fc
 func_02028138 kind:function(arm,size=0xe4) addr:0x02028138
-func_0202821c kind:function(arm,size=0x90) addr:0x0202821c
+_Z37InitializeSubObjectsAndFields020289c4P17BigRecord020289c4 kind:function(arm,size=0x90) addr:0x0202821c
 func_02028a54 kind:function(arm,size=0x150) addr:0x020282ac
 _Z21GetElementStride0x318P21Element0x318_02028baci kind:function(arm,size=0x24) addr:0x020283fc
 _Z19FindInlineEntryByIdP14Entry_02028bd0i kind:function(arm,size=0x44) addr:0x02028420
@@ -834,7 +834,7 @@ func_0202a9f4 kind:function(arm,size=0xa0) addr:0x0202a5ac
 func_0202aa94 kind:function(arm,size=0xa0) addr:0x0202a64c
 func_0202a6ec kind:function(arm,size=0x140) addr:0x0202a6ec
 func_0202a82c kind:function(arm,size=0xbc) addr:0x0202a82c
-func_0202a8e8 kind:function(arm,size=0x1c) addr:0x0202a8e8
+_Z19ClearBuffer0202ad30v kind:function(arm,size=0x1c) addr:0x0202a8e8
 func_0202ad4c kind:function(arm,size=0x4c) addr:0x0202a904
 _Z25FormatAndDispatch0202ad98iiiPKcz kind:function(arm,size=0x58) addr:0x0202a950
 _Z27FlushAndClearBuffer0202adf0v kind:function(arm,size=0x28) addr:0x0202a9a8
@@ -2126,7 +2126,7 @@ _Z19ForEachNode020579ecPP12Node020579ec kind:function(arm,size=0x24) addr:0x0205
 _Z36UpdateEntriesWhereFlag2Clear02057a10P17Container02057a10 kind:function(arm,size=0x5c) addr:0x02058d88
 _Z34UpdateEntriesWhereFlag2Set02057a6cP17Container02057a6c kind:function(arm,size=0x4c) addr:0x02058de4
 func_02058e30 kind:function(arm,size=0x300) addr:0x02058e30
-func_02059130 kind:function(arm,size=0x28) addr:0x02059130
+_Z35ClearCombatantSlotIfValidId02057db8ii kind:function(arm,size=0x28) addr:0x02059130
 _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii kind:function(arm,size=0x8c) addr:0x02059158
 func_02057e6c kind:function(arm,size=0x94) addr:0x020591e4
 func_02057f00 kind:function(arm,size=0x8c) addr:0x02059278
@@ -2134,7 +2134,7 @@ _Z20FindNodeById02057f8cPvi kind:function(arm,size=0x28) addr:0x02059304
 _Z26FindNodeAndProcess02057fb4Pvii kind:function(arm,size=0x24) addr:0x0205932c
 func_02057fd8 kind:function(arm,size=0x58c) addr:0x02059350
 _Z23CleanupNodeList02058564P16NodeList02058564 kind:function(arm,size=0x38) addr:0x020598dc
-func_02059914 kind:function(arm,size=0x7c) addr:0x02059914
+_Z33ResetBattleEncounterState0205859cP17MainBlock0205859c kind:function(arm,size=0x7c) addr:0x02059914
 _Z28CountValidCombatants02058618v kind:function(arm,size=0x40) addr:0x02059990
 _Z25GetInlineRecordByBattleIdPvi kind:function(arm,size=0x28) addr:0x020599d0
 _Z39CollectEntriesMatchingField0xd802058680PciPPvi kind:function(arm,size=0x84) addr:0x020599f8
@@ -2472,7 +2472,7 @@ _Z22GetPackedNibbleFlag0x8P25PackedNibbleArray0206e2dci kind:function(arm,size=0
 _Z29CheckFlagAndThreshold0206e31cii kind:function(arm,size=0x2c) addr:0x0206f470
 _Z24SetKeyedArrayBit0206e348Phii kind:function(arm,size=0x3c) addr:0x0206f49c
 _Z20BuildBitmask0206e384Ph kind:function(arm,size=0x50) addr:0x0206f4d8
-func_0206f528 kind:function(arm,size=0x14) addr:0x0206f528
+_Z25GetShortFromTable0206e3d4ii kind:function(arm,size=0x14) addr:0x0206f528
 _Z22FindShortIndex0206e3e8ii kind:function(arm,size=0x3c) addr:0x0206f53c
 func_0206f578 kind:function(arm,size=0x134) addr:0x0206f578
 func_0206e558 kind:function(arm,size=0x1b4) addr:0x0206f6ac
@@ -4310,7 +4310,7 @@ func_020b2c94 kind:function(arm,size=0x138) addr:0x020b2c94
 func_020b2dcc kind:function(arm,size=0x240) addr:0x020b2dcc
 func_020b300c kind:function(arm,size=0x198) addr:0x020b300c
 func_020b31a4 kind:function(arm,size=0x210) addr:0x020b31a4
-func_020b33b4 kind:function(arm,size=0x50) addr:0x020b33b4
+_Z15FillTilePatternP19TileFillCtx020b18e8j kind:function(arm,size=0x50) addr:0x020b33b4
 func_020b3404 kind:function(arm,size=0x80) addr:0x020b3404
 func_020b3484 kind:function(arm,size=0x19c) addr:0x020b3484
 func_020b3620 kind:function(arm,size=0x1f4) addr:0x020b3620
@@ -5879,7 +5879,7 @@ _Z25ClearHeaderFields020e1354Ph kind:function(arm,size=0x14) addr:0x020e2f4c
 _Z22SetPairAndByte020e1368P19PairAndByte020e1368jjh kind:function(arm,size=0xc) addr:0x020e2f60
 _Z17SetFields020e1374P14Setter020e1374jji kind:function(arm,size=0x10) addr:0x020e2f6c
 func_020e2f7c kind:function(arm,size=0x58) addr:0x020e2f7c
-func_020e2fd4 kind:function(arm,size=0x5c) addr:0x020e2fd4
+_Z16Dispatch020e13dcP12Desc020e13dc kind:function(arm,size=0x5c) addr:0x020e2fd4
 func_020e1438 kind:function(arm,size=0x130) addr:0x020e3030
 _Z15ClearZeroStructP10ZeroStruct kind:function(arm,size=0x20) addr:0x020e3160
 _Z18InitStruct020e1588Ph kind:function(arm,size=0x70) addr:0x020e3180
@@ -5989,7 +5989,7 @@ _Z20InitWithFlag020e3ec0P14Struct020e3ec0 kind:function(arm,size=0x18) addr:0x02
 _Z39NotifyManagerForSetArrayEntries020e3ed8P14Struct020e3ed8 kind:function(arm,size=0x44) addr:0x020e5a78
 func_020e5abc kind:function(arm,size=0x638) addr:0x020e5abc
 _Z32StartBattleTimerSequence020e4524Pc kind:function(arm,size=0x38) addr:0x020e60f4
-func_020e612c kind:function(arm,size=0xd0) addr:0x020e612c
+_Z25ProcessBattleTick020e455cP18MainStruct020e455c kind:function(arm,size=0xd0) addr:0x020e612c
 __sinit_020e61fc kind:function(arm,size=0xac) addr:0x020e61fc
 __sinit_020e62a8 kind:function(arm,size=0xac) addr:0x020e62a8
 __sinit_020e6354 kind:function(arm,size=0x88) addr:0x020e6354
@@ -6187,7 +6187,7 @@ data_020e8874 kind:data(any) addr:0x020e8874
 data_020e888c kind:data(any) addr:0x020e888c
 data_020e88a5 kind:data(any) addr:0x020e88a5
 data_020e88c8 kind:data(any) addr:0x020e88c8
-data_020e88d4 kind:data(any) addr:0x020e88d4
+data_020e87c0 kind:data(any) addr:0x020e88d4
 data_020e8804 kind:data(any) addr:0x020e8918
 data_020e8834 kind:data(any) addr:0x020e8948
 data_020e883c kind:data(any) addr:0x020e8950
@@ -7417,9 +7417,9 @@ data_020f2ce8 kind:data(any) addr:0x020f2ce8
 data_020f2d00 kind:data(any) addr:0x020f2d00
 data_020f2d2c kind:data(any) addr:0x020f2d2c
 data_020f2d31 kind:data(any) addr:0x020f2d31
-data_020f2d38 kind:data(any) addr:0x020f2d38
+data_020f2bdc kind:data(any) addr:0x020f2d38
 data_020f2be4 kind:data(any) addr:0x020f2d40
-data_020f2d48 kind:data(any) addr:0x020f2d48
+data_020f2bec kind:data(any) addr:0x020f2d48
 data_020f2bf4 kind:data(any) addr:0x020f2d50
 data_020f2c04 kind:data(any) addr:0x020f2d60
 data_020f2c14 kind:data(any) addr:0x020f2d70

@@ -2128,3 +2128,79 @@ src/Combat/Overlay_17/func_ov017_021acdf4.cpp:
 src/Combat/Overlay_17/func_ov017_021c2784.cpp:
     complete
     .text start:0x021c2cf0 end:0x021c3040
+
+src/Combat/Overlay_17/ForwardThreeShortFields_021cfe24.cpp:
+    complete
+    .text start:0x021d02d4 end:0x021d02f0
+
+src/Combat/Overlay_17/ResetOverlayAndAllocator_0219bf74.cpp:
+    complete
+    .text start:0x0219ca64 end:0x0219caa4
+
+src/Combat/Overlay_17/GetBitflagForCombatantColor_021a26e8.cpp:
+    complete
+    .text start:0x021a3178 end:0x021a31c8
+
+src/Combat/Overlay_17/ClearSlotsAndProcess_021a27e8.cpp:
+    complete
+    .text start:0x021a3278 end:0x021a32d0
+
+src/Combat/Overlay_17/SetupCombatantAllocations_021901ac.cpp:
+    complete
+    .text start:0x02190d90 end:0x02190e1c
+
+src/Combat/Overlay_17/InitEntriesAndAllocators_0219fec0.cpp:
+    complete
+    .text start:0x021a0970 end:0x021a0a08
+
+src/Combat/Overlay_17/SetFlagsForFlaggedCombatants_0219e0ec.cpp:
+    complete
+    .text start:0x0219ebdc end:0x0219ec70
+
+src/Combat/Overlay_17/ClearPendingAndDestroyAllocator_021b2200.cpp:
+    complete
+    .text start:0x021b2918 end:0x021b29a4
+
+src/Combat/Overlay_17/PopStackAndForwardAllocator_021ba94c.cpp:
+    complete
+    .text start:0x021baf40 end:0x021baf8c
+
+src/Combat/Overlay_17/PopStackAndForwardAllocator_021bac8c.cpp:
+    complete
+    .text start:0x021bb280 end:0x021bb2cc
+
+src/Combat/Overlay_17/ResetAndPopStacks_021c1394.cpp:
+    complete
+    .text start:0x021c193c end:0x021c19ac
+
+src/Combat/Overlay_17/ResetFlagAndDestroyAllocator_021a18c8.cpp:
+    complete
+    .text start:0x021a2358 end:0x021a23b4
+
+src/Combat/Overlay_17/ResetObjAndDestroyAllocator_021b2c88.cpp:
+    complete
+    .text start:0x021b3398 end:0x021b33f8
+
+src/Combat/Overlay_17/SyncEntryAndSetBit_021b6174.cpp:
+    complete
+    .text start:0x021b6728 end:0x021b6798
+
+src/Combat/Overlay_17/ForwardResetAndCaptureTimestamp_021c2e50.cpp:
+    complete
+    .text start:0x021c3374 end:0x021c33c8
+
+src/Combat/Overlay_17/FinalizeAndPopStacks_021b14ec.cpp:
+    complete
+    .text start:0x021b1b78 end:0x021b1bf0
+
+src/Combat/Overlay_17/PushRingElement_021d4af8.cpp:
+    complete
+    .text start:0x021d4f48 end:0x021d4fec
+
+src/Combat/Overlay_17/SetEntryFlagFromSearchMatch_021ceb28.cpp:
+    complete
+    .text start:0x021cefd0 end:0x021cf074
+
+src/Combat/Overlay_17/InitContextIfInRange_021a9fa0.cpp:
+    complete
+    .text start:0x021aa810 end:0x021aa85c

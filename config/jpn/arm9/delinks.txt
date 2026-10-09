@@ -12832,3 +12832,171 @@ src/System/ReadyContexts.cpp:
 src/System/ContextScheduler.cpp:
     complete
     .text start:0x020c96b4 end:0x020c9774
+
+src/Combat/Main/RegisterCombatantSlot.cpp:
+    complete
+    .text start:0x0200fb94 end:0x0200fba4
+
+src/Combat/Main/ClearCombatantSlot.cpp:
+    complete
+    .text start:0x0200fba4 end:0x0200fbb4
+
+src/Combat/Main/IsGlobalU16InRange.cpp:
+    complete
+    .text start:0x02011560 end:0x02011574
+
+src/Combat/Main/InitCombatSubsystems02012efc.cpp:
+    complete
+    .text start:0x02012cc4 end:0x02012cec
+
+src/Combat/Main/IsInRange0201b588.cpp:
+    complete
+    .text start:0x0201b300 end:0x0201b328
+
+src/Combat/Main/IsInRange0201b5b0.cpp:
+    complete
+    .text start:0x0201b328 end:0x0201b350
+
+src/Combat/Main/MaybeClearGrottoState0201bfd4.cpp:
+    complete
+    .text start:0x0201bd4c end:0x0201bd8c
+
+src/Combat/Main/FindClosestNodeIndex_02028460.cpp:
+    complete
+    .text start:0x02027ccc end:0x02027d90
+
+src/Combat/Main/ClearBuffer0202ad30.cpp:
+    complete
+    .text start:0x0202a8e8 end:0x0202a904
+
+src/Combat/Main/GetPtrField0x114.cpp:
+    complete
+    .text start:0x02033ad8 end:0x02033ae0
+
+src/Combat/Main/GetData02105254.cpp:
+    complete
+    .text start:0x0203b080 end:0x0203b08c
+
+src/Combat/Main/ClearCombatantsAndInitStruct02057978.cpp:
+    complete
+    .text start:0x02058cf0 end:0x02058d2c
+
+src/Combat/Main/ClearCombatantSlotIfValidId02057db8.cpp:
+    complete
+    .text start:0x02059130 end:0x02059158
+
+src/Combat/Main/ClearCombatantSlotsAndUnlinkNode_02057f00.cpp:
+    complete
+    .text start:0x02059278 end:0x02059304
+
+src/Combat/Main/ResetBattleEncounterState0205859c.cpp:
+    complete
+    .text start:0x02059914 end:0x02059990
+
+src/Combat/Main/CheckFlagAndThreshold0206e31c.cpp:
+    complete
+    .text start:0x0206f470 end:0x0206f49c
+
+src/Combat/Main/GetShortFromTable0206e3d4.cpp:
+    complete
+    .text start:0x0206f528 end:0x0206f53c
+
+src/Combat/Main/FindShortIndex0206e3e8.cpp:
+    complete
+    .text start:0x0206f53c end:0x0206f578
+
+src/Combat/Main/InitStruct0207cbe8.cpp:
+    complete
+    .text start:0x0207da20 end:0x0207da44
+
+src/Combat/Main/FindEntryByHalfwordKey.cpp:
+    complete
+    .text start:0x0209b684 end:0x0209b6c0
+
+src/Combat/Main/GetElementByIndex0209bd80.cpp:
+    complete
+    .text start:0x0209daf8 end:0x0209db0c
+
+src/Combat/Main/InitOverlaySystem.cpp:
+    complete
+    .text start:0x020a35b0 end:0x020a364c
+
+src/Combat/Main/IsIndexMappedToSelf020a18f4.cpp:
+    complete
+    .text start:0x020a366c end:0x020a36b8
+
+src/Combat/Main/PopStack0AndTrigger.cpp:
+    complete
+    .text start:0x020a3bcc end:0x020a3c28
+
+src/Combat/Main/FillTilePattern.cpp:
+    complete
+    .text start:0x020b33b4 end:0x020b3404
+
+src/Combat/Main/SetFogState.cpp:
+    complete
+    .text start:0x020c6f70 end:0x020c6fc8
+
+src/Combat/Main/func_020ca390.cpp:
+    complete
+    .text start:0x020cbe5c end:0x020cbe84
+
+src/Combat/Main/GetGlobalWord02112140.cpp:
+    complete
+    .text start:0x020d2c64 end:0x020d2c74
+
+src/Combat/Main/ShutdownTask020dae08.cpp:
+    complete
+    .text start:0x020dc810 end:0x020dc870
+
+src/Combat/Main/ZeroInit020de848.cpp:
+    complete
+    .text start:0x020e01c4 end:0x020e01e4
+
+src/Combat/Main/InitContext020e1154.cpp:
+    complete
+    .text start:0x020e2d4c end:0x020e2d9c
+
+src/Combat/Main/SyncEntryStateFromTarget_020e1a74.cpp:
+    complete
+    .text start:0x020e366c end:0x020e371c
+
+src/Combat/Main/Init020e2bd8.cpp:
+    complete
+    .text start:0x020e4778 end:0x020e47d4
+
+src/Combat/Main/SetEntryEnabled020e2cc4.cpp:
+    complete
+    .text start:0x020e4864 end:0x020e48c4
+
+src/Combat/Main/FindEntryByField1.cpp:
+    complete
+    .text start:0x020e4bf4 end:0x020e4c44
+
+src/Combat/Main/ClearEntryAndEnqueue020e33b4.cpp:
+    complete
+    .text start:0x020e4f54 end:0x020e4fc8
+
+src/Combat/Main/ClearEntryIfCurrentArrMatches020e3468.cpp:
+    complete
+    .text start:0x020e5008 end:0x020e505c
+
+src/Combat/Main/GetEntryStatusForKey020e34bc.cpp:
+    complete
+    .text start:0x020e505c end:0x020e50e4
+
+src/Combat/Main/ProcessBattleTick020e455c.cpp:
+    complete
+    .text start:0x020e612c end:0x020e61fc
+
+src/System/BlockCurrentContext.cpp:
+    complete
+    .text start:0x020c9364 end:0x020c93b4
+
+src/Combat/Main/func_02056c3c.cpp:
+    complete
+    .text start:0x02057fb4 end:0x02058088
+
+src/Combat/Main/func_020c9b10.cpp:
+    complete
+    .text start:0x020cb5dc end:0x020cb6ac

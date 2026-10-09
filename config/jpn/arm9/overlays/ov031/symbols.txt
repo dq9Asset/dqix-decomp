@@ -163,7 +163,7 @@ func_ov031_02206a68 kind:function(arm,size=0x100) addr:0x02207248
 func_ov031_02206b68 kind:function(arm,size=0xa0) addr:0x02207348
 _Z26DrainList0224e230_02206c08v kind:function(arm,size=0x3c) addr:0x022073e8
 func_ov031_02206c44 kind:function(arm,size=0xa4) addr:0x02207424
-func_ov031_022074c8 kind:function(arm,size=0xa8) addr:0x022074c8
+func_ov031_02206ce8 kind:function(arm,size=0xa8) addr:0x022074c8
 func_ov031_02206d90 kind:function(arm,size=0x7c) addr:0x02207570
 func_ov031_02206e0c kind:function(arm,size=0xb0) addr:0x022075ec
 func_ov031_02206ebc kind:function(arm,size=0x4c) addr:0x0220769c
@@ -679,12 +679,12 @@ func_ov031_0221b780 kind:function(arm,size=0x7c) addr:0x0221bf60
 _Z24CheckAndCompare_0221b7fciiii kind:function(arm,size=0x4c) addr:0x0221bfdc
 func_ov031_0221b848 kind:function(arm,size=0x6c) addr:0x0221c028
 _Z19SetFieldsA_0221b8b4iii kind:function(arm,size=0x30) addr:0x0221c094
-func_ov031_0221c0c4 kind:function(arm,size=0xc0) addr:0x0221c0c4
+func_ov031_0221b8e4 kind:function(arm,size=0xc0) addr:0x0221c0c4
 func_ov031_0221b9a4 kind:function(arm,size=0xc) addr:0x0221c184
 func_ov031_0221b9b0 kind:function(arm,size=0x308) addr:0x0221c190
 func_ov031_0221bcb8 kind:function(arm,size=0x100) addr:0x0221c498
-func_ov031_0221c598 kind:function(arm,size=0x80) addr:0x0221c598
-func_ov031_0221c618 kind:function(arm,size=0x2c) addr:0x0221c618
+_Z31InitAndScrambleRegions_0221bdb8Pc kind:function(arm,size=0x80) addr:0x0221c598
+_Z18ClearSlot_0221be38P13Slot_0221be38i kind:function(arm,size=0x2c) addr:0x0221c618
 func_ov031_0221c644 kind:function(arm,size=0x184) addr:0x0221c644
 func_ov031_0221bfe8 kind:function(arm,size=0x1dc) addr:0x0221c7c8
 func_ov031_0221c1c4 kind:function(arm,size=0x44) addr:0x0221c9a4
@@ -1053,7 +1053,7 @@ func_ov031_02228fec kind:function(arm,size=0x70) addr:0x022297cc
 func_ov031_0222905c kind:function(arm,size=0xc8) addr:0x0222983c
 func_ov031_02229124 kind:function(arm,size=0x19c) addr:0x02229904
 func_ov031_022292c0 kind:function(arm,size=0x54) addr:0x02229aa0
-func_ov031_02229af4 kind:function(arm,size=0x3c) addr:0x02229af4
+func_ov031_02229314 kind:function(arm,size=0x3c) addr:0x02229af4
 func_ov031_02229b30 kind:function(arm,size=0x28) addr:0x02229b30
 _Z22RunThreeSteps_02229378v kind:function(arm,size=0x14) addr:0x02229b58
 func_ov031_0222938c kind:function(arm,size=0xf4) addr:0x02229b6c
@@ -1775,7 +1775,7 @@ func_ov031_0223d8a0 kind:function(arm,size=0x38) addr:0x0223e080
 func_ov031_0223d8d8 kind:function(arm,size=0x30) addr:0x0223e0b8
 _Z23TailCallField8_0223d908Pc kind:function(arm,size=0x10) addr:0x0223e0e8
 _Z26TailCallField4Ptr_0223d918Pc kind:function(arm,size=0x10) addr:0x0223e0f8
-func_ov031_0223e108 kind:function(arm,size=0x9c) addr:0x0223e108
+func_ov031_0223d928 kind:function(arm,size=0x9c) addr:0x0223e108
 _Z28FlushAndTransferOam_0223d9c4v kind:function(arm,size=0x48) addr:0x0223e1a4
 func_ov031_0223da0c kind:function(arm,size=0x2c) addr:0x0223e1ec
 func_ov031_0223e218 kind:function(arm,size=0x20) addr:0x0223e218
@@ -1954,10 +1954,10 @@ func_ov031_022463a8 kind:function(arm,size=0x78) addr:0x022463a8
 _Z18SetFields_02245858ic kind:function(arm,size=0x14) addr:0x02246420
 func_ov031_02246434 kind:function(arm,size=0x10) addr:0x02246434
 func_ov031_02246444 kind:function(arm,size=0x2c) addr:0x02246444
-func_ov031_02246470 kind:function(arm,size=0xbc) addr:0x02246470
+func_ov031_0224587c kind:function(arm,size=0xbc) addr:0x02246470
 func_ov031_02245938 kind:function(arm,size=0x54) addr:0x0224652c
 _Z19GetField16_0224598cv kind:function(arm,size=0x10) addr:0x02246580
-func_ov031_02246590 kind:function(arm,size=0x2cc) addr:0x02246590
+func_ov031_0224599c kind:function(arm,size=0x2cc) addr:0x02246590
 func_ov031_0224685c kind:function(arm,size=0x1f4) addr:0x0224685c
 func_ov031_02245e5c kind:function(arm,size=0x14c) addr:0x02246a50
 data_ov031_02246b9c kind:data(any) addr:0x02246b9c
@@ -2699,7 +2699,7 @@ data_ov031_0224d9c0 kind:bss addr:0x0224e5c0
 data_ov031_0224e1c0 kind:bss addr:0x0224edc0
 data_ov031_0224e1c4 kind:bss addr:0x0224edc4
 data_ov031_0224e1c8 kind:bss addr:0x0224edc8
-data_ov031_0224edcc kind:bss addr:0x0224edcc
+data_ov031_0224e1cc kind:bss addr:0x0224edcc
 data_ov031_0224e1d0 kind:bss addr:0x0224edd0
 data_ov031_0224e200 kind:bss addr:0x0224ee00
 data_ov031_0224e204 kind:bss addr:0x0224ee04
@@ -2931,8 +2931,8 @@ data_ov031_02292aa8 kind:bss addr:0x02292aa8
 data_ov031_02292aae kind:bss addr:0x02292aae
 data_ov031_02291f24 kind:bss addr:0x02292b24
 data_ov031_02291f3c kind:bss addr:0x02292b3c
-data_ov031_02292b44 kind:bss addr:0x02292b44
+data_ov031_02291f44 kind:bss addr:0x02292b44
 data_ov031_02292b50 kind:bss addr:0x02292b50
 data_ov031_02291f60 kind:bss addr:0x02292b60
 data_ov031_02291f80 kind:bss addr:0x02292b80
-data_ov031_02292c40 kind:bss addr:0x02292c40
+data_ov031_02292040 kind:bss addr:0x02292c40

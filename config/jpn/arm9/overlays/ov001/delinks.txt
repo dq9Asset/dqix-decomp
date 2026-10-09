@@ -1436,3 +1436,27 @@ src/Combat/Overlay_1/AllocateAndInitEntryFromKey_02163b14.cpp:
 src/Combat/Overlay_1/02163ccc.cpp:
     complete
     .text start:0x02165258 end:0x02165354
+
+src/Combat/Overlay_1/EnqueueEventType2_02158f30.cpp:
+    complete
+    .text start:0x0215a608 end:0x0215a63c
+
+src/Combat/Overlay_1/ClearRegisteredSlotIfIdInRange_02160d14.cpp:
+    complete
+    .text start:0x02162328 end:0x021623bc
+
+src/Combat/Overlay_1/EnqueueScaledVec3EventType2_0215d234.cpp:
+    complete
+    .text start:0x0215e8b8 end:0x0215e950
+
+src/Combat/Overlay_1/RegisterIfIdInRange_02160c78.cpp:
+    complete
+    .text start:0x0216228c end:0x02162328
+
+src/Combat/Overlay_1/RemoveCombatantAndQueueEntries_0215b9c4.cpp:
+    complete
+    .text start:0x0215d048 end:0x0215d0e8
+
+src/Combat/Overlay_1/SetOrClearFogAndCopyBlob_02161e8c.cpp:
+    complete
+    .text start:0x021634a0 end:0x02163550

@@ -448,3 +448,7 @@ src/Combat/Overlay_25/Trans_021e8100.cpp:
 src/Combat/Overlay_25/func_ov025_021e4f00.cpp:
     complete
     .text start:0x021e53f0 end:0x021e54b8
+
+src/Combat/Overlay_25/func_ov025_021e7470.cpp:
+    complete
+    .text start:0x021e7920 end:0x021e7980

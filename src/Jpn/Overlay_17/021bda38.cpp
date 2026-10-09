@@ -5,21 +5,23 @@
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 // JPN: func_ov017_021bda38
-extern "C" ARM void func_ov017_021bda38(void* self, int index) {
-	unsigned char* base = (unsigned char*)self;
-	unsigned char mask = 1 << index;
-	int wasSet = 0;
-	if (base[0x170] & mask) wasSet = 1;
-	base[0x170] &= ~mask;
-	base[0x171] |= mask;
-	if (!wasSet) return;
-	GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(index);
-	if (!combatant) return;
-	_ZN8Vector3iaSERKS_((int*)((char*)combatant + 0x44), (int*)(base + 0x184 + index * 0xc));
-	int value = *(int*)(base + 0x1b4 + index * 4);
-	*(int*)((char*)combatant + 0x50) = 0;
-	*(int*)((char*)combatant + 0x54) = value;
-	*(int*)((char*)combatant + 0x58) = 0;
+// Restores a marked party member's saved field position and facing.
+// The restore flag is cleared and the companion mask at +0x171 is set before the actor is resolved.
+extern "C" ARM void RestorePartyMemberFieldTransform(void* savedParty, int partyIndex) {
+	unsigned char* savedPartyBytes = (unsigned char*)savedParty;
+	unsigned char partyMask = 1 << partyIndex;
+	int hasSavedTransform = 0;
+	if (savedPartyBytes[0x170] & partyMask) hasSavedTransform = 1;
+	savedPartyBytes[0x170] &= ~partyMask;
+	savedPartyBytes[0x171] |= partyMask;
+	if (!hasSavedTransform) return;
+	GameObject* partyMember = GameState::GetInstance()->GetPartyMemberByIndex(partyIndex);
+	if (!partyMember) return;
+	_ZN8Vector3iaSERKS_((int*)((char*)partyMember + 0x44), (int*)(savedPartyBytes + 0x184 + partyIndex * 0xc));
+	int savedYaw = *(int*)(savedPartyBytes + 0x1b4 + partyIndex * 4);
+	*(int*)((char*)partyMember + 0x50) = 0;
+	*(int*)((char*)partyMember + 0x54) = savedYaw;
+	*(int*)((char*)partyMember + 0x58) = 0;
 }
 
 #endif

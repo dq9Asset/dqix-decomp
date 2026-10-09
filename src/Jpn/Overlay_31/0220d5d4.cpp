@@ -9,49 +9,51 @@ extern "C" void func_ov031_0220df1c(int, int, int);
 extern "C" void func_ov031_0220e1fc(int);
 extern "C" void func_ov031_0220e6dc(void);
 
-struct BattleCtx020d5340;
-extern "C" int func_020d6d9c(int a0, struct BattleCtx020d5340* ctx);
+struct WirelessScanParameters;
+extern "C" int func_020d6d9c(int callback, struct WirelessScanParameters* scanParameters);
 
 // JPN: func_ov031_0220d5d4
-extern "C" ARM int func_ov031_0220d5d4(int a, int b, int c) {
-	int state = DisableIRQInterrupts();
+// Requests an asynchronous Wi-Fi access-point scan using the shared scan parameters.
+// The result buffer is invalidated before the wireless processor writes it.
+extern "C" ARM int StartWifiAccessPointScan(int scanOptionA, int scanOptionB, int scanOptionC) {
+	int irqState = DisableIRQInterrupts();
 	if (data_ov031_0224f13c == 0) {
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 1;
 	}
-	int mode = *(int*)((char*)data_ov031_0224f13c + 0x2260);
-	switch (mode) {
+	int connectionState = *(int*)((char*)data_ov031_0224f13c + 0x2260);
+	switch (connectionState) {
 	case 5:
-		func_ov031_0220df1c(a, b, c);
-		SetIRQInterruptState(state);
+		func_ov031_0220df1c(scanOptionA, scanOptionB, scanOptionC);
+		SetIRQInterruptState(irqState);
 		return 2;
 	case 6:
-		func_ov031_0220df1c(a, b, c);
-		SetIRQInterruptState(state);
+		func_ov031_0220df1c(scanOptionA, scanOptionB, scanOptionC);
+		SetIRQInterruptState(irqState);
 		return 0;
 	default:
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 1;
 	case 3: {
-		func_ov031_0220df1c(a, b, c);
+		func_ov031_0220df1c(scanOptionA, scanOptionB, scanOptionC);
 		InvalidateDataCacheRange(*(void**)((char*)data_ov031_0224f13c + 0x2288), *(unsigned short*)((char*)data_ov031_0224f13c + 0x228c));
 		*(int*)((char*)data_ov031_0224f13c + 0x2284) += 1;
-		int r = func_020d6d9c((int)func_ov031_0220e6dc, (struct BattleCtx020d5340*)((char*)data_ov031_0224f13c + 0x2288));
-		switch (r) {
+		int scanResult = func_020d6d9c((int)func_ov031_0220e6dc, (struct WirelessScanParameters*)((char*)data_ov031_0224f13c + 0x2288));
+		switch (scanResult) {
 		case 2:
 			func_ov031_0220e1fc(5);
 			*(unsigned short*)((char*)data_ov031_0224f13c + 0x2280) = 3;
 			break;
 		case 8:
-			SetIRQInterruptState(state);
+			SetIRQInterruptState(irqState);
 			return 4;
 		case 3:
 		default:
 			func_ov031_0220e1fc(0xb);
-			SetIRQInterruptState(state);
+			SetIRQInterruptState(irqState);
 			return 7;
 		}
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 3;
 	}
 	}

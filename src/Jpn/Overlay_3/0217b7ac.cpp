@@ -12,46 +12,48 @@ extern "C" int _ZNK8Object3D23GetTexturePaletteOffsetEv(unsigned char* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" void _Z30UnlockStagedTextureVRAMCopyingv(void);
 
-struct S0217b7ac {
+struct ServiceEnemyPreview {
     SafeAllocator* allocator;
-    char pad4[0x88 - 4];
-    void* field88;
+    char unknown4[0x88 - 4];
+    void* model;
 };
 
-struct Inner0217b7ac {
-    char pad0[0x2c];
-    int field2c;
-    char pad30[0x30 - 0x30];
-    unsigned short field30;
+struct PreviewTextureResource {
+    char unknown0[0x2c];
+    int paletteOffsetUnits;
+    char unknown30[0x30 - 0x30];
+    unsigned short paletteSizeUnits;
 };
 
-// JPN: func_ov003_0217b7ac  (semantic: AllocateAndFillBuffer_0217b7ac)
-extern "C" ARM void func_ov003_0217b7ac(S0217b7ac* obj, unsigned short fillValue) {
+// JPN: func_ov003_0217b7ac
+// Replaces the enemy preview's texture palette with a single colour.
+// The palette offset and byte length remain in the TEX0 format's eight-byte units until upload.
+extern "C" ARM void FillServiceEnemyPreviewPalette(ServiceEnemyPreview* preview, unsigned short paletteColor) {
     GameState::GetInstance();
     _Z28LockStagedTextureVRAMCopyingv();
     MemoryMapTexturePalette();
 
-    void* p88 = obj->field88;
-    if (p88 != NULL) {
-        Inner0217b7ac* inner = (Inner0217b7ac*)_ZN7Model3D7GetTEX0Ev(p88);
-        if (inner != NULL) {
-            int size = inner->field2c;
-            if (_ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)obj + 0x80)) {
-                size = _ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)obj + 0x80);
+    void* previewModel = preview->model;
+    if (previewModel != NULL) {
+        PreviewTextureResource* textureResource = (PreviewTextureResource*)_ZN7Model3D7GetTEX0Ev(previewModel);
+        if (textureResource != NULL) {
+            int uploadOffsetUnits = textureResource->paletteOffsetUnits;
+            if (_ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)preview + 0x80)) {
+                uploadOffsetUnits = _ZNK8Object3D23GetTexturePaletteOffsetEv((unsigned char*)preview + 0x80);
             }
 
-            void* buf;
-            unsigned int allocSize = (unsigned int)inner->field30 << 3;
-            int scaledSize = (unsigned short)size << 3;
+            void* paletteData;
+            unsigned int paletteByteCount = (unsigned int)textureResource->paletteSizeUnits << 3;
+            int paletteByteOffset = (unsigned short)uploadOffsetUnits << 3;
 
-            buf = obj->allocator->Allocate(allocSize);
-            if (buf != NULL) {
-                unsigned int i;
-                for (i = 0; i < allocSize / 2; i++) {
-                    ((unsigned short*)buf)[i] = fillValue;
+            paletteData = preview->allocator->Allocate(paletteByteCount);
+            if (paletteData != NULL) {
+                unsigned int colorIndex;
+                for (colorIndex = 0; colorIndex < paletteByteCount / 2; colorIndex++) {
+                    ((unsigned short*)paletteData)[colorIndex] = paletteColor;
                 }
-                CleanInvalidateCacheRange(buf, allocSize);
-                LoadToTexturePalette(buf, scaledSize, allocSize);
+                CleanInvalidateCacheRange(paletteData, paletteByteCount);
+                LoadToTexturePalette(paletteData, paletteByteOffset, paletteByteCount);
             }
         }
     }

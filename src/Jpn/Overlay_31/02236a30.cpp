@@ -4,53 +4,55 @@
 
 extern "C" void func_ov031_02236954(void);
 
-struct Base02236250 { void* field0; };
-extern Base02236250 data_ov031_022918fc;
+struct WifiSettingsWorkPointer { void* work; };
+extern WifiSettingsWorkPointer data_ov031_022918fc;
 
-struct FlagsE6_02236250 { unsigned char mode : 2; unsigned char resv : 6; };
+struct WifiWepMode { unsigned char mode : 2; unsigned char unknownBits2 : 6; };
 
 // JPN: func_ov031_02236a30
-extern "C" ARM void func_ov031_02236a30(unsigned char* self) {
-	unsigned char* base = (unsigned char*)data_ov031_022918fc.field0;
+// Stages an SSID and four WEP keys in the Wi-Fi settings work area.
+// The selected WEP mode determines how many key bytes are copied; it does not write persistent settings here.
+extern "C" ARM void StageWifiAccessPointSettings(unsigned char* settings) {
+	unsigned char* settingsWork = (unsigned char*)data_ov031_022918fc.work;
 
-	VectorizedMemset(base + 0x400, 0, 0xef);
-	VectorizedInvertedMemcpy(self, base + 0x440, 0x20);
+	VectorizedMemset(settingsWork + 0x400, 0, 0xef);
+	VectorizedInvertedMemcpy(settings, settingsWork + 0x440, 0x20);
 
-	int count;
-	switch (*(int*)(self + 0x20)) {
+	int wepKeyBytes;
+	switch (*(int*)(settings + 0x20)) {
 	case 1:
-		((FlagsE6_02236250*)(base + 0x4e6))->mode = 1;
-		count = 5;
+		((WifiWepMode*)(settingsWork + 0x4e6))->mode = 1;
+		wepKeyBytes = 5;
 		break;
 	case 2:
-		((FlagsE6_02236250*)(base + 0x4e6))->mode = 2;
-		count = 0xd;
+		((WifiWepMode*)(settingsWork + 0x4e6))->mode = 2;
+		wepKeyBytes = 0xd;
 		break;
 	case 3:
-		((FlagsE6_02236250*)(base + 0x4e6))->mode = 3;
-		count = 0x10;
+		((WifiWepMode*)(settingsWork + 0x4e6))->mode = 3;
+		wepKeyBytes = 0x10;
 		break;
 	default:
-		((FlagsE6_02236250*)(base + 0x4e6))->mode = 0;
-		count = 0;
+		((WifiWepMode*)(settingsWork + 0x4e6))->mode = 0;
+		wepKeyBytes = 0;
 		break;
 	}
-	((FlagsE6_02236250*)(base + 0x4e6))->resv = 0;
+	((WifiWepMode*)(settingsWork + 0x4e6))->unknownBits2 = 0;
 
-	int i = 0;
-	unsigned char* s = base + 0x480;
-	unsigned char* d = self + 0x28;
+	int keyIndex = 0;
+	unsigned char* destinationKey = settingsWork + 0x480;
+	unsigned char* sourceKey = settings + 0x28;
 	do {
-		VectorizedInvertedMemcpy(d, s, count);
-		i++;
-		s += 0x10;
-		d += 0x20;
-	} while (i < 4);
+		VectorizedInvertedMemcpy(sourceKey, destinationKey, wepKeyBytes);
+		keyIndex++;
+		destinationKey += 0x10;
+		sourceKey += 0x20;
+	} while (keyIndex < 4);
 
-	base[0x4e7] = 2;
-	VectorizedMemset(base + 0x4f0, 0, 4);
-	base[0x4f5] = 1;
-	base[0x4f6] = 1;
+	settingsWork[0x4e7] = 2;
+	VectorizedMemset(settingsWork + 0x4f0, 0, 4);
+	settingsWork[0x4f5] = 1;
+	settingsWork[0x4f6] = 1;
 	func_ov031_02236954();
 }
 

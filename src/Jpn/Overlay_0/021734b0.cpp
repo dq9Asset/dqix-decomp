@@ -19,7 +19,7 @@ struct BattleEquipmentList {
     int partyIndex;
     unsigned char unknown50[0xc6 - 0x50];
     signed char entryCount;
-    unsigned char unknown87[0x430 - 0xc7];
+    unsigned char unknownC7[0x430 - 0xc7];
     BattleEquipmentEntry* entries[16];
 };
 extern "C" {
@@ -30,13 +30,15 @@ extern "C" {
 }
 
 // JPN: func_ov000_021734b0
-extern "C" ARM void func_ov000_021734b0(BattleEquipmentList* list)
+// Appends the selected party member's equipment to the battle item list.
+// Existing non-equipment entries remain first; the equipment section starts on a four-entry boundary.
+extern "C" ARM void AppendBattleEquipmentEntries(BattleEquipmentList* list)
 {
     signed char partyIndex = list->partyIndex;
-    int valid = partyIndex >= 0 && partyIndex <= 3;
-    if (valid) {
-        char* actor = func_0200fd78(GameState::GetInstance(), partyIndex);
-        if (actor && func_02054fe4(actor)) {
+    int validPartyIndex = partyIndex >= 0 && partyIndex <= 3;
+    if (validPartyIndex) {
+        char* partyMember = func_0200fd78(GameState::GetInstance(), partyIndex);
+        if (partyMember && func_02054fe4(partyMember)) {
             list->entryCount = 0;
             for (signed char slot = 0; slot < 16; ++slot) {
                 BattleEquipmentEntry* entry = list->entries[slot];
@@ -51,17 +53,17 @@ extern "C" ARM void func_ov000_021734b0(BattleEquipmentList* list)
             for (unsigned char slot = nextSlot; slot < 16; ++slot)
                 list->entries[slot] = NULL;
             unsigned char equipmentOrder[8];
-            unsigned int bytes = sizeof(equipmentOrder);
-            unsigned char* output = equipmentOrder;
-            const unsigned char* input = data_ov000_02184420;
+            unsigned int orderBytesRemaining = sizeof(equipmentOrder);
+            unsigned char* orderDestination = equipmentOrder;
+            const unsigned char* orderSource = data_ov000_02184420;
             do {
-                unsigned char value = *input;
-                *output = value;
-                ++input;
-                ++output;
-            } while (--bytes);
+                unsigned char equipmentSlot = *orderSource;
+                *orderDestination = equipmentSlot;
+                ++orderSource;
+                ++orderDestination;
+            } while (--orderBytesRemaining);
             for (unsigned char slot = 0; slot < 8; ++slot) {
-                BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + 0x144);
+                BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(partyMember + 0x144);
                 BattleEquipmentEntry* entry = &equipment->entries[equipmentOrder[slot]];
                 if (entry && entry->count > 0) {
                     int equipmentCategory = entry->category <= 7;

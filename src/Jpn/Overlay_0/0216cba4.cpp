@@ -1,0 +1,76 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
+#include "std_library_functions.h"
+
+struct Struct02184264 {
+    unsigned char pad[8];
+    SafeAllocator* alloc;
+};
+extern struct Struct02184264 data_ov000_02185364;
+
+extern "C" void __clear(void* buf, int size);
+extern "C" void func_ov000_0216b2a4(void*);
+
+struct Variant02030b0c { int tag; int u; };
+extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
+
+struct Struct02030b7c;
+extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
+
+struct Vec3s02030fc8 { signed short x, y, z; };
+extern "C" void _Z16Vector3fix16CopyP8Vector3sPKS_(struct Vec3s02030fc8* dst, struct Vec3s02030fc8* src);
+
+struct VariantNodeTag0216cba4 {
+    int tag;
+    int unused;
+    void* strPtr;
+    unsigned char byteC;
+    unsigned char byteD;
+    unsigned short halfE;
+    unsigned char pad10;
+    unsigned char pad11;
+    struct Vec3s02030fc8 vec;
+    unsigned short half18;
+    unsigned char flag1a;
+};
+
+// JPN: func_ov000_0216cba4  (semantic: AllocateVariantNodeTag0x15)
+extern "C" ARM int func_ov000_0216cba4(struct Variant02030b0c* v, int count) {
+    struct VariantNodeTag0216cba4* node = (struct VariantNodeTag0216cba4*)data_ov000_02185364.alloc->Allocate(sizeof(struct VariantNodeTag0216cba4));
+
+    struct Vec3s02030fc8 zeroVec;
+    int byteVal;
+    char* copied = 0;
+    int flagC = 1;
+    __clear(&zeroVec, 6);
+
+    int intVal = _ZNK6Script9Parameter5ToIntEv(v);
+    byteVal = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 8)) - 0x1a;
+
+    char* strPtr = (char*)_ZNK6Script9Parameter8ToStringEv((struct Struct02030b7c*)((char*)v + 0x10));
+    if (strPtr != 0) {
+        copied = (char*)data_ov000_02185364.alloc->Allocate(strlen(strPtr) + 1);
+        strcpy(copied, strPtr);
+    }
+
+    if (count >= 4) {
+        flagC = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)v + 0x18));
+    }
+
+    node->tag = 0;
+    node->unused = 0;
+    node->tag = 0x15;
+    node->halfE = (unsigned short)intVal;
+    node->byteD = (unsigned char)byteVal;
+    node->strPtr = copied;
+    node->byteC = (unsigned char)flagC;
+    node->half18 = 0;
+    node->pad10 = 0;
+    _Z16Vector3fix16CopyP8Vector3sPKS_(&node->vec, &zeroVec);
+    node->flag1a = 1;
+    func_ov000_0216b2a4(node);
+    return 1;
+}
+
+#endif

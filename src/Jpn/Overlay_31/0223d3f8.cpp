@@ -9,9 +9,11 @@ struct WindowBounds {
 };
 
 // JPN: func_ov031_0223d3f8
-extern "C" ARM void func_ov031_0223d3f8(int side, int window, const WindowBounds* bounds) {
-    if (side == 1) {
-        if (window == 0) {
+// Sets a hardware display window used by the Wi-Fi interface.
+// Engine selector 1 addresses the sub engine; window 0 selects WIN0, otherwise WIN1.
+extern "C" ARM void SetWifiDisplayWindowBounds(int displayEngine, int windowIndex, const WindowBounds* bounds) {
+    if (displayEngine == 1) {
+        if (windowIndex == 0) {
             int x1 = bounds->x1;
             int y1 = bounds->y1;
             int x2 = bounds->x2;
@@ -27,7 +29,7 @@ extern "C" ARM void func_ov031_0223d3f8(int side, int window, const WindowBounds
             *(volatile unsigned short*)0x04001046 = ((y1 << 8) & 0xff00) | (y2 & 0xff);
         }
     } else {
-        if (window == 0) {
+        if (windowIndex == 0) {
             int x1 = bounds->x1;
             int y1 = bounds->y1;
             int x2 = bounds->x2;

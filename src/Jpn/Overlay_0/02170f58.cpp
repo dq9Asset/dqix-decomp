@@ -3,10 +3,12 @@
 #include <std_library_functions.h>
 
 // JPN: func_ov000_02170f58
-extern "C" ARM void func_ov000_02170f58(unsigned char* output, const int* cell)
+// Finds the six neighbors of a cell on the staggered battle grid.
+// A missing neighbor is 255; odd rows have one fewer usable column.
+extern "C" ARM void GetBattleGridNeighbors(unsigned char* neighborCells, const int* gridCell)
 {
-    int column = *cell % 9;
-    int row = *cell / 9;
+    int column = *gridCell % 9;
+    int row = *gridCell / 9;
     unsigned char neighbors[6];
     if (row % 2 == 0) {
         if (column == 0) {
@@ -137,7 +139,7 @@ extern "C" ARM void func_ov000_02170f58(unsigned char* output, const int* cell)
             neighbors[5] = 255;
         }
     }
-    INLINE_MEMCPY(output, neighbors, sizeof(neighbors));
+    INLINE_MEMCPY(neighborCells, neighbors, sizeof(neighbors));
 }
 
 #endif

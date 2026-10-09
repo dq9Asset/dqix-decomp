@@ -211,3 +211,123 @@ src/Jpn/Overlay_0/021734b0.cpp:
 src/Jpn/Overlay_0/021801ac.cpp:
     complete
     .text start:0x021801ac end:0x0218033c
+
+
+src/Jpn/Overlay_0/0216ba90.cpp:
+    complete
+    .text start:0x0216ba90 end:0x0216bb4c
+
+
+src/Jpn/Overlay_0/0216bbf4.cpp:
+    complete
+    .text start:0x0216bbf4 end:0x0216bc88
+
+
+src/Jpn/Overlay_0/0216c108.cpp:
+    complete
+    .text start:0x0216c108 end:0x0216c200
+
+
+src/Jpn/Overlay_0/0216c2f0.cpp:
+    complete
+    .text start:0x0216c2f0 end:0x0216c394
+
+
+src/Jpn/Overlay_0/0216cba4.cpp:
+    complete
+    .text start:0x0216cba4 end:0x0216cc90
+
+
+src/Jpn/Overlay_0/0216cee4.cpp:
+    complete
+    .text start:0x0216cee4 end:0x0216cf9c
+
+
+src/Jpn/Overlay_0/0216d41c.cpp:
+    complete
+    .text start:0x0216d41c end:0x0216d4c8
+
+
+src/Jpn/Overlay_0/0216d598.cpp:
+    complete
+    .text start:0x0216d598 end:0x0216d66c
+
+
+src/Jpn/Overlay_0/0216d6d0.cpp:
+    complete
+    .text start:0x0216d6d0 end:0x0216d778
+
+
+src/Jpn/Overlay_0/0216d778.cpp:
+    complete
+    .text start:0x0216d778 end:0x0216d820
+
+
+src/Jpn/Overlay_0/0216d870.cpp:
+    complete
+    .text start:0x0216d870 end:0x0216d918
+
+
+src/Jpn/Overlay_0/0216e128.cpp:
+    complete
+    .text start:0x0216e128 end:0x0216e1fc
+
+
+src/Jpn/Overlay_0/0216e83c.cpp:
+    complete
+    .text start:0x0216e83c end:0x0216e8c8
+
+
+src/Jpn/Overlay_0/0216ea9c.cpp:
+    complete
+    .text start:0x0216ea9c end:0x0216eb90
+
+
+src/Jpn/Overlay_0/021759e4.cpp:
+    complete
+    .text start:0x021759e4 end:0x02175ab0
+
+
+src/Jpn/Overlay_0/021764ac.cpp:
+    complete
+    .text start:0x021764ac end:0x02176574
+
+
+src/Jpn/Overlay_0/02176620.cpp:
+    complete
+    .text start:0x02176620 end:0x02176710
+
+
+src/Jpn/Overlay_0/02178a38.cpp:
+    complete
+    .text start:0x02178a38 end:0x02178b38
+
+
+src/Jpn/Overlay_0/02178c64.cpp:
+    complete
+    .text start:0x02178c64 end:0x02178d6c
+
+
+src/Jpn/Overlay_0/0217d310.cpp:
+    complete
+    .text start:0x0217d310 end:0x0217d3e8
+
+
+src/Jpn/Overlay_0/021809e8.cpp:
+    complete
+    .text start:0x021809e8 end:0x02180ab8
+
+
+src/Jpn/Overlay_0/02180b00.cpp:
+    complete
+    .text start:0x02180b00 end:0x02180bec
+
+
+src/Jpn/Overlay_0/02180cbc.cpp:
+    complete
+    .text start:0x02180cbc end:0x02180d8c
+
+
+src/Jpn/Overlay_0/02181cc8.cpp:
+    complete
+    .text start:0x02181cc8 end:0x02181d90

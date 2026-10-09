@@ -538,3 +538,8 @@ src/Jpn/Main/020c9080.cpp:
 src/Jpn/Main/020c928c.cpp:
     complete
     .text start:0x020c928c end:0x020c9308
+
+
+src/Jpn/Main/02000c9c.cpp:
+    complete
+    .text start:0x02000c9c end:0x02001494

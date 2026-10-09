@@ -4,69 +4,71 @@
 extern "C" void func_020cbeb8(int value, void* dst, int size);
 extern "C" int func_ov031_02213a10(int mask, void* arg);
 extern "C" int func_ov031_0221b5b4(int v);
-extern "C" int func_ov031_0220d150(void* p, int size);
-extern "C" void func_ov031_02213ab4(void);
+extern "C" int InitializeWifiConnectionManager(void* p, int size);
+extern "C" void ReleaseWifiConnectionResources(void);
 
-struct Obj02212d40 {
-    void* field0;
-    void* field4;
-    unsigned char field8;
-    unsigned char field9;
-    unsigned char fieldA;
-    unsigned char fieldB;
+struct WifiConnectionOptions {
+    void* allocateCallback;
+    void* releaseCallback;
+    unsigned char unknown8;
+    unsigned char unknown9;
+    unsigned char unknownA;
+    unsigned char unknownB;
 };
 
-struct GlobalCtx0224e5c4_02212d40 {
-    void* field0;
-    void* field4;
-    void* field8;
-    void* fieldC;
-    void* field10;
+struct WifiConnectionResources {
+    void* managerWork;
+    void* unknown4;
+    void* callbackPair;
+    void* callbackState;
+    void* connectionState;
 };
 
-extern GlobalCtx0224e5c4_02212d40 data_ov031_0224f1c4;
+extern WifiConnectionResources data_ov031_0224f1c4;
 
 // JPN: func_ov031_02213520
-extern "C" ARM int func_ov031_02213520(Obj02212d40* obj) {
-    GlobalCtx0224e5c4_02212d40* g = &data_ov031_0224f1c4;
-    void* alloc = (void*)((int (*)(int, int))obj->field0)(1, 0x24);
-    g->fieldC = alloc;
-    func_020cbeb8(0, alloc, 0x24);
+// Allocates the Wi-Fi connection subsystem's resource blocks and initializes its manager.
+// Allocation and release are delegated to the supplied callbacks.
+extern "C" ARM int AllocateWifiConnectionResources(WifiConnectionOptions* options) {
+    WifiConnectionResources* resources = &data_ov031_0224f1c4;
+    void* callbackState = (void*)((int (*)(int, int))options->allocateCallback)(1, 0x24);
+    resources->callbackState = callbackState;
+    func_020cbeb8(0, callbackState, 0x24);
 
-    void* p = g->fieldC;
-    *(void**)p = obj->field0;
-    *(void**)((char*)p + 4) = obj->field4;
-    *((unsigned char*)p + 9) = 1;
-    *((unsigned char*)p + 0x16) = 1;
-    *((unsigned char*)p + 8) = 1;
+    void* callbackStateBytes = resources->callbackState;
+    *(void**)callbackStateBytes = options->allocateCallback;
+    *(void**)((char*)callbackStateBytes + 4) = options->releaseCallback;
+    *((unsigned char*)callbackStateBytes + 9) = 1;
+    *((unsigned char*)callbackStateBytes + 0x16) = 1;
+    *((unsigned char*)callbackStateBytes + 8) = 1;
 
-    g->field10 = (void*)func_ov031_02213a10(0x10, (void*)0xd18);
-    g->field0  = (void*)func_ov031_02213a10(2, (void*)0x2300);
-    g->field4  = (void*)func_ov031_02213a10(4, (void*)0x58);
-    g->field8  = (void*)func_ov031_02213a10(8, (void*)0xc);
+    resources->connectionState = (void*)func_ov031_02213a10(0x10, (void*)0xd18);
+    resources->managerWork  = (void*)func_ov031_02213a10(2, (void*)0x2300);
+    resources->unknown4  = (void*)func_ov031_02213a10(4, (void*)0x58);
+    resources->callbackPair  = (void*)func_ov031_02213a10(8, (void*)0xc);
 
-    func_020cbeb8(0, g->field10, 0xd18);
-    func_020cbeb8(0, g->field0, 0x2300);
-    func_020cbeb8(0, g->field4, 0x58);
-    func_020cbeb8(0, g->field8, 0xc);
+    func_020cbeb8(0, resources->connectionState, 0xd18);
+    func_020cbeb8(0, resources->managerWork, 0x2300);
+    func_020cbeb8(0, resources->unknown4, 0x58);
+    func_020cbeb8(0, resources->callbackPair, 0xc);
 
-    unsigned char* big = (unsigned char*)g->field10;
-    big[0xd0a] = obj->field8;
-    big[0xd0b] = (big[0xd0b] & ~0x3) | (obj->field9 & 0x3);
+    unsigned char* connectionState = (unsigned char*)resources->connectionState;
+    connectionState[0xd0a] = options->unknown8;
+    connectionState[0xd0b] = (connectionState[0xd0b] & ~0x3) | (options->unknown9 & 0x3);
 
-    void* h = g->field8;
-    *(void**)h = obj->field0;
-    *(void**)((char*)h + 4) = obj->field4;
-    *(int*)((char*)h + 8) = 0;
+    void* allocatorCallbacks = resources->callbackPair;
+    *(void**)allocatorCallbacks = options->allocateCallback;
+    *(void**)((char*)allocatorCallbacks + 4) = options->releaseCallback;
+    *(int*)((char*)allocatorCallbacks + 8) = 0;
 
-    big[0xd0c] = (big[0xd0c] & ~0xf) | (obj->fieldA & 0xf);
-    big[0xd0c] = (big[0xd0c] & ~0x30) | ((obj->fieldB & 3) << 4);
+    connectionState[0xd0c] = (connectionState[0xd0c] & ~0xf) | (options->unknownA & 0xf);
+    connectionState[0xd0c] = (connectionState[0xd0c] & ~0x30) | ((options->unknownB & 3) << 4);
 
-    func_ov031_0221b5b4((int)big);
+    func_ov031_0221b5b4((int)connectionState);
 
-    int r = func_ov031_0220d150(g->field0, 0x2300);
-    if (r == 1 || r > 4) {
-        func_ov031_02213ab4();
+    int initializeResult = InitializeWifiConnectionManager(resources->managerWork, 0x2300);
+    if (initializeResult == 1 || initializeResult > 4) {
+        ReleaseWifiConnectionResources();
         return 0;
     }
     return 1;

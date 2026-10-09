@@ -5,55 +5,57 @@
 extern "C" void* func_02010684(GameState*);
 
 // JPN: func_ov000_021801ac
-extern "C" ARM void func_ov000_021801ac(signed char* indices, signed char* count,
-                                     int removedIndex, int mode)
+// Filters the battle party selection and compacts removed entries.
+// Mode 1 keeps members in the active party list; mode 2 removes the requested party index.
+extern "C" ARM void FilterBattlePartySelection(signed char* selectedPartyIndices, signed char* selectionCount,
+                                     int removedPartyIndex, int mode)
 {
-    unsigned char* inventory = static_cast<unsigned char*>(func_02010684(GameState::GetInstance()));
-    signed char remaining = *count;
+    unsigned char* partyState = static_cast<unsigned char*>(func_02010684(GameState::GetInstance()));
+    signed char remainingCount = *selectionCount;
     switch (mode) {
     case 0:
         break;
     case 1:
-        for (signed char slot = 0; slot < *count; ++slot) {
-            signed char selected = indices[slot];
-            int present = 0;
-            for (signed char party = 0; party < inventory[0xf7c]; ++party) {
-                if (selected == (inventory + party)[0xf78]) {
-                    present = true;
+        for (signed char slot = 0; slot < *selectionCount; ++slot) {
+            signed char selectedPartyIndex = selectedPartyIndices[slot];
+            int isInParty = 0;
+            for (signed char partySlot = 0; partySlot < partyState[0xf7c]; ++partySlot) {
+                if (selectedPartyIndex == (partyState + partySlot)[0xf78]) {
+                    isInParty = true;
                     break;
                 }
             }
-            if (!present) {
-                --remaining;
-                indices[slot] = -1;
+            if (!isInParty) {
+                --remainingCount;
+                selectedPartyIndices[slot] = -1;
             }
         }
         break;
     case 2:
-        int valid = removedIndex >= 0 && removedIndex <= 3;
-        if (valid) {
-            for (signed char slot = 0; slot < remaining; ++slot) {
-                if (removedIndex == indices[slot]) {
-                    --remaining;
-                    indices[slot] = -1;
+        int validPartyIndex = removedPartyIndex >= 0 && removedPartyIndex <= 3;
+        if (validPartyIndex) {
+            for (signed char slot = 0; slot < remainingCount; ++slot) {
+                if (removedPartyIndex == selectedPartyIndices[slot]) {
+                    --remainingCount;
+                    selectedPartyIndices[slot] = -1;
                     break;
                 }
             }
         }
         break;
     }
-    for (signed char slot = 0; slot < *count - 1; ++slot) {
-        if (indices[slot] < 0) {
-            for (signed char next = slot + 1; next < *count; ++next) {
-                if (indices[next] >= 0) {
-                    indices[slot] = indices[next];
-                    indices[next] = -1;
+    for (signed char slot = 0; slot < *selectionCount - 1; ++slot) {
+        if (selectedPartyIndices[slot] < 0) {
+            for (signed char next = slot + 1; next < *selectionCount; ++next) {
+                if (selectedPartyIndices[next] >= 0) {
+                    selectedPartyIndices[slot] = selectedPartyIndices[next];
+                    selectedPartyIndices[next] = -1;
                     break;
                 }
             }
         }
     }
-    *count = remaining;
+    *selectionCount = remainingCount;
 }
 
 #endif

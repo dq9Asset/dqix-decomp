@@ -4,40 +4,42 @@
 extern "C" char* func_ov031_02213bd8(int);
 extern int data_ov031_0224f1c4;
 
-typedef void (*Callback_022132d4)(int, void*, int);
+typedef void (*WifiReleaseCallback)(int, void*, int);
 
 // JPN: func_ov031_02213ab4
-extern "C" ARM void* func_ov031_02213ab4(void) {
-	char* obj = func_ov031_02213bd8(1);
-	if (obj == 0) return obj;
+// Releases each owned Wi-Fi resource block through the registered release callback.
+// Ownership bits are cleared before callbacks run, and the callback state is released last.
+extern "C" ARM void* ReleaseWifiConnectionResources(void) {
+	char* callbackState = func_ov031_02213bd8(1);
+	if (callbackState == 0) return callbackState;
 
-	if ((*(unsigned char*)(obj+8)) & 0x10) {
-		void* val = func_ov031_02213bd8(0x10);
-		(*(unsigned char*)(obj+8)) = (*(unsigned char*)(obj+8)) & ~0x10;
-		(*(Callback_022132d4*)(obj + 4))(0x10, val, 0xd18);
+	if ((*(unsigned char*)(callbackState+8)) & 0x10) {
+		void* allocation = func_ov031_02213bd8(0x10);
+		(*(unsigned char*)(callbackState+8)) = (*(unsigned char*)(callbackState+8)) & ~0x10;
+		(*(WifiReleaseCallback*)(callbackState + 4))(0x10, allocation, 0xd18);
 	}
 
-	if ((*(unsigned char*)(obj+8)) & 0x8) {
-		void* val = func_ov031_02213bd8(0x8);
-		(*(unsigned char*)(obj+8)) = (*(unsigned char*)(obj+8)) & ~0x8;
-		(*(Callback_022132d4*)(obj + 4))(0x8, val, 0xc);
+	if ((*(unsigned char*)(callbackState+8)) & 0x8) {
+		void* allocation = func_ov031_02213bd8(0x8);
+		(*(unsigned char*)(callbackState+8)) = (*(unsigned char*)(callbackState+8)) & ~0x8;
+		(*(WifiReleaseCallback*)(callbackState + 4))(0x8, allocation, 0xc);
 	}
 
-	if ((*(unsigned char*)(obj+8)) & 0x4) {
-		void* val = func_ov031_02213bd8(0x4);
-		(*(unsigned char*)(obj+8)) = (*(unsigned char*)(obj+8)) & ~0x4;
-		(*(Callback_022132d4*)(obj + 4))(0x4, val, 0x58);
+	if ((*(unsigned char*)(callbackState+8)) & 0x4) {
+		void* allocation = func_ov031_02213bd8(0x4);
+		(*(unsigned char*)(callbackState+8)) = (*(unsigned char*)(callbackState+8)) & ~0x4;
+		(*(WifiReleaseCallback*)(callbackState + 4))(0x4, allocation, 0x58);
 	}
 
-	if ((*(unsigned char*)(obj+8)) & 0x2) {
-		void* val = func_ov031_02213bd8(0x2);
-		(*(unsigned char*)(obj+8)) = (*(unsigned char*)(obj+8)) & ~0x2;
-		(*(Callback_022132d4*)(obj + 4))(0x2, val, 0x2300);
+	if ((*(unsigned char*)(callbackState+8)) & 0x2) {
+		void* allocation = func_ov031_02213bd8(0x2);
+		(*(unsigned char*)(callbackState+8)) = (*(unsigned char*)(callbackState+8)) & ~0x2;
+		(*(WifiReleaseCallback*)(callbackState + 4))(0x2, allocation, 0x2300);
 	}
 
-	if (!((*(unsigned char*)(obj+8)) & 0x1)) return (void*)(int)(*(unsigned char*)(obj+8));
-	(*(unsigned char*)(obj+8)) = (*(unsigned char*)(obj+8)) & ~0x1;
-	(*(Callback_022132d4*)(obj + 4))(0x1, obj, 0x24);
+	if (!((*(unsigned char*)(callbackState+8)) & 0x1)) return (void*)(int)(*(unsigned char*)(callbackState+8));
+	(*(unsigned char*)(callbackState+8)) = (*(unsigned char*)(callbackState+8)) & ~0x1;
+	(*(WifiReleaseCallback*)(callbackState + 4))(0x1, callbackState, 0x24);
 	*(int*)((char*)&data_ov031_0224f1c4 + 0xc) = 0;
 	return &data_ov031_0224f1c4;
 }

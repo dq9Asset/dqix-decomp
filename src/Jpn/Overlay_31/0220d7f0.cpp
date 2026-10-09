@@ -10,72 +10,74 @@ extern "C" void func_ov031_0220e420(void);
 extern int data_ov031_0224f13c;
 
 // JPN: func_ov031_0220d7f0
-extern "C" ARM int func_ov031_0220d7f0(void* a0, unsigned char* a1, int a2) {
-	int state = DisableIRQInterrupts();
+// Begins connecting to an access point with optional WEP settings.
+// The descriptor and key settings are copied into manager-owned storage before the asynchronous transition.
+extern "C" ARM int ConnectWifiAccessPoint(void* accessPoint, unsigned char* wepSettings, int connectionOptions) {
+	int irqState = DisableIRQInterrupts();
 	if (data_ov031_0224f13c == 0) {
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 1;
 	}
-	int v = *(int*)((char*)data_ov031_0224f13c + 0x2260);
-	switch (v) {
+	int connectionState = *(int*)((char*)data_ov031_0224f13c + 0x2260);
+	switch (connectionState) {
 	case 3: {
-		if (a0 == 0) {
-			SetIRQInterruptState(state);
+		if (accessPoint == 0) {
+			SetIRQInterruptState(irqState);
 			return 1;
 		}
-		if (*(unsigned short*)((char*)a0 + 0x3c) != 0) {
-			SetIRQInterruptState(state);
+		if (*(unsigned short*)((char*)accessPoint + 0x3c) != 0) {
+			SetIRQInterruptState(irqState);
 			return 1;
 		}
-		if (a1 != 0) {
-			if (!(a1[0] < 4 && a1[1] < 4)) {
-				SetIRQInterruptState(state);
+		if (wepSettings != 0) {
+			if (!(wepSettings[0] < 4 && wepSettings[1] < 4)) {
+				SetIRQInterruptState(irqState);
 				return 1;
 			}
-			*(unsigned char*)((char*)data_ov031_0224f13c + 0x2250) = a1[0];
-			*(unsigned char*)((char*)data_ov031_0224f13c + 0x2251) = a1[1];
+			*(unsigned char*)((char*)data_ov031_0224f13c + 0x2250) = wepSettings[0];
+			*(unsigned char*)((char*)data_ov031_0224f13c + 0x2251) = wepSettings[1];
 			if (*(unsigned char*)((char*)data_ov031_0224f13c + 0x2250) == 0) {
 				VectorizedMemset((char*)data_ov031_0224f13c + 0x2200, 0, 0x50);
 			} else {
-				VectorizedInvertedMemcpy(a1 + 2, (char*)data_ov031_0224f13c + 0x2200, 0x50);
+				VectorizedInvertedMemcpy(wepSettings + 2, (char*)data_ov031_0224f13c + 0x2200, 0x50);
 			}
 		} else {
 			VectorizedMemset((char*)data_ov031_0224f13c + 0x2200, 0, 0x52);
 		}
 
-		VectorizedInvertedMemcpy(a0, (char*)data_ov031_0224f13c + 0x2140, 0xc0);
+		VectorizedInvertedMemcpy(accessPoint, (char*)data_ov031_0224f13c + 0x2140, 0xc0);
 		*(unsigned short*)((char*)data_ov031_0224f13c + 0x2170) = *(unsigned short*)((char*)data_ov031_0224f13c + 0x216e) | 3;
-		func_ov031_0220dd50(a2);
+		func_ov031_0220dd50(connectionOptions);
 		break;
 	}
 	case 8:
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 2;
 	case 9:
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 0;
 	default:
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 1;
 	}
 
-	int r = func_020d8530((int)func_ov031_0220e420, 0xffff, 0x50, 0xffff, 0xffff);
-	switch (r) {
+	int setupResult = func_020d8530((int)func_ov031_0220e420, 0xffff, 0x50, 0xffff, 0xffff);
+	switch (setupResult) {
 	case 2:
 		func_ov031_0220e1fc(8);
 		*(unsigned short*)((char*)data_ov031_0224f13c + 0x2280) = 5;
 		goto ret3;
 	case 8:
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 4;
 	case 3:
 	default:
 		func_ov031_0220e1fc(0xb);
-		SetIRQInterruptState(state);
+		SetIRQInterruptState(irqState);
 		return 7;
 	}
 ret3:
-	SetIRQInterruptState(state);
+	SetIRQInterruptState(irqState);
 	return 3;
 }
 

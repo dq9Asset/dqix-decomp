@@ -3,9 +3,9 @@
 #include <Resource/Script.h>
 #include <Memory/SafeAllocator.h>
 
-struct BattleSelectionCommand {
+struct BattleScriptPairCommand {
     unsigned int opcode;
-    BattleSelectionCommand* next;
+    BattleScriptPairCommand* next;
     unsigned int hasPrimary : 1;
     unsigned int primary : 15;
     unsigned int useDefaultSecondary : 1;
@@ -21,14 +21,16 @@ struct BattleCommandQueueView {
 };
 extern "C" {
     extern BattleCommandQueueView data_ov000_02185364;
-    void func_ov000_0216b2a4(BattleSelectionCommand*);
+    void func_ov000_0216b2a4(BattleScriptPairCommand*);
 }
 
 // JPN: func_ov000_0216cc90
-extern "C" ARM int func_ov000_0216cc90(Script::Parameter* parameters, int count)
+// Parses battle script tag 0x37 into a queued two-parameter command.
+// The game meaning of these parameters is not yet established from the JP consumer.
+extern "C" ARM int func_ov000_0216cc90(Script::Parameter* parameters, int parameterCount)
 {
-    BattleSelectionCommand* command = static_cast<BattleSelectionCommand*>(
-        data_ov000_02185364.allocator->Allocate(sizeof(BattleSelectionCommand)));
+    BattleScriptPairCommand* command = static_cast<BattleScriptPairCommand*>(
+        data_ov000_02185364.allocator->Allocate(sizeof(BattleScriptPairCommand)));
     if (!command)
         return 0;
     command->opcode = 0;
@@ -47,7 +49,7 @@ extern "C" ARM int func_ov000_0216cc90(Script::Parameter* parameters, int count)
     command->useDefaultSecondary = 1;
     command->hasSecondary = 0;
     command->secondary = 0;
-    if (count >= 2) {
+    if (parameterCount >= 2) {
         int secondary = parameters[1].ToInt();
         if (secondary >= 0) {
             command->useDefaultSecondary = 0;

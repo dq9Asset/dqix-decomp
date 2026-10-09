@@ -1,7 +1,7 @@
 func_ov013_021853a0 kind:function(arm,size=0x33c) addr:0x021853a0
 func_ov013_021856dc kind:function(arm,size=0x124) addr:0x021856dc
 func_ov013_02185800 kind:function(arm,size=0x294) addr:0x02185800
-func_ov013_02185a94 kind:function(arm,size=0x8c) addr:0x02185a94
+_Z24ResetCombatEntry02184a58Pv kind:function(arm,size=0x8c) addr:0x02185a94
 func_ov013_02184aec kind:function(arm,size=0x60) addr:0x02185b20
 func_ov013_02185b80 kind:function(arm,size=0x140) addr:0x02185b80
 func_ov013_02185cc0 kind:function(arm,size=0x64) addr:0x02185cc0

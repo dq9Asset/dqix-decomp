@@ -11,7 +11,6 @@
 #define _Z19CallWithAddr4000360i func_020c7040
 
 
-#define _Z34SetupCombatantAllocations_021901acv func_ov017_02190d90
 #endif
 
 struct FifoCommandInfo

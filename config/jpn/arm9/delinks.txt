@@ -12788,3 +12788,47 @@ src/System/ContextLifecycle.cpp:
 src/Combat/Main/func_020d9b34.cpp:
     complete
     .text start:0x020db538 end:0x020db768
+
+src/Combat/Main/CompletedResourceLoads.cpp:
+    complete
+    .text start:0x02020cf4 end:0x02020f88
+
+src/Combat/Main/func_02021578.cpp:
+    complete
+    .text start:0x0202116c end:0x0202162c
+
+src/Combat/Main/UpdateActionDisplay.cpp:
+    complete
+    .text start:0x0202484c end:0x02024f30
+
+src/Combat/Main/func_02065990.cpp:
+    complete
+    .text start:0x02066dc4 end:0x02067ea0
+
+src/Combat/Main/0206f81c.cpp:
+    complete
+    .text start:0x020708dc end:0x020713e4
+
+src/Combat/Main/ManagerSelectionWordFlags.cpp:
+    complete
+    .text start:0x020a076c end:0x020a095c
+
+src/System/DMAInterruptHandlers.cpp:
+    complete
+    .text start:0x020c8520 end:0x020c8560
+
+src/System/TimerOverflowInterruptHandlers.cpp:
+    complete
+    .text start:0x020c8560 end:0x020c85a0
+
+src/System/InterruptRegistration.cpp:
+    complete
+    .text start:0x020c85b8 end:0x020c875c
+
+src/System/ReadyContexts.cpp:
+    complete
+    .text start:0x020c941c end:0x020c946c
+
+src/System/ContextScheduler.cpp:
+    complete
+    .text start:0x020c96b4 end:0x020c9774

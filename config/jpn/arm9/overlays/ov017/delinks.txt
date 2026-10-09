@@ -2112,3 +2112,19 @@ src/Combat/Overlay_17/DispatchCounterEventAndFlag_021d3c08.cpp:
 src/Combat/Overlay_17/func_ov017_021d4e38.cpp:
     complete
     .text start:0x021d5288 end:0x021d6544
+
+src/Combat/Overlay_17/func_ov017_0219e384.cpp:
+    complete
+    .text start:0x0219ee70 end:0x021a0734
+
+src/Combat/Overlay_17/func_ov017_021a86d0.cpp:
+    complete
+    .text start:0x021a8ecc end:0x021a9a2c
+
+src/Combat/Overlay_17/func_ov017_021acdf4.cpp:
+    complete
+    .text start:0x021ad62c end:0x021ae338
+
+src/Combat/Overlay_17/func_ov017_021c2784.cpp:
+    complete
+    .text start:0x021c2cf0 end:0x021c3040

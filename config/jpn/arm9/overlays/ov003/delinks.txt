@@ -724,3 +724,99 @@ src/Combat/Overlay_3/RunPendingEvent_0217dc94.cpp:
 src/Combat/Overlay_3/FinalizeAndCleanup_0217f118.cpp:
     complete
     .text start:0x0217de1c end:0x0217de98
+
+src/Combat/Overlay_3/func_ov003_021560e4.cpp:
+    complete
+    .text start:0x02157740 end:0x02158034
+
+src/Combat/Overlay_3/InitDualNodes_0215dd3c.cpp:
+    complete
+    .text start:0x0215f084 end:0x0215f108
+
+src/Combat/Overlay_3/func_ov003_0215f9c0.cpp:
+    complete
+    .text start:0x0215fb74 end:0x0215fd40
+
+src/Combat/Overlay_3/func_ov003_02160678.cpp:
+    complete
+    .text start:0x02160818 end:0x02160930
+
+src/Combat/Overlay_3/ConfigureAndDispatchElement_021612c0.cpp:
+    complete
+    .text start:0x021613ac end:0x02161430
+
+src/Combat/Overlay_3/func_ov003_02161344.cpp:
+    complete
+    .text start:0x02161430 end:0x02161520
+
+src/Combat/Overlay_3/func_ov003_021615bc.cpp:
+    complete
+    .text start:0x021616a4 end:0x02162040
+
+src/Combat/Overlay_3/AdvanceStep_02163f60.cpp:
+    complete
+    .text start:0x02163f78 end:0x02163fec
+
+src/Combat/Overlay_3/UpdateCursorLimit_02166184.cpp:
+    complete
+    .text start:0x021660d0 end:0x0216616c
+
+src/Combat/Overlay_3/func_ov003_02169eec.cpp:
+    complete
+    .text start:0x02169c0c end:0x0216a4e8
+
+src/Combat/Overlay_3/UpdateEntryPosition_0216acf0.cpp:
+    complete
+    .text start:0x0216a88c end:0x0216a95c
+
+src/Combat/Overlay_3/func_ov003_0216d63c.cpp:
+    complete
+    .text start:0x0216d10c end:0x0216d258
+
+src/Combat/Overlay_3/func_ov003_02171550.cpp:
+    complete
+    .text start:0x021708b4 end:0x021709a0
+
+src/Combat/Overlay_3/ResetAndSyncOverlay17_02171cf8.cpp:
+    complete
+    .text start:0x02170fb4 end:0x02171030
+
+src/Combat/Overlay_3/func_ov003_021728fc.cpp:
+    complete
+    .text start:0x021717e8 end:0x0217190c
+
+src/Combat/Overlay_3/InitBigStateStruct_02173c40.cpp:
+    complete
+    .text start:0x02172e0c end:0x02172f14
+
+src/Combat/Overlay_3/func_ov003_02174a80.cpp:
+    complete
+    .text start:0x02173b88 end:0x02174410
+
+src/Combat/Overlay_3/func_ov003_02175df4.cpp:
+    complete
+    .text start:0x02174e10 end:0x02174f38
+
+src/Combat/Overlay_3/func_ov003_021765b4.cpp:
+    complete
+    .text start:0x02175604 end:0x02175730
+
+src/Combat/Overlay_3/UpdateMappedIndexAndRemainder_02178548.cpp:
+    complete
+    .text start:0x02177428 end:0x021774b4
+
+src/Combat/Overlay_3/func_ov003_02178910.cpp:
+    complete
+    .text start:0x021777d4 end:0x02178b3c
+
+src/Combat/Overlay_3/ComputeMappedOffset_0217a220.cpp:
+    complete
+    .text start:0x02179050 end:0x021790b0
+
+src/Combat/Overlay_3/InitObject_0217daf0.cpp:
+    complete
+    .text start:0x0217c790 end:0x0217c828
+
+src/Combat/Overlay_3/0217e6b0.cpp:
+    complete
+    .text start:0x0217d3b8 end:0x0217dbac

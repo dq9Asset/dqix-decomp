@@ -1328,3 +1328,59 @@ src/Combat/Overlay_1/DispatchTableEntryEffect_0215cf98.cpp:
 src/Combat/Overlay_1/func_ov001_0215ff10.cpp:
     complete
     .text start:0x02161524 end:0x021615d4
+
+src/Combat/Overlay_1/SetByteField265FromCond_02163248.cpp:
+    complete
+    .text start:0x021647d4 end:0x02164810
+
+src/Combat/Overlay_1/SetFieldFromAnimActive_0216376c.cpp:
+    complete
+    .text start:0x02164cf8 end:0x02164d34
+
+src/Combat/Overlay_1/ApplyModeScaledAngle_0215f968.cpp:
+    complete
+    .text start:0x02160f7c end:0x02160ff0
+
+src/Combat/Overlay_1/NotifyBitTestByIndex16_02163390.cpp:
+    complete
+    .text start:0x0216491c end:0x02164978
+
+src/Combat/Overlay_1/NotifyBitTestByIndex3_02163334.cpp:
+    complete
+    .text start:0x021648c0 end:0x0216491c
+
+src/Combat/Overlay_1/NotifyBitTestResult_021632e4.cpp:
+    complete
+    .text start:0x02164870 end:0x021648c0
+
+src/Combat/Overlay_1/ApplyKnockbackToCombatant_02161e00.cpp:
+    complete
+    .text start:0x02163414 end:0x021634a0
+
+src/Combat/Overlay_1/SetLinksFromBattleField3b0_0215daa8.cpp:
+    complete
+    .text start:0x0215f12c end:0x0215f1c0
+
+src/Combat/Overlay_1/SetLinksFromBattleField3b0_0215db3c.cpp:
+    complete
+    .text start:0x0215f1c0 end:0x0215f254
+
+src/Combat/Overlay_1/SetLinksFromField3b0_0215da14.cpp:
+    complete
+    .text start:0x0215f098 end:0x0215f12c
+
+src/Combat/Overlay_1/AllocateAndInitStateNode_02160768.cpp:
+    complete
+    .text start:0x02161d7c end:0x02161eb0
+
+src/Combat/Overlay_1/AllocateAndLinkStateHolder_02161650.cpp:
+    complete
+    .text start:0x02162c64 end:0x02162d68
+
+src/Combat/Overlay_1/func_ov001_0215f854.cpp:
+    complete
+    .text start:0x02160e68 end:0x02160f44
+
+src/Combat/Overlay_1/func_ov001_0215e0dc.cpp:
+    complete
+    .text start:0x0215f760 end:0x0215f7d0

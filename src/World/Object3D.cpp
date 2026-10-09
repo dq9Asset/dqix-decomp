@@ -12,7 +12,6 @@
 #include "Graphics/VRAMStaging.h"
 
 #if defined(jpn)
-#define _Z18GetField0x3b0ValueP9GameState func_0200ff18
 #define _Z27ClearGlobalFlagBits02016d8cPv func_02016b2c
 #define _Z16GetPtrField0x144Pv func_0202e8e4
 #define func_020311f0 func_02030d28

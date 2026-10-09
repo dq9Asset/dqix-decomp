@@ -6,9 +6,6 @@
 #include "Resource/GameResources.h"
 
 #if defined(jpn)
-#define _Z18GetField0x3b0ValueP9GameState func_0200ff18
-#define _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_ func_0202e7f4
-#define _Z18TestBitInByteArrayiPhi func_0206f104
 #define _Z14GetVec3ByIndexP8Vec3BA28iPiS1_S1_ func_0207c860
 #define _Z11SetFogStateijjt func_020c6f70
 #define _Z19CallWithAddr4000330i func_020c7028

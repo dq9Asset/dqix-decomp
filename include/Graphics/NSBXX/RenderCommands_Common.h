@@ -24,7 +24,6 @@
 #define data_020f1d78 data_020f1ee4
 #define data_020f1dc0 data_020f1f2c
 #define data_020f1e08 data_020f1f74
-#define data_0210a274 data_02109f2c
 #define data_0210a278 data_02109f30
 #define data_0210b078 data_0210ad30
 

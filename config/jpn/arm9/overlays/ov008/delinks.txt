@@ -99,3 +99,11 @@ src/Combat/Overlay_8/func_ov008_02188934.cpp:
 src/Combat/Overlay_8/func_ov008_02186964.cpp:
     complete
     .text start:0x02187840 end:0x0218790c
+
+src/Combat/Overlay_8/func_ov008_021868a8.cpp:
+    complete
+    .text start:0x02187784 end:0x02187840
+
+src/Menu/Overlay_8/AvailableEntries.cpp:
+    complete
+    .text start:0x02187bc8 end:0x02187d28

@@ -28,7 +28,7 @@ int SetBg1CntPriority_02199998(int priority);
 int SetBg2CntFull_021999b4(int screenSize, int colorMode, int screenBase, int charBase);
 int SetBg2CntPriority_021999e0(int priority);
 
-struct BgConfig02199780 {
+struct BackgroundControlFields {
 	unsigned short priority : 2;
 	unsigned short tileBase : 4;
 	unsigned short unused6 : 1;
@@ -38,6 +38,9 @@ struct BgConfig02199780 {
 	unsigned short size : 2;
 };
 
+// CancelActionIfHeadIdMatches_02199e98 invokes this on its active state.
+// A nonnegative background task ID is removed before applying BG1/BG2
+// configuration and resetting buffers; the broader state owner remains unnamed.
 // USA: func_ov017_02199780
 // JPN: func_ov017_0219a330
 extern "C" ARM void func_ov017_02199780(unsigned char* self) {
@@ -57,16 +60,16 @@ extern "C" ARM void func_ov017_02199780(unsigned char* self) {
 		*(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & ~0x1f00) | 0x100;
 
 #if defined(jpn)
-		int off = *(int*)(self + 0x3000 + 0xe5c);
+		int backgroundTaskId = *(int*)(self + 0x3000 + 0xe5c);
 #else
-		int off = *(int*)(self + 0x4000 + 0x7c);
+		int backgroundTaskId = *(int*)(self + 0x4000 + 0x7c);
 #endif
-		if (off >= 0) {
-			int p = (int)BackgroundLoader::GetInstance();
+		if (backgroundTaskId >= 0) {
+			int backgroundLoaderAddress = (int)BackgroundLoader::GetInstance();
 #if defined(jpn)
-			((BackgroundLoader*)(p))->RemoveTask((int)(*(int*)(self + 0x3000 + 0xe5c)));
+			((BackgroundLoader*)(backgroundLoaderAddress))->RemoveTask((int)(*(int*)(self + 0x3000 + 0xe5c)));
 #else
-			((BackgroundLoader*)(p))->RemoveTask((int)(*(int*)(self + 0x4000 + 0x7c)));
+			((BackgroundLoader*)(backgroundLoaderAddress))->RemoveTask((int)(*(int*)(self + 0x4000 + 0x7c)));
 #endif
 		}
 
@@ -74,20 +77,20 @@ extern "C" ARM void func_ov017_02199780(unsigned char* self) {
 		*(volatile unsigned short*)0x4000008 = (*(volatile unsigned short*)0x4000008 & ~3) | 1;
 
 #if defined(jpn)
-		BgConfig02199780* bg1 = *(BgConfig02199780**)(self + 0x3000 + 0xa88);
+		BackgroundControlFields* bg1Config = *(BackgroundControlFields**)(self + 0x3000 + 0xa88);
 #else
-		BgConfig02199780* bg1 = *(BgConfig02199780**)(self + 0x3000 + 0xca8);
+		BackgroundControlFields* bg1Config = *(BackgroundControlFields**)(self + 0x3000 + 0xca8);
 #endif
-		SetBg1ControlBits_02199964(bg1->size, bg1->colorMode, bg1->mapBase, bg1->tileBase, bg1->wrap);
-		SetBg1CntPriority_02199998(bg1->priority);
+		SetBg1ControlBits_02199964(bg1Config->size, bg1Config->colorMode, bg1Config->mapBase, bg1Config->tileBase, bg1Config->wrap);
+		SetBg1CntPriority_02199998(bg1Config->priority);
 
 #if defined(jpn)
-		BgConfig02199780* bg2 = *(BgConfig02199780**)(self + 0x3000 + 0xa8c);
+		BackgroundControlFields* bg2Config = *(BackgroundControlFields**)(self + 0x3000 + 0xa8c);
 #else
-		BgConfig02199780* bg2 = *(BgConfig02199780**)(self + 0x3000 + 0xcac);
+		BackgroundControlFields* bg2Config = *(BackgroundControlFields**)(self + 0x3000 + 0xcac);
 #endif
-		SetBg2CntFull_021999b4(bg2->size, bg2->colorMode, bg2->mapBase, bg2->tileBase);
-		SetBg2CntPriority_021999e0(bg2->priority);
+		SetBg2CntFull_021999b4(bg2Config->size, bg2Config->colorMode, bg2Config->mapBase, bg2Config->tileBase);
+		SetBg2CntPriority_021999e0(bg2Config->priority);
 
 #if defined(jpn)
 		if (*(int*)(self + 0x3000 + 0xe64) != 0) {

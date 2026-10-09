@@ -1980,3 +1980,59 @@ src/Combat/Overlay_17/func_ov017_021cd218.cpp:
 src/Combat/Overlay_17/func_ov017_021cd590.cpp:
     complete
     .text start:0x021cda38 end:0x021cdab0
+
+src/Combat/Overlay_17/SetGroupShortValues_021919c8.cpp:
+    complete
+    .text start:0x02192590 end:0x02192674
+
+src/Combat/Overlay_17/ResetGraphicsBuffersAndAllocator_021aaf08.cpp:
+    complete
+    .text start:0x021ab768 end:0x021ab870
+
+src/Combat/Overlay_17/DispatchStateInit0_021aef80.cpp:
+    complete
+    .text start:0x021af690 end:0x021af7a8
+
+src/Combat/Overlay_17/func_ov017_021b1e24.cpp:
+    complete
+    .text start:0x021b24ac end:0x021b2624
+
+src/Combat/Overlay_17/DispatchAndSyncTable_021b3560.cpp:
+    complete
+    .text start:0x021b3c54 end:0x021b3d6c
+
+src/Combat/Overlay_17/FinalizeAndRenderEntry_021b6090.cpp:
+    complete
+    .text start:0x021b6644 end:0x021b6728
+
+src/Combat/Overlay_17/Dispatch_021b6c78.cpp:
+    complete
+    .text start:0x021b7228 end:0x021b7310
+
+src/Combat/Overlay_17/func_ov017_021b9a98.cpp:
+    complete
+    .text start:0x021b9f94 end:0x021ba0c8
+
+src/Combat/Overlay_17/func_ov017_021c03a4.cpp:
+    complete
+    .text start:0x021c094c end:0x021c0ac8
+
+src/Combat/Overlay_17/UpdateStateMachine_021c2f3c.cpp:
+    complete
+    .text start:0x021c3438 end:0x021c35f4
+
+src/Combat/Overlay_17/SendBitIndicesInChunks_021ccdac.cpp:
+    complete
+    .text start:0x021cd254 end:0x021cd34c
+
+src/Combat/Overlay_17/UpdateCombatantBitsFromField_02196398_02196398.cpp:
+    complete
+    .text start:0x02196f60 end:0x02196ff8
+
+src/Combat/Overlay_17/MaybeUpdateOrDispatchEntry_021959ec.cpp:
+    complete
+    .text start:0x021965b4 end:0x021965e8
+
+src/Combat/Overlay_17/RecordPositionAndSyncCounters_021aa41c.cpp:
+    complete
+    .text start:0x021aac84 end:0x021aad34

@@ -38,7 +38,7 @@ _Z29NotifyEntriesFlag256_0218df50PvS_ kind:function(arm,size=0x88) addr:0x0218eb
 func_ov017_0218ebb8 kind:function(arm,size=0x238) addr:0x0218ebb8
 func_ov017_0218edf0 kind:function(arm,size=0x464) addr:0x0218edf0
 func_ov017_0218f254 kind:function(arm,size=0x254) addr:0x0218f254
-func_ov017_0218f4a8 kind:function(arm,size=0x234) addr:0x0218f4a8
+func_ov017_0218e8c8 kind:function(arm,size=0x234) addr:0x0218f4a8
 func_ov017_0218f6dc kind:function(arm,size=0x568) addr:0x0218f6dc
 func_ov017_0218fc44 kind:function(arm,size=0x514) addr:0x0218fc44
 func_ov017_02190158 kind:function(arm,size=0x8) addr:0x02190158
@@ -64,7 +64,7 @@ func_ov017_021913d0 kind:function(arm,size=0xb4) addr:0x02191fb4
 func_ov017_02191484 kind:function(arm,size=0x84) addr:0x02192068
 func_ov017_021920ec kind:function(arm,size=0x240) addr:0x021920ec
 _Z23FindUnusedSlot_02191764ii kind:function(arm,size=0x8c) addr:0x0219232c
-func_ov017_021923b8 kind:function(arm,size=0x1d8) addr:0x021923b8
+func_ov017_021917f0 kind:function(arm,size=0x1d8) addr:0x021923b8
 _Z28SetGroupShortValues_021919c8iis kind:function(arm,size=0xe4) addr:0x02192590
 func_ov017_02191aac kind:function(arm,size=0x94) addr:0x02192674
 _Z23ClearByteAtPtr_02191b40v kind:function(arm,size=0x18) addr:0x02192708
@@ -115,13 +115,13 @@ func_ov017_02195760 kind:function(arm,size=0x1c) addr:0x02196328
 func_ov017_02196344 kind:function(arm,size=0x1c0) addr:0x02196344
 func_ov017_02196504 kind:function(arm,size=0x78) addr:0x02196504
 func_ov017_021959b4 kind:function(arm,size=0x38) addr:0x0219657c
-func_ov017_021965b4 kind:function(arm,size=0x34) addr:0x021965b4
+_Z35MaybeUpdateOrDispatchEntry_021959ecv kind:function(arm,size=0x34) addr:0x021965b4
 func_ov017_021965e8 kind:function(arm,size=0x19c) addr:0x021965e8
 func_ov017_02196784 kind:function(arm,size=0x310) addr:0x02196784
 func_ov017_02196a94 kind:function(arm,size=0x17c) addr:0x02196a94
 func_ov017_02196c10 kind:function(arm,size=0x70) addr:0x02196c10
 func_ov017_02196c80 kind:function(arm,size=0x2e0) addr:0x02196c80
-func_ov017_02196f60 kind:function(arm,size=0x98) addr:0x02196f60
+_Z46UpdateCombatantBitsFromField_02196398_02196398Pj kind:function(arm,size=0x98) addr:0x02196f60
 func_ov017_02196ff8 kind:function(arm,size=0x7c0) addr:0x02196ff8
 _Z19InitStruct_02196c08Ph kind:function(arm,size=0x44) addr:0x021977b8
 func_ov017_021977fc kind:function(arm,size=0x20c) addr:0x021977fc
@@ -134,7 +134,7 @@ func_ov017_02197ea8 kind:function(arm,size=0x2c) addr:0x02197ea8
 func_ov017_02197ed4 kind:function(arm,size=0x38) addr:0x02197ed4
 func_ov017_02197f0c kind:function(arm,size=0x38) addr:0x02197f0c
 _Z33AdvanceCombatantsInRange_02197394v kind:function(arm,size=0x54) addr:0x02197f44
-func_ov017_02197f98 kind:function(arm,size=0x140) addr:0x02197f98
+func_ov017_021973e8 kind:function(arm,size=0x140) addr:0x02197f98
 func_ov017_021980d8 kind:function(arm,size=0x34) addr:0x021980d8
 func_ov017_0219810c kind:function(arm,size=0x88) addr:0x0219810c
 func_ov017_02198194 kind:function(arm,size=0x480) addr:0x02198194
@@ -255,7 +255,7 @@ _Z19GetField1c_021a193cPi kind:function(arm,size=0x8) addr:0x021a23cc
 func_ov017_021a1944 kind:function(arm,size=0xdc) addr:0x021a23d4
 func_ov017_021a24b0 kind:function(arm,size=0xb0) addr:0x021a24b0
 func_ov017_021a2560 kind:function(arm,size=0x2c8) addr:0x021a2560
-func_ov017_021a2828 kind:function(arm,size=0x2c4) addr:0x021a2828
+func_ov017_021a1d98 kind:function(arm,size=0x2c4) addr:0x021a2828
 func_ov017_021a2aec kind:function(arm,size=0x64) addr:0x021a2aec
 _Z40FindCombatantWithNegativeField2_021a20c0iii kind:function(arm,size=0x68) addr:0x021a2b50
 func_ov017_021a2bb8 kind:function(arm,size=0x288) addr:0x021a2bb8
@@ -432,7 +432,7 @@ _Z21TailCallInit_021aee9cPv kind:function(arm,size=0xc) addr:0x021af5ac
 func_ov017_021aeea8 kind:function(arm,size=0x34) addr:0x021af5b8
 _Z20InitState37_021aeedcP14Struct021aeedc kind:function(arm,size=0x30) addr:0x021af5ec
 _Z34DispatchStateAndMaybeInit_021aef0cP11Obj021aef0c kind:function(arm,size=0x74) addr:0x021af61c
-func_ov017_021af690 kind:function(arm,size=0x118) addr:0x021af690
+func_ov017_021aef80 kind:function(arm,size=0x118) addr:0x021af690
 func_ov017_021af7a8 kind:function(arm,size=0x260) addr:0x021af7a8
 func_ov017_021afa08 kind:function(arm,size=0x1f4) addr:0x021afa08
 func_ov017_021afbfc kind:function(arm,size=0xb0) addr:0x021afbfc
@@ -531,7 +531,7 @@ func_ov017_021b2fac kind:function(arm,size=0x424) addr:0x021b36bc
 _Z30ResetEntriesAndNotify_021b33d8Pv kind:function(arm,size=0x6c) addr:0x021b3ae0
 func_ov017_021b3b4c kind:function(arm,size=0xf4) addr:0x021b3b4c
 func_ov017_021b3c40 kind:function(arm,size=0x14) addr:0x021b3c40
-func_ov017_021b3c54 kind:function(arm,size=0x118) addr:0x021b3c54
+func_ov017_021b3560 kind:function(arm,size=0x118) addr:0x021b3c54
 func_ov017_021b3d6c kind:function(arm,size=0x108) addr:0x021b3d6c
 func_ov017_021b3e74 kind:function(arm,size=0x148) addr:0x021b3e74
 func_ov017_021b3fbc kind:function(arm,size=0x54c) addr:0x021b3fbc
@@ -559,7 +559,7 @@ func_ov017_021b5cf8 kind:function(arm,size=0xcc) addr:0x021b62ac
 func_ov017_021b6378 kind:function(arm,size=0x13c) addr:0x021b6378
 func_ov017_021b64b4 kind:function(arm,size=0xc0) addr:0x021b64b4
 func_ov017_021b6574 kind:function(arm,size=0xd0) addr:0x021b6574
-func_ov017_021b6644 kind:function(arm,size=0xe4) addr:0x021b6644
+func_ov017_021b6090 kind:function(arm,size=0xe4) addr:0x021b6644
 func_ov017_021b6728 kind:function(arm,size=0x70) addr:0x021b6728
 _Z22InitBattleObj_021b61e4P14Struct021b61e4 kind:function(arm,size=0x38) addr:0x021b6798
 func_ov017_021b621c kind:function(arm,size=0x74) addr:0x021b67d0
@@ -580,7 +580,7 @@ func_ov017_021b7124 kind:function(arm,size=0x18) addr:0x021b7124
 _Z33CallIfField24ThenSetFlag_021b6b8cP9S021b6b8c kind:function(arm,size=0x2c) addr:0x021b713c
 _Z40AddPositiveField150EntriesToMap_021b6bb8i kind:function(arm,size=0x74) addr:0x021b7168
 _Z27GetSignedField6Bit_021b6c2cii kind:function(arm,size=0x4c) addr:0x021b71dc
-func_ov017_021b7228 kind:function(arm,size=0xe8) addr:0x021b7228
+func_ov017_021b6c78 kind:function(arm,size=0xe8) addr:0x021b7228
 func_ov017_021b6d60 kind:function(arm,size=0x110) addr:0x021b7310
 func_ov017_021b7420 kind:function(arm,size=0xa8) addr:0x021b7420
 func_ov017_021b6f18 kind:function(arm,size=0x84) addr:0x021b74c8
@@ -620,7 +620,7 @@ _Z25ForwardTeardownA_021b9904Pc kind:function(arm,size=0x24) addr:0x021b9e00
 func_ov017_021b9e24 kind:function(arm,size=0x24) addr:0x021b9e24
 _Z29ResetFieldsToDefault_021b994cP12Obj_021b994c kind:function(arm,size=0x20) addr:0x021b9e48
 func_ov017_021b9e68 kind:function(arm,size=0x12c) addr:0x021b9e68
-func_ov017_021b9f94 kind:function(arm,size=0x134) addr:0x021b9f94
+func_ov017_021b9a98 kind:function(arm,size=0x134) addr:0x021b9f94
 func_ov017_021b9bcc kind:function(arm,size=0x134) addr:0x021ba0c8
 func_ov017_021b9d00 kind:function(arm,size=0x130) addr:0x021ba1fc
 func_ov017_021ba32c kind:function(arm,size=0x2f4) addr:0x021ba32c
@@ -774,9 +774,9 @@ _Z20InitState69_021c2744P11Obj021c2744 kind:function(arm,size=0x40) addr:0x021c2
 func_ov017_021c2784 kind:function(arm,size=0x350) addr:0x021c2cf0
 _Z17SetByte1_021c2b1cPh kind:function(arm,size=0xc) addr:0x021c3040
 _Z15InitObj021c2b28Pvhh kind:function(arm,size=0x44) addr:0x021c304c
-func_ov017_021c3090 kind:function(arm,size=0x2e4) addr:0x021c3090
-func_ov017_021c3374 kind:function(arm,size=0x54) addr:0x021c3374
-func_ov017_021c33c8 kind:function(arm,size=0x70) addr:0x021c33c8
+func_ov017_021c2b6c kind:function(arm,size=0x2e4) addr:0x021c3090
+_Z40ForwardResetAndCaptureTimestamp_021c2e50Pc kind:function(arm,size=0x54) addr:0x021c3374
+_Z33InitAndDispatchCombatant_021c2ea4Ph kind:function(arm,size=0x70) addr:0x021c33c8
 func_ov017_021c2f3c kind:function(arm,size=0x1bc) addr:0x021c3438
 _Z28SetFlag1ThenDestroy_021c30f8P13Obj1_021c30f8 kind:function(arm,size=0x14) addr:0x021c35f4
 func_ov017_021c310c kind:function(arm,size=0x60) addr:0x021c3608
@@ -962,7 +962,7 @@ func_ov017_021ccb58 kind:function(arm,size=0x84) addr:0x021cd000
 _Z28CopyWordsWithOffset_021ccbdciPhP9GameState kind:function(arm,size=0x58) addr:0x021cd084
 func_ov017_021ccc34 kind:function(arm,size=0xdc) addr:0x021cd0dc
 func_ov017_021ccd10 kind:function(arm,size=0x9c) addr:0x021cd1b8
-func_ov017_021cd254 kind:function(arm,size=0xf8) addr:0x021cd254
+func_ov017_021ccdac kind:function(arm,size=0xf8) addr:0x021cd254
 func_ov017_021ccea4 kind:function(arm,size=0xcc) addr:0x021cd34c
 func_ov017_021cd418 kind:function(arm,size=0x60) addr:0x021cd418
 func_ov017_021ccfd0 kind:function(arm,size=0x108) addr:0x021cd478
@@ -1192,7 +1192,7 @@ data_ov017_021d662c kind:data(any) addr:0x021d662c
 data_ov017_021d61fc kind:data(any) addr:0x021d664c
 data_ov017_021d667c kind:data(any) addr:0x021d667c
 data_ov017_021d66b0 kind:data(any) addr:0x021d66b0
-data_ov017_021d66e8 kind:data(any) addr:0x021d66e8
+data_ov017_021d6298 kind:data(any) addr:0x021d66e8
 data_ov017_021d6728 kind:data(any) addr:0x021d6728
 data_ov017_021d6748 kind:data(any) addr:0x021d6748
 data_ov017_021d6768 kind:data(any) addr:0x021d6768
@@ -1298,8 +1298,8 @@ data_ov017_021d6f18 kind:data(any) addr:0x021d6f18
 data_ov017_021d6f2c kind:data(any) addr:0x021d6f2c
 data_ov017_021d6f4c kind:data(any) addr:0x021d6f4c
 data_ov017_021d6f4e kind:data(any) addr:0x021d6f4e
-data_ov017_021d6f6c kind:data(any) addr:0x021d6f6c
-data_ov017_021d6f70 kind:data(any) addr:0x021d6f70
+data_ov017_021d6b74 kind:data(any) addr:0x021d6f6c
+data_ov017_021d6b78 kind:data(any) addr:0x021d6f70
 data_ov017_021d6fc4 kind:data(any) addr:0x021d6fc4
 data_ov017_021d6bd8 kind:data(any) addr:0x021d6fd0
 data_ov017_021d6ffc kind:data(any) addr:0x021d6ffc

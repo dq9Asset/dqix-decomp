@@ -21,6 +21,9 @@ enum { kNotificationBufferSize = 0x68, kEntryCount = 3 };
 enum { kNotificationBufferSize = 0x80, kEntryCount = 4 };
 #endif
 
+// func_ov017_021c1264 passes storage and an allocator backed by its parent arena.
+// The eight capacities initialize independent work allocators; the later arrays
+// retain their separate list, record, word-clear and entry initialization loops.
 // USA: func_ov003_021544ec
 // JPN: func_ov003_02155bd4
 extern "C" ARM void func_ov003_021544ec(char* self, SafeAllocator* allocator) {
@@ -36,23 +39,23 @@ extern "C" ARM void func_ov003_021544ec(char* self, SafeAllocator* allocator) {
     *(void**)(self + 0x28) = allocator->Allocate(8);
     *(void**)(self + 0x1c) = allocator->Allocate(0x24);
     InitEntryManager020e2490(*(EntryManager020e2490**)(self + 0x1c), 0, 1, *(void**)(self + 0x28), allocator, kEntryCount, 0x40);
-    BattleWorkAllocationSizes sizes = data_ov003_0217f320;
-    for (unsigned char i = 0; i < 8; i++) {
-        SafeAllocator* array = *(SafeAllocator**)self;
-        unsigned int size = sizes.values[i];
-        array[i].ResetAllocatorPointer();
-        array[i].CreateTypeA(allocator->Allocate(size), size);
-        array[i].Reset();
+    BattleWorkAllocationSizes arenaSizes = data_ov003_0217f320;
+    for (unsigned char allocatorIndex = 0; allocatorIndex < 8; allocatorIndex++) {
+        SafeAllocator* workAllocators = *(SafeAllocator**)self;
+        unsigned int arenaByteCount = arenaSizes.values[allocatorIndex];
+        workAllocators[allocatorIndex].ResetAllocatorPointer();
+        workAllocators[allocatorIndex].CreateTypeA(allocator->Allocate(arenaByteCount), arenaByteCount);
+        workAllocators[allocatorIndex].Reset();
     }
-    for (unsigned char i = 0; i < 2; i++)
-        ResetList0204af64((List0204af64*)(*(char**)(self + 0x10) + i * 0x20));
-    for (unsigned char i = 0; i < 3; i++)
-        func_0204c684(*(char**)(self + 0x14) + i * 0xe0);
+    for (unsigned char listIndex = 0; listIndex < 2; listIndex++)
+        ResetList0204af64((List0204af64*)(*(char**)(self + 0x10) + listIndex * 0x20));
+    for (unsigned char recordIndex = 0; recordIndex < 3; recordIndex++)
+        func_0204c684(*(char**)(self + 0x14) + recordIndex * 0xe0);
     func_0207f84c(*(void**)(self + 0x18));
-    for (unsigned char i = 0; i < 12; i++)
-        (*(int**)(self + 0x20))[i] = 0;
-    for (unsigned char i = 0; i < 10; i++)
-        Init0205a198((Struct0205a198*)(*(char**)(self + 0x24) + i * 0x28));
+    for (unsigned char wordIndex = 0; wordIndex < 12; wordIndex++)
+        (*(int**)(self + 0x20))[wordIndex] = 0;
+    for (unsigned char entryIndex = 0; entryIndex < 10; entryIndex++)
+        Init0205a198((Struct0205a198*)(*(char**)(self + 0x24) + entryIndex * 0x28));
     GameState::GetInstance();
     char* obj = *(char**)(self + 4);
     func_ov003_0215376c(obj);

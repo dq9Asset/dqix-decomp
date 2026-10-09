@@ -440,3 +440,11 @@ src/Combat/Overlay_25/SetOrClearBit1024_021e8314.cpp:
 src/Combat/Overlay_25/DispatchNodeFlagOrClear_021e8670.cpp:
     complete
     .text start:0x021e8b10 end:0x021e8b90
+
+src/Combat/Overlay_25/Trans_021e8100.cpp:
+    complete
+    .text start:0x021e85a0 end:0x021e85cc
+
+src/Combat/Overlay_25/func_ov025_021e4f00.cpp:
+    complete
+    .text start:0x021e53f0 end:0x021e54b8

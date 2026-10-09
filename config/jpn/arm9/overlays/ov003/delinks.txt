@@ -292,3 +292,51 @@ src/Combat/Overlay_3/func_ov003_02160c58.cpp:
 src/Combat/Overlay_3/func_ov003_0215c32c.cpp:
     complete
     .text start:0x0215d640 end:0x0215d778
+
+src/Combat/Overlay_3/DispatchIndexedMemberFn_021537d4.cpp:
+    complete
+    .text start:0x02154f54 end:0x02154fdc
+
+src/Combat/Overlay_3/InitFiveAllocators_0215c568.cpp:
+    complete
+    .text start:0x0215d87c end:0x0215d964
+
+src/Combat/Overlay_3/InitEightAllocators_0215f8cc.cpp:
+    complete
+    .text start:0x0215fa80 end:0x0215fb74
+
+src/Combat/Overlay_3/SyncFlaggedCombatantAndDispatch_02155e38.cpp:
+    complete
+    .text start:0x02157494 end:0x0215759c
+
+src/Combat/Overlay_3/UpdateStepStateAndDispatch_02159c04.cpp:
+    complete
+    .text start:0x0215b084 end:0x0215b18c
+
+src/Combat/Overlay_3/func_ov003_02167370.cpp:
+    complete
+    .text start:0x02167250 end:0x02167374
+
+src/Combat/Overlay_3/func_ov003_02171ba0.cpp:
+    complete
+    .text start:0x02170e5c end:0x02170f68
+
+src/Combat/Overlay_3/021767ec.cpp:
+    complete
+    .text start:0x02175834 end:0x021759f8
+
+src/Combat/Overlay_3/func_ov003_0217c974.cpp:
+    complete
+    .text start:0x0217b69c end:0x0217b7ac
+
+src/Combat/Overlay_3/HandleStateTransition3_02158214.cpp:
+    complete
+    .text start:0x02159700 end:0x02159820
+
+src/Combat/Overlay_3/UpdateStateAndMaybeReset_0215bf18.cpp:
+    complete
+    .text start:0x0215d230 end:0x0215d334
+
+src/Combat/Overlay_3/AllocateBattleWork_021544ec.cpp:
+    complete
+    .text start:0x02155bd4 end:0x02155e08

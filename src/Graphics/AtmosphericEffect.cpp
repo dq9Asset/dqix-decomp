@@ -44,8 +44,6 @@ struct EffectScriptData
 #if defined(jpn)
 #define _Z16GetPtrField0x114Pv func_02033ad8 
 #define _Z19CheckBits5To9Equal2Pt func_0204cc40 
-#define _Z25RestorePairTables0207df90Pc func_0207ed10 
-#define _Z24BackupPairTables0207dfacPc func_0207ed2c 
 #endif
 
 extern "C"

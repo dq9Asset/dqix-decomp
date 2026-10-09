@@ -2,9 +2,16 @@
 
 extern char data_ov016_0219d0c0[];
 
+#if defined(jpn)
+static const int bankSelectionOffset = 0x34;
+#else
+static const int bankSelectionOffset = 0x18;
+#endif
+
 // USA: func_ov016_0218be5c
+// JPN: func_ov016_0218c93c
 ARM int GetSomeConstByFlag_0218be5c(void) {
-    int flag = *(int*)(data_ov016_0219d0c0 + 0x18);
+    int flag = *(int*)(data_ov016_0219d0c0 + bankSelectionOffset);
     if (flag == 0) {
         return 0x6820000;
     }

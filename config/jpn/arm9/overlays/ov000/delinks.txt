@@ -1596,3 +1596,51 @@ src/Combat/Overlay_0/func_ov000_02176210.cpp:
 src/Combat/Overlay_0/func_ov000_02178f28.cpp:
     complete
     .text start:0x0217a384 end:0x0217a474
+
+src/Combat/Overlay_0/GetRandomFromObj02160ef8.cpp:
+    complete
+    .text start:0x02162660 end:0x02162668
+
+src/Combat/Overlay_0/GetOffsetPtr02160f00.cpp:
+    complete
+    .text start:0x02162668 end:0x02162674
+
+src/Combat/Overlay_0/GetOffsetPtr02160f08.cpp:
+    complete
+    .text start:0x02162674 end:0x02162680
+
+src/Combat/Overlay_0/GetFieldPtr_02160f14.cpp:
+    complete
+    .text start:0x02162680 end:0x0216268c
+
+src/Combat/Overlay_0/GetSlotPtr02160f20.cpp:
+    complete
+    .text start:0x0216268c end:0x021626cc
+
+src/Combat/Overlay_0/GetSlotPtr02160f60.cpp:
+    complete
+    .text start:0x021626cc end:0x02162708
+
+src/Combat/Overlay_0/GetIntFieldFromOffset5000_02160f9c.cpp:
+    complete
+    .text start:0x02162708 end:0x02162714
+
+src/Combat/Overlay_0/SetCombatWorkFlags0x55f4.cpp:
+    complete
+    .text start:0x02162714 end:0x02162728
+
+src/Combat/Overlay_0/ClearCombatWorkFlags0x55f4.cpp:
+    complete
+    .text start:0x02162728 end:0x02162740
+
+src/Combat/Overlay_0/GetCombatWorkFlags0x55f4.cpp:
+    complete
+    .text start:0x02162740 end:0x02162750
+
+src/Combat/Overlay_0/GetField02163524.cpp:
+    complete
+    .text start:0x02164c88 end:0x02164c90
+
+src/Combat/Overlay_0/StoreThreeFields02167b54.cpp:
+    complete
+    .text start:0x02169290 end:0x02169298

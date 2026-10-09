@@ -38,37 +38,77 @@ struct BgConfig02199780 {
 	unsigned short size : 2;
 };
 
-// USA: func_ov017_02199780  (semantic: ApplyBgConfigAndResetBuffers_02199780)
+// USA: func_ov017_02199780
+// JPN: func_ov017_0219a330
 extern "C" ARM void func_ov017_02199780(unsigned char* self) {
+#if defined(jpn)
+	if (*(int*)(self + 0x3000 + 0xe60) == 0) {
+#else
 	if (*(int*)(self + 0x4000 + 0x80) == 0) {
+#endif
 		return;
 	}
 
+#if defined(jpn)
+	if (*(int*)(self + 0x3000 + 0xe58) != 0) {
+#else
 	if (*(int*)(self + 0x4000 + 0x78) != 0) {
+#endif
 		*(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & ~0x1f00) | 0x100;
 
+#if defined(jpn)
+		int off = *(int*)(self + 0x3000 + 0xe5c);
+#else
 		int off = *(int*)(self + 0x4000 + 0x7c);
+#endif
 		if (off >= 0) {
 			int p = (int)BackgroundLoader::GetInstance();
+#if defined(jpn)
+			((BackgroundLoader*)(p))->RemoveTask((int)(*(int*)(self + 0x3000 + 0xe5c)));
+#else
 			((BackgroundLoader*)(p))->RemoveTask((int)(*(int*)(self + 0x4000 + 0x7c)));
+#endif
 		}
 
 		*(volatile unsigned short*)0x4000050 = 0;
 		*(volatile unsigned short*)0x4000008 = (*(volatile unsigned short*)0x4000008 & ~3) | 1;
 
+#if defined(jpn)
+		BgConfig02199780* bg1 = *(BgConfig02199780**)(self + 0x3000 + 0xa88);
+#else
 		BgConfig02199780* bg1 = *(BgConfig02199780**)(self + 0x3000 + 0xca8);
+#endif
 		SetBg1ControlBits_02199964(bg1->size, bg1->colorMode, bg1->mapBase, bg1->tileBase, bg1->wrap);
 		SetBg1CntPriority_02199998(bg1->priority);
 
+#if defined(jpn)
+		BgConfig02199780* bg2 = *(BgConfig02199780**)(self + 0x3000 + 0xa8c);
+#else
 		BgConfig02199780* bg2 = *(BgConfig02199780**)(self + 0x3000 + 0xcac);
+#endif
 		SetBg2CntFull_021999b4(bg2->size, bg2->colorMode, bg2->mapBase, bg2->tileBase);
 		SetBg2CntPriority_021999e0(bg2->priority);
 
+#if defined(jpn)
+		if (*(int*)(self + 0x3000 + 0xe64) != 0) {
+			ResetAndDetach020dfc6c((Struct020dfc40*)*(int*)(self + 0x3000 + 0xe64));
+			*(int*)(self + 0x3000 + 0xe64) = 0;
+#else
 		if (*(int*)(self + 0x4000 + 0x84) != 0) {
 			ResetAndDetach020dfc6c((Struct020dfc40*)*(int*)(self + 0x4000 + 0x84));
 			*(int*)(self + 0x4000 + 0x84) = 0;
+#endif
 		}
 
+#if defined(jpn)
+		if (*(int*)(self + 0x3000 + 0xe54) != 0) {
+			FillEntriesEncoded_02199684((Entry_02199684*)(self + 0x294 + 0x3800), 2, 0x800);
+			ClearBuffers0204b010OverList0x98(*(Cont0205d1e0**)(self + 0x3000 + 0xa90));
+			CallFunc0204b04cOverList0x98(*(Cont0205d274**)(self + 0x3000 + 0xa90));
+			InitEntries0205d2bc(*(Obj0205d2bc**)(self + 0x3000 + 0xa90));
+			ClearAndEncodeEntries_021996bc((Entry_02199684*)(self + 0x294 + 0x3800), 2);
+			func_0205d048(*(void**)(self + 0x3000 + 0xa90));
+#else
 		if (*(int*)(self + 0x4000 + 0x74) != 0) {
 			FillEntriesEncoded_02199684((Entry_02199684*)(self + 0xb4 + 0x3c00), 2, 0x800);
 			ClearBuffers0204b010OverList0x98(*(Cont0205d1e0**)(self + 0x3000 + 0xcb0));
@@ -76,10 +116,17 @@ extern "C" ARM void func_ov017_02199780(unsigned char* self) {
 			InitEntries0205d2bc(*(Obj0205d2bc**)(self + 0x3000 + 0xcb0));
 			ClearAndEncodeEntries_021996bc((Entry_02199684*)(self + 0xb4 + 0x3c00), 2);
 			func_0205d048(*(void**)(self + 0x3000 + 0xcb0));
+#endif
 
+#if defined(jpn)
+			memset(*(void**)(self + 0x3000 + 0xe54), 0, 0x20);
+			CleanInvalidateCacheRange(*(void**)(self + 0x3000 + 0xe54), 0x20);
+			LoadToMainBG1CharacterData(*(int*)(self + 0x3000 + 0xe54), 0, 0x20);
+#else
 			memset(*(void**)(self + 0x4000 + 0x74), 0, 0x20);
 			CleanInvalidateCacheRange(*(void**)(self + 0x4000 + 0x74), 0x20);
 			LoadToMainBG1CharacterData(*(int*)(self + 0x4000 + 0x74), 0, 0x20);
+#endif
 		}
 
 		*(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & ~0x1f00) | 0x1300;

@@ -1212,3 +1212,35 @@ src/Combat/Overlay_17/func_ov017_021b9bcc.cpp:
 src/Combat/Overlay_17/ProcessEventQueue_021a3ef0.cpp:
     complete
     .text start:0x021a4964 end:0x021a4dcc
+
+src/Combat/Overlay_17/FindOrAllocSlot_021a4658.cpp:
+    complete
+    .text start:0x021a50cc end:0x021a5174
+
+src/Combat/Overlay_17/ClearFlagAndZeroVec3Field_021bd440.cpp:
+    complete
+    .text start:0x021bda38 end:0x021bdac8
+
+src/Combat/Overlay_17/CopyEventFieldsToSlot_021cac7c.cpp:
+    complete
+    .text start:0x021cb12c end:0x021cb358
+
+src/Combat/Overlay_17/CopyShortsIntoField150IfAbsent_021d00c8.cpp:
+    complete
+    .text start:0x021d0578 end:0x021d0614
+
+src/Combat/Overlay_17/StorePackedTacticsInEntry_021cb2f4.cpp:
+    complete
+    .text start:0x021cb7a4 end:0x021cbaa8
+
+src/Combat/Overlay_17/PickTargetChance_021970a0.cpp:
+    complete
+    .text start:0x02197c50 end:0x02197d74
+
+src/Combat/Overlay_17/ApplyBgConfigAndResetBuffers_02199780.cpp:
+    complete
+    .text start:0x0219a330 end:0x0219a514
+
+src/Combat/Overlay_17/SetSubStateAndDispatch_0219de70.cpp:
+    complete
+    .text start:0x0219e960 end:0x0219eaec

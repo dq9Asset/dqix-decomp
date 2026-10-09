@@ -23,7 +23,6 @@
 #define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 #define func_020d1d1c func_020d37e8
 
-#define data_02108760 data_021086a4
 #endif
 
 ModelRenderContext* GetModel3DContext(Model3D* model);

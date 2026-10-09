@@ -15,7 +15,6 @@
 #define _Z19CallWithAddr4000330i func_020c7028
 #define _Z19CallWithAddr4000360i func_020c7040
 
-#define _Z24GetCombatWorkFlags0x55f4Pvi func_ov000_02162740
 
 #define _Z34SetupCombatantAllocations_021901acv func_ov017_02190d90
 #define func_ov017_021b8468 func_ov017_021b8978

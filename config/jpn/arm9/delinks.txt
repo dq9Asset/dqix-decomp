@@ -11884,3 +11884,23 @@ src/Combat/Main/func_0203e0a0.cpp:
 src/Combat/Main/func_0206db48.cpp:
     complete
     .text start:0x0206ec9c end:0x0206eebc
+
+src/Combat/Main/GetCheckedSignedByte.cpp:
+    complete
+    .text start:0x02011288 end:0x020112a8
+
+src/Combat/Main/GetField0x649eForValidIndex.cpp:
+    complete
+    .text start:0x02011814 end:0x02011830
+
+src/Combat/Main/ClearRegion0x649e.cpp:
+    complete
+    .text start:0x02011830 end:0x0201184c
+
+src/Common/FlagBitChecks.cpp:
+    complete
+    .text start:0x0201210c end:0x020121ac
+
+src/Graphics/NSBXX/NameLookup.cpp:
+    complete
+    .text start:0x020b8e38 end:0x020b9160

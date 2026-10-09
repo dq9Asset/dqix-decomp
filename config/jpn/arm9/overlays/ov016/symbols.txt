@@ -4,10 +4,10 @@ func_ov016_0218c1e4 kind:function(arm,size=0x56c) addr:0x0218c1e4
 _Z24SetPowCnt1Bit15_0218bc70i kind:function(arm,size=0x1c) addr:0x0218c750
 _Z30SafeAllocatorAllocate_0218bc8cj kind:function(arm,size=0x1c) addr:0x0218c76c
 _Z26SafeAllocatorFree_0218bca8Pv kind:function(arm,size=0x1c) addr:0x0218c788
-func_ov016_0218c7a4 kind:function(arm,size=0x24) addr:0x0218c7a4
+_Z19IncCounter_0218bcc4v kind:function(arm,size=0x24) addr:0x0218c7a4
 func_ov016_0218c7c8 kind:function(arm,size=0x134) addr:0x0218c7c8
 func_ov016_0218c8fc kind:function(arm,size=0x40) addr:0x0218c8fc
-func_ov016_0218c93c kind:function(arm,size=0x20) addr:0x0218c93c
+_Z27GetSomeConstByFlag_0218be5cv kind:function(arm,size=0x20) addr:0x0218c93c
 func_ov016_0218c95c kind:function(arm,size=0x48) addr:0x0218c95c
 func_ov016_0218c9a4 kind:function(arm,size=0xcc) addr:0x0218c9a4
 func_ov016_0218ca70 kind:function(arm,size=0x28) addr:0x0218ca70
@@ -97,7 +97,7 @@ data_ov016_0219cf14 kind:data(any) addr:0x0219cf14
 data_ov016_0219cf24 kind:data(any) addr:0x0219cf24
 data_ov016_0219cf48 kind:data(any) addr:0x0219cf48
 data_ov016_0219cf6c kind:data(any) addr:0x0219cf6c
-data_ov016_0219cfa0 kind:bss addr:0x0219cfa0
+data_ov016_0219d0c0 kind:bss addr:0x0219cfa0
 data_ov016_0219cfb4 kind:bss addr:0x0219cfb4
 data_ov016_0219cff4 kind:bss addr:0x0219cff4
 data_ov016_0219d020 kind:bss addr:0x0219d020

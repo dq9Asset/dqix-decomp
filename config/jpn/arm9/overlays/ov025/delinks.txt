@@ -749,3 +749,7 @@ src/Combat/Overlay_25/CheckThresholdAndReset_021e30e8.cpp:
 src/Combat/Overlay_25/func_ov025_021e7248.cpp:
     complete
     .text start:0x021e76f8 end:0x021e7758
+
+src/Combat/Overlay_25/func_ov025_021e9558.cpp:
+    complete
+    .text start:0x021e99e8 end:0x021e9c0c

@@ -3144,3 +3144,51 @@ src/Combat/Overlay_17/func_ov017_021ca2f8.cpp:
 src/Combat/Overlay_17/func_ov017_021ce5b4.cpp:
     complete
     .text start:0x021cea5c end:0x021ceabc
+
+src/Combat/Overlay_17/CheckByteFlagsAt4488_021922ac.cpp:
+    complete
+    .text start:0x02192e74 end:0x02192ed4
+
+src/Combat/Overlay_17/GetOffsetForIndex_0219219c.cpp:
+    complete
+    .text start:0x02192d64 end:0x02192dc4
+
+src/Combat/Overlay_17/SetFlagAndSyncVec3_021bd3d4.cpp:
+    complete
+    .text start:0x021bd9cc end:0x021bda38
+
+src/Combat/Overlay_17/CopyRelayoutIfClear_021a7a74.cpp:
+    complete
+    .text start:0x021a8404 end:0x021a846c
+
+src/Combat/Overlay_17/func_ov017_021bd2f0.cpp:
+    complete
+    .text start:0x021bd8e8 end:0x021bd954
+
+src/Combat/Overlay_17/AppendNodeAndSetByte_021b6728.cpp:
+    complete
+    .text start:0x021b6cdc end:0x021b6d44
+
+src/Combat/Overlay_17/ApplyConfigToContext_021cf448.cpp:
+    complete
+    .text start:0x021cf8f8 end:0x021cf960
+
+src/Combat/Overlay_17/func_ov017_021a02f0.cpp:
+    complete
+    .text start:0x021a0da0 end:0x021a0f20
+
+src/Combat/Overlay_17/func_ov017_021d46a4.cpp:
+    complete
+    .text start:0x021d4af8 end:0x021d4d40
+
+src/Combat/Overlay_17/func_ov017_021d15b0.cpp:
+    complete
+    .text start:0x021d1a2c end:0x021d1c94
+
+src/Combat/Overlay_17/func_ov017_021a2fa0.cpp:
+    complete
+    .text start:0x021a3a1c end:0x021a3be0
+
+src/Combat/Overlay_17/func_ov017_021bf9a0.cpp:
+    complete
+    .text start:0x021bff4c end:0x021c01e8

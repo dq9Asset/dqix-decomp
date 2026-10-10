@@ -5688,3 +5688,15 @@ src/Combat/Overlay_31/func_ov031_02245750.cpp:
 src/Combat/Overlay_31/MatchAndStoreEntries_02243348.cpp:
     complete
     .text start:0x02243b28 end:0x02243bb0
+
+src/Combat/Overlay_31/AllocProcessAndDispatch_02223998.cpp:
+    complete
+    .text start:0x02224178 end:0x022241d4
+
+src/Combat/Overlay_31/func_ov031_0220ede4_0220ec5c.cpp:
+    complete
+    .text start:0x0220f43c end:0x0220f4c8
+
+src/Combat/Overlay_31/func_ov031_0223cf4c.cpp:
+    complete
+    .text start:0x02235688 end:0x022356e8

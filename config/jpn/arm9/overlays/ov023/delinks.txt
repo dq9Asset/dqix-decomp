@@ -1808,3 +1808,27 @@ src/Combat/Overlay_23/CheckSlotMatchesBitfield_021e9a9c.cpp:
 src/Combat/Overlay_23/ClearOwnerAndResetList_021f7984.cpp:
     complete
     .text start:0x021f6e7c end:0x021f6edc
+
+src/Combat/Overlay_23/ApplyFieldsToObj_021fb640.cpp:
+    complete
+    .text start:0x021fa9e4 end:0x021faa24
+
+src/Combat/Overlay_23/Unlink_021f6d9c.cpp:
+    complete
+    .text start:0x021f62d8 end:0x021f6314
+
+src/Combat/Overlay_23/func_ov023_021f00fc.cpp:
+    complete
+    .text start:0x021efd08 end:0x021eff68
+
+src/Combat/Overlay_23/func_ov023_021eb578.cpp:
+    complete
+    .text start:0x021eb4dc end:0x021ec2c4
+
+src/Combat/Overlay_23/func_ov023_021e76c4.cpp:
+    complete
+    .text start:0x021e78b4 end:0x021e7d1c
+
+src/Combat/Overlay_23/InitObjWithBitAllocation_021fb534.cpp:
+    complete
+    .text start:0x021fa8dc end:0x021fa9e4

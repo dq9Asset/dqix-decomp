@@ -1741,3 +1741,27 @@ src/Combat/Overlay_1/func_ov001_02158ae4.cpp:
 src/Combat/Overlay_1/func_ov001_0215b72c.cpp:
     complete
     .text start:0x0215cdb0 end:0x0215d048
+
+src/Combat/Overlay_1/func_ov001_02155ca8.cpp:
+    .text start:0x021573d0 end:0x0215747c
+
+src/Combat/Overlay_1/RestoreCombatantPairTables_0215eab0.cpp:
+    .text start:0x02160128 end:0x021601b4
+
+src/Combat/Overlay_1/func_ov001_021567c4.cpp:
+    .text start:0x02157e9c end:0x02157f30
+
+src/Combat/Overlay_1/func_ov001_0215eb3c.cpp:
+    .text start:0x021601b4 end:0x0216030c
+
+src/Combat/Overlay_1/CheckPendingListsAndDispatch_02155bb8.cpp:
+    .text start:0x021572e0 end:0x021573d0
+
+src/Combat/Overlay_1/RescaleOrDestroyCombatantAlloc_02156108.cpp:
+    .text start:0x02157814 end:0x021578ec
+
+src/Combat/Overlay_1/RescaleOrReleaseCombatantAlloc_02154e40.cpp:
+    .text start:0x021565c0 end:0x021566a4
+
+src/Combat/Overlay_1/TriggerEffectAndResetCombatant_021564b0.cpp:
+    .text start:0x02157bbc end:0x02157c40

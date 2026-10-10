@@ -1580,3 +1580,87 @@ src/Combat/Overlay_1/UpdateCounterAndSetFlag_0215b318.cpp:
 src/Combat/Overlay_1/func_ov001_02160504.cpp:
     complete
     .text start:0x02161b18 end:0x02161be8
+
+src/Combat/Overlay_1/GetNibbleAt56b.cpp:
+    complete
+    .text start:0x021628c0 end:0x021628dc
+
+src/Combat/Overlay_1/Function_021622d0.cpp:
+    complete
+    .text start:0x021638e8 end:0x02163908
+
+src/Combat/Overlay_1/StoreField_02161d2c_02161d2c.cpp:
+    complete
+    .text start:0x02163340 end:0x02163368
+
+src/Combat/Overlay_1/SetFlagFromField424Nonzero_02163c28.cpp:
+    complete
+    .text start:0x021651b4 end:0x021651ec
+
+src/Combat/Overlay_1/SetBattleFlagField5cac_0215b040.cpp:
+    complete
+    .text start:0x0215c6c4 end:0x0215c6dc
+
+src/Combat/Overlay_1/ClearByteAt5cac_0215b058.cpp:
+    complete
+    .text start:0x0215c6dc end:0x0215c6f8
+
+src/Combat/Overlay_1/SyncField11cFromField284_02162210.cpp:
+    complete
+    .text start:0x02163828 end:0x02163864
+
+src/Combat/Overlay_1/NotifyFieldCheck734_02163164.cpp:
+    complete
+    .text start:0x021646f0 end:0x02164730
+
+src/Combat/Overlay_1/SetLinkedFieldsIfValid_0216089c.cpp:
+    complete
+    .text start:0x02161eb0 end:0x02161efc
+
+src/Combat/Overlay_1/SetNodeFlagIfIdMatches_02161db0.cpp:
+    complete
+    .text start:0x021633c4 end:0x02163414
+
+src/Combat/Overlay_1/ForwardCombatantOrFallback_02161930.cpp:
+    complete
+    .text start:0x02162f44 end:0x02162f9c
+
+src/Combat/Overlay_1/DispatchFieldOrDefault_02161a1c.cpp:
+    complete
+    .text start:0x02163030 end:0x02163074
+
+src/Combat/Overlay_1/AllocateAndInitNode_021619bc.cpp:
+    complete
+    .text start:0x02162fd0 end:0x02163030
+
+src/Combat/Overlay_1/ClearGlobalField1584_0215fef4.cpp:
+    complete
+    .text start:0x02161508 end:0x02161524
+
+src/Combat/Overlay_1/StoreField99c_021608e8.cpp:
+    complete
+    .text start:0x02161efc end:0x02161f18
+
+src/Combat/Overlay_1/SetFlagInIndirectField_02163dc8.cpp:
+    complete
+    .text start:0x02165354 end:0x02165378
+
+src/Combat/Overlay_1/ClearGlobalByte9b1_0215e4f0.cpp:
+    complete
+    .text start:0x0215fb6c end:0x0215fb90
+
+src/Combat/Overlay_1/ClearGlobalByte9b2_0215e564.cpp:
+    complete
+    .text start:0x0215fbe0 end:0x0215fc04
+
+src/Combat/Overlay_1/SetFieldFromGlobal9a0_0215e3e8.cpp:
+    complete
+    .text start:0x0215fa64 end:0x0215fa90
+
+src/Combat/Overlay_1/SetFieldFromGlobalByte_0215e3b8_0215e3b8.cpp:
+    complete
+    .text start:0x0215fa34 end:0x0215fa64
+
+src/Combat/Overlay_1/SetShortField734_0215f9dc.cpp:
+    complete
+    .text start:0x02160ff0 end:0x02161024

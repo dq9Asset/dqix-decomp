@@ -7572,7 +7572,7 @@ data_02108ff4 kind:bss addr:0x02108f38
 data_02109014 kind:bss addr:0x02108f58
 data_02109020 kind:bss addr:0x02108f64
 data_02109030 kind:bss addr:0x02108f74
-data_021090b4 kind:bss addr:0x021090b4
+data_02109400 kind:bss addr:0x021090b4
 data_02109404 kind:bss addr:0x021090bc
 data_02109418 kind:bss addr:0x021090d0
 data_021090d4 kind:bss addr:0x021090d4

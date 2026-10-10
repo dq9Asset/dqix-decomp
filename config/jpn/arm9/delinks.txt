@@ -13977,3 +13977,99 @@ src/Combat/Main/func_020732cc.cpp:
 src/Combat/Main/func_0207dcf0.cpp:
     complete
     .text start:0x0207ea70 end:0x0207eb70
+
+src/Combat/Main/ClearByte0x63d6.cpp:
+    complete
+    .text start:0x02011330 end:0x02011340
+
+src/Combat/Main/GetGlobalField0x1c020421a0.cpp:
+    complete
+    .text start:0x02042940 end:0x02042950
+
+src/Combat/Main/GetData02107800Word0.cpp:
+    complete
+    .text start:0x02042e94 end:0x02042ea4
+
+src/Combat/Main/GetField0x19cOrNull.cpp:
+    complete
+    .text start:0x02055138 end:0x02055148
+
+src/Combat/Main/GetGlobal02109400.cpp:
+    complete
+    .text start:0x020952d4 end:0x020952e4
+
+src/Combat/Main/GetFlag0x5cccBit0.cpp:
+    complete
+    .text start:0x020112e0 end:0x020112f4
+
+src/Combat/Main/TestFlagBitAt0x2744.cpp:
+    complete
+    .text start:0x0201bd38 end:0x0201bd4c
+
+src/Combat/Main/SetFlag0x9c6.cpp:
+    complete
+    .text start:0x02020ff0 end:0x02021004
+
+src/Combat/Main/IsByte0x63d6Set.cpp:
+    complete
+    .text start:0x02011300 end:0x02011318
+
+src/Combat/Main/CheckBitsInField0x63dc.cpp:
+    complete
+    .text start:0x020118c8 end:0x020118e0
+
+src/Combat/Main/StoreInArray0x8b0.cpp:
+    complete
+    .text start:0x02047460 end:0x02047478
+
+src/Combat/Main/SetByteAtIndex.cpp:
+    complete
+    .text start:0x02047478 end:0x02047490
+
+src/Combat/Main/SetByteInRange.cpp:
+    complete
+    .text start:0x02047490 end:0x020474a8
+
+src/Combat/Main/GetField150Ptr0x488.cpp:
+    complete
+    .text start:0x020541e4 end:0x020541fc
+
+src/Combat/Main/GetField150Ptr0x488_02052e2c.cpp:
+    complete
+    .text start:0x020541fc end:0x02054214
+
+src/Combat/Main/CheckSubstructByte0x7cPositive.cpp:
+    complete
+    .text start:0x02054940 end:0x02054958
+
+src/Combat/Main/GetField0Low12Times60.cpp:
+    complete
+    .text start:0x0207aa14 end:0x0207aa2c
+
+src/Combat/Main/SetByte0x5cdaAndClearField0xa.cpp:
+    complete
+    .text start:0x02011e50 end:0x02011e6c
+
+src/Combat/Main/CopyStringToField0x3ac.cpp:
+    complete
+    .text start:0x020473bc end:0x020473d8
+
+src/Combat/Main/CopyStringToField0x3ec.cpp:
+    complete
+    .text start:0x020473d8 end:0x020473f4
+
+src/Combat/Main/GetHalfwordEntryFromField150.cpp:
+    complete
+    .text start:0x020541c8 end:0x020541e4
+
+src/Combat/Main/SetPointerFields02053c4c.cpp:
+    complete
+    .text start:0x02054fc4 end:0x02054fe4
+
+src/Combat/Main/SetAndClearField0x19c.cpp:
+    complete
+    .text start:0x02055118 end:0x02055138
+
+src/Combat/Main/GetElementStride0x318.cpp:
+    complete
+    .text start:0x020283fc end:0x02028420

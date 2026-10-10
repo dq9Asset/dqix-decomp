@@ -800,3 +800,11 @@ src/Combat/Overlay_4/DecrementCounterAndNotify_021599b4.cpp:
 src/Combat/Overlay_4/func_ov004_0216f788.cpp:
     complete
     .text start:0x0216fe1c end:0x0216feb8
+
+src/Combat/Overlay_4/SetGlobalFieldTo1_02165bb8_02165bb8.cpp:
+    complete
+    .text start:0x02166448 end:0x02166460
+
+src/Combat/Overlay_4/SetOv011FieldAndFlags_0216f824.cpp:
+    complete
+    .text start:0x0216feb8 end:0x0216fee8

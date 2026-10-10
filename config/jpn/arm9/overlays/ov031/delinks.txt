@@ -5676,3 +5676,7 @@ src/Combat/Overlay_31/SetField_022274c0_022274c0_02231058.cpp:
 src/Combat/Overlay_31/DoNothing_02231084.cpp:
     complete
     .text start:0x02231864 end:0x02231868
+
+src/Combat/Overlay_31/func_ov031_02243144.cpp:
+    complete
+    .text start:0x02243924 end:0x02243ae0

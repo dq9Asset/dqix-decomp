@@ -1728,3 +1728,31 @@ src/Combat/Overlay_23/AccumulateBlendDeltas_021e96a8.cpp:
 src/Combat/Overlay_23/func_ov023_021fc518.cpp:
     complete
     .text start:0x021fb810 end:0x021fb9c4
+
+src/Combat/Overlay_23/StoreCombatantFieldByIndex_021e94cc.cpp:
+    complete
+    .text start:0x021e9430 end:0x021e960c
+
+src/Combat/Overlay_23/func_ov023_021f78a4.cpp:
+    complete
+    .text start:0x021f6d9c end:0x021f6e7c
+
+src/Combat/Overlay_23/func_ov023_021f7aac.cpp:
+    complete
+    .text start:0x021f6fa4 end:0x021f7090
+
+src/Combat/Overlay_23/func_ov023_021f6ac8.cpp:
+    complete
+    .text start:0x021f6004 end:0x021f60e4
+
+src/Combat/Overlay_23/func_ov023_021f7784.cpp:
+    complete
+    .text start:0x021f6c7c end:0x021f6d5c
+
+src/Combat/Overlay_23/func_ov023_021f5150.cpp:
+    complete
+    .text start:0x021f4728 end:0x021f4800
+
+src/Combat/Overlay_23/func_ov023_021f7b98.cpp:
+    complete
+    .text start:0x021f7090 end:0x021f7160

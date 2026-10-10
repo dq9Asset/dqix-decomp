@@ -857,3 +857,6 @@ src/Combat/Overlay_4/GetFlagBitFromField150_0215eb20.cpp:
 
 src/Combat/Overlay_4/SyncFlagAndNotify_0216e8f0.cpp:
     .text start:0x0216ef90 end:0x0216f024
+
+src/Combat/Overlay_4/DispatchNodeIfEligible_02162b84.cpp:
+    .text start:0x02163220 end:0x021632cc

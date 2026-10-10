@@ -14305,3 +14305,99 @@ src/Combat/Main/InitBattleContext0203bd24.cpp:
 src/Combat/Main/FindNthType2Entry02018c20.cpp:
     complete
     .text start:0x020189c0 end:0x02018a14
+
+src/Combat/Main/CancelPendingAction020397cc.cpp:
+    complete
+    .text start:0x02039224 end:0x02039278
+
+src/Combat/Main/CallFunc0204c804OnNonMatchingKey.cpp:
+    complete
+    .text start:0x0208092c end:0x02080980
+
+src/Combat/Main/SetFlagBitAndNotifyOverlay17.cpp:
+    complete
+    .text start:0x020affb8 end:0x020b0008
+
+src/Combat/Main/UpdateStringField02023b0c.cpp:
+    complete
+    .text start:0x020234d4 end:0x02023524
+
+src/Combat/Main/AccumulateSlotBits02085c80.cpp:
+    complete
+    .text start:0x020865a0 end:0x020865f0
+
+src/Combat/Main/ReleaseField0x38IfValid020444e0.cpp:
+    complete
+    .text start:0x02044c0c end:0x02044c5c
+
+src/Combat/Main/CheckActiveState020db3a8.cpp:
+    complete
+    .text start:0x020dcdb0 end:0x020dcdfc
+
+src/Combat/Main/MarkActiveCombatantSlots02026b7c.cpp:
+    complete
+    .text start:0x020264e0 end:0x0202652c
+
+src/Combat/Main/CallFunc0204c87cOverEntries0207fc6c.cpp:
+    complete
+    .text start:0x020807a8 end:0x020807f4
+
+src/Combat/Main/Init020d9ae8.cpp:
+    complete
+    .text start:0x020db4ec end:0x020db538
+
+src/Combat/Main/FindSlotWithNegShort02010954.cpp:
+    complete
+    .text start:0x020107b0 end:0x020107f8
+
+src/Combat/Main/ProcessPendingFlag02045688.cpp:
+    complete
+    .text start:0x020462f8 end:0x02046340
+
+src/Combat/Main/ClearAllBuffers0207fcb8.cpp:
+    complete
+    .text start:0x020807f4 end:0x0208083c
+
+src/Combat/Main/FindInlineEntryById.cpp:
+    complete
+    .text start:0x02028420 end:0x02028464
+
+src/Combat/Main/InitBattleObject0203c2c0.cpp:
+    complete
+    .text start:0x0203c420 end:0x0203c464
+
+src/Combat/Main/CallFunc0204b04cOverList0x2c.cpp:
+    complete
+    .text start:0x02080880 end:0x020808c4
+
+src/Combat/Main/func_02019728.cpp:
+    complete
+    .text start:0x020194c8 end:0x02019cc4
+
+src/Combat/Main/func_0201874c.cpp:
+    complete
+    .text start:0x020184ec end:0x020186b8
+
+src/Combat/Main/func_02097ec8.cpp:
+    complete
+    .text start:0x02099b18 end:0x02099cd0
+
+src/Combat/Main/func_02018918.cpp:
+    complete
+    .text start:0x020186b8 end:0x02018858
+
+src/Combat/Main/func_020339c8.cpp:
+    complete
+    .text start:0x02033500 end:0x02033690
+
+src/Combat/Main/func_020a88e8.cpp:
+    complete
+    .text start:0x020aa66c end:0x020aa7b8
+
+src/Combat/Main/func_02054028.cpp:
+    complete
+    .text start:0x020553a0 end:0x020554e4
+
+src/Combat/Main/func_020a8b0c.cpp:
+    complete
+    .text start:0x020aa890 end:0x020aa9d0

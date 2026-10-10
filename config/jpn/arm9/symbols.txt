@@ -88,7 +88,7 @@ func_02008848 kind:function(arm,size=0x55c) addr:0x02008764
 func_02008da4 kind:function(arm,size=0x28) addr:0x02008cc0
 func_02008dcc kind:function(arm,size=0x170) addr:0x02008ce8
 func_02008f3c kind:function(arm,size=0x20) addr:0x02008e58
-func_02008e78 kind:function(arm,size=0x1c0) addr:0x02008e78
+func_02008f5c kind:function(arm,size=0x1c0) addr:0x02008e78
 func_0200911c kind:function(arm,size=0xbc) addr:0x02009038
 func_020091d8 kind:function(arm,size=0x24c) addr:0x020090f4
 func_02009424 kind:function(arm,size=0x174) addr:0x02009340
@@ -310,7 +310,7 @@ _Z19ClearHalfword0x63daPv kind:function(arm,size=0x10) addr:0x020113a4
 _ZN9GameState26GetTreasureMapLanguageDataEv kind:function(arm,size=0xc) addr:0x020113b4
 _ZN9GameState29SetTreasureMapLanguageDataPtrEPh kind:function(arm,size=0xc) addr:0x020113c0
 func_020113cc kind:function(arm,size=0x6c) addr:0x020113cc
-func_02011438 kind:function(arm,size=0x70) addr:0x02011438
+_Z30ClearAllTreasureMapUnknownBitsPv kind:function(arm,size=0x70) addr:0x02011438
 _ZN9GameState15GetGrottoStructEv kind:function(arm,size=0xc) addr:0x020114a8
 func_020114b4 kind:function(arm,size=0x88) addr:0x020114b4
 func_0201153c kind:function(arm,size=0x24) addr:0x0201153c
@@ -319,7 +319,7 @@ _Z25ReadBattleField0x64f4Bytev kind:function(arm,size=0x14) addr:0x02011574
 func_02011588 kind:function(arm,size=0xe4) addr:0x02011588
 func_0201166c kind:function(arm,size=0x34) addr:0x0201166c
 _Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_ kind:function(arm,size=0x9c) addr:0x020116a0
-func_0201173c kind:function(arm,size=0xc) addr:0x0201173c
+_Z13GetByte0x646dPv kind:function(arm,size=0xc) addr:0x0201173c
 func_02011748 kind:function(arm,size=0x10) addr:0x02011748
 func_02011758 kind:function(arm,size=0x10) addr:0x02011758
 func_02011768 kind:function(arm,size=0x2c) addr:0x02011768
@@ -466,7 +466,7 @@ func_02017098 kind:function(arm,size=0x170) addr:0x02016e38
 func_02016fa8 kind:function(arm,size=0x104) addr:0x02016fa8
 func_020170ac kind:function(arm,size=0x234) addr:0x020170ac
 func_020172e0 kind:function(arm,size=0x23c) addr:0x020172e0
-func_0201751c kind:function(arm,size=0x2c) addr:0x0201751c
+_Z20GetActorEntryByIndexP16ActorListManageri kind:function(arm,size=0x2c) addr:0x0201751c
 _Z20GetElementStride0x24Phi kind:function(arm,size=0x2c) addr:0x02017548
 func_020177d4 kind:function(arm,size=0x2c0) addr:0x02017574
 func_02017834 kind:function(arm,size=0x1c4) addr:0x02017834
@@ -1316,9 +1316,9 @@ func_02039280 kind:function(arm,size=0x8) addr:0x02039280
 _Z25CopyByteField0x253To0x252Pv kind:function(arm,size=0xc) addr:0x02039288
 func_02039294 kind:function(arm,size=0x14) addr:0x02039294
 func_020392a8 kind:function(arm,size=0x8) addr:0x020392a8
-func_020392b0 kind:function(arm,size=0x8) addr:0x020392b0
+_Z12SetByte0x1c8Phh kind:function(arm,size=0x8) addr:0x020392b0
 func_020392b8 kind:function(arm,size=0xc) addr:0x020392b8
-func_020392c4 kind:function(arm,size=0x8) addr:0x020392c4
+_Z12SetByte0x1c9Phh kind:function(arm,size=0x8) addr:0x020392c4
 _Z18GetSignedByte0x1c9Pv kind:function(arm,size=0xc) addr:0x020392cc
 func_020392d8 kind:function(arm,size=0x8) addr:0x020392d8
 _Z18GetSignedByte0x1caPv kind:function(arm,size=0xc) addr:0x020392e0
@@ -1765,7 +1765,7 @@ _Z28FindEntryIndexByName020480b8P13Table020480b8Pc kind:function(arm,size=0x4c) 
 _Z20SetFlag0x20002048104P11Obj02048104 kind:function(arm,size=0x1c) addr:0x02048f24
 _Z24SetFlag0x40Clear02048120P11Obj02048120 kind:function(arm,size=0x24) addr:0x02048f40
 _Z15Forward02048144Pv kind:function(arm,size=0xc) addr:0x02048f64
-func_02048f70 kind:function(arm,size=0xd8) addr:0x02048f70
+func_02048150 kind:function(arm,size=0xd8) addr:0x02048f70
 _Z20RestoreMaxHpByAmountP17Combatant02048228i kind:function(arm,size=0x38) addr:0x02049048
 _Z18RestoreMaxHpToFullP17Combatant02048260 kind:function(arm,size=0x24) addr:0x02049080
 _Z20RestoreMaxMpByAmountP17Combatant02048284i kind:function(arm,size=0x38) addr:0x020490a4
@@ -2041,8 +2041,8 @@ _Z19GetField0x19cOrNullP9S02053dc0 kind:function(arm,size=0x10) addr:0x02055138
 func_02055148 kind:function(arm,size=0x2c) addr:0x02055148
 func_02055174 kind:function(arm,size=0x14) addr:0x02055174
 func_02055188 kind:function(arm,size=0xa4) addr:0x02055188
-func_0205522c kind:function(arm,size=0xc) addr:0x0205522c
-func_02055238 kind:function(arm,size=0x8) addr:0x02055238
+_Z19GetByteFieldAt0x1a0Pvi kind:function(arm,size=0xc) addr:0x0205522c
+_Z19SetByteFieldAt0x1a7Phh kind:function(arm,size=0x8) addr:0x02055238
 _Z13SetField0x158Pvi kind:function(arm,size=0x8) addr:0x02055240
 _Z13GetField0x158Pv kind:function(arm,size=0x8) addr:0x02055248
 func_02055250 kind:function(arm,size=0x2c) addr:0x02055250
@@ -2832,7 +2832,7 @@ func_0207d134 kind:function(arm,size=0xcc) addr:0x0207df6c
 _Z22UpdateKeyValue0207d200P11Obj0207d200si kind:function(arm,size=0xc4) addr:0x0207e038
 func_0207d2c4 kind:function(arm,size=0x3c) addr:0x0207e0fc
 func_0207d300 kind:function(arm,size=0x238) addr:0x0207e138
-func_0207e370 kind:function(arm,size=0x114) addr:0x0207e370
+func_0207d538 kind:function(arm,size=0x114) addr:0x0207e370
 _Z35InitAllocatorAndLoadGp2File0207d6dcP13SafeAllocatorii kind:function(arm,size=0x88) addr:0x0207e484
 _Z15GetData02108ea8v kind:function(arm,size=0xc) addr:0x0207e50c
 _Z23InitStructArray0207d798P12Init0207d7c0 kind:function(arm,size=0x28) addr:0x0207e518
@@ -3043,7 +3043,7 @@ _Z15TestBit0At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085998
 _Z15TestBit1At0x2f4Ph kind:function(arm,size=0x2c) addr:0x020859c4
 _Z15TestBit2At0x2f4Ph kind:function(arm,size=0x2c) addr:0x020859f0
 _Z15TestBit3At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085a1c
-func_02085a48 kind:function(arm,size=0x2c) addr:0x02085a48
+_Z15TestBit4At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085a48
 _Z15TestBit5At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085a74
 _Z15TestBit6At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085aa0
 _Z15TestBit7At0x2f4Ph kind:function(arm,size=0x2c) addr:0x02085acc
@@ -3080,7 +3080,7 @@ _Z27GetPackedRateModifierField2Pc kind:function(arm,size=0x38) addr:0x020862c0
 _Z27GetPackedRateModifierField3Pc kind:function(arm,size=0x38) addr:0x020862f8
 _Z27GetPackedRateModifierField4Pc kind:function(arm,size=0x38) addr:0x02086330
 _Z21GetField0x304ScaleLowP13Actor02085a48 kind:function(arm,size=0x38) addr:0x02086368
-func_020863a0 kind:function(arm,size=0x38) addr:0x020863a0
+_Z21GetField0x304ScaleMidP13Actor02085a80 kind:function(arm,size=0x38) addr:0x020863a0
 _Z34AccumulateCategorySlotBits02085ab8PhP12Param2085ab8 kind:function(arm,size=0xd0) addr:0x020863d8
 _Z26AccumulateSlotBits02085b88Ph kind:function(arm,size=0x80) addr:0x020864a8
 _Z26AccumulateSlotBits02085c08Ph kind:function(arm,size=0x78) addr:0x02086528
@@ -3738,7 +3738,7 @@ _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i kind:function(arm,size=0x3
 _Z23FindActiveEntry0209bdc8P17Container0209bdc8ij kind:function(arm,size=0x60) addr:0x0209db40
 _Z21SetEntryField0209be28P18EntryTable0209bd94iPi kind:function(arm,size=0x1c) addr:0x0209dba0
 _Z22AppendSubEntry0209be44P18EntryTable0209bd94iP16SubEntry0209be44 kind:function(arm,size=0x40) addr:0x0209dbbc
-func_0209dbfc kind:function(arm,size=0x54) addr:0x0209dbfc
+_Z20FindSubEntry0209be84P18EntryTable0209bd94ji kind:function(arm,size=0x54) addr:0x0209dbfc
 func_0209bed8 kind:function(arm,size=0x124) addr:0x0209dc50
 _Z17ClearHalfword0x18Pv kind:function(arm,size=0xc) addr:0x0209dd74
 func_0209c008 kind:function(arm,size=0x84) addr:0x0209dd80
@@ -4153,7 +4153,7 @@ func_020ab7a8 kind:function(arm,size=0x218) addr:0x020ad270
 _Z21CheckSaveBufferStatusi kind:function(arm,size=0x9c) addr:0x020ad488
 _Z35SendShortBufferOrReturnZero020aba5ci kind:function(arm,size=0x8c) addr:0x020ad524
 _Z22SendBufferOrReturnZeroi kind:function(arm,size=0x7c) addr:0x020ad5b0
-func_020ad62c kind:function(arm,size=0x144) addr:0x020ad62c
+func_020abb64 kind:function(arm,size=0x144) addr:0x020ad62c
 _Z39AllocateAndProcessScratchBuffer020abca8v kind:function(arm,size=0x78) addr:0x020ad770
 func_020ad7e8 kind:function(arm,size=0x168) addr:0x020ad7e8
 func_020ad950 kind:function(arm,size=0xb4) addr:0x020ad950
@@ -6525,8 +6525,8 @@ data_020ef464 kind:data(any) addr:0x020ef464
 data_020ef469 kind:data(any) addr:0x020ef469
 data_020ef46e kind:data(any) addr:0x020ef46e
 data_020ef475 kind:data(any) addr:0x020ef475
-data_020ef478 kind:data(any) addr:0x020ef478
-data_020ef480 kind:data(any) addr:0x020ef480
+data_020ef587 kind:data(any) addr:0x020ef478
+data_020ef58f kind:data(any) addr:0x020ef480
 data_020ef598 kind:data(any) addr:0x020ef489
 data_020ef5a5 kind:data(any) addr:0x020ef496
 data_020ef5b9 kind:data(any) addr:0x020ef4aa
@@ -7265,7 +7265,7 @@ data_020f1bbc kind:data(any) addr:0x020f1d28
 data_020f1d40 kind:data(any) addr:0x020f1d40
 data_020f1d54 kind:data(any) addr:0x020f1d54
 data_020f1bf0 kind:data(any) addr:0x020f1d5c
-data_020f1d64 kind:data(any) addr:0x020f1d64
+data_020f1bf8 kind:data(any) addr:0x020f1d64
 data_020f1d74 kind:data(any) addr:0x020f1d74
 data_020f1d8c kind:data(any) addr:0x020f1d8c
 data_020f1da4 kind:data(any) addr:0x020f1da4

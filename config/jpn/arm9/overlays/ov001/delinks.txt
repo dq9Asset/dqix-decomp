@@ -1664,3 +1664,60 @@ src/Combat/Overlay_1/SetFieldFromGlobalByte_0215e3b8_0215e3b8.cpp:
 src/Combat/Overlay_1/SetShortField734_0215f9dc.cpp:
     complete
     .text start:0x02160ff0 end:0x02161024
+
+src/Combat/Overlay_1/SetOrClearBit0_02160904.cpp:
+    .text start:0x02161f18 end:0x02161f4c
+
+src/Combat/Overlay_1/SetWorkFlagField105Bit0_02161988.cpp:
+    .text start:0x02162f9c end:0x02162fd0
+
+src/Combat/Overlay_1/ForwardField_02161a90_02161a90.cpp:
+    .text start:0x021630a4 end:0x021630cc
+
+src/Combat/Overlay_1/SetLinkedByteFromOv17_02163200.cpp:
+    .text start:0x0216478c end:0x021647b4
+
+src/Combat/Overlay_1/SetFieldFromOv17Result_021631a4.cpp:
+    .text start:0x02164730 end:0x0216475c
+
+src/Combat/Overlay_1/SetFieldFromGlobalPtryte_0215e414_0215e414.cpp:
+    .text start:0x0215fa90 end:0x0215fac0
+
+src/Combat/Overlay_1/SetByteFieldFe_021630f4.cpp:
+    .text start:0x02164680 end:0x021646b4
+
+src/Combat/Overlay_1/FormatFieldD8_021613d0.cpp:
+    .text start:0x021629e4 end:0x02162a1c
+
+src/Combat/Overlay_1/SetGlobalFlagBit2_0215e53c.cpp:
+    .text start:0x0215fbb8 end:0x0215fbe0
+
+src/Combat/Overlay_1/SetGlobalFlagBit_0215e588_0215e588.cpp:
+    .text start:0x0215fc04 end:0x0215fc2c
+
+src/Combat/Overlay_1/SetGlobalFlagBit_0215e514.cpp:
+    .text start:0x0215fb90 end:0x0215fbb8
+
+src/Combat/Overlay_1/ClearFieldAndPopStack_02161a60.cpp:
+    .text start:0x02163074 end:0x021630a4
+
+src/Combat/Overlay_1/ClearWorkByte_021631d0_021631d0.cpp:
+    .text start:0x0216475c end:0x0216478c
+
+src/Combat/Overlay_1/PackValuesIntoBitfield_02161374.cpp:
+    .text start:0x02162988 end:0x021629e4
+
+src/Combat/Overlay_1/SetGlobalFlagAndField9a8_0215e4b4.cpp:
+    .text start:0x0215fb30 end:0x0215fb6c
+
+src/Combat/Overlay_1/func_ov001_02161ab8.cpp:
+    .text start:0x021630cc end:0x021632fc
+
+src/Combat/Overlay_1/func_ov001_0215b074.cpp:
+    .text start:0x0215c6f8 end:0x0215c950
+
+src/Combat/Overlay_1/func_ov001_02162db0.cpp:
+    .text start:0x0216433c end:0x02164518
+
+src/Combat/Overlay_1/func_ov001_02160da8.cpp:
+    .text start:0x021623bc end:0x021628c0

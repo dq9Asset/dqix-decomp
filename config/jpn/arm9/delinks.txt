@@ -14073,3 +14073,67 @@ src/Combat/Main/SetAndClearField0x19c.cpp:
 src/Combat/Main/GetElementStride0x318.cpp:
     complete
     .text start:0x020283fc end:0x02028420
+
+src/Combat/Main/ProcessPendingSubStates.cpp:
+    complete
+    .text start:0x02040e0c end:0x02040eac
+
+src/Combat/Main/PropagateValueToActiveSlot02040b2c.cpp:
+    complete
+    .text start:0x02041028 end:0x020410c8
+
+src/Combat/Main/func_02065418.cpp:
+    complete
+    .text start:0x020666f4 end:0x02066794
+
+src/Combat/Main/CheckAndApplyDebugCode020ac910.cpp:
+    complete
+    .text start:0x020ae3dc end:0x020ae478
+
+src/Combat/Main/PollFlagAndFinalizeState_0202b1f4.cpp:
+    complete
+    .text start:0x0202ada4 end:0x0202ae34
+
+src/Combat/Main/NotifyOv017OnFlag0x1130.cpp:
+    complete
+    .text start:0x020aa4c4 end:0x020aa550
+
+src/Combat/Main/FilterByTypeAndBytes020a86b8.cpp:
+    complete
+    .text start:0x020aa43c end:0x020aa4c4
+
+src/Combat/Main/ProcessNodeFlags02019678.cpp:
+    complete
+    .text start:0x02019418 end:0x0201949c
+
+src/Combat/Main/SetBattleFlagBits020ac3c8.cpp:
+    complete
+    .text start:0x020ade94 end:0x020adf2c
+
+src/Combat/Main/AccumulateDistanceAndDecay020a7ce0.cpp:
+    complete
+    .text start:0x020a9a64 end:0x020a9af8
+
+src/Combat/Main/FindEntryByNodeIdAndKey.cpp:
+    complete
+    .text start:0x020188d4 end:0x02018964
+
+src/Combat/Main/SyncMainSubOam0203bdb0.cpp:
+    complete
+    .text start:0x0203b808 end:0x0203b898
+
+src/Combat/Main/BinarySearchByComparator02079e60.cpp:
+    complete
+    .text start:0x0207ac98 end:0x0207ad18
+
+src/Combat/Main/FormatAndCopyNames02020b98.cpp:
+    complete
+    .text start:0x020207b4 end:0x02020834
+
+src/Combat/Main/AccumulateSlotBits02085b88.cpp:
+    complete
+    .text start:0x020864a8 end:0x02086528
+
+src/Combat/Main/CollectSetBitIndices.cpp:
+    complete
+    .text start:0x0208435c end:0x020843d8

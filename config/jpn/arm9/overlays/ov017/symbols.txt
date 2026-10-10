@@ -39,7 +39,7 @@ func_ov017_0218ebb8 kind:function(arm,size=0x238) addr:0x0218ebb8
 func_ov017_0218edf0 kind:function(arm,size=0x464) addr:0x0218edf0
 func_ov017_0218f254 kind:function(arm,size=0x254) addr:0x0218f254
 func_ov017_0218e8c8 kind:function(arm,size=0x234) addr:0x0218f4a8
-func_ov017_0218f6dc kind:function(arm,size=0x568) addr:0x0218f6dc
+func_ov017_0218eafc kind:function(arm,size=0x568) addr:0x0218f6dc
 func_ov017_0218f064 kind:function(arm,size=0x514) addr:0x0218fc44
 func_ov017_02190158 kind:function(arm,size=0x8) addr:0x02190158
 func_ov017_02190160 kind:function(arm,size=0x28) addr:0x02190160
@@ -88,8 +88,8 @@ _Z42SetFlag1ForFlagombatants_02192594_02192594v kind:function(arm,size=0x4c) add
 func_ov017_021925e0 kind:function(arm,size=0x74) addr:0x021931a8
 func_ov017_02192654 kind:function(arm,size=0xac) addr:0x0219321c
 func_ov017_021932c8 kind:function(arm,size=0x448) addr:0x021932c8
-func_ov017_02193710 kind:function(arm,size=0x748) addr:0x02193710
-func_ov017_02193e58 kind:function(arm,size=0x198) addr:0x02193e58
+func_ov017_02192b48 kind:function(arm,size=0x748) addr:0x02193710
+func_ov017_02193290 kind:function(arm,size=0x198) addr:0x02193e58
 _Z31DispatchWithZeroExtras_02193428PvS_ kind:function(arm,size=0x24) addr:0x02193ff0
 func_ov017_0219344c kind:function(arm,size=0x978) addr:0x02194014
 func_ov017_0219498c kind:function(arm,size=0x37c) addr:0x0219498c
@@ -553,7 +553,7 @@ func_ov017_021b5db0 kind:function(arm,size=0xbc) addr:0x021b5db0
 func_ov017_021b58b8 kind:function(arm,size=0x16c) addr:0x021b5e6c
 _Z17TailCall_021b5a24Pv kind:function(arm,size=0xc) addr:0x021b5fd8
 func_ov017_021b5a30 kind:function(arm,size=0xbc) addr:0x021b5fe4
-func_ov017_021b60a0 kind:function(arm,size=0x19c) addr:0x021b60a0
+func_ov017_021b5aec kind:function(arm,size=0x19c) addr:0x021b60a0
 func_ov017_021b623c kind:function(arm,size=0x70) addr:0x021b623c
 func_ov017_021b5cf8 kind:function(arm,size=0xcc) addr:0x021b62ac
 func_ov017_021b5dc4 kind:function(arm,size=0x13c) addr:0x021b6378
@@ -821,7 +821,7 @@ func_ov017_021c616c kind:function(arm,size=0xe8) addr:0x021c661c
 func_ov017_021c6254 kind:function(arm,size=0x90) addr:0x021c6704
 func_ov017_021c6794 kind:function(arm,size=0x94) addr:0x021c6794
 func_ov017_021c6378 kind:function(arm,size=0x1bc) addr:0x021c6828
-func_ov017_021c69e4 kind:function(arm,size=0x1b4) addr:0x021c69e4
+func_ov017_021c6534 kind:function(arm,size=0x1b4) addr:0x021c69e4
 func_ov017_021c66e8 kind:function(arm,size=0x9c) addr:0x021c6b98
 func_ov017_021c6c34 kind:function(arm,size=0x90) addr:0x021c6c34
 func_ov017_021c6814 kind:function(arm,size=0xd4) addr:0x021c6cc4
@@ -876,7 +876,7 @@ func_ov017_021c90b4 kind:function(arm,size=0x40) addr:0x021c90b4
 func_ov017_021c90f4 kind:function(arm,size=0x22c) addr:0x021c90f4
 func_ov017_021c9320 kind:function(arm,size=0xc8) addr:0x021c9320
 _Z13NoOp_021c8f38v kind:function(arm,size=0x4) addr:0x021c93e8
-func_ov017_021c93ec kind:function(arm,size=0x178) addr:0x021c93ec
+func_ov017_021c8f3c kind:function(arm,size=0x178) addr:0x021c93ec
 _Z18CopyStruct021c90b4P14Struct021c90b4S0_ kind:function(arm,size=0x44) addr:0x021c9564
 _Z16CopyRec_021c90f8P12Rec_021c90f8S0_ kind:function(arm,size=0x34) addr:0x021c95a8
 _Z32DispatchBitfieldHandler_021c912cPvP11Obj021c912c kind:function(arm,size=0x3c) addr:0x021c95dc
@@ -923,7 +923,7 @@ func_ov017_021cac7c kind:function(arm,size=0x22c) addr:0x021cb12c
 func_ov017_021cb358 kind:function(arm,size=0x44c) addr:0x021cb358
 func_ov017_021cb2f4 kind:function(arm,size=0x304) addr:0x021cb7a4
 func_ov017_021cbaa8 kind:function(arm,size=0x37c) addr:0x021cbaa8
-func_ov017_021cbe24 kind:function(arm,size=0x25c) addr:0x021cbe24
+func_ov017_021cb974 kind:function(arm,size=0x25c) addr:0x021cbe24
 func_ov017_021cc080 kind:function(arm,size=0x3c) addr:0x021cc080
 func_ov017_021cc0bc kind:function(arm,size=0x3c) addr:0x021cc0bc
 _Z27EnqueueEventTag100_021cbc48P11Src021cbc48 kind:function(arm,size=0x78) addr:0x021cc0f8
@@ -1195,7 +1195,7 @@ data_ov017_021d6260 kind:data(any) addr:0x021d66b0
 data_ov017_021d6298 kind:data(any) addr:0x021d66e8
 data_ov017_021d62d8 kind:data(any) addr:0x021d6728
 data_ov017_021d62f8 kind:data(any) addr:0x021d6748
-data_ov017_021d6768 kind:data(any) addr:0x021d6768
+data_ov017_021d6318 kind:data(any) addr:0x021d6768
 data_ov017_021d63d8 kind:data(any) addr:0x021d6828
 data_ov017_021d63e4 kind:data(any) addr:0x021d6834
 data_ov017_021d63f0 kind:data(any) addr:0x021d6840

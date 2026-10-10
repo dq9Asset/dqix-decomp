@@ -808,3 +808,33 @@ src/Combat/Overlay_4/SetGlobalFieldTo1_02165bb8_02165bb8.cpp:
 src/Combat/Overlay_4/SetOv011FieldAndFlags_0216f824.cpp:
     complete
     .text start:0x0216feb8 end:0x0216fee8
+
+src/Combat/Overlay_4/SetFieldsAndFlagBit0_02163284.cpp:
+    .text start:0x02163920 end:0x02163958
+
+src/Combat/Overlay_4/SetDataFlagAndNotify_0216e8b4.cpp:
+    .text start:0x0216ef54 end:0x0216ef90
+
+src/Combat/Overlay_4/SetFlag10AndDispatch_0216e984.cpp:
+    .text start:0x0216f024 end:0x0216f06c
+
+src/Combat/Overlay_4/ClearTreasureMapBitsLoop_02165b60.cpp:
+    .text start:0x021663f0 end:0x02166448
+
+src/Combat/Overlay_4/GetEntryFor_021570a4.cpp:
+    .text start:0x0215816c end:0x021581b8
+
+src/Combat/Overlay_4/ConsumeNameEntriesAndNotify_021658b0.cpp:
+    .text start:0x02166140 end:0x021661a0
+
+src/Combat/Overlay_4/SetGlobalFieldsBothOne_02165af4.cpp:
+    .text start:0x02166384 end:0x021663a4
+
+src/Combat/Overlay_4/SetTwoFlagFields_0216e894.cpp:
+    .text start:0x0216ef34 end:0x0216ef54
+
+src/Combat/Overlay_4/SetGlobalFieldsFlagAndTwo_02165b14.cpp:
+    .text start:0x021663a4 end:0x021663c8
+
+src/Combat/Overlay_4/func_ov004_02167434.cpp:
+    .text start:0x02167a40 end:0x02167c08

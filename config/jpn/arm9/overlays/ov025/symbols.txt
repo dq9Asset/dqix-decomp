@@ -71,7 +71,7 @@ _Z27SetFlagAndDispatch_021e2628ii kind:function(arm,size=0x54) addr:0x021e2b40
 func_ov025_021e267c kind:function(arm,size=0x110) addr:0x021e2b94
 _Z29FormatValueWithTable_021e278ciPc kind:function(arm,size=0x3c) addr:0x021e2ca4
 func_ov025_021e27c8 kind:function(arm,size=0x190) addr:0x021e2ce0
-func_ov025_021e2e70 kind:function(arm,size=0x2b4) addr:0x021e2e70
+func_ov025_021e2980 kind:function(arm,size=0x2b4) addr:0x021e2e70
 func_ov025_021e3124 kind:function(arm,size=0x70) addr:0x021e3124
 func_ov025_021e2ca4 kind:function(arm,size=0x2a8) addr:0x021e3194
 _Z19ReturnTrue_021e2f4cv kind:function(arm,size=0x8) addr:0x021e343c
@@ -106,7 +106,7 @@ func_ov025_021e4f48 kind:function(arm,size=0x30) addr:0x021e4f48
 _Z21ReturnNegOne_021e4a88v kind:function(arm,size=0x8) addr:0x021e4f78
 func_ov025_021e4f80 kind:function(arm,size=0x1c) addr:0x021e4f80
 func_ov025_021e4aac kind:function(arm,size=0x138) addr:0x021e4f9c
-func_ov025_021e50d4 kind:function(arm,size=0x22c) addr:0x021e50d4
+func_ov025_021e4be4 kind:function(arm,size=0x22c) addr:0x021e50d4
 func_ov025_021e5300 kind:function(arm,size=0x9c) addr:0x021e5300
 func_ov025_021e539c kind:function(arm,size=0x1c) addr:0x021e539c
 func_ov025_021e53b8 kind:function(arm,size=0x1c) addr:0x021e53b8
@@ -123,7 +123,7 @@ func_ov025_021e58f0 kind:function(arm,size=0xc4) addr:0x021e5de0
 _Z30SetColorForDispatched_021e59b4P9P021e59b4iiPv kind:function(arm,size=0x78) addr:0x021e5ea4
 func_ov025_021e5f1c kind:function(arm,size=0x40) addr:0x021e5f1c
 func_ov025_021e5a6c kind:function(arm,size=0x1fc) addr:0x021e5f5c
-func_ov025_021e6158 kind:function(arm,size=0x1b4) addr:0x021e6158
+func_ov025_021e5c68 kind:function(arm,size=0x1b4) addr:0x021e6158
 func_ov025_021e630c kind:function(arm,size=0x74) addr:0x021e630c
 func_ov025_021e6380 kind:function(arm,size=0x70) addr:0x021e6380
 func_ov025_021e5f40 kind:function(arm,size=0x14) addr:0x021e63f0
@@ -303,7 +303,7 @@ data_ov025_021eef24 kind:data(any) addr:0x021ef20c
 data_ov025_021ef218 kind:data(any) addr:0x021ef218
 data_ov025_021eef40 kind:data(any) addr:0x021ef228
 data_ov025_021eef58 kind:data(any) addr:0x021ef240
-data_ov025_021ef260 kind:data(any) addr:0x021ef260
+data_ov025_021eef78 kind:data(any) addr:0x021ef260
 data_ov025_021eefa0 kind:data(any) addr:0x021ef288
 data_ov025_021eeff0 kind:data(any) addr:0x021ef2d8
 data_ov025_021eeff4 kind:data(any) addr:0x021ef2dc
@@ -361,12 +361,12 @@ data_ov025_021ef791 kind:data(any) addr:0x021efa71
 data_ov025_021ef7ac kind:data(any) addr:0x021efa8c
 data_ov025_021ef7b5 kind:data(any) addr:0x021efa95
 data_ov025_021ef7be kind:data(any) addr:0x021efa9e
-data_ov025_021efab9 kind:data(any) addr:0x021efab9
-data_ov025_021efabf kind:data(any) addr:0x021efabf
-data_ov025_021efac6 kind:data(any) addr:0x021efac6
+data_ov025_021ef7d9 kind:data(any) addr:0x021efab9
+data_ov025_021ef7df kind:data(any) addr:0x021efabf
+data_ov025_021ef7e6 kind:data(any) addr:0x021efac6
 data_ov025_021efacf kind:data(any) addr:0x021efacf
-data_ov025_021efad7 kind:data(any) addr:0x021efad7
-data_ov025_021efadb kind:data(any) addr:0x021efadb
+data_ov025_021ef7f7 kind:data(any) addr:0x021efad7
+data_ov025_021ef7fb kind:data(any) addr:0x021efadb
 data_ov025_021ef802 kind:data(any) addr:0x021efae2
 data_ov025_021ef809 kind:data(any) addr:0x021efae9
 data_ov025_021ef811 kind:data(any) addr:0x021efaf1

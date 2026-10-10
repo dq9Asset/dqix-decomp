@@ -125,3 +125,9 @@ src/Combat/Overlay_5/func_ov005_0215acc0.cpp:
 
 src/Combat/Overlay_5/DispatchByIdxAndCond021551fc.cpp:
     .text start:0x02156844 end:0x02156898
+
+src/Combat/Overlay_5/GetTableByte0215a930.cpp:
+    .text start:0x0215be60 end:0x0215be78
+
+src/Combat/Overlay_5/Trans_021551d4.cpp:
+    .text start:0x0215681c end:0x02156844

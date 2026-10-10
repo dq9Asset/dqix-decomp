@@ -193,3 +193,12 @@ src/Combat/Overlay_14/func_ov014_02186bc8.cpp:
 
 src/Menu/Overlay_14/BestiaryAllocation.cpp:
     .text start:0x02185400 end:0x021855c4
+
+src/Combat/Overlay_14/ResetLoaderAndAllocators_02186b30.cpp:
+    .text start:0x02187ac4 end:0x02187b5c
+
+src/Combat/Overlay_14/Trans_02186dc8.cpp:
+    .text start:0x02187d5c end:0x02187d84
+
+src/Menu/Overlay_14/BestiaryExtendedAllocation.cpp:
+    .text start:0x0218784c end:0x02187a04

@@ -5,9 +5,7 @@
 #define func_ov012_02184384 func_ov012_021853f8
 #define func_ov012_0218930c func_ov012_02189be8
 #define func_ov012_0218adac func_ov012_0218bba0
-#define func_ov023_021e6448 func_ov023_021e66bc
 #define func_ov023_021e6de4 func_ov023_021e7148
-#define func_ov023_021e6e60 func_ov023_021e71c4
 #else
 #define R(j,u) (u)
 #endif

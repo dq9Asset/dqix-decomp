@@ -521,3 +521,21 @@ src/Combat/Overlay_11/func_ov011_021869b8.cpp:
 
 src/Combat/Overlay_11/func_ov011_0218792c.cpp:
     .text start:0x02188a08 end:0x02188aec
+
+src/Combat/Overlay_11/AllocateAndQueueTaggedEvent_02185214.cpp:
+    .text start:0x02186314 end:0x02186414
+
+src/Combat/Overlay_11/func_ov011_02185d04.cpp:
+    .text start:0x02186ddc end:0x02186eac
+
+src/Combat/Overlay_11/func_ov011_02185dd4.cpp:
+    .text start:0x02186eac end:0x02186f7c
+
+src/Combat/Overlay_11/func_ov011_0218577c.cpp:
+    .text start:0x02186870 end:0x0218693c
+
+src/Combat/Overlay_11/InitOrRefreshNodeState_02184694.cpp:
+    .text start:0x02185794 end:0x02185840
+
+src/Combat/Overlay_11/SetObjFields_021888ec.cpp:
+    .text start:0x02189638 end:0x02189650

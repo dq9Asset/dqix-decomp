@@ -14893,3 +14893,27 @@ src/Combat/Main/func_020be828.cpp:
 src/Combat/Main/func_0204b9b8.cpp:
     complete
     .text start:0x0204c7d8 end:0x0204c8d4
+
+src/Combat/Main/func_020bded0.cpp:
+    complete
+    .text start:0x020bf99c end:0x020bfadc
+
+src/Combat/Main/SetStatStageBit18.cpp:
+    complete
+    .text start:0x02088674 end:0x020886ec
+
+src/Combat/Main/SetStatStageBit27.cpp:
+    complete
+    .text start:0x02088874 end:0x020888ec
+
+src/Combat/Main/CanAdjustStatStageBit24.cpp:
+    complete
+    .text start:0x02088914 end:0x02088968
+
+src/Combat/Main/ClearFlag0x1000000AndByte0x24.cpp:
+    complete
+    .text start:0x02088aa8 end:0x02088ac0
+
+src/Combat/Main/CheckField0x14Bit0Clear020890c0.cpp:
+    complete
+    .text start:0x020899bc end:0x020899d0

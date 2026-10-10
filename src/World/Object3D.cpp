@@ -12,7 +12,6 @@
 #include "Graphics/VRAMStaging.h"
 
 #if defined(jpn)
-#define _Z27ClearGlobalFlagBits02016d8cPv func_02016b2c
 #define func_0203ac40 func_0203a698
 #define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 #define func_020d1d1c func_020d37e8

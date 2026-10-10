@@ -2668,3 +2668,31 @@ src/Combat/Overlay_17/func_ov017_021d60f4.cpp:
 src/Combat/Overlay_17/func_ov017_021d6110.cpp:
     complete
     .text start:0x021d6560 end:0x021d657c
+
+src/Combat/Overlay_17/ApplyEventVecAndModeByte_021c9334.cpp:
+    complete
+    .text start:0x021c97e4 end:0x021c98b0
+
+src/Combat/Overlay_17/Enqueue0219bd1c.cpp:
+    complete
+    .text start:0x0219c80c end:0x0219c8cc
+
+src/Combat/Overlay_17/InitStruct_021af59c.cpp:
+    complete
+    .text start:0x021afcac end:0x021afd7c
+
+src/Combat/Overlay_17/UpdateNameEntryQueue.cpp:
+    complete
+    .text start:0x02195e18 end:0x02195ee4
+
+src/Combat/Overlay_17/func_ov017_021cd608.cpp:
+    complete
+    .text start:0x021cdab0 end:0x021cdb80
+
+src/Combat/Overlay_17/func_ov017_021d451c.cpp:
+    complete
+    .text start:0x021d4970 end:0x021d4a34
+
+src/Combat/Overlay_17/func_ov017_021d45e0.cpp:
+    complete
+    .text start:0x021d4a34 end:0x021d4af8

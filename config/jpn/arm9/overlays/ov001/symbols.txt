@@ -188,11 +188,11 @@ func_ov001_0215c6c4 kind:function(arm,size=0x18) addr:0x0215c6c4
 func_ov001_0215c6dc kind:function(arm,size=0x1c) addr:0x0215c6dc
 func_ov001_0215b074 kind:function(arm,size=0x258) addr:0x0215c6f8
 func_ov001_0215b2cc kind:function(arm,size=0x4c) addr:0x0215c950
-func_ov001_0215c99c kind:function(arm,size=0x6c) addr:0x0215c99c
+func_ov001_0215b318 kind:function(arm,size=0x6c) addr:0x0215c99c
 _Z29InitEffectFromField0_0215b384Pv kind:function(arm,size=0x28) addr:0x0215ca08
 _Z36InitColoredEffectFromFields_0215b3acPv kind:function(arm,size=0x5c) addr:0x0215ca30
 _Z36UpdateCounterFromBattleWord_0215b408Pvi kind:function(arm,size=0x4c) addr:0x0215ca8c
-func_ov001_0215cad8 kind:function(arm,size=0x6c) addr:0x0215cad8
+func_ov001_0215b454 kind:function(arm,size=0x6c) addr:0x0215cad8
 _Z39UpdateCounterFromBattleWordAlt_0215b4c0Pvi kind:function(arm,size=0x4c) addr:0x0215cb44
 func_ov001_0215b50c kind:function(arm,size=0x54) addr:0x0215cb90
 _Z25SomeHwFlagSetter_0215b560v kind:function(arm,size=0x38) addr:0x0215cbe4
@@ -344,10 +344,10 @@ func_ov001_0215ffc0 kind:function(arm,size=0xb0) addr:0x021615d4
 func_ov001_02160070 kind:function(arm,size=0xcc) addr:0x02161684
 func_ov001_0216013c kind:function(arm,size=0xbc) addr:0x02161750
 func_ov001_021601f8 kind:function(arm,size=0x140) addr:0x0216180c
-func_ov001_0216194c kind:function(arm,size=0x78) addr:0x0216194c
+func_ov001_02160338 kind:function(arm,size=0x78) addr:0x0216194c
 _Z27ZeroField_021603b0_021603b0Pv kind:function(arm,size=0x28) addr:0x021619c4
 func_ov001_021603d8 kind:function(arm,size=0x12c) addr:0x021619ec
-func_ov001_02161b18 kind:function(arm,size=0xd0) addr:0x02161b18
+func_ov001_02160504 kind:function(arm,size=0xd0) addr:0x02161b18
 func_ov001_021605d4 kind:function(arm,size=0x98) addr:0x02161be8
 func_ov001_0216066c kind:function(arm,size=0xfc) addr:0x02161c80
 func_ov001_02160768 kind:function(arm,size=0x134) addr:0x02161d7c
@@ -360,14 +360,14 @@ func_ov001_021609c0 kind:function(arm,size=0x24) addr:0x02161fd4
 _Z24SetByteField490_021609e4Pv kind:function(arm,size=0x1c) addr:0x02161ff8
 _Z31SetFlagFromSearchState_02160a00Pv kind:function(arm,size=0x48) addr:0x02162014
 _Z30Forward2Field0219b578_02160a48i kind:function(arm,size=0x34) addr:0x0216205c
-func_ov001_02162090 kind:function(arm,size=0x8c) addr:0x02162090
+func_ov001_02160a7c kind:function(arm,size=0x8c) addr:0x02162090
 func_ov001_02160b08 kind:function(arm,size=0xb8) addr:0x0216211c
 func_ov001_02160bc0 kind:function(arm,size=0xb8) addr:0x021621d4
 func_ov001_02160c78 kind:function(arm,size=0x9c) addr:0x0216228c
 func_ov001_02160d14 kind:function(arm,size=0x94) addr:0x02162328
 func_ov001_021623bc kind:function(arm,size=0x504) addr:0x021623bc
 func_ov001_021628c0 kind:function(arm,size=0x1c) addr:0x021628c0
-func_ov001_021628dc kind:function(arm,size=0xac) addr:0x021628dc
+func_ov001_021612c8 kind:function(arm,size=0xac) addr:0x021628dc
 func_ov001_02162988 kind:function(arm,size=0x5c) addr:0x02162988
 func_ov001_021629e4 kind:function(arm,size=0x38) addr:0x021629e4
 func_ov001_02161408 kind:function(arm,size=0x11c) addr:0x02162a1c
@@ -480,7 +480,7 @@ _Z32SetBit2From021d60f4Zero_02163ab4Pv kind:function(arm,size=0x38) addr:0x02165
 _Z30SetStateFromGlobalKey_02163aecv kind:function(arm,size=0x28) addr:0x02165078
 func_ov001_02163b14 kind:function(arm,size=0x114) addr:0x021650a0
 func_ov001_021651b4 kind:function(arm,size=0x38) addr:0x021651b4
-func_ov001_021651ec kind:function(arm,size=0x6c) addr:0x021651ec
+func_ov001_02163c60 kind:function(arm,size=0x6c) addr:0x021651ec
 func_ov001_02163ccc kind:function(arm,size=0xfc) addr:0x02165258
 func_ov001_02165354 kind:function(arm,size=0x24) addr:0x02165354
 func_ov001_02163dec kind:function(arm,size=0x64) addr:0x02165378
@@ -536,7 +536,7 @@ data_ov001_02166270 kind:data(any) addr:0x02166270
 data_ov001_02164d10 kind:data(any) addr:0x021662dc
 data_ov001_02164d14 kind:data(any) addr:0x021662e0
 data_ov001_02164d24 kind:data(any) addr:0x021662f0
-data_ov001_02166300 kind:data(any) addr:0x02166300
+data_ov001_02164d34 kind:data(any) addr:0x02166300
 data_ov001_02166310 kind:data(any) addr:0x02166310
 data_ov001_02164d6c kind:data(any) addr:0x02166338
 data_ov001_02166494 kind:data(any) addr:0x02166494 ambiguous

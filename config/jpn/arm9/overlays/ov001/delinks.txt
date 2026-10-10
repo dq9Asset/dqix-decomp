@@ -1552,3 +1552,31 @@ src/Combat/Overlay_1/func_ov001_021626e4.cpp:
 src/Combat/Overlay_1/func_ov001_02164a58.cpp:
     complete
     .init start:0x02165fe4 end:0x02166078
+
+src/Combat/Overlay_1/AllocateAndAppendQueueNode_021612c8.cpp:
+    complete
+    .text start:0x021628dc end:0x02162988
+
+src/Combat/Overlay_1/ForwardEntriesByCount_02160a7c.cpp:
+    complete
+    .text start:0x02162090 end:0x0216211c
+
+src/Combat/Overlay_1/SetOrInitFieldTable_02160338.cpp:
+    complete
+    .text start:0x0216194c end:0x021619c4
+
+src/Combat/Overlay_1/Trans_02163c60.cpp:
+    complete
+    .text start:0x021651ec end:0x02165258
+
+src/Combat/Overlay_1/UpdateCounterAndSetFlagB_0215b454.cpp:
+    complete
+    .text start:0x0215cad8 end:0x0215cb44
+
+src/Combat/Overlay_1/UpdateCounterAndSetFlag_0215b318.cpp:
+    complete
+    .text start:0x0215c99c end:0x0215ca08
+
+src/Combat/Overlay_1/func_ov001_02160504.cpp:
+    complete
+    .text start:0x02161b18 end:0x02161be8

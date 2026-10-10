@@ -281,7 +281,7 @@ _Z30FindRecordByShortField020108f0Pvi kind:function(arm,size=0x64) addr:0x020107
 _Z28FindSlotWithNegShort02010954Pc kind:function(arm,size=0x48) addr:0x020107b0
 func_0201099c kind:function(arm,size=0x8b8) addr:0x020107f8
 _Z12Init0201133cPc kind:function(arm,size=0x40) addr:0x020110b0
-func_020110f0 kind:function(arm,size=0x28) addr:0x020110f0
+_Z19GetSlotBits0201137cPci kind:function(arm,size=0x28) addr:0x020110f0
 func_02011118 kind:function(arm,size=0x38) addr:0x02011118
 func_02011150 kind:function(arm,size=0x28) addr:0x02011150
 _Z13ClearBitArrayPv kind:function(arm,size=0x28) addr:0x02011178
@@ -459,7 +459,7 @@ func_02015a9c kind:function(arm,size=0x224) addr:0x02015a9c
 func_02015cc0 kind:function(arm,size=0x588) addr:0x02015cc0
 func_0201647c kind:function(arm,size=0x3cc) addr:0x02016248
 func_02016874 kind:function(arm,size=0x518) addr:0x02016614
-func_02016b2c kind:function(arm,size=0x28) addr:0x02016b2c
+_Z27ClearGlobalFlagBits02016d8cPv kind:function(arm,size=0x28) addr:0x02016b2c
 func_02016b54 kind:function(arm,size=0x60) addr:0x02016b54
 func_02016bb4 kind:function(arm,size=0x284) addr:0x02016bb4
 func_02017098 kind:function(arm,size=0x170) addr:0x02016e38
@@ -491,7 +491,7 @@ func_02019210 kind:function(arm,size=0x2f8) addr:0x02018fb0
 _Z23FindEntryByKeys02019508P12Base02019508ii kind:function(arm,size=0x60) addr:0x020192a8
 _Z29ProcessBattlerEffects02019568Pvi kind:function(arm,size=0x110) addr:0x02019308
 func_02019678 kind:function(arm,size=0x84) addr:0x02019418
-func_0201949c kind:function(arm,size=0x2c) addr:0x0201949c
+_Z22GetNodeAtDepth020196fcP11Obj020196fci kind:function(arm,size=0x2c) addr:0x0201949c
 func_020194c8 kind:function(arm,size=0x7fc) addr:0x020194c8
 _Z18CopyStruct02019f24P14Struct02019f24S0_ kind:function(arm,size=0x48) addr:0x02019cc4
 _Z17RotateTileGrid3x3PvPhi kind:function(arm,size=0x19c) addr:0x02019d0c
@@ -500,7 +500,7 @@ _Z39GenerateGrottoObjectPositionOrientationPviiPiS0_PK24TileFeaturePlacementData
 func_0201a0a0 kind:function(arm,size=0x300) addr:0x0201a0a0
 func_0201a600 kind:function(arm,size=0x88c) addr:0x0201a3a0
 _Z18CopyStruct0201ae8cP14Struct0201ae8cS0_ kind:function(arm,size=0x50) addr:0x0201ac2c
-func_0201ac7c kind:function(arm,size=0xf4) addr:0x0201ac7c
+_Z19ProcessNode0201aedcP11Ctx0201aedc kind:function(arm,size=0xf4) addr:0x0201ac7c
 func_0201afd0 kind:function(arm,size=0x590) addr:0x0201ad70
 _Z17IsInRange0201b588i kind:function(arm,size=0x28) addr:0x0201b300
 _Z17IsInRange0201b5b0i kind:function(arm,size=0x28) addr:0x0201b328
@@ -512,7 +512,7 @@ func_0201b504 kind:function(arm,size=0xdc) addr:0x0201b504
 _Z24IsIdInSpecialSet0201b868Pvi kind:function(arm,size=0x60) addr:0x0201b5e0
 _Z25ApplyElementFlags0201b8c8P11Obj0201b600iii kind:function(arm,size=0x154) addr:0x0201b640
 _Z25ClearAndFlagEntry0201ba1cP12Base02019508ii kind:function(arm,size=0x4c) addr:0x0201b794
-func_0201b7e0 kind:function(arm,size=0x110) addr:0x0201b7e0
+_Z28SetBitFromValueRange0201ba68Pv kind:function(arm,size=0x110) addr:0x0201b7e0
 _Z31LookupBitFromValueRange0201bb78P12Obj_0201bb78j kind:function(arm,size=0x104) addr:0x0201b8f0
 func_0201b9f4 kind:function(arm,size=0xc) addr:0x0201b9f4
 func_0201ba00 kind:function(arm,size=0xc) addr:0x0201ba00
@@ -2711,7 +2711,7 @@ func_02078688 kind:function(arm,size=0xa4) addr:0x020795a4
 _Z17EnsureByte0xbeIs2P11Obj02033b68 kind:function(arm,size=0x28) addr:0x02079648
 func_02078754 kind:function(arm,size=0x140) addr:0x02079670
 _Z23EmptyDestructor02078894Pv kind:function(arm,size=0x4) addr:0x020797b0
-func_020797b4 kind:function(arm,size=0x100) addr:0x020797b4
+_Z29SyncCombatantPosition02078898P14Entity02078898 kind:function(arm,size=0x100) addr:0x020797b4
 func_020798b4 kind:function(arm,size=0x328) addr:0x020798b4
 func_02078cc0 kind:function(arm,size=0xc4) addr:0x02079bdc
 func_02079ca0 kind:function(arm,size=0xb4) addr:0x02079ca0
@@ -3081,7 +3081,7 @@ _Z27GetPackedRateModifierField3Pc kind:function(arm,size=0x38) addr:0x020862f8
 _Z27GetPackedRateModifierField4Pc kind:function(arm,size=0x38) addr:0x02086330
 _Z21GetField0x304ScaleLowP13Actor02085a48 kind:function(arm,size=0x38) addr:0x02086368
 func_020863a0 kind:function(arm,size=0x38) addr:0x020863a0
-func_020863d8 kind:function(arm,size=0xd0) addr:0x020863d8
+_Z34AccumulateCategorySlotBits02085ab8PhP12Param2085ab8 kind:function(arm,size=0xd0) addr:0x020863d8
 _Z26AccumulateSlotBits02085b88Ph kind:function(arm,size=0x80) addr:0x020864a8
 _Z26AccumulateSlotBits02085c08Ph kind:function(arm,size=0x78) addr:0x02086528
 _Z26AccumulateSlotBits02085c80P13Actor02085c80 kind:function(arm,size=0x50) addr:0x020865a0
@@ -3310,7 +3310,7 @@ func_0208a91c kind:function(arm,size=0x98) addr:0x0208b210
 _Z15GetData02108f0cv kind:function(arm,size=0xc) addr:0x0208b2a8
 _Z18InitStruct0208a9c0P22InitStruct0208a9c0Datahhh kind:function(arm,size=0x58) addr:0x0208b2b4
 _Z12SetVec3At0xCP9S0208aa18iii kind:function(arm,size=0x10) addr:0x0208b30c
-func_0208b31c kind:function(arm,size=0x10c) addr:0x0208b31c
+_Z41CanCombatantReactToEffectCategory0208aa28Phii kind:function(arm,size=0x10c) addr:0x0208b31c
 func_0208ab34 kind:function(arm,size=0x1e8) addr:0x0208b428
 func_0208b610 kind:function(arm,size=0x4c) addr:0x0208b610
 func_0208b65c kind:function(arm,size=0x98) addr:0x0208b65c
@@ -5716,7 +5716,7 @@ _Z23StageTexFilePaletteDataPV8NSBXXTexb kind:function(arm,size=0x60) addr:0x020d
 _Z21StageTexFileImageDataPV8NSBXXTexb kind:function(arm,size=0x64) addr:0x020ddb8c
 _Z26CancelVRAMStagingOperationi kind:function(arm,size=0x18) addr:0x020ddbf0
 _Z26UpdateVRAMStagingVRAMBanksv kind:function(arm,size=0x14) addr:0x020ddc08
-func_020ddc1c kind:function(arm,size=0xa8) addr:0x020ddc1c
+_Z33SetModeBasedOnCombatState020dc214i kind:function(arm,size=0xa8) addr:0x020ddc1c
 _Z16OrGlobalFlag0x40v kind:function(arm,size=0x14) addr:0x020ddcc4
 _Z29SetCombatModeFromCase020dc2d0i kind:function(arm,size=0xe8) addr:0x020ddcd8
 func_020dddc0 kind:function(arm,size=0x1c) addr:0x020dddc0
@@ -6192,8 +6192,8 @@ data_020e8804 kind:data(any) addr:0x020e8918
 data_020e8834 kind:data(any) addr:0x020e8948
 data_020e883c kind:data(any) addr:0x020e8950
 data_020e8846 kind:data(any) addr:0x020e895a
-data_020e8968 kind:data(any) addr:0x020e8968
-data_020e8978 kind:data(any) addr:0x020e8978
+data_020e8854 kind:data(any) addr:0x020e8968
+data_020e8864 kind:data(any) addr:0x020e8978
 data_020e8878 kind:data(any) addr:0x020e898c
 data_020e89bc kind:data(any) addr:0x020e89bc
 data_020e88c0 kind:data(any) addr:0x020e89d4
@@ -6242,7 +6242,7 @@ data_020e8bb4 kind:data(any) addr:0x020e8ce0
 data_020e8bb5 kind:data(any) addr:0x020e8ce1
 data_020e8cf2 kind:data(any) addr:0x020e8cf2
 data_020e8d06 kind:data(any) addr:0x020e8d06
-data_020e8d1c kind:data(any) addr:0x020e8d1c
+data_020e8c00 kind:data(any) addr:0x020e8d1c
 data_020e8c58 kind:data(any) addr:0x020e8d74
 data_020e8c5c kind:data(any) addr:0x020e8d78
 data_020e8caa kind:data(any) addr:0x020e8dc6

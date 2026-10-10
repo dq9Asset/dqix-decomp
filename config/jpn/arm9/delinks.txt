@@ -13945,3 +13945,35 @@ src/World/WarpScriptOpcode72.cpp:
 src/World/Zone3D.cpp:
     complete
     .text start:0x02013604 end:0x0201393c
+
+src/Combat/Main/AccumulateCategorySlotBits02085ab8.cpp:
+    complete
+    .text start:0x020863d8 end:0x020864a8
+
+src/Combat/Main/CanCombatantReactToEffectCategory0208aa28.cpp:
+    complete
+    .text start:0x0208b31c end:0x0208b428
+
+src/Combat/Main/ProcessNode0201aedc.cpp:
+    complete
+    .text start:0x0201ac7c end:0x0201ad70
+
+src/Combat/Main/SetBitFromValueRange0201ba68.cpp:
+    complete
+    .text start:0x0201b7e0 end:0x0201b8f0
+
+src/Combat/Main/SetCombatModeFromCase020dc2d0.cpp:
+    complete
+    .text start:0x020ddcd8 end:0x020dddc0
+
+src/Combat/Main/SyncCombatantPosition02078898.cpp:
+    complete
+    .text start:0x020797b4 end:0x020798b4
+
+src/Combat/Main/func_020732cc.cpp:
+    complete
+    .text start:0x0207445c end:0x02074558
+
+src/Combat/Main/func_0207dcf0.cpp:
+    complete
+    .text start:0x0207ea70 end:0x0207eb70

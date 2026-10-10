@@ -107,3 +107,21 @@ src/Combat/Overlay_8/func_ov008_021868a8.cpp:
 src/Menu/Overlay_8/AvailableEntries.cpp:
     complete
     .text start:0x02187bc8 end:0x02187d28
+
+src/Combat/Overlay_8/func_ov008_02189404.cpp:
+    .text start:0x0218a10c end:0x0218a174
+
+src/Menu/Overlay_8/ListTouchSelection.cpp:
+    .text start:0x021879f4 end:0x02187bc8
+
+src/Combat/Overlay_8/InitAndUpdateIfFlagged_0218946c.cpp:
+    .text start:0x0218a174 end:0x0218a1c0
+
+src/Combat/Overlay_8/func_ov008_021845ac.cpp:
+    .text start:0x021856a8 end:0x02185850
+
+src/Combat/Overlay_8/Dispatch0218936c.cpp:
+    .text start:0x0218a074 end:0x0218a10c
+
+src/Combat/Overlay_8/SetupAllocators_02189284.cpp:
+    .text start:0x02189f8c end:0x0218a074

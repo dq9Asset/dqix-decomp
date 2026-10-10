@@ -184,3 +184,12 @@ src/Combat/Overlay_14/AccumulateFloats_02189510_02189510.cpp:
 src/Combat/Overlay_14/SetSublistEntriesForId25_021884cc.cpp:
     complete
     .text start:0x021893ac end:0x0218942c
+
+src/Combat/Overlay_14/UpdateElementCoordFlagB_02186f10.cpp:
+    .text start:0x02187ea4 end:0x02187f84
+
+src/Combat/Overlay_14/func_ov014_02186bc8.cpp:
+    .text start:0x02187b5c end:0x02187cf8
+
+src/Menu/Overlay_14/BestiaryAllocation.cpp:
+    .text start:0x02185400 end:0x021855c4

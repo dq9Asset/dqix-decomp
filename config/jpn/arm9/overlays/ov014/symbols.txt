@@ -1,5 +1,5 @@
 func_ov014_021842a0 kind:function(arm,size=0x60) addr:0x021853a0
-func_ov014_02185400 kind:function(arm,size=0x1c4) addr:0x02185400
+func_ov014_02184300 kind:function(arm,size=0x1c4) addr:0x02185400
 func_ov014_021844c4 kind:function(arm,size=0x110) addr:0x021855c4
 _Z20ResetFields_021845d4P25ResetFieldsStruct021845d4 kind:function(arm,size=0x18) addr:0x021856d4
 func_ov014_021845ec kind:function(arm,size=0x114) addr:0x021856ec
@@ -25,7 +25,7 @@ func_ov014_02186d7c kind:function(arm,size=0x4c) addr:0x02187d10
 func_ov014_02186dc8 kind:function(arm,size=0x28) addr:0x02187d5c
 _Z24ResetBattlerNav_02186df0P11Obj02186df0 kind:function(arm,size=0x3c) addr:0x02187d84
 func_ov014_02186e2c kind:function(arm,size=0xe4) addr:0x02187dc0
-func_ov014_02187ea4 kind:function(arm,size=0xe0) addr:0x02187ea4
+func_ov014_02186f10 kind:function(arm,size=0xe0) addr:0x02187ea4
 _Z35CheckFlagAndPointInElement_02186ff0Pc kind:function(arm,size=0x84) addr:0x02187f84
 func_ov014_02188008 kind:function(arm,size=0x1b4) addr:0x02188008
 func_ov014_02187228 kind:function(arm,size=0xb4) addr:0x021881bc
@@ -102,3 +102,4 @@ data_ov014_0218a5b0 kind:data(any) addr:0x0218a5b0
 data_ov014_0218a5b4 kind:data(any) addr:0x0218a5b4
 data_ov014_02189800 kind:bss addr:0x0218a5e0
 data_ov014_0218a5fc kind:bss addr:0x0218a5fc
+data_ov014_021896d4_dup kind:data(any) addr:0x0218a4e4

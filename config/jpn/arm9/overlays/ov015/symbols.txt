@@ -11,7 +11,7 @@ _Z18AddEntry8_0218ba1cP14List8_0218ba1cP15Entry8_0218ba1c kind:function(arm,size
 func_ov015_0218c664 kind:function(arm,size=0xa4) addr:0x0218c664
 _Z20GetListEntry0218bae8P19ListStruct_0218bae8i kind:function(arm,size=0x2c) addr:0x0218c708
 _Z18GetEntry8_0218bb14P14List8_0218bb14i kind:function(arm,size=0x28) addr:0x0218c734
-func_ov015_0218c75c kind:function(arm,size=0x160) addr:0x0218c75c
+func_ov015_0218bb3c kind:function(arm,size=0x160) addr:0x0218c75c
 _Z25GetFieldOrDefault0218bc9cP14Struct0218bc9c kind:function(arm,size=0x14) addr:0x0218c8bc
 func_ov015_0218bcb0 kind:function(arm,size=0x38c) addr:0x0218c8d0
 func_ov015_0218c03c kind:function(arm,size=0x238) addr:0x0218cc5c

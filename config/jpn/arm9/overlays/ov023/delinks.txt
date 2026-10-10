@@ -1904,3 +1904,35 @@ src/Combat/Overlay_23/func_ov023_021f7eb8.cpp:
 src/Combat/Overlay_23/DecryptAndRunBufferedScript_021f5d58.cpp:
     complete
     .text start:0x021f5344 end:0x021f54ac
+
+src/Combat/Overlay_23/FormatAndDispatchValue_021db3c0.cpp:
+    complete
+    .text start:0x021dbc08 end:0x021dbd6c
+
+src/Combat/Overlay_23/func_ov023_021fa370.cpp:
+    complete
+    .text start:0x021f97f4 end:0x021f98f0
+
+src/Combat/Overlay_23/SetupTag021d99a4.cpp:
+    complete
+    .text start:0x021da1b4 end:0x021da264
+
+src/Combat/Overlay_23/func_ov023_021ddf5c.cpp:
+    complete
+    .text start:0x021de6e0 end:0x021df990
+
+src/Combat/Overlay_23/021eeaac.cpp:
+    complete
+    .text start:0x021ee810 end:0x021eecfc
+
+src/Combat/Overlay_23/func_ov023_021f1234.cpp:
+    complete
+    .text start:0x021f0db4 end:0x021f1394
+
+src/Combat/Overlay_23/func_ov023_021dfecc.cpp:
+    complete
+    .text start:0x021e047c end:0x021e07ec
+
+src/Combat/Overlay_23/func_ov023_021df558.cpp:
+    complete
+    .text start:0x021dfbac end:0x021e00ec

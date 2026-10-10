@@ -3212,3 +3212,31 @@ src/Combat/Overlay_17/func_ov017_02191508.cpp:
 src/Combat/Overlay_17/InitializeTreasureMapEntry_021a9a9c.cpp:
     complete
     .text start:0x021aa270 end:0x021aa408
+
+src/Combat/Overlay_17/CallFunc0202fa38IfMismatch_021b3444.cpp:
+    complete
+    .text start:0x021b3b4c end:0x021b3c40
+
+src/Combat/Overlay_17/AppendMessageAndUpdateStatus_021a933c.cpp:
+    complete
+    .text start:0x021a9b20 end:0x021a9bd0
+
+src/Combat/Overlay_17/func_ov017_021b5070.cpp:
+    complete
+    .text start:0x021b5760 end:0x021b5814
+
+src/Combat/Overlay_17/InitCombatPairAndResetGlobal_021adb50.cpp:
+    complete
+    .text start:0x021ae380 end:0x021ae438
+
+src/Combat/Overlay_17/InitObjAndDispatchName_021afb8c.cpp:
+    complete
+    .text start:0x021b02a0 end:0x021b03a0
+
+src/Combat/Overlay_17/EnqueueTag2aAndMaybeFormatName_021d0b30.cpp:
+    complete
+    .text start:0x021d0fe0 end:0x021d1068
+
+src/Combat/Overlay_17/ProcessCombatantMessageState_021c3194.cpp:
+    complete
+    .text start:0x021c3690 end:0x021c3780

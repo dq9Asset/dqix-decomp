@@ -491,3 +491,30 @@ src/Combat/Overlay_11/Trans_02188438.cpp:
 src/Combat/Overlay_11/func_ov011_02187e20.cpp:
     complete
     .text start:0x02188ef8 end:0x02188fdc
+
+src/Combat/Overlay_11/Trans_02188014.cpp:
+    .text start:0x021890ec end:0x02189108
+
+src/Combat/Overlay_11/SetFieldFromGlobal998_021874b0.cpp:
+    .text start:0x0218858c end:0x021885ac
+
+src/Combat/Overlay_11/SetGlobalFlagByte9caFromTagged_02188158.cpp:
+    .text start:0x02189230 end:0x0218925c
+
+src/Combat/Overlay_11/CallFunc02184c68UnlessState0Or3_02187480.cpp:
+    .text start:0x0218855c end:0x0218858c
+
+src/Combat/Overlay_11/func_ov011_02184ae4.cpp:
+    .text start:0x02185be4 end:0x02185ccc
+
+src/Combat/Overlay_11/func_ov011_02187720.cpp:
+    .text start:0x021887fc end:0x02188930
+
+src/Combat/Overlay_11/SetFieldsIfType8FromTagged_0218702c.cpp:
+    .text start:0x02188104 end:0x0218817c
+
+src/Combat/Overlay_11/UpdateBattleScaleAndPollTicket_021848a8.cpp:
+    .text start:0x021859a8 end:0x02185aac
+
+src/Combat/Overlay_11/func_ov011_021869b8.cpp:
+    .text start:0x02187a90 end:0x02187c1c

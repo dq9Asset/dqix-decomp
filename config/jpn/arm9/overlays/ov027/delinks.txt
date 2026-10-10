@@ -320,3 +320,15 @@ src/Combat/Overlay_27/func_ov027_021d9940.cpp:
 
 src/Combat/Overlay_27/PickAndRelayRandomSlot_021d9704.cpp:
     .text start:0x021d9fc4 end:0x021da15c
+
+src/Combat/Overlay_27/UpdateEntryCounter_021d9d5c.cpp:
+    .text start:0x021da61c end:0x021da698
+
+src/Combat/Overlay_27/FindAvailablePosition_021db3c0.cpp:
+    .text start:0x021dbc80 end:0x021dbcf0
+
+src/Combat/Overlay_27/SerializeEventByte_021d96c4.cpp:
+    .text start:0x021d9f84 end:0x021d9fc4
+
+src/Combat/Overlay_27/Trans_021dab00.cpp:
+    .text start:0x021db3c0 end:0x021db3f8

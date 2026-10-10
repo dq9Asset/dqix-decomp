@@ -342,3 +342,12 @@ src/Combat/Overlay_15/func_ov015_02191af0.cpp:
 
 src/Combat/Overlay_15/InitAndRunStream_0218ba44.cpp:
     .text start:0x0218c664 end:0x0218c708
+
+src/Combat/Overlay_15/DispatchByField_0218f1c4_0218f1c4.cpp:
+    .text start:0x0218fde0 end:0x0218fe48
+
+src/Combat/Overlay_15/HandleFlagAndDispatch_0218e60c.cpp:
+    .text start:0x0218f22c end:0x0218f290
+
+src/Combat/Overlay_15/AdvanceListNodeAndRecordValue_02191ea4.cpp:
+    .text start:0x021929e8 end:0x02192a48

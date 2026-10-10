@@ -785,3 +785,15 @@ src/Combat/Overlay_25/func_ov025_021e2980.cpp:
 src/Combat/Overlay_25/func_ov025_021e5c68.cpp:
     complete
     .text start:0x021e6158 end:0x021e630c
+
+src/Combat/Overlay_25/SyncCombatVecs_021e4e10.cpp:
+    complete
+    .text start:0x021e5300 end:0x021e539c
+
+src/Combat/Overlay_25/UpdateCombatFlags_021e9a94.cpp:
+    complete
+    .text start:0x021e9f28 end:0x021e9fc0
+
+src/Combat/Overlay_25/ClearFoundBitsForList_021e697c.cpp:
+    complete
+    .text start:0x021e6e2c end:0x021e6eb8

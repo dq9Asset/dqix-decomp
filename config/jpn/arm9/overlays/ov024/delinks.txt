@@ -1938,3 +1938,111 @@ src/Combat/Overlay_24/func_ov024_021f5478.cpp:
 src/Combat/Overlay_24/func_ov024_021f58dc.cpp:
     complete
     .text start:0x021f60a8 end:0x021f6188
+
+src/Combat/Overlay_24/FindCombatantWithLowAttackBuff_021f3368.cpp:
+    complete
+    .text start:0x021f3b34 end:0x021f3c0c
+
+src/Combat/Overlay_24/FindCombatantWithLowAttackOrMightBuff_021f5a08.cpp:
+    complete
+    .text start:0x021f61d4 end:0x021f62ac
+
+src/Combat/Overlay_24/FindCombatantWithLowDefenseBuff_021ef5ec.cpp:
+    complete
+    .text start:0x021efdb8 end:0x021efe90
+
+src/Combat/Overlay_24/FindCombatantWithLowDefenseOrAgilityBuff_021f5ae0.cpp:
+    complete
+    .text start:0x021f62ac end:0x021f6384
+
+src/Combat/Overlay_24/CheckAnyCombatantHasMP_021f094c.cpp:
+    complete
+    .text start:0x021f1118 end:0x021f11ec
+
+src/Combat/Overlay_24/FindEligibleCombatantAndCopy_021f125c.cpp:
+    complete
+    .text start:0x021f1a28 end:0x021f1afc
+
+src/Combat/Overlay_24/SelectCombatantsByCategoryFlag_021ede2c.cpp:
+    complete
+    .text start:0x021ee5f8 end:0x021ee6cc
+
+src/Combat/Overlay_24/SelectUnflaggedCombatants24_021f5ce4.cpp:
+    complete
+    .text start:0x021f64b0 end:0x021f657c
+
+src/Combat/Overlay_24/FindUnflaggedCombatantBit4_021f0748.cpp:
+    complete
+    .text start:0x021f0f14 end:0x021f0fdc
+
+src/Combat/Overlay_24/FindUnflaggedCombatantField18Bit4_021f5bb8.cpp:
+    complete
+    .text start:0x021f6384 end:0x021f644c
+
+src/Combat/Overlay_24/FindUnflaggedCombatant6_021f1198.cpp:
+    complete
+    .text start:0x021f1964 end:0x021f1a28
+
+src/Combat/Overlay_24/FindUnflaggedCombatant8_021f101c.cpp:
+    complete
+    .text start:0x021f17e8 end:0x021f18ac
+
+src/Combat/Overlay_24/FindUnflaggedCombatant_021f0578.cpp:
+    complete
+    .text start:0x021f0d44 end:0x021f0e08
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e1328.cpp:
+    complete
+    .text start:0x021e1bc0 end:0x021e1c78
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e32f4.cpp:
+    complete
+    .text start:0x021e3b8c end:0x021e3c3c
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e0b48.cpp:
+    complete
+    .text start:0x021e13e0 end:0x021e148c
+
+src/Combat/Overlay_24/AddBuffEntryAndNotify_021e8cfc.cpp:
+    complete
+    .text start:0x021e9594 end:0x021e9658
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e324c.cpp:
+    complete
+    .text start:0x021e3ae4 end:0x021e3b8c
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021df1e8.cpp:
+    complete
+    .text start:0x021dfa80 end:0x021dfb1c
+
+src/Combat/Overlay_24/func_ov024_021e3cec.cpp:
+    complete
+    .text start:0x021e4584 end:0x021e4620
+
+src/Combat/Overlay_24/func_ov024_021eb2b4.cpp:
+    complete
+    .text start:0x021eba80 end:0x021ebb10
+
+src/Combat/Overlay_24/func_ov024_021e9904.cpp:
+    complete
+    .text start:0x021ea0d0 end:0x021ea15c
+
+src/Combat/Overlay_24/TryFindEligibleAndCopyTable_021f6424.cpp:
+    complete
+    .text start:0x021f6bf0 end:0x021f6ccc
+
+src/Combat/Overlay_24/func_ov024_021e02b0.cpp:
+    complete
+    .text start:0x021e0b48 end:0x021e0c18
+
+src/Combat/Overlay_24/SetTargetLockInfo_021f691c.cpp:
+    complete
+    .text start:0x021f70e8 end:0x021f7180
+
+src/Combat/Overlay_24/SomeInit_021f8144.cpp:
+    complete
+    .text start:0x021f8910 end:0x021f89a8
+
+src/Combat/Overlay_24/ApplyBuffScaledPercent17_021fd2b4.cpp:
+    complete
+    .text start:0x021fda80 end:0x021fdb24

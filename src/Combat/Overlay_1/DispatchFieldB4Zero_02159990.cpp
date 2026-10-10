@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_0203ac40 func_0203a698
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" void func_0203ac40(void*, int, int, int);

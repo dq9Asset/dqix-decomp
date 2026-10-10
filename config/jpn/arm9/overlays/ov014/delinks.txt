@@ -214,3 +214,12 @@ src/Combat/Overlay_14/func_ov014_02187db8.cpp:
 
 src/Combat/Overlay_14/func_ov014_02187074.cpp:
     .text start:0x02188008 end:0x021881bc
+
+src/Combat/Overlay_14/ComputeGroupIndexAndFindHead_021872dc.cpp:
+    .text start:0x02188270 end:0x021882d4
+
+src/Combat/Overlay_14/func_ov014_02187340.cpp:
+    .text start:0x021882d4 end:0x02188334
+
+src/Combat/Overlay_14/Trans_02188bfc.cpp:
+    .text start:0x02189a40 end:0x02189a78

@@ -5728,3 +5728,51 @@ src/Combat/Overlay_31/PollOrRelease_02203358.cpp:
 src/Combat/Overlay_31/func_ov031_0220586c.cpp:
     complete
     .text start:0x0220604c end:0x022060d0
+
+src/Combat/Overlay_31/RunTwoStepUpdate_0223d0a4_02226fe4.cpp:
+    complete
+    .text start:0x022277c4 end:0x0222786c
+
+src/Combat/Overlay_31/func_ov031_0221624c.cpp:
+    complete
+    .text start:0x02216a2c end:0x02216ad0
+
+src/Combat/Overlay_31/RequestCopyAndDispatch_02233b34.cpp:
+    complete
+    .text start:0x02234314 end:0x022343b4
+
+src/Combat/Overlay_31/ParseIPv4Address_02204b84.cpp:
+    complete
+    .text start:0x02205364 end:0x02205400
+
+src/Combat/Overlay_31/CheckAndUpdateStatus_022153bc.cpp:
+    complete
+    .text start:0x02215b9c end:0x02215c2c
+
+src/Combat/Overlay_31/InitFieldsAndDispatch_02233a00.cpp:
+    complete
+    .text start:0x022341e0 end:0x0223426c
+
+src/Combat/Overlay_31/func_ov031_0223e168.cpp:
+    complete
+    .text start:0x0223e948 end:0x0223e9f8
+
+src/Combat/Overlay_31/SetField54IfTagNot9Or10_0223a2b0.cpp:
+    complete
+    .text start:0x0223aa90 end:0x0223ab38
+
+src/Combat/Overlay_31/func_ov031_02234570.cpp:
+    complete
+    .text start:0x02234d50 end:0x02234df8
+
+src/Combat/Overlay_31/DispatchAndEnqueue_0224175c.cpp:
+    complete
+    .text start:0x02241f3c end:0x02241fdc
+
+src/Combat/Overlay_31/func_ov031_02217d1c.cpp:
+    complete
+    .text start:0x022184fc end:0x02218594
+
+src/Combat/Overlay_31/func_ov031_0223bfa0.cpp:
+    complete
+    .text start:0x0223ea0c end:0x0223ea98

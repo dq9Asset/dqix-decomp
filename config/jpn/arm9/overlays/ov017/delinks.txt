@@ -3328,3 +3328,71 @@ src/Combat/Overlay_17/func_ov017_021afcec.cpp:
 src/Combat/Overlay_17/func_ov017_021b228c.cpp:
     complete
     .text start:0x021b29a4 end:0x021b2a40
+
+src/Combat/Overlay_17/DispatchTableEntry_021d1078.cpp:
+    complete
+    .text start:0x021d14f4 end:0x021d1594
+
+src/Combat/Overlay_17/DispatchAllEventStages_021cdf80.cpp:
+    complete
+    .text start:0x021ce428 end:0x021ce4bc
+
+src/Combat/Overlay_17/func_ov017_021c8ab0.cpp:
+    complete
+    .text start:0x021c8f60 end:0x021c9028
+
+src/Combat/Overlay_17/CopyFieldsToCombatant_021c70e0.cpp:
+    complete
+    .text start:0x021c7590 end:0x021c7654
+
+src/Combat/Overlay_17/CheckProximityAndEnqueue_021d1d00.cpp:
+    complete
+    .text start:0x021d2184 end:0x021d2244
+
+src/Combat/Overlay_17/ApplyEntriesAndSetWorkFlag_021c8588.cpp:
+    complete
+    .text start:0x021c8a38 end:0x021c8b04
+
+src/Combat/Overlay_17/CopyFieldsIfMatch_021c6ca0.cpp:
+    complete
+    .text start:0x021c7150 end:0x021c7200
+
+src/Combat/Overlay_17/func_ov017_021ca918.cpp:
+    complete
+    .text start:0x021cadc8 end:0x021cae6c
+
+src/Combat/Overlay_17/CopySrcEntryIntoSlot_021ca4a8.cpp:
+    complete
+    .text start:0x021ca958 end:0x021ca9e4
+
+src/Combat/Overlay_17/ResetCombatantSlotsAndFlags_02191484.cpp:
+    complete
+    .text start:0x02192068 end:0x021920ec
+
+src/Combat/Overlay_17/EnqueueEventFromWordArray_021cbdcc.cpp:
+    complete
+    .text start:0x021cc27c end:0x021cc300
+
+src/Combat/Overlay_17/AdvanceOrResetCombatScale_021b5fc0.cpp:
+    complete
+    .text start:0x021b6574 end:0x021b6644
+
+src/Combat/Overlay_17/ResetCombatStateIfFlagged_021af4ec.cpp:
+    complete
+    .text start:0x021afbfc end:0x021afcac
+
+src/Combat/Overlay_17/func_ov017_021d22d4.cpp:
+    complete
+    .text start:0x021d2758 end:0x021d27ec
+
+src/Combat/Overlay_17/SomeFunc_02198618.cpp:
+    complete
+    .text start:0x021991c8 end:0x021992ac
+
+src/Combat/Overlay_17/func_ov017_021b7104.cpp:
+    complete
+    .text start:0x021b76b4 end:0x021b7788
+
+src/Combat/Overlay_17/EnqueueEventTag11_021cc97c.cpp:
+    complete
+    .text start:0x021cce24 end:0x021ccea8

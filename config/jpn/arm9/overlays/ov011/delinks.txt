@@ -593,3 +593,45 @@ src/Combat/Overlay_11/func_ov011_02185848.cpp:
 
 src/Combat/Overlay_11/SetShortsIfType1FromTagged_02187570.cpp:
     .text start:0x0218864c end:0x021886e0
+
+src/Combat/Overlay_11/SetField10AndFlags3IfType2_02186f08.cpp:
+    .text start:0x02187fe0 end:0x0218804c
+
+src/Combat/Overlay_11/AllocateNodeAndSetFieldE2_0218735c.cpp:
+    .text start:0x02188434 end:0x0218849c
+
+src/Combat/Overlay_11/SetByteAtOffset60IfType7FromTaggedFlag_02187d44.cpp:
+    .text start:0x02188e1c end:0x02188e80
+
+src/Combat/Overlay_11/func_ov011_02187154.cpp:
+    .text start:0x0218822c end:0x02188290
+
+src/Combat/Overlay_11/func_ov011_02187650.cpp:
+    .text start:0x0218872c end:0x02188790
+
+src/Combat/Overlay_11/SetByte38IfNodeTypeIsOne_02187c0c.cpp:
+    .text start:0x02188ce4 end:0x02188d44
+
+src/Combat/Overlay_11/SetByteField39IfNodeTypeIsOne_02187da8.cpp:
+    .text start:0x02188e80 end:0x02188ee0
+
+src/Combat/Overlay_11/func_ov011_02186e54.cpp:
+    .text start:0x02187f2c end:0x02187f8c
+
+src/Combat/Overlay_11/SetFieldFromTaggedIfNodeType7_021858f4.cpp:
+    .text start:0x021869e8 end:0x02186a3c
+
+src/Combat/Overlay_11/AllocateSizedBufferFromTagged_021878dc.cpp:
+    .text start:0x021889b8 end:0x02188a08
+
+src/Combat/Overlay_11/ClearFieldCBits_02187310.cpp:
+    .text start:0x021883e8 end:0x02188434
+
+src/Combat/Overlay_11/DispatchIfType6_02185504.cpp:
+    .text start:0x02186600 end:0x02186648
+
+src/Combat/Overlay_11/DispatchIfType7ClearBuffer_02186c70.cpp:
+    .text start:0x02187d48 end:0x02187d90
+
+src/Combat/Overlay_11/InitObj02185110.cpp:
+    .text start:0x02186210 end:0x0218623c

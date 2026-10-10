@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z15InitObj02185110P12Obj_02185110 func_ov011_02186210
 #define _Z25InitField20And34_0218513cPv func_ov011_0218623c
 #else
 #define R(j,u) (u)
@@ -29,7 +28,7 @@ extern "C" ARM void* func_ov011_021845f8(void* ctx, int v);
 
 struct Obj_02185110;
 #if defined(jpn)
-#define InitObj02185110 func_ov011_02186210
+#define InitObj02185110 _Z15InitObj02185110P12Obj_02185110
 extern "C" ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);
 #else
 ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);

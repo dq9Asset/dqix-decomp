@@ -1780,3 +1780,45 @@ src/Combat/Overlay_1/func_ov001_0215fe50.cpp:
 
 src/Combat/Overlay_1/ApplyThreatOverrideAndFlag_02163070.cpp:
     .text start:0x021645fc end:0x02164680
+
+src/Combat/Overlay_1/InitCombatTablesAndReset_0215a8dc.cpp:
+    .text start:0x0215bf60 end:0x0215bfd8
+
+src/Combat/Overlay_1/DispatchEntryByType_02160938.cpp:
+    .text start:0x02161f4c end:0x02161fb4
+
+src/Combat/Overlay_1/Func_0215a954.cpp:
+    .text start:0x0215bfd8 end:0x0215c038
+
+src/Combat/Overlay_1/LoadResourceIntoGlobalBuffer_0215a750.cpp:
+    .text start:0x0215bdd4 end:0x0215be20
+
+src/Combat/Overlay_1/EnqueueEventType11_0215a594.cpp:
+    .text start:0x0215bc6c end:0x0215bcb0
+
+src/Combat/Overlay_1/InitEntryFromArgs_0215a550.cpp:
+    .text start:0x0215bc28 end:0x0215bc6c
+
+src/Combat/Overlay_1/QueueEntryC4_02158fc4.cpp:
+    .text start:0x0215a69c end:0x0215a6dc
+
+src/Combat/Overlay_1/QueueEntryC5_02159004.cpp:
+    .text start:0x0215a6dc end:0x0215a71c
+
+src/Combat/Overlay_1/AppendToTailList_02159f94.cpp:
+    .text start:0x0215b66c end:0x0215b6ac
+
+src/Combat/Overlay_1/Function_021622a0.cpp:
+    .text start:0x021638b8 end:0x021638e8
+
+src/Combat/Overlay_1/DispatchFieldB4Zero_02159990.cpp:
+    .text start:0x0215b068 end:0x0215b090
+
+src/Combat/Overlay_1/InitObjFields_021588bc.cpp:
+    .text start:0x02159f94 end:0x02159fbc
+
+src/Combat/Overlay_1/GetValueAfterProcess_02159ef0.cpp:
+    .text start:0x0215b5c8 end:0x0215b5ec
+
+src/Combat/Overlay_1/SetType7AndField1c.cpp:
+    .text start:0x0215a734 end:0x0215a754

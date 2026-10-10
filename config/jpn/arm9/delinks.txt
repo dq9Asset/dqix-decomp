@@ -15033,3 +15033,111 @@ src/Combat/Main/UpdateStateMachine02092f00.cpp:
 src/Combat/Main/BuildIndexArrayAndRegister0209dc4c.cpp:
     complete
     .text start:0x0209f9c4 end:0x0209fa44
+
+src/Combat/Main/EncodeIfValid020e23f4.cpp:
+    complete
+    .text start:0x020e3f94 end:0x020e4018
+
+src/Combat/Main/SumNestedHalfwordPairs020577cc.cpp:
+    complete
+    .text start:0x02058b44 end:0x02058bcc
+
+src/Combat/Main/ResetBigStruct0206ddb8.cpp:
+    complete
+    .text start:0x0206ef0c end:0x0206ef94
+
+src/Combat/Main/ConfigurePairMode020bb48c.cpp:
+    complete
+    .text start:0x020bcf58 end:0x020bcfe0
+
+src/Combat/Main/RunBufferedScript020998c4.cpp:
+    complete
+    .text start:0x0209b5f8 end:0x0209b684
+
+src/Combat/Main/SetupPairAndRunBufferedScript_020a818c.cpp:
+    complete
+    .text start:0x020a9f10 end:0x020a9f9c
+
+src/Combat/Main/DispatchEventEntryForIndex.cpp:
+    complete
+    .text start:0x020bfadc end:0x020bfb68
+
+src/Combat/Main/AllocateAndRegisterEntry020bbf84.cpp:
+    complete
+    .text start:0x020bda50 end:0x020bdae4
+
+src/Combat/Main/func_0205d048.cpp:
+    complete
+    .text start:0x0205e378 end:0x0205e410
+
+src/Combat/Main/ShutdownAndReinitObj02092b34.cpp:
+    complete
+    .text start:0x02093454 end:0x020934ec
+
+src/Combat/Main/SetupGlobalAndRunScript020a13e4.cpp:
+    complete
+    .text start:0x020a315c end:0x020a31f4
+
+src/Combat/Main/DetachAndReleaseRefs020bf484.cpp:
+    complete
+    .text start:0x020c0f50 end:0x020c0fec
+
+src/Combat/Main/func_0206f01c.cpp:
+    complete
+    .text start:0x0207016c end:0x02070248
+
+src/Combat/Main/func_020c8548.cpp:
+    complete
+    .text start:0x020ca014 end:0x020ca0f8
+
+src/Combat/Main/func_0206461c.cpp:
+    complete
+    .text start:0x02065908 end:0x020659f0
+
+src/Combat/Main/func_0208f588.cpp:
+    complete
+    .text start:0x0208fe9c end:0x0208ffa0
+
+src/Combat/Main/func_0204fae8.cpp:
+    complete
+    .text start:0x02050fd4 end:0x020510e4
+
+src/Combat/Main/func_0202dd98.cpp:
+    complete
+    .text start:0x0202d908 end:0x0202da80
+
+src/Combat/Main/func_0208ab34.cpp:
+    complete
+    .text start:0x0208b428 end:0x0208b610
+
+src/Combat/Main/Init0201133c.cpp:
+    complete
+    .text start:0x020110b0 end:0x020110f0
+
+src/Combat/Main/InitControllerObject.cpp:
+    complete
+    .text start:0x02043774 end:0x020437b4
+
+src/Combat/Main/ClearSubstructBytes.cpp:
+    complete
+    .text start:0x0200f99c end:0x0200f9e0
+
+src/Combat/Main/AppendRecord020269e4.cpp:
+    complete
+    .text start:0x02026348 end:0x0202638c
+
+src/Combat/Main/Trans_0205cd28.cpp:
+    complete
+    .text start:0x0205e058 end:0x0205e09c
+
+src/Combat/Main/CallFunc0204c8f0OverEntries0207fd00.cpp:
+    complete
+    .text start:0x0208083c end:0x02080880
+
+src/Combat/Main/CallFunc0204b088OverList0x2c.cpp:
+    complete
+    .text start:0x020808c4 end:0x02080908
+
+src/Combat/Main/CallFunc0204b04cOverList0x98.cpp:
+    complete
+    .text start:0x0205e5a4 end:0x0205e5ec

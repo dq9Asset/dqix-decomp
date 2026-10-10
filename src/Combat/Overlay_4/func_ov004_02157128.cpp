@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z18GetShort6_021f6f08P11Obj021f6f08 func_ov023_021f6444
 #define _Z27ScaleStatsIfType12_021f6f10Pv func_ov023_021f6f10
 #else
 #define R(j,u) (u)
@@ -15,12 +14,7 @@ extern "C" int ScaleStatsIfType12_021f6f10(void* self);
 int ScaleStatsIfType12_021f6f10(void* self);
 #endif
 struct Obj021f6f08;
-#if defined(jpn)
-#define GetShort6_021f6f08 func_ov023_021f6444
-extern "C" unsigned int GetShort6_021f6f08(struct Obj021f6f08* obj);
-#else
 unsigned int GetShort6_021f6f08(struct Obj021f6f08* obj);
-#endif
 signed char GetFlagByte_021570f0(int idx);
 
 struct Struct021707d8_02157128 { char pad[8]; unsigned char* ptr; };

@@ -4,7 +4,12 @@ extern "C" int _Z9LockMutexP5Mutex(void* p);
 extern "C" void func_020bf1a0(void* entry);
 
 struct BattleTarget9a8;
+#if defined(jpn)
+extern "C" void func_020be474(struct BattleTarget9a8* obj);
+#define ClearTargetMask func_020be474
+#else
 void ClearTargetMask(struct BattleTarget9a8* obj);
+#endif
 
 struct RefNode020c80f8;
 extern "C" void _Z11UnlockMutexP5Mutex(struct RefNode020c80f8* node);
@@ -22,6 +27,7 @@ struct Ctx020bf484 {
     int field0x130;
 };
 
+// JPN: func_020c0f50
 // USA: func_020bf484
 ARM void DetachAndReleaseRefs020bf484(int expected, void* unused1, struct Ctx020bf484* obj) {
     if (expected != obj->field0x12c) {

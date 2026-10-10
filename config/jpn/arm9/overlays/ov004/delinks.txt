@@ -956,3 +956,30 @@ src/Combat/Overlay_4/func_ov004_0216033c.cpp:
 
 src/Combat/Overlay_4/func_ov004_02168b44.cpp:
     .text start:0x0216907c end:0x02169674
+
+src/Combat/Overlay_4/NotifyByBitfield_021560e8.cpp:
+    .text start:0x021574d4 end:0x02157594
+
+src/Combat/Overlay_4/func_ov004_02169658.cpp:
+    .text start:0x02169b80 end:0x02169da4
+
+src/Combat/Overlay_4/func_ov004_02158dcc.cpp:
+    .text start:0x02159e90 end:0x0215a0b8
+
+src/Combat/Overlay_4/SetPercentAndFlags_02154250.cpp:
+    .text start:0x02155908 end:0x021559f4
+
+src/Combat/Overlay_4/func_ov004_0215da0c.cpp:
+    .text start:0x0215e96c end:0x0215ea5c
+
+src/Combat/Overlay_4/CheckAndDispatchByFlagCounter_021612ec.cpp:
+    .text start:0x02161c7c end:0x02161d88
+
+src/Combat/Overlay_4/SetupNextFieldOrDispatch_021613f8.cpp:
+    .text start:0x02161d88 end:0x02161ea4
+
+src/Combat/Overlay_4/func_ov004_0216a610.cpp:
+    .text start:0x0216aa8c end:0x0216ac54
+
+src/Combat/Overlay_4/func_ov004_021698f4.cpp:
+    .text start:0x02169e2c end:0x02169f44

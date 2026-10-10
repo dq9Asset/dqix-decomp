@@ -99,7 +99,7 @@ func_0200961c kind:function(arm,size=0x50) addr:0x02009538
 func_0200966c kind:function(arm,size=0x40) addr:0x02009588
 func_020096ac kind:function(arm,size=0xcc) addr:0x020095c8
 func_02009694 kind:function(arm,size=0x184) addr:0x02009694
-func_02009818 kind:function(arm,size=0x9c) addr:0x02009818
+func_020098fc kind:function(arm,size=0x9c) addr:0x02009818
 func_020098b4 kind:function(arm,size=0x384) addr:0x020098b4
 func_02009d1c kind:function(arm,size=0xe0) addr:0x02009c38
 func_02009d18 kind:function(arm,size=0xe0) addr:0x02009d18
@@ -1085,7 +1085,7 @@ func_02032090 kind:function(arm,size=0x94) addr:0x02031bc8
 func_02032124 kind:function(arm,size=0x24) addr:0x02031c5c
 func_02032148 kind:function(arm,size=0x98) addr:0x02031c80
 func_020321e0 kind:function(arm,size=0xe0) addr:0x02031d18
-func_02031df8 kind:function(arm,size=0x6c) addr:0x02031df8
+func_020322c0 kind:function(arm,size=0x6c) addr:0x02031df8
 func_0203232c kind:function(arm,size=0x44) addr:0x02031e64
 func_02032370 kind:function(arm,size=0x54) addr:0x02031ea8
 func_02031efc kind:function(arm,size=0x60) addr:0x02031efc
@@ -2509,7 +2509,7 @@ func_02070248 kind:function(arm,size=0x18) addr:0x02070248
 func_02070260 kind:function(arm,size=0x60) addr:0x02070260
 func_020702c0 kind:function(arm,size=0x90) addr:0x020702c0
 func_02070350 kind:function(arm,size=0x24) addr:0x02070350
-func_02070374 kind:function(arm,size=0x1bc) addr:0x02070374
+func_0206f230 kind:function(arm,size=0x1bc) addr:0x02070374
 func_02070530 kind:function(arm,size=0x80) addr:0x02070530
 _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi kind:function(arm,size=0x14) addr:0x020705b0
 _Z15GetData02108d18v kind:function(arm,size=0xc) addr:0x020705c4
@@ -2537,7 +2537,7 @@ func_02071a58 kind:function(arm,size=0x44) addr:0x02071a58
 _Z23InitListBuffers02070a30P14Struct02070a30P13SafeAllocatorPv kind:function(arm,size=0xc4) addr:0x02071a9c
 _Z15GetListDataSizeP14Struct02070af4 kind:function(arm,size=0x18) addr:0x02071b60
 _Z22ForEachElement02070b0cP17Container02070b0cPFvS0_P15Element02070b0cE kind:function(arm,size=0x60) addr:0x02071b78
-func_02071bd8 kind:function(arm,size=0x2f4) addr:0x02071bd8
+func_02070b6c kind:function(arm,size=0x2f4) addr:0x02071bd8
 _Z20BinarySearch02070e60P17Container02070e60iPFiP15Element02070e60E kind:function(arm,size=0x80) addr:0x02071ecc
 _Z19CopyElement02070ee0P15Element02070ee0S0_ kind:function(arm,size=0xb8) addr:0x02071f4c
 _Z20GetElementIfInBoundsP12List02070f98i kind:function(arm,size=0x38) addr:0x02072004
@@ -3949,7 +3949,7 @@ _Z35InitCappedArrayFromVariants020a10ccP19Vec4Variant020a10cc kind:function(arm,
 func_020a2ef8 kind:function(arm,size=0x200) addr:0x020a2ef8
 _Z19ResetBitfieldRecordP22BitfieldRecord020a1380 kind:function(arm,size=0x44) addr:0x020a30f8
 _Z19ClearStruct020a13c4P9S020a13c4 kind:function(arm,size=0x20) addr:0x020a313c
-func_020a315c kind:function(arm,size=0x98) addr:0x020a315c
+_Z31SetupGlobalAndRunScript020a13e4PvS_ith kind:function(arm,size=0x98) addr:0x020a315c
 _Z31SetupGlobalAndRunScript020a147cPvS_P12StreamHeaderiith kind:function(arm,size=0x80) addr:0x020a31f4
 _Z23InitCappedArray020a14fcP11Obj020a14fcPvi kind:function(arm,size=0x6c) addr:0x020a3274
 _Z21AppendElement020a1568P13Array020a1568P12Elem020a1568 kind:function(arm,size=0x54) addr:0x020a32e0
@@ -5877,7 +5877,7 @@ func_020e12c0 kind:function(arm,size=0x94) addr:0x020e2eb8
 _Z25ClearHeaderFields020e1354Ph kind:function(arm,size=0x14) addr:0x020e2f4c
 _Z22SetPairAndByte020e1368P19PairAndByte020e1368jjh kind:function(arm,size=0xc) addr:0x020e2f60
 _Z17SetFields020e1374P14Setter020e1374jji kind:function(arm,size=0x10) addr:0x020e2f6c
-func_020e2f7c kind:function(arm,size=0x58) addr:0x020e2f7c
+_Z24RunCacheHookForField0x14P14Struct020e1384 kind:function(arm,size=0x58) addr:0x020e2f7c
 _Z16Dispatch020e13dcP12Desc020e13dc kind:function(arm,size=0x5c) addr:0x020e2fd4
 func_020e1438 kind:function(arm,size=0x130) addr:0x020e3030
 _Z15ClearZeroStructP10ZeroStruct kind:function(arm,size=0x20) addr:0x020e3160
@@ -7338,7 +7338,7 @@ data_020f2408 kind:data(any) addr:0x020f2408
 data_020f2438 kind:data(any) addr:0x020f2438
 data_020f243c kind:data(any) addr:0x020f243c
 data_020f244c kind:data(any) addr:0x020f244c
-data_020f2460 kind:data(any) addr:0x020f2460
+data_020f2304 kind:data(any) addr:0x020f2460
 data_020f2308 kind:data(any) addr:0x020f2464
 data_020f2330 kind:data(any) addr:0x020f248c
 data_020f2490 kind:data(any) addr:0x020f2490

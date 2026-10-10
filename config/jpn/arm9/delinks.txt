@@ -14749,3 +14749,51 @@ src/Combat/Main/ResetAllSubsystems_0201c124.cpp:
 src/Combat/Main/InitTreasureMapEntry0201165c.cpp:
     complete
     .text start:0x020113cc end:0x02011438
+
+src/Combat/Main/func_020322c0.cpp:
+    complete
+    .text start:0x02031df8 end:0x02031e64
+
+src/Combat/Main/func_0206ea8c.cpp:
+    complete
+    .text start:0x0206fbe0 end:0x0206fc40
+
+src/Combat/Main/func_02032424.cpp:
+    complete
+    .text start:0x02031f5c end:0x02031fa4
+
+src/Combat/Main/func_0203232c.cpp:
+    complete
+    .text start:0x02031e64 end:0x02031ea8
+
+src/Combat/Main/UpdateByte4AndBumpCounter.cpp:
+    complete
+    .text start:0x02009588 end:0x020095c8
+
+src/Combat/Main/func_020098fc.cpp:
+    complete
+    .text start:0x02009818 end:0x020098b4
+
+src/Combat/Main/UpdateStopwatchState0201fbac.cpp:
+    complete
+    .text start:0x0201f8d0 end:0x0201f904
+
+src/Combat/Main/BlankFunction020984ac.cpp:
+    complete
+    .text start:0x0209a0fc end:0x0209a100
+
+src/Combat/Main/IncrementSlotIndex020d4dd4.cpp:
+    complete
+    .text start:0x020d6830 end:0x020d68a4
+
+src/Combat/Main/FindEntryWithField8Neg1.cpp:
+    complete
+    .text start:0x020dc428 end:0x020dc460
+
+src/Combat/Main/RunCacheHookForField0x14.cpp:
+    complete
+    .text start:0x020e2f7c end:0x020e2fd4
+
+src/Combat/Main/Dispatch020e13dc.cpp:
+    complete
+    .text start:0x020e2fd4 end:0x020e3030

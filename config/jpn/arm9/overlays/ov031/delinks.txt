@@ -5700,3 +5700,7 @@ src/Combat/Overlay_31/func_ov031_0220ede4_0220ec5c.cpp:
 src/Combat/Overlay_31/func_ov031_0223cf4c.cpp:
     complete
     .text start:0x02235688 end:0x022356e8
+
+src/Combat/Overlay_31/AdvanceAndCopyContext_0223a698.cpp:
+    complete
+    .text start:0x0223ae78 end:0x0223aef8

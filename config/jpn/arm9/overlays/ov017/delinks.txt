@@ -3200,3 +3200,7 @@ src/Combat/Overlay_17/func_ov017_021aa1ac.cpp:
 src/Combat/Overlay_17/GetSubByteField398_021b2010.cpp:
     complete
     .text start:0x021b2698 end:0x021b26ac
+
+src/Combat/Overlay_17/func_ov017_021b86f8.cpp:
+    complete
+    .text start:0x021b8c08 end:0x021b8dc8

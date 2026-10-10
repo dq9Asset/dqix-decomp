@@ -24,3 +24,9 @@ src/Combat/Overlay_20/InitPointerPair_0218c7f0.cpp:
 src/Combat/Overlay_20/SetFieldFromFieldPlus11_0218db90.cpp:
     complete
     .init start:0x0218e3e0 end:0x0218e3f8
+
+src/Combat/Overlay_20/DispatchCombatSequence_0218c840.cpp:
+    .text start:0x0218d284 end:0x0218d3d0
+
+src/Combat/Overlay_20/RunFieldGroupInitAndDispatch_0218c98c.cpp:
+    .text start:0x0218d3d0 end:0x0218d7a8

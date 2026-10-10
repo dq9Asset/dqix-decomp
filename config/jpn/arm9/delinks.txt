@@ -14797,3 +14797,11 @@ src/Combat/Main/RunCacheHookForField0x14.cpp:
 src/Combat/Main/Dispatch020e13dc.cpp:
     complete
     .text start:0x020e2fd4 end:0x020e3030
+
+src/Combat/Main/func_0204719c.cpp:
+    complete
+    .text start:0x02047fbc end:0x02048050
+
+src/Combat/Main/func_02032148.cpp:
+    complete
+    .text start:0x02031c80 end:0x02031d18

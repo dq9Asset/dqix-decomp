@@ -378,7 +378,7 @@ _Z28ClearFlagBits10to24_021ed7e0P14Flags_021ed7e0 kind:function(arm,size=0x24) a
 _Z38AreAllListedCombatantsFlagged_021ed92cv kind:function(arm,size=0x5c) addr:0x021ed710
 func_ov023_021ed76c kind:function(arm,size=0x70) addr:0x021ed76c
 func_ov023_021ed7dc kind:function(arm,size=0x210) addr:0x021ed7dc
-func_ov023_021ed9ec kind:function(arm,size=0x2cc) addr:0x021ed9ec
+func_ov023_021edc08 kind:function(arm,size=0x2cc) addr:0x021ed9ec
 func_ov023_021edcb8 kind:function(arm,size=0xb44) addr:0x021edcb8
 _Z25GetTableEntry138_021eea98P11Obj021eea98 kind:function(arm,size=0x14) addr:0x021ee7fc
 func_ov023_021ee810 kind:function(arm,size=0x4ec) addr:0x021ee810
@@ -853,7 +853,7 @@ data_ov023_021fd7fc kind:data(any) addr:0x021fcab0
 data_ov023_021fd844 kind:data(any) addr:0x021fcaf8
 data_ov023_021fd850 kind:data(any) addr:0x021fcb04
 data_ov023_021fcb16 kind:data(any) addr:0x021fcb16
-data_ov023_021fcb24 kind:data(any) addr:0x021fcb24
+data_ov023_021fd870 kind:data(any) addr:0x021fcb24
 data_ov023_021fcb3c kind:data(any) addr:0x021fcb3c
 data_ov023_021fcb58 kind:data(any) addr:0x021fcb58
 data_ov023_021fd8d8 kind:data(any) addr:0x021fcb8c

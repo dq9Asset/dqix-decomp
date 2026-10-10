@@ -202,7 +202,7 @@ _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i kind:function(arm,size=0x
 func_ov024_021e9594 kind:function(arm,size=0xc4) addr:0x021e9594
 func_ov024_021e8dc0 kind:function(arm,size=0x1e4) addr:0x021e9658
 _Z25LookupValueByKey_021e8fa4P23FieldRefStruct_021e8fa4ii kind:function(arm,size=0x74) addr:0x021e983c
-func_ov024_021e98b0 kind:function(arm,size=0x15c) addr:0x021e98b0
+func_ov024_021e9018 kind:function(arm,size=0x15c) addr:0x021e98b0
 func_ov024_021e9a0c kind:function(arm,size=0x104) addr:0x021e9a0c
 func_ov024_021e9b10 kind:function(arm,size=0x70) addr:0x021e9b10
 func_ov024_021e9b80 kind:function(arm,size=0x68) addr:0x021e9b80
@@ -588,14 +588,14 @@ data_ov024_021fe778 kind:data(any) addr:0x021fef44
 data_ov024_021fef54 kind:data(any) addr:0x021fef54
 data_ov024_021fe798 kind:data(any) addr:0x021fef64
 data_ov024_021fe7aa kind:data(any) addr:0x021fef76
-data_ov024_021fef90 kind:data(any) addr:0x021fef90
-data_ov024_021fef92 kind:data(any) addr:0x021fef92
+data_ov024_021fe7c4 kind:data(any) addr:0x021fef90
+data_ov024_021fe7c6 kind:data(any) addr:0x021fef92
 data_ov024_021fefac kind:data(any) addr:0x021fefac
 data_ov024_021fe800 kind:data(any) addr:0x021fefcc
 data_ov024_021fe820 kind:data(any) addr:0x021fefec
 data_ov024_021fe822 kind:data(any) addr:0x021fefee
-data_ov024_021ff00c kind:data(any) addr:0x021ff00c
-data_ov024_021ff00e kind:data(any) addr:0x021ff00e
+data_ov024_021fe840 kind:data(any) addr:0x021ff00c
+data_ov024_021fe842 kind:data(any) addr:0x021ff00e
 data_ov024_021ff02c kind:data(any) addr:0x021ff02c
 data_ov024_021ff082 kind:data(any) addr:0x021ff082
 data_ov024_021ff0bc kind:data(any) addr:0x021ff0bc

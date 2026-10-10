@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z31CheckType16ThenTestBit_021552b8Pv func_ov004_02156838
 #define data_ov015_02193d14 data_ov015_02194844
 #define data_ov015_02193d2c data_ov015_0219485c
 #define data_ov015_02193d38 data_ov015_02194868

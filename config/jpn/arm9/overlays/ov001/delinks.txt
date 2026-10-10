@@ -1822,3 +1822,36 @@ src/Combat/Overlay_1/GetValueAfterProcess_02159ef0.cpp:
 
 src/Combat/Overlay_1/SetType7AndField1c.cpp:
     .text start:0x0215a734 end:0x0215a754
+
+src/Combat/Overlay_1/EnqueueEventType9_0215a530.cpp:
+    .text start:0x0215bc08 end:0x0215bc28
+
+src/Combat/Overlay_1/Function_0215f324.cpp:
+    .text start:0x02160938 end:0x02160958
+
+src/Combat/Overlay_1/EnqueueEventType9_021590c4.cpp:
+    .text start:0x0215a79c end:0x0215a7b4
+
+src/Combat/Overlay_1/EnqueueEventType12_0215a5d8.cpp:
+    .text start:0x0215bcb0 end:0x0215bcc8
+
+src/Combat/Overlay_1/EnqueueEventType14_0215a5f0.cpp:
+    .text start:0x0215bcc8 end:0x0215bce0
+
+src/Combat/Overlay_1/EnqueueEventType9Wrapper_0215d8b4.cpp:
+    .text start:0x0215ef38 end:0x0215ef54
+
+src/Combat/Overlay_1/SetType7Field1cWrapper_0215d784.cpp:
+    .text start:0x0215ee08 end:0x0215ee2c
+
+src/Combat/Overlay_1/DispatchScaledVec3WithExtra_0215d418.cpp:
+    complete
+    .text start:0x0215ea9c end:0x0215eb40
+
+src/Combat/Overlay_1/DispatchScaledVec3AndField18_0215d4bc.cpp:
+    complete
+    .text start:0x0215eb40 end:0x0215ebe4
+
+src/Combat/Overlay_1/DisablePowcntDisplaySwap_0215b5c8.cpp:
+    complete
+    .text start:0x0215cc4c end:0x0215cc60

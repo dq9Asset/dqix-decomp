@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z25InitField20And34_0218513cPv func_ov011_0218623c
 #else
 #define R(j,u) (u)
 #endif
@@ -34,7 +33,7 @@ extern "C" ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);
 ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);
 #endif
 #if defined(jpn)
-#define InitField20And34_0218513c func_ov011_0218623c
+#define InitField20And34_0218513c _Z25InitField20And34_0218513cPv
 extern "C" ARM void* InitField20And34_0218513c(void* obj);
 #else
 ARM void* InitField20And34_0218513c(void* obj);

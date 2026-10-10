@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z23InitCombatSlots02045cacP19CombatSlots02045cac func_02046948
 #define data_ov008_0218b490 data_ov008_0218c0f1
 #define data_ov014_021896d4 data_ov014_0218a4e4
 #define data_ov014_0218981c data_ov014_0218a5fc
@@ -15,8 +14,6 @@
 #define func_ov008_021895a8 func_ov008_0218a2b0
 #define func_ov008_02189c70 func_ov008_0218a930
 #define func_ov008_0218aee4 func_ov008_0218bb50
-#define func_ov008_0218af80 func_ov008_0218bbe0
-#define func_ov008_0218b084 func_ov008_0218bce0
 #define func_ov014_021886f8 func_ov014_021895c8
 #else
 #define R(j,u) (u)

@@ -797,3 +797,19 @@ src/Combat/Overlay_25/UpdateCombatFlags_021e9a94.cpp:
 src/Combat/Overlay_25/ClearFoundBitsForList_021e697c.cpp:
     complete
     .text start:0x021e6e2c end:0x021e6eb8
+
+src/Combat/Overlay_25/TryDispatch_021dce7c.cpp:
+    complete
+    .text start:0x021dd770 end:0x021dd808
+
+src/Combat/Overlay_25/DispatchAndForward_021e73c8.cpp:
+    complete
+    .text start:0x021e7878 end:0x021e7900
+
+src/Combat/Overlay_25/InitQueueStruct_021ed124.cpp:
+    complete
+    .text start:0x021ed62c end:0x021ed6f4
+
+src/Combat/Overlay_25/func_ov025_021db7f8.cpp:
+    complete
+    .text start:0x021dc0f4 end:0x021dc1d4

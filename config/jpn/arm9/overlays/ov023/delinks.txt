@@ -2228,3 +2228,63 @@ src/Combat/Overlay_23/RefreshCounterAndAdvanceState_021e3f34.cpp:
 src/Combat/Overlay_23/UpdateFlagsAndByte4e6_021e3e98.cpp:
     complete
     .text start:0x021e40f4 end:0x021e4190
+
+src/Combat/Overlay_23/DispatchIfBothFound_021f7290.cpp:
+    complete
+    .text start:0x021f67cc end:0x021f6854
+
+src/Combat/Overlay_23/func_ov023_021e3db0.cpp:
+    complete
+    .text start:0x021e400c end:0x021e40f4
+
+src/Combat/Overlay_23/func_ov023_021f5ad8.cpp:
+    complete
+    .text start:0x021f5090 end:0x021f514c
+
+src/Combat/Overlay_23/func_ov023_021e4264.cpp:
+    complete
+    .text start:0x021e4488 end:0x021e457c
+
+src/Combat/Overlay_23/func_ov023_021da100.cpp:
+    complete
+    .text start:0x021da8cc end:0x021da9a8
+
+src/Combat/Overlay_23/func_ov023_021f3fbc.cpp:
+    complete
+    .text start:0x021f3648 end:0x021f3724
+
+src/Combat/Overlay_23/func_ov023_021e67f4.cpp:
+    complete
+    .text start:0x021e6d64 end:0x021e6e3c
+
+src/Combat/Overlay_23/ApplyModeSetupAndDispatch_021dd404.cpp:
+    complete
+    .text start:0x021ddbf4 end:0x021ddcbc
+
+src/Combat/Overlay_23/DispatchCombatantEntry_021e456c.cpp:
+    complete
+    .text start:0x021e4790 end:0x021e4860
+
+src/Combat/Overlay_23/GetShort6_021f6f08.cpp:
+    complete
+    .text start:0x021f6444 end:0x021f644c
+
+src/Combat/Overlay_23/DispatchNodeVTableCallsIfState15_021f64a8.cpp:
+    complete
+    .text start:0x021f5a1c end:0x021f5a78
+
+src/Combat/Overlay_23/FindNodeByShort6_021f6880.cpp:
+    complete
+    .text start:0x021f5dbc end:0x021f5df4
+
+src/Combat/Overlay_23/ReinitEntriesAndAngle021fc6cc.cpp:
+    complete
+    .text start:0x021fb9c4 end:0x021fba14
+
+src/Combat/Overlay_23/DispatchByFlag2_021f7ca0.cpp:
+    complete
+    .text start:0x021f7198 end:0x021f720c
+
+src/Combat/Overlay_23/CleanupAndReinitCombatState_021e2f38.cpp:
+    complete
+    .text start:0x021e3290 end:0x021e3388

@@ -351,3 +351,6 @@ src/Combat/Overlay_15/HandleFlagAndDispatch_0218e60c.cpp:
 
 src/Combat/Overlay_15/AdvanceListNodeAndRecordValue_02191ea4.cpp:
     .text start:0x021929e8 end:0x02192a48
+
+src/Combat/Overlay_15/Trans_0218b5a0_0218b5a0.cpp:
+    .text start:0x0218c1c0 end:0x0218c1e8

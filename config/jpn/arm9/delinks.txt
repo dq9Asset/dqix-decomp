@@ -15141,3 +15141,171 @@ src/Combat/Main/CallFunc0204b088OverList0x2c.cpp:
 src/Combat/Main/CallFunc0204b04cOverList0x98.cpp:
     complete
     .text start:0x0205e5a4 end:0x0205e5ec
+
+src/Combat/Main/InitEntries0205d2bc.cpp:
+    complete
+    .text start:0x0205e5ec end:0x0205e634
+
+src/Combat/Main/ClearFourRegions02079870.cpp:
+    complete
+    .text start:0x0207a738 end:0x0207a780
+
+src/Combat/Main/ClearFourRegions020798b8.cpp:
+    complete
+    .text start:0x0207a780 end:0x0207a7c8
+
+src/Combat/Main/ReleaseHandleAndClearFlags.cpp:
+    complete
+    .text start:0x02094ac4 end:0x02094b0c
+
+src/Combat/Main/StoreByteList02026348.cpp:
+    complete
+    .text start:0x02025d1c end:0x02025d68
+
+src/Combat/Main/SetActiveModeSavingPrevious02022d78.cpp:
+    complete
+    .text start:0x020227f8 end:0x02022848
+
+src/Combat/Main/SetSublistEntriesFlag2.cpp:
+    complete
+    .text start:0x02081130 end:0x02081184
+
+src/Combat/Main/_Z29TryDecodeGlobalBitstreamEntryPvi.cpp:
+    complete
+    .text start:0x020752a0 end:0x020752f8
+
+src/Combat/Main/AppendFrameTag02041c08.cpp:
+    complete
+    .text start:0x02042294 end:0x020422f0
+
+src/Combat/Main/InitNodeChain0207f7f0.cpp:
+    complete
+    .text start:0x02080568 end:0x020805c4
+
+src/Combat/Main/ReleaseBattleBuffers020a39d8.cpp:
+    complete
+    .text start:0x020a5714 end:0x020a5770
+
+src/Combat/Main/InitOverlay17ObjAndBumpBattleCounter02012bd8.cpp:
+    complete
+    .text start:0x020129a0 end:0x020129fc
+
+src/Combat/Main/TeardownAndResetState020d7aa0.cpp:
+    complete
+    .text start:0x020d94a4 end:0x020d9508
+
+src/Combat/Main/GuardedOverlayDispatch020d6cb4.cpp:
+    complete
+    .text start:0x020d86bc end:0x020d8720
+
+src/Combat/Main/SetBrightnessRegisters0203b540.cpp:
+    complete
+    .text start:0x0203af98 end:0x0203afd4
+
+src/Combat/Main/EncodeSignFlaggedHalfword.cpp:
+    complete
+    .text start:0x020c546c end:0x020c5494
+
+src/Combat/Main/TryDispatchOrFallback0203aba8.cpp:
+    complete
+    .text start:0x0203a600 end:0x0203a668
+
+src/Combat/Main/_Z24SetupAndDispatch0205c904Phi.cpp:
+    complete
+    .text start:0x0205dc6c end:0x0205dcd4
+
+src/Combat/Main/AccumulateFlaggedSlotBits02085fb4.cpp:
+    complete
+    .text start:0x020868d4 end:0x02086940
+
+src/Combat/Main/AccumulateFlaggedSlotBits02086020.cpp:
+    complete
+    .text start:0x02086940 end:0x020869ac
+
+src/Combat/Main/AccumulateFlaggedSlotBits0208608c.cpp:
+    complete
+    .text start:0x020869ac end:0x02086a18
+
+src/Combat/Main/AccumulateFlaggedSlotBits020860f8.cpp:
+    complete
+    .text start:0x02086a18 end:0x02086a84
+
+src/Combat/Main/AccumulateFlaggedSlotBits02086164.cpp:
+    complete
+    .text start:0x02086a84 end:0x02086af0
+
+src/Combat/Main/AccumulateFlaggedSlotBits020861d0.cpp:
+    complete
+    .text start:0x02086af0 end:0x02086b5c
+
+src/Combat/Main/AccumulateFlaggedSlotBits0208623c.cpp:
+    complete
+    .text start:0x02086b5c end:0x02086bc8
+
+src/Combat/Main/AccumulateSlotBitsFromTable020862a8.cpp:
+    complete
+    .text start:0x02086bc8 end:0x02086c34
+
+src/Combat/Main/AccumulateSlotBitsFromTable02086314.cpp:
+    complete
+    .text start:0x02086c34 end:0x02086ca0
+
+src/Combat/Main/InitHandlerArrayAndRunScript020d3c84.cpp:
+    complete
+    .text start:0x020d56e8 end:0x020d5754
+
+src/Combat/Main/StepCounter020456d0.cpp:
+    complete
+    .text start:0x02046340 end:0x020463b0
+
+src/Combat/Main/UpdateCounterAndFlag02065758.cpp:
+    complete
+    .text start:0x02066b90 end:0x02066c00
+
+src/Combat/Main/CheckAndClearFlag020656e4.cpp:
+    complete
+    .text start:0x02066b1c end:0x02066b90
+
+src/Combat/Main/UpdateStatusTimer.cpp:
+    complete
+    .text start:0x02066cdc end:0x02066d50
+
+src/Combat/Main/InitCombatantFlagsAndSubBlock02037d10.cpp:
+    complete
+    .text start:0x0203776c end:0x020377e4
+
+src/Combat/Main/ReleaseBattleBuffersAlt020a395c.cpp:
+    complete
+    .text start:0x020a5698 end:0x020a5714
+
+src/Combat/Main/InitializeSubObjectsAndFields020289c4.cpp:
+    complete
+    .text start:0x0202821c end:0x020282ac
+
+src/Combat/Main/HandleStateChange020455f8.cpp:
+    complete
+    .text start:0x02046268 end:0x020462f8
+
+src/Combat/Main/GetAndConsumeNameEntries02011930.cpp:
+    complete
+    .text start:0x020116a0 end:0x0201173c
+
+src/Combat/Main/HandleRepeatInput02045740.cpp:
+    complete
+    .text start:0x020463b0 end:0x02046450
+
+src/Combat/Main/ProcessSublistEntryAndDispatch_020813ec.cpp:
+    complete
+    .text start:0x02081cf0 end:0x02081d9c
+
+src/Combat/Main/QueueVec3Event_02092d60.cpp:
+    complete
+    .text start:0x02093680 end:0x0209372c
+
+src/Combat/Main/InitBigStruct0205c790.cpp:
+    complete
+    .text start:0x0205daf0 end:0x0205dba0
+
+src/Combat/Main/SyncBattleState0208f87c.cpp:
+    complete
+    .text start:0x02090190 end:0x02090258

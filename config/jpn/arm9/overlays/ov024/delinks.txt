@@ -1223,7 +1223,7 @@ src/Combat/Overlay_24/func_ov024_021e9018.cpp:
     complete
     .text start:0x021e98b0 end:0x021e9a0c
 
-src/Combat/Overlay_24/func_ov024_021e2784.cpp:
+src/Combat/Overlay_24/func_ov024_021e2950.cpp:
     complete
     .text start:0x021e31e8 end:0x021e3468
 
@@ -2046,3 +2046,31 @@ src/Combat/Overlay_24/SomeInit_021f8144.cpp:
 src/Combat/Overlay_24/ApplyBuffScaledPercent17_021fd2b4.cpp:
     complete
     .text start:0x021fda80 end:0x021fdb24
+
+src/Combat/Overlay_24/CanTargetCombatant_021ed9dc.cpp:
+    complete
+    .text start:0x021ee1a8 end:0x021ee22c
+
+src/Combat/Overlay_24/AddToTableAfterCheck_021e40d8.cpp:
+    complete
+    .text start:0x021e4970 end:0x021e49f0
+
+src/Combat/Overlay_24/NoOp_021fcae8.cpp:
+    complete
+    .text start:0x021fd2b4 end:0x021fd2b8
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e0e38.cpp:
+    complete
+    .text start:0x021e16d0 end:0x021e17c8
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e0f30.cpp:
+    complete
+    .text start:0x021e17c8 end:0x021e18c0
+
+src/Combat/Overlay_24/func_ov024_021e13e0.cpp:
+    complete
+    .text start:0x021e1c78 end:0x021e1e18
+
+src/Combat/Overlay_24/func_ov024_021e2784.cpp:
+    complete
+    .text start:0x021e301c end:0x021e31e8

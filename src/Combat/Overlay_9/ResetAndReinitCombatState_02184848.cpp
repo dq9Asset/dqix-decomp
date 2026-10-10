@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z23InitCombatSlots02045cacP19CombatSlots02045cac func_02046948
 #define _Z25ResetBattleObject0203c4c4Pc func_0203c628
 #else
 #define R(j,u) (u)

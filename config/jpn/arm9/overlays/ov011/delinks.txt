@@ -635,3 +635,18 @@ src/Combat/Overlay_11/DispatchIfType7ClearBuffer_02186c70.cpp:
 
 src/Combat/Overlay_11/InitObj02185110.cpp:
     .text start:0x02186210 end:0x0218623c
+
+src/Combat/Overlay_11/InitField20And34_0218513c.cpp:
+    .text start:0x0218623c end:0x0218625c
+
+src/Combat/Overlay_11/SetXY1c0FromTagged_0218753c.cpp:
+    .text start:0x02188618 end:0x0218864c
+
+src/Combat/Overlay_11/Trans_021851ec.cpp:
+    .text start:0x021862ec end:0x02186314
+
+src/Combat/Overlay_11/func_ov011_02186cb8.cpp:
+    .text start:0x02187d90 end:0x02187df0
+
+src/Combat/Overlay_11/func_ov011_02186d18.cpp:
+    .text start:0x02187df0 end:0x02187e50

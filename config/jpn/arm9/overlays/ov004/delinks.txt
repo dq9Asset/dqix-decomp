@@ -1118,3 +1118,71 @@ src/Combat/Overlay_4/SetField38IfState8_0215e49c.cpp:
 
 src/Combat/Overlay_4/SetFieldOnType7Node_021694e8.cpp:
     .text start:0x02169a10 end:0x02169a34
+
+src/Combat/Overlay_4/OrBattleFlagFrom02114e04_0216e3fc.cpp:
+    .text start:0x0216ea9c end:0x0216eab4
+
+src/Combat/Overlay_4/SetOv011FieldTo_0216dd34.cpp:
+    .text start:0x0216e3fc end:0x0216e414
+
+src/Combat/Overlay_4/func_ov004_021685f8.cpp:
+    .text start:0x02168a6c end:0x02168ab0
+
+src/Combat/Overlay_4/DispatchEventValue141_021684b0.cpp:
+    .text start:0x02168924 end:0x02168948
+
+src/Combat/Overlay_4/DispatchEventValue51_02167fb0.cpp:
+    .text start:0x021683f8 end:0x0216841c
+
+src/Combat/Overlay_4/SetOv011FieldTo_0216dc8c.cpp:
+    complete
+    .text start:0x0216e354 end:0x0216e368
+
+src/Combat/Overlay_4/SetOv011FieldTo_0216dd4c.cpp:
+    complete
+    .text start:0x0216e414 end:0x0216e428
+
+src/Combat/Overlay_4/DispatchAdjustmentIfType4_02157018.cpp:
+    .text start:0x021580e0 end:0x0215811c
+
+src/Combat/Overlay_4/DispatchVTableMethod58IfType17_02156fd4.cpp:
+    .text start:0x0215809c end:0x021580e0
+
+src/Combat/Overlay_4/GetNodeIfKind6_02153944.cpp:
+    .text start:0x02154ffc end:0x02155030
+
+src/Combat/Overlay_4/GetNodeIfKind15_02156f38.cpp:
+    .text start:0x02158000 end:0x02158034
+
+src/Combat/Overlay_4/GetNodeIfKind1_02156fa0.cpp:
+    .text start:0x02158068 end:0x0215809c
+
+src/Combat/Overlay_4/GetNodeIfKind6_02156f6c.cpp:
+    .text start:0x02158034 end:0x02158068
+
+src/Combat/Overlay_4/GetNodeIfKind7_02156ed0.cpp:
+    .text start:0x02157f98 end:0x02157fcc
+
+src/Combat/Overlay_4/GetNodeIfKind8_02156f04.cpp:
+    .text start:0x02157fcc end:0x02158000
+
+src/Combat/Overlay_4/DispatchVTableMethod58IfType17_02167908.cpp:
+    .text start:0x02167e04 end:0x02167e48
+
+src/Combat/Overlay_4/CheckTypes7And6ThenCall_02154038.cpp:
+    .text start:0x021556f0 end:0x0215575c
+
+src/Combat/Overlay_4/CheckTypes7And6ThenCall_02155544.cpp:
+    .text start:0x02156ac4 end:0x02156b30
+
+src/Combat/Overlay_4/CheckType16ThenTestBit_02153d8c.cpp:
+    .text start:0x02155444 end:0x021554d8
+
+src/Combat/Overlay_4/CheckType16ThenTestBit_021552b8.cpp:
+    .text start:0x02156838 end:0x021568cc
+
+src/Combat/Overlay_4/DispatchAdjustmentIfType16_021556dc.cpp:
+    .text start:0x02156c5c end:0x02156c9c
+
+src/Combat/Overlay_4/DispatchEventValue150_0216848c.cpp:
+    .text start:0x02168900 end:0x02168924

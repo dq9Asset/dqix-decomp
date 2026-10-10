@@ -3396,3 +3396,31 @@ src/Combat/Overlay_17/func_ov017_021b7104.cpp:
 src/Combat/Overlay_17/EnqueueEventTag11_021cc97c.cpp:
     complete
     .text start:0x021cce24 end:0x021ccea8
+
+src/Combat/Overlay_17/PrepareStateAndMaybeEnqueue_021913d0.cpp:
+    complete
+    .text start:0x02191fb4 end:0x02192068
+
+src/Combat/Overlay_17/AppendPacketAndSetFlag_021a99dc.cpp:
+    complete
+    .text start:0x021aa1b0 end:0x021aa270
+
+src/Combat/Overlay_17/ProcessEntry56_0218d818.cpp:
+    complete
+    .text start:0x0218e3f8 end:0x0218e4ac
+
+src/Combat/Overlay_17/func_ov017_021b71d8.cpp:
+    complete
+    .text start:0x021b7788 end:0x021b7834
+
+src/Combat/Overlay_17/ClearStackAndMaybeSetFlag_021b67d8.cpp:
+    complete
+    .text start:0x021b6d8c end:0x021b6e40
+
+src/Combat/Overlay_17/ClearBufferAndFlag_021972cc_021c35ac.cpp:
+    complete
+    .text start:0x021c3a88 end:0x021c3b74
+
+src/Combat/Overlay_17/EnqueueEventTag99_021cbbd0.cpp:
+    complete
+    .text start:0x021cc080 end:0x021cc0bc

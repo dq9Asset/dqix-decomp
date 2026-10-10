@@ -2136,3 +2136,43 @@ src/Combat/Overlay_23/func_ov023_021e7220.cpp:
 src/Combat/Overlay_23/BuildEntryBuffers_021e6594.cpp:
     complete
     .text start:0x021e6b14 end:0x021e6c24
+
+src/Combat/Overlay_23/ResetCombatOverlayState_021eb138.cpp:
+    complete
+    .text start:0x021eb09c end:0x021eb1d0
+
+src/Combat/Overlay_23/func_ov023_021f7da0.cpp:
+    complete
+    .text start:0x021f7298 end:0x021f73b0
+
+src/Combat/Overlay_23/DispatchBufferedScriptsByTag_021f5b9c.cpp:
+    complete
+    .text start:0x021f5188 end:0x021f52c4
+
+src/Combat/Overlay_23/InitEntryStateAndDispatchHandlers_021ed064.cpp:
+    complete
+    .text start:0x021ecfb8 end:0x021ed0e8
+
+src/Combat/Overlay_23/func_ov023_021ed354.cpp:
+    complete
+    .text start:0x021ed2d0 end:0x021ed394
+
+src/Combat/Overlay_23/func_ov023_021ed4b8.cpp:
+    complete
+    .text start:0x021ed3f0 end:0x021ed514
+
+src/Combat/Overlay_23/func_ov023_021d90d0.cpp:
+    complete
+    .text start:0x021d998c end:0x021d9aa8
+
+src/Combat/Overlay_23/InitBoxLayout_021d921c.cpp:
+    complete
+    .text start:0x021d9aa8 end:0x021d9b18
+
+src/Combat/Overlay_23/BlankFunction_021e6194.cpp:
+    complete
+    .text start:0x021e6378 end:0x021e637c
+
+src/Combat/Overlay_23/DispatchListThenCheck_021f68dc.cpp:
+    complete
+    .text start:0x021f5e18 end:0x021f5ec0

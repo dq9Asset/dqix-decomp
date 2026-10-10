@@ -3320,3 +3320,11 @@ src/Combat/Overlay_17/func_ov017_0219b33c.cpp:
 src/Combat/Overlay_17/SetIntField28_021afb10.cpp:
     complete
     .text start:0x021b0224 end:0x021b0230
+
+src/Combat/Overlay_17/func_ov017_021afcec.cpp:
+    complete
+    .text start:0x021b03a0 end:0x021b0494
+
+src/Combat/Overlay_17/func_ov017_021b228c.cpp:
+    complete
+    .text start:0x021b29a4 end:0x021b2a40

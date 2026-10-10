@@ -539,3 +539,18 @@ src/Combat/Overlay_11/InitOrRefreshNodeState_02184694.cpp:
 
 src/Combat/Overlay_11/SetObjFields_021888ec.cpp:
     .text start:0x02189638 end:0x02189650
+
+src/Combat/Overlay_11/func_ov011_0218598c.cpp:
+    .text start:0x02186a80 end:0x02186bb4
+
+src/Combat/Overlay_11/func_ov011_02186884.cpp:
+    .text start:0x0218795c end:0x02187a90
+
+src/Combat/Overlay_11/DispatchTaggedKeyCase_02184cc0.cpp:
+    .text start:0x02185dc0 end:0x02185ee4
+
+src/Combat/Overlay_11/AllocateAndInitNode_02187a14.cpp:
+    .text start:0x02188aec end:0x02188c08
+
+src/Combat/Overlay_11/CreateAndAppendEvent13Node_021871b8.cpp:
+    .text start:0x02188290 end:0x021883a0

@@ -14917,3 +14917,71 @@ src/Combat/Main/ClearFlag0x1000000AndByte0x24.cpp:
 src/Combat/Main/CheckField0x14Bit0Clear020890c0.cpp:
     complete
     .text start:0x020899bc end:0x020899d0
+
+src/Combat/Main/InitSubObjectArraysReturnSelf.cpp:
+    complete
+    .text start:0x0203a32c end:0x0203a36c
+
+src/Combat/Main/IterateEntries0205a330.cpp:
+    complete
+    .text start:0x0205b6a8 end:0x0205b6e8
+
+src/Combat/Main/Init0203cfb4.cpp:
+    complete
+    .text start:0x0203d4ec end:0x0203d52c
+
+src/Combat/Main/BackupPairTableToBuffer.cpp:
+    complete
+    .text start:0x020bd1cc end:0x020bd20c
+
+src/Combat/Main/RestorePairTableFromBuffer.cpp:
+    complete
+    .text start:0x020bd20c end:0x020bd24c
+
+src/Combat/Main/InitObjectTables0208b508.cpp:
+    complete
+    .text start:0x0208bdfc end:0x0208be3c
+
+src/Combat/Main/func_02042a50.cpp:
+    complete
+    .text start:0x020430d0 end:0x02043110
+
+src/Combat/Main/ForEachNodeAllMatch02064530.cpp:
+    complete
+    .text start:0x0206581c end:0x02065860
+
+src/Combat/Main/ForEachNodeUntilFalse02064704.cpp:
+    complete
+    .text start:0x020659f0 end:0x02065a38
+
+src/Combat/Main/ReplaceBinExtensionWithNat020e05f8.cpp:
+    complete
+    .text start:0x020e2240 end:0x020e2284
+
+src/Combat/Main/InitFourEntrySlots02020aa0.cpp:
+    complete
+    .text start:0x020206c4 end:0x02020710
+
+src/Combat/Main/SetBitfieldStoreBytes0205af38.cpp:
+    complete
+    .text start:0x0205c2d4 end:0x0205c320
+
+src/Combat/Main/InitGlobalStateAndInstallHandlers020bb780.cpp:
+    complete
+    .text start:0x020bd24c end:0x020bd298
+
+src/Combat/Main/FormatAndDispatch020290e8.cpp:
+    complete
+    .text start:0x020289c8 end:0x02028a20
+
+src/Combat/Main/InitWithExtendedRegion0203cf58.cpp:
+    complete
+    .text start:0x0203d490 end:0x0203d4ec
+
+src/Combat/Main/ForwardCenteredY0208b5b4.cpp:
+    complete
+    .text start:0x0208bea8 end:0x0208bf04
+
+src/Combat/Main/FindRectIndexForCurrentCoords020e1e4c.cpp:
+    complete
+    .text start:0x020e39ec end:0x020e3a50

@@ -323,7 +323,7 @@ func_ov024_021f18fc kind:function(arm,size=0x110) addr:0x021f20c8
 func_ov024_021f1a0c kind:function(arm,size=0x134) addr:0x021f21d8
 func_ov024_021f1b40 kind:function(arm,size=0x124) addr:0x021f230c
 func_ov024_021f2430 kind:function(arm,size=0xe8) addr:0x021f2430
-func_ov024_021f2518 kind:function(arm,size=0x10c) addr:0x021f2518
+func_ov024_021f1d4c kind:function(arm,size=0x10c) addr:0x021f2518
 func_ov024_021f1e58 kind:function(arm,size=0x10c) addr:0x021f2624
 func_ov024_021f1f64 kind:function(arm,size=0x100) addr:0x021f2730
 func_ov024_021f2064 kind:function(arm,size=0x54) addr:0x021f2830
@@ -343,7 +343,7 @@ func_ov024_021f2998 kind:function(arm,size=0x11c) addr:0x021f3164
 func_ov024_021f2ab4 kind:function(arm,size=0x17c) addr:0x021f3280
 func_ov024_021f2c30 kind:function(arm,size=0x11c) addr:0x021f33fc
 func_ov024_021f2d4c kind:function(arm,size=0x4c) addr:0x021f3518
-func_ov024_021f3564 kind:function(arm,size=0xf0) addr:0x021f3564
+func_ov024_021f2d98 kind:function(arm,size=0xf0) addr:0x021f3564
 func_ov024_021f2e88 kind:function(arm,size=0xf0) addr:0x021f3654
 func_ov024_021f2f78 kind:function(arm,size=0xd4) addr:0x021f3744
 func_ov024_021f304c kind:function(arm,size=0x11c) addr:0x021f3818
@@ -354,7 +354,7 @@ func_ov024_021f331c kind:function(arm,size=0x4c) addr:0x021f3ae8
 func_ov024_021f3b34 kind:function(arm,size=0xd8) addr:0x021f3b34
 func_ov024_021f3c0c kind:function(arm,size=0xe4) addr:0x021f3c0c
 func_ov024_021f3524 kind:function(arm,size=0x40) addr:0x021f3cf0
-func_ov024_021f3d30 kind:function(arm,size=0x124) addr:0x021f3d30
+func_ov024_021f3564 kind:function(arm,size=0x124) addr:0x021f3d30
 func_ov024_021f3688 kind:function(arm,size=0x44) addr:0x021f3e54
 func_ov024_021f36cc kind:function(arm,size=0x130) addr:0x021f3e98
 func_ov024_021f3fc8 kind:function(arm,size=0xf4) addr:0x021f3fc8
@@ -378,7 +378,7 @@ func_ov024_021f4768 kind:function(arm,size=0x110) addr:0x021f4f34
 _Z19ReturnZero_021f4878v kind:function(arm,size=0x8) addr:0x021f5044
 func_ov024_021f504c kind:function(arm,size=0xf4) addr:0x021f504c
 func_ov024_021f5140 kind:function(arm,size=0xe0) addr:0x021f5140
-func_ov024_021f5220 kind:function(arm,size=0x10c) addr:0x021f5220
+func_ov024_021f4a54 kind:function(arm,size=0x10c) addr:0x021f5220
 func_ov024_021f4b60 kind:function(arm,size=0x12c) addr:0x021f532c
 func_ov024_021f5458 kind:function(arm,size=0xe0) addr:0x021f5458
 func_ov024_021f4d6c kind:function(arm,size=0x118) addr:0x021f5538
@@ -387,7 +387,7 @@ func_ov024_021f4ed4 kind:function(arm,size=0x104) addr:0x021f56a0
 func_ov024_021f57a4 kind:function(arm,size=0xf4) addr:0x021f57a4
 func_ov024_021f50cc kind:function(arm,size=0x108) addr:0x021f5898
 func_ov024_021f51d4 kind:function(arm,size=0x4c) addr:0x021f59a0
-func_ov024_021f59ec kind:function(arm,size=0xe0) addr:0x021f59ec
+func_ov024_021f5220 kind:function(arm,size=0xe0) addr:0x021f59ec
 _Z32SetFlagIfStatByteBelow3_021f5300PiiiS_Ps kind:function(arm,size=0x44) addr:0x021f5acc
 func_ov024_021f5b10 kind:function(arm,size=0xdc) addr:0x021f5b10
 _Z18ReturnOne_021f5420v kind:function(arm,size=0x8) addr:0x021f5bec
@@ -411,7 +411,7 @@ func_ov024_021f657c kind:function(arm,size=0xdc) addr:0x021f657c
 func_ov024_021f6658 kind:function(arm,size=0xe0) addr:0x021f6658
 func_ov024_021f5f6c kind:function(arm,size=0x100) addr:0x021f6738
 func_ov024_021f6838 kind:function(arm,size=0xe4) addr:0x021f6838
-func_ov024_021f691c kind:function(arm,size=0xe0) addr:0x021f691c
+func_ov024_021f6150 kind:function(arm,size=0xe0) addr:0x021f691c
 func_ov024_021f6230 kind:function(arm,size=0x68) addr:0x021f69fc
 func_ov024_021f6298 kind:function(arm,size=0x104) addr:0x021f6a64
 func_ov024_021f639c kind:function(arm,size=0x88) addr:0x021f6b68
@@ -424,7 +424,7 @@ _Z24ClearData4Bytes_021f67f8v kind:function(arm,size=0x28) addr:0x021f6fc4
 func_ov024_021f6fec kind:function(arm,size=0x10) addr:0x021f6fec
 func_ov024_021f6830 kind:function(arm,size=0x98) addr:0x021f6ffc
 _Z23InitElemArray4_021f68c8P13Elem_021f68c8 kind:function(arm,size=0x54) addr:0x021f7094
-func_ov024_021f70e8 kind:function(arm,size=0x98) addr:0x021f70e8
+func_ov024_021f691c kind:function(arm,size=0x98) addr:0x021f70e8
 _Z25FindByKeyIndexed_021f69b4Pci kind:function(arm,size=0x68) addr:0x021f7180
 _Z31AddEntryIfUnderLimit16_021f6a1cP21AddEntryList_021f6a1cPv kind:function(arm,size=0x30) addr:0x021f71e8
 func_ov024_021f6a4c kind:function(arm,size=0x3c) addr:0x021f7218
@@ -466,10 +466,10 @@ _Z27DispatchByCategory_021f736cP14Outer_021f736c kind:function(arm,size=0x4c) ad
 func_ov024_021f73b8 kind:function(arm,size=0xc0) addr:0x021f7b84
 func_ov024_021f7478 kind:function(arm,size=0xccc) addr:0x021f7c44
 func_ov024_021f8910 kind:function(arm,size=0x98) addr:0x021f8910
-func_ov024_021f89a8 kind:function(arm,size=0x124) addr:0x021f89a8
+func_ov024_021f81dc kind:function(arm,size=0x124) addr:0x021f89a8
 func_ov024_021f8acc kind:function(arm,size=0xf8) addr:0x021f8acc
 func_ov024_021f8bc4 kind:function(arm,size=0xf8) addr:0x021f8bc4
-func_ov024_021f8cbc kind:function(arm,size=0x138) addr:0x021f8cbc
+func_ov024_021f84f0 kind:function(arm,size=0x138) addr:0x021f8cbc
 func_ov024_021f8628 kind:function(arm,size=0x134) addr:0x021f8df4
 func_ov024_021f875c kind:function(arm,size=0x80) addr:0x021f8f28
 func_ov024_021f87dc kind:function(arm,size=0x98) addr:0x021f8fa8
@@ -615,7 +615,7 @@ data_ov024_021fea6c kind:data(any) addr:0x021ff238
 data_ov024_021ff240 kind:data(any) addr:0x021ff240
 data_ov024_021ff248 kind:data(any) addr:0x021ff248
 data_ov024_021fea84 kind:data(any) addr:0x021ff250
-data_ov024_021ff258 kind:data(any) addr:0x021ff258
+data_ov024_021fea8c kind:data(any) addr:0x021ff258
 data_ov024_021fea94 kind:data(any) addr:0x021ff260
 data_ov024_021fea9c kind:data(any) addr:0x021ff268
 data_ov024_021feaa4 kind:data(any) addr:0x021ff270
@@ -626,7 +626,7 @@ data_ov024_021feac4 kind:data(any) addr:0x021ff290
 data_ov024_021ff298 kind:data(any) addr:0x021ff298
 data_ov024_021fead4 kind:data(any) addr:0x021ff2a0
 data_ov024_021feadc kind:data(any) addr:0x021ff2a8
-data_ov024_021ff2b0 kind:data(any) addr:0x021ff2b0
+data_ov024_021feae4 kind:data(any) addr:0x021ff2b0
 data_ov024_021ff2b8 kind:data(any) addr:0x021ff2b8
 data_ov024_021ff2c0 kind:data(any) addr:0x021ff2c0
 data_ov024_021feafc kind:data(any) addr:0x021ff2c8
@@ -640,7 +640,7 @@ data_ov024_021feb3c kind:data(any) addr:0x021ff308
 data_ov024_021feb4c kind:data(any) addr:0x021ff318
 data_ov024_021ff320 kind:data(any) addr:0x021ff320
 data_ov024_021feb5c kind:data(any) addr:0x021ff328
-data_ov024_021ff330 kind:data(any) addr:0x021ff330
+data_ov024_021feb64 kind:data(any) addr:0x021ff330
 data_ov024_021ff338 kind:data(any) addr:0x021ff338
 data_ov024_021ff340 kind:data(any) addr:0x021ff340
 data_ov024_021ff348 kind:data(any) addr:0x021ff348
@@ -661,7 +661,7 @@ data_ov024_021febec kind:data(any) addr:0x021ff3b8
 data_ov024_021febf4 kind:data(any) addr:0x021ff3c0
 data_ov024_021febfc kind:data(any) addr:0x021ff3c8
 data_ov024_021fec04 kind:data(any) addr:0x021ff3d0
-data_ov024_021ff3d8 kind:data(any) addr:0x021ff3d8
+data_ov024_021fec0c kind:data(any) addr:0x021ff3d8
 data_ov024_021fec1c kind:data(any) addr:0x021ff3e8
 data_ov024_021fec24 kind:data(any) addr:0x021ff3f0
 data_ov024_021fec2c kind:data(any) addr:0x021ff3f8
@@ -684,7 +684,7 @@ data_ov024_021fecfc kind:data(any) addr:0x021ff4c8
 data_ov024_021fed0c kind:data(any) addr:0x021ff4d8
 data_ov024_021fed1c kind:data(any) addr:0x021ff4e8
 data_ov024_021fed2c kind:data(any) addr:0x021ff4f8
-data_ov024_021ff508 kind:data(any) addr:0x021ff508
+data_ov024_021fed3c kind:data(any) addr:0x021ff508
 data_ov024_021fed4c kind:data(any) addr:0x021ff518
 data_ov024_021fed5c kind:data(any) addr:0x021ff528
 data_ov024_021fed6c kind:data(any) addr:0x021ff538
@@ -740,7 +740,7 @@ data_ov024_021ff180 kind:data(any) addr:0x021ff94c
 data_ov024_021ff1e0 kind:data(any) addr:0x021ff9c0
 data_ov024_021ff3f8 kind:data(any) addr:0x021ffbd8
 data_ov024_021ff450 kind:data(any) addr:0x021ffc30
-data_ov024_021ffce8 kind:data(any) addr:0x021ffce8
+data_ov024_021ff508 kind:data(any) addr:0x021ffce8
 data_ov024_021ff790 kind:data(any) addr:0x021fff70
 data_ov024_022001ee kind:data(any) addr:0x022001ee
 data_ov024_02200478 kind:data(any) addr:0x02200478

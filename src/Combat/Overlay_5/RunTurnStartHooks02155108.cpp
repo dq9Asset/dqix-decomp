@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define func_ov005_021537bc func_ov005_02154f3c
 #define func_ov005_02155d6c func_ov005_0215735c
 #define func_ov005_02159c88 func_ov005_0215b1d4
 #define func_ov005_0215a2c8 func_ov005_0215b81c
@@ -10,7 +9,6 @@
 #define func_ov005_0215a620 func_ov005_0215bb74
 #define func_ov005_0215a720 func_ov005_0215bc6c
 #define func_ov005_0215aa44 func_ov005_0215bf64
-#define func_ov005_0215acc0 func_ov005_0215c198
 #define func_ov005_0215ae7c func_ov005_0215c33c
 #define func_ov005_0215b0a0 func_ov005_0215c4b4
 #else

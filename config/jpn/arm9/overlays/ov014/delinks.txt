@@ -202,3 +202,15 @@ src/Combat/Overlay_14/Trans_02186dc8.cpp:
 
 src/Menu/Overlay_14/BestiaryExtendedAllocation.cpp:
     .text start:0x0218784c end:0x02187a04
+
+src/Combat/Overlay_14/func_ov014_0218580c.cpp:
+    .text start:0x0218687c end:0x02186cac
+
+src/Combat/Overlay_14/func_ov014_02188010.cpp:
+    .text start:0x02188f14 end:0x021891d8
+
+src/Combat/Overlay_14/func_ov014_02187db8.cpp:
+    .text start:0x02188cbc end:0x02188f14
+
+src/Combat/Overlay_14/func_ov014_02187074.cpp:
+    .text start:0x02188008 end:0x021881bc

@@ -1762,3 +1762,35 @@ src/Combat/Overlay_24/func_ov024_021eebbc.cpp:
 src/Combat/Overlay_24/func_ov024_021e6060.cpp:
     complete
     .text start:0x021e68f8 end:0x021e699c
+
+src/Combat/Overlay_24/func_ov024_021f2d98.cpp:
+    complete
+    .text start:0x021f3564 end:0x021f3654
+
+src/Combat/Overlay_24/func_ov024_021f3564.cpp:
+    complete
+    .text start:0x021f3d30 end:0x021f3e54
+
+src/Combat/Overlay_24/func_ov024_021f4a54.cpp:
+    complete
+    .text start:0x021f5220 end:0x021f532c
+
+src/Combat/Overlay_24/SelectUnflagged6AndMaybePick_021f5220.cpp:
+    complete
+    .text start:0x021f59ec end:0x021f5acc
+
+src/Combat/Overlay_24/func_ov024_021f84f0.cpp:
+    complete
+    .text start:0x021f8cbc end:0x021f8df4
+
+src/Combat/Overlay_24/func_ov024_021f81dc.cpp:
+    complete
+    .text start:0x021f89a8 end:0x021f8acc
+
+src/Combat/Overlay_24/func_ov024_021f6150.cpp:
+    complete
+    .text start:0x021f691c end:0x021f69fc
+
+src/Combat/Overlay_24/func_ov024_021f1d4c.cpp:
+    complete
+    .text start:0x021f2518 end:0x021f2624

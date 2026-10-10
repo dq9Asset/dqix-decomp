@@ -311,3 +311,12 @@ src/Combat/Overlay_27/FinalizeDispatchRecordAndIssue_021dafc0.cpp:
 src/Combat/Overlay_27/func_ov027_021db154.cpp:
     complete
     .text start:0x021dba14 end:0x021dbc80
+
+src/Combat/Overlay_27/func_ov027_021db524.cpp:
+    .text start:0x021dbde4 end:0x021dc63c
+
+src/Combat/Overlay_27/func_ov027_021d9940.cpp:
+    .text start:0x021da200 end:0x021da49c
+
+src/Combat/Overlay_27/PickAndRelayRandomSlot_021d9704.cpp:
+    .text start:0x021d9fc4 end:0x021da15c

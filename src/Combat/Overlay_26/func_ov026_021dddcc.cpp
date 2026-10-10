@@ -1,5 +1,4 @@
 #if defined(jpn)
-#define _Z21FindSlotById_021dae60P18Container_021dae60i func_ov026_021db574
 #define data_ov026_021de7fa data_ov026_021ded16
 #define data_ov026_021de802 data_ov026_021ded1e
 #define data_ov026_021de812 data_ov026_021ded2e

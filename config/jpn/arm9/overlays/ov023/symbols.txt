@@ -31,7 +31,7 @@ func_ov023_021db3c8 kind:function(arm,size=0xec) addr:0x021db3c8
 func_ov023_021db4b4 kind:function(arm,size=0x94) addr:0x021db4b4
 func_ov023_021dacd4 kind:function(arm,size=0xa4) addr:0x021db548
 func_ov023_021dad78 kind:function(arm,size=0x14) addr:0x021db5ec
-func_ov023_021db600 kind:function(arm,size=0x300) addr:0x021db600
+func_ov023_021dad8c kind:function(arm,size=0x300) addr:0x021db600
 _Z22FindEntryById_021db08cPvi kind:function(arm,size=0x48) addr:0x021db900
 _Z19InitFields_021db0d4Pvi kind:function(arm,size=0x3c) addr:0x021db948
 func_ov023_021db110 kind:function(arm,size=0x1a8) addr:0x021db984
@@ -48,12 +48,12 @@ _Z20DecodePacked021dbb34PvP16Unpacked021dbb34 kind:function(arm,size=0x124) addr
 _Z33ConvertModelDataToFloats_021dbc58PvP22FloatModelOut_021dbc58i kind:function(arm,size=0xb8) addr:0x021dc550
 func_ov023_021dc608 kind:function(arm,size=0x298) addr:0x021dc608
 func_ov023_021dc8a0 kind:function(arm,size=0x28) addr:0x021dc8a0
-func_ov023_021dc8c8 kind:function(arm,size=0x164) addr:0x021dc8c8
-func_ov023_021dca2c kind:function(arm,size=0x228) addr:0x021dca2c
+func_ov023_021dbfd0 kind:function(arm,size=0x164) addr:0x021dc8c8
+func_ov023_021dc134 kind:function(arm,size=0x228) addr:0x021dca2c
 func_ov023_021dc354 kind:function(arm,size=0x134) addr:0x021dcc54
 func_ov023_021dc488 kind:function(arm,size=0x98) addr:0x021dcd88
 func_ov023_021dce20 kind:function(arm,size=0x4dc) addr:0x021dce20
-func_ov023_021dd2fc kind:function(arm,size=0x9c) addr:0x021dd2fc
+func_ov023_021dc9e8 kind:function(arm,size=0x9c) addr:0x021dd2fc
 func_ov023_021dd398 kind:function(arm,size=0x54) addr:0x021dd398
 func_ov023_021dcae0 kind:function(arm,size=0x90) addr:0x021dd3ec
 _Z23LookupByField8_021dcb70P11Obj021dcb70 kind:function(arm,size=0x34) addr:0x021dd47c
@@ -410,7 +410,7 @@ func_ov023_021f3724 kind:function(arm,size=0x3a0) addr:0x021f3724
 func_ov023_021f3ac4 kind:function(arm,size=0x98) addr:0x021f3ac4
 func_ov023_021f3b5c kind:function(arm,size=0x7c) addr:0x021f3b5c
 func_ov023_021f3bd8 kind:function(arm,size=0x6b0) addr:0x021f3bd8
-func_ov023_021f4288 kind:function(arm,size=0x318) addr:0x021f4288
+func_ov023_021f4c04 kind:function(arm,size=0x318) addr:0x021f4288
 func_ov023_021f45a0 kind:function(arm,size=0x134) addr:0x021f45a0
 _Z35SetFieldForListedCombatants021f50fcv kind:function(arm,size=0x54) addr:0x021f46d4
 func_ov023_021f4728 kind:function(arm,size=0xd8) addr:0x021f4728
@@ -990,7 +990,7 @@ data_ov023_021fec40 kind:bss addr:0x021fec40
 data_ov023_021fec6c kind:bss addr:0x021fec6c
 data_ov023_021ffa34 kind:bss addr:0x021fec94
 data_ov023_021ffa4c kind:bss addr:0x021feca4
-data_ov023_021ff154 kind:bss addr:0x021ff154
+_ZZ17GetGlobal021ffefcvE1s kind:bss addr:0x021ff154
 data_ov023_021fff08 kind:bss addr:0x021ff160
 data_ov023_021fff1c kind:bss addr:0x021ff174
 data_ov023_021ff17c kind:bss addr:0x021ff17c

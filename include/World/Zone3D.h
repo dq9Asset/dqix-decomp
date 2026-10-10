@@ -7,6 +7,7 @@
 #include "Graphics/AtmosphericEffect.h"
 #include "Graphics/LightingInfo.h"
 #include "Grotto/Main/TileFeatures.h"
+#include "World/ZoneLootableRecord.h"
 
 struct Zone3D_StructPtr_8
 {
@@ -17,6 +18,17 @@ struct Zone3D_StructPtr_8
     char mapShortName_[7];
     unsigned char unknown_c_low_ : 4;
     unsigned char unknown_c_high_ : 1;
+};
+
+struct ZoneChestRenderRecord
+{
+    Vector3i position;
+    short angleY;
+    short angleX;
+    char unknown10[6];
+    unsigned char active;
+    unsigned char secondPass;
+    char unknown18[12];
 };
 
 // sizeof == 0x2824, as seen in the dynamic allocation of one
@@ -89,12 +101,13 @@ public:
     char unknown_476_;
     // this seems to include blue and red chests
     unsigned char numChests_;
-    int unknown_478_;
-    int unknown_47c_;
+    ZoneLootableRecord* unknown_478_;
+    ZoneChestRenderRecord* unknown_47c_;
 
-    char unk_480[0x498 - 0x480];
+    Foo02048004* lootableTemplates_[6];
     Model3D models_498_[2];
-    char unk_5f0[0x82c - 0x5f0];
+    int chestPaletteOffsets_5f0_[4];
+    char unk_600[0x82c - 0x600];
 
     int unknown_82c_;
 
@@ -123,7 +136,9 @@ public:
     ActiveGrottoClass grotto_; // offset 23ec in USA. this is 0x20 bytes larger in JPN
     char unk_2664[0x2724 - 0x2664];
     char unknown_struct_2724_[0xc];
-    char unk_2730[0x2754 - 0x2730];
+    char unk_2730[0x274c - 0x2730];
+    int chestRenderingEnabled_274c_;
+    char unk_2750[0x2754 - 0x2750];
     char unknown_struct_2754_[0x18];
     char unk_276c[0x2820 - 0x276c];
     char unknown_2820_;

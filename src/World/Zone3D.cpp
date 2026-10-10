@@ -11,7 +11,6 @@
 
 #if defined(jpn)
 #define _Z13Reset02013490Pc func_02013258
-#define _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct func_02096950
 
 #define data_020ef0f0 data_020ef02c
 #endif

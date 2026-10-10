@@ -6,7 +6,7 @@
 
 #if defined(jpn)
 extern "C" int sprintf(char* out, const char* format, ...);
-extern "C" void func_020d97e0(void* receiver, void* input, int style, int flag, unsigned char option);
+extern "C" void func_020d7e10(void* receiver, void* input, int style, int flag, unsigned char option);
 extern "C" char data_ov017_021d70e0[];
 extern "C" char data_ov017_021d7108[];
 enum { ResourceFlag = 0x40c8, GrottoReset = 0x27d4 };
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
 #if defined(jpn)
             char buf2[0x50];
             sprintf(buf2, data_ov017_021d70e0, *(char**)((char*)a + 0x134));
-            func_020d97e0(reset, buf2, 0, 0, 1);
+            func_020d7e10(reset, buf2, 0, 0, 1);
 #else
             void* g = GetGlobalField0x1c020421a0();
             char buf1[0xc];
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
         } else {
             TeardownAndResetState020d7aa0((struct Obj020d7aa0*)reset);
 #if defined(jpn)
-            func_020d97e0(reset, data_ov017_021d7108, 0, 0, 1);
+            func_020d7e10(reset, data_ov017_021d7108, 0, 0, 1);
 #else
             int cbv = CallFunc020e0434With02153694(0x27);
             func_020d7e10(reset, (void*)cbv, 0, 0, 1, 1);

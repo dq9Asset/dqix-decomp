@@ -760,3 +760,39 @@ src/Combat/Overlay_4/func_ov004_0216d920.cpp:
 src/Combat/Overlay_4/ProcessTickAndPopStack_0216fa48.cpp:
     complete
     .text start:0x021701d8 end:0x02170204
+
+src/Combat/Overlay_4/func_ov004_0216794c.cpp:
+    complete
+    .text start:0x02167e48 end:0x02167f08
+
+src/Combat/Overlay_4/InitOv004Loader_0217031c.cpp:
+    complete
+    .init start:0x02170c10 end:0x02170c3c
+
+src/Combat/Overlay_4/ClearFlagAndResetVec_021630a4.cpp:
+    complete
+    .text start:0x02163740 end:0x021637c8
+
+src/Combat/Overlay_4/InitAndNotifyStruct_0215b740.cpp:
+    complete
+    .text start:0x0215c774 end:0x0215c7fc
+
+src/Combat/Overlay_4/func_ov004_0215aa10.cpp:
+    complete
+    .text start:0x0215ba18 end:0x0215baf8
+
+src/Combat/Overlay_4/func_ov004_0215c30c.cpp:
+    complete
+    .text start:0x0215d330 end:0x0215d46c
+
+src/Combat/Overlay_4/func_ov004_0215ef9c.cpp:
+    complete
+    .text start:0x0215faa4 end:0x0215fbc8
+
+src/Combat/Overlay_4/func_ov004_02165a1c.cpp:
+    complete
+    .text start:0x021662ac end:0x02166364
+
+src/Combat/Overlay_4/DecrementCounterAndNotify_021599b4.cpp:
+    complete
+    .text start:0x0215aa10 end:0x0215aa88

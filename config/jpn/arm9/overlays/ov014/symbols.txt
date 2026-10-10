@@ -43,7 +43,7 @@ func_ov014_02188cbc kind:function(arm,size=0x258) addr:0x02188cbc
 func_ov014_02188f14 kind:function(arm,size=0x2c4) addr:0x02188f14
 _Z27UpdateCounterState_021882d4P9S021882d4 kind:function(arm,size=0x5c) addr:0x021891d8
 func_ov014_02189234 kind:function(arm,size=0x178) addr:0x02189234
-func_ov014_021893ac kind:function(arm,size=0x80) addr:0x021893ac
+func_ov014_021884cc kind:function(arm,size=0x80) addr:0x021893ac
 func_ov014_0218942c kind:function(arm,size=0x60) addr:0x0218942c
 func_ov014_0218948c kind:function(arm,size=0x13c) addr:0x0218948c
 func_ov014_021895c8 kind:function(arm,size=0x308) addr:0x021895c8
@@ -73,7 +73,7 @@ data_ov014_0218948e kind:data(any) addr:0x0218a2ce
 data_ov014_0218a2d8 kind:data(any) addr:0x0218a2d8
 data_ov014_0218a2f8 kind:data(any) addr:0x0218a2f8
 data_ov014_0218a30c kind:data(any) addr:0x0218a30c
-__sinit_ov014_0218a350 kind:function(arm,size=0x88) addr:0x0218a350
+__sinit_ov014_02189510 kind:function(arm,size=0x88) addr:0x0218a350
 .p__sinit_ov014_0218a350 kind:data(word) addr:0x0218a3d8
 data_ov014_021895a0 kind:data(any) addr:0x0218a3e0
 data_ov014_021895b0 kind:data(any) addr:0x0218a3f0

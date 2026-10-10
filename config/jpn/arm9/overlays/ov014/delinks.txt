@@ -176,3 +176,11 @@ src/Combat/Overlay_14/Trans_02186d7c.cpp:
 src/Combat/Overlay_14/func_ov014_02188d48.cpp:
     complete
     .text start:0x02189b88 end:0x0218a030
+
+src/Combat/Overlay_14/AccumulateFloats_02189510_02189510.cpp:
+    complete
+    .init start:0x0218a350 end:0x0218a3d8
+
+src/Combat/Overlay_14/SetSublistEntriesForId25_021884cc.cpp:
+    complete
+    .text start:0x021893ac end:0x0218942c

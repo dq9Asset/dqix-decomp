@@ -12,7 +12,7 @@ extern const char data_ov003_0217ed74[];
 extern const char data_ov003_0217eda8[];
 extern const char data_ov003_0217edc6[];
 extern "C" void func_02080654(void*, SafeAllocator*, const char*);
-extern "C" void func_020e1858(void*, SafeAllocator*, const char*, int, int, int);
+extern "C" void func_020dfc84(void*, SafeAllocator*, const char*, int, int, int);
 #else
 enum { kSelfBodyEnd = 0x830, kSelfField874 = 0x874, kSelfField7D8 = 0x7d8, kGlobalPrefix = 0x2d8, kGlobalGap = 0x9a0 - 0x2e7 };
 #endif
@@ -107,7 +107,9 @@ extern "C" void* _Z15GetData02108d18v(void);
 extern "C" short _Z18GetHalfwordCheckedP12List0206f7f4i(void*, int);
 extern "C" Rec02174a80* _Z21FindEntryById020725d8P12List020725d8i(StreamHeader02072488*, int);
 extern "C" void _Z15InitObj02174408P18InitStruct02174408(void*);
+#if !defined(jpn)
 extern "C" void func_020dfc84(void*, SafeAllocator*, char*, char*, int, int);
+#endif
 extern "C" int func_020dfd40(void*, int, int);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
 extern "C" void func_0204b5b4(void*, int);
@@ -224,7 +226,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             al = self->alloc;
             al->a[1].Reset();
 #if defined(jpn)
-            func_020e1858((char*)self + 0xc, &al->a[1], data_ov003_0217ed74, 0, (short)(self->h86e - 1), -1);
+            func_020dfc84((char*)self + 0xc, &al->a[1], data_ov003_0217ed74, 0, (short)(self->h86e - 1), -1);
 #else
             sprintf(buf1, data_ov003_02180b10, self->h86e - 1);
             sprintf(buf2, data_ov003_02180b2c, self->h86e - 1);

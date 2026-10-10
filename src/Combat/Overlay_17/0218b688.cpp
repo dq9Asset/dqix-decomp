@@ -1,4 +1,6 @@
+// JPN: func_ov017_0218c2a8
 #include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -103,7 +105,6 @@ extern "C" void _Z21ResetWordList0209cbb8P16WordList0209cbb8(void* p);
 extern "C" void _Z28RunScriptIfAvailable0209cbccv(void* p);
 extern "C" void* _Z17GetGlobal02109a54v();
 extern "C" void _Z35PrepareAndRunBufferedScript02099f6cPc(void* p);
-extern "C" void func_0204719c(void* p);
 extern "C" void _Z27ResetAllocatorSlots020e5058v();
 extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(void* alloc, unsigned int size);
 extern "C" void _Z31CreateAndResetAllocator020e50ecPvj(void* buf, unsigned int size);
@@ -156,7 +157,11 @@ extern "C" void* func_02057924();
 extern "C" void _Z18InitStruct02057930P11Foo02057930(void* p);
 extern "C" void _Z36ClearCombatantsAndInitStruct02057978P11Foo02057930(void* p);
 extern "C" void* _Z17GetEntryTableBasev();
+#if defined(jpn)
+extern "C" void _Z19InitEntries02028894P11Big02028894PcS1_(void* p, void* a);
+#else
 extern "C" void _Z19InitEntries02028894P11Big02028894PcS1_(void* p, void* a, void* b);
+#endif
 extern "C" void func_020287b4(void* p);
 extern "C" void* _Z15GetData02104b6cv();
 extern "C" void _Z25ResetBattleArrays02039e7cPv(void* p);
@@ -248,7 +253,6 @@ extern "C" void _Z27RefreshDisplayState0205e8ecP12Obj_0205e8ec(void* p);
 extern "C" void func_ov017_021a3ef0(void* p);
 extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(void* p);
 extern "C" void func_ov017_021a316c(void* self);
-extern "C" void _Z19MaybeInvoke0204719cP14Struct02047230(void* p);
 extern "C" void _Z20InitControllerObjectPc(void* c);
 extern "C" void _Z28CallHelperFourTimes_02190238Pv(void* self);
 extern "C" void _Z22ResetBigStruct02013750Pvi(void* p, int a);
@@ -326,9 +330,6 @@ struct Slot373c {
     char data[0x48];
 };
 
-struct Entry2b90 {
-    char data[0x88];
-};
 
 struct Battle0218b688 {
     char pad0[0x28];
@@ -338,13 +339,19 @@ struct Battle0218b688 {
     SafeAllocator allocator;
     char dataD8[0x150 - 0xd8];
     char data150[0x27c - 0x150];
+#if !defined(jpn)
     char data27c[0x2cc - 0x27c];
+#endif
     char data2cc[0x87c - 0x2cc];
     char pairTables[0xf0c - 0x87c];
+#if defined(jpn)
+    char dataF0c[0x28f8 - 0xebc];
+#else
     char dataF0c[0x2b08 - 0xf0c];
+#endif
     int tableMode;
     char pad2b0c[0x2b90 - 0x2b0c];
-    Entry2b90 entries[0x12];
+    Foo02048004 entries[0x12];
     char pad3520[0x3634 - 0x3520];
     unsigned char colorA[0x12];
     unsigned char colorB[0x12];
@@ -363,17 +370,30 @@ struct Battle0218b688 {
     char* node734;
     char pad3738[0x373c - 0x3738];
     Slot373c slots[4];
+#if defined(jpn)
+    char pad385c[0x3b3c - 0x385c];
+#else
     char pad385c[0x3b4c - 0x385c];
+#endif
     void* node3b4c;
     char pad3b50[0x3b60 - 0x3b50];
     char* node3b60;
     char pad3b64[0x4324 - 0x3b64];
     int exitRequest;
+#if defined(jpn)
+    char pad4328[0x4434 - 0x4328];
+#else
     char pad4328[0x44c4 - 0x4328];
+#endif
     void* regions;
 };
 
-#define IS_OBJ_FLAG2_SET(h) ((h)->obj != 0 ? ((*(int*)((h)->obj + 0x3dcc) & 2) ? 1 : 0) : 0)
+#if defined(jpn)
+enum { RegionObjectFlags = 0x3d44, RegionMemberFlags = 0x180, RegionControllerMode = 0x10 };
+#else
+enum { RegionObjectFlags = 0x3dcc, RegionMemberFlags = 0x18c, RegionControllerMode = 0x18 };
+#endif
+#define IS_OBJ_FLAG2_SET(h) ((h)->obj != 0 ? ((*(int*)((h)->obj + RegionObjectFlags) & 2) ? 1 : 0) : 0)
 
 // USA: func_ov017_0218b688
 extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
@@ -505,12 +525,14 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z35PrepareAndRunBufferedScript02099f6cPc(_Z17GetGlobal02109a54v());
     func_0204719c(&self->entries[11]);
     int ownAllocator = 0;
+#if !defined(jpn)
     _Z27ResetAllocatorSlots020e5058v();
     void* slotBuf = _Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 0x1866);
     if (slotBuf != 0) {
         _Z31CreateAndResetAllocator020e50ecPvj(slotBuf, 0x1866);
     }
     _Z34ResetAndLoadAllocatorSlots020e5114v();
+#endif
     if (_Z10GetByte0x4Pc(gs) == 9) {
         ownAllocator = 1;
         self->allocator.CreateTypeA(_Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 0x30000), 0x30000);
@@ -601,7 +623,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
                 if (member != 0) {
                     char* info = _Z15GetFieldAt0x150Ph(member);
                     if (info != 0 && (*(int*)(info + 0x18) & 1)) {
-                        *(int*)(member + 0x18c) |= 1;
+                        *(int*)(member + RegionMemberFlags) |= 1;
                     }
                 }
             }
@@ -686,7 +708,11 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     void* combatants = func_02057924();
     _Z18InitStruct02057930P11Foo02057930(combatants);
     void* entryTable = _Z17GetEntryTableBasev();
+#if defined(jpn)
+    _Z19InitEntries02028894P11Big02028894PcS1_(entryTable, self->dataD8);
+#else
     _Z19InitEntries02028894P11Big02028894PcS1_(entryTable, self->dataD8, self->data27c);
+#endif
     void* battleArrays = _Z15GetData02104b6cv();
     _Z25ResetBattleArrays02039e7cPv(battleArrays);
     void* controller = _Z26GetGlobalField0x1c020421a0v();
@@ -841,7 +867,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         _Z20ResetXYField0203aa08Pv(&data_02108760);
         func_020bbd9c();
         _Z33CleanInvalidateOamBuffers0203bd88v(oam);
-        _Z15Forward0204359cPvi(controller, 0x18);
+        _Z15Forward0204359cPvi(controller, RegionControllerMode);
         if (flag4000 != 0) {
             _Z22DispatchByFlag020d9834i(1);
         } else {
@@ -883,7 +909,9 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         func_ov017_0219a18c(self);
         func_0203ba74(regions3);
         func_02027438(self->timedBuffer);
+#if !defined(jpn)
         _Z30UpdateTimedBufferState020275e4P11Obj020275e4(self->timedBuffer);
+#endif
         if (flag4000 != 0) {
             _Z22DispatchByFlag020d9834i(1);
         }
@@ -906,7 +934,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z12Init0203cfb4P15Struct_0203cfb4(extRegion);
     func_ov017_021a316c(self);
     for (int i = 0; i < 0x12; i++) {
-        _Z19MaybeInvoke0204719cP14Struct02047230(&self->entries[i]);
+        MaybeInvoke0204719c(&self->entries[i]);
     }
     _Z24ClearFourRegions020798b8Pc(regions4);
     _Z20InitControllerObjectPc(controller);
@@ -950,7 +978,9 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z14ResetInputLogAv();
     *(volatile unsigned int*)0x4000000 &= ~0xe000;
     data_ov017_021d82e0.word4 = 0;
+#if !defined(jpn)
     _Z41ResetSlotsAndDestroySafeAllocator020e5094v();
+#endif
     SafeAllocator::GetLiveCount();
     _Z10SetWord0x0Pii(gs, 0);
     _Z28InitCombatController020a2010Pv(combatCtrl);

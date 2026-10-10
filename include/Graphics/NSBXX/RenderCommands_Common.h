@@ -28,7 +28,6 @@
 #define data_0210b078 data_0210ad30
 
 #define _Z24SubmitBlock0x40IfNotBusyi func_020c6fc8
-#define func_020ca408 func_020cbed4
 #define func_020ca430 func_020cbefc
 #define func_020ca7d0 func_020cc29c
 #endif

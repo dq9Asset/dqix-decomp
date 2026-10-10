@@ -96,10 +96,10 @@ data_ov027_021dd920 kind:bss addr:0x021de1e0
 data_ov027_021dd924 kind:bss addr:0x021de1e4
 data_ov027_021dd940 kind:bss addr:0x021de200
 data_ov027_021dd980 kind:bss addr:0x021de240
-data_ov027_021de248 kind:bss addr:0x021de248
-data_ov027_021de24e kind:bss addr:0x021de24e
-data_ov027_021de250 kind:bss addr:0x021de250
-data_ov027_021de2a8 kind:bss addr:0x021de2a8
+data_ov027_021dd988 kind:bss addr:0x021de248
+data_ov027_021dd98e kind:bss addr:0x021de24e
+data_ov027_021dd990 kind:bss addr:0x021de250
+data_ov027_021dd9e8 kind:bss addr:0x021de2a8
 data_ov027_021e33e0 kind:bss addr:0x021e3ca0
 data_ov027_021e33ec kind:bss addr:0x021e3cac
 data_ov027_021e3cc0 kind:bss addr:0x021e3cc0

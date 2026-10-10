@@ -80,7 +80,7 @@ func_ov015_02191874 kind:function(arm,size=0x170) addr:0x021923b8
 func_ov015_021919e4 kind:function(arm,size=0x10c) addr:0x02192528
 func_ov015_02192634 kind:function(arm,size=0xb0) addr:0x02192634
 func_ov015_021926e4 kind:function(arm,size=0xd0) addr:0x021926e4
-func_ov015_021927b4 kind:function(arm,size=0x234) addr:0x021927b4
+func_ov015_02191c70 kind:function(arm,size=0x234) addr:0x021927b4
 func_ov015_021929e8 kind:function(arm,size=0x60) addr:0x021929e8
 func_ov015_02192a48 kind:function(arm,size=0x178) addr:0x02192a48
 func_ov015_02192bc0 kind:function(arm,size=0xf4) addr:0x02192bc0
@@ -114,11 +114,11 @@ data_ov015_02194868 kind:data(any) addr:0x02194868
 data_ov015_02194878 kind:data(any) addr:0x02194878
 data_ov015_02193d80 kind:data(any) addr:0x02194894
 data_ov015_02193d48 kind:data(any) addr:0x021948b0
-data_ov015_021948cc kind:data(any) addr:0x021948cc
+data_ov015_02193d9c kind:data(any) addr:0x021948cc
 data_ov015_021948f0 kind:data(any) addr:0x021948f0
 data_ov015_02193df0 kind:data(any) addr:0x02194920
 data_ov015_02193e48 kind:data(any) addr:0x02194978
-data_ov015_02194a18 kind:data(any) addr:0x02194a18
+data_ov015_02193ee8 kind:data(any) addr:0x02194a18
 data_ov015_02194ae0 kind:data(any) addr:0x02194ae0
 data_ov015_02194b08 kind:data(any) addr:0x02194b08
 data_ov015_02194b20 kind:data(any) addr:0x02194b20
@@ -136,10 +136,10 @@ data_ov015_02194b8a kind:data(any) addr:0x02194b8a
 data_ov015_02194b92 kind:data(any) addr:0x02194b92
 data_ov015_02194ba4 kind:data(any) addr:0x02194ba4
 data_ov015_02194bb8 kind:data(any) addr:0x02194bb8
-data_ov015_02194bce kind:data(any) addr:0x02194bce
-data_ov015_02194bd4 kind:data(any) addr:0x02194bd4
-data_ov015_02194bef kind:data(any) addr:0x02194bef
-data_ov015_02194bf8 kind:data(any) addr:0x02194bf8
+data_ov015_0219408e kind:data(any) addr:0x02194bce
+data_ov015_02194094 kind:data(any) addr:0x02194bd4
+data_ov015_021940af kind:data(any) addr:0x02194bef
+data_ov015_021940b8 kind:data(any) addr:0x02194bf8
 data_ov015_021940c0 kind:data(any) addr:0x02194c00
 data_ov015_021940db kind:data(any) addr:0x02194c1b
 data_ov015_021940e1 kind:data(any) addr:0x02194c21

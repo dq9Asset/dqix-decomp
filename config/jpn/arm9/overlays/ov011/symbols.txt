@@ -17,7 +17,7 @@ func_ov011_021845f8 kind:function(arm,size=0xc) addr:0x021856f8
 _Z24DestroyTreeNode_02184604PvPh kind:function(arm,size=0x3c) addr:0x02185704
 _Z17InitEntry02184640PcS_ kind:function(arm,size=0x2c) addr:0x02185740
 _Z20FindNodeById0218466cPvt kind:function(arm,size=0x28) addr:0x0218576c
-func_ov011_02185794 kind:function(arm,size=0xac) addr:0x02185794
+func_ov011_02184694 kind:function(arm,size=0xac) addr:0x02185794
 func_ov011_02185840 kind:function(arm,size=0x10) addr:0x02185840
 func_ov011_02184750 kind:function(arm,size=0x10) addr:0x02185850
 func_ov011_02184760 kind:function(arm,size=0x10) addr:0x02185860
@@ -154,7 +154,7 @@ _Z40CallVTableFnAt172WithTaggedArgs_02187cd8P20TaggedNumber02184c30 kind:functio
 func_ov011_02188e1c kind:function(arm,size=0x64) addr:0x02188e1c
 func_ov011_02188e80 kind:function(arm,size=0x60) addr:0x02188e80
 func_ov011_02187e08 kind:function(arm,size=0x18) addr:0x02188ee0
-func_ov011_02188ef8 kind:function(arm,size=0xe4) addr:0x02188ef8
+func_ov011_02187e20 kind:function(arm,size=0xe4) addr:0x02188ef8
 func_ov011_02187f04 kind:function(arm,size=0x34) addr:0x02188fdc
 _Z26EnableDisplaySwap_02187f38v kind:function(arm,size=0x14) addr:0x02189010
 func_ov011_02187f4c kind:function(arm,size=0x1c) addr:0x02189024

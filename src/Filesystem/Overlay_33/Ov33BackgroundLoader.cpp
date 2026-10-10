@@ -2,9 +2,6 @@
 #include "Filesystem/GPC.h"
 #include "Resource/ResourceMutex.h"
 
-#ifdef jpn
-#define func_020a1a40 func_020a37b8
-#endif
 
 extern "C"
 {

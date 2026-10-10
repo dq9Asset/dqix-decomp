@@ -67,12 +67,49 @@ def relocations(path: Path) -> list[tuple[int, str, int, str]]:
     for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
         match = RELOC.search(line)
         if match:
-            out.append((int(match[1], 16), match[2], int(match[3], 16), match[5]))
+            out.append((int(match[1], 16), match[2], int(match[3], 16) + int(match[4] or "0", 16), match[5]))
     return out
+
+
+def branch_target(instruction: int, source: int) -> int | None:
+    offset = instruction & 0xffffff
+    if offset & 0x800000:
+        offset -= 1 << 24
+    if instruction >> 25 == 0x7d:
+        return source + 8 + offset * 4 + ((instruction >> 24) & 1) * 2
+    if instruction & 0x0e000000 == 0x0a000000:
+        return source + 8 + offset * 4
+    return None
+
+
+def thumb_branch_target(instructions: int, source: int) -> int | None:
+    high, low = instructions & 0xffff, instructions >> 16
+    if high & 0xf800 != 0xf000:
+        return None
+    offset = ((high & 0x7ff) << 12) | ((low & 0x7ff) << 1)
+    if offset & 0x400000:
+        offset -= 1 << 23
+    if low & 0xf800 == 0xf800:
+        return source + 4 + offset
+    if low & 0xf800 == 0xe800:
+        return (source + 4 + offset) & ~3
+    return None
 
 
 def reloc_sources(path: Path) -> list[int]:
     return [source for source, _, _, _ in relocations(path)]
+
+
+def is_local(line: str) -> bool:
+    return "local" in line.split()[1:]
+
+
+def with_local(line: str, local: bool) -> str:
+    if is_local(line) == local:
+        return line
+    body = line.rstrip("\r\n")
+    words = [word for word in body.split(" ") if word != "local"] + (["local"] if local else [])
+    return " ".join(words) + line[len(body):]
 
 
 def symbol_lines(path: Path):

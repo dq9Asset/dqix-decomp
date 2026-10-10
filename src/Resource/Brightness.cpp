@@ -5,7 +5,6 @@
 
 #if defined(jpn)
 #define _Z25EncodeSignFlaggedHalfwordPsi func_020c546c
-#define _Z35ProcessCombatantAnimRequest020db9ccPviii func_020dd3d4
 #endif
 
 // Temporary internal wrappers

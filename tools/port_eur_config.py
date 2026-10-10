@@ -77,8 +77,8 @@ THUMB_BX_LR = 0x4770
 THUMB_MOV_R0_R1 = 0x1c08
 
 from region_port import (DELINK_END, DELINK_START, RELOC, SYMBOL_ADDR, SYMBOL_SIZE, SameAddress,
-                         block_ranges, delink_blocks, hex_address, port_delink, read_raw, reloc_sources,
-                         symbol_lines, sync_delinks)
+                         block_ranges, branch_target, delink_blocks, hex_address, is_local, port_delink,
+                         read_raw, reloc_sources, symbol_lines, sync_delinks, thumb_branch_target, with_local)
 
 
 class MainAddressMap:
@@ -415,31 +415,6 @@ def module_binary(module_dir: Path) -> Path:
     return args.extract / "arm9" / "arm9.bin"
 
 
-def branch_target(instruction: int, source: int) -> int | None:
-    offset = instruction & 0xffffff
-    if offset & 0x800000:
-        offset -= 1 << 24
-    if instruction >> 25 == 0x7d: # blx
-        return source + 8 + offset * 4 + ((instruction >> 24) & 1) * 2
-    if instruction & 0x0e000000 == 0x0a000000: # b, bl
-        return source + 8 + offset * 4
-    return None
-
-
-def thumb_branch_target(instructions: int, source: int) -> int | None:
-    high, low = instructions & 0xffff, instructions >> 16
-    if high & 0xf800 != 0xf000:
-        return None
-    offset = ((high & 0x7ff) << 12) | ((low & 0x7ff) << 1)
-    if offset & 0x400000:
-        offset -= 1 << 23
-    if low & 0xf800 == 0xf800: # bl
-        return source + 4 + offset
-    if low & 0xf800 == 0xe800: # blx
-        return (source + 4 + offset) & ~3
-    return None
-
-
 def verify_relocs(relocs: Path) -> tuple[int, list[str]]:
     '''Checks that every relocation points to its target in the extracted EUR binary'''
     module_dir = relocs.parent
@@ -480,6 +455,12 @@ def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]
         eur_indices = eur_at.get(eur_address, [])
         eur_names = [eur_lines[i].split(" ", 1)[0] for i in eur_indices]
         if set(usa_names) <= set(eur_names):
+            for i, name in zip(usa_indices, usa_names):
+                index = eur_indices[eur_names.index(name)]
+                flagged = with_local(eur_lines[index], is_local(usa_lines[i]))
+                if flagged != eur_lines[index]:
+                    eur_lines[index] = flagged
+                    renamed += 1
             continue
         if eur_names and set(eur_names) < set(usa_names):
             newline = "\r\n" if eur_lines[eur_indices[-1]].endswith("\r\n") else "\n"
@@ -489,7 +470,8 @@ def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]
             renamed += len(extra)
         elif len(usa_names) == 1 and len(eur_names) == 1:
             index = eur_indices[0]
-            eur_lines[index] = usa_names[0] + eur_lines[index][len(eur_names[0]):]
+            eur_lines[index] = with_local(usa_names[0] + eur_lines[index][len(eur_names[0]):],
+                                          is_local(usa_lines[usa_indices[0]]))
             renamed += 1
         else:
             unresolved.append(f"{hex_address(eur_address)} USA {usa_names} EUR {eur_names}")

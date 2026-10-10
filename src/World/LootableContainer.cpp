@@ -7,7 +7,6 @@
 #ifdef jpn
 
 #define data_02108e78 data_02108dbc
-#define data_02108e90 data_02108dd4
 #endif
 
 extern "C"

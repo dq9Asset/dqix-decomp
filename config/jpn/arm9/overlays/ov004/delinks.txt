@@ -932,3 +932,27 @@ src/Combat/Overlay_4/func_ov004_02164c18.cpp:
 
 src/Combat/Overlay_4/func_ov004_02164738.cpp:
     .text start:0x02164df8 end:0x02164fe8
+
+src/Combat/Overlay_4/SwapStatFieldIfCountAndAxis_021653e4.cpp:
+    .text start:0x02165c74 end:0x02165d38
+
+src/Combat/Overlay_4/SwapStatFieldIfCountAndAxis_021654a8.cpp:
+    .text start:0x02165d38 end:0x02165dfc
+
+src/Combat/Overlay_4/0215bc9c.cpp:
+    .text start:0x0215cce8 end:0x0215cee4
+
+src/Combat/Overlay_4/func_ov004_0216dd78.cpp:
+    .text start:0x0216e440 end:0x0216e63c
+
+src/Combat/Overlay_4/func_ov004_0216d5b0.cpp:
+    .text start:0x0216db68 end:0x0216dc50
+
+src/Combat/Overlay_4/ResetOv017FieldsAndClearFlag_02169144.cpp:
+    .text start:0x02169674 end:0x02169738
+
+src/Combat/Overlay_4/func_ov004_0216033c.cpp:
+    .text start:0x02160cbc end:0x02161c7c
+
+src/Combat/Overlay_4/func_ov004_02168b44.cpp:
+    .text start:0x0216907c end:0x02169674

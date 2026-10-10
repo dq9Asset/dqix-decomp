@@ -490,7 +490,7 @@ _Z38GetOffsetPtrromField_021b1fc0_021b1fc0Pv kind:function(arm,size=0x14) addr:0
 _Z34GetFieldromField_021b1fd4_021b1fd4Pv kind:function(arm,size=0x14) addr:0x021b265c
 _Z26GetSubByteField44_021b1fe8P14Obj24_021b1fe8 kind:function(arm,size=0x14) addr:0x021b2670
 _Z27GetSubWordField394_021b1ffcP14Obj24_021b1ffc kind:function(arm,size=0x14) addr:0x021b2684
-func_ov017_021b2698 kind:function(arm,size=0x14) addr:0x021b2698
+_Z27GetSubByteField398_021b2010P14Obj24_021b2010 kind:function(arm,size=0x14) addr:0x021b2698
 _Z26GetSubByteField34_021b2024P14Obj24_021b2024 kind:function(arm,size=0x14) addr:0x021b26ac
 _Z26GetSubByteField35_021b2038P14Obj24_021b2038 kind:function(arm,size=0x14) addr:0x021b26c0
 _Z27GetSubByteField438_021b204cP14Obj24_021b204c kind:function(arm,size=0x14) addr:0x021b26d4
@@ -508,7 +508,7 @@ _Z26CallHelperIfFlagB_021b2348v kind:function(arm,size=0x20) addr:0x021b2a60
 func_ov017_021b2a80 kind:function(arm,size=0x20) addr:0x021b2a80
 func_ov017_021b2388 kind:function(arm,size=0x148) addr:0x021b2aa0
 func_ov017_021b24d0 kind:function(arm,size=0x1c0) addr:0x021b2be8
-func_ov017_021b2da8 kind:function(arm,size=0xc0) addr:0x021b2da8
+func_ov017_021b2698 kind:function(arm,size=0xc0) addr:0x021b2da8
 func_ov017_021b2758 kind:function(arm,size=0x210) addr:0x021b2e68
 func_ov017_021b2968 kind:function(arm,size=0x170) addr:0x021b3078
 func_ov017_021b31e8 kind:function(arm,size=0x3c) addr:0x021b31e8
@@ -1417,8 +1417,8 @@ data_ov017_021d7cbf kind:data(any) addr:0x021d7cbf
 data_ov017_021d7ccb kind:data(any) addr:0x021d7ccb
 data_ov017_021d7cd1 kind:data(any) addr:0x021d7cd1
 data_ov017_021d7831 kind:data(any) addr:0x021d7d9f
-data_ov017_021d7da8 kind:data(any) addr:0x021d7da8
-data_ov017_021d7dd4 kind:data(any) addr:0x021d7dd4
+data_ov017_021d783c kind:data(any) addr:0x021d7da8
+data_ov017_021d7868 kind:data(any) addr:0x021d7dd4
 data_ov017_021d7ddc kind:data(any) addr:0x021d7ddc
 data_ov017_021d7def kind:data(any) addr:0x021d7def
 data_ov017_021d7e0c kind:data(any) addr:0x021d7e0c

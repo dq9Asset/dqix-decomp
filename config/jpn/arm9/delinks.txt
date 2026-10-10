@@ -14629,3 +14629,123 @@ src/Combat/Main/ResetOrFindStopwatch.cpp:
 src/Combat/Main/CountFlag0x800MatchesEqualsTarget020dcc20.cpp:
     complete
     .text start:0x020de628 end:0x020de6a0
+
+src/Combat/Main/InitObjectWithCallbacks02028c8c.cpp:
+    complete
+    .text start:0x020284dc end:0x0202851c
+
+src/Combat/Main/GetDisplayValue020409e0.cpp:
+    complete
+    .text start:0x02040edc end:0x02040f1c
+
+src/Combat/Main/SetDecodedIntEntry0201f5a8.cpp:
+    complete
+    .text start:0x0201f334 end:0x0201f38c
+
+src/Combat/Main/DispatchByField0x950Byte.cpp:
+    complete
+    .text start:0x020dead0 end:0x020deb18
+
+src/Combat/Main/RestartTaskWithDebugLog020dc3d4.cpp:
+    complete
+    .text start:0x020ddddc end:0x020dde30
+
+src/Combat/Main/ProcessSlotEntry020aca30.cpp:
+    complete
+    .text start:0x020ae4fc end:0x020ae554
+
+src/Combat/Main/FindMatchingElementIndex02018bc4.cpp:
+    complete
+    .text start:0x02018964 end:0x020189c0
+
+src/Combat/Main/PushMatrixAndRender02016db4.cpp:
+    complete
+    .text start:0x02016b54 end:0x02016bb4
+
+src/Combat/Main/CheckAndFillShortBuffer.cpp:
+    complete
+    .text start:0x0208ed54 end:0x0208edcc
+
+src/Combat/Main/InitAndAppendEntry020dbc5c.cpp:
+    complete
+    .text start:0x020dd664 end:0x020dd6a4
+
+src/Combat/Main/StoreAndMaybeCopy02018f6c.cpp:
+    complete
+    .text start:0x02018d0c end:0x02018d5c
+
+src/Combat/Main/SetDecodedStringEntry0201f528.cpp:
+    complete
+    .text start:0x0201f2b4 end:0x0201f30c
+
+src/Combat/Main/CheckGlobalObjState2AndInit0205cde8.cpp:
+    complete
+    .text start:0x0205e118 end:0x0205e158
+
+src/Combat/Main/SubmitActiveGrottoByte0209d7ac.cpp:
+    complete
+    .text start:0x0209f524 end:0x0209f564
+
+src/Combat/Main/SubmitActiveGrottoByteIfFlag0209d7ec.cpp:
+    complete
+    .text start:0x0209f564 end:0x0209f5b4
+
+src/Combat/Main/NotifyOv017WithGrottoByte0x63.cpp:
+    complete
+    .text start:0x0209f8d4 end:0x0209f924
+
+src/Combat/Main/NotifyOv017WithGrottoByte0x50.cpp:
+    complete
+    .text start:0x0209f924 end:0x0209f974
+
+src/Combat/Main/NotifyOv017WithGrottoByte0x64.cpp:
+    complete
+    .text start:0x0209f974 end:0x0209f9c4
+
+src/Combat/Main/_Z17NotifySub020541a4P11Obj020541a4h.cpp:
+    complete
+    .text start:0x0205551c end:0x02055584
+
+src/Combat/Main/ClearAllTreasureMapUnknownBits.cpp:
+    complete
+    .text start:0x02011438 end:0x020114a8
+
+src/Combat/Main/AccumulateBattleTimer0202441c.cpp:
+    complete
+    .text start:0x02023df0 end:0x02023e30
+
+src/Combat/Main/SubmitGrottoFloorOrByte0209da48.cpp:
+    complete
+    .text start:0x0209f7c0 end:0x0209f81c
+
+src/Combat/Main/ResetTransformState02053f04.cpp:
+    complete
+    .text start:0x0205527c end:0x020552c4
+
+src/Combat/Main/Trans_0205ce50.cpp:
+    complete
+    .text start:0x0205e180 end:0x0205e1c4
+
+src/Combat/Main/IncrementDecimalCounter0200961c.cpp:
+    complete
+    .text start:0x02009538 end:0x02009588
+
+src/Combat/Main/ReallocSlotArray02027b10.cpp:
+    complete
+    .text start:0x0202737c end:0x020273c8
+
+src/Combat/Main/InitGlobalObjAndSelfPointer0205cd94.cpp:
+    complete
+    .text start:0x0205e0c4 end:0x0205e118
+
+src/Combat/Main/AppendCappedElement02027b5c.cpp:
+    complete
+    .text start:0x020273c8 end:0x02027418
+
+src/Combat/Main/ResetAllSubsystems_0201c124.cpp:
+    complete
+    .text start:0x0201be9c end:0x0201bf30
+
+src/Combat/Main/InitTreasureMapEntry0201165c.cpp:
+    complete
+    .text start:0x020113cc end:0x02011438

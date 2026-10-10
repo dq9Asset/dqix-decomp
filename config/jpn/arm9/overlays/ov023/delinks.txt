@@ -2052,3 +2052,15 @@ src/Combat/Overlay_23/ApplyAndClearListEntry_021e0b9c.cpp:
 src/Combat/Overlay_23/InitField750_021e0c38.cpp:
     complete
     .text start:0x021e117c end:0x021e11c4
+
+src/Combat/Overlay_23/SyncTagFieldsAndNotify_021e5628.cpp:
+    complete
+    .text start:0x021e580c end:0x021e5b58
+
+src/Combat/Overlay_23/AccumulateNodeVecByMode_021f98e0.cpp:
+    complete
+    .text start:0x021f8d6c end:0x021f8fa4
+
+src/Combat/Overlay_23/InitEvent7WithBuffer_021f8cf4.cpp:
+    complete
+    .text start:0x021f8180 end:0x021f82a8

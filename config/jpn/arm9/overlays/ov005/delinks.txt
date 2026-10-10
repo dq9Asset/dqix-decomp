@@ -122,3 +122,6 @@ src/Combat/Overlay_5/func_ov005_02156ecc.cpp:
 
 src/Combat/Overlay_5/func_ov005_0215acc0.cpp:
     .text start:0x0215c198 end:0x0215c33c
+
+src/Combat/Overlay_5/DispatchByIdxAndCond021551fc.cpp:
+    .text start:0x02156844 end:0x02156898

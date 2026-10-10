@@ -765,3 +765,11 @@ src/Combat/Overlay_25/func_ov025_021e27c8.cpp:
 src/Combat/Overlay_25/func_ov025_021db038.cpp:
     complete
     .text start:0x021db91c end:0x021dbd4c
+
+src/Combat/Overlay_25/func_ov025_021e6cf4.cpp:
+    complete
+    .text start:0x021e71a4 end:0x021e73a8
+
+src/Combat/Overlay_25/func_ov025_021e604c.cpp:
+    complete
+    .text start:0x021e64fc end:0x021e66b8

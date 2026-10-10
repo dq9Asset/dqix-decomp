@@ -34,7 +34,7 @@ _Z22ShiftRowsDown_021deda0P14Table_021deda0P19ThreeShorts021ded84 kind:function(
 func_ov025_021dee20 kind:function(arm,size=0x104) addr:0x021df730
 _Z16GetWord_021def24Pv kind:function(arm,size=0xc) addr:0x021df834
 _Z33IncrementCounterAndReset_021def30Ph kind:function(arm,size=0x34) addr:0x021df840
-func_ov025_021df874 kind:function(arm,size=0x5f0) addr:0x021df874
+func_ov025_021def64 kind:function(arm,size=0x5f0) addr:0x021df874
 _Z20ResetFields_021df554Pv kind:function(arm,size=0x14) addr:0x021dfe64
 _Z21InsertSorted_021df568P12Node021df568S0_ kind:function(arm,size=0x64) addr:0x021dfe78
 _Z20FindLastNode021df5ccP12Node021df5cc kind:function(arm,size=0x18) addr:0x021dfedc
@@ -131,7 +131,7 @@ func_ov025_021e5f54 kind:function(arm,size=0x9c) addr:0x021e6404
 func_ov025_021e64a0 kind:function(arm,size=0x20) addr:0x021e64a0
 func_ov025_021e64c0 kind:function(arm,size=0x20) addr:0x021e64c0
 func_ov025_021e64e0 kind:function(arm,size=0x1c) addr:0x021e64e0
-func_ov025_021e64fc kind:function(arm,size=0x1bc) addr:0x021e64fc
+func_ov025_021e604c kind:function(arm,size=0x1bc) addr:0x021e64fc
 func_ov025_021e66b8 kind:function(arm,size=0x28) addr:0x021e66b8
 func_ov025_021e66e0 kind:function(arm,size=0x24) addr:0x021e66e0
 func_ov025_021e6704 kind:function(arm,size=0x1c) addr:0x021e6704
@@ -150,7 +150,7 @@ func_ov025_021e6910 kind:function(arm,size=0x6c) addr:0x021e6dc0
 func_ov025_021e6e2c kind:function(arm,size=0x8c) addr:0x021e6e2c
 func_ov025_021e6a08 kind:function(arm,size=0x2cc) addr:0x021e6eb8
 func_ov025_021e7184 kind:function(arm,size=0x20) addr:0x021e7184
-func_ov025_021e71a4 kind:function(arm,size=0x204) addr:0x021e71a4
+func_ov025_021e6cf4 kind:function(arm,size=0x204) addr:0x021e71a4
 func_ov025_021e73a8 kind:function(arm,size=0x28) addr:0x021e73a8
 func_ov025_021e73d0 kind:function(arm,size=0x24) addr:0x021e73d0
 func_ov025_021e6f44 kind:function(arm,size=0xb4) addr:0x021e73f4
@@ -367,7 +367,7 @@ data_ov025_021efac6 kind:data(any) addr:0x021efac6
 data_ov025_021efacf kind:data(any) addr:0x021efacf
 data_ov025_021efad7 kind:data(any) addr:0x021efad7
 data_ov025_021efadb kind:data(any) addr:0x021efadb
-data_ov025_021efae2 kind:data(any) addr:0x021efae2
+data_ov025_021ef802 kind:data(any) addr:0x021efae2
 data_ov025_021ef809 kind:data(any) addr:0x021efae9
 data_ov025_021ef811 kind:data(any) addr:0x021efaf1
 data_ov025_021ef81e kind:data(any) addr:0x021efafe

@@ -18,3 +18,6 @@ src/Combat/Overlay_13/InitTag02185310.cpp:
 
 src/Combat/Overlay_13/AdvanceTagState02186590.cpp:
     .text start:0x021878c0 end:0x02187ab8
+
+src/Combat/Overlay_13/InitTag02185828.cpp:
+    .text start:0x02186a18 end:0x02186aec

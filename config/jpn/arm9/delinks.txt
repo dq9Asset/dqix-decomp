@@ -14881,3 +14881,15 @@ src/Combat/Main/func_020d9e44.cpp:
 src/Combat/Main/func_0202f0e0.cpp:
     complete
     .text start:0x0202ec50 end:0x0202ed14
+
+src/Combat/Main/func_020b1f48.cpp:
+    complete
+    .text start:0x020b3a14 end:0x020b3ac4
+
+src/Combat/Main/func_020be828.cpp:
+    complete
+    .text start:0x020c02f4 end:0x020c03f0
+
+src/Combat/Main/func_0204b9b8.cpp:
+    complete
+    .text start:0x0204c7d8 end:0x0204c8d4

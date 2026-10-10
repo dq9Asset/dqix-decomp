@@ -5704,3 +5704,15 @@ src/Combat/Overlay_31/func_ov031_0223cf4c.cpp:
 src/Combat/Overlay_31/AdvanceAndCopyContext_0223a698.cpp:
     complete
     .text start:0x0223ae78 end:0x0223aef8
+
+src/Combat/Overlay_31/func_ov031_02202e44.cpp:
+    complete
+    .text start:0x02203624 end:0x022037e8
+
+src/Combat/Overlay_31/func_ov031_0220764c.cpp:
+    complete
+    .text start:0x02207e2c end:0x02207fa0
+
+src/Combat/Overlay_31/func_ov031_02227d94.cpp:
+    complete
+    .text start:0x02228574 end:0x02228754

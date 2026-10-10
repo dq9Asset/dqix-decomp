@@ -1936,3 +1936,55 @@ src/Combat/Overlay_23/func_ov023_021dfecc.cpp:
 src/Combat/Overlay_23/func_ov023_021df558.cpp:
     complete
     .text start:0x021dfbac end:0x021e00ec
+
+src/Combat/Overlay_23/func_ov023_021f2e6c.cpp:
+    complete
+    .text start:0x021f2590 end:0x021f310c
+
+src/Combat/Overlay_23/func_ov023_021d94e4.cpp:
+    complete
+    .text start:0x021d9d08 end:0x021da160
+
+src/Combat/Overlay_23/UpdateCombatOverlayState_021dd59c.cpp:
+    complete
+    .text start:0x021ddd7c end:0x021de124
+
+src/Combat/Overlay_23/func_ov023_021f03a0.cpp:
+    complete
+    .text start:0x021effa4 end:0x021f0634
+
+src/Combat/Overlay_23/ReleaseListEntryAndUpdateFlags_021e0840.cpp:
+    complete
+    .text start:0x021e0dc0 end:0x021e0fb4
+
+src/Combat/Overlay_23/ParseListValuesAndDispatch_021e0c80.cpp:
+    complete
+    .text start:0x021e11c4 end:0x021e13ec
+
+src/Combat/Overlay_23/func_ov023_021ddc98.cpp:
+    complete
+    .text start:0x021de438 end:0x021de5c4
+
+src/Combat/Overlay_23/func_ov023_021e0f44.cpp:
+    complete
+    .text start:0x021e1478 end:0x021e16a8
+
+src/Combat/Overlay_23/func_ov023_021e802c.cpp:
+    complete
+    .text start:0x021e81f4 end:0x021e83a0
+
+src/Combat/Overlay_23/UpdateStateAndDispatch_021f288c.cpp:
+    complete
+    .text start:0x021f20a0 end:0x021f2248
+
+src/Combat/Overlay_23/AdvanceTargetCombatant_021e4c18.cpp:
+    complete
+    .text start:0x021e4e20 end:0x021e5010
+
+src/Combat/Overlay_23/SomeDispatch_021dfc90.cpp:
+    complete
+    .text start:0x021e029c end:0x021e047c
+
+src/Combat/Overlay_23/func_ov023_021fbf4c.cpp:
+    complete
+    .text start:0x021fb2bc end:0x021fb4e4

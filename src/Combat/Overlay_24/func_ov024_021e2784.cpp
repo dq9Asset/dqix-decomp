@@ -33,6 +33,13 @@ struct Bit3b_021e2784 { unsigned char bit0 : 1; unsigned char rest : 7; };
 
 static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
 
+#if defined(jpn)
+extern "C" int _Z23CheckFlag0x14Bit0x10SetPh(void*);
+extern "C" void _Z23ClearBattleFlag0x14Bit4Pv(void*);
+extern "C" int _Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(void*);
+extern "C" void _Z21ClearFlag0x20AndBytesPv(void*);
+#endif
+// JPN: func_ov024_021e31e8
 // USA: func_ov024_021e2784
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2784(struct Obj_021e2784* obj, int unused, int id, int unused2, int amount) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);
@@ -51,6 +58,15 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2784(struct Obj_021e2784
         _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, 0x16);
         obj->count++;
     }
+#if defined(jpn)
+    if (_Z23CheckFlag0x14Bit0x10SetPh(c->currentStats_)) {
+        _Z23ClearBattleFlag0x14Bit4Pv(c->currentStats_);
+        ((struct Bit3b_021e2784*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
+        func_ov000_02159eac(obj->ctx, &words, 0x10);
+        _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, 0x40);
+        obj->count++;
+    }
+#endif
     if (_Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0((struct FlagObj_021da9b0*)c)) {
         ClearFlag0x14Bit0x8AndBytes(c->currentStats_);
         ((struct Bit3b_021e2784*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
@@ -58,6 +74,15 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2784(struct Obj_021e2784
         _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, 0x1f9);
         obj->count++;
     }
+#if defined(jpn)
+    if (_Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(c)) {
+        _Z21ClearFlag0x20AndBytesPv(c->currentStats_);
+        ((struct Bit3b_021e2784*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
+        func_ov000_02159eac(obj->ctx, &words, 0x19);
+        _Z33AddEntryAndIncrementCount0215a88cPvS_i(obj->ctx, entry, 0x16f);
+        obj->count++;
+    }
+#endif
     if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) || CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) {
         ClearFlag0x2AndKind((struct Combatant_2088644*)c->currentStats_);
         func_ov000_02159eac(obj->ctx, &words, 0x11);

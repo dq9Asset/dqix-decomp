@@ -14849,3 +14849,23 @@ src/Combat/Main/func_020d4770.cpp:
 src/Combat/Main/func_020be924.cpp:
     complete
     .text start:0x020c03f0 end:0x020c04b4
+
+src/Combat/Main/func_020cf9f4.cpp:
+    complete
+    .text start:0x020d14c0 end:0x020d15c0
+
+src/Combat/Main/func_020d49c4.cpp:
+    complete
+    .text start:0x020d6420 end:0x020d6504
+
+src/Combat/Main/func_020d19f4.cpp:
+    complete
+    .text start:0x020d34c0 end:0x020d35b0
+
+src/Combat/Main/func_020cd494.cpp:
+    complete
+    .text start:0x020cef60 end:0x020cf050
+
+src/Combat/Main/func_020cd99c.cpp:
+    complete
+    .text start:0x020cf468 end:0x020cf590

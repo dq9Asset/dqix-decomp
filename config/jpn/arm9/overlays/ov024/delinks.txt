@@ -1222,3 +1222,23 @@ src/Combat/Overlay_24/ScaleBy1Point2_021d8ff8.cpp:
 src/Combat/Overlay_24/func_ov024_021e9018.cpp:
     complete
     .text start:0x021e98b0 end:0x021e9a0c
+
+src/Combat/Overlay_24/func_ov024_021e2784.cpp:
+    complete
+    .text start:0x021e31e8 end:0x021e3468
+
+src/Combat/Overlay_24/func_ov024_021e94c4.cpp:
+    complete
+    .text start:0x021e9cd0 end:0x021e9dd0
+
+src/Combat/Overlay_24/func_ov024_021e95d4.cpp:
+    complete
+    .text start:0x021e9dd0 end:0x021e9ed0
+
+src/Combat/Overlay_24/func_ov024_021e96e4.cpp:
+    complete
+    .text start:0x021e9ed0 end:0x021e9fd0
+
+src/Combat/Overlay_24/func_ov024_021e97f4.cpp:
+    complete
+    .text start:0x021e9fd0 end:0x021ea0d0

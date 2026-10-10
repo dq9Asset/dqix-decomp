@@ -4,3 +4,11 @@
     .data       start:0x0218bf40 end:0x0218c000 kind:data align:32
     .bss        start:0x0218c000 end:0x0218c000 kind:bss align:32
 
+src/Combat/Overlay_12/AppendMessageNameTags_02189934.cpp:
+    .text start:0x0218a34c end:0x0218a494
+
+src/Combat/Overlay_12/func_ov012_0218a4b0.cpp:
+    .text start:0x0218af38 end:0x0218b000
+
+src/Combat/Overlay_12/AdvanceTagStateB_02188924.cpp:
+    .text start:0x02188f6c end:0x02189138

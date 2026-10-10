@@ -518,3 +518,6 @@ src/Combat/Overlay_11/UpdateBattleScaleAndPollTicket_021848a8.cpp:
 
 src/Combat/Overlay_11/func_ov011_021869b8.cpp:
     .text start:0x02187a90 end:0x02187c1c
+
+src/Combat/Overlay_11/func_ov011_0218792c.cpp:
+    .text start:0x02188a08 end:0x02188aec

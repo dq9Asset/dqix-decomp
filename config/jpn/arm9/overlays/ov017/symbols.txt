@@ -102,7 +102,7 @@ _Z34PopFrontAndCompactEntries_0219531cPvS_ kind:function(arm,size=0x7c) addr:0x0
 func_ov017_02195398 kind:function(arm,size=0x84) addr:0x02195f60
 _Z28SetNameSlotAndClear_0219541cPviPc kind:function(arm,size=0x78) addr:0x02195fe4
 _Z27CallIndexedHandler_02195494Pvii kind:function(arm,size=0x30) addr:0x0219605c
-func_ov017_0219608c kind:function(arm,size=0x5c) addr:0x0219608c
+_Z33SetSearchBitAndClearFlag_021954c4Pvi kind:function(arm,size=0x5c) addr:0x0219608c
 func_ov017_021960e8 kind:function(arm,size=0x10) addr:0x021960e8
 _Z19SetFlag320_02195530Ph kind:function(arm,size=0x10) addr:0x021960f8
 _Z21ClearFlag320_02195540Ph kind:function(arm,size=0x10) addr:0x02196108
@@ -443,7 +443,7 @@ _Z34ForwardObjField4ToHandler_021afa9cP22ObjWithField4_021afa9c kind:function(ar
 func_ov017_021b01d0 kind:function(arm,size=0x2c) addr:0x021b01d0
 _Z29SetBitField_021afae8_021afae8Phi kind:function(arm,size=0x14) addr:0x021b01fc
 _Z29SetBitField_021afafc_021afafcPhi kind:function(arm,size=0x14) addr:0x021b0210
-func_ov017_021b0224 kind:function(arm,size=0xc) addr:0x021b0224
+_Z22SetIntField28_021afb10Pv kind:function(arm,size=0xc) addr:0x021b0224
 _Z22SetIntField30_021afb1cPv kind:function(arm,size=0xc) addr:0x021b0230
 _Z22SetIntField34_021afb28Pv kind:function(arm,size=0xc) addr:0x021b023c
 _Z34SetStatusBitWithPeerCheck_021afb34Pvi kind:function(arm,size=0x50) addr:0x021b0248
@@ -1079,7 +1079,7 @@ _Z25HandleEntryEvent_021d0a18iP19EntryStruct021d0a18iPcP20SearchStruct0202c1a4 k
 _Z27EnqueueEventTag140_021d0aa8th kind:function(arm,size=0x3c) addr:0x021d0f58
 func_ov017_021d0f94 kind:function(arm,size=0x4c) addr:0x021d0f94
 func_ov017_021d0b30 kind:function(arm,size=0x88) addr:0x021d0fe0
-func_ov017_021d1068 kind:function(arm,size=0x168) addr:0x021d1068
+func_ov017_021d0bd4 kind:function(arm,size=0x168) addr:0x021d1068
 _Z31EnqueueEventTag23Field_021d0d58v kind:function(arm,size=0x44) addr:0x021d11d0
 _Z33StoreFieldIntoOffset2c94_021d0d9cPvP12Src_021d0d9cP9GameState kind:function(arm,size=0x20) addr:0x021d1214
 _Z21ForEachEntry_021d0dbcv kind:function(arm,size=0x44) addr:0x021d1234

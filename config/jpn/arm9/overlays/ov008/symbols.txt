@@ -58,9 +58,9 @@ func_ov008_0218a930 kind:function(arm,size=0xe30) addr:0x0218a930
 func_ov008_0218b760 kind:function(arm,size=0x3c8) addr:0x0218b760
 func_ov008_0218bb28 kind:function(arm,size=0x28) addr:0x0218bb28
 func_ov008_0218bb50 kind:function(arm,size=0x90) addr:0x0218bb50
-func_ov008_0218bbe0 kind:function(arm,size=0x100) addr:0x0218bbe0
+func_ov008_0218af80 kind:function(arm,size=0x100) addr:0x0218bbe0
 func_ov008_0218bce0 kind:function(arm,size=0x140) addr:0x0218bce0
-func_ov008_0218be20 kind:function(arm,size=0x64) addr:0x0218be20
+_Z24AllocateFreeSlot0218b1e0Pv kind:function(arm,size=0x64) addr:0x0218be20
 func_ov008_0218b240 kind:function(arm,size=0xc0) addr:0x0218be84
 data_ov008_0218b300 kind:data(any) addr:0x0218bf44
 data_ov008_0218b30c kind:data(any) addr:0x0218bf50

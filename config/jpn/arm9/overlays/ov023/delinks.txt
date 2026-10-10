@@ -1988,3 +1988,67 @@ src/Combat/Overlay_23/SomeDispatch_021dfc90.cpp:
 src/Combat/Overlay_23/func_ov023_021fbf4c.cpp:
     complete
     .text start:0x021fb2bc end:0x021fb4e4
+
+src/Combat/Overlay_23/func_ov023_021e2dd8.cpp:
+    complete
+    .text start:0x021e3138 end:0x021e3290
+
+src/Combat/Overlay_23/func_ov023_021f6158.cpp:
+    complete
+    .text start:0x021f5794 end:0x021f5918
+
+src/Combat/Overlay_23/func_ov023_021dfb4c.cpp:
+    complete
+    .text start:0x021e0160 end:0x021e029c
+
+src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
+    complete
+    .text start:0x021e6c24 end:0x021e6d64
+
+src/Combat/Overlay_23/func_ov023_021e0328.cpp:
+    complete
+    .text start:0x021e08d0 end:0x021e09b4
+
+src/Combat/Overlay_23/ReleaseQueuedListEntry_021e04e8.cpp:
+    complete
+    .text start:0x021e0a88 end:0x021e0b70
+
+src/Combat/Overlay_23/ClearBufferAndCheckField_021e05e4.cpp:
+    complete
+    .text start:0x021e0b70 end:0x021e0c20
+
+src/Combat/Overlay_23/ReleaseListEntryAndFinalizeDisplay_021e0690.cpp:
+    complete
+    .text start:0x021e0c20 end:0x021e0d78
+
+src/Combat/Overlay_23/FormatAndApplyPreferredField_021e0244.cpp:
+    complete
+    .text start:0x021e07ec end:0x021e08d0
+
+src/Combat/Overlay_23/func_ov023_021e0414.cpp:
+    complete
+    .text start:0x021e09b4 end:0x021e0a88
+
+src/Combat/Overlay_23/InitField744_021e07f8.cpp:
+    complete
+    .text start:0x021e0d78 end:0x021e0dc0
+
+src/Combat/Overlay_23/InitField748_021e0a48.cpp:
+    complete
+    .text start:0x021e0fb4 end:0x021e0ffc
+
+src/Combat/Overlay_23/DispatchListEntryCodes_021e0a90.cpp:
+    complete
+    .text start:0x021e0ffc end:0x021e10a8
+
+src/Combat/Overlay_23/InitField74c_021e0b54.cpp:
+    complete
+    .text start:0x021e10a8 end:0x021e10f0
+
+src/Combat/Overlay_23/ApplyAndClearListEntry_021e0b9c.cpp:
+    complete
+    .text start:0x021e10f0 end:0x021e117c
+
+src/Combat/Overlay_23/InitField750_021e0c38.cpp:
+    complete
+    .text start:0x021e117c end:0x021e11c4

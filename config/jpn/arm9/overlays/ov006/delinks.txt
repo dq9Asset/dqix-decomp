@@ -240,3 +240,6 @@ src/Combat/Overlay_6/SetParamsAndDispatch_02155710.cpp:
 
 src/Combat/Overlay_6/func_ov006_02157a60.cpp:
     .text start:0x02159014 end:0x02159228
+
+src/Combat/Overlay_6/func_ov006_021547c8.cpp:
+    .text start:0x02155f30 end:0x0215610c

@@ -113,3 +113,12 @@ src/Combat/Overlay_5/Trans_02159208.cpp:
 
 src/Combat/Overlay_5/RunTurnStartHooks02155108.cpp:
     .text start:0x02156758 end:0x0215681c
+
+src/Combat/Overlay_5/func_ov005_0215be60.cpp:
+    .text start:0x0215d244 end:0x0215d2b4
+
+src/Combat/Overlay_5/func_ov005_02156ecc.cpp:
+    .text start:0x021584bc end:0x0215876c
+
+src/Combat/Overlay_5/func_ov005_0215acc0.cpp:
+    .text start:0x0215c198 end:0x0215c33c

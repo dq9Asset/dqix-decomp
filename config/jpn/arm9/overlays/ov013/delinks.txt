@@ -6,3 +6,15 @@
 
 src/Combat/Overlay_13/InitCombatEntry02184360.cpp:
     .text start:0x021853a0 end:0x021856dc
+
+src/Combat/Overlay_13/ResetCombatEntry02184a58.cpp:
+    .text start:0x02185a94 end:0x02185b20
+
+src/Combat/Overlay_13/InitTag02185aac.cpp:
+    .text start:0x02186c80 end:0x02186db0
+
+src/Combat/Overlay_13/InitTag02185310.cpp:
+    .text start:0x02186358 end:0x02186468
+
+src/Combat/Overlay_13/AdvanceTagState02186590.cpp:
+    .text start:0x021878c0 end:0x02187ab8

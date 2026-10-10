@@ -1888,3 +1888,19 @@ src/Combat/Overlay_23/func_ov023_021faed0.cpp:
 src/Combat/Overlay_23/func_ov023_021edc08.cpp:
     complete
     .text start:0x021ed9ec end:0x021edcb8
+
+src/Combat/Overlay_23/func_ov023_021eefd0.cpp:
+    complete
+    .text start:0x021eed20 end:0x021ef524
+
+src/Combat/Overlay_23/func_ov023_021e3fc0.cpp:
+    complete
+    .text start:0x021e421c end:0x021e4474
+
+src/Combat/Overlay_23/func_ov023_021f7eb8.cpp:
+    complete
+    .text start:0x021f73b0 end:0x021f7580
+
+src/Combat/Overlay_23/DecryptAndRunBufferedScript_021f5d58.cpp:
+    complete
+    .text start:0x021f5344 end:0x021f54ac

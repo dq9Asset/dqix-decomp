@@ -30,3 +30,6 @@ src/Combat/Overlay_20/DispatchCombatSequence_0218c840.cpp:
 
 src/Combat/Overlay_20/RunFieldGroupInitAndDispatch_0218c98c.cpp:
     .text start:0x0218d3d0 end:0x0218d7a8
+
+src/Combat/Overlay_20/InitDisplayAndAllocators_0218b5a0.cpp:
+    .text start:0x0218c1c0 end:0x0218c310

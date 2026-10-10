@@ -1,5 +1,5 @@
 func_ov026_021d8a40 kind:function(arm,size=0x38) addr:0x021d9300
-func_ov026_021d9338 kind:function(arm,size=0xf4) addr:0x021d9338
+func_ov026_021d8aac kind:function(arm,size=0xf4) addr:0x021d9338
 _Z24StoreThreeWords_021d8b98Piiii kind:function(arm,size=0x8) addr:0x021d942c
 func_ov026_021d9434 kind:function(arm,size=0x2140) addr:0x021d9434
 func_ov026_021db574 kind:function(arm,size=0x68) addr:0x021db574

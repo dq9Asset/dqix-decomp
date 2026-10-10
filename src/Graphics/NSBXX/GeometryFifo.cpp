@@ -10,7 +10,6 @@
 #if defined(jpn)
 #define _Z24SubmitBlock0x40IfNotBusyi func_020c6fc8
 #define _Z24SubmitBlock0x80IfNotBusyi func_020c6ff8
-#define func_020ca4b4 func_020cbf80
 #define func_020ca430 func_020cbefc
 
 #define data_0210cf78 data_0210cc30

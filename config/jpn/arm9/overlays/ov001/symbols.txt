@@ -211,13 +211,13 @@ _Z27EnqueueEventType14_0215b6bcii kind:function(arm,size=0x1c) addr:0x0215cd40
 _Z27EnqueueEventType15_0215b6d8ii kind:function(arm,size=0x1c) addr:0x0215cd5c
 _Z27EnqueueEventType16_0215b6f4ii kind:function(arm,size=0x1c) addr:0x0215cd78
 func_ov001_0215b710 kind:function(arm,size=0x1c) addr:0x0215cd94
-func_ov001_0215cdb0 kind:function(arm,size=0x298) addr:0x0215cdb0
+func_ov001_0215b72c kind:function(arm,size=0x298) addr:0x0215cdb0
 func_ov001_0215b9c4 kind:function(arm,size=0xa0) addr:0x0215d048
 _Z37AllocateAndRegisterCombatant_0215ba64Pci kind:function(arm,size=0xd8) addr:0x0215d0e8
 func_ov001_0215bb3c kind:function(arm,size=0x184) addr:0x0215d1c0
 func_ov001_0215bcc0 kind:function(arm,size=0x9c) addr:0x0215d344
 _Z35SetCombatantFlag6cFromMode_0215bd5cPvi kind:function(arm,size=0x74) addr:0x0215d3e0
-func_ov001_0215d454 kind:function(arm,size=0x164) addr:0x0215d454
+func_ov001_0215bdd0 kind:function(arm,size=0x164) addr:0x0215d454
 _Z24TryEnqueueEvent_0215bf34Pv kind:function(arm,size=0x24) addr:0x0215d5b8
 _Z31SetField8FromNodeCheck_0215bf58Pv kind:function(arm,size=0x3c) addr:0x0215d5dc
 _Z34TryEnqueueEventSetField70_0215bf94Pv kind:function(arm,size=0x40) addr:0x0215d618
@@ -274,7 +274,7 @@ _Z35DispatchScaledVec3AndExtra_0215d984Pv kind:function(arm,size=0x90) addr:0x02
 func_ov001_0215da14 kind:function(arm,size=0x94) addr:0x0215f098
 func_ov001_0215daa8 kind:function(arm,size=0x94) addr:0x0215f12c
 func_ov001_0215db3c kind:function(arm,size=0x94) addr:0x0215f1c0
-func_ov001_0215f254 kind:function(arm,size=0x188) addr:0x0215f254
+func_ov001_0215dbd0 kind:function(arm,size=0x188) addr:0x0215f254
 func_ov001_0215dd58 kind:function(arm,size=0x180) addr:0x0215f3dc
 func_ov001_0215ded8 kind:function(arm,size=0xec) addr:0x0215f55c
 _Z33DispatchOffsetSumPayload_0215dfc4Pvi kind:function(arm,size=0xfc) addr:0x0215f648
@@ -296,7 +296,7 @@ func_ov001_0215e514 kind:function(arm,size=0x28) addr:0x0215fb90
 _Z26SetGlobalFlagBit2_0215e53cv kind:function(arm,size=0x28) addr:0x0215fbb8
 func_ov001_0215e564 kind:function(arm,size=0x24) addr:0x0215fbe0
 _Z34SetGlobalFlagBit_0215e588_0215e588v kind:function(arm,size=0x28) addr:0x0215fc04
-func_ov001_0215fc2c kind:function(arm,size=0x1a8) addr:0x0215fc2c
+func_ov001_0215e5b0 kind:function(arm,size=0x1a8) addr:0x0215fc2c
 _Z25SetSubBg0Control_0215e758iiiii kind:function(arm,size=0x34) addr:0x0215fdd4
 _Z25SetSubBg1Control_0215e78ciiiii kind:function(arm,size=0x34) addr:0x0215fe08
 func_ov001_0215fe3c kind:function(arm,size=0x13c) addr:0x0215fe3c
@@ -531,7 +531,7 @@ data_ov001_021661d7 kind:data(any) addr:0x021661d7
 data_ov001_021661dc kind:data(any) addr:0x021661dc
 data_ov001_021661e1 kind:data(any) addr:0x021661e1
 data_ov001_021661e8 kind:data(any) addr:0x021661e8
-data_ov001_02166220 kind:data(any) addr:0x02166220
+data_ov001_02164c54 kind:data(any) addr:0x02166220
 data_ov001_02166270 kind:data(any) addr:0x02166270
 data_ov001_02164d10 kind:data(any) addr:0x021662dc
 data_ov001_02164d14 kind:data(any) addr:0x021662e0
@@ -547,10 +547,10 @@ data_ov001_0216570d kind:data(any) addr:0x02166cd1
 data_ov001_02165728 kind:data(any) addr:0x02166cec
 data_ov001_0216572d kind:data(any) addr:0x02166cf1
 data_ov001_02165745 kind:data(any) addr:0x02166d09
-data_ov001_02166d11 kind:data(any) addr:0x02166d11
-data_ov001_02166d16 kind:data(any) addr:0x02166d16
-data_ov001_02166d1c kind:data(any) addr:0x02166d1c
-data_ov001_02166d26 kind:data(any) addr:0x02166d26
+data_ov001_0216574d kind:data(any) addr:0x02166d11
+data_ov001_02165752 kind:data(any) addr:0x02166d16
+data_ov001_02165758 kind:data(any) addr:0x02166d1c
+data_ov001_02165762 kind:data(any) addr:0x02166d26
 data_ov001_02165769 kind:data(any) addr:0x02166d2d
 data_ov001_02166d33 kind:data(any) addr:0x02166d33
 data_ov001_02165775 kind:data(any) addr:0x02166d39

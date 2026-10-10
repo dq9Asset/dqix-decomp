@@ -1,7 +1,6 @@
 #if defined(jpn)
 #define R(j,u) (j)
 #define _Z20SetStatValue021855dcPhi func_ov009_021867bc
-#define _Z25EncodeSignFlaggedHalfwordPsi func_020c546c
 #define data_ov009_0218aa28 data_ov009_0218ba04
 #define data_ov009_0218aa34 data_ov009_0218ba10
 #define data_ov009_0218aa98 data_ov009_0218ba4c
@@ -69,12 +68,7 @@ void BackupPairTables0207dfac(char* a);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 void ClearFlags020466f4(FlagWord020466f4* field, unsigned int bits);
-#if defined(jpn)
-#define EncodeSignFlaggedHalfword func_020c546c
-extern "C" void EncodeSignFlaggedHalfword(short* reg, int brightness);
-#else
 void EncodeSignFlaggedHalfword(short* reg, int brightness);
-#endif
 void ForwardField0xc0_0205ebec(void* sound);
 #if defined(jpn)
 #define SetStatValue021855dc func_ov009_021867bc

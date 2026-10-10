@@ -1004,3 +1004,39 @@ src/Combat/Overlay_4/func_ov004_021571f4.cpp:
 
 src/Combat/Overlay_4/func_ov004_02159a2c.cpp:
     .text start:0x0215aa88 end:0x0215abd0
+
+src/Combat/Overlay_4/TickGlobalCounter_0215c268.cpp:
+    .text start:0x0215d28c end:0x0215d330
+
+src/Combat/Overlay_4/func_ov004_0216b120.cpp:
+    .text start:0x0216b1a8 end:0x0216b24c
+
+src/Combat/Overlay_4/InitCombatObjAllocators_02167820.cpp:
+    .text start:0x02167d1c end:0x02167db8
+
+src/Combat/Overlay_4/RefreshStateAndNotify_02167f1c.cpp:
+    .text start:0x02168364 end:0x021683f8
+
+src/Combat/Overlay_4/SetPercent2AndDispatch_0215571c.cpp:
+    .text start:0x02156c9c end:0x02156d2c
+
+src/Combat/Overlay_4/ClearFlagAndDispatchAll_0215c1ac.cpp:
+    .text start:0x0215d1d0 end:0x0215d24c
+
+src/Combat/Overlay_4/DispatchTwelveBuffEntries_02154da8.cpp:
+    .text start:0x02156430 end:0x021564ec
+
+src/Combat/Overlay_4/DispatchSevenBuffEntries_02154e64.cpp:
+    .text start:0x021564ec end:0x021565a4
+
+src/Combat/Overlay_4/DispatchAreaAlertState_02168318.cpp:
+    .text start:0x0216878c end:0x02168840
+
+src/Combat/Overlay_4/func_ov004_02157128.cpp:
+    .text start:0x021581f0 end:0x021582a0
+
+src/Combat/Overlay_4/DispatchByAreaIndex_02168400.cpp:
+    .text start:0x02168874 end:0x02168900
+
+src/Combat/Overlay_4/DispatchTailIfTyped_02168290.cpp:
+    .text start:0x02168704 end:0x0216878c

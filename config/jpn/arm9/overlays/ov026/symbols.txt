@@ -5,7 +5,7 @@ func_ov026_021d9434 kind:function(arm,size=0x2140) addr:0x021d9434
 _Z21FindSlotById_021dae60P18Container_021dae60i kind:function(arm,size=0x68) addr:0x021db574
 func_ov026_021daec8 kind:function(arm,size=0x1c8) addr:0x021db5dc
 func_ov026_021db7a4 kind:function(arm,size=0x304) addr:0x021db7a4
-func_ov026_021dbaa8 kind:function(arm,size=0x1cc) addr:0x021dbaa8
+func_ov026_021db3d8 kind:function(arm,size=0x1cc) addr:0x021dbaa8
 func_ov026_021dbc74 kind:function(arm,size=0x604) addr:0x021dbc74
 func_ov026_021dbba8 kind:function(arm,size=0x174) addr:0x021dc278
 func_ov026_021dbd1c kind:function(arm,size=0x128) addr:0x021dc3ec
@@ -56,7 +56,7 @@ data_ov026_021df3fa kind:data(any) addr:0x021df3fa
 data_ov026_021df3ff kind:data(any) addr:0x021df3ff
 data_ov026_021df423 kind:data(any) addr:0x021df423
 data_ov026_021df465 kind:data(any) addr:0x021df465
-data_ov026_021df4a3 kind:data(any) addr:0x021df4a3
+data_ov026_021dedf0 kind:data(any) addr:0x021df4a3
 data_ov026_021df4bf kind:data(any) addr:0x021df4bf
 data_ov026_021df4d6 kind:data(any) addr:0x021df4d6
 data_ov026_021df4ed kind:data(any) addr:0x021df4ed

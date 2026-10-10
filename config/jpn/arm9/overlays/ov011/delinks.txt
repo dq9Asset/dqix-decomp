@@ -554,3 +554,42 @@ src/Combat/Overlay_11/AllocateAndInitNode_02187a14.cpp:
 
 src/Combat/Overlay_11/CreateAndAppendEvent13Node_021871b8.cpp:
     .text start:0x02188290 end:0x021883a0
+
+src/Combat/Overlay_11/AllocateAndInitEventD_02186548.cpp:
+    .text start:0x02187620 end:0x02187728
+
+src/Combat/Overlay_11/func_ov011_02185ea4.cpp:
+    .text start:0x02186f7c end:0x02187080
+
+src/Combat/Overlay_11/func_ov011_02185318.cpp:
+    .text start:0x02186414 end:0x02186514
+
+src/Combat/Overlay_11/func_ov011_02188184.cpp:
+    .text start:0x0218925c end:0x0218935c
+
+src/Combat/Overlay_11/func_ov011_02185020.cpp:
+    .text start:0x02186120 end:0x02186210
+
+src/Combat/Overlay_11/func_ov011_02185418.cpp:
+    .text start:0x02186514 end:0x02186600
+
+src/Combat/Overlay_11/func_ov011_02186b44.cpp:
+    .text start:0x02187c1c end:0x02187d00
+
+src/Combat/Overlay_11/func_ov011_02187b30.cpp:
+    .text start:0x02188c08 end:0x02188ce4
+
+src/Combat/Overlay_11/func_ov011_02185b10.cpp:
+    .text start:0x02186c04 end:0x02186cdc
+
+src/Combat/Overlay_11/AllocateAndAppendEvent_021870a4.cpp:
+    .text start:0x0218817c end:0x0218822c
+
+src/Combat/Overlay_11/func_ov011_021866e0.cpp:
+    .text start:0x021877b8 end:0x02187868
+
+src/Combat/Overlay_11/func_ov011_02185848.cpp:
+    .text start:0x0218693c end:0x021869e8
+
+src/Combat/Overlay_11/SetShortsIfType1FromTagged_02187570.cpp:
+    .text start:0x0218864c end:0x021886e0

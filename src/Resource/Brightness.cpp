@@ -4,7 +4,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define _Z25EncodeSignFlaggedHalfwordPsi func_020c546c
 #endif
 
 // Temporary internal wrappers

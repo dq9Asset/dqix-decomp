@@ -49,3 +49,7 @@ src/Combat/Overlay_26/func_ov026_021dbba8.cpp:
 src/Combat/Overlay_26/func_ov026_021dbf04.cpp:
     complete
     .text start:0x021dc5d4 end:0x021dc710
+
+src/Combat/Overlay_26/func_ov026_021db3d8.cpp:
+    complete
+    .text start:0x021dbaa8 end:0x021dbc74

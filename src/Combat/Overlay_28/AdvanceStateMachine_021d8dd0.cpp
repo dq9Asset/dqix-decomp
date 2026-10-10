@@ -11,7 +11,6 @@
 #define func_ov014_021885bc func_ov014_0218948c
 #define func_ov015_02191ea4 func_ov015_021929e8
 #define func_ov015_02191f04 func_ov015_02192a48
-#define func_ov015_02192064 func_ov015_02192bc0
 #define func_ov027_021d9d5c func_ov027_021da61c
 #define func_ov027_021dab00 func_ov027_021db3c0
 #else

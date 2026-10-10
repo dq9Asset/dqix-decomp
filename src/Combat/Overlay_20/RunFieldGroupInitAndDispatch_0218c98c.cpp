@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define REGION(j,u) (j)
-#define _Z25EncodeSignFlaggedHalfwordPsi func_020c546c
 #define data_ov020_0218d95c data_ov020_0218e1ac
 #define data_ov020_0218d968 data_ov020_0218e1b8
 #define data_ov020_0218dc9d data_ov020_0218e55b

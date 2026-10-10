@@ -324,3 +324,21 @@ src/Combat/Overlay_15/func_ov015_021901c8.cpp:
 
 src/Combat/Overlay_15/func_ov015_02190d7c.cpp:
     .text start:0x021918c0 end:0x021919cc
+
+src/Combat/Overlay_15/func_ov015_02192064.cpp:
+    .text start:0x02192bc0 end:0x02192cb4
+
+src/Combat/Overlay_15/RunCombatantUpdateAndFlush_02190428.cpp:
+    .text start:0x02190fcc end:0x021910b0
+
+src/Combat/Overlay_15/UpdateGfxAndDispatchList_02190348.cpp:
+    .text start:0x02190eec end:0x02190fcc
+
+src/Combat/Overlay_15/FindNodeAtIndexAndDispatchState_02191ba0.cpp:
+    .text start:0x021926e4 end:0x021927b4
+
+src/Combat/Overlay_15/func_ov015_02191af0.cpp:
+    .text start:0x02192634 end:0x021926e4
+
+src/Combat/Overlay_15/InitAndRunStream_0218ba44.cpp:
+    .text start:0x0218c664 end:0x0218c708

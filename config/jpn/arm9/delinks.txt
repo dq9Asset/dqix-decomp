@@ -14985,3 +14985,51 @@ src/Combat/Main/ForwardCenteredY0208b5b4.cpp:
 src/Combat/Main/FindRectIndexForCurrentCoords020e1e4c.cpp:
     complete
     .text start:0x020e39ec end:0x020e3a50
+
+src/Combat/Main/RunScriptIfAvailable0209cbcc.cpp:
+    complete
+    .text start:0x0209e944 end:0x0209e9b4
+
+src/Combat/Main/ClearCombatantEncounterState.cpp:
+    complete
+    .text start:0x020dc8b8 end:0x020dc928
+
+src/Combat/Main/UpdateCanvasState0204c87c.cpp:
+    complete
+    .text start:0x0204d68c end:0x0204d700
+
+src/Combat/Main/InitAndRunScriptIfValid02097ac0.cpp:
+    complete
+    .text start:0x02099710 end:0x02099784
+
+src/Combat/Main/InitStreamFromEntry020c0044.cpp:
+    complete
+    .text start:0x020c1b10 end:0x020c1b84
+
+src/Combat/Main/RunScriptIfAvailable020a6194.cpp:
+    complete
+    .text start:0x020a7f38 end:0x020a7fb0
+
+src/Combat/Main/CheckSuffixAndLoadResource0203fce0.cpp:
+    complete
+    .text start:0x020401dc end:0x02040258
+
+src/Combat/Main/PrepareAndRunBufferedScript02099cb8.cpp:
+    complete
+    .text start:0x0209b9ec end:0x0209ba68
+
+src/Combat/Main/PrepareAndRunBufferedScript02099f6c.cpp:
+    complete
+    .text start:0x0209bca0 end:0x0209bd1c
+
+src/Combat/Main/SetupContextForMode0205ea20.cpp:
+    complete
+    .text start:0x0205fd0c end:0x0205fd8c
+
+src/Combat/Main/UpdateStateMachine02092f00.cpp:
+    complete
+    .text start:0x0209383c end:0x020938bc
+
+src/Combat/Main/BuildIndexArrayAndRegister0209dc4c.cpp:
+    complete
+    .text start:0x0209f9c4 end:0x0209fa44

@@ -5680,3 +5680,11 @@ src/Combat/Overlay_31/DoNothing_02231084.cpp:
 src/Combat/Overlay_31/func_ov031_02243144.cpp:
     complete
     .text start:0x02243924 end:0x02243ae0
+
+src/Combat/Overlay_31/func_ov031_02245750.cpp:
+    complete
+    .text start:0x02246318 end:0x022463a8
+
+src/Combat/Overlay_31/MatchAndStoreEntries_02243348.cpp:
+    complete
+    .text start:0x02243b28 end:0x02243bb0

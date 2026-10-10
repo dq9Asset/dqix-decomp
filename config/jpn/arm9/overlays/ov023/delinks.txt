@@ -1756,3 +1756,55 @@ src/Combat/Overlay_23/func_ov023_021f5150.cpp:
 src/Combat/Overlay_23/func_ov023_021f7b98.cpp:
     complete
     .text start:0x021f7090 end:0x021f7160
+
+src/Combat/Overlay_23/CountCombatantsByStatus1_021ea46c.cpp:
+    complete
+    .text start:0x021ea3d0 end:0x021ea480
+
+src/Combat/Overlay_23/func_ov023_021eaea0.cpp:
+    complete
+    .text start:0x021eae04 end:0x021eaeb4
+
+src/Combat/Overlay_23/func_ov023_021eaf50.cpp:
+    complete
+    .text start:0x021eaeb4 end:0x021eaf64
+
+src/Combat/Overlay_23/func_ov023_021e9424.cpp:
+    complete
+    .text start:0x021e9388 end:0x021e9430
+
+src/Combat/Overlay_23/InitObjWithSlots_021fbd00.cpp:
+    complete
+    .text start:0x021fb07c end:0x021fb10c
+
+src/Combat/Overlay_23/CountCombatantsByStatus2_021ea51c.cpp:
+    complete
+    .text start:0x021ea480 end:0x021ea508
+
+src/Combat/Overlay_23/CheckThresholdOverAny_021f5228.cpp:
+    complete
+    .text start:0x021f4800 end:0x021f4878
+
+src/Combat/Overlay_23/InitObj_021f222c.cpp:
+    complete
+    .text start:0x021f1afc end:0x021f1b6c
+
+src/Combat/Overlay_23/SetThreeFieldsFromSub150_021e9370.cpp:
+    complete
+    .text start:0x021e92d4 end:0x021e9344
+
+src/Combat/Overlay_23/SumTableBytes_021ea6bc.cpp:
+    complete
+    .text start:0x021ea620 end:0x021ea680
+
+src/Combat/Overlay_23/CopyHeaderAndFormatBuf_021f229c.cpp:
+    complete
+    .text start:0x021f1b6c end:0x021f1bd4
+
+src/Combat/Overlay_23/CheckSlotMatchesBitfield_021e9a9c.cpp:
+    complete
+    .text start:0x021e9a00 end:0x021e9a64
+
+src/Combat/Overlay_23/ClearOwnerAndResetList_021f7984.cpp:
+    complete
+    .text start:0x021f6e7c end:0x021f6edc

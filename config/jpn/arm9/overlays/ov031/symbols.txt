@@ -1919,7 +1919,7 @@ _Z19AlwaysTrue_02243010v kind:function(arm,size=0x8) addr:0x022437f0
 func_ov031_022437f8 kind:function(arm,size=0x12c) addr:0x022437f8
 func_ov031_02243144 kind:function(arm,size=0x1bc) addr:0x02243924
 func_ov031_02243ae0 kind:function(arm,size=0x48) addr:0x02243ae0
-func_ov031_02243b28 kind:function(arm,size=0x88) addr:0x02243b28
+func_ov031_02243348 kind:function(arm,size=0x88) addr:0x02243b28
 func_ov031_02243bb0 kind:function(arm,size=0x34) addr:0x02243bb0
 func_ov031_02243be4 kind:function(arm,size=0x14) addr:0x02243be4
 func_ov031_02243bf8 kind:function(arm,size=0x14) addr:0x02243bf8
@@ -1949,7 +1949,7 @@ _Z32SetField34AndClear35_37_02245528P15Struct_02245528i kind:function(arm,size=0
 func_ov031_02245548 kind:function(arm,size=0x1a8) addr:0x02246110
 _Z34SetField35IfField34Is6Or7_022456f0P12Obj_022456f0 kind:function(arm,size=0x20) addr:0x022462b8
 func_ov031_02245710 kind:function(arm,size=0x40) addr:0x022462d8
-func_ov031_02246318 kind:function(arm,size=0x90) addr:0x02246318
+func_ov031_02245750 kind:function(arm,size=0x90) addr:0x02246318
 func_ov031_022457e0 kind:function(arm,size=0x78) addr:0x022463a8
 _Z18SetFields_02245858ic kind:function(arm,size=0x14) addr:0x02246420
 func_ov031_02246434 kind:function(arm,size=0x10) addr:0x02246434
@@ -2672,7 +2672,7 @@ data_ov031_0224d50c kind:data(any) addr:0x0224d50c
 data_ov031_0224d520 kind:data(any) addr:0x0224d520
 data_ov031_0224d538 kind:data(any) addr:0x0224d538
 data_ov031_0224d53d kind:data(any) addr:0x0224d53d
-data_ov031_0224d54e kind:data(any) addr:0x0224d54e
+data_ov031_0224c94e kind:data(any) addr:0x0224d54e
 data_ov031_0224c954 kind:data(any) addr:0x0224d554
 data_ov031_0224c980 kind:bss addr:0x0224d580
 data_ov031_0224c994 kind:bss addr:0x0224d594

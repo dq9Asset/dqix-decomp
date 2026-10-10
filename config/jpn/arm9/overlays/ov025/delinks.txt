@@ -709,3 +709,43 @@ src/Combat/Overlay_25/func_ov025_021e58f0.cpp:
 src/Combat/Overlay_25/func_ov025_021e1f40.cpp:
     complete
     .text start:0x021e2850 end:0x021e2904
+
+src/Combat/Overlay_25/func_ov025_021e509c.cpp:
+    complete
+    .text start:0x021e558c end:0x021e563c
+
+src/Combat/Overlay_25/AdvanceStateAndNotify_021e4450.cpp:
+    complete
+    .text start:0x021e4940 end:0x021e49ec
+
+src/Combat/Overlay_25/func_ov025_021df9f4.cpp:
+    complete
+    .text start:0x021e0304 end:0x021e03ac
+
+src/Combat/Overlay_25/func_ov025_021e5f54.cpp:
+    complete
+    .text start:0x021e6404 end:0x021e64a0
+
+src/Combat/Overlay_25/SetRecordFieldFromDispatch_021e5014.cpp:
+    complete
+    .text start:0x021e5504 end:0x021e558c
+
+src/Combat/Overlay_25/RecordTagAndDispatch_021e25a4.cpp:
+    complete
+    .text start:0x021e2abc end:0x021e2b40
+
+src/Combat/Overlay_25/FormatGenderTagAndDispatch_021e8344.cpp:
+    complete
+    .text start:0x021e87e4 end:0x021e8864
+
+src/Combat/Overlay_25/ShiftRowsDown_021deda0.cpp:
+    complete
+    .text start:0x021df6b0 end:0x021df730
+
+src/Combat/Overlay_25/CheckThresholdAndReset_021e30e8.cpp:
+    complete
+    .text start:0x021e35d8 end:0x021e3648
+
+src/Combat/Overlay_25/func_ov025_021e7248.cpp:
+    complete
+    .text start:0x021e76f8 end:0x021e7758

@@ -14401,3 +14401,131 @@ src/Combat/Main/func_02054028.cpp:
 src/Combat/Main/func_020a8b0c.cpp:
     complete
     .text start:0x020aa890 end:0x020aa9d0
+
+src/Combat/Main/func_02017540.cpp:
+    complete
+    .text start:0x020172e0 end:0x0201751c
+
+src/Combat/Main/ConfigureFieldVec3ForDateWindow020a696c.cpp:
+    complete
+    .text start:0x020a8710 end:0x020a8848
+
+src/Combat/Main/AllocateAndEnqueuePointVariantNode0201f728.cpp:
+    complete
+    .text start:0x0201f4b4 end:0x0201f5d0
+
+src/Combat/Main/ApplySlotElementEffectIfFlagged020ddcbc.cpp:
+    complete
+    .text start:0x020df638 end:0x020df748
+
+src/Combat/Main/ProcessCombatantElements02027100.cpp:
+    complete
+    .text start:0x02026a64 end:0x02026b70
+
+src/Combat/Main/AdvanceActiveEntryPhysics_02017208.cpp:
+    complete
+    .text start:0x02016fa8 end:0x020170ac
+
+src/Combat/Main/CollectMatchingElems020181fc.cpp:
+    complete
+    .text start:0x02017f9c end:0x020180a0
+
+src/Combat/Main/func_020dd8b4.cpp:
+    complete
+    .text start:0x020df230 end:0x020df330
+
+src/Combat/Main/func_020dd3cc.cpp:
+    complete
+    .text start:0x020ded48 end:0x020dee40
+
+src/Combat/Main/func_020158cc.cpp:
+    complete
+    .text start:0x02015698 end:0x0201578c
+
+src/Combat/Main/func_0202b000.cpp:
+    complete
+    .text start:0x0202abb0 end:0x0202aca4
+
+src/World/MarkVisitedGrottoTile.cpp:
+    complete
+    .text start:0x02024768 end:0x0202484c
+
+src/Combat/Main/FormatAndAppendCombatMessage02072d58.cpp:
+    complete
+    .text start:0x02073ee8 end:0x02073fc4
+
+src/Combat/Main/func_0201b678.cpp:
+    complete
+    .text start:0x0201b3f0 end:0x0201b4cc
+
+src/Combat/Main/func_0201b78c.cpp:
+    complete
+    .text start:0x0201b504 end:0x0201b5e0
+
+src/Combat/Main/UpdateObjPaletteEntry020dc70c.cpp:
+    complete
+    .text start:0x020de114 end:0x020de1f0
+
+src/Combat/Main/CheckAndInvoke020ad4c4.cpp:
+    complete
+    .text start:0x020aef90 end:0x020af068
+
+src/Combat/Main/InitAndRegisterEntry_0209d8a8.cpp:
+    complete
+    .text start:0x0209f620 end:0x0209f6ec
+
+src/Combat/Main/FlushOv017Section020dbcc4.cpp:
+    complete
+    .text start:0x020dd6cc end:0x020dd798
+
+src/Combat/Main/func_0201f660.cpp:
+    complete
+    .text start:0x0201f3ec end:0x0201f4b4
+
+src/Combat/Main/ConsumeOrForceCounterAndFlag_0208aebc.cpp:
+    complete
+    .text start:0x0208b7b0 end:0x0208b86c
+
+src/Combat/Main/UpdateFlaggedType2Entries02018c74.cpp:
+    complete
+    .text start:0x02018a14 end:0x02018ac8
+
+src/Combat/Main/SendBattleSaveBufferOrSetFlag020ac7b4.cpp:
+    complete
+    .text start:0x020ae280 end:0x020ae330
+
+src/Combat/Main/ProcessTargetNodeList_0208f410.cpp:
+    complete
+    .text start:0x0208fd24 end:0x0208fdd0
+
+src/Combat/Main/VerifyAndApplySaveBuffer.cpp:
+    complete
+    .text start:0x020ae330 end:0x020ae3dc
+
+src/Combat/Main/CountUnflaggedFilteredSlots020dc428.cpp:
+    complete
+    .text start:0x020dde30 end:0x020dded8
+
+src/Combat/Main/LookupCategoryOverride_0209cd50.cpp:
+    complete
+    .text start:0x0209eac8 end:0x0209eb70
+
+src/Combat/Main/SetModeBasedOnCombatState020dc214.cpp:
+    complete
+    .text start:0x020ddc1c end:0x020ddcc4
+
+src/Combat/Main/InitAndRequeueEntry020e3b8c.cpp:
+    complete
+    .text start:0x020e572c end:0x020e57d4
+
+src/Combat/Main/SetElemFlag8IfOverlayActive020ae730.cpp:
+    complete
+    .text start:0x020b01fc end:0x020b02a0
+
+src/Combat/Main/ProcessGrottoTurnEvent0208f4e4.cpp:
+    complete
+    .text start:0x0208fdf8 end:0x0208fe9c
+
+src/Combat/Main/FillNameBytes02053e10.cpp:
+    complete
+    .text start:0x02055188 end:0x0205522c

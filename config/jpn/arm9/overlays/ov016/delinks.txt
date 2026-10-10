@@ -247,3 +247,15 @@ src/Combat/Overlay_16/IncCounter_0218cf34.cpp:
 
 src/Combat/Overlay_16/func_ov016_0218f088.cpp:
     .text start:0x0218f2bc end:0x0218f38c
+
+src/Combat/Overlay_16/func_ov016_0218f340.cpp:
+    .text start:0x0218f560 end:0x0218f658
+
+src/Combat/Overlay_16/func_ov016_0218de60.cpp:
+    .text start:0x0218e4b4 end:0x0218e5f4
+
+src/Combat/Overlay_16/XorMaskKeyInput_0218ca70.cpp:
+    .text start:0x0218d3b4 end:0x0218d3ec
+
+src/Combat/Overlay_16/XorMaskKeyInput_0218d2bc.cpp:
+    .text start:0x0218d9c0 end:0x0218d9f8

@@ -1190,3 +1190,27 @@ src/Combat/Overlay_24/RandomScaleField6c2xPlus30Cap150_021d951c.cpp:
 src/Combat/Overlay_24/RandomScaleField6cPlus10_021d9ad8.cpp:
     complete
     .text start:0x021da398 end:0x021da44c
+
+src/Combat/Overlay_24/RandomScaleField6c125Plus2x_021d90c8.cpp:
+    complete
+    .text start:0x021d9988 end:0x021d9a34
+
+src/Combat/Overlay_24/RandomScaleField6cBy2Point5_021d93dc.cpp:
+    complete
+    .text start:0x021d9c9c end:0x021d9d3c
+
+src/Combat/Overlay_24/RandomScaleField6cBy3_021d947c.cpp:
+    complete
+    .text start:0x021d9d3c end:0x021d9ddc
+
+src/Combat/Overlay_24/CheckKind1AndFlagBitsAtField2f4_021ea500.cpp:
+    complete
+    .text start:0x021eaccc end:0x021ead50
+
+src/Combat/Overlay_24/RandomScaleField6cDiv4Plus5_021d96d0.cpp:
+    complete
+    .text start:0x021d9f90 end:0x021da00c
+
+src/Combat/Overlay_24/FindByKeyIndexed_021f69b4.cpp:
+    complete
+    .text start:0x021f7180 end:0x021f71e8

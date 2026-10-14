@@ -2,22 +2,42 @@
 #include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
 
 struct State021be0c4 { unsigned char pad0, done; char pad2[6]; int step, elapsed; };
 struct Obj02046574 {
+#if defined(jpn)
+    char pad0[0x28];
+#else
     char pad0[0x5c];
+#endif
     char* buffer;
+#if defined(jpn)
+    char pad60[0x868 - 0x2c];
+#else
     char pad60[0x938];
+#endif
     int active;
     char pad99c[4];
     int busy;
+#if defined(jpn)
+    char pad9a4[0x17de - 0x874];
+#else
     char pad9a4[0x100a];
+#endif
     unsigned char field_19ae;
     char pad19af[3];
     unsigned char field_19b2;
 };
-struct Context021be0c4 { char pad[0x2664]; char map[4]; };
+struct Context021be0c4 {
+#if defined(jpn)
+    char pad[0x26a4];
+#else
+    char pad[0x2664];
+#endif
+    char map[4];
+};
 struct Obj020397cc;
 extern "C" Context021be0c4* func_02012fe4();
 extern "C" int* func_0202ae18();
@@ -34,7 +54,9 @@ extern "C" void VectorizedInvertedMemcpy(const void*, void*, unsigned int);
 extern "C" void func_02011744(GameState*);
 const char* CallFunc020e0434With02153694_020e51cc(int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
-extern "C" void func_0204500c(void*, const char*, int, int);
+#if defined(jpn)
+extern char data_ov017_021d8658[];
+#endif
 int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021cf730(int, int);
@@ -68,10 +90,14 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
             if (func_0208f748(func_02012fe4()->map, &grotto->entranceX)) {
                 grotto->activeMapData.SetDiscoveryState(DiscoveryState_Discovered);
                 if (grotto->activeMapData.DiscoveredBy[0] == 0) {
+#if defined(jpn)
+                    VectorizedInvertedMemcpy(game->GetProtagonist()->baseStats_, grotto->activeMapData.DiscoveredBy, 10);
+#else
                     char name[10];
                     __clear(name, 10);
                     func_020426bc(game->GetProtagonist()->baseStats_, name, 1);
                     VectorizedInvertedMemcpy(name, grotto->activeMapData.DiscoveredBy, 10);
+#endif
                 }
                 func_02011744(game);
                 state->step = 3;
@@ -85,9 +111,14 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
         state->elapsed += game->GetTickCount();
         if (!IsMainBrightnessTransitionActive(resources) && state->elapsed > 30) {
             char* buffer = controller->buffer;
+#if defined(jpn)
+            sprintf(buffer, data_ov017_021d8658, game->GetUnknownGameObject()->baseStats_->unk);
+            func_0204500c((MessageSystem*)controller, buffer, 0);
+#else
             sprintf(buffer, CallFunc020e0434With02153694_020e51cc(0x3f));
             SetIndexedName02046574(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
-            func_0204500c(controller, buffer, 0, 0xe3);
+            func_0204500c((MessageSystem*)controller, buffer, 0, (void*)0xe3);
+#endif
             controller->field_19b2 = 0;
             controller->active = 1;
             int* field = func_0202ae18();

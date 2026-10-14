@@ -8235,6 +8235,10 @@ src/Combat/Main/ReadFields0x70To0x78.cpp:
     complete
     .text start:0x0202e344 end:0x0202e360
 
+src/Combat/Main/ReadFontScriptNibble0204290c.cpp:
+    complete
+    .text start:0x0204290c end:0x02042940
+
 src/Combat/Main/ReadGlobalPair020bb910.cpp:
     complete
     .text start:0x020bd3dc end:0x020bd3f8
@@ -13519,6 +13523,10 @@ src/Filesystem/CardReadManagerAcquireBus.cpp:
 src/Filesystem/CardReadManagerInit.cpp:
     complete
     .text start:0x020d1788 end:0x020d1a98
+
+src/Filesystem/DecompressFileIntoBuffer_020da930.cpp:
+    complete
+    .text start:0x020da930 end:0x020da9d8
 
 src/Filesystem/DispatchCartridgeReadToArm7.cpp:
     complete

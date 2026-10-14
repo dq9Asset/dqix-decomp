@@ -11155,6 +11155,10 @@ src/Combat/Main/StoreFields0x1e4And0x1e8IfNonZero.cpp:
     complete
     .text start:0x0202e580 end:0x0202e590
 
+src/Combat/Main/StoreFontScriptParameters020428c4.cpp:
+    complete
+    .text start:0x020428c4 end:0x02042904
+
 src/Combat/Main/StoreFourShorts.cpp:
     complete
     .text start:0x020e2ea0 end:0x020e2eb8

@@ -8,6 +8,10 @@ src/Combat/Overlay_9/CancelNameResource_02185888.cpp:
     complete
     .text start:0x02185888 end:0x021858e4
 
+src/Combat/Overlay_9/CompleteNameResource_02185c58.cpp:
+    complete
+    .text start:0x02185c58 end:0x02185ed8
+
 src/Combat/Overlay_9/GetNameResourceByteSize_02185ed8.cpp:
     complete
     .text start:0x02185ed8 end:0x02185ee8

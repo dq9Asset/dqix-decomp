@@ -90,6 +90,7 @@ struct CombatantName {
 struct Struct0200fb08;
 struct TableA68;
 
+int StringLength_020d2ff0(const char*);
 unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" HudNode* func_ov004_0215e47c(void* a, int key);
 extern "C" void* func_ov023_021fad18(void* node);
@@ -118,6 +119,7 @@ extern struct BattleMenuState data_ov004_021707e8;
 extern int data_ov004_0216fe04[];
 extern unsigned short data_ov004_0216fdd0[];
 
+// JPN: func_ov004_0215f0c0 (0215fbc8)
 // USA: func_ov004_0215f0c0
 extern "C" ARM void func_ov004_0215f0c0(void* self) {
     GameState* gs = GameState::GetInstance();
@@ -131,6 +133,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
     if (dead) {
         palette = 9;
     }
+#if !defined(jpn)
     HudNode* marker = func_ov004_0215e47c(self, 0x1f5);
     if (!dead) {
         void* portraitNode = func_ov004_0215e47c(self, 0x1f4);
@@ -174,6 +177,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
     }
 
     unsigned char level = NormalizeField5_0200fb08((struct Struct0200fb08*)gs);
+#endif
     void* list = func_ov011_021849c8(self);
     HudNode* node = func_ov023_021f6880(list, 0x7f);
     if (node == 0) {
@@ -181,21 +185,29 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
     }
     node->SetIcon(field150->icons[data_ov004_021707e8.slot]);
 
-    node = func_ov023_021f6880(list, 0x7b);
-    if (func_ov023_021f6f10(node) == 8) {
-        void* baseStats = node->data = combatant->baseStats;
-        int width = 0;
-        if (baseStats != 0) {
-            width = func_020420e8(baseStats, IsValueEqual12_02042190(node->kind));
+    {
+        HudNode* node = func_ov023_021f6880(list, 0x7b);
+        if (func_ov023_021f6f10(node) == 8) {
+            void* baseStats = node->data = combatant->baseStats;
+            int width = 0;
+            if (baseStats != 0) {
+#if defined(jpn)
+                width = StringLength_020d2ff0((const char*)baseStats);
+                width = (width * node->kind) >> 1;
+#else
+                width = func_020420e8(baseStats, IsValueEqual12_02042190(node->kind));
+#endif
+            }
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = (0x23 - (width >> 1)) << 12;
+#if !defined(jpn)
+            pos.y = 0x2000;
+#endif
+            node->SetPosition(&pos);
+            node->SetPalette(palette);
         }
-        Vector3i pos;
-        pos = node->GetPosition();
-        pos.x = (0x23 - (width >> 1)) << 12;
-        pos.y = 0x2000;
-        node->SetPosition(&pos);
-        node->SetPalette(palette);
     }
-
     int lv = field150->levels[data_ov004_021707e8.slot];
     if (lv != 0) {
         node = func_ov023_021f6880(list, 0x7e);
@@ -204,12 +216,48 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         }
         if (func_ov023_021f6f10(node) == 8) {
             node->frame = lv + 0x1d3;
+#if defined(jpn)
+            Vector3i pos;
+            pos = node->GetPosition();
+#endif
             if (lv == 10) {
                 node->SetPalette(0xd);
+#if defined(jpn)
+                pos.y = 0x6000;
+#endif
             } else {
                 node->SetPalette(5);
+#if defined(jpn)
+                pos.y = 0x7000;
+#endif
             }
+#if defined(jpn)
+            node->SetPosition(&pos);
+#endif
         }
+#if defined(jpn)
+        node = func_ov023_021f6880(list, 0x7c);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x42000;
+            node->SetPosition(&pos);
+        }
+        node = func_ov023_021f6880(list, 0x7d);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x5f000;
+            node->SetPosition(&pos);
+        }
+        node = func_ov023_021f6880(list, 0x7f);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x68000;
+            node->SetPosition(&pos);
+        }
+#else
         node = func_ov023_021f6880(list, 0x7f);
         if (node != 0) {
             Vector3i pos;
@@ -221,6 +269,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         if (node != 0) {
             node->data = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
         }
+#endif
     } else {
         node = func_ov023_021f6880(list, 0x7e);
         if (node != 0) {
@@ -228,6 +277,29 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
                 node->frame = 0x3a;
             }
         }
+#if defined(jpn)
+        node = func_ov023_021f6880(list, 0x7c);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x46000;
+            node->SetPosition(&pos);
+        }
+        node = func_ov023_021f6880(list, 0x7d);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x5c000;
+            node->SetPosition(&pos);
+        }
+        node = func_ov023_021f6880(list, 0x7f);
+        if (node != 0) {
+            Vector3i pos;
+            pos = node->GetPosition();
+            pos.x = 0x65000;
+            node->SetPosition(&pos);
+        }
+#else
         node = func_ov023_021f6880(list, 0x7f);
         if (node != 0) {
             Vector3i pos;
@@ -239,6 +311,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         if (node != 0) {
             node->data = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
         }
+#endif
     }
 
     if (CheckAfterTwoCalls_0215e460() != 0) {
@@ -247,12 +320,20 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         SetField38IfState8_0215e49c(self, 0x7c, data_ov004_021707e8.slot + 0x1e4);
     }
 
+#if !defined(jpn)
     char* text = data_ov004_021707e8.textBuf;
     memset(text, 0, 0x80);
+#endif
     unsigned short ids[3];
+#if defined(jpn)
+    ids[0] = data_ov004_0216fdd0[13];
+    ids[1] = data_ov004_0216fdd0[14];
+    ids[2] = data_ov004_0216fdd0[15];
+#else
     ids[0] = data_ov004_0216fdd0[15];
     ids[1] = data_ov004_0216fdd0[16];
     ids[2] = data_ov004_0216fdd0[17];
+#endif
 
     if (dead) {
         HudNode* label = func_ov023_021f6880(list, 0x7c);
@@ -260,10 +341,15 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
             Vector3i pos;
             pos = label->GetPosition();
             pos.x = 0x53000;
+#if !defined(jpn)
             pos.y = 0x2000;
+#endif
             label->SetPosition(&pos);
             label->SetPalette(palette);
         }
+#if defined(jpn)
+        SetField38IfState8_0215e49c(self, 0x7c, 0x202);
+#else
         HudNode* msg = func_ov023_021f6880(list, 6);
         if (msg != 0 && func_ov023_021f6f10(msg) == 4) {
             struct TableA68* table = func_ov023_021fa598(msg);
@@ -275,6 +361,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
             func_02046608(g, 0, FindEntryByKey_02072a68(table, 0x202), text, 0x1e, 0, 0);
             label->data = text;
         }
+#endif
         for (int i = 0; i < 3; i++) {
             HudNode* n = func_ov023_021f6880(list, ids[i]);
             if (n != 0) {

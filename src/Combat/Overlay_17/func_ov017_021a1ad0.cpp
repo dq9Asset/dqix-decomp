@@ -47,6 +47,7 @@ extern "C" int func_02031118(Vector3fix*, MonsterBounds021a1ad0*);
 extern "C" void func_02076a8c(FieldMonster021a1ad0*);
 
 // USA: func_ov017_021a1ad0
+// JPN: func_ov017_021a2560
 extern "C" ARM void func_ov017_021a1ad0() {
     GameState* state = GameState::GetInstance();
     Entry_02028bd0* table = GetEntryTableBase_02027ca4();

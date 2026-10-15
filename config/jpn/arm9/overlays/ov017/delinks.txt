@@ -469,6 +469,10 @@ src/Combat/Overlay_17/ClearSlotsAndProcess_021a27e8.cpp:
     complete
     .text start:0x021a3278 end:0x021a32d0
 
+src/Combat/Overlay_17/ComparePackedField_021b2090.cpp:
+    complete
+    .text start:0x021b27b0 end:0x021b2854
+
 src/Combat/Overlay_17/ConfigureFieldByFlag36b8_02199360.cpp:
     complete
     .text start:0x02199f10 end:0x0219a030
@@ -2356,6 +2360,10 @@ src/Combat/Overlay_17/func_ov017_021a1284.cpp:
 src/Combat/Overlay_17/func_ov017_021a1944.cpp:
     complete
     .text start:0x021a23d4 end:0x021a24b0
+
+src/Combat/Overlay_17/func_ov017_021a1ad0.cpp:
+    complete
+    .text start:0x021a2560 end:0x021a2828
 
 src/Combat/Overlay_17/func_ov017_021a28a8.cpp:
     complete

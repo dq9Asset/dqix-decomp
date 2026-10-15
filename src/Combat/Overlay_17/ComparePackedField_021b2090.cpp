@@ -9,9 +9,12 @@ struct PackedField017 {
 };
 
 // USA: func_ov017_021b2090  (semantic: ComparePackedField_021b2090)
+// JPN: func_ov017_021b27b0
 extern "C" ARM int func_ov017_021b2090(PackedField017 a, PackedField017 b) {
     if (a.low < b.low) return 1;
+#if !defined(jpn)
     if (a.low > b.low) return 0;
+#endif
     unsigned int va = 0;
     va = a.f12 * 1000000 + va;
     va = a.f16 * 10000 + va;

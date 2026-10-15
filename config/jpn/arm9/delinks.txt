@@ -3506,6 +3506,10 @@ src/Combat/Main/DecrementKeyedStackAmount0207c484.cpp:
     complete
     .text start:0x0207d2bc end:0x0207d354
 
+src/Combat/Main/DecrementSlotRef0206b198.cpp:
+    complete
+    .text start:0x0206cb14 end:0x0206cba0
+
 src/Combat/Main/DelayThenSyncBit0.cpp:
     complete
     .text start:0x020cb2ec end:0x020cb308
@@ -9382,6 +9386,10 @@ src/Combat/Main/SearchBothTables02079e2c.cpp:
 src/Combat/Main/SearchWithLow15Comparator02070fd0.cpp:
     complete
     .text start:0x0207203c end:0x02072050
+
+src/Combat/Main/SeekTextPattern0206c520.cpp:
+    complete
+    .text start:0x0206c520 end:0x0206c570
 
 src/Combat/Main/SelectBattleContextMode2.cpp:
     complete

@@ -20,7 +20,7 @@ struct StateBits5ccc_11544;
 void SetFlag0x5cccBit0_02011544(struct StateBits5ccc_11544* p);
 
 // USA: func_020abd20
-extern "C" ARM int func_020abd20() {
+extern "C" ARM int func_020abd20(int unused) {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
     unsigned char* zone = (unsigned char*)func_02012fe4();

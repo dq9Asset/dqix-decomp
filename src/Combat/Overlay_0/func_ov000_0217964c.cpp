@@ -5,12 +5,10 @@
 
 #if defined(jpn)
 enum { textOffset=0x28, textSize=0x800, width=12, height=7, xOffset=0x17, lineHeight=8 };
-extern "C" void func_020de9cc(int id, char* buf);
-#define NotifyLocalizedResourceLoad020dcfc8 func_020de9cc
 #else
 enum { textOffset=0x5c, textSize=0x960, width=16, height=8, xOffset=0x10, lineHeight=5 };
-void NotifyLocalizedResourceLoad020dcfc8(int id, char* buf);
 #endif
+void NotifyLocalizedResourceLoad020dcfc8(int id, char* buf);
 struct GlobalText {
     char pad0[textOffset];
     char* textBuf;

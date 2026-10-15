@@ -22,7 +22,6 @@ char* CallFunc020e0434With02153694_020e51cc(int);
 void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 
 #if defined(jpn)
-extern "C" void func_020de968(int, char*);
 extern char data_020f1050;
 extern char data_020f106e;
 extern char data_020f1094;
@@ -53,7 +52,7 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
 #if defined(jpn)
             if (formatAmount) {
                 char amountText[0x30] = {};
-                func_020de968(amount, amountText);
+                DispatchIfCountPositive020dcf7c(amount, amountText);
                 sprintf(output, &data_020f1050, amountText);
             } else {
                 sprintf(output, &data_020f1050, *(char**)((char*)owner + 0x30));

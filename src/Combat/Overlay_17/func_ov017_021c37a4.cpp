@@ -1,25 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
+#include "Combat/CombatantRecovery.h"
 
 struct SearchState021c37a4 {
     char unk0[0x100d];
     unsigned char mode;
     char unk100e[0x1029 - 0x100e];
     unsigned char flags;
-};
-
-struct MemberStatus021c37a4 {
-    unsigned int flags;
-    unsigned short state;
-};
-
-struct Member021c37a4 {
-    char unk0[0x130];
-    MemberStatus021c37a4* status;
-    char* name;
-    char unk138[0x18c - 0x138];
-    unsigned int flags;
 };
 
 struct Slot021c37a4 {
@@ -31,9 +19,17 @@ struct Slot021c37a4 {
 };
 
 struct Battle021c37a4 {
+#if defined(jpn)
+    char unk0[0x5a6c];
+#else
     char unk0[0x5ccc];
+#endif
     unsigned int flags;
+#if defined(jpn)
+    char unk5a70[0x7280 - 0x5a70];
+#else
     char unk5cd0[0x74c0 - 0x5cd0];
+#endif
     Slot021c37a4 slots[3];
     char unk74de[0x7e74 - 0x74de];
     int value;
@@ -52,17 +48,28 @@ struct Swap021c37a4 {
     unsigned char to;
 };
 
-struct FieldTimer021c37a4 {
-    char unk0[0x64];
+// Entry-table context at zone+0x860 (JPN) / +0x840 (USA/EUR).
+// ResetEntryTableAndContext020982b4 also clears this ushort at +0x1b64.
+struct FieldEntryContext021c37a4 {
+    char unk0[0x1b64];
     unsigned short value;
 };
 
 struct Field021c37a4 {
-    char unk0[0x2340];
-    FieldTimer021c37a4 timer;
+#if defined(jpn)
+    char unk0[0x860];
+#else
+    char unk0[0x840];
+#endif
+    FieldEntryContext021c37a4 entries;
+#if defined(jpn)
+    char unk23c6[0x2860 - 0x23c6];
+#else
     char unk23a6[0x2820 - 0x23a6];
+#endif
     unsigned char flag;
-    FieldTimer021c37a4* GetTimer() { return &timer; }};
+    FieldEntryContext021c37a4* GetEntries() { return &entries; }
+};
 
 struct Actor021c37a4 {
     char unk0[0xc8];
@@ -70,9 +77,29 @@ struct Actor021c37a4 {
 };
 
 struct Global021c37a4 {
+#if defined(jpn)
+    char unk0[0x1790];
+#else
     char unk0[0x1962];
+#endif
     unsigned char flag;
 };
+
+typedef char WorldSlotSizeCheck[sizeof(Slot021c37a4) == 10 ? 1 : -1];
+typedef char WorldEntryValueCheck[offsetof(FieldEntryContext021c37a4, value) == 0x1b64 ? 1 : -1];
+#if defined(jpn)
+typedef char WorldBattleFlagsCheck[offsetof(Battle021c37a4, flags) == 0x5a6c ? 1 : -1];
+typedef char WorldSlotsCheck[offsetof(Battle021c37a4, slots) == 0x7280 ? 1 : -1];
+typedef char WorldBattleValueCheck[offsetof(Battle021c37a4, value) == 0x7c34 ? 1 : -1];
+typedef char WorldEntryContextCheck[offsetof(Field021c37a4, entries) == 0x860 ? 1 : -1];
+typedef char WorldFieldFlagCheck[offsetof(Field021c37a4, flag) == 0x2860 ? 1 : -1];
+#else
+typedef char WorldBattleFlagsCheck[offsetof(Battle021c37a4, flags) == 0x5ccc ? 1 : -1];
+typedef char WorldSlotsCheck[offsetof(Battle021c37a4, slots) == 0x74c0 ? 1 : -1];
+typedef char WorldBattleValueCheck[offsetof(Battle021c37a4, value) == 0x7e74 ? 1 : -1];
+typedef char WorldEntryContextCheck[offsetof(Field021c37a4, entries) == 0x840 ? 1 : -1];
+typedef char WorldFieldFlagCheck[offsetof(Field021c37a4, flag) == 0x2820 ? 1 : -1];
+#endif
 
 struct Obj02039d84;
 struct PackedNibbleArray0206e2dc;
@@ -104,7 +131,7 @@ void SetBitsInWord_0203b4a0(unsigned int* word, unsigned int bits);
 void BlankFunction020d84e0(void);
 extern "C" void func_0202b0f4(void* obj);
 extern "C" void func_0205e22c(void* obj);
-unsigned char GetField0x3acValue_020100a8(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 int GetByte0x26c_02039d7c(char* obj);
 void ResetObjectState02039d84(Obj02039d84* obj);
 GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* gs, int idx);
@@ -124,7 +151,7 @@ void* GetFieldIfFlag4_020100f8(char* obj);
 void SetField0x21c_020a2770(void* obj, short value);
 extern "C" void* func_0205ec34(void);
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc* arr, int idx);
-extern "C" void func_020abd20(int arg);
+extern "C" int func_020abd20(int unused);
 void SetPackedNibbleFlag0x8(PackedNibbleArray0206e2a0* arr, int idx);
 void Init020d9ae8(Struct020d9ae8* obj, int arg);
 void CopyStringInto020d9dc4(char* dst, char* src);
@@ -132,7 +159,6 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void DecrementKeyEverywhere02086d88(unsigned char* obj, int key);
 void ClearByteField17201_0218d500(void* obj);
 void ClearAllTreasureMapUnknownBits_020116c8(void* obj);
-extern "C" void func_02048150(void* obj, int a, int b);
 extern "C" void func_ov017_02191aac(void* obj, int mode, int idx, unsigned char mask);
 extern "C" void VectorizedMemset(void* dst, int value, int len);
 char* GetGlobal02109030_020936f8(void);
@@ -150,7 +176,7 @@ extern "C" void func_020bbd9c(void);
 int IsHandleB8Active0209c6bc(void* obj);
 void InitActorContext0209c20c(Actor0209c20c* obj);
 void ClearFlags020466f4(FlagWord020466f4* obj, unsigned int flags);
-Global021c37a4* GetGlobalField0x1c020421a0(void);
+int GetGlobalField0x1c020421a0(void);
 
 extern Actor021c37a4 data_02109bf4;
 
@@ -168,7 +194,11 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     int active = func_0202c540(search);
     int state = GetFieldAt0x0_0202ba00((int*)search);
     int mode = search->mode;
+#if defined(jpn)
+    char name[0xb];
+#else
     char name[0x30];
+#endif
     unsigned char bits[0x1a];
     Swap021c37a4 leader;
     Swap021c37a4 swap;
@@ -177,9 +207,15 @@ extern "C" ARM void func_ov017_021c37a4(void) {
         UpdatePlayClocks020ac4f8(1);
     }
 
-    __clear(name, 0x30);
+#if !defined(jpn)
+    __clear(name, sizeof(name));
+#endif
     if (active) {
-        char* src = ((Member021c37a4*)gs->GetPartyMemberByIndex(0))->name;
+        GameObject* first = gs->GetPartyMemberByIndex(0);
+#if defined(jpn)
+        memset(name, 0, sizeof(name));
+#endif
+        char* src = first->baseStats_->unk;
         memcpy(name, src, strlen(src));
         Clear0x20BytesAt0x74de_02012084((unsigned char*)gs);
         ClearFieldKeepBit0x10_02011af0(gs);
@@ -190,7 +226,9 @@ extern "C" ARM void func_ov017_021c37a4(void) {
     BlankFunction020d84e0();
     func_0202b0f4(search);
     func_0205e22c(d100044);
+#if !defined(jpn)
     search->flags &= ~0x10;
+#endif
 
     for (int i = 0; i < 4; i++) {
         if (i == GetField0x3acValue_020100a8(gs)) {
@@ -311,11 +349,11 @@ extern "C" ARM void func_ov017_021c37a4(void) {
         ClearAllTreasureMapUnknownBits_020116c8(gs);
     }
 
-    Member021c37a4* hero = (Member021c37a4*)gs->GetPartyMemberByIndex(0);
-    if (hero && (hero->status->flags & 1)) {
+    CombatantRecovery* hero = (CombatantRecovery*)gs->GetPartyMemberByIndex(0);
+    if (hero && (hero->combatFields_.savedState_130_->flags & 1)) {
         func_02048150(hero, 0, 1);
-        hero->status->state = 1;
-        hero->flags &= ~1;
+        hero->combatFields_.savedState_130_->hp = 1;
+        hero->recoveryFlags &= ~1;
     }
 
     Party021c37a4* members = (Party021c37a4*)GetPtrField0x2a04_02010828(gs);
@@ -337,8 +375,8 @@ extern "C" ARM void func_ov017_021c37a4(void) {
 
     ResetEightRegionsAndFlags_02093a14(GetGlobal02109030_020936f8());
     Field021c37a4* field = func_02012fe4();
-    FieldTimer021c37a4* timer = field->GetTimer();
-    timer->value = 0;
+    FieldEntryContext021c37a4* entries = field->GetEntries();
+    entries->value = 0;
     res->unknown_flag_42e2 = 0;
     ClearTwoBytesAtField_02195748((unsigned char*)res);
     ApplyVecFromField0x246_020a2718((char*)follower);
@@ -357,5 +395,5 @@ extern "C" ARM void func_ov017_021c37a4(void) {
         InitActorContext0209c20c((Actor0209c20c*)&data_02109bf4);
     }
     ClearFlags020466f4((FlagWord020466f4*)d114e04, 0x800);
-    GetGlobalField0x1c020421a0()->flag = 0;
+    ((Global021c37a4*)GetGlobalField0x1c020421a0())->flag = 0;
 }

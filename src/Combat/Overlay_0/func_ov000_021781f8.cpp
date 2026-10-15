@@ -2,12 +2,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-#if defined(jpn)
-extern "C" void func_020de9cc(int id, char* buf);
-#define NotifyLocalizedResourceLoad020dcfc8 func_020de9cc
-#else
 void NotifyLocalizedResourceLoad020dcfc8(int id, char* buf);
-#endif
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02046608(int a, int b, void* fmt, void* dst, int p4, int p5, int p6);
 struct Struct_0205d81c;

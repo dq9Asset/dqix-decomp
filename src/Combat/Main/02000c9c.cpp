@@ -116,8 +116,6 @@ extern "C" int data_ov029_021d9b60_fake(void* callback);
 extern "C" int data_ov029_021d9d20_fake(void* callback);
 extern "C" int data_ov029_021d9ee0_fake(void* callback);
 extern "C" void func_020d8614();
-extern "C" void func_020d863c();
-extern "C" void func_020d8670();
 #else
 #define TITLE_SCENE_SIZE 0x2e0
 #define WORLD_SCENE_SIZE 0x504
@@ -228,8 +226,8 @@ extern "C" ARM void main() {
     func_020a1940(&OVERLAY_29_ID);
 #if defined(jpn)
     if (!data_ov029_021d9b60_fake((void*)func_020d8614) &&
-        !data_ov029_021d9d20_fake((void*)func_020d863c) &&
-        !data_ov029_021d9ee0_fake((void*)func_020d8670) &&
+        !data_ov029_021d9d20_fake((void*)GuardedNotifyOverlay0211e33c020d6c34) &&
+        !data_ov029_021d9ee0_fake((void*)GuardedNotifyOverlay0211e33c020d6c68) &&
         BackgroundLoader::GetInstance() == 0) {
 #else
     if (!IsIntact1() && !IsIntact2() && !IsIntact3() && BackgroundLoader::GetInstance() == 0) {

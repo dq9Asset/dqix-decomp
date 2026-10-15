@@ -1570,6 +1570,10 @@ src/Combat/Main/CaptureValueOnce0208b494.cpp:
     complete
     .text start:0x0208bd88 end:0x0208bdb4
 
+src/Combat/Main/CenterRubyAnnotatedText02042798.cpp:
+    complete
+    .text start:0x02042798 end:0x020428c4
+
 src/Combat/Main/CheckActionAllowed.cpp:
     complete
     .text start:0x0202471c end:0x02024768
@@ -3650,6 +3654,10 @@ src/Combat/Main/DispatchField0xcHandler.cpp:
     complete
     .text start:0x020dc888 end:0x020dc8a0
 
+src/Combat/Main/DispatchIfCountPositive020dcf7c.cpp:
+    complete
+    .text start:0x020de968 end:0x020de9cc
+
 src/Combat/Main/DispatchIfEquals1.cpp:
     complete
     .text start:0x020d088c end:0x020d08ac
@@ -5506,6 +5514,10 @@ src/Combat/Main/GetGlobalWordList.cpp:
     complete
     .text start:0x0209e8e0 end:0x0209e8ec
 
+src/Combat/Main/GetGlyphPixelsByIndex02043110.cpp:
+    complete
+    .text start:0x02043110 end:0x0204316c
+
 src/Combat/Main/GetHalfProductField8.cpp:
     complete
     .text start:0x020e2e80 end:0x020e2ea0
@@ -6125,6 +6137,14 @@ src/Combat/Main/GetVec3FromShorts.cpp:
 src/Combat/Main/GetWord.cpp:
     complete
     .text start:0x0203aef0 end:0x0203aef8
+
+src/Combat/Main/GuardedNotifyOverlay0211e33c020d6c34.cpp:
+    complete
+    .text start:0x020d863c end:0x020d8670
+
+src/Combat/Main/GuardedNotifyOverlay0211e33c020d6c68.cpp:
+    complete
+    .text start:0x020d8670 end:0x020d86a4
 
 src/Combat/Main/GxLoadMatrix4x4.cpp:
     complete
@@ -7783,6 +7803,10 @@ src/Combat/Main/NotifyElemAndOverlay17OnFlag020ae990.cpp:
     complete
     .text start:0x020b045c end:0x020b04bc
 
+src/Combat/Main/NotifyLocalizedResourceLoad020dcfc8.cpp:
+    complete
+    .text start:0x020de9cc end:0x020dea34
+
 src/Combat/Main/NotifyManagerForSetArrayEntries020e3ed8.cpp:
     complete
     .text start:0x020e5a78 end:0x020e5abc
@@ -8234,6 +8258,10 @@ src/Combat/Main/ReadBits020b29f8.cpp:
 src/Combat/Main/ReadFields0x70To0x78.cpp:
     complete
     .text start:0x0202e344 end:0x0202e360
+
+src/Combat/Main/ReadFontScriptNibble0204290c.cpp:
+    complete
+    .text start:0x0204290c end:0x02042940
 
 src/Combat/Main/ReadGlobalPair020bb910.cpp:
     complete
@@ -11155,6 +11183,10 @@ src/Combat/Main/StoreFields0x1e4And0x1e8IfNonZero.cpp:
     complete
     .text start:0x0202e580 end:0x0202e590
 
+src/Combat/Main/StoreFontScriptParameters020428c4.cpp:
+    complete
+    .text start:0x020428c4 end:0x02042904
+
 src/Combat/Main/StoreFourShorts.cpp:
     complete
     .text start:0x020e2ea0 end:0x020e2eb8
@@ -13516,6 +13548,10 @@ src/Filesystem/CardReadManagerInit.cpp:
     complete
     .text start:0x020d1788 end:0x020d1a98
 
+src/Filesystem/DecompressFileIntoBuffer_020da930.cpp:
+    complete
+    .text start:0x020da930 end:0x020da9d8
+
 src/Filesystem/DispatchCartridgeReadToArm7.cpp:
     complete
     .text start:0x020d21c8 end:0x020d2300
@@ -13539,6 +13575,18 @@ src/Filesystem/GPC.cpp:
 src/Filesystem/IdentifyBackupDeviceCore.cpp:
     complete
     .text start:0x020d1b44 end:0x020d1ec8
+
+src/Filesystem/LoadConvertedDescriptorAndDispatch_020e052c.cpp:
+    complete
+    .text start:0x020e052c end:0x020e05a0
+
+src/Filesystem/LoadConvertedDescriptor_020e0484.cpp:
+    complete
+    .text start:0x020e0484 end:0x020e04f8
+
+src/Filesystem/LoadSingleConvertedDescriptor_020e04f8.cpp:
+    complete
+    .text start:0x020e04f8 end:0x020e052c
 
 src/Filesystem/LowNitroHandle.cpp:
     complete

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
+#include "Combat/CombatantRecovery.h"
 
 struct Foo0207df50 { unsigned char fields[0x70]; };
 struct S021a11b4;
@@ -15,16 +16,15 @@ struct LoadEntry021bdc34 {
     SafeAllocator secondary;
 };
 struct LoadGlobals021bdc34 {
+#if defined(jpn)
+    unsigned char padding_0[0x4114];
+#else
     unsigned char padding_0[0x4334];
+#endif
     Object3D* first;
     Object3D* second;
     Object3D* third;
     Object3D* fourth;
-};
-struct LoadActor021bdc34 {
-    Object3D object;
-    unsigned char padding_ac[0x18c - 0xac];
-    unsigned int flags;
 };
 struct LoadState021bdc34 {
     unsigned char tag;
@@ -41,15 +41,20 @@ void BackupPairTables0207dfac(char*);
 void SetFieldndDispatch_021bdb78_021bdb78(int);
 void CallHelperIfCheckPasses_0218fcf8(int, int, int);
 extern "C" void func_ov017_0218f5a4(void*, int, int, int, int);
+#if defined(jpn)
+extern const char data_ov017_021d85ec[], data_ov017_021d8606[], data_ov017_021d861e[];
+extern const char data_ov017_021d8639[], data_ov017_021d8644[], data_ov017_021d864d[], data_ov017_021d8653[];
+#else
 extern const char data_ov017_021d7e14[], data_ov017_021d7e2e[], data_ov017_021d7e46[];
 extern const char data_ov017_021d7e61[], data_ov017_021d7e6c[], data_ov017_021d7e75[], data_ov017_021d7e7b[];
+#endif
 
 // USA: func_ov017_021bdc34
 extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
     GameState* game = GameState::GetInstance();
     LoadGlobals021bdc34* globals = (LoadGlobals021bdc34*)func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    LoadActor021bdc34* actor = (LoadActor021bdc34*)GetCombatantWithFlag0x100_0200ff1c(game, 0);
+    CombatantRecovery* actor = (CombatantRecovery*)GetCombatantWithFlag0x100_0200ff1c(game, 0);
     if (actor == 0) return;
     LoadEntry021bdc34* entry = FindNegativeEntry_021a11b4((S021a11b4*)globals);
     if (entry == 0) {
@@ -60,20 +65,27 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
     Foo0207df50* pairs[4] = {&entry->primary_pairs, &entry->primary_pairs, &entry->secondary_pairs, &entry->primary_pairs};
     if (self->stage == 0) {
         if (self->mode == 1 && globals->first != 0 && globals->second != 0) {
-            if (actor->flags & 0x40) { self->done = 1; return; }
+            if (actor->recoveryFlags & 0x40) { self->done = 1; return; }
         }
         if (self->mode == 2 && globals->first != 0 && globals->second != 0) {
-            if (!(actor->flags & 0x40)) { self->done = 1; return; }
+            if (!(actor->recoveryFlags & 0x40)) { self->done = 1; return; }
         }
         if (self->mode == 0 && globals->first == 0 && globals->second == 0) {
-            if (!(actor->flags & 0x40)) { self->done = 1; return; }
+            if (!(actor->recoveryFlags & 0x40)) { self->done = 1; return; }
         }
         if (self->mode == 1 || self->mode == 2) {
             if (globals->first == 0) {
+#if defined(jpn)
+                self->tasks[0] = loader->QueueLoadFile(data_ov017_021d85ec, 0);
+                self->tasks[1] = loader->QueueLoadFile(data_ov017_021d8606, 0);
+                self->tasks[2] = loader->QueueLoadFileInGP2(data_ov017_021d861e, data_ov017_021d8639, 0);
+                self->tasks[3] = loader->QueueLoadFileInGP2(data_ov017_021d861e, data_ov017_021d8644, 0);
+#else
                 self->tasks[0] = loader->QueueLoadFile(data_ov017_021d7e14, 0);
                 self->tasks[1] = loader->QueueLoadFile(data_ov017_021d7e2e, 0);
                 self->tasks[2] = loader->QueueLoadFileInGP2(data_ov017_021d7e46, data_ov017_021d7e61, 0);
                 self->tasks[3] = loader->QueueLoadFileInGP2(data_ov017_021d7e46, data_ov017_021d7e6c, 0);
+#endif
                 for (int i = 0; i < 4; i++) {
                     allocators[i]->Reset();
                     CopyInternalFields0207df50(pairs[i]);
@@ -81,8 +93,8 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
             } else {
                 for (int i = 0; i < 4; i++) self->tasks[i] = -1;
             }
-            if (self->mode == 1) actor->flags |= 0x40;
-            else actor->flags &= ~0x40;
+            if (self->mode == 1) actor->recoveryFlags |= 0x40;
+            else actor->recoveryFlags &= ~0x40;
             func_ov017_0218f5a4(globals, 0, 1, 0, 0);
             self->stage = 1;
         } else {
@@ -90,7 +102,7 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
             globals->second = 0;
             globals->third = 0;
             globals->fourth = 0;
-            if (actor != 0) actor->flags &= ~0x40;
+            if (actor != 0) actor->recoveryFlags &= ~0x40;
             func_ov017_0218f5a4(globals, 0, 1, 0, 0);
             self->stage = 2;
         }
@@ -134,12 +146,17 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
     } else if (self->stage == 2) {
         if (self->mode == 1) SetFieldndDispatch_021bdb78_021bdb78(0);
         else {
-            actor->object.unknown_9c_ = 0;
+            actor->obj3D_.unknown_9c_ = 0;
             CallHelperIfCheckPasses_0218fcf8((int)globals, 0, 0);
         }
         if (globals->first != 0) {
+#if defined(jpn)
+            if (self->mode == 1) globals->first->MaybeSetRegularAnimation(data_ov017_021d864d, 0);
+            else globals->first->MaybeSetRegularAnimation(data_ov017_021d8653, 0);
+#else
             if (self->mode == 1) globals->first->MaybeSetRegularAnimation(data_ov017_021d7e75, 0);
             else globals->first->MaybeSetRegularAnimation(data_ov017_021d7e7b, 0);
+#endif
         }
         self->done = 1;
     }

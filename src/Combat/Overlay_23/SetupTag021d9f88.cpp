@@ -1,46 +1,60 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
 struct Struct_0205ba68;
-void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
-
+void SetupPointerTable0205ba68(Struct_0205ba68*, int, int, int);
 struct Node0205bacc;
-void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
-
+void SetField0AndPropagate0205bacc(Node0205bacc*, int);
 struct Struct_0205bcdc;
-void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
-
-extern "C" void func_0205bb04(void* s, int n);
-
+void SetIndexIfValid0205bcdc(Struct_0205bcdc*, int);
+extern "C" void func_0205bb04(void*, int);
 struct Struct0200fb08;
-unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
+unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
+extern "C" void func_ov023_021da100(char*, char*, int);
+#if defined(jpn)
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
+#else
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int, int);
+#endif
 
-extern "C" void func_ov023_021da100(char* obj, char* dst, int flag);
-
-extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, int p6, int p7);
-
-// USA: func_ov023_021d9f88  (semantic: SetupTag021d9f88)
+// USA: func_ov023_021d9f88
 extern "C" ARM void func_ov023_021d9f88(void* objRaw) {
-    char* obj = (char*)objRaw;
-    obj[0xd84] = 0;
-    SetupPointerTable0205ba68((struct Struct_0205ba68*)(obj + 0x2b8), 1, 2, 0);
-    SetupPointerTable0205ba68((struct Struct_0205ba68*)(obj + 0x308), 1, 2, 0);
-    SetField0AndPropagate0205bacc((struct Node0205bacc*)(obj + 0x2b8), 2);
-    SetField0AndPropagate0205bacc((struct Node0205bacc*)(obj + 0x308), 2);
-    *(int*)(obj + 0x2bc) = 1;
-    *(int*)(obj + 0x30c) = 1;
+    CharacterCreationUI* self = (CharacterCreationUI*)objRaw;
+    self->selection = 0;
+    SetupPointerTable0205ba68((Struct_0205ba68*)self->windows[1].frame, 1, 2, 0);
+    SetupPointerTable0205ba68((Struct_0205ba68*)self->windows[1].cursor, 1, 2, 0);
+    SetField0AndPropagate0205bacc((Node0205bacc*)self->windows[1].frame, 2);
+    SetField0AndPropagate0205bacc((Node0205bacc*)self->windows[1].cursor, 2);
+    self->windows[1].frame[1] = 1;
+    self->windows[1].cursor[1] = 1;
+    signed char cursor = self->selection;
+    SetIndexIfValid0205bcdc((Struct_0205bcdc*)self->windows[1].frame, cursor);
+    func_0205bb04(self->windows[1].cursor, cursor);
+    self->windows[1].unknown94[0] = 1;
+    self->windows[1].unknown94[1] = 1;
 
-    signed char cursor = *(signed char*)(obj + 0xd84);
-    SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)(obj + 0x2b8), cursor);
-    func_0205bb04(obj + 0x308, cursor);
-
-    obj[0x348] = 1;
-    obj[0x349] = 1;
-
+#if defined(jpn)
+    int val = 0xe;
+    self->windows[1].layout[0] = 7;
+    self->windows[1].layout[1] = 5;
+    self->windows[1].layout[2] = 0x18;
+    self->windows[1].layout[3] = 0xa;
+    self->windows[1].layout[4] = val;
+    self->windows[1].layout[5] = 0;
+    self->windows[1].layout[6] = 0xc;
+    self->windows[1].layout[7] = 0x10;
+    self->windows[1].nextWindow = 1;
+    self->windows[1].fontHeight = 0xc;
+    self->windows[1].flags = 1;
+    self->windows[1].noHorizontalInset = 0;
+    memset(self->textBuffer, 0, 0x800);
+    func_ov023_021da100((char*)self, self->textBuffer, 0);
+    func_0205d304(&self->windows[1], self->textBuffer, 0, 0, 0, 0, 0);
+#else
     int val = 0x10;
-    struct Struct0200fb08* bs = (struct Struct0200fb08*)GameState::GetInstance();
-    unsigned char norm = NormalizeField5_0200fb08(bs);
+    unsigned char norm = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
     switch (norm) {
         case 2: val = 0xe; break;
         case 4: val = 0x15; break;
@@ -48,23 +62,22 @@ extern "C" ARM void func_ov023_021d9f88(void* objRaw) {
         case 5: val = 0x15; break;
         default: break;
     }
-
-    char* tag = obj + 0x2b4;
-    *(unsigned short*)(tag + 0xa0) = 6;
-    *(unsigned short*)(tag + 0xa2) = 5;
-    *(unsigned short*)(tag + 0xa4) = 0x1a;
-    *(unsigned short*)(tag + 0xa6) = 0xa;
-    *(unsigned short*)(tag + 0xa8) = val;
-    *(unsigned short*)(tag + 0xaa) = 0;
-    *(unsigned short*)(tag + 0xac) = 0xc;
-    *(unsigned short*)(tag + 0xae) = 0x10;
-    tag[0xb1] = 1;
-    tag[0xb7] = 0xc;
-    tag[0xb5] = 1;
-    tag[0xb6] = 0;
-
-    void* buf = *(void**)(obj + 0xf8);
+    CreationWindow* tag = &self->windows[1];
+    tag->layout[0] = 6;
+    tag->layout[1] = 5;
+    tag->layout[2] = 0x1a;
+    tag->layout[3] = 0xa;
+    tag->layout[4] = val;
+    tag->layout[5] = 0;
+    tag->layout[6] = 0xc;
+    tag->layout[7] = 0x10;
+    tag->nextWindow = 1;
+    tag->fontHeight = 0xc;
+    tag->flags = 1;
+    tag->noHorizontalInset = 0;
+    void* buf = self->textBuffer;
     memset(buf, 0, 0x960);
-    func_ov023_021da100(obj, (char*)buf, 0);
+    func_ov023_021da100((char*)self, (char*)buf, 0);
     func_0205d304(tag, buf, 0, 0, 0, 0, 0, 1);
+#endif
 }

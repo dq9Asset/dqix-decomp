@@ -7,9 +7,17 @@ Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 extern unsigned char data_02114e54;
 
 // USA: func_ov023_021e63bc  (semantic: CheckElemNearTouchPoint_021e63bc)
+// JPN: func_ov023_021e6630
 extern "C" ARM int func_ov023_021e63bc(unsigned char* obj) {
-    int key = obj[0x1371];
-    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)(obj + 0xac), key);
+#if defined(jpn)
+    const int keyOffset = 0x1341;
+    const int windowOffset = 0x90;
+#else
+    const int keyOffset = 0x1371;
+    const int windowOffset = 0xac;
+#endif
+    int key = obj[keyOffset];
+    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)(obj + windowOffset), key);
     short* pos = (short*)((char*)elem + 0xac);
     unsigned char* d = &data_02114e54;
     int boundA = *(int*)(d + 0x38);

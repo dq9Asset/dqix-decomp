@@ -1,10 +1,8 @@
 #include <globaldefs.h>
-#if defined(jpn)
-#define func_020be2ec func_020bfdb8
-#endif
 
 void* GetOffsetEntry0x14_020bd580(int index);
-extern "C" int func_020be2ec(unsigned int index, int b, int flag);
+struct Obj020bda58;
+extern "C" void* func_020be2ec(unsigned int index, Obj020bda58* obj, int flag);
 int PostEvent0x20ForIndex_020be280(unsigned int index, int b, int flag);
 int GetListEntryWord8020bd8ac(unsigned int index);
 
@@ -20,7 +18,7 @@ ARM int DispatchEventEntryForIndex_020be010(int index, unsigned int flags, int b
     int result;
     if (flags & 4) {
         if (w->typeByte & 1) {
-            result = func_020be2ec(w->offset, b, flag);
+            result = (int)func_020be2ec(w->offset, (Obj020bda58*)b, flag);
         } else {
             result = PostEvent0x20ForIndex_020be280(w->offset, b, flag);
         }

@@ -1,17 +1,5 @@
 #include <globaldefs.h>
-
-struct InitSubstruct0205c73cData {
-    unsigned int f0;
-    unsigned int f4;
-    unsigned int f8;
-    unsigned int fc;
-    unsigned short f10;
-    unsigned char f12;
-    unsigned char f13;
-    unsigned char f14;
-    unsigned char f15;
-    unsigned char f16;
-};
+#include "Resource/MessageSystem.h"
 
 // USA: func_0205c73c
 ARM void InitSubstruct0205c73c(struct InitSubstruct0205c73cData* p) {

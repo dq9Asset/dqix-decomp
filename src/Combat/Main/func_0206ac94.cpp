@@ -1,12 +1,13 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
 #include "Resource/MessageSystem.h"
 extern "C" int func_02069430(void*, unsigned short);
 
 // JPN: func_0206c730
-extern "C" ARM unsigned short* func_0206c730(void* obj, unsigned short token, unsigned short* cursor) {
-    MessageSystem* self = static_cast<MessageSystem*>(obj);
+extern "C" ARM unsigned short* func_0206c730(MessageSystem* obj, unsigned short token, unsigned short* cursor) {
+    MessageSystem* self = obj;
     if (!cursor) return NULL;
     if (!func_02069430(obj, token)) return NULL;
     unsigned int count = 0;
@@ -20,24 +21,15 @@ extern "C" ARM unsigned short* func_0206c730(void* obj, unsigned short token, un
 }
 #else
 
-struct Entry0204254c {
-    int val;
-    char pad4;
-    signed char field5 : 6;
-    signed char unused2 : 2;
-    char pad6[2];
-};
-
 extern bool IsHighByteFF02044494(void* obj, void* src);
-extern bool IsHighByteFF0206ac6c(void* base, void* src);
-extern "C" int func_02001aec(unsigned char* a, unsigned char* b, int n);
+extern int IsHighByteFF0206ac6c(void* base, void* src);
+extern "C" int func_02001aec(const void* a, const void* b, int n);
 extern int Func0206abf8(void* obj, void* src);
-struct Entry0204254c* FindEntryByKey0204254c(int key, int tableIdx);
 
 // USA: func_0206ac94
-extern "C" ARM int func_0206ac94(void* obj, unsigned short buf, unsigned char* p) {
+extern "C" ARM char* func_0206ac94(MessageSystem* obj, unsigned short buf, char* p) {
     unsigned int total;
-    unsigned char* q = p;
+    char* q = p;
     if (!q) {
         return 0;
     }
@@ -46,27 +38,28 @@ extern "C" ARM int func_0206ac94(void* obj, unsigned short buf, unsigned char* p
     }
     total = 0;
     for (;;) {
-        if (!*q) {
+        unsigned char character = *q;
+        if (character == 0) {
             break;
         }
         if (IsHighByteFF0206ac6c(obj, q)) {
             int step;
-            if (!func_02001aec((unsigned char*)&buf, q, 2)) {
-                return (int)q;
+            if (!func_02001aec(&buf, q, 2)) {
+                return q;
             }
             step = Func0206abf8(obj, q) * 2 + 2;
             q += step;
             total += step;
         } else {
-            struct Entry0204254c* e;
+            FontCharacter* e;
             int val = 1;
-            e = FindEntryByKey0204254c((int)q, *(unsigned char*)((char*)obj + 0x19dc));
+            e = FindEntryByKey0204254c(q, obj->b19dc);
             if (e) {
-                val = e->field5;
+                val = e->byteLength;
             }
             q += val;
             total += val;
-            if (*(unsigned int*)((char*)obj + 0x68) >= total) {
+            if (obj->tokenLength >= total) {
                 continue;
             }
             break;

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 #if defined(jpn)
 enum { kSelectionPointer = 0x10 };
@@ -10,8 +11,6 @@ enum { kSelectionPointer = 0x18 };
 
 int GetWord0x0_0200fb8c(int* obj);
 
-struct Obj020e25e8;
-void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 struct GameResources;
 void SetBrightness(GameResources*, int, int);
 struct Actor0209c678;
@@ -22,7 +21,7 @@ extern int data_02109bf4;
 
 struct Struct0215f2b4 {
 	unsigned char pad0[kSelectionPointer];
-	struct Obj020e25e8* f18;
+	struct EntryManager020e2490* f18;
 	unsigned char pad1[0x38f - kSelectionPointer - 4];
 	unsigned char f38f;
 	unsigned char f390;

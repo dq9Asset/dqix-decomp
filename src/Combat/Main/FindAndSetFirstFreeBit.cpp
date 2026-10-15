@@ -1,7 +1,9 @@
 #include <globaldefs.h>
 
+struct MessageSystem;
+
 // USA: func_02042a90
-ARM int FindAndSetFirstFreeBit_02042a90(int unused, unsigned char* p, unsigned int count) {
+ARM int FindAndSetFirstFreeBit_02042a90(MessageSystem* unused, unsigned char* p, unsigned int count) {
     unsigned int i;
     for (i = 0; i < count; i++) {
         unsigned char byte = *p;

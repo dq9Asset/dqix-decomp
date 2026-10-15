@@ -14,24 +14,6 @@ enum { IntroResourceSize = 0x1400 };
 #include "System/Graphics.h"
 #include "Combat/Main/CopyRecord0200fbb4.h"
 
-struct MessageWindow {
-#if defined(jpn)
-    char pad0[0x868];
-#else
-    char pad0[0x998];
-#endif
-    int active;
-    char pad99c[0x9a0 - 0x99c];
-    int busy;
-#if defined(jpn)
-    char pad874[0x17de - 0x874];
-#else
-    char pad9a4[0x19ae - 0x9a4];
-#endif
-    unsigned char flag19ae;
-    char pad19af[0x19b2 - 0x19af];
-    unsigned char flag19b2;
-};
 
 struct FieldGlobals {
 #if defined(jpn)
@@ -104,23 +86,22 @@ struct BattleIntro {
 #if defined(jpn)
 typedef char IntroAllocatorCheck[offsetof(BattleIntro, allocator) == 0x1ec ? 1 : -1];
 typedef char IntroContainerCheck[offsetof(BattleIntro, container) == 0x200 ? 1 : -1];
-typedef char IntroWindowActiveCheck[offsetof(MessageWindow, active) == 0x868 ? 1 : -1];
-typedef char IntroWindowBusyCheck[offsetof(MessageWindow, busy) == 0x870 ? 1 : -1];
-typedef char IntroWindowFlagCheck[offsetof(MessageWindow, flag19b2) == 0x17e2 ? 1 : -1];
+typedef char IntroWindowActiveCheck[offsetof(MessageSystem, active) == 0x868 ? 1 : -1];
+typedef char IntroWindowBusyCheck[offsetof(MessageSystem, mode) == 0x870 ? 1 : -1];
+typedef char IntroWindowFlagCheck[offsetof(MessageSystem, b19b2) == 0x17e2 ? 1 : -1];
 typedef char IntroCameraTargetCheck[offsetof(FieldGlobals, cameraTarget) == 0x27f8 ? 1 : -1];
 typedef char IntroBattleCountCheck[offsetof(FieldGlobals, battleCount) == 0x2810 ? 1 : -1];
 #else
 typedef char IntroAllocatorCheck[offsetof(BattleIntro, allocator) == 0x25c ? 1 : -1];
 typedef char IntroContainerCheck[offsetof(BattleIntro, container) == 0x270 ? 1 : -1];
-typedef char IntroWindowActiveCheck[offsetof(MessageWindow, active) == 0x998 ? 1 : -1];
-typedef char IntroWindowBusyCheck[offsetof(MessageWindow, busy) == 0x9a0 ? 1 : -1];
-typedef char IntroWindowFlagCheck[offsetof(MessageWindow, flag19b2) == 0x19b2 ? 1 : -1];
+typedef char IntroWindowActiveCheck[offsetof(MessageSystem, active) == 0x998 ? 1 : -1];
+typedef char IntroWindowBusyCheck[offsetof(MessageSystem, mode) == 0x9a0 ? 1 : -1];
+typedef char IntroWindowFlagCheck[offsetof(MessageSystem, b19b2) == 0x19b2 ? 1 : -1];
 typedef char IntroCameraTargetCheck[offsetof(FieldGlobals, cameraTarget) == 0x27b8 ? 1 : -1];
 typedef char IntroBattleCountCheck[offsetof(FieldGlobals, battleCount) == 0x27d0 ? 1 : -1];
 #endif
 
 unsigned char* GetFieldIfFlag4_020100f8(char* obj);
-int GetGlobalField0x1c020421a0();
 extern "C" FieldGlobals* func_02012fe4(void);
 CameraState* GetPointerAt0x330_0200ffd0(PointerField330_ffd0* obj);
 void SetupAndDispatch0205c904(unsigned char* obj, int value);
@@ -134,7 +115,6 @@ extern "C" void func_020dfec0(void* dest, SafeAllocator* allocator, void* fileDa
 int GetFieldByKey020e0434(Container020e0310* c, int key);
 void SetFlagsAt0x244_020a28a0(unsigned char* obj, unsigned char mask);
 void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
-extern "C" int func_020457e0(MessageWindow* window);
 CameraParams* GetField0x3f8Address_0200fd0c(GameState* gs);
 void InitStruct02070378(char* obj);
 void* GetPtrField0x114_02033fa0(void* obj);
@@ -148,7 +128,6 @@ void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned char a, unsigned short b)
 void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
 void* GetGlobal02109418_02094d6c(void);
 EntryCounter* FindEntryById02096134(FindEntryById02096134Table* table, int id);
-void ReinitController02043204(char* obj);
 void SetupGlobalObjType3AndInitSelfPointer_0205ce50(unsigned char* obj);
 extern "C" void func_ov017_021a79f0(BattleIntro* self);
 
@@ -164,7 +143,7 @@ extern const char data_ov017_021d77b2[];
 extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
     GameState* gs = GameState::GetInstance();
     unsigned char* flags = GetFieldIfFlag4_020100f8((char*)gs);
-    MessageWindow* window = (MessageWindow*)GetGlobalField0x1c020421a0();
+    MessageSystem* window = GetGlobalField0x1c020421a0();
     FieldGlobals* globals = func_02012fe4();
     CameraState* camera = GetPointerAt0x330_0200ffd0((PointerField330_ffd0*)gs);
     SetupAndDispatch0205c904(self->controls, gs->GetTickCount());
@@ -198,25 +177,25 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
             self->taskId = -1;
             if (self->mode == 0) {
 #if defined(jpn)
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0, 0xe3);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0, 0xe3);
 #endif
                 self->state = 0xc8;
             } else {
 #if defined(jpn)
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0, 0xe3);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0, 0xe3);
 #endif
                 self->state = 0x12c;
             }
-            window->flag19b2 = 0;
+            window->b19b2 = 0;
             window->active = 1;
             SetFlagsAt0x244_020a28a0(flags, 2);
         }
     } else if (self->state == 0xc8) {
-        if (window->busy == 0) {
+        if (window->mode == 0) {
             ClearFlagBits_020a28b0(flags, 2);
             if (func_020457e0(window) == 0) {
                 CameraParams* params = GetField0x3f8Address_0200fd0c(gs);
@@ -237,7 +216,7 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
             }
         }
     } else if (self->state == 0x12c) {
-        if (window->busy == 0) {
+        if (window->mode == 0) {
             ClearFlagBits_020a28b0(flags, 2);
             if (func_020457e0(window) == 0) {
                 void* color = GetPtrField0x114_02033fa0(camera);
@@ -249,9 +228,9 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
                 } else {
                     window->active = 1;
 #if defined(jpn)
-                    func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0);
+                    func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0);
 #else
-                    func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0, 0xe3);
+                    func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0, 0xe3);
 #endif
                     self->state = 0x12d;
                     SetFlagsAt0x244_020a28a0(flags, 2);
@@ -259,16 +238,16 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
             } else {
                 window->active = 1;
 #if defined(jpn)
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0, 0xe3);
+                func_0204500c(window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0, 0xe3);
 #endif
                 self->state = 0x12d;
                 SetFlagsAt0x244_020a28a0(flags, 2);
             }
         }
     } else if (self->state == 0x12d) {
-        if (window->busy == 0) {
+        if (window->mode == 0) {
             ClearFlagBits_020a28b0(flags, 2);
             if (func_020457e0(window) == 0) {
                 self->kind = 3;
@@ -332,11 +311,11 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
             entry->count++;
         }
         self->state = 0x64;
-        ReinitController02043204((char*)window);
+        ReinitController02043204(window);
     } else if (self->state == 0x64) {
-        window->flag19ae = 0;
-        if (window->busy == 0) {
-            ReinitController02043204((char*)window);
+        window->b19ae = 0;
+        if (window->mode == 0) {
+            ReinitController02043204(window);
             SetupGlobalObjType3AndInitSelfPointer_0205ce50(self->controls);
             SetByteFlagAt0x19c_020ae380((unsigned char*)GetPointerAt0x330_0200ffd0((PointerField330_ffd0*)gs));
             func_ov017_021a79f0(self);

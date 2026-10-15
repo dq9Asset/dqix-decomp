@@ -1,7 +1,7 @@
 #include "GameState/GameState.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-struct StoreStruct;
 struct Container020e0310;
 struct Cur0215fcc0 {
     int hdr;
@@ -18,11 +18,6 @@ int AppendWidthTag_02041acc(char *dst, int w);
 int AppendString02042058(char *dst, const char *src);
 int AppendFormatted02041fac(char *buf, int a, int b);
 const char *CallFunc020e0434With02153694_020e51cc(int key);
-char *GetGlobalField0x1c020421a0();
-void StoreInArray0x8b0_020465c0(struct StoreStruct *base, int index, int value);
-void SetByteInRange_020465f0(unsigned char *messages, int index, unsigned char digits);
-void SetByteAtIndex_020465d8(unsigned char *messages, int index, unsigned char value);
-extern "C" void func_02046380(void *g);
 extern "C" int func_020420e8(const char *text, int large);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
 extern "C" void *__clear(void *dst, int count);
@@ -81,7 +76,7 @@ extern "C" ARM void func_ov002_0215fcc0(char *base, char *dst) {
     AppendXTag_02041a28(dst, x);
     AppendString02042058(dst, line);
     AppendFormatted02041fac(dst, (int) data_ov002_0216d2b3, 0x10);
-    unsigned char *g = (unsigned char *) GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     func_02046380(g);
     struct Xs0215fcc0 xs = data_ov002_0216ca30;
     int stats[7]         = {
@@ -96,7 +91,7 @@ extern "C" ARM void func_ov002_0215fcc0(char *base, char *dst) {
     for (int i = 0; i < 7; i++) {
         SetByteAtIndex_020465d8(g, i, 1);
         SetByteInRange_020465f0(g, i, 3);
-        StoreInArray0x8b0_020465c0((struct StoreStruct *) g, i, stats[i]);
+        StoreInArray0x8b0_020465c0(g, i, stats[i]);
     }
     for (int i = 0; i < 5; i++) {
         AppendString02042058(dst, (const char *) GetFieldByKey020e0434((struct Container020e0310 *) (base + 0x20), k1++));

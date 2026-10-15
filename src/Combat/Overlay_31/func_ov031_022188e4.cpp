@@ -16,7 +16,7 @@ extern int data_ov031_02249f2c;
 extern int data_ov031_02249f38;
 extern int data_ov031_02249f3c;
 
-extern "C" int func_02005a94(char* s);
+extern "C" int func_02005a94(const char* text);
 
 // USA: func_ov031_022188e4
 extern "C" ARM int func_ov031_022188e4(void* self, const char* s) {

@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 
 struct TableA68;
-struct Obj02046574;
 struct TextRenderer {
     TableA68* strings;
     char pad_4[0x14];
@@ -36,10 +36,7 @@ struct TextItem {
 int IsValueEqual12_02042190(int);
 void* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" int func_020420e8(char*, int);
-int GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(Obj02046574*);
-void SetIndexedName02046574(Obj02046574*, int, char*);
-extern "C" void func_02046608(Obj02046574*, int, void*, char*, int, int, int);
+extern "C" void func_02046608(MessageSystem*, int, const char*, char*, int, int, int);
 extern "C" void func_0204f41c(TextWindow*, short, int, char*, int, int, short*, short*, int);
 
 // USA: func_02081870
@@ -54,11 +51,11 @@ extern "C" ARM void func_02081870(TextRenderer* renderer, TextWindow* window, Te
             item->x = (short)(width - func_020420e8(text, font)) >> 1;
         }
     }
-    Obj02046574* formatter = (Obj02046574*)GetGlobalField0x1c020421a0();
+    MessageSystem* formatter = GetGlobalField0x1c020421a0();
     memset(renderer->buffer, 0, 0x960);
     func_02046380(formatter);
     SetIndexedName02046574(formatter, item->nameIndex, item->name);
-    void* text = FindEntryByKey_02072a68(renderer->strings, item->stringId);
+    const char* text = static_cast<const char*>(FindEntryByKey_02072a68(renderer->strings, item->stringId));
     func_02046608(formatter, item->font, text, renderer->buffer, 0x100, 0, 0);
     int firstFont = item->font;
     window->firstFont = firstFont;

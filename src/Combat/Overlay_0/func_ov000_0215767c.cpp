@@ -19,7 +19,7 @@ struct Ids {short v[8];};struct Party {short v[4];};struct Big {char buf[0x678];
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*,int);
 int IsSpecialStateValue_02159c58(void*,int);int HasFlaggedSlotBit21Set0208555c(unsigned char*);struct Random;int NextRandomMax(Random*,int);
 struct TargetObj02088418;int IsValidTargetCombatant(TargetObj02088418*,int,int);int IsFlag0x14Bit0x800000Set_ov000_02157cc4(GameObject*);void ResetTargetFlags02088474(void*,int,int);
-int GetCombatantField0x148Bits3To4_ov000_02159d94(int,int);void ClearInt0208a910(int*);struct Container02070e60;void* SearchWithLow15Comparator02070fd0(Container02070e60*,int);
+int GetCombatantField0x148Bits3To4_ov000_02159d94(void*, int);void ClearInt0208a910(int*);struct Container02070e60;void* SearchWithLow15Comparator02070fd0(Container02070e60*,int);
 struct Obj0204887c;void ReplaceEntryAndFormat0204887c(Obj0204887c*,char*);SkillData* SearchBothTables02079e2c(char*,int);
 void ResetStruct02157cdc(void*);void* GetTableEntry0x8e00Bound0x48_ov000_0215e918(void*);void ClearFlags0x3bAnd0x3cAndByte0x3a_02089758(unsigned char*);
 int IsFlag0x14Bit0x80000Set_ov000_02156050(GameObject*);int IsFlag0x14Bit0x20Set_ov000_021543f4(GameObject*);
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov000_0215767c(Battle* self,ActionNode* src,ActionNode*
    if(!handled&&src->action!=0x1f6){Big big;func_ov024_021f73b8(&big);func_ov024_021f8f20(&big,self,id,src);}
   }
  }else{
-  ids.v[count++]=id;GameObject* enemy=GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(),id);int kind=GetCombatantField0x148Bits3To4_ov000_02159d94((int)self,id);int skip=1;
+  ids.v[count++]=id;GameObject* enemy=GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(),id);int kind=GetCombatantField0x148Bits3To4_ov000_02159d94(self, id);int skip=1;
   if(func_ov000_0215704c(self,id))special=true;
   else if(src->action==0x1f7&&!func_ov000_02155f9c(self,id,1))skip=0;
   else if(kind==2)skip=0;

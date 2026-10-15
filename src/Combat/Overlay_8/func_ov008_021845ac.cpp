@@ -18,7 +18,10 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <Filesystem/BackgroundLoader.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -44,11 +47,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x10];
-};
-
-struct Object3D {
-    char pad_0[0xac];
-    void Destroy();
 };
 
 struct BattleRecords {
@@ -101,27 +99,12 @@ struct BattleRecords {
     PlayTime times_[2];
 };
 
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-    void RemoveTask(int task);
-};
 
-struct MessageSystem {
-    char pad_0[R(0x228, 0x2d8)];
-    void* unk_2d8;
-    void* unk_2dc;
-    void* unk_2e0;
-};
-
-struct CombatSlots02045cac;
 struct Obj0204b010;
 struct List0204afb4;
 struct FlagWord020466f4;
 
 void EmptyDestructor0205a494(void* renderer);
-MessageSystem* GetGlobalField0x1c020421a0();
-void InitCombatSlots02045cac(CombatSlots02045cac* messages);
-void ReinitController02043204(char* messages);
 void ClearBuffer0204b010(Obj0204b010* background, void* value);
 void ResetRecordList0204afb4(List0204afb4* background);
 void SetFlagBytes02017d68(void* unused);
@@ -130,7 +113,6 @@ void ClearFlags020466f4(FlagWord020466f4* field, unsigned int bits);
 
 extern "C" {
 void func_ov023_021eb26c(void* guide);
-void func_02043124(MessageSystem* messages);
 void func_0204b04c(BackgroundGraphics* background, int value);
 void func_0204b088(BackgroundGraphics* background, int value);
 unsigned int GetMainBGAssignedVRAMSize();
@@ -155,12 +137,12 @@ extern "C" ARM void func_ov008_021845ac(BattleRecords* self)
     if (self->guide_ != NULL)
         func_ov023_021eb26c(self->guide_);
     MessageSystem* messages = GetGlobalField0x1c020421a0();
-    InitCombatSlots02045cac((CombatSlots02045cac*)messages);
-    ReinitController02043204((char*)messages);
+    InitCombatSlots02045cac(messages);
+    ReinitController02043204(messages);
     func_02043124(messages);
-    messages->unk_2d8 = NULL;
-    messages->unk_2dc = NULL;
-    messages->unk_2e0 = NULL;
+    messages->messageRenderer = NULL;
+    messages->messageSprites = NULL;
+    messages->messageSpriteEntries = NULL;
     BackgroundGraphics* backgrounds[3] = {&self->backgrounds_[0], &self->backgrounds_[1], &self->backgrounds_[2]};
     for (int i = 0; i < 3; i++)
     {

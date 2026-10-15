@@ -15,7 +15,7 @@ int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 extern "C" {
     void func_020df850(void* a, void* b, int out1, int out2, int fifth);
     void* func_0205ec34(void);
-    int func_02005a94(signed char* s);
+    int func_02005a94(const char* text);
     void func_0204c684(void* buf);
     void func_ov023_021db314(void* obj, short* out, short* outCount);
     void func_ov023_021db634(void* a, void* buf);
@@ -89,7 +89,7 @@ extern "C" ARM int func_ov023_021e0840(void* obj_) {
             if (!str) continue;
             if ((signed char)str[0] != 'f') continue;
             if (strlen(str) < 5) continue;
-            int parsed = func_02005a94((signed char*)(str + 5));
+            int parsed = func_02005a94(str + 5);
             int index = parsed + 0x12 + 0xc00;
             if (!TestBitInByteArray_0206dfb0((int)base, (unsigned char*)base + 0x8c, index)) {
                 entry->flag1 = 0;

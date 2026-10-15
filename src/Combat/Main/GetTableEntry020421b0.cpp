@@ -1,8 +1,7 @@
 #include <globaldefs.h>
-
-extern char data_02107800;
+#include "Resource/MessageSystem.h"
 
 // USA: func_020421b0
-ARM void* GetTableEntry020421b0(int idx) {
-    return (void*)(*(int*)(&data_02107800 + 0x4) + (idx << 5));
+ARM unsigned char* GetTableEntry020421b0(int idx) {
+    return data_02107800.glyphAssets + (idx << 5);
 }

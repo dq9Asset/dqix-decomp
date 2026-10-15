@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* gameState, int combatantId);
-int GetCombatantField0x148Bits3To4_ov000_02159d94(int unused, int id);
+int GetCombatantField0x148Bits3To4_ov000_02159d94(void* unused, int id);
 
 struct MoveData_021f66cc {
 	char pad0[0xc];
@@ -15,7 +15,7 @@ struct MoveData_021f66cc* SearchBothTables02079e2c(char* table, int key);
 
 class AIHandler_021f66cc {
 public:
-	int battle;
+	void* battle;
 };
 
 typedef int (AIHandler_021f66cc::*Handler_021f66cc)(unsigned char id, struct MoveData_021f66cc* move, int a3, int a4);
@@ -23,7 +23,7 @@ typedef int (AIHandler_021f66cc::*Handler_021f66cc)(unsigned char id, struct Mov
 extern Handler_021f66cc data_ov024_021ff790[];
 
 // USA: func_ov024_021f66cc
-extern "C" ARM int func_ov024_021f66cc(AIHandler_021f66cc* obj, int battle, int moveId, int id, int a4, int a5) {
+extern "C" ARM int func_ov024_021f66cc(AIHandler_021f66cc* obj, void* battle, int moveId, int id, int a4, int a5) {
 	obj->battle = battle;
 	GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), id);
 	struct MoveData_021f66cc* move = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)moveId);

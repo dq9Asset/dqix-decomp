@@ -1,8 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
+
+extern "C" void func_02042c68(MessageSystem* window);
 
 struct FieldGroup4e8_0218d7ac;
 struct FieldGroup4f4_0218d800;
@@ -19,8 +22,6 @@ struct Elem_0205cf78;
 struct Cont0205d228;
 struct Cont0205d274;
 struct Obj0205d2bc;
-struct Foo0207df50;
-struct CombatSlots02045cac;
 struct Struct_0205bcdc;
 struct Obj_0205e8ec;
 struct Actor0209c3b4;
@@ -50,7 +51,6 @@ void* FindRecordByIndex(Rec020467f0* recs, int index, void** outField, int* outS
 void FlushAndDispatchList0204b0e8(List0204b0e8* list, void* arg);
 void AllocateBuffer0204c7a8(Obj0204c7a8* obj, SafeAllocator* alloc, int buf, unsigned int size);
 void LinkArrayPrevPointers0205cf78(Struct_0205cf78* obj, Elem_0205cf78* elems, unsigned char flag);
-char* GetGlobalField0x1c020421a0();
 int AppendXYTag_02041a90(char* text, int x, int y);
 int AppendString02042058(char* text, const char* str);
 int AppendDotLeaderLabel02042084(char* text, char* label, int width, int flags);
@@ -65,16 +65,10 @@ void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 void InitGlobalStateAndInstallHandlers020bb780(void* arg, int flag);
 void UpdateVRAMStagingVRAMBanks();
 void UnlockStagedTextureVRAMCopying();
-void TailForward020440a4(void* obj);
-void CopyInternalFields0207df50(Foo0207df50* obj);
-void RestorePairTables0207df90(char* obj);
-void BackupPairTables0207dfac(char* obj);
 void Set3DClearColor_020c5588(int color, int alpha, int depth, int polygonId, int fogEnable);
-void InitCombatSlots02045cac(CombatSlots02045cac* slots);
 void InitBigStruct0205c790(char* obj);
 int CheckSaveBufferStatus_020ab9c0(int flag);
 void ProcessCombatEntry0205cb74(char* obj, int entry);
-void Forward0204359c(void* obj, int value);
 void SetIndexIfValid0205bcdc(Struct_0205bcdc* obj, int index);
 void InitBattleContext0203bd24(char* ctx);
 void RefreshDisplayState0205e8ec(Obj_0205e8ec* obj);
@@ -100,14 +94,8 @@ extern "C" void func_0204b174(void* list, void* rec, SafeAllocator* alloc, int s
 extern "C" void func_0204bc74(void* obj, unsigned short tile, int x, int y, int w, int h, unsigned short palette);
 extern "C" void func_0205d304(void* obj, char* text, int, int, int, int, int, int);
 extern "C" void func_0205d0e0(void* obj, int a);
-extern "C" void func_0207de48(void* obj, int a, int b);
-extern "C" void func_02042c68(char* g);
-extern "C" void func_02043124(char* g);
-extern "C" void func_020432c4(char* g);
 extern "C" void func_0205cc50(void* obj, int a, int b);
 extern "C" void func_0205bb04(void* obj, int a);
-extern "C" void func_02043368(char* g);
-extern "C" void func_020439b0(char* g, int a);
 extern "C" char* func_0203bd08(void);
 extern "C" void func_020c5414(void);
 extern "C" void func_020bbd9c(void);
@@ -157,7 +145,7 @@ struct Sequence0218b710 {
     short width;
     short height;
     char padC8[0x244 - 0xc8];
-    char pairTables[0x2b4 - 0x244];
+    Foo0207df50 pairTables;
     char textCont[0x34c - 0x2b4];
     void* list34c;
     char pad350[0x354 - 0x350];
@@ -310,7 +298,7 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
         self->b369 = 0;
         self->b36a = 1;
 
-        char* text = *(char**)(GetGlobalField0x1c020421a0() + 0x5c);
+        char* text = GetGlobalField0x1c020421a0()->savedTextBuffer;
         memset(text, 0, 0x960);
         char buf[0x80] = {0};
         AppendXYTag_02041a90(text, 4, 0x68);
@@ -395,16 +383,16 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
     UnlockStagedTextureVRAMCopying();
 
     self->alloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x10000), 0x10000);
-    func_0207de48(self->pairTables, 0x4000, 0x400);
-    char* g = GetGlobalField0x1c020421a0();
+    func_0207de48(&self->pairTables, 0x4000, 0x400);
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     func_02042c68(g);
     func_02043124(g);
     TailForward020440a4(g);
-    *(char**)(g + 0x1e28) = self->pairTables;
-    CopyInternalFields0207df50((Foo0207df50*)self->pairTables);
-    RestorePairTables0207df90(self->pairTables);
+    g->encoder = &self->pairTables;
+    CopyInternalFields0207df50(&self->pairTables);
+    RestorePairTables0207df90(&self->pairTables);
     func_020432c4(g);
-    BackupPairTables0207dfac(self->pairTables);
+    BackupPairTables0207dfac(&self->pairTables);
     self->state = 100;
     self->frame = -1;
 
@@ -487,7 +475,7 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
         func_ov020_0218c98c(self);
         RestoreDisplayMode_020c38d4();
         *(volatile unsigned int*)0x4001000 |= 0x10000;
-        InitCombatSlots02045cac((CombatSlots02045cac*)g);
+        InitCombatSlots02045cac(g);
         InitBigStruct0205c790(self->big);
         self->flagBd = 1;
         self->flagBc = 1;
@@ -517,10 +505,10 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
         MapVRAMBanksToMainObj(2);
 
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
-        char* global = GetGlobalField0x1c020421a0();
+        MessageSystem* global = GetGlobalField0x1c020421a0();
         for (;;) {
             func_02043368(global);
-            if (((unsigned char*)global)[0x2e7] == 2) break;
+            if (global->messageLoadState == 2) break;
             loader->RemoveAllLocks();
         }
 
@@ -562,7 +550,7 @@ extern "C" ARM void func_ov020_0218b710(Sequence0218b710* self) {
     }
 
     ResetAllocatorAndDispatchState_0218d8d8((AllocGroup0218d8d8*)self);
-    CopyInternalFields0207df50((Foo0207df50*)self->pairTables);
+    CopyInternalFields0207df50(&self->pairTables);
     EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, -16);
     EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, -16);
 }

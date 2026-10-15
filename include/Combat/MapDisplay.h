@@ -1,6 +1,7 @@
 #pragma once
 
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 #include "System/Matrix.h"
 #include "Memory/SafeAllocator.h"
 
@@ -8,27 +9,6 @@ struct Entry02021578 {
     int field0;
     char* name;
     char pad8[0x1c];
-};
-
-struct Struct0205a198 {
-    unsigned short count, flags;
-    void* cells;
-    void* copy;
-    unsigned int field0c, field10, field14, field18;
-    unsigned short field1c, index, field20;
-    unsigned char firstCell, field23, field24, field25;
-    signed char field26;
-    char padding27;
-};
-
-struct MapEntryList {
-    unsigned char unknown0[0x40];
-    Struct0205a198* records;
-    unsigned char unknown44[8];
-    unsigned short count;
-    unsigned short unknown4e;
-    unsigned char active;
-    unsigned char unknown51[3];
 };
 
 struct List0204af64 {
@@ -73,7 +53,7 @@ struct MapDisplay {
     int mapPalette;
     int forwardingFill;
     unsigned char unknown78[0x94 - 0x78];
-    MapEntryList entryList;
+    LoadTable entryList;
     Struct0205a198 records[28];
     char name[0x10];
     unsigned char recordVisible[4];

@@ -1,17 +1,14 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-int CheckByteFlagAndInvoke0205bea0(void* p);
+int CheckByteFlagAndInvoke0205bea0(Struct_0205bbcc* p);
 
-struct Obj0205c6bc {
-    char pad0[0x94];
-    unsigned char flag94;
-};
 
 // USA: func_0205c6bc
-ARM int CallFunc0205bea0IfFlag0x94(Obj0205c6bc* obj) {
+ARM int CallFunc0205bea0IfFlag0x94(Struct_0205c53c* obj) {
     int result = 0;
-    if (obj->flag94) {
-        result = CheckByteFlagAndInvoke0205bea0((char*)obj + 4);
+    if (obj->field94) {
+        result = CheckByteFlagAndInvoke0205bea0(&obj->first);
     }
     return result;
 }

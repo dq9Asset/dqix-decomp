@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
 struct Wnd0204ecb4 {
     char pad0[0xa8];
@@ -7,7 +8,6 @@ struct Wnd0204ecb4 {
 };
 
 extern "C" int func_0204fd00(Wnd0204ecb4* wnd, int mask);
-void* GetTableEntry020421b0(int idx);
 extern "C" void func_0204e1c8(Wnd0204ecb4* wnd, void* entry, short x, short y, int w, int h, int color, int font);
 
 static inline short TileToPx(short t) {
@@ -38,12 +38,12 @@ extern "C" ARM void func_0204ecb4(Wnd0204ecb4* wnd, int x, int y, short w, short
     } else if (ret == 2) {
         idx = 12;
     }
-    void* entry = GetTableEntry020421b0(idx);
+    unsigned char* entry = GetTableEntry020421b0(idx);
     if (entry) {
         func_0204e1c8(wnd, entry, left, top, 8, 8, 0xf0, 0xf);
     }
 
-    void* topEdge = GetTableEntry020421b0(1);
+    unsigned char* topEdge = GetTableEntry020421b0(1);
     if (topEdge) {
         for (short i = 1; i < wnd->cols - 1; i++) {
             func_0204e1c8(wnd, topEdge, TileToPx(i), top, 8, 8, 0xf0, 0xf);
@@ -91,7 +91,7 @@ extern "C" ARM void func_0204ecb4(Wnd0204ecb4* wnd, int x, int y, short w, short
         func_0204e1c8(wnd, entry, left, TileToPx(rows - 1) - bottom, 8, 8, 0xf0, 0xf);
     }
 
-    void* bottomEdge = GetTableEntry020421b0(6);
+    unsigned char* bottomEdge = GetTableEntry020421b0(6);
     edge = TileToPx(wnd->rows - 1);
     if (bottomEdge) {
         for (short i = 1; i < wnd->cols - 1; i++) {

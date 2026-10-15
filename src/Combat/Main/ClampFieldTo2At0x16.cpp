@@ -1,14 +1,10 @@
 #include <globaldefs.h>
-
-struct Clamp020e29a8 {
-    char pad[0x16];
-    unsigned char v;
-};
+#include "Resource/MessageFrame.h"
 
 // USA: func_020e29a8
-ARM void ClampFieldTo2At0x16(struct Clamp020e29a8* p, int v) {
+ARM void ClampFieldTo2At0x16(EntryManager020e2490* manager, int v) {
     if (v >= 3) {
         v = 2;
     }
-    p->v = (unsigned char)v;
+    manager->byte16 = (unsigned char)v;
 }

@@ -1,5 +1,6 @@
 #include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
 enum { kTextSize=0x800 };
 extern "C" void func_02042428(char*, int);
@@ -42,20 +43,14 @@ struct BattleMenu0215c0ec {
 };
 
 struct StructA0205d5d0;
-struct StoreStruct;
 
 extern struct TouchState02114e54 data_02114e54;
 
 extern "C" void func_ov003_0215b6f0(struct BattleMenu0215c0ec* self, char* dst, int flag);
 extern "C" void func_ov003_0215b964(struct BattleMenu0215c0ec* self, char* dst, int flag);
 extern "C" void func_ov003_0215be70(struct BattleMenu0215c0ec* self, char* dst, int flag);
-int GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(void* obj);
 int CallFunc020e0434With02153694_020e51cc(int value);
 int AppendString02042058(char* dst, const char* src);
-void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
-void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
-void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
 
 // USA: func_ov003_0215c0ec
 extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
@@ -89,7 +84,7 @@ extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
     }
     if (self->refresh != 0) {
         GameState* game = GameState::GetInstance();
-        int messages = GetGlobalField0x1c020421a0();
+        MessageSystem* messages = GetGlobalField0x1c020421a0();
         memset(self->text, 0, kTextSize);
 #if defined(jpn)
         func_02042428(self->text, 8);
@@ -99,11 +94,11 @@ extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
 #else
         AppendString02042058(self->text, (const char*)CallFunc020e0434With02153694_020e51cc(0x3f1));
 #endif
-        func_02046380((void*)messages);
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)messages, 0,
+        func_02046380(messages);
+        StoreInArray0x8b0_020465c0(messages, 0,
                           ((struct BattleData0215c0ec*)GetPtrField0x2a04_02010828(game))->field_0xf6c);
-        SetByteInRange_020465f0((unsigned char*)messages, 0, 7);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+        SetByteInRange_020465f0(messages, 0, 7);
+        SetByteAtIndex_020465d8(messages, 0, 1);
 #if defined(jpn)
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)self->menu, 0, (int)self->text, 1);
 #else

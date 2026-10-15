@@ -1,22 +1,21 @@
 #include <globaldefs.h>
-
-struct TimedState0202f380 { char pad[8]; int state; char pad2[8]; int timer; };
+#include "Resource/MessageSystem.h"
 
 // USA: func_0202f380
-ARM void UpdateTimedState0202f380(void* obj, int amount) {
-    TimedState0202f380* state = *(TimedState0202f380**)((char*)obj + 0x440);
+ARM void UpdateTimedState0202f380(MessageSlotController* controller, int amount) {
+    Foo02042fcc* bounds = controller->currentBounds;
     if (amount == 0) amount = 1;
-    if (state == 0) return;
-    switch (state->state) {
+    if (bounds == 0) return;
+    switch (bounds->state) {
     case 1:
-        state->state = 2;
-        (*(TimedState0202f380**)((char*)obj + 0x440))->timer = 0x1000;
+        bounds->state = 2;
+        controller->currentBounds->field14 = 0x1000;
         break;
     case 3:
-        state->timer -= amount * 0x199;
-        if ((*(TimedState0202f380**)((char*)obj + 0x440))->timer <= 0) {
-            (*(TimedState0202f380**)((char*)obj + 0x440))->state = 0;
-            (*(TimedState0202f380**)((char*)obj + 0x440))->timer = 0;
+        bounds->field14 -= amount * 0x199;
+        if (controller->currentBounds->field14 <= 0) {
+            controller->currentBounds->state = 0;
+            controller->currentBounds->field14 = 0;
         }
         break;
     case 0:

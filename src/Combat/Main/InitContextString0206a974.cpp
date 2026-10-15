@@ -1,13 +1,13 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageUpdate.h"
 #include "std_library_functions.h"
 #if defined(jpn)
 #include "Resource/MessageSystem.h"
 int StringLength_020d2ff0(const char*);
-extern "C" void func_0206aa28(void*);
 
 // JPN: func_0206c570
-extern "C" ARM void func_0206c570(void* context, const char* src) {
-    MessageSystem* p = static_cast<MessageSystem*>(context);
+extern "C" ARM void func_0206c570(MessageSystem* p, const char* src) {
     if (src == NULL) return;
     {
         void* buffer = p->textBuffer;
@@ -20,47 +20,33 @@ extern "C" ARM void func_0206c570(void* context, const char* src) {
     }
     memset(p->firstLineBuffer, 0, 0x140);
     memset(p->secondLineBuffer, 0, 0x140);
-    func_0206aa28(context);
+    func_0206aa28(p);
 }
 #else
 
 extern int StringLength_020d2ff0(const char* s);
 
-extern "C" void func_0206aa28(void* p);
-extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, int a4, int a5, int a6, int a7);
 
-struct Ctx0206a974 {
-    char pad0[0x48];
-    void* field48;
-    void* field4c;
-    void* field50;
-    void* field54;
-    void* field58;
-    char pad5c[4];
-    void* field60;
-    char pad64[4];
-    int field68;
-};
 
 // USA: func_0206a974
-ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, int boxWidth) {
+ARM void InitContextString0206a974(MessageSystem* p, const char* src, int boxWidth) {
     if (src == 0) return;
     {
-        void* buf = p->field48;
-        memcpy(buf, (void*)src, (p->field68 = StringLength_020d2ff0(src)));
+        void* buf = p->textBuffer;
+        memcpy(buf, src, (p->tokenLength = StringLength_020d2ff0(src)));
     }
     {
-        void* buf2 = p->field48;
-        p->field58 = buf2;
-        p->field54 = buf2;
+        char* buf2 = static_cast<char*>(p->textBuffer);
+        p->tokenCursor = buf2;
+        p->tokenStart = buf2;
     }
-    memset(p->field4c, 0, 0x280);
-    memset(p->field50, 0, 0x280);
+    memset(p->firstLineBuffer, 0, 0x280);
+    memset(p->secondLineBuffer, 0, 0x280);
     func_0206aa28(p);
-    func_0206b974(p, 1, p->field50, p->field60, boxWidth, 0, 1, 1);
+    func_0206b974(p, true, static_cast<char*>(p->secondLineBuffer), p->formatBuffer->text, boxWidth, 0, true, 1);
     {
-        int len2 = StringLength_020d2ff0((const char*)p->field60);
-        memcpy(p->field50, p->field60, len2);
+        int len2 = StringLength_020d2ff0(p->formatBuffer->text);
+        memcpy(p->secondLineBuffer, p->formatBuffer->text, len2);
     }
 }
 

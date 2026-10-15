@@ -1,18 +1,16 @@
 #include "GameState/GameState.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 struct ArrayContainsByteStruct;
 struct Container020dedd0;
 struct KeyMap020a0b3c;
 struct S_a0b8c;
-struct StoreStruct;
 int AppendFrameTag02041c08(char *dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag_02041ea4(char *dst, int cursor);
-char *GetGlobalField0x1c020421a0();
 unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct *arr, int value);
 int GetCountByType02157108(void *self, int type);
-void StoreInArray0x8b0_020465c0(struct StoreStruct *base, int index, int value);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 void CopyTextAndUppercaseIfFlagged0206819c(const char *src, char *dst, int flag);
 int AppendNameTag_02041b70(char *dst, int n, const char *name);
@@ -20,7 +18,6 @@ int AppendString02042058(char *dst, const char *src);
 int CountNonZeroValues020a0b8c(struct S_a0b8c *s);
 int LookupValueByKey020a0b3c(KeyMap020a0b3c *map, int key);
 void SetElementStateOrCreate0215b918(unsigned char *self, int a, int b, int c);
-extern "C" void func_02046380(void *g);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
 extern "C" void *__clear(void *dst, int count);
 extern "C" char data_ov002_0216d288[];
@@ -47,7 +44,7 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         AppendCursorTag_02041ea4(dst, cur);
     }
     GameState *gs = GameState::GetInstance();
-    char *g       = GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     char *party   = (char *) GetPtrField0x2a04_02010828(gs);
     int actor     = *(signed char *) (base + 0x1c00 + 0x21);
     int ok        = 0;
@@ -69,7 +66,7 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         if (n < 8) extra = 1;
         for (int i = 0; i < n + extra; i++) {
             func_02046380(g);
-            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, i);
+            StoreInArray0x8b0_020465c0(g, 0, i);
             char *e = FindElementByKey020dedd0((struct Container020dedd0 *) (base + 0x3ec + 0x400),
                                                                         *(short *) (f + i * 2 + 0x454));
             if (e != NULL) {
@@ -94,7 +91,7 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         pages = (CountNonZeroValues020a0b8c((struct S_a0b8c *) party) + 7) / 8;
         for (; i < end; i++) {
             func_02046380(g);
-            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, i);
+            StoreInArray0x8b0_020465c0(g, 0, i);
             char *e = FindElementByKey020dedd0((struct Container020dedd0 *) (base + 0x3ec + 0x400),
                                                                         *(short *) (party + i * 2 + 0xc));
             if (e == NULL) continue;

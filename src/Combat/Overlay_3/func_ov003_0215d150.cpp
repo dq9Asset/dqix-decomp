@@ -1,25 +1,17 @@
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-struct Container020e0310 {
-    char pad0[0x34];
-};
 struct Struct_0205c570;
 struct Struct0205cf1c;
 struct Obj0205eaa0;
 
-struct Ctl {
-    char pad0[0x5c];
-    char *strings;
-    char pad60[0x998 - 0x60];
-    int w998;
-    char pad99c[4];
-    int w9a0;
-};
 
 struct Scene {
     char pad0[0x64];
     Container020e0310 cont64;
+    char pad6c[0x98 - 0x6c];
     char list98[0x3b8 - 0x98];
     unsigned char state;
     char pad3b9[2];
@@ -54,18 +46,11 @@ struct Zone {
 static inline Sub1840 *GetSub(Zone *z) { return &z->sub; }
 static inline int GetB3c(Sub1840 *s) { return s->wb3c; }
 
-Ctl *GetGlobalField0x1c020421a0();
 extern "C" int *func_0202ae18();
 extern "C" Zone *func_02012fe4();
-extern "C" void func_02046380(void *obj);
-struct StoreStruct;
-void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
-void SetByteInRange_020465f0(unsigned char *, int, unsigned char);
 int CheckField0NonZero_0202b7d8(int *p);
 extern "C" int func_0202c540(int *p);
 extern "C" int func_0202c508(int *p);
-struct Obj02046574;
-void SetIndexedName02046574(Obj02046574*, int, char*);
 const char * GetFieldByKey020e0434(Container020e0310*, int);
 int AppendString02042058(char *dst, const char *src);
 extern "C" void func_ov003_0215cab0(char *obj, void *flag);
@@ -90,12 +75,12 @@ extern int data_02108760;
 // USA: func_ov003_0215d150
 extern "C" ARM void func_ov003_0215d150(Scene *self) {
     GameState *gs = GameState::GetInstance();
-    Ctl *g       = GetGlobalField0x1c020421a0();
+    MessageSystem *g       = GetGlobalField0x1c020421a0();
     int *a       = func_0202ae18();
     Zone *b      = func_02012fe4();
 
-    if (g->w9a0 == 3) {
-        *(unsigned char *) ((char *) g + 0x1000 + 0x9ae) = 0;
+    if (g->mode == 3) {
+        g->b19ae = 0;
     }
 
     unsigned char state = self->state;
@@ -103,10 +88,10 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
 
     if (state == 0) {
         func_02046380(g);
-        StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, self->b3c3);
-        SetByteInRange_020465f0((unsigned char *) g, 0, 0);
-        StoreInArray0x8b0_020465c0((StoreStruct*)g, 1, self->w3cc);
-        SetByteInRange_020465f0((unsigned char *) g, 1, 0);
+        StoreInArray0x8b0_020465c0(g, 0, self->b3c3);
+        SetByteInRange_020465f0(g, 0, 0);
+        StoreInArray0x8b0_020465c0(g, 1, self->w3cc);
+        SetByteInRange_020465f0(g, 1, 0);
 
         int sb;
         sb = (self->w3d0 == 0) ? 1 : 0;
@@ -115,11 +100,11 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
                 sb = 2;
             }
         }
-        g->w998 = 1;
+        g->active = 1;
 
-        char *buf = g->strings;
+        char *buf = g->savedTextBuffer;
         if (self->b3f0 != 0) {
-            SetIndexedName02046574((Obj02046574*)g, 0, (char*)(*(void **) ((char *) gs->GetPartyMemberByIndex(0) + 0x134)));
+            SetIndexedName02046574(g, 0, gs->GetPartyMemberByIndex(0)->baseStats_->unk);
 
             int flag = 0;
             if (func_0202c508(a) != 0) {
@@ -156,7 +141,7 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
     }
 
     if (state == 1) {
-        if (g->w9a0 != 3) {
+        if (g->mode != 3) {
             return;
         }
         self->b3ec = 1;

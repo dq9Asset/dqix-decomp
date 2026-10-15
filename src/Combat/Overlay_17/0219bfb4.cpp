@@ -10,6 +10,7 @@ enum { kStatusOffset = 0x23ec, kStatusFlagOffset = 0x262, kFieldXOffset = 0x2786
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/GameResources.h"
+#include "Resource/MessageSystem.h"
 #include "System/OverlayId.h"
 #include "World/Object3D.h"
 
@@ -56,8 +57,6 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void ClearFlagBytes02017d7c(void* obj);
 void ClearFlag0x1ceBit0x4_02039d58(unsigned char* obj);
 void SetFlag0x1ceBit0x4_02039d48(unsigned char* obj);
-int GetGlobalField0x1c020421a0(void);
-void ReinitController02043204(char* obj);
 extern "C" int func_ov017_0219ff58(void* base, int a, int b, int c);
 void InitObjState_021b2174(unsigned char* obj);
 void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
@@ -70,7 +69,7 @@ void ResetListHeader020727d8(List020727d8* list);
 int GetField5cb0Value_0201079c(char* obj);
 void SubmitAndRunScript02072928(void* list, StreamHeader* header, int length, int id, void* out, unsigned char index);
 int CompareStrings_020d3018(const char* a, const char* b);
-extern "C" int func_02005a94(signed char* s);
+extern "C" int func_02005a94(const char* text);
 void InitState16_021ba90c(Obj021ba90c* p);
 void AllocateAndCopyBuf20_021689d8(SafeAllocator* a, void* target);
 
@@ -172,8 +171,8 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         return;
     }
 
-    char* controller = (char*)GetGlobalField0x1c020421a0();
-    memset(*(void**)(controller + kControllerBufferOffset), 0, kControllerBufferSize);
+    MessageSystem* controller = GetGlobalField0x1c020421a0();
+    memset(controller->savedTextBuffer, 0, kControllerBufferSize);
     ReinitController02043204(controller);
     if (func_ov017_0219ff58(res, 0, 0, 1)) {
         unsigned char* obj = (unsigned char*)res->unknown_ptr_array_3afc[0x14];
@@ -216,10 +215,10 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         int start = 0;
         int end = 0;
         if (CompareStrings_020d3018(from, &data_ov017_021d75fa)) {
-            start = func_02005a94((signed char*)from);
+            start = func_02005a94(from);
         }
         if (CompareStrings_020d3018(to, &data_ov017_021d75fa)) {
-            end = func_02005a94((signed char*)to);
+            end = func_02005a94(to);
         }
         int inRange = 0;
         if (start == 0 && end == 0) {
@@ -242,7 +241,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
 
     signed char state = 1;
     if (CompareStrings_020d3018(result, &data_ov017_021d75fa)) {
-        state = func_02005a94((signed char*)result);
+        state = func_02005a94(result);
     }
     if (state != 3) {
         InitState16_021ba90c((Obj021ba90c*)marker);

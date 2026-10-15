@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 #include "GameState/GameState.h"
 #include "System/Cache.h"
 #include "std_library_functions.h"
 
 extern "C" int func_ov017_021bdbcc(void* obj);
-ARM void* GetTableEntry020421b0(int idx);
 extern "C" int LoadToMainObjVRAM(int, int, unsigned int);
 
 // USA: func_ov002_021619b4
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov002_021619b4(int combatantId, void* p1, void* dst) {
     if (chk != 0) val950 = 0;
 
     int tableIdx = (val950 * 4 + 0x28) & 0xff;
-    void* tableEntry = GetTableEntry020421b0(tableIdx);
+    unsigned char* tableEntry = GetTableEntry020421b0(tableIdx);
     memcpy(dst, tableEntry, 0x80);
 
     unsigned short f4 = *(unsigned short*)((char*)ref + 4);

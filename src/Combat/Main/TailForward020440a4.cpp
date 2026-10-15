@@ -1,14 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-#if defined(jpn)
-enum { kSubobjectOffset = 0x1804 };
-#else
-enum { kSubobjectOffset = 0x19e0 };
-#endif
-
-extern "C" int func_0202f24c(void*);
+extern "C" void func_0202f24c(MessageSlotController* controller);
 
 // USA: func_020440a4
-ARM int TailForward020440a4(void* obj) {
-    return func_0202f24c((char*)obj + kSubobjectOffset);
+ARM void TailForward020440a4(MessageSystem* window) {
+    func_0202f24c(&window->controller);
 }

@@ -1,56 +1,56 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
 
 // USA: func_02046380  (semantic: InitLargeStruct_02046380)
-extern "C" ARM void func_02046380(void* obj) {
+extern "C" ARM void func_02046380(MessageSystem* obj) {
 #if defined(jpn)
-    *(signed char*)((char*)obj + 0x1750) = -1;
-    memset((char*)obj + 0x23c, 0, 0x40);
-    memset((char*)obj + 0x27c, 0, 0x40);
-    memset((char*)obj + 0x2bc, 0, 0x40);
-    memset((char*)obj + 0x2fc, 0, 0x40);
-    memset((char*)obj + 0x33c, 0, 0x40);
-    memset((char*)obj + 0x37c, 0, 0x400);
-    memset((char*)obj + 0x780, 0, 0x40);
-    memset((char*)obj + 0x7c1, 0, 0x10);
-    memset((char*)obj + 0x7d2, 0, 0x10);
-    *(int*)((char*)obj + 0x77c) = 0;
-    *(unsigned char*)((char*)obj + 0x7d1) = 0;
-    *(unsigned char*)((char*)obj + 0x7c0) = 0;
-    *(int*)((char*)obj + 0x238) = 0;
+    obj->formatterCombatantId = -1;
+    memset(obj->fixedTextBuffers[0], 0, 0x40);
+    memset(obj->fixedTextBuffers[1], 0, 0x40);
+    memset(obj->fixedTextBuffers[2], 0, 0x40);
+    memset(obj->fixedTextBuffers[3], 0, 0x40);
+    memset(obj->fixedTextBuffers[4], 0, 0x40);
+    memset(obj->indexedNames, 0, 0x400);
+    memset(obj->indexedValues, 0, 0x40);
+    memset(obj->indexedNumberPaddingModes, 0, 0x10);
+    memset(obj->indexedNumberWidths, 0, 0x10);
+    obj->field77c = 0;
+    obj->field7d1 = 0;
+    obj->field7c0 = 0;
+    obj->field238 = 0;
 #else
-    *(signed char*)((char*)obj + 0x30) = -1;
-    *(signed char*)((char*)obj + 0x31) = -1;
-    *(signed char*)((char*)obj + 0x1880) = -1;
-    memset((char*)obj + 0x2ec, 0, 0xc0);
-    memset((char*)obj + 0x3ac, 0, 0x40);
-    memset((char*)obj + 0x3ec, 0, 0x40);
-    memset((char*)obj + 0x42c, 0, 0x40);
-    memset((char*)obj + 0x46c, 0, 0x40);
-    memset((char*)obj + 0x4ac, 0, 0x400);
-    memset((char*)obj + 0x8b0, 0, 0x40);
-    memset((char*)obj + 0x8f1, 0, 0x10);
-    memset((char*)obj + 0x902, 0, 0x10);
+    obj->cursor30 = -1;
+    obj->cursor31 = -1;
+    obj->formatterCombatantId = -1;
+    memset(obj->fixedTextBuffers[0], 0, 0xc0);
+    memset(obj->fixedTextBuffers[3], 0, 0x40);
+    memset(obj->fixedTextBuffers[4], 0, 0x40);
+    memset(obj->fixedTextBuffers[5], 0, 0x40);
+    memset(obj->fixedTextBuffers[6], 0, 0x40);
+    memset(obj->indexedNames, 0, 0x400);
+    memset(obj->indexedValues, 0, 0x40);
+    memset(obj->indexedNumberPaddingModes, 0, 0x10);
+    memset(obj->indexedNumberWidths, 0, 0x10);
 
-    *(int*)((char*)obj + 0x8ac) = 0;
-    *(unsigned char*)((char*)obj + 0x901) = 0;
-    *(unsigned char*)((char*)obj + 0x8f0) = 0;
-    *(int*)((char*)obj + 0x2e8) = 0;
+    obj->field77c = 0;
+    obj->field7d1 = 0;
+    obj->field7c0 = 0;
+    obj->field238 = 0;
 
-    int (*matrix)[2] = (int(*)[2])obj;
     for (int i = 0; i < 2; i++) {
-        matrix[0][i] = 0;
-        matrix[1][i] = 0;
-        matrix[2][i] = 0;
-        matrix[3][i] = 0;
-        matrix[4][i] = 0;
+        obj->actorNames[i] = NULL;
+        obj->actionNames[i] = NULL;
+        obj->targetNames[i] = NULL;
+        obj->itemNames[i] = NULL;
+        obj->monsterNames[i] = NULL;
     }
 
-    *(int*)((char*)obj + 0x28) = 0;
-    *(int*)((char*)obj + 0x2c) = 0;
-    *(unsigned char*)((char*)obj + 0x19d5) = 0;
-    *(unsigned char*)((char*)obj + 0x19d6) = 0;
-    *(unsigned char*)((char*)obj + 0x19d7) = 0;
-    *(unsigned char*)((char*)obj + 0x19d8) = 0;
+    obj->nameDescriptor28 = NULL;
+    obj->field2c = 0;
+    obj->flag19d5 = 0;
+    obj->flag19d6 = 0;
+    obj->flag19d7 = 0;
+    obj->flag19d8 = 0;
 #endif
 }

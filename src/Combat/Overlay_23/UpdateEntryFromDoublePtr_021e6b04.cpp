@@ -8,7 +8,7 @@ struct Elem_0205d81c {
     short x, y;
 };
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
-extern "C" void func_0205ac40(SpriteContext0205ac40*, B174Outer*);
+extern "C" void func_0205ac40(LoadTable*, Struct0205a198*);
 
 #if defined(jpn)
 enum { SelectionOffset = 0x1340, WindowOffset = 0x90, RendererOffset = 0x1334, SpritesOffset = 0x133c };
@@ -30,9 +30,9 @@ struct EntryCursorState {
     unsigned char unknown4[WindowOffset - 4];
     CreationWindow window;
     unsigned char unknownAfterWindow[RendererOffset - WindowOffset - sizeof(CreationWindow)];
-    SpriteContext0205ac40* renderer;
+    LoadTable* renderer;
     unsigned char unknownAfterRenderer[SpritesOffset - RendererOffset - 4];
-    B174Outer* sprites;
+    Struct0205a198* sprites;
 #if !defined(jpn)
     unsigned char unknownAfterSprites[SelectionOffset - SpritesOffset - 4];
 #endif
@@ -64,7 +64,7 @@ ARM void UpdateEntryFromDoublePtr_021e6b04(char* base) {
     int y = selected % 7 * 16 + 28;
     if (column >= 5) x += 8;
     if (column >= 10) x += 16;
-    B174Outer* entry;
+    Struct0205a198* entry;
     if (column >= 10) entry = state->sprites + 16;
     else entry = state->sprites + 15;
     short offsetX = elementX << 3;
@@ -80,8 +80,8 @@ ARM void UpdateEntryFromDoublePtr_021e6b04(char* base) {
     if (p2 == NULL) return;
 
     unsigned char fieldE = p2->spriteIndex;
-    B174Outer* sprites = state->sprites;
-    B174Outer* entry = sprites + (fieldE + 15);
+    Struct0205a198* sprites = state->sprites;
+    Struct0205a198* entry = sprites + (fieldE + 15);
     short v0 = p2->x;
     short v2 = p2->y;
     entry->position[0] = v0 << 12;

@@ -111,7 +111,6 @@ struct Battle0219d250 {
 };
 
 extern "C" char* func_02012fe4(void);
-char* GetGlobalField0x1c020421a0(void);
 void* GetEntryTableBase_02027ca4(void);
 extern "C" void* func_02057924(void);
 void* GetPtrField0x468_02011584(void*);
@@ -148,8 +147,6 @@ extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 extern "C" void func_020531f0(void* obj);
 void ClearField0xc4KeepBit0x8000_0203409c(unsigned char* obj);
-void ReinitController02043204(char* c);
-extern "C" void func_02043124(char* c);
 void SetBitIfValueInTable_0219e290(void*, unsigned short);
 void Clear0x80Bytes0206ebc8(void* p);
 void Clear0x80BytesAt0x800206ebdc(unsigned char*);
@@ -195,7 +192,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     Entry0219d250* entry;
     Entry0219d250* other;
     GameState* gs;
-    char* controller;
+    MessageSystem* controller;
     void* entryTable;
     void* combatants;
     GameObject* hero;
@@ -342,7 +339,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
         func_020531f0(unknown);
     }
     ClearField0xc4KeepBit0x8000_0203409c((unsigned char*)hero);
-    if (((MessageSystem*)controller)->active != NULL) {
+    if (controller->active != 0) {
         ReinitController02043204(controller);
     }
     func_02043124(controller);

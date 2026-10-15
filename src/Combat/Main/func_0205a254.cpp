@@ -1,11 +1,5 @@
 #include <globaldefs.h>
-struct Frame0205a254 { unsigned short duration; unsigned short field2; };
-struct Elem0205a3d0 {
-    int mode; int field4; unsigned short key, count;
-    Frame0205a254* frames;
-    unsigned short index, elapsed;
-    unsigned char field14, flags; unsigned short field16;
-};
+#include "Resource/MessageRenderResources.h"
 struct Container0205a3d0;
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
 void SetEntryFlag1ByKey0205a3ac(Container0205a3d0*, int);

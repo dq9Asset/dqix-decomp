@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/CharacterCreationUI.h"
 #include "Resource/ActionDataTables.h"
 
-struct Container020e0310;
 
-int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
 int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
@@ -16,9 +16,6 @@ extern "C" int func_020420e8(const char* text, int large);
 int AppendXYTag_02041a90(char* dst, int x, int y);
 int AppendLineTag02041cc0(char* dst, int a1);
 #if defined(jpn)
-void* GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(void*);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, const char*);
 extern "C" void __clear(void*, int);
 extern "C" void func_02041f50(const char*, char*);
 extern char data_ov000_021851af[];
@@ -28,10 +25,12 @@ struct ItemMenu0217a2dc {
     char pad0[0x10];
     unsigned short itemIds[5];
     signed char itemCount;
+    char pad1b[0xb8 - 0x1b];
+    Container020e0310 strings;
 #if defined(jpn)
-    char pad1B[0x1fa5 - 0x1b];
+    char padc0[0x1fa5 - 0xc0];
 #else
-    char pad1B[0x1d6d - 0x1b];
+    char padc0[0x1d6d - 0xc0];
 #endif
     signed char cursor;
     char pad1D6E[0x1d81 - 0x1d6e];
@@ -40,9 +39,9 @@ struct ItemMenu0217a2dc {
 
 // USA: func_ov000_0217a2dc
 extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unused, char* dst) {
-    struct Container020e0310* strings = (struct Container020e0310*)((char*)menu + 0xb8);
-    const char* emptyName = (const char*)GetFieldByKey020e0434(strings, 0x1f);
-    const char* separator = (const char*)GetFieldByKey020e0434(strings, 0);
+    Container020e0310* strings = &menu->strings;
+    const char* emptyName = GetFieldByKey020e0434(strings, 0x1f);
+    const char* separator = GetFieldByKey020e0434(strings, 0);
     signed char cursor = menu->cursor;
     AppendString02042058(dst, separator);
 
@@ -124,13 +123,13 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
 
     AppendPaletteTag_02041e70(dst, 0xf);
 #if defined(jpn)
-    void* formatter = GetGlobalField0x1c020421a0();
+    MessageSystem* formatter = GetGlobalField0x1c020421a0();
     func_02046380(formatter);
-    _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0,
-        (const char*)GetFieldByKey020e0434(strings, 0x21));
+    SetIndexedName02046574(formatter, 0,
+        GetFieldByKey020e0434(strings, 0x21));
     AppendString02042058(dst, data_ov000_021851af);
 #else
-    const char* title = (const char*)GetFieldByKey020e0434(strings, 0x21);
+    const char* title = GetFieldByKey020e0434(strings, 0x21);
     AppendXYTag_02041a90(dst, (0xb0 - func_020420e8(title, 0)) >> 1, 5);
     AppendString02042058(dst, title);
     AppendLineTag02041cc0(dst, 0x11);

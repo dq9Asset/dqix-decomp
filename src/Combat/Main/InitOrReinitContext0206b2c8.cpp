@@ -1,20 +1,15 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
 #include "Resource/MessageSystem.h"
-extern "C" unsigned short* func_0206c730(void*, unsigned short, unsigned short*);
-void ReinitController02043204(char*);
-extern "C" void func_02043124(void*);
-extern "C" void func_0206b104(void*);
-extern "C" void func_0206aa28(void*);
 
 // JPN: func_0206cbe8
-extern "C" ARM void func_0206cbe8(void* context, unsigned short token, unsigned short* cursor) {
-    MessageSystem* self = static_cast<MessageSystem*>(context);
-    char* obj = static_cast<char*>(context);
+extern "C" ARM void func_0206cbe8(MessageSystem* context, unsigned short token, unsigned short* cursor) {
+    MessageSystem* self = context;
     unsigned short* found = func_0206c730(context, token, cursor);
     if (found == NULL) {
-        ReinitController02043204(obj);
+        ReinitController02043204(context);
         func_02043124(context);
         return;
     }
@@ -28,45 +23,27 @@ extern "C" ARM void func_0206cbe8(void* context, unsigned short token, unsigned 
 }
 #else
 
-extern "C" void* func_0206ac94(void* obj);
-void ReinitController02043204(char* obj);
-extern "C" void func_02043124(void* self);
-extern "C" void func_0206b104(void* obj);
-extern "C" void func_0206aa28(void* p);
-extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, int a4, int a5, int a6, int a7);
 int StringLength_020d2ff0(const char* s);
 
-struct Ctx0206b2c8 {
-    char pad0[0x4c];
-    void* field4c;
-    void* field50;
-    void* field54;
-    void* field58;
-    char pad5c[4];
-    void* field60;
-    char pad64[0x93c];
-    int field9a0;
-};
-
 // USA: func_0206b2c8
-ARM void InitOrReinitContext0206b2c8(Ctx0206b2c8* obj, int, void*) {
-    void* r = func_0206ac94(obj);
+ARM void InitOrReinitContext0206b2c8(MessageSystem* obj, unsigned short token, char* cursor) {
+    char* r = func_0206ac94(obj, token, cursor);
     if (r == NULL) {
-        ReinitController02043204((char*)obj);
+        ReinitController02043204(obj);
         func_02043124(obj);
         return;
     }
 
     func_0206b104(obj);
-    memset(obj->field4c, 0, 0x280);
-    memset(obj->field50, 0, 0x280);
-    obj->field58 = r;
-    obj->field54 = r;
-    obj->field9a0 = 5;
+    memset(obj->firstLineBuffer, 0, 0x280);
+    memset(obj->secondLineBuffer, 0, 0x280);
+    obj->tokenCursor = r;
+    obj->tokenStart = r;
+    obj->mode = 5;
     func_0206aa28(obj);
-    func_0206b974(obj, 1, obj->field50, obj->field60, 0xe3, 0, 1, 1);
-    int len = StringLength_020d2ff0((const char*)obj->field60);
-    memcpy(obj->field50, obj->field60, len);
+    func_0206b974(obj, true, static_cast<char*>(obj->secondLineBuffer), obj->formatBuffer->text, 0xe3, 0, true, 1);
+    int len = StringLength_020d2ff0((const char*)obj->formatBuffer->text);
+    memcpy(obj->secondLineBuffer, obj->formatBuffer->text, len);
 }
 
 #endif

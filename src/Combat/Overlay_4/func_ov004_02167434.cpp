@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+
+namespace {
+struct MessageChildNode { char prefix[0x34]; MessageControlOwner child; };
+}
 
 struct ListNode02167434 {
     short id;
@@ -24,7 +29,6 @@ struct Ctx0205ec34 {
 };
 
 struct GetTableByteOrFFData;
-struct Obj0208bf28;
 
 short GetScaledFieldValue_02166684(int a);
 extern "C" short func_ov004_021666bc(void* a1, char* outFlag);
@@ -37,7 +41,6 @@ extern "C" void func_ov004_02165f2c(void);
 extern "C" void func_ov004_02165ef4(void* a1);
 extern "C" void func_ov004_02166730(void* a1, int a2);
 void* CheckTypeAndReturnNode_02165e70_02165e70(void* a, int key);
-void SetFieldD20208bf28(struct Obj0208bf28* obj, int value, unsigned char b);
 extern "C" void func_ov004_02166bd8(void* a1);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
@@ -90,7 +93,7 @@ extern "C" ARM int func_ov004_02167434(void* a1) {
         id = node->id;
         void* obj = CheckTypeAndReturnNode_02165e70_02165e70(a1, 7);
         if (obj != 0) {
-            SetFieldD20208bf28((struct Obj0208bf28*)((char*)obj + 0x34), id, b);
+            SetFieldD20208bf28(&static_cast<MessageChildNode*>(obj)->child, id, b);
         }
         func_ov004_02166bd8(a1);
         func_ov011_021848a0(a1, 0x6c);
@@ -98,7 +101,7 @@ extern "C" ARM int func_ov004_02167434(void* a1) {
         unsigned char b = flag;
         void* obj = CheckTypeAndReturnNode_02165e70_02165e70(a1, 7);
         if (obj != 0) {
-            SetFieldD20208bf28((struct Obj0208bf28*)((char*)obj + 0x34), 9999, b);
+            SetFieldD20208bf28(&static_cast<MessageChildNode*>(obj)->child, 9999, b);
         }
         func_ov004_02166bd8(a1);
         if (list->field_0x48 == 0 && list->field_0x4a == 0) {

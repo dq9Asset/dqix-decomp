@@ -4,6 +4,7 @@ enum {regionalOffset0=0x568, regionalOffset1=0x120, regionalOffset2=0x11c, regio
 enum {regionalOffset0=0x630, regionalOffset1=0x124, regionalOffset2=0x120, regionalOffset3=0x2d8, regionalOffset4=0x2dc, regionalOffset5=0x2e0};
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -16,11 +17,6 @@ extern "C" void* func_02012fe4(void);
 void SetFlagBytes02017d68(void* obj);
 void DestroyTenAndOne_021e4f18(void* obj);
 void EmptyDestructor0205a494(void* obj);
-int GetGlobalField0x1c020421a0(void);
-struct CombatSlots02045cac;
-void InitCombatSlots02045cac(struct CombatSlots02045cac*);
-void ReinitController02043204(char*);
-extern "C" void func_02043124(int);
 
 // USA: func_ov023_021e2f38
 ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
@@ -62,12 +58,12 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
     *(int*)(o + 0xc0) = 0;
     *(int*)(o + 0xc4) = 0;
 
-    int gg = GetGlobalField0x1c020421a0();
-    InitCombatSlots02045cac((struct CombatSlots02045cac*)gg);
-    ReinitController02043204((char*)gg);
+    MessageSystem* gg = GetGlobalField0x1c020421a0();
+    InitCombatSlots02045cac(gg);
+    ReinitController02043204(gg);
     func_02043124(gg);
 
-    *(int*)((char*)gg + regionalOffset3) = 0;
-    *(int*)((char*)gg + regionalOffset4) = 0;
-    *(int*)((char*)gg + regionalOffset5) = 0;
+    gg->messageRenderer = NULL;
+    gg->messageSprites = NULL;
+    gg->messageSpriteEntries = NULL;
 }

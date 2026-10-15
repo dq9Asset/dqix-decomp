@@ -21,7 +21,7 @@ struct ResponseState02217fb0 {
 extern char data_ov031_02249df8[];
 extern char data_ov031_02249e14[];
 extern char data_ov031_02249e28[];
-extern "C" int func_02005a94(signed char*);
+extern "C" int func_02005a94(const char* text);
 
 // USA: func_ov031_02217fb0
 extern "C" ARM int func_ov031_02217fb0(ResponseState02217fb0* state) {
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov031_02217fb0(ResponseState02217fb0* state) {
     signed char saved = *end;
     *end = 0;
     LockMutex(&state->response.buffer.mutex);
-    state->response.contentLength = func_02005a94((signed char*)(value + length));
+    state->response.contentLength = func_02005a94(value + length);
     UnlockMutex(&state->response.buffer.mutex);
     *end = saved;
     return 1;

@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/MessageSystem.h"
 
-int GetGlobalField0x1c020421a0();
 struct MessageOwner02159250 {
     char unknown0[0x5b1];
     unsigned char messageState;
@@ -11,7 +10,7 @@ struct MessageOwner02159250 {
 // USA: func_ov003_02159250  (semantic: SetGlobalFieldsFromObj_02159250)
 extern "C" ARM void func_ov003_02159250(MessageOwner02159250* owner, const char* text) {
     if (text == 0) return;
-    MessageSystem* window = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* window = GetGlobalField0x1c020421a0();
 #if defined(jpn)
     func_0204500c(window, text, 0);
 #else

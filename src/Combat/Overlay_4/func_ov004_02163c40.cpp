@@ -25,7 +25,6 @@ extern unsigned short data_ov004_02170660[3];
 extern unsigned short data_ov004_0216fef8[3];
 #endif
 extern "C" void func_ov023_021f809c(void*, void*);
-int GetGlobalField0x1c020421a0();
 int DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov004_02163478(MapList3C40*);
 extern "C" void* func_ov011_021849c8(void*);
@@ -52,7 +51,7 @@ extern "C" ARM int func_ov004_02163c40(void* self) {
     int brightness = IsBrightnessTransitionActive(func_ov017_0218b5b0());
     if (brightness && !data_ov004_02171010->field_18fe) return 0;
     if (!data_ov004_02171010->count) return 0;
-    if (reinterpret_cast<MessageSystem*>(GetGlobalField0x1c020421a0())->active) return 0;
+    if (GetGlobalField0x1c020421a0()->active) return 0;
     if (!data_ov004_02171010->field_18fe) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     }

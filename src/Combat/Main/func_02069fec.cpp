@@ -1,24 +1,19 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
 
-extern "C" void* func_0206a3c0(void* ctx, int msgId);
-extern "C" int func_02005a94(char* str);
+#if !defined(jpn)
 
-char* FindUnescapedAngleBracket_020424ac(char* str);
-int IsPrefixMatch020d857c(signed char* a, signed char* b);
+extern "C" const char* func_0206a3c0(MessageSystem* messages, const char* text);
+
+const char* FindUnescapedAngleBracket_020424ac(const char* str);
+int IsPrefixMatch020d857c(const char* a, const char* b);
 int StringStartsWithCI020d85dc(const char* str, const char* prefix);
 int StringLength_020d2ff0(const char* s);
 
-struct TagEntry02069fec {
-    const char* name;
-    int (*fn)(char**, char*);
-};
 
 extern struct TagEntry02069fec data_020e7f84[];
 
-struct NameList02069fec {
-    char* p[6];
-};
 extern struct NameList02069fec data_020e7e74;
 extern char data_020f091b[];
 extern char data_020f092a[];
@@ -29,26 +24,14 @@ struct IdTable02069fec {
 };
 extern struct IdTable02069fec data_020e7e04;
 
-struct Sub02069fec {
-    char pad0[0x94a];
-    unsigned char depthArray[4];
-    char pad1[0x86];
-    unsigned char activeFlag;
-};
-
-struct Ctx02069fec {
-    char pad0[0x1000];
-    struct Sub02069fec sub;
-};
-
 // USA: func_02069fec
-extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outArg) {
+extern "C" ARM void func_02069fec(MessageSystem* ctx, const char* text, char* outArg) {
     unsigned short endcode;
-    char* src;
-    if (msgId == 0 || outArg == 0) return;
+    const char* src;
+    if (text == 0 || outArg == 0) return;
     char* out = outArg;
-    src = (char*)func_0206a3c0(ctx, msgId);
-    ctx->sub.activeFlag = 1;
+    src = func_0206a3c0(ctx, text);
+    ctx->flag19d4 = 1;
     unsigned short depth = 0;
 
     for (;;) {
@@ -70,9 +53,9 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
             continue;
         }
         if (c == '<') {
-            char* close = FindUnescapedAngleBracket_020424ac(src);
+            const char* close = FindUnescapedAngleBracket_020424ac(src);
             if (close != 0) {
-                char* arg = src + 1;
+                const char* arg = src + 1;
                 int matched = 0;
                 struct TagEntry02069fec* e = data_020e7f84;
                 while (e->name != 0 && e->fn != 0) {
@@ -90,9 +73,9 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
 
                 {
                     struct NameList02069fec names = data_020e7e74;
-                    char** np = names.p;
+                    const char** np = names.p;
                     while (*np != 0) {
-                        if (IsPrefixMatch020d857c((signed char*)src, (signed char*)*np)) {
+                        if (IsPrefixMatch020d857c(src, *np)) {
                             while (*src != '>') { src++; }
                             src++;
                             break;
@@ -101,14 +84,14 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
                     }
                 }
 
-                if (IsPrefixMatch020d857c((signed char*)src, (signed char*)data_020f091b)) {
+                if (IsPrefixMatch020d857c(src, data_020f091b)) {
                     int r7 = 0xe;
                     int id = func_02005a94(src + 0xe);
                     while (src[r7] != '>') {
                         if (src[r7] == 0) return;
                         r7++;
                     }
-                    ctx->sub.depthArray[depth] = (unsigned char)id;
+                    ctx->levels[depth] = (unsigned char)id;
                     unsigned short code = depth + 0x4d + 0xff00;
                     memcpy(out, &code, 2);
                     src += r7 + 1;
@@ -116,7 +99,7 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
                     depth = (unsigned short)(depth + 1) & 3;
                     continue;
                 }
-                if (IsPrefixMatch020d857c((signed char*)src, (signed char*)data_020f092a)) {
+                if (IsPrefixMatch020d857c(src, data_020f092a)) {
                     int r7 = 4;
                     int val = func_02005a94(src + 4);
                     while (src[r7] != '>') {
@@ -129,7 +112,7 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
                     out += 2;
                     continue;
                 }
-                if (IsPrefixMatch020d857c((signed char*)src, (signed char*)data_020f092f)) {
+                if (IsPrefixMatch020d857c(src, data_020f092f)) {
                     int r7 = 4;
                     int val = func_02005a94(src + 4);
                     while (src[r7] != '>') {
@@ -165,3 +148,5 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
     out += 2;
     *out = 0;
 }
+
+#endif

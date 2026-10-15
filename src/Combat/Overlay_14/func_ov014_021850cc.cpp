@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 
 #if defined(jpn)
 #define func_ov014_021850cc func_ov014_021861cc
@@ -6,6 +7,7 @@
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
+#include "Resource/GameResources.h"
 #include "World/Object3D.h"
 
 struct MonsterListEntry {
@@ -60,15 +62,6 @@ struct MonsterBest {
 
 struct HabitatTable {
     char unk_0[0x20];
-};
-
-struct GameResources {
-#if defined(jpn)
-    char unk_0[0x27c];
-#else
-    char unk_0[0x2cc];
-#endif
-    char unknown_2cc[0xe70];
 };
 
 struct MonsterInfoScreen {
@@ -146,10 +139,6 @@ extern "C" void func_020e4864(const char* input, char* output, int, int, int, in
 void* ResetAndReturnSelf020dfc2c(void* text);
 void ResetStruct020dfc40(Struct020dfc40* text);
 extern "C" void func_020e046c(char* output, void* file, unsigned int size, short infoID);
-extern "C" GameResources* func_ov017_0218b5b0();
-void CopyInternalFields0207df50(Foo0207df50* p);
-void RestorePairTables0207df90(char* p);
-void BackupPairTables0207dfac(char* p);
 void ClearEightWords_0203dafc(Struct_203dafc* info);
 void ComputeAndStoreVecs02184c08(unsigned char* screen);
 
@@ -324,15 +313,15 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
                             self->model_->Initialize();
                             self->model_->unknown_2_ = self->monster_->monsterID_;
                             self->model_->EnableFlag(4);
-                            CopyInternalFields0207df50((Foo0207df50*)resources->unknown_2cc);
-                            RestorePairTables0207df90(resources->unknown_2cc);
+                            CopyInternalFields0207df50(resources->encoders);
+                            RestorePairTables0207df90(resources->encoders);
                             ObjectArchiveLoadInfo loadInfo;
                             ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                             loadInfo.fileData = character;
                             loadInfo.allocator = allocator;
                             loadInfo.unk_8 = characterSize;
                             self->model_->LoadFromCCHROrCMOTArchive(&loadInfo, NULL);
-                            BackupPairTables0207dfac(resources->unknown_2cc);
+                            BackupPairTables0207dfac(resources->encoders);
                             ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                             loadInfo.allocator = allocator;
                             loadInfo.fileData = motion;

@@ -5,6 +5,7 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 #define func_ov005_0215aa44 func_ov005_0215bf64
@@ -16,7 +17,6 @@
 #define GXFIFO_BEGIN_VTXS (*(volatile unsigned int*)0x04000500)
 #define GXFIFO_END_VTXS (*(volatile unsigned int*)0x04000504)
 
-struct MessageSystem;
 
 struct EquipmentMenu
 {
@@ -30,11 +30,10 @@ struct EquipmentMenu
     unsigned short digits_[20][3];
 };
 
-MessageSystem* GetGlobalField0x1c020421a0();
 #if defined(jpn)
 extern "C" void func_02045f3c(MessageSystem* messages, unsigned short* codes, int x, int y, int color, int, int, int);
 #else
-extern "C" void func_02045f3c(MessageSystem* messages, unsigned short* codes, int x, int y, int color, int, int, int, int, int);
+extern "C" void func_02045f3c(MessageSystem* messages, unsigned short* codes, int x, int y, unsigned short color, int, int, unsigned char, unsigned char, int);
 #endif
 
 // USA: func_ov005_0215aa44

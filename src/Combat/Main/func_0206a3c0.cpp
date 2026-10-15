@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
 #include "Combat/EntryGetterTypes.h"
 #include "std_library_functions.h"
@@ -28,77 +29,24 @@ struct Vec3_020406f8 { int v[3]; };
 EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c();
 Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
 void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
-int IsPrefixMatch020d857c(signed char*, signed char*);
+int IsPrefixMatch020d857c(const char*, const char*);
 int StringStartsWithCI020d85dc(const char*, const char*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern Obj0205eaa0 data_02108760;
 extern "C" int func_02005a94(const char*);
-extern "C" void func_02042b98(void*, int, int, int, int);
 extern const char data_020f0934[], data_020f093d[], data_020f0943[], data_020f0949[];
 extern const char data_020f0950[], data_020f0956[], data_020f095c[], data_020f0963[];
 extern const char data_020f096a[], data_020f0972[];
 
-struct TextState0206a3c0
-{
-#if defined(jpn)
-    char pad0[0x708];
-#else
-    char pad0[0x838];
-#endif
-    int entryId;
-    int defaultAngle;
-    int field840;
-    int angle;
-    char pad848[0x18];
-    int width;
-    int height;
-    char pad868[0x14];
-    unsigned short color;
-#if defined(jpn)
-    char pad87e[0x39];
-#else
-    char pad87e[0xdb];
-#endif
-    unsigned char wait;
-    char pad95a[2];
-    unsigned char variant;
-#if defined(jpn)
-    char pad95d[0x56];
-#else
-    char pad95d[0x54];
-#endif
-    unsigned char flag9b1;
-    char pad9b2[4];
-    unsigned char active;
-    unsigned char animation;
-    unsigned char flag9b8;
-    char pad9b9[2];
-    unsigned char flag9bb;
-};
-struct TextOwner0206a3c0
-{
-#if defined(jpn)
-    char pad0[0x874];
-#else
-    char pad0[0x9a4];
-#endif
-    int repeat;
-#if defined(jpn)
-    char pad9a8[0x788];
-#else
-    char pad9a8[0x658];
-#endif
-    TextState0206a3c0 state;
-};
 
 // JPN: func_0206bed8
 // USA: func_0206a3c0
-extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* text)
+extern "C" ARM const char* func_0206a3c0(MessageSystem* self, const char* text)
 {
     unsigned char scanning = 1;
-    self->state.active = (unsigned char)scanning;
+    self->pendingValueActive = (unsigned char)scanning;
     GameObject* object = GameState::GetInstance()->GetUnknownGameObject();
-    Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(GetGlobalPtr021075f4_0203cf4c(), self->state.entryId);
+    Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(GetGlobalPtr021075f4_0203cf4c(), self->selectedEntry);
     if (object != NULL && entry != NULL)
     {
         Vec3_020406f8 original;
@@ -107,32 +55,32 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
         original = *(Vec3_020406f8*)&object->obj3D_.position_;
         SelectVec3FromSources020406f8(&selected, (Node020406f8*)entry);
         target = selected;
-        self->state.angle = fix32ReduceAngle0To2Pi(fix32_Atan2(original.v[0] - target.v[0], original.v[2] - target.v[2]));
-        self->state.active = 1;
+        self->pendingValue = fix32ReduceAngle0To2Pi(fix32_Atan2(original.v[0] - target.v[0], original.v[2] - target.v[2]));
+        self->pendingValueActive = 1;
     }
-    self->state.wait = 0;
-    self->state.animation = 0;
+    self->textWaitTicks = 0;
+    self->textAnimationActive = 0;
     while (scanning)
     {
-        if (IsPrefixMatch020d857c((signed char*)text, (signed char*)data_020f0934))
+        if (IsPrefixMatch020d857c(text, data_020f0934))
         {
-            self->state.angle = self->state.defaultAngle;
-            self->state.active = 0;
+            self->pendingValue = self->selectedValue;
+            self->pendingValueActive = 0;
             text += 8;
         }
-        else if (IsPrefixMatch020d857c((signed char*)text, (signed char*)data_020f093d))
+        else if (IsPrefixMatch020d857c(text, data_020f093d))
         {
-            self->state.wait = 60;
-            self->state.animation = 1;
-            self->state.variant = 0;
+            self->textWaitTicks = 60;
+            self->textAnimationActive = 1;
+            self->textVariant = 0;
             text += 5;
             DispatchWithShortB4_0205eaa0(&data_02108760, 6, 0);
         }
-        else if (IsPrefixMatch020d857c((signed char*)text, (signed char*)data_020f0943))
+        else if (IsPrefixMatch020d857c(text, data_020f0943))
         {
-            self->state.wait = 60;
-            self->state.animation = 1;
-            self->state.variant = 1;
+            self->textWaitTicks = 60;
+            self->textAnimationActive = 1;
+            self->textVariant = 1;
             text += 5;
             DispatchWithShortB4_0205eaa0(&data_02108760, 28, 0);
         }
@@ -199,12 +147,12 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
         }
         else if (StringStartsWithCI020d85dc(text, data_020f0950))
         {
-            self->state.flag9b1 = 0;
+            self->b19b1 = 0;
             text += 5;
         }
         else if (StringStartsWithCI020d85dc(text, data_020f0956))
         {
-            self->state.flag9b8 = 1;
+            self->b19b8 = 1;
             text += 5;
         }
         else if (StringStartsWithCI020d85dc(text, data_020f095c))
@@ -217,7 +165,7 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
                 index++;
             }
             if (value < 1) value = 1;
-            self->repeat = value;
+            self->w9a4 = value;
             text += index + 1;
         }
         else if (StringStartsWithCI020d85dc(text, data_020f0963))
@@ -242,8 +190,8 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
             }
             int height = func_02005a94(text + (index + 1));
             if (height <= 0) height = 16;
-            self->state.width = width;
-            self->state.height = height;
+            self->w1860 = width;
+            self->w1864 = height;
             text += close + 1;
         }
         else if (StringStartsWithCI020d85dc(text, data_020f096a))
@@ -262,7 +210,7 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
             memcpy(name, text + 7, 2);
             for (; data_020e88a5[colorIndex][0]; colorIndex++) {
                 if (func_02001aec(name, data_020e88a5[colorIndex], 2) == 0) {
-                    self->state.color = data_020e884a[colorIndex];
+                    self->textColor = data_020e884a[colorIndex];
                     text += close + 1;
                     done = 1;
                     break;
@@ -302,12 +250,12 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
             int blue = func_02005a94(text + (index + 1));
             if (blue < 0) blue = 255;
             if (blue > 255) blue = 255;
-            self->state.color = (red >> 3) | ((green >> 3) << 5) | ((blue >> 3) << 10);
+            self->textColor = (red >> 3) | ((green >> 3) << 5) | ((blue >> 3) << 10);
             text += close + 1;
         }
         else if (StringStartsWithCI020d85dc(text, data_020f0972))
         {
-            self->state.flag9bb = 0;
+            self->b19bb = 0;
             text += 6;
         }
         else scanning = 0;

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Resource/PairTableEncoder.h"
+
 #include "Memory/SafeAllocator.h"
 #include "World/ZoneLootableRecord.h"
 
@@ -38,10 +40,10 @@ struct GameResources
     SafeAllocator lootableContainerAllocator_18c_;
 #if defined(usa)
     SafeAllocator allocator_array_1a0[15];
-    char unknown_2cc[0xe70];
+    Foo0207df50 encoders[33];
 #elif defined(jpn)
     SafeAllocator allocator_array_1a0[11];
-    char unknown_2cc[0xcb0];
+    Foo0207df50 encoders[29];
 #endif
 
     SafeAllocator allocator_113c; // jpn: offset f2c

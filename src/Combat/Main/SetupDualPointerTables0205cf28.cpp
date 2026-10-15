@@ -1,15 +1,13 @@
 #include <globaldefs.h>
-
-struct Struct_0205ba68;
-struct Node0205bacc;
-void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
-void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
+#include "Resource/MessageSystem.h"
+void SetupPointerTable0205ba68(Struct_0205ba2c*, int, int, int);
+void SetField0AndPropagate0205bacc(Struct_0205ba2c*, int);
 
 // USA: func_0205cf28
-ARM void SetupDualPointerTables0205cf28(unsigned char* p, int a, int b, int c) {
-    SetupPointerTable0205ba68((struct Struct_0205ba68*)(p + 4), a, b, c);
-    SetupPointerTable0205ba68((struct Struct_0205ba68*)(p + 0x54), a, b, c);
+ARM void SetupDualPointerTables0205cf28(Struct_0205c53c* p, int a, int b, int c) {
+    SetupPointerTable0205ba68(&p->first.base, a, b, c);
+    SetupPointerTable0205ba68(&p->second.base, a, b, c);
     int prod = a * b;
-    SetField0AndPropagate0205bacc((struct Node0205bacc*)(p + 4), prod);
-    SetField0AndPropagate0205bacc((struct Node0205bacc*)(p + 0x54), prod);
+    SetField0AndPropagate0205bacc(&p->first.base, prod);
+    SetField0AndPropagate0205bacc(&p->second.base, prod);
 }

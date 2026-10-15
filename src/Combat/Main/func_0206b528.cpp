@@ -8,7 +8,7 @@ extern "C" int func_020694a0(void*, unsigned short);
 // JPN: func_0206cdcc
 extern "C" ARM void func_0206cdcc(void* context, int* outA, int* outB) {
     MessageSystem* self = static_cast<MessageSystem*>(context);
-    unsigned short* buffer = static_cast<unsigned short*>(self->secondLineBuffer);
+    unsigned short* buffer = self->secondLineBuffer;
     int start = self->lineStart;
     int limit = self->tokenIndex;
     int center;

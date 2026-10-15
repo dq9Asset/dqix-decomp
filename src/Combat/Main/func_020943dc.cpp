@@ -1,12 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-struct NameBuf02046574 { char text[0x40]; };
-struct Obj02046574 {
-    char pad0[0x4ac];
-    NameBuf02046574 names[16];
-};
 struct MessageLoadState {
     char name[0x30];
     short messageId;
@@ -21,10 +17,8 @@ struct MessageLoadState {
     char pad3cb[2];
     unsigned char flags;
 };
-Obj02046574* GetGlobalField0x1c020421a0();
-void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_020e046c(char*, void*, unsigned int, int);
-extern "C" void func_02046608(Obj02046574*, int, char*, char*, int, int, int);
+extern "C" void func_02046608(MessageSystem*, int, const char*, char*, int, int, int);
 extern const char data_020f13aa[];
 extern const char data_020f13c5[];
 
@@ -47,8 +41,8 @@ extern "C" ARM int func_020943dc(MessageLoadState* state) {
             if (file) {
                 char message[0x40] = {};
                 func_020e046c(message, file, size, state->messageId);
-                Obj02046574* formatter = GetGlobalField0x1c020421a0();
-                char* previousName = formatter->names[0].text;
+                MessageSystem* formatter = GetGlobalField0x1c020421a0();
+                char* previousName = formatter->indexedNames[0];
                 char savedName[0x40] = {};
                 if (previousName) memcpy(savedName, previousName, strlen(previousName));
                 SetIndexedName02046574(formatter, 0, state->name);

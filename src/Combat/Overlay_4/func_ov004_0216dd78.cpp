@@ -7,7 +7,6 @@ extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" unsigned short func_ov023_021f6f10(void*);
 extern "C" void* func_ov023_021fa598(void*);
-int GetGlobalField0x1c020421a0(void);
 void* GetDataPtr02114e04_020d6c00(void);
 extern "C" int func_020ab7a8(void* obj, int flag);
 struct FlagWord020466f4;
@@ -35,7 +34,7 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
 
     void* table = func_ov023_021fa598(node1);
     void* battle = GameState::GetInstance();
-    MessageSystem* message = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* message = GetGlobalField0x1c020421a0();
     struct FlagWord020466f4* flagWord = (struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00();
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();

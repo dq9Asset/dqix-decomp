@@ -1,8 +1,10 @@
 #include <globaldefs.h>
-#include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
 
-struct GameState;
-struct TagContext02069234;
+#if !defined(jpn)
+#include "std_library_functions.h"
+#include "GameState/GameState.h"
+
 
 struct StatusEffectEntry02069234 {
     void* f0;
@@ -24,33 +26,18 @@ struct Combatant02069234 {
     StatusTable02069234* statusTable;
 };
 
-struct TagContext02069234 {
-    void* slots0[2];
-    void* slots8[2];
-    void* slots10[2];
-    void* slots18[2];
-    void* slots20[2];
-    void* unk28;
-    void* unk2c;
-    char pad30[0x37c];
-    char text[0x14d4];
-    signed char combatantId;
-};
 
-Combatant02069234* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
-extern "C" GameState* _ZN9GameState11GetInstanceEv();
-
-char* FindUnescapedAngleBracket_020424ac(char* str);
-int IsPrefixMatch020d857c(signed char* a, signed char* b);
+const char* FindUnescapedAngleBracket_020424ac(const char* str);
+int IsPrefixMatch020d857c(const char* a, const char* b);
 int StringLength_020d2ff0(const char* s);
-extern "C" int func_02005a94(void* p);
-extern "C" int func_02001aec(void* a, void* b, int n);
+extern "C" int func_02005a94(const char* p);
+extern "C" int func_02001aec(const void* a, const void* b, int n);
 extern "C" char* func_020e4958(char** dst, void* val, int a2, int a3, int a4, int a5);
 
-typedef void (*TagHandler02069234)(char* tag, char** dst, TagContext02069234* sb, int index);
+typedef void (*TagHandler02069234)(const char* tag, char** dst, MessageSystem* sb, int index);
 
 struct PrefixEntry02069234 {
-    char* prefix;
+    const char* prefix;
     TagHandler02069234 handler;
 };
 
@@ -72,7 +59,7 @@ extern char data_020f0909[6];
 extern char data_020f0910[];
 
 // USA: func_02069234
-extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) {
+extern "C" ARM void func_02069234(MessageSystem* sb, const char* str, char* dst, int unusedFontIndex) {
     char* cursor;
     if (str == 0 || dst == 0) {
         return;
@@ -85,15 +72,15 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             break;
         }
         if (c == '<') {
-            char* gt = FindUnescapedAngleBracket_020424ac(str);
+            const char* gt = FindUnescapedAngleBracket_020424ac(str);
             if (gt == 0) {
                 goto copy_char;
             }
             int handled = 0;
-            char* tag = str + 1;
+            const char* tag = str + 1;
             struct PrefixEntry02069234* rec = data_020e7e8c;
             for (; rec->prefix != 0; rec++) {
-                if (!IsPrefixMatch020d857c((signed char*)tag, (signed char*)rec->prefix)) {
+                if (!IsPrefixMatch020d857c(tag, rec->prefix)) {
                     continue;
                 }
                 if (rec->handler != 0) {
@@ -145,12 +132,12 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
                         case 1: local10 = opt->value; break;
                         case 2: localC = opt->value; break;
                         case 3: localSl = opt->value; break;
-                        case 4: val = sb->slots18[index]; break;
-                        case 5: val = sb->slots20[index]; break;
-                        case 6: val = sb->slots0[index]; break;
-                        case 7: val = sb->slots10[index]; break;
-                        case 8: val = sb->slots8[index]; break;
-                        case 9: val = sb->unk2c; break;
+                        case 4: val = sb->itemNames[index]; break;
+                        case 5: val = sb->monsterNames[index]; break;
+                        case 6: val = sb->actorNames[index]; break;
+                        case 7: val = sb->targetNames[index]; break;
+                        case 8: val = sb->actionNames[index]; break;
+                        case 9: val = sb->field2c; break;
                     }
                 }
                 opt++;
@@ -168,8 +155,8 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
         if (c == '[') {
             if (func_02001aec(str, data_020f0904, 4) == 0) {
                 str += 4;
-                GameState* gameState = _ZN9GameState11GetInstanceEv();
-                Combatant02069234* combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, sb->combatantId);
+                GameState* gameState = GameState::GetInstance();
+                Combatant02069234* combatant = (Combatant02069234*)GetCombatantWithFlag0x100_0200ff1c(gameState, sb->formatterCombatantId);
                 if (combatant != 0) {
                     StatusEffectEntry02069234* eff = combatant->statusTable->GetEffect();
                     if (eff != 0) {
@@ -184,7 +171,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             }
             if (func_02001aec(str, data_020f0909, 6) == 0) {
                 str += 6;
-                cursor += sprintf(cursor, sb->text);
+                cursor += sprintf(cursor, sb->fixedTextBuffers[3]);
                 goto skip_bracket;
             }
             *cursor = c;
@@ -209,3 +196,5 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
     }
     *cursor = 0;
 }
+
+#endif

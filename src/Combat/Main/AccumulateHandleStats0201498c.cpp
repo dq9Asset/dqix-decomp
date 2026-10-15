@@ -9,7 +9,7 @@ ARM int AccumulateHandleStats0201498c(void* zoneRaw) {
     if (!effects->IsArchiveLoaded())
         return 0;
 
-    effects->ProcessArchive(effects, zone->pAllocator_68_, zone->unknown_ptr_50_);
+    effects->ProcessArchive(effects, zone->pAllocator_68_, zone->encoder);
     AtmosphericEffect* effect = effects->GetFirstEffect();
     while (effect != NULL) {
         Model3D* model = effect->object_.pModel_;

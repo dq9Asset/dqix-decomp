@@ -1,27 +1,18 @@
 #include <globaldefs.h>
-
-struct Struct_0205bb84;
-int ComputeScaledSum0205bb84(struct Struct_0205bb84*);
+#include "Resource/MessageSystem.h"
 extern "C" void func_0205bb04(void*, int);
 
-struct Struct_0205c4a8 {
-    int field0;
-    int field4;
-    char pad8[0xc];
-    int field14;
-};
-
 // USA: func_0205c4a8
-ARM void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205c4a8* s, int delta) {
+ARM void AdvanceWrappedAccumulator0205c4a8(struct Struct_0205ba2c* s, int delta) {
     int base;
-    s->field14 += delta;
-    if (s->field4 <= s->field14) {
-        s->field14 -= s->field4;
-    } else if (s->field14 < 0) {
-        s->field14 += s->field4;
+    s->page += delta;
+    if (s->pages <= s->page) {
+        s->page -= s->pages;
+    } else if (s->page < 0) {
+        s->page += s->pages;
     }
-    base = s->field0;
-    if (base <= ComputeScaledSum0205bb84((struct Struct_0205bb84*)s)) {
-        func_0205bb04((void*)s, base - 1);
+    base = s->count;
+    if (base <= ComputeScaledSum0205bb84(s)) {
+        func_0205bb04(s, base - 1);
     }
 }

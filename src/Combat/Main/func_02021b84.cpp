@@ -9,7 +9,6 @@
 #include "System/Memory.h"
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
-int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02023218(MapDisplay* self, void* buffer, int offset, unsigned int capacity);
 extern char data_020ef4b1[], data_020ef4c9[], data_020ef4d0[];
 #endif
@@ -41,18 +40,14 @@ void CopyStringOrDefault02026428(void* obj, const char* name);
 void SetEventStringAndAccumulateLength02026470(void* obj, int flag);
 struct Struct0205a198;
 void Init0205a198(struct Struct0205a198* p);
-void InitStruct0205a444(char* obj);
-struct Rec020467f0;
-int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
-void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 void* GetGlobalPtr02105244_0203bd14();
 int InitAndCopyBuffer020233b8(void* arg0, int flag1);
 extern "C" void* func_0203be4c(void);
-void InitFourEntrySlots02020aa0(void* obj);
+void InitFourEntrySlots02020aa0(MapDisplay* obj);
 #if defined(jpn)
 extern "C" void func_02026898(void* obj);
 #else
-extern "C" void func_02026f34(void* obj);
+extern "C" void func_02026f34(MapDisplay* obj);
 #endif
 extern "C" void func_ov017_02191234(void* obj);
 extern "C" void func_0202343c(void* obj);
@@ -190,13 +185,13 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         for (int i = 0; i < 0x1c; i++) {
             Init0205a198(&self->records[i]);
         }
-        InitStruct0205a444((char*)&self->entryList);
-        self->entryList.active = 1;
+        InitStruct0205a444(&self->entryList);
+        self->entryList.subScreen = 1;
         self->entryList.records = self->records;
-        self->entryList.count = 0x18;
-        ProcessRecords0205a498((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
-        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
-        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
+        self->entryList.recordCount = 0x18;
+        ProcessRecords0205a498(&self->entryList, static_cast<Rec020467f0*>(fileData), fileLength, alloc);
+        SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[9], 1, 1);
+        SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[11], 1, 1);
         *(int*)((char*)GetGlobalPtr02105244_0203bd14() +
 #if defined(jpn)
                 0x608
@@ -205,8 +200,8 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
 #endif
         ) = 0x2000;
 #if defined(jpn)
-        MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
-        char* buffer = messages->formatBuffer;
+        MessageSystem* messages = GetGlobalField0x1c020421a0();
+        char* buffer = messages->formatBuffer->text;
         char* vram = (char*)0x06600000;
         VectorizedInvertedMemcpy(vram + 0x2bc0, buffer, 0x540);
         func_02023218(self, buffer, 0, 0x540);

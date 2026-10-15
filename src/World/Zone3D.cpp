@@ -21,10 +21,6 @@ extern "C"
     void* _Z24GetFieldAt0x150_02053c6cPh(void*);
     void _Z25RunBufferedStream0205e104iiP12StreamHeaderi(const char*, SafeAllocator*, const void*, unsigned int);
 
-    void* _Z26CopyInternalFields0207df50P11Foo0207df50(void*);
-    void _Z25RestorePairTables0207df90Pc(void*);
-    void _Z24BackupPairTables0207dfacPc(void*);
-
     void* _Z24GetData02108f0c_0208a9b4v();
     void _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(void*);
     Zone3D_StructPtr_8* _Z31FindEntryByHalfwordKey_02099950P11SearchTablei(void*, unsigned short id);
@@ -85,7 +81,7 @@ void Zone3D::SwitchZone_0201383c(unsigned short newID, int)
     pAllocator_68_ = pAllocator_4c_;
     pAllocator_68_->Reset();
 
-    _Z26CopyInternalFields0207df50P11Foo0207df50(unknown_ptr_50_);
+    CopyInternalFields0207df50(encoder);
     _Z22ResetBigStruct02013750Pvi(this, true);
 
     previousZoneID_ = currentZoneID_;

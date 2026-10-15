@@ -12,7 +12,6 @@ int ScaleStatsIfType12_021f6f10(void* self);
 #define NODE_KIND_CALL ScaleStatsIfType12_021f6f10
 #endif
 extern "C" void* func_ov023_021fa598(void* p);
-int GetGlobalField0x1c020421a0();
 extern "C" int func_020abb64(void);
 struct TableA68;
 void* FindEntryByKey_02072a68(struct TableA68* table, int key);
@@ -28,7 +27,7 @@ extern "C" ARM int func_ov004_0216d5b0(void* obj) {
 
     struct TableA68* table = (struct TableA68*)func_ov023_021fa598(node);
     GameState* battle = GameState::GetInstance();
-    MessageSystem* message = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* message = GetGlobalField0x1c020421a0();
 
     if (func_020abb64() == 0) {
         void* entry = FindEntryByKey_02072a68(table, 0x5dd);

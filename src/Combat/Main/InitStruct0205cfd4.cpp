@@ -1,34 +1,9 @@
 #include <globaldefs.h>
-
-struct Struct_0205c53c;
-extern void InitChannelPair0205c53c(struct Struct_0205c53c* s);
-
-struct InitTarget0205cfd4 {
-    char pad0[0x98];
-    int f98;
-    int f9c;
-    unsigned short fa0;
-    unsigned short fa2;
-    unsigned short fa4;
-    unsigned short fa6;
-    unsigned short fa8;
-    unsigned short faa;
-    unsigned short fac;
-    unsigned short fae;
-    unsigned char fb0;
-    unsigned char fb1;
-    unsigned char fb2;
-    unsigned char fb3;
-    unsigned char fb4;
-    unsigned char fb5;
-    unsigned char fb6;
-    unsigned char fb7;
-    unsigned char fb8;
-};
+#include "Resource/MessageSystem.h"
 
 // USA: func_0205cfd4
 ARM void InitStruct0205cfd4(struct InitTarget0205cfd4* s) {
-    InitChannelPair0205c53c((struct Struct_0205c53c*)s);
+    InitChannelPair0205c53c(&s->channels);
     s->f98 = 0;
     s->f9c = 0;
     s->fa0 = 1;

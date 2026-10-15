@@ -16,32 +16,6 @@ struct Container020dedd0;
 struct Container020e0310;
 struct Struct020dfc40;
 
-struct StoreStruct {
-#if defined(jpn)
-    char pad0[0x28];
-    char* message;
-    char pad2c[0x868 - 0x2c];
-#else
-    void* nameText;
-    char pad4[0x14];
-    void* listText;
-    char pad1c[0xc];
-    void* actorText;
-    char pad2c[0x30];
-    char* message;
-    char pad60[0x998 - 0x60];
-#endif
-    int busy;
-    char pad99c[4];
-    int windowState;
-#if defined(jpn)
-    char pad874[0x17de - 0x874];
-#else
-    char pad9a4[0x19ae - 0x9a4];
-#endif
-    unsigned char pending;
-};
-
 struct ParamTable021a7e14 {
     char pad0[0x950];
     int nameId;
@@ -50,12 +24,6 @@ struct ParamTable021a7e14 {
 struct Combatant021a7e14 {
     char pad0[0x150];
     ParamTable021a7e14* params;
-};
-
-struct MessageBuffers021a7e14 {
-    char* first;
-    char* second;
-    int unk8;
 };
 
 struct Element021a7e14 {
@@ -87,7 +55,7 @@ struct Obj021a7e14 {
     short timer;
     unsigned short flags;
 #if !defined(jpn)
-    MessageBuffers021a7e14* buffers;
+    ItemNameText* buffers;
     void* actorText;
     void* listText;
     char* firstBuffer;
@@ -100,16 +68,15 @@ typedef char TradeStateCheck[offsetof(Obj021a7e14, state) == 0x24 ? 1 : -1];
 typedef char TradeKeyCheck[offsetof(Obj021a7e14, key) == 0x30 ? 1 : -1];
 typedef char TradeTimerCheck[offsetof(Obj021a7e14, timer) == 0x38 ? 1 : -1];
 #if defined(jpn)
-typedef char TradeMessageCheck[offsetof(StoreStruct, message) == 0x28 ? 1 : -1];
-typedef char TradeWindowCheck[offsetof(StoreStruct, windowState) == 0x870 ? 1 : -1];
-typedef char TradePendingCheck[offsetof(StoreStruct, pending) == 0x17de ? 1 : -1];
+typedef char TradeMessageCheck[offsetof(MessageSystem, savedTextBuffer) == 0x28 ? 1 : -1];
+typedef char TradeWindowCheck[offsetof(MessageSystem, mode) == 0x870 ? 1 : -1];
+typedef char TradePendingCheck[offsetof(MessageSystem, b19ae) == 0x17de ? 1 : -1];
 #else
-typedef char TradeMessageCheck[offsetof(StoreStruct, message) == 0x5c ? 1 : -1];
-typedef char TradeWindowCheck[offsetof(StoreStruct, windowState) == 0x9a0 ? 1 : -1];
-typedef char TradePendingCheck[offsetof(StoreStruct, pending) == 0x19ae ? 1 : -1];
+typedef char TradeMessageCheck[offsetof(MessageSystem, savedTextBuffer) == 0x5c ? 1 : -1];
+typedef char TradeWindowCheck[offsetof(MessageSystem, mode) == 0x9a0 ? 1 : -1];
+typedef char TradePendingCheck[offsetof(MessageSystem, b19ae) == 0x19ae ? 1 : -1];
 #endif
 
-int GetGlobalField0x1c020421a0();
 extern "C" SearchStruct* func_0202ae18();
 int GetField0x3acValue_020100a8(GameState* gs);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg);
@@ -130,19 +97,14 @@ void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 char* CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" void func_020e4b34(void* obj, char* name, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j);
-extern "C" void func_02046380(StoreStruct* g);
-void StoreInArray0x8b0_020465c0(StoreStruct* g, int a, int b);
-void SetByteInRange_020465f0(unsigned char* p, int a, unsigned char b);
 int GetFieldByKey020e0434(Container020e0310* c, int key);
 void AppendString02042058(char* dst, const char* src);
 int SumKeyedLookups02086bf4(char* p, int key);
-extern "C" int func_020457e0(StoreStruct* g);
 int TestFlagBitAt0xe_0202c578(SearchStruct* s, int id);
 int DecrementField38Clamped_021a85e8(unsigned char* obj, int amount);
 void* ZeroInitReturn020de824(void* p);
 void InitStruct0207cbe8(char* p);
 extern "C" void func_0207cf30(void* ctx, int key, int amount, int arg);
-void ReinitController02043204(char* g);
 void SetByteField0x253_020397c0(void* obj);
 
 extern AllocatorUnion data_02114e20;
@@ -151,7 +113,6 @@ extern const char data_ov017_021d7bf0[];
 extern "C" void* func_020e08f0(int, unsigned int*);
 extern "C" void __clear(void*, int);
 struct Obj02046574;
-void SetIndexedName02046574(Obj02046574*, int, char*);
 #else
 extern const char data_ov017_021d77c4[];
 extern const char data_ov017_021d77de[];
@@ -163,7 +124,7 @@ extern const char* data_020f2a0c;
 extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    StoreStruct* g = (StoreStruct*)GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     FontBankLoader* bank = GetGlobal02109400_02094a00();
     func_ov017_0218b5b0();
     SearchStruct* search = func_0202ae18();
@@ -206,7 +167,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
             func_020dfec0(self->strings, &self->alloc, data, length);
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
-            self->message = g->message;
+            self->message = g->savedTextBuffer;
 #if defined(jpn)
             BlankFunction02094b40(bank);
             BlankFunction02094b30(bank, 0x208, 0);
@@ -234,7 +195,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         __clear(itemName, sizeof(itemName));
         DispatchIfCountPositive020dcf7c(self->key, itemName);
 #else
-        self->buffers = (MessageBuffers021a7e14*)self->alloc.Allocate(0xc);
+        self->buffers = static_cast<ItemNameText*>(self->alloc.Allocate(0xc));
         self->firstBuffer = (char*)self->alloc.Allocate(0x40);
         self->secondBuffer = (char*)self->alloc.Allocate(0x40);
         if (self->buffers != NULL && self->firstBuffer != NULL && self->secondBuffer != NULL) {
@@ -264,8 +225,8 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         }
 #if defined(jpn)
         func_02046380(g);
-        SetIndexedName02046574((Obj02046574*)g, 0, ((GameObject*)combatant)->baseStats_->unk);
-        SetIndexedName02046574((Obj02046574*)g, 1, itemName);
+        SetIndexedName02046574(g, 0, ((GameObject*)combatant)->baseStats_->unk);
+        SetIndexedName02046574(g, 1, itemName);
 #else
         Clear12Bytes020e46c4(self->actorText);
         InitObjFromCombatantId020e4bf4(self->actorText, self->combatantId);
@@ -274,12 +235,12 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         func_020e4b34(self->listText, name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         func_02046380(g);
         StoreInArray0x8b0_020465c0(g, 0, 1);
-        SetByteInRange_020465f0((unsigned char*)g, 0, 1);
-        g->nameText = self->actorText;
-        g->listText = self->buffers;
-        g->actorText = self->listText;
+        SetByteInRange_020465f0(g, 0, 1);
+        g->actorNames[0] = self->actorText;
+        g->itemNames[0] = self->buffers;
+        g->nameDescriptor28 = static_cast<ItemNameText*>(self->listText);
 #endif
-        char* message = g->message;
+        char* message = g->savedTextBuffer;
 #if defined(jpn)
         memset(message, 0, 0x800);
 #else
@@ -293,7 +254,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         } else {
             AppendString02042058(message, (char*)GetFieldByKey020e0434(self->strings, 0x6e));
         }
-        g->busy = 1;
+        g->active = 1;
 #if defined(jpn)
         func_0204500c((MessageSystem*)g, message, 0);
 #else
@@ -301,8 +262,8 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #endif
         self->state = 3;
     } else if (self->state == 3) {
-        if (g->windowState == 3 || g->windowState == 0) {
-            g->pending = 0;
+        if (g->mode == 3 || g->mode == 0) {
+            g->b19ae = 0;
             int result = func_020457e0(g);
             if (result == 0) {
                 if (self->flags & 1) {
@@ -320,7 +281,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
             }
         }
     } else if (self->state == 4) {
-        g->pending = 0;
+        g->b19ae = 0;
         if (TestFlagBitAt0xe_0202c578(search, 0) || TestFlagBitAt0xe_0202c578(search, self->combatantId)) {
             done = 1;
         }
@@ -340,12 +301,12 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
             self->state = 7;
         }
     } else if (self->state == 5) {
-        g->pending = 0;
+        g->b19ae = 0;
         int ticks = gs->GetTickCount();
         if (ticks == 0) {
             ticks = 1;
         }
-        if (DecrementField38Clamped_021a85e8((unsigned char*)self, ticks) == 0 && g->windowState == 3) {
+        if (DecrementField38Clamped_021a85e8((unsigned char*)self, ticks) == 0 && g->mode == 3) {
             if (TestFlagBitAt0xe_0202c578(search, 0) || TestFlagBitAt0xe_0202c578(search, self->combatantId)) {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0);
@@ -367,10 +328,10 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if !defined(jpn)
                 func_02046380(g);
                 StoreInArray0x8b0_020465c0(g, 0, 1);
-                SetByteInRange_020465f0((unsigned char*)g, 0, 1);
-                g->nameText = self->actorText;
-                g->listText = self->buffers;
-                g->actorText = self->listText;
+                SetByteInRange_020465f0(g, 0, 1);
+                g->actorNames[0] = self->actorText;
+                g->itemNames[0] = self->buffers;
+                g->nameDescriptor28 = static_cast<ItemNameText*>(self->listText);
 #endif
 #if defined(jpn)
                 func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x6f), 0);
@@ -381,8 +342,8 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
             }
         }
     } else if (self->state == 6) {
-        ReinitController02043204((char*)g);
-        g->busy = 1;
+        ReinitController02043204(g);
+        g->active = 1;
 #if defined(jpn)
         func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x65), done);
 #else
@@ -390,11 +351,11 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #endif
         self->state = 7;
     } else if (self->state == 7) {
-        if (g->busy == 0) {
+        if (g->active == 0) {
             done = 1;
         }
         if (done) {
-            ReinitController02043204((char*)g);
+            ReinitController02043204(g);
             SetByteField0x253_020397c0(obj);
             func_ov017_021a7dd8(self);
             func_020a0c0c();

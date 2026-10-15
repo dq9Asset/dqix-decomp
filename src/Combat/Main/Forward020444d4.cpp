@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/MessageUpdate.h"
 
 // USA: func_020444d4

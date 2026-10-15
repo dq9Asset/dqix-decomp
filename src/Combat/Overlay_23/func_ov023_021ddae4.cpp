@@ -13,8 +13,8 @@ struct InfoWindowLoad021ddae4 {
     char beforeAllocator[0x44];
     SafeAllocator* allocator;
     char beforeRenderer[REGION(0x128,0x12c) - 0x48];
-    SpriteContext0205ac40 renderer;
-    char beforeDisplayState[REGION(0x6f9,0x77d) - REGION(0x128,0x12c) - sizeof(SpriteContext0205ac40)];
+    LoadTable renderer;
+    char beforeDisplayState[REGION(0x6f9,0x77d) - REGION(0x128,0x12c) - sizeof(LoadTable)];
     signed char displayState;
     signed char pendingState;
     int task;

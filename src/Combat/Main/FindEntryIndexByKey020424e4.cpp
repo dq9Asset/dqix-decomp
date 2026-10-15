@@ -1,18 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
 extern int data_0210782c[];
-extern "C" int func_02001aec(int val, int key, int field5);
-
-struct Entry020424e4 {
-    int val;
-    char pad4;
-    signed char field5 : 6;
-    signed char unused2 : 2;
-    char pad6[2];
-};
+extern "C" int func_02001aec(const void* a, const void* b, int length);
 
 // USA: func_020424e4
-ARM int FindEntryIndexByKey020424e4(int key, int tableIdx) {
+ARM int FindEntryIndexByKey020424e4(const char* key, int tableIdx) {
     char* header;
     unsigned int i;
     if (key == 0) {
@@ -20,8 +13,8 @@ ARM int FindEntryIndexByKey020424e4(int key, int tableIdx) {
     }
     header = (char*)data_0210782c[tableIdx];
     for (i = 0; i < *(unsigned int*)(header + 4); i++) {
-        struct Entry020424e4* e = *(struct Entry020424e4**)(header + 0x10) + i;
-        if (func_02001aec(e->val, key, e->field5) == 0) {
+        FontCharacter* entry = *(FontCharacter**)(header + 0x10) + i;
+        if (func_02001aec(entry->text, key, entry->byteLength) == 0) {
             return i;
         }
     }

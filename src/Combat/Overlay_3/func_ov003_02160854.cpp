@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
@@ -11,7 +12,6 @@
 #define SECOND_SHIFT 0
 #define CURSOR_OFFSET 0x36
 #endif
-struct Outer020e28dc;
 
 struct Menu02160854 {
     char unk_0[CURSOR_OFFSET];
@@ -22,7 +22,7 @@ struct Ctx02160854 {
     char pad0[0x324 - FIRST_SHIFT];
     Menu02160854* menu_;
     char pad1[0x390 - 0x328];
-    Outer020e28dc* choice_;
+    EntryManager020e2490* choice_;
     char pad2[0x470 - SECOND_SHIFT - (0x394 - FIRST_SHIFT)];
     short* cursor_;
     short previousCursor_;
@@ -33,8 +33,6 @@ struct Ctx02160854 {
 int GetWord0x0_0200fb8c(int* obj);
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 int IsFieldNotPositive_021a4e70(unsigned char* base);
-int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
-int GetField0x15UnlessInactive_020e2918(signed char* obj);
 void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 int RunAndCheckFlagBit02080dd4(void* obj, int p1, int p2, int p3, unsigned char* outFlag, unsigned char extra);
 
@@ -59,7 +57,7 @@ extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
     }
 
     if (GetInnerFlagBit0020e28dc(self->choice_)) {
-        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918(self->choice_);
         if (choice >= 0) {
             confirmed = 1;
             *self->cursor_ = choice + 0x2c;

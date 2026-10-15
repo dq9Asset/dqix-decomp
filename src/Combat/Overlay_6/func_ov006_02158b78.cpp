@@ -6,8 +6,8 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
-struct Outer020e28dc;
 struct Obj2081;
 
 struct Sprite {
@@ -26,8 +26,6 @@ extern unsigned char data_02114e54[];
 }
 
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
-int GetInnerFlagBit0020e28dc(Outer020e28dc*);
-int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 int IsPointInsideElement02080d54(Obj2081*, int, int, int);
 
@@ -40,7 +38,7 @@ struct AlchemyMenu {
     void* allocators_;
     AlchemyPot* pot_;
     void* menu_;
-    void* choice_;
+    EntryManager020e2490* choice_;
     void* backgrounds_;
     void* canvases_;
     Sprite* sprites_;
@@ -132,9 +130,9 @@ extern "C" ARM unsigned char func_ov006_02158b78(AlchemyMenu* self)
     unsigned char cancelled = 0;
     if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 2))
         cancelled = 1;
-    if (self->choice_ != 0 && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
+    if (self->choice_ != 0 && GetInnerFlagBit0020e28dc(self->choice_))
     {
-        if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->choice_))
+        if (IsFlag0x2Active020e2984(self->choice_))
             cancelled = 1;
     }
     else if (data_02114e54[0x55])

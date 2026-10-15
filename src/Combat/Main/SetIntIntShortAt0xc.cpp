@@ -1,15 +1,13 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
-struct SetIntIntShortAt0xcStruct {
-    char pad[0xc];
-    int a;
-    int b;
-    short c;
-};
+#if !defined(jpn)
 
 // USA: func_02066ce0
-ARM void SetIntIntShortAt0xc_02066ce0(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c) {
-    s->a = a;
-    s->b = b;
-    s->c = c;
+ARM void SetIntIntShortAt0xc_02066ce0(MessageGlyphSlot* slot, int x, int y, short depth) {
+    slot->x = x;
+    slot->y = y;
+    slot->depth = depth;
 }
+
+#endif

@@ -11,8 +11,8 @@ static inline fix32_t CosineSample(int sample) {
     return data_020e9450[sample * 2 + 1];
 }
 
-extern "C" ARM void func_0205b0d8(SpriteContext0205ac40* context, Matrix2x2* transform,
-                                  Matrix2x2* affine, B174Outer* sprite) {
+extern "C" ARM void func_0205b0d8(LoadTable* context, Matrix2x2* transform,
+                                  Matrix2x2* affine, Struct0205a198* sprite) {
     Matrix2x2 rotation;
     if (sprite != NULL && transform != NULL && affine != NULL) {
         func_020c111c(&rotation, SineSample(sprite->angle >> 4), CosineSample(sprite->angle >> 4));

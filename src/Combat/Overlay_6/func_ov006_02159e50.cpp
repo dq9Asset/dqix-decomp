@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 #if defined(jpn)
 enum { kMenuOffset = 0xc, kRepeatToChoice = 0x2d8 };
@@ -9,12 +10,11 @@ enum { kMenuOffset = 0x14, kRepeatToChoice = 0x2d0 };
 struct Obj2081;
 struct Obj0208203c;
 struct Obj0205eaa0;
-struct Obj020e25e8;
 
 struct AlchemyMenu {
     char unk_0[kMenuOffset];
     Obj2081* menu_;
-    Obj020e25e8* choice_;
+    EntryManager020e2490* choice_;
     char unk_1c[0x28];
     short* cursor_;
     char unk_48[0x54];
@@ -31,7 +31,6 @@ int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 unsigned char DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081* menu, int group);
 void ResetWithSub0208203c(Obj0208203c* repeat);
-void ResetSelectionState020e25e8(Obj020e25e8* choice);
 
 extern "C" unsigned short data_02114e30[];
 extern "C" char data_02108760[];

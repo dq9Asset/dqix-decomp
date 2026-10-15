@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "System/Cache.h"
@@ -96,7 +97,6 @@ extern "C" HudNode* func_ov004_0215e47c(void* a, int key);
 extern "C" void* func_ov023_021fad18(void* node);
 struct PortraitEntry* GetArrayEntry_0215e438(void* arr, int idx);
 extern "C" int func_ov017_021bdbcc(void* obj);
-void* GetTableEntry020421b0(int idx);
 unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
 extern "C" void* func_ov011_021849c8(void* ctx);
 extern "C" HudNode* func_ov023_021f6880(void* list, int key);
@@ -157,7 +157,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
                         unsigned char tableIdx = bank * 4 + 0x28;
                         offset = (unsigned short)(info->tile & 0x3ff) << 5;
                         for (i = 0; i < 4; i++, tableIdx++) {
-                            void* tile = GetTableEntry020421b0(tableIdx);
+                            unsigned char* tile = GetTableEntry020421b0(tableIdx);
                             CleanInvalidateCacheRange(tile, 0x20);
                             LoadToMainObjVRAM(tile, offset, 0x20);
                             CleanCacheRange(tile, 0x20);

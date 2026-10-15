@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
 #if defined(jpn)
 enum { TopLeftId = 31, TopRightId = 32, BottomLeftId = 34, BottomRightId = 33 };
@@ -41,7 +42,6 @@ struct Wnd0204cd60 {
 
 extern "C" int func_0204fd00(Wnd0204cd60* ctx, int mask);
 extern "C" void func_0204f914(Wnd0204cd60* wnd, int mode, short x0, short y0, short x1, short y1);
-void* GetTableEntry020421b0(int idx);
 extern "C" void func_0204e1c8(Wnd0204cd60* wnd, char* entry, int x, int y, int w, int h, int color, int font);
 
 // USA: func_0204ea5c

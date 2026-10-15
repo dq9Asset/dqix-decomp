@@ -13,7 +13,7 @@ struct Entry021db314 {
     void* target;
 };
 
-extern "C" int func_02005a94(signed char* s);
+extern "C" int func_02005a94(const char* text);
 int ParseCodeLetter_021db564(char* str);
 
 // USA: func_ov023_021db314  (semantic: ParseCodeEntriesIntoArray_021db314)
@@ -26,13 +26,13 @@ extern "C" ARM void func_ov023_021db314(void* obj, short* out, short* outCount) 
     int i;
     for (i = 0; i < limit; i++, entry = (struct Entry021db314*)((char*)entry + 8)) {
         if (entry->flag1 != 0 && entry->target != NULL) {
-            signed char* ptr = (signed char*)entry->target;
+            char* ptr = static_cast<char*>(entry->target);
 
             if (*ptr == 'f') {
                 out[count] = (short)func_02005a94(ptr + 5);
                 count++;
             } else if (*ptr >= 'A' && *ptr <= 'Z') {
-                unsigned short v = (unsigned short)ParseCodeLetter_021db564((char*)ptr);
+                unsigned short v = (unsigned short)ParseCodeLetter_021db564(ptr);
                 if (v != 0) {
                     out[count] = v;
                     count++;

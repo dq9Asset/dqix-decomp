@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 #define func_ov008_02187f6c func_ov008_02188ccc
@@ -11,7 +12,6 @@
 #include "Filesystem/BackgroundLoader.h"
 
 struct Container020e0310;
-struct MessageSystem;
 
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void* ExtractFileFromGP2(const char* gp2, const char* inner, unsigned int* size);
@@ -30,7 +30,6 @@ extern char data_ov008_0218c0d5[];
 extern "C" void func_0205d304(TextWindow* window, char* text, int, int, int, int, int, int);
 #endif
 
-MessageSystem* GetGlobalField0x1c020421a0();
 void AppendXYTag_02041a90(char* text, int x, int y);
 void AppendString02042058(char* text, const char* append);
 int TestBitInByteArray_0206dfb0(int, unsigned char*, int);

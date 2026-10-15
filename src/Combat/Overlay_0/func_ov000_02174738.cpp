@@ -1,8 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 #include <System/Cache.h>
 #include <System/LoadToVRAM.h>
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
+#include "Resource/MessageFrame.h"
 
 struct Obj0216fe74 {
     char pad0[0x40];
@@ -27,7 +29,7 @@ struct Entry02174738 {
 
 struct Group02174738 {
     char pad0[0x20];
-    void* vram;
+    unsigned char* vram;
     char pad17c[0x800 - 0x24];
     struct Entry02174738 entries[4];
 };
@@ -39,25 +41,8 @@ struct Obj02174738 {
     struct Group02174738 group;
 };
 
-struct S_b20c {
-    int field0;
-    int field4;
-    unsigned char field8;
-};
-
-struct TextSlot02174738 {
-    int a;
-    short b;
-    short c;
-    short d;
-    short e;
-};
 
 int GetField0x3acValue_020100a8(GameState* battleStruct);
-void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
-void SetField0_0205b220(void* obj, int value);
-void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
-void* GetTableEntry020421b0(int idx);
 void SetOrClearFlag0x4At0x24_ov000_02174a38(void* obj, int cond);
 
 extern "C" void func_ov000_021710ac(struct Entry02174738* obj, int combatantId, int flag);
@@ -65,7 +50,7 @@ extern "C" void func_ov000_02171138(void* obj);
 extern "C" void func_ov000_02174b14(struct Obj02174738* obj);
 extern "C" int func_ov017_021bdbcc();
 extern "C" int func_020420e8(char* label, int extra);
-extern "C" void func_0205b234(struct S_b20c* a, short b, int c, void* buf, unsigned char d, unsigned char e);
+extern "C" int func_0205b234(GlyphDestination0205b234*, short, short, const char*, unsigned char, unsigned char);
 
 extern char data_ov000_0218405b;
 extern int data_ov000_02183ff0;
@@ -96,7 +81,7 @@ checkvalid:
         }
     }
 
-    void* vram = self->group.vram;
+    unsigned char* vram = self->group.vram;
     char* info;
     char* info2;
     GameObject* c = GameState::GetInstance()->GetPartyMemberByIndex(id);
@@ -128,16 +113,16 @@ checkvalid:
               info2 = *(char**)(slot2 + 8);
               if (info2 != NULL) {
                 memset(vram, 0, 0x80);
-                struct S_b20c local;
-                struct TextSlot02174738 text;
-                text.a = 0;
-                text.b = 0;
-                text.c = 0;
-                text.d = 0x10;
-                text.e = 0x10;
+                GlyphDestination0205b234 local;
+                Struct02020520 text;
+                text.offset = 0;
+                text.x = 0;
+                text.y = 0;
+                text.width = 0x10;
+                text.height = 0x10;
                 ClearTwoWordsAndByte_0205b20c(&local);
-                SetField0_0205b220(&local, (int)vram);
-                SetFieldsAt0x4And0x8_0205b228(&local, (int)&text, 1);
+                SetField0_0205b220(&local, vram);
+                SetFieldsAt0x4And0x8_0205b228(&local, &text, 1);
                 char* field150 = *(char**)((char*)c + 0x150);
                 int idx = *(int*)(field150 + 0x950);
                 char* p = field150 + idx * 2 + 0x100;

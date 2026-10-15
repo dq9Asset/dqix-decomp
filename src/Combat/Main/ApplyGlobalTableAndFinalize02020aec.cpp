@@ -15,9 +15,7 @@ extern "C" void* func_0203bd08(void);
 extern "C" void* func_0203be4c(void);
 
 struct Rec020467f0;
-int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
 
-void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 
 // USA: func_02020aec  (semantic: ApplyGlobalTableAndFinalize02020aec)
 extern "C" ARM void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle, SafeAllocator* allocator) {
@@ -38,7 +36,7 @@ extern "C" ARM void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle,
     g = (char*)GetGlobalPtr02105244_0203bd14();
     *(char**)g = p;
 
-    ProcessRecords0205a498(&self->entryList, (Rec020467f0*)fileData, fileLength, allocator);
+    ProcessRecords0205a498(&self->entryList, static_cast<Rec020467f0*>(fileData), fileLength, allocator);
 
     loader = BackgroundLoader::GetInstance();
 #if defined(jpn)
@@ -48,6 +46,6 @@ extern "C" ARM void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle,
     *handle = -1;
 #endif
 
-    SetBitfieldStoreBytes0205af38((int)&self->entryList, (char*)&self->records[9], 1, 1);
-    SetBitfieldStoreBytes0205af38((int)&self->entryList, (char*)&self->records[11], 1, 1);
+    SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[9], 1, 1);
+    SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[11], 1, 1);
 }

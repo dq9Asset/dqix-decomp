@@ -4,14 +4,12 @@
 #include "Filesystem/FileIO.h"
 #include "std_library_functions.h"
 
-void RestorePairTables0207df90(char*);
-void BackupPairTables0207dfac(char*);
 
 // USA: func_0201445c
 ARM bool Zone3D::ProcessNSBTXFile_0201445c(const void* pFile, unsigned int fileSize, const char* pName)
 {
     SafeAllocator* pAlloc = pAllocator_68_;
-    char* pGraph = (char*)unknown_ptr_50_;
+    Foo0207df50* pGraph = encoder;
     unsigned int nSize;
     void* pRaw;
     Zone3D::Model3DListNode* pNode =

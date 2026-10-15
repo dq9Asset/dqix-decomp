@@ -27,7 +27,6 @@ extern "C" Foo020579b4* func_02057924();
 void* GetData02104b6c_02039e70();
 void* GetGlobalPtr021075f4_0203cf4c();
 void* GetFieldPtrAt0x5ca4_02010768(void*);
-int GetGlobalField0x1c020421a0();
 ResetObj020d7a5c* GetGlobalResetObj020d7a50();
 void* GetData02153637_020e2ff8();
 extern "C" void func_ov017_0218d8cc(GameResources*);
@@ -99,7 +98,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     unsigned int ticks = state->GetTickCount();
     Obj0203dd20* scales = (Obj0203dd20*)GetGlobalPtr021075f4_0203cf4c();
     void** field = (void**)GetFieldPtrAt0x5ca4_02010768(state);
-    MessageSystem* message = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* message = GetGlobalField0x1c020421a0();
     ResetObj020d7a5c* reset = GetGlobalResetObj020d7a50();
     void* entries = GetData02153637_020e2ff8();
     func_ov017_0218d8cc(self);

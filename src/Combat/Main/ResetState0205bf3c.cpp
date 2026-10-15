@@ -1,19 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-struct Struct_0205bf3c {
-    char unk0[0x30];
-    int f30;
-    short f34;
-    unsigned char b36;
-    unsigned char b37;
-    unsigned char b38;
-};
 
 // USA: func_0205bf3c
-ARM void ResetState0205bf3c(struct Struct_0205bf3c* s) {
-    s->f30 = 0;
-    s->f34 = 0;
-    s->b36 = 0;
-    s->b37 = 0;
-    s->b38 = 0;
+ARM void ResetState0205bf3c(struct Struct_0205bef8* s) {
+    s->step = 0;
+    s->key = 0;
+    s->rowRepeat = 0;
+    s->columnRepeat = 0;
+    s->countdown = 0;
 }

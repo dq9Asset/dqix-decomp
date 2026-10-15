@@ -1,18 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
-
-struct FontIndexFile
-{
-    struct Glyph
-    {
-        const char* tag;
-        int8_t width;
-        int8_t tagLength : 6;
-        int8_t isVowel : 1;
-        int8_t unk_5_bit_7 : 1;
-        char unk_6[2];
-    };
-};
 
 enum ControlWord
 {
@@ -20,18 +8,11 @@ enum ControlWord
     ControlWord_Unknown_ff19 = 0xff19,
 };
 
-class TextManager
-{
-public:
-    char unk_0[0x70];
-    unsigned int unknown_70_;
-};
+extern "C" int func_02001aec(const void* lhs, const void* rhs, int length);
+int FindEntryIndexByKey020424e4(const char*, int);
 
-extern "C" int func_02001aec(const void* lhs, const void* rhs, unsigned int length);
-int FindEntryIndexByKey020424e4(int, int);
-
-char* FindUnescapedAngleBracket_020424ac(char*);
-FontIndexFile::Glyph* GetBoundedEntry020425b4(int glyph, int fontType);
+const char* FindUnescapedAngleBracket_020424ac(const char*);
+FontCharacter* GetBoundedEntry020425b4(int glyph, int fontType);
 int LookupKeyValue020425e4(int leftGlyph, int rightGlyph, int fontType);
 int GetWordFromTable02042648(int fontType);
 int Dispatch02044420(void*, void*);
@@ -59,13 +40,13 @@ extern char data_020f0992[];
 struct NewlineCalculationTagProcessor
 {
     char* tag;
-    int (*proc)(char* input, int* pX, int fontIndex, int margin);
+    int (*proc)(const char* input, int* pX, int fontIndex, int margin);
 };
 
 extern const NewlineCalculationTagProcessor data_020e7ec4[];
 
 // USA: func_0206b974
-extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, char *output,
+extern "C" ARM void func_0206b974(MessageSystem* self, bool arg2, char *input, char *output,
     int boxWidth, int margin, bool arg7, unsigned char fontType)
 {
     int local_2c;
@@ -174,12 +155,12 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
             }
         }
 
-        int nextGlyphIndex = FindEntryIndexByKey020424e4((int)input, fontType);
+        int nextGlyphIndex = FindEntryIndexByKey020424e4(input, fontType);
         if (control == ControlWord_Unknown_ff19)
             nextGlyphIndex = -1;
         if (nextChar == '<' && nextGlyphIndex < 0)
         {
-            char* tagEnd = FindUnescapedAngleBracket_020424ac(input);
+            const char* tagEnd = FindUnescapedAngleBracket_020424ac(input);
             if (tagEnd != NULL)
             {
                 char* tagInner = input + 1;
@@ -234,14 +215,14 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
         }
         if (nextGlyphIndex >= 0)
         {
-            FontIndexFile::Glyph* glyph = GetBoundedEntry020425b4(nextGlyphIndex, fontType);
-            ioCopyLength = glyph->tagLength;
+            FontCharacter* glyph = GetBoundedEntry020425b4(nextGlyphIndex, fontType);
+            ioCopyLength = glyph->byteLength;
             unsigned char nextGlyphUC = nextGlyphIndex;
             int kerning = LookupKeyValue020425e4(lastGlyphIndex, nextGlyphUC, fontType);
             lastGlyphIndex = nextGlyphUC;
             glyphSpacing = kerning + glyph->width;
 
-            foundDash = (glyph->tag[0] == '-');
+            foundDash = (glyph->text[0] == '-');
             if (foundDash)
                 iVar11 = 0;
 
@@ -275,7 +256,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
                 iVar11 = 0;
                 if (arg2)
                 {
-                    self->unknown_70_++;
+                    self->producedLength++;
                 }
             }
             glyphSpacing++;

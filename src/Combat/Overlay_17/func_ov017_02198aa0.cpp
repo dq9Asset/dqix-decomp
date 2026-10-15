@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "World/ZoneLifecycle.h"
+#include "World/ZoneTerrain.h"
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 #include "Resource/MessageSystem.h"
@@ -15,9 +16,7 @@ struct Cursor02198aa0 { unsigned char padding0[0x38]; int x, y; unsigned int fie
 struct Event02198aa0 { unsigned char kind; unsigned char padding1[19]; };
 struct State02198aa0 { unsigned short zoneId; unsigned char padding2[5]; unsigned char field7; unsigned char padding8[4]; unsigned char fieldC; unsigned char paddingD[15]; unsigned short angle; };
 void* GetField0x3b0Value_020100bc(GameState*);
-int GetGlobalField0x1c020421a0();
 extern "C" void* func_0202ae18();
-extern "C" void* func_02012fe4();
 int CheckSubstructByte0x7cPositive_020535c8(signed char*);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
 int CheckField0NonZero_0202b7d8(int*);
@@ -40,9 +39,9 @@ extern "C" ARM void func_ov017_02198aa0(GameResources* self) {
     GameObject* actor = game->GetUnknownGameObject();
     void* camera = GetField0x3b0Value_020100bc(game);
     GameResources* resources = func_ov017_0218b5b0();
-    MessageSystem* controller = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* controller = GetGlobalField0x1c020421a0();
     void* search = func_0202ae18();
-    void* zone = func_02012fe4();
+    Zone3D* zone = func_02012fe4();
     GrottoStruct* grotto = game->GetGrottoStruct();
     unsigned char discovery = grotto->activeMapData.GetDiscoveryState();
     unsigned char mapType = grotto->activeMapData.GetMapType();
@@ -75,7 +74,7 @@ extern "C" ARM void func_ov017_02198aa0(GameResources* self) {
     }
     if (!proceed) return;
     if ((unsigned char)(discovery + 254) <= 1) {
-        MaybeClearGrottoState0201bfd4(static_cast<Zone3D*>(zone));
+        MaybeClearGrottoState0201bfd4(zone);
         State02198aa0* state = (State02198aa0*)GetField0x3f8Address_0200fd0c(game);
         InitStruct02070378((char*)state);
         state->field7 = 1;

@@ -6,7 +6,6 @@ enum { RegionOffset9a0 = 0x9a0 };
 
 #include <globaldefs.h>
 
-extern int data_02107800;
 extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 struct Obj0205eaa0;

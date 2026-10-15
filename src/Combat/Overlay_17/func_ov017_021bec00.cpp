@@ -16,29 +16,6 @@ struct ZoneState021bec00 {
 #endif
     ActiveGrottoClass grotto;
 };
-union PopupOffset021bec00 { struct { int x, y; }; long long packed; };
-struct PopupController021bec00 {
-#if defined(jpn)
-    char padding0[0x7e8];
-#else
-    char padding0[0x918];
-#endif
-    short width;
-    char padding91a[0x998-0x91a];
-    int field998;
-    char padding99c[4];
-    int field9a0, field9a4;
-    char padding9a8[0x1858-0x9a8];
-    PopupOffset021bec00 offset;
-#if defined(jpn)
-    char padding1860[0x17de - 0x1730];
-#else
-    char padding1860[0x19ae - 0x1860];
-#endif
-    unsigned char flag19ae, flag19af;
-    char padding19b0[8];
-    unsigned char flag19b8;
-};
 struct GrottoTransitionData {
     unsigned short id;
     char padding2[2];
@@ -71,19 +48,17 @@ extern "C" void VectorizedMemset(void*, int, unsigned int);
 extern "C" int sprintf(char*, const char*, ...);
 extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
 #if defined(jpn)
-extern "C" void func_02043270(PopupController021bec00*, int, int, int, int);
+extern "C" void func_02043270(void*, int, int, int, int);
 #else
-extern "C" void func_02042b98(PopupController021bec00*, int, int, int, int);
+extern "C" void func_02042b98(void*, int, int, int, int);
 #endif
 extern "C" void func_ov017_021bef84(PopupState021bec00*);
-PopupController021bec00* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
 void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 GrottoTransitionData* GetField0x3f8Address_0200fd0c(GameState*);
 void InitAndResetHeader_0219e310(unsigned char*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
-void ReinitController02043204(char*);
 void SetByteField0x253_020397c0(void*);
 extern AllocatorUnion data_02114e20;
 #if defined(jpn)
@@ -96,12 +71,12 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     GameState* game = GameState::GetInstance();
     func_0202ae18();
     GameResources* resources = func_ov017_0218b5b0();
-    PopupController021bec00* controller = GetGlobalField0x1c020421a0();
+    MessageSystem* controller = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     ActiveGrottoClass* grotto = &func_02012fe4()->grotto;
     game->GetGrottoStruct();
     char text[0x100] = {};
-    controller->flag19ae = 0;
+    controller->b19ae = 0;
     if (self->state == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetUnknownGameObject(), 1);
         SetBitsInField4_0203b4d8(&resources->brightnessFlags_0, 0xc0);
@@ -161,30 +136,30 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
             } else {
 #if defined(jpn)
                 sprintf(text, data_ov017_021d86c6, grotto->GetPopupName());
-                func_0204500c((MessageSystem*)controller, text, 0);
+                func_0204500c(controller, text, 0);
 #else
                 sprintf(text, data_ov017_021d7eb2, grotto->GetPopupName());
-                func_0204500c((MessageSystem*)controller, text, 0, 256);
+                func_0204500c(controller, text, 0, 256);
 #endif
-                controller->flag19b8 = 1;
-                controller->flag19af = 0;
+                controller->b19b8 = 1;
+                controller->b19af = 0;
 #if defined(jpn)
-                func_02043270(controller, (256-controller->width)/2, 64, controller->width, 30);
+                func_02043270(controller, (256-controller->primaryBounds.width)/2, 64, controller->primaryBounds.width, 30);
 #else
-                func_02042b98(controller, (256-controller->width)/2, 64, controller->width, 30);
+                func_02042b98(controller, (256-controller->primaryBounds.width)/2, 64, controller->primaryBounds.width, 30);
 #endif
-                long long offset = controller->offset.packed;
+                long long offset = controller->popupPosition.packed;
                 int value = (int)offset;
                 int count = (int)(offset >> 32) + 3;
-                controller->offset.x = value;
-                controller->offset.y = count;
-                controller->field9a4 = 1;
-                controller->field998 = 1;
+                controller->popupPosition.x = value;
+                controller->popupPosition.y = count;
+                controller->w9a4 = 1;
+                controller->active = 1;
                 self->state = 3;
             }
         }
-    } else if (self->state == 3 && controller->field9a0 == 0) {
-        ReinitController02043204((char*)controller);
+    } else if (self->state == 3 && controller->mode == 0) {
+        ReinitController02043204(controller);
         SetByteField0x253_020397c0(game->GetUnknownGameObject());
         FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b38(music, 0x1f9);

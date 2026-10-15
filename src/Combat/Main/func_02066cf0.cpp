@@ -1,170 +1,82 @@
 #include <globaldefs.h>
 #include "Graphics/VRAMStaging.h"
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageFrame.h"
 
-struct CE28Obj;
-void LoadStateBytePair0206b804(char* obj, int* out1, int* out2);
-int IsField440Empty_0205ce28(struct CE28Obj* obj);
-struct Field440Obj0202f6a4;
-void SetupField440Type1(struct Field440Obj0202f6a4* obj);
-void UpdateTimedState0202f380(void* obj, int amount);
-struct Field440XYObj;
-void GetField440XY_02066cc0(struct Field440XYObj* obj, short* outX, short* outY);
-struct Holder02042c24;
-void SetSubstructXY02042c24(struct Holder02042c24* holder, int x, int y);
-void EmitScaledField0x440_0202f404(void* obj, int a, int b);
-bool IsCommandInRange02067a9c(void* obj, void* src);
-void MeasureTextWidth0206b6b8(unsigned char* obj);
-int GetWordFromTable02042648(int idx);
-bool IsHighByteFF02044494(void* obj, void* src);
-int LookupKeyValue020425e4(int a, int b, int tableIdx);
-int GetGlobalField0x1c020421a0();
-struct Holder020416cc;
-int GetField0OfSubstructAt0x18(struct Holder020416cc* holder);
-void UpdateObj020e15f8Entry_020e2310(char* obj, int idx, int a2, int a3, int a4, unsigned char a5, unsigned char a6);
-struct SetIntIntShortAt0xcStruct;
-void SetIntIntShortAt0xc_02066ce0(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c);
-void CallFunc0205c96cIfMode6AndFlag_02044530(char* obj, int flag);
-
-void Forward02044830(void*, int*, int*);
-
+void EmitScaledField0x440_0202f404(MessageSlotController* controller, int x, int y);
+bool IsCommandInRange02067a9c(void* unused, void* token);
+void MeasureTextWidth0206b6b8(MessageSystem* messages);
+int GetWordFromTable02042648(int index);
+int LookupKeyValue020425e4(int left, int right, int fontIndex);
+void UpdateObj020e15f8Entry_020e2310(MessageFrame* frame, int index, int x, int y, const char* text, unsigned char color, unsigned char font);
+void CallFunc0205c96cIfMode6AndFlag_02044530(MessageSystem* messages, int flag);
+void Forward02044830(void* unused, int* x, int* y);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, int c, int d);
 extern "C" void* __clear(void* dst, int count);
-extern "C" void func_02066a6c(void* obj, int flag);
-extern "C" void func_020e2110(void* target);
-extern "C" void func_020675fc(void* obj);
-extern "C" void func_020654b8(void* obj, int cfg, void* glyph, short x, short y, int flags);
-extern "C" void func_02045864(int x, int y, void* metrics, void* staging, int p5, int p6, int p7, unsigned char table);
-extern "C" void func_020417b0(void* glyph, unsigned short font, void* palette, int alpha);
-extern "C" void func_0204459c(void* obj, int flag);
-extern "C" void func_020653e4(int a, int b);
+extern "C" void func_02066a6c(MessageSystem* messages, int flag);
+extern "C" void func_020e2110(MessageFrame* frame);
+extern "C" void func_020675fc(MessageSystem* messages);
+extern "C" void func_0204459c(MessageSystem* messages, int flag);
+extern "C" void func_020653e4(int x, int y);
 
 extern short data_020e7e54[];
 extern short data_020e7e3c[];
 extern int data_021077fc;
 
-struct GlyphMetrics02066cf0 {
-    char pad[4];
-    signed char advance;
-};
-
-struct Glyph02066cf0 {
-    char pad[0x17];
-    unsigned char width;
-    GlyphMetrics02066cf0* metrics;
-};
-
-struct TextBox02066cf0 {
-    char pad0[0x34];
-    int context;
-    void* target;
-    char pad3c[4];
-    unsigned int drawn;
-    int field44;
-    char pad48[4];
-    unsigned short* text;
-    char pad50[4];
-    int field54;
-    int field58;
-    char pad5c[0x10];
-    int field6c;
-    char pad70[4];
-    unsigned int start;
-    unsigned int end;
-    char pad7c[0xc];
-    unsigned int minStart;
-    char pad8c[0x998 - 0x8c];
-    int active;
-    char pad99c[0x9b0 - 0x99c];
-    int fade;
-    char pad9b4[4];
-    Glyph02066cf0 glyphs[80];
-    char pad1278[0x1848 - 0x1278];
-    char palette[0x10];
-    int lineX;
-    int lineY;
-    char pad1860[4];
-    int lineHeight;
-    int yOffset;
-    char pad186c[0x187c - 0x186c];
-    unsigned short font;
-    char pad187e[0x195b - 0x187e];
-    unsigned char effects;
-    char pad195c[0x19b1 - 0x195c];
-    unsigned char showName;
-    char pad19b2[0x19b8 - 0x19b2];
-    unsigned char customLayout;
-    unsigned char usePalette;
-    char pad19ba[0x19c5 - 0x19ba];
-    unsigned char checkFirst;
-    char pad19c6[0x19cb - 0x19c6];
-    unsigned char refreshHolder;
-    unsigned char hidden;
-    char pad19cd;
-    unsigned char toVram;
-    char pad19cf[0x19dc - 0x19cf];
-    unsigned char table;
-    char pad19dd[3];
-    char holder[0x1e28 - 0x19e0];
-    void* texture;
-};
-
-struct GlobalFlags02066cf0 {
-    char pad[0x195b];
-    unsigned char effects;
-};
+#if !defined(jpn)
 
 // USA: func_02066cf0
-extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
-    Glyph02066cf0* glyph;
+extern "C" ARM void func_02066cf0(MessageSystem* obj, int flag) {
+    MessageGlyphSlot* glyph;
     int x;
     int y;
     unsigned int pos;
     unsigned char width;
 
-    if (obj->hidden) return;
+    if (obj->b19cc) return;
 
     int offsetX, offsetY;
-    LoadStateBytePair0206b804((char*)obj, &offsetX, &offsetY);
+    LoadStateBytePair0206b804(obj, &offsetX, &offsetY);
 
-    if ((obj->active && obj->showName) || obj->refreshHolder) {
-        if (obj->refreshHolder) {
-            if (IsField440Empty_0205ce28((CE28Obj*)obj->holder)) {
-                SetupField440Type1((Field440Obj0202f6a4*)obj->holder);
-                UpdateTimedState0202f380(obj->holder, 1);
+    if ((obj->active && obj->b19b1) || obj->compositeBoundsEnabled) {
+        if (obj->compositeBoundsEnabled) {
+            if (IsField440Empty_0205ce28(&obj->controller)) {
+                SetupField440Type1(&obj->controller);
+                UpdateTimedState0202f380(&obj->controller, 1);
             }
         }
 
-        if (obj->active && obj->showName) {
+        if (obj->active && obj->b19b1) {
             func_02066a6c(obj, flag);
         }
 
         short boxX, boxY;
-        GetField440XY_02066cc0((Field440XYObj*)obj->holder, &boxX, &boxY);
-        SetSubstructXY02042c24((Holder02042c24*)obj->holder, (short)(boxX + offsetX), (short)(boxY + offsetY));
+        GetField440XY_02066cc0(&obj->controller, &boxX, &boxY);
+        SetSubstructXY02042c24(&obj->controller, (short)(boxX + offsetX), (short)(boxY + offsetY));
 
         if (flag == 0) {
-            if (obj->target) {
-                func_020e2110(obj->target);
+            if (obj->frame) {
+                func_020e2110(obj->frame);
             } else {
-                EmitScaledField0x440_0202f404(obj->holder, 1, 1);
+                EmitScaledField0x440_0202f404(&obj->controller, 1, 1);
             }
         }
 
-        SetSubstructXY02042c24((Holder02042c24*)obj->holder, boxX, boxY);
+        SetSubstructXY02042c24(&obj->controller, boxX, boxY);
     }
 
     if (!obj->active) return;
     func_020675fc(obj);
 
-    void* palette = 0;
-    if (obj->usePalette == 1) {
-        palette = obj->palette;
+    Rect02042c54* clip = 0;
+    if (obj->clipEnabled == 1) {
+        clip = &obj->textRectangle;
     }
 
-    if (!obj->field54 || !obj->field58) return;
-    if (!obj->field6c) return;
+    if (!obj->tokenStart || !obj->tokenCursor) return;
+    if (!obj->tokenCount) return;
 
-    CallFunc0205c96cIfMode6AndFlag_02044530((char*)obj, flag);
+    CallFunc0205c96cIfMode6AndFlag_02044530(obj, flag);
 
     int lineX[16];
     int lineY[16];
@@ -174,8 +86,8 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
 
     int blend = 0x1f;
     int alpha = 0x1f;
-    if (obj->effects & 4) {
-        alpha = obj->fade >> 16;
+    if (obj->b195b & 4) {
+        alpha = obj->w9b0 >> 16;
         if (flag != 0) {
             alpha &= 0x1f;
             if (alpha != 0) {
@@ -186,47 +98,47 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
     }
 
     unsigned short ch;
-    if (obj->checkFirst) {
-        ch = obj->text[obj->end];
+    if (obj->b19c5) {
+        ch = obj->firstLineBuffer[obj->tokenIndex];
         if (!IsCommandInRange02067a9c(obj, &ch)) return;
     }
 
-    if (obj->effects & 0x40) {
-        MeasureTextWidth0206b6b8((unsigned char*)obj);
+    if (obj->b195b & 0x40) {
+        MeasureTextWidth0206b6b8(obj);
     }
 
-    if (obj->customLayout) {
+    if (obj->b19b8) {
         Forward02044830(obj, lineX, lineY);
         for (int i = 0; i < 0x10; i++) {
-            lineY[i] = obj->lineY;
+            lineY[i] = obj->popupPosition.y;
         }
     } else {
         for (int i = 0; i < 0x10; i++) {
-            lineX[i] = obj->lineX + 0xc;
-            lineY[i] = obj->lineY;
+            lineX[i] = obj->popupPosition.x + 0xc;
+            lineY[i] = obj->popupPosition.y;
         }
     }
 
     unsigned char prevWidth;
-    unsigned int end = obj->end;
-    pos = obj->start;
-    unsigned int minStart = obj->minStart;
+    unsigned int end = obj->tokenIndex;
+    pos = obj->lineStart;
+    unsigned int minStart = obj->slotReleaseIndex;
     prevWidth = 0xff;
     if (pos < minStart) pos = minStart;
 
-    unsigned char spacing = GetWordFromTable02042648(obj->table);
-    y = lineY[0] - obj->yOffset;
+    unsigned char spacing = GetWordFromTable02042648(obj->b19dc);
+    y = lineY[0] - obj->w1868;
     x = lineX[0];
 
     for (; pos < end; pos++) {
-        ch = obj->text[pos];
+        ch = obj->firstLineBuffer[pos];
 
         if (IsHighByteFF02044494(obj, &ch)) {
             if (IsCommandInRange02067a9c(obj, &ch)) {
                 break;
             }
             if (ch == 0xff18) {
-                int lineHeight = obj->lineHeight;
+                int lineHeight = obj->w1864;
                 x = lineX[line + 1];
                 line++;
                 y += lineHeight;
@@ -239,25 +151,25 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
         }
 
         glyph = &obj->glyphs[ch];
-        width = glyph->width;
-        x += LookupKeyValue020425e4(prevWidth, width, obj->table);
+        width = glyph->characterIndex;
+        x += LookupKeyValue020425e4(prevWidth, width, obj->b19dc);
         prevWidth = width;
 
         if (flag != 0) {
-            if (obj->drawn <= pos) {
-                func_020654b8(obj, obj->context, glyph, (short)x, (short)(y + 2), 0xf);
+            if (obj->stream40 <= pos) {
+                func_020654b8(obj, obj->textContext, glyph, (short)x, (short)(y + 2), 0xf);
             }
-        } else if (obj->toVram) {
-            if (obj->field44 != obj->end) {
-                void* staging = AllocateVRAMStagingMemory(0x3000);
+        } else if (obj->b19ce) {
+            if (obj->stream44 != obj->tokenIndex) {
+                unsigned char* staging = static_cast<unsigned char*>(AllocateVRAMStagingMemory(0x3000));
                 if (staging != 0) {
                     unsigned char j;
-                    int vramOffset = (int)(((unsigned int)*(int*)((char*)obj->texture + 0x50) << 16) >> 13);
-                    unsigned char table = obj->table;
-                    GlyphMetrics02066cf0* metrics = glyph->metrics;
+                    int vramOffset = (int)((obj->encoder->textureAllocationKey << 16) >> 13);
+                    unsigned char table = obj->b19dc;
+                    FontCharacter* metrics = glyph->character;
 
                     if (metrics) {
-                        unsigned char effects = ((GlobalFlags02066cf0*)GetGlobalField0x1c020421a0())->effects;
+                        unsigned char effects = GetGlobalField0x1c020421a0()->b195b;
                         if (effects & 0x80) {
                             for (j = 0; j < 4; j++) {
                                 func_02045864(data_020e7e54[j] + (short)x, data_020e7e3c[j] + (short)(y - 0x74),
@@ -278,27 +190,27 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
                     FreeVRAMStagingMemory(staging);
                 }
             }
-        } else if (obj->target) {
-            int a4 = GetField0OfSubstructAt0x18((Holder020416cc*)glyph);
-            UpdateObj020e15f8Entry_020e2310((char*)obj->target, 0, x, y - 0x74, a4, 0xf, obj->table);
+        } else if (obj->frame) {
+            const char* text = GetField0OfSubstructAt0x18(glyph);
+            UpdateObj020e15f8Entry_020e2310(obj->frame, 0, x, y - 0x74, text, 0xf, obj->b19dc);
         } else {
-            SetIntIntShortAt0xc_02066ce0((SetIntIntShortAt0xcStruct*)glyph, x, y, 0);
-            func_020417b0(glyph, obj->font, palette, alpha);
+            SetIntIntShortAt0xc_02066ce0(glyph, x, y, 0);
+            func_020417b0(glyph, obj->textColor, clip, alpha);
         }
 
-        if (glyph->metrics) {
-            x += glyph->metrics->advance + 1;
+        if (glyph->character) {
+            x += glyph->character->width + 1;
         }
     }
 
     func_0204459c(obj, flag);
-    obj->drawn = end;
+    obj->stream40 = end;
 
-    if (!obj->toVram) return;
-    void* texture = obj->texture;
+    if (!obj->b19ce) return;
+    Foo0207df50* texture = obj->encoder;
     if (!texture) return;
 
-    unsigned int texOffset = *(int*)((char*)texture + 0x50) << 16;
+    unsigned int texOffset = texture->textureAllocationKey << 16;
 
     *(volatile unsigned int*)0x04000444 = 0;
     *(volatile unsigned int*)0x04000470 = 0;
@@ -359,3 +271,5 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
     *(volatile unsigned int*)0x04000448 = 1;
     *(volatile unsigned int*)0x04000448 = 1;
 }
+
+#endif

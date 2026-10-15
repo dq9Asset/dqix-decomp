@@ -10,9 +10,9 @@ enum { kRegiond0 = 0xd0 };
 #endif
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
+#include "Resource/MessageSystem.h"
 
 struct FlagWord02046708;
-struct Obj020e25e8;
 
 struct Global02109030 {
     unsigned char pad_0x0[kRegion3c9];
@@ -22,10 +22,7 @@ struct Global02109030 {
 extern "C" GameResources* func_ov017_0218b5b0(void);
 void* GetDataPtr02114e04_020d6c00(void);
 Global02109030* GetGlobal02109030_020936f8(void);
-int GetGlobalField0x1c020421a0(void);
-void ReinitController02043204(char* obj);
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
-void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 
 struct PartyList2a04 {
     unsigned char pad_0x0[0xf78];
@@ -35,7 +32,7 @@ struct PartyList2a04 {
 
 struct BattleView02165730 {
     unsigned char pad_0x0[kRegion390];
-    struct Obj020e25e8* selection;
+    EntryManager020e2490* selection;
     unsigned char pad_0x394[kRegiond0];
     unsigned int flags;
     unsigned char pad_0x468[0x1c];
@@ -54,7 +51,7 @@ extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
 
     if (view->step == 0) {
         GetGlobal02109030_020936f8()->flag3c9 = 1;
-        ReinitController02043204((char*)GetGlobalField0x1c020421a0());
+        ReinitController02043204(GetGlobalField0x1c020421a0());
         view->field_0x484 = view->field_0x486 = -1;
         view->field_0x4a5 = 0;
 
@@ -79,7 +76,7 @@ extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
         }
         view->step = 2;
     } else if (view->step == 2) {
-        ReinitController02043204((char*)GetGlobalField0x1c020421a0());
+        ReinitController02043204(GetGlobalField0x1c020421a0());
         view->field_0x484 = view->field_0x486 = -1;
         view->field_0x4a5 = 0;
         view->state = 0x10;

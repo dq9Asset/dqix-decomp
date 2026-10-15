@@ -1,21 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/FontGlyphTable.h"
-
-struct FontTableGlobals {
-#if defined(jpn)
-    char unknown0[0x14];
-    FontGlyphTable* font6;
-    char unknown18[8];
-    FontGlyphTable* font8;
-    FontGlyphTable* font10;
-    FontGlyphTable* font12;
-#else
-    char unknown0[0x10];
-    FontGlyphTable* font8;
-#endif
-};
-
-extern FontTableGlobals data_02107800;
+#include "Resource/MessageSystem.h"
 
 // USA: func_020429bc
 ARM FontGlyphTable* GetFontGlyphTable_020429bc(int pixelSize) {

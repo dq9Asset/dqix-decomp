@@ -1,10 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 // USA: func_02042b10
-ARM void SetField0x1e20_02042b10(void* obj, void* value) {
-#if defined(jpn)
-    *(void**)((char*)obj + 0x1c44) = value;
-#else
-    *(void**)((char*)obj + 0x1e20) = value;
-#endif
+ARM void SetField0x1e20_02042b10(MessageSystem* obj, Foo02042fcc* value) {
+    obj->controller.currentBounds = value;
 }

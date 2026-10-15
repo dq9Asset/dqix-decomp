@@ -159,7 +159,6 @@ extern TouchState data_02114e54;
 extern Obj0205eaa0 data_02108760;
 
 GameResources* GetWord0x0_0200fb8c(int* gameState);
-MessageSystem* GetGlobalField0x1c020421a0();
 void SetSubBrightness(GameResources* resources, int brightness, int frames);
 int IsBrightnessTransitionActive(GameResources* resources);
 void* LoadFileIntoMemory(const char* path, void* archive, unsigned int* size);

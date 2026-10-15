@@ -4,6 +4,7 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/ActionDataTables.h"
 #include "GameState/GameState.h"
 
@@ -28,9 +29,7 @@ struct BattleInfo2a04 {
 extern "C" void __clear(void* buf, int n);
 extern "C" void func_020e4864(const char* src, char* dst, int a, int b, int c, int d);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
-struct MessageSystem;
-struct MessageSystem* GetGlobalField0x1c020421a0();
-extern "C" void func_02046608(struct MessageSystem* messages, int a, const char* format, char* output, int size, int b, int c);
+extern "C" void func_02046608(MessageSystem* messages, int a, const char* format, char* output, int size, int b, int c);
 
 struct ActionEntry {
     int field_0x0;

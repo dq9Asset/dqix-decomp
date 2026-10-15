@@ -1,20 +1,10 @@
 #include <globaldefs.h>
-
-struct Struct_0205bbcc;
-void Init0205bbcc(struct Struct_0205bbcc*);
-struct Struct_0205bef8;
-void Init0205bef8(struct Struct_0205bef8*);
-
-struct Struct_0205c53c {
-    char pad0[0x94];
-    unsigned char field94;
-    unsigned char field95;
-};
+#include "Resource/MessageSystem.h"
 
 // USA: func_0205c53c
 ARM void InitChannelPair0205c53c(struct Struct_0205c53c* s) {
-    Init0205bbcc((struct Struct_0205bbcc*)((char*)s + 0x4));
-    Init0205bef8((struct Struct_0205bef8*)((char*)s + 0x54));
+    Init0205bbcc(&s->first);
+    Init0205bef8(&s->second);
     s->field94 = 0;
     s->field95 = 0;
 }

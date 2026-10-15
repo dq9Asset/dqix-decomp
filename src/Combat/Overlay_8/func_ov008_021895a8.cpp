@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageRenderResources.h"
 #include "Resource/FontBankLoader.h"
 
 #if defined(jpn)
@@ -16,15 +18,6 @@
 #define REG_BG3CNT (*(volatile unsigned short*)0x0400000e)
 #define REG_BLDCNT 0x04000050
 
-struct MessageSystem
-{
-#if defined(jpn)
-    char unk_0[0x28];
-#else
-    char unk_0[0x5c];
-#endif
-    void* unk_5c;
-};
 
 struct Struct0205a198;
 struct ActiveEntry02046900;
@@ -35,7 +28,6 @@ struct List0204b0e8;
 struct Obj0204c7a8;
 struct Struct_0205cf78;
 struct Elem_0205cf78;
-struct ClearTarget0205a234;
 
 struct BackgroundGraphics
 {
@@ -61,32 +53,6 @@ struct TextWindow
     char unk_a0[0xb2 - 0xa0];
     unsigned char unk_b2;
     char unk_b3[0xbc - 0xb3];
-};
-
-struct Sprite
-{
-    char unk_0[0x22];
-    unsigned char unk_22;
-    char unk_23[0x28 - 0x23];
-};
-
-struct SpriteRenderer
-{
-    char unk_0[0x3c];
-    void* animations_;
-    Sprite* sprites_;
-    char unk_44[4];
-    unsigned int unk_48;
-    short numSprites_;
-    unsigned short capacity_;
-    unsigned char unk_50;
-    char unk_51[3];
-
-    void SetSprites(Sprite* sprites, short numSprites)
-    {
-        sprites_ = sprites;
-        numSprites_ = numSprites;
-    }
 };
 
 struct PartyMemberData
@@ -120,7 +86,7 @@ extern "C" void func_020dfec0(void* texts, SafeAllocator* allocator, void* file,
 extern "C" void func_0204b5b4(BackgroundGraphics* background, int);
 extern "C" void func_0204b174(BackgroundGraphics* background, void* file, SafeAllocator* allocator, unsigned int size);
 extern "C" void func_0204bc74(BackgroundGraphics* background, int, int, int, int, int, int);
-extern "C" void func_0205a528(SpriteRenderer* renderer, void* file, unsigned int size, SafeAllocator* allocator);
+extern "C" void func_0205a528(LoadTable* renderer, void* file, unsigned int size, SafeAllocator* allocator);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int a, int b, int c, int d);
 extern "C" void func_ov008_0218b240(void* self);
 extern "C" void func_ov008_0218aa24(void* self);
@@ -130,7 +96,6 @@ int IsField0Null_02046b08(void** field);
 void SetBitsInWord_0203b4a0(unsigned int* word, unsigned int bits);
 unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
-MessageSystem* GetGlobalField0x1c020421a0();
 PartyMemberData* GetFieldAt0x150_02053c6c(unsigned char* member);
 void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
@@ -139,8 +104,6 @@ void FlushAndDispatchList0204b0e8(List0204b0e8* background, void*);
 void AllocateBuffer0204c7a8(Obj0204c7a8* canvas, SafeAllocator* allocator, int pixels, unsigned int size);
 void LinkArrayPrevPointers0205cf78(Struct_0205cf78* window, Elem_0205cf78* canvases, unsigned char count);
 void Init0205a198(Struct0205a198* sprite);
-void ClearField0And40205a234(ClearTarget0205a234* list);
-void InitStruct0205a444(char* renderer);
 int CountActiveEntries(ActiveEntry02046900* archive);
 void* FindRecordByIndex(Rec020467f0* archive, int index, void** name, int* size);
 
@@ -165,9 +128,9 @@ struct VisitorTalk
     TextWindow window_;
     BackgroundGraphics backgrounds_[2];
     Canvas canvas_;
-    SpriteRenderer* renderer_;
-    Sprite* sprites_;
-    void* animations_;
+    LoadTable* renderer_;
+    Struct0205a198* sprites_;
+    Container0205a3d0* animations_;
     SafeAllocator allocator_;
     SafeAllocator textAllocator_;
     SafeAllocator recordsAllocator_;
@@ -233,7 +196,7 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
         SetBitsInWord_0203b4a0((unsigned int*)func_ov017_0218b5b0(), 0x10);
         OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0xd);
         unsigned int female;
-        self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
+        self->text_ = GetGlobalField0x1c020421a0()->savedTextBuffer;
         female = 0;
         GuestData* guest = self->guest_;
         if (guest == NULL)
@@ -350,16 +313,16 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
             LinkArrayPrevPointers0205cf78((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)&self->canvas_, 1);
             for (unsigned char i = 0; i < 8; i++)
             {
-                int offset = i * sizeof(Sprite);
-                Init0205a198((Struct0205a198*)((char*)self->sprites_ + offset));
-                ((Sprite*)((char*)self->sprites_ + offset))->unk_22 = i + 4;
+                Init0205a198(&self->sprites_[i]);
+                self->sprites_[i].firstObject = i + 4;
             }
-            ClearField0And40205a234((ClearTarget0205a234*)self->animations_);
-            InitStruct0205a444((char*)self->renderer_);
-            self->renderer_->unk_50 = 0;
-            SpriteRenderer* renderer = self->renderer_;
-            renderer->SetSprites(self->sprites_, 8);
-            self->renderer_->animations_ = self->animations_;
+            ClearField0And40205a234(self->animations_);
+            InitStruct0205a444(self->renderer_);
+            self->renderer_->subScreen = 0;
+            LoadTable* renderer = self->renderer_;
+            renderer->records = self->sprites_;
+            renderer->recordCount = 8;
+            self->renderer_->animationEntries = self->animations_;
             self->step_++;
         }
     }

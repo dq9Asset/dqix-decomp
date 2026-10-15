@@ -9,7 +9,7 @@ int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject*);
 GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*,int);
 int ClassifyField0x81fe_ov000_0215fc60(char*);
 struct Skill {char p[8];unsigned int low8:8,side:2,rest8:22;char q[8];unsigned int low14:28,mode:4;unsigned int low18:5,type:7,rest18:20;unsigned int low1c:14,repeats:5,rest1c:13;};
-Skill* SearchBothTables02079e2c(char*,int);int GetCombatantField0x148Bits3To4_ov000_02159d94(int,int);
+Skill* SearchBothTables02079e2c(char*,int);int GetCombatantField0x148Bits3To4_ov000_02159d94(void*, int);
 struct Random;int PickTableValueWithRandomFill_0215fbe0(Random*,int);int NextRandomMax(Random*,int);
 struct Entry { char p[0x20]; short id; };
 struct Action { short id; char p[7]; unsigned char count; char q[6]; Entry* entry; };
@@ -36,7 +36,7 @@ extern "C" ARM int func_ov000_0215440c(Random* self,Action* action,short* output
  int count=0;
  GameObject* unit=GetEnemy(GetId(action->entry));if(!unit)return count;
  int done=0;
- if(GetCombatantField0x148Bits3To4_ov000_02159d94((int)self,GetId(action->entry))!=2){
+ if(GetCombatantField0x148Bits3To4_ov000_02159d94(self, GetId(action->entry))!=2){
   if(unit->linked){
    if((skill->mode==2||skill->mode==5)&&skill->side==1){
     GameObject* partner=GetUnit(GetId(unit->stats));

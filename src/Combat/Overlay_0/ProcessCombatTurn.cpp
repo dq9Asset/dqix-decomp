@@ -125,7 +125,7 @@ void ResetStruct02157cdc(void* obj);
 extern "C" int func_ov000_02155f9c(void* self, int id, int checkSub);
 extern "C" void func_ov024_021f73b8(Big* b);
 extern "C" void func_ov024_021f9030(Big* b, void* self, int id, ActionNode* node);
-int GetCombatantField0x148Bits3To4_ov000_02159d94(int, int);
+int GetCombatantField0x148Bits3To4_ov000_02159d94(void*, int);
 void ClearInt0208a910(int* out);
 extern "C" int func_0208a91c(int* p0, void* self, int id, int* outCount, short* outTargets);
 SkillData* SearchBothTables02079e2c(char* data, int id);
@@ -347,7 +347,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                     }
                 }
             } else {
-                int kind = GetCombatantField0x148Bits3To4_ov000_02159d94((int)self, (short)node->entry->id);
+                int kind = GetCombatantField0x148Bits3To4_ov000_02159d94(self, (short)node->entry->id);
                 int selfId = (short)node->entry->id;
                 Combatant* me = GetFlagged0x400(selfId);
                 if (kind != 2) {
@@ -409,7 +409,7 @@ extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
                 node2->action = 0x1f7;
             } else {
                 node2->action = 2;
-                int kind = GetCombatantField0x148Bits3To4_ov000_02159d94((int)self, (short)node2->entry->id);
+                int kind = GetCombatantField0x148Bits3To4_ov000_02159d94(self, (short)node2->entry->id);
                 Combatant* me = GetCombatantWithFlag0x400_0200fea4((GameState*)gs, node2->entry->id);
                 if (kind != 2) {
                     int work2;

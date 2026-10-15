@@ -22,20 +22,17 @@ void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 struct Struct0205a198;
 void Init0205a198(struct Struct0205a198* p);
-void InitStruct0205a444(char* obj);
 
 void* GetGlobalPtr02105244_0203bd14();
 extern "C" void* func_0203be4c(void);
 struct Rec020467f0;
-int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
-void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 int ValidateResourceLookup0205a1f0(void* a, void* b, int c);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void VectorizedInvertedMemcpy(void* dst, void* src, int size);
 void DelayThenSyncBit0_020c9820(void);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToSubObjVRAM(int, int, unsigned int);
-void InitFourEntrySlots02020aa0(void* obj);
+void InitFourEntrySlots02020aa0(MapDisplay* obj);
 extern "C" void func_02027974(void* obj, int a, void* b);
 #if defined(jpn)
 extern "C" void func_02020fc4(void* obj, int handle, SafeAllocator* alloc);
@@ -186,10 +183,10 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         for (int i = 0; i < 0x1c; i++) {
             Init0205a198(&self->records[i]);
         }
-        InitStruct0205a444((char*)&self->entryList);
-        self->entryList.active = 1;
+        InitStruct0205a444(&self->entryList);
+        self->entryList.subScreen = 1;
         self->entryList.records = self->records;
-        self->entryList.count = 0x1b;
+        self->entryList.recordCount = 0x1b;
         char* g = (char*)GetGlobalPtr02105244_0203bd14();
         *(int*)(g + GlobalBufferOffset) = 0x2000;
         func_0203bd08();
@@ -202,9 +199,9 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         fileData = 0;
         fileLength = 0;
         loader->GetLoadedFileByID(self->taska10, &fileData, &fileLength);
-        ProcessRecords0205a498((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
-        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
-        SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
+        ProcessRecords0205a498(&self->entryList, static_cast<Rec020467f0*>(fileData), fileLength, alloc);
+        SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[9], 1, 1);
+        SetBitfieldStoreBytes0205af38(&self->entryList, &self->records[11], 1, 1);
         BackgroundLoader::GetInstance()->RemoveTask(self->taska10);
         self->taska10 = -1;
         loader->GetLoadedFileByID(self->taska14, &fileData, &fileLength);

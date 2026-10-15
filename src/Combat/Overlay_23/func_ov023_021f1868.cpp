@@ -1,5 +1,8 @@
 #include <globaldefs.h>
-#include "GameState/PartyAccess.h"
+#include <Resource/MessageSystem.h>
+
+// The JPN counterpart remains assembly-owned and has a different implementation.
+#if !defined(jpn)
 #include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include <Filesystem/BackgroundLoader.h>
@@ -12,8 +15,6 @@ struct Pair0209a338;
 struct Ctx0209a470;
 struct StreamHeader;
 struct List020727d8;
-struct Obj02046574;
-struct StoreStruct;
 struct Obj0209fee4;
 struct IntField0x60_0209ff64;
 struct TaskState0209ff6c;
@@ -24,6 +25,8 @@ struct Struct020dfc40;
 struct Container020e0310;
 struct Obj_021f222c;
 struct Reset_021eefac;
+
+struct BaseCombatStats;
 
 struct Appearance_021f1868 {
     unsigned char female_ : 1;
@@ -58,18 +61,6 @@ struct Skill_021f1868 {
     unsigned int value_ : 8;
     unsigned int type_ : 5;
     unsigned int rest_ : 7;
-};
-
-struct MessageSystem_021f1868 {
-    char* actor_;
-    char unk_4[4];
-    void* item_;
-    char unk_c[0x998 - 0xc];
-    int busy_;
-    char unk_99c[0x19b2 - 0x99c];
-    unsigned char unk_19b2;
-    char unk_19b3[0x19ca - 0x19b3];
-    unsigned char unk_19ca;
 };
 
 struct TitleScript_021f1868 {
@@ -136,7 +127,7 @@ extern const char data_ov023_021fe2a0[];
 extern const char data_ov023_021fe2b7[];
 extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 
-MessageSystem_021f1868* GetGlobalField0x1c020421a0();
+ArrayContainsByteStruct* GetPtrField0x2a04_02010828(GameState* gameState);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* array, int id);
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
@@ -151,11 +142,8 @@ void PollOv017Task0209ff6c(TaskState0209ff6c* titles);
 int AreFields60And64AllOnes_021f21f4(Fields60_021f21f4* titles);
 Member_021f1868* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int id);
 int AppendString02042058(char* dst, const char* src);
-void SetIndexedName02046574(Obj02046574* obj, int index, char* str);
 void InitObjFromCombatantId020e4bf4(void* obj, int id);
 void** CallFunc020e52a0_020e5294(void* p, int key);
-void StoreInArray0x8b0_020465c0(StoreStruct* base, int index, int value);
-void ReinitController02043204(char* messages);
 void ClearStruct020a13c4(S020a13c4* table);
 void SetupGlobalAndRunScript020a13e4(void* table, void* allocator, int ids, unsigned short count, unsigned char mode);
 void* ResetAndReturnSelf020dfc2c(void* texts);
@@ -176,9 +164,7 @@ void* ExtractFileFromGP2(const char* gp2, const char* inner, unsigned int* size)
 void func_020728ac(void* list, void* allocator, void* file, int size, int a, int b, int c);
 void func_020e5604(void* items, SafeAllocator* allocator, void* file, int size);
 Skill_021f1868* func_0209a594(void* script, int id);
-void func_02046380(MessageSystem_021f1868* messages);
 void func_020e4864(void* src, char* dst, int a, int b, int c, int d);
-void func_0204500c(MessageSystem_021f1868* messages, char* text, int a, int b);
 int func_ov023_021f4fc8();
 int func_ov023_021ed724(void* table, short* ids, int count);
 void func_020e0028(TextTable_021f1868* texts, SafeAllocator* allocator, void* file, unsigned int size, short* ids, unsigned short count);
@@ -196,10 +182,10 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
 {
     GameState* gameState = GameState::GetInstance();
     BattleEnd_021f1868* end = _ZZ17GetGlobal021ffefcvE1s;
-    MessageSystem_021f1868* messages = GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int id = end->current_;
-    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(gameState), id);
+    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828(gameState), id);
     if (end->step_ == 0)
     {
         self->busy_ = 1;
@@ -260,37 +246,37 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
                 if (member != NULL)
                 {
                     char text[0x200];
-                    char actorName[12];
+                    ItemNameText actorName;
                     char item[0x80];
                     __clear(text, sizeof(text));
                     AppendString02042058(text, name);
                     AppendString02042058(text, FindEntryByKey_02072a68(&self->texts_, 0x22));
                     func_02046380(messages);
-                    SetIndexedName02046574((Obj02046574*)messages, 0, member->name_);
-                    InitObjFromCombatantId020e4bf4(actorName, id);
-                    messages->actor_ = actorName;
+                    SetIndexedName02046574(messages, 0, member->name_);
+                    InitObjFromCombatantId020e4bf4(&actorName, id);
+                    messages->actorNames[0] = &actorName;
                     if (skill->type_ == 1)
                     {
                         void** entry = CallFunc020e52a0_020e5294(self->items_, skill->item_);
-                        messages->item_ = entry;
+                        messages->actionNames[0] = entry;
                         __clear(item, sizeof(item));
                         func_020e4864(*entry, item, 1, 0, 0, 0);
-                        SetIndexedName02046574((Obj02046574*)messages, 1, item);
+                        SetIndexedName02046574(messages, 1, item);
                     }
                     else
                     {
-                        SetIndexedName02046574((Obj02046574*)messages, 1, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->prefix_ + 100)));
+                        SetIndexedName02046574(messages, 1, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->prefix_ + 100)));
                     }
                     int slot = 2;
                     if (skill->type_ == 4 || skill->type_ == 0x10)
                         slot = 1;
-                    SetIndexedName02046574((Obj02046574*)messages, slot, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->suffix_ + 200)));
-                    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, skill->value_);
+                    SetIndexedName02046574(messages, slot, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->suffix_ + 200)));
+                    StoreInArray0x8b0_020465c0(messages, 0, skill->value_);
                     if (inParty)
                     {
                         func_0204500c(messages, text, 1, 0xe3);
-                        messages->unk_19b2 = 0;
-                        messages->busy_ = 1;
+                        messages->b19b2 = 0;
+                        messages->active = 1;
                     }
                     end->newSkill_++;
                     end->step_++;
@@ -306,7 +292,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         if (end->newSkillCount_ <= end->newSkill_)
         {
             if (self->titles_->count_ > 0)
-                messages->unk_19ca = 0;
+                messages->b19ca = 0;
         }
         if (func_ov023_021f4fc8())
         {
@@ -321,7 +307,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         int count = self->titles_->count_;
         if (count > 0)
         {
-            ReinitController02043204((char*)messages);
+            ReinitController02043204(messages);
             char* menu = self->menu_; SafeAllocator* idAllocator = (SafeAllocator*)(menu + 0x1af8);
             idAllocator->Reset();
             count = self->titles_->count_;
@@ -429,3 +415,5 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
     }
     return self->endState_;
 }
+
+#endif

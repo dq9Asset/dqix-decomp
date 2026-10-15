@@ -20,7 +20,6 @@ void* GetGlobalPtr021075f4_0203cf4c();
 Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
 extern "C" void func_0206b104(MessageSystem*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char*);
 extern "C" void func_02043124(MessageSystem*);
 
 #if defined(jpn)

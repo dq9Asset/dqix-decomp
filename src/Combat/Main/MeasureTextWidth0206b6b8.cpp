@@ -1,11 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
-extern "C" void func_02043270(void*, int, int, int, int);
+
 
 // JPN: func_0206cf44
-extern "C" ARM void func_0206cf44(unsigned char* obj) {
-    unsigned short* p = *(unsigned short**)(obj + 0x20);
-    unsigned short* end = *(unsigned short**)(obj + 0x24);
+extern "C" ARM void func_0206cf44(MessageSystem* obj) {
+    unsigned short* p = obj->tokenStart;
+    unsigned short* end = obj->tokenCursor;
     int count = 0;
     while (p != end) {
         unsigned short token = *p;
@@ -13,7 +14,7 @@ extern "C" ARM void func_0206cf44(unsigned char* obj) {
         if (token == 0xff18) count++;
         p++;
     }
-    int glyphWidth = *(int*)(obj + 0x1734);
+    int glyphWidth = obj->w1864;
     int width = (count - 1) * glyphWidth + 12;
     int x = (0xc0 - width) >> 1;
     int left = x - 0x10;
@@ -23,24 +24,13 @@ extern "C" ARM void func_0206cf44(unsigned char* obj) {
 #else
 #include "std_library_functions.h"
 
-struct Entry0206b6b8 {
-    int val;
-    char pad4;
-    signed char field5 : 6;
-    signed char unused2 : 2;
-    char pad6[2];
-};
-
-struct Entry0206b6b8* FindEntryByKey0204254c(int key, int tableIdx);
-extern "C" void func_02042b98(unsigned char* obj, int a, int b, int c, int d);
-
 // USA: func_0206b6b8
-ARM void MeasureTextWidth0206b6b8(unsigned char* obj) {
-    unsigned char* p = *(unsigned char**)(obj + 0x50);
+ARM void MeasureTextWidth0206b6b8(MessageSystem* obj) {
+    char* p = static_cast<char*>(obj->secondLineBuffer);
     int count = 0;
 
     for (;;) {
-        if (*p == 0) break;
+        if (static_cast<unsigned char>(*p) == 0) break;
 
         unsigned short ch2, ch;
         memcpy(&ch, p, 2);
@@ -50,15 +40,15 @@ ARM void MeasureTextWidth0206b6b8(unsigned char* obj) {
             if (ch2 == 0xff18) count++;
             p += 2;
         } else {
-            int tableIdx = (obj + 0x1000)[0x9dc];
+            int tableIdx = obj->b19dc;
             int advance = 1;
-            struct Entry0206b6b8* e = FindEntryByKey0204254c((int)p, tableIdx);
-            if (e) advance = e->field5;
+            FontCharacter* e = FindEntryByKey0204254c(p, tableIdx);
+            if (e) advance = e->byteLength;
             p += advance;
         }
     }
 
-    int glyphWidth = *(int*)(obj + 0x1000 + 0x864);
+    int glyphWidth = obj->w1864;
     int a = (count - 1) * glyphWidth + 8;
     a = (0xc0 - a) >> 1;
     int b = a - 0x10;

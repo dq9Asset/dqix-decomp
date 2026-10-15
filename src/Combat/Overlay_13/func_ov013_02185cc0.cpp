@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 #include "std_library_functions.h"
 
 struct Struct0205de24;
@@ -20,7 +21,6 @@ struct Sprite02185cc0 {
     unsigned short* unk_8;
 };
 Sprite02185cc0* GetArrayElement02184338(void* renderer, unsigned int index);
-void* GetTableEntry020421b0(int index);
 void CleanInvalidateCacheRange(const void* start, unsigned int size);
 void CleanCacheRange(const void* start, unsigned int size);
 extern "C" void LoadToSubObjVRAM(const void* src, unsigned int offset, unsigned int size);

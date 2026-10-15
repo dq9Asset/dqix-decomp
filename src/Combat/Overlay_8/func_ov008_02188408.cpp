@@ -1,21 +1,18 @@
 #include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
 struct Container020e0310;
-struct MessageSystem;
-struct StoreStruct;
 
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void* ExtractFileFromGP2(const char* gp2, const char* inner, unsigned int* size);
 extern "C" const char* func_020e046c(char* output, void* file, unsigned int size, short id);
 extern "C" int func_020420e8(const char* text, int large);
 extern "C" char* func_0205ec34();
-extern "C" void func_02046380(MessageSystem* messages);
 
-MessageSystem* GetGlobalField0x1c020421a0();
 void AppendXYTag_02041a90(char* text, int x, int y);
 void AppendYTag_02041a5c(char* text, int y);
 void AppendString02042058(char* text, const char* append);
@@ -26,15 +23,12 @@ int GetFieldPercentOver307_020a0870(BattleRecordSnapshot* records);
 int GetFieldPercentOver944_020a08d8(BattleRecordSnapshot* records);
 int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* records);
 int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* records);
-void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
 
 #if defined(jpn)
 extern char data_ov008_0218c0d5[];
 extern "C" int func_020e2168(char*, const char*, int, int, bool);
 extern "C" void func_02041f50(char*, char*);
 int StringLength_020d2ff0(const char*);
-void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
-void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
 #endif
 extern char data_ov008_0218b465[];
 extern char data_ov008_0218b47c[];
@@ -197,25 +191,25 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
                 count4 = 1;
         }
         func_02046380(messages);
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, count1);
+        StoreInArray0x8b0_020465c0(messages, 0, count1);
 #if defined(jpn)
-        SetByteInRange_020465f0((unsigned char*)messages, 0, 3);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+        SetByteInRange_020465f0(messages, 0, 3);
+        SetByteAtIndex_020465d8(messages, 0, 1);
 #endif
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, count2);
+        StoreInArray0x8b0_020465c0(messages, 1, count2);
 #if defined(jpn)
-        SetByteInRange_020465f0((unsigned char*)messages, 1, 3);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 1, 1);
+        SetByteInRange_020465f0(messages, 1, 3);
+        SetByteAtIndex_020465d8(messages, 1, 1);
 #endif
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, count3);
+        StoreInArray0x8b0_020465c0(messages, 2, count3);
 #if defined(jpn)
-        SetByteInRange_020465f0((unsigned char*)messages, 2, 3);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 2, 1);
+        SetByteInRange_020465f0(messages, 2, 3);
+        SetByteAtIndex_020465d8(messages, 2, 1);
 #endif
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 3, count4);
+        StoreInArray0x8b0_020465c0(messages, 3, count4);
 #if defined(jpn)
-        SetByteInRange_020465f0((unsigned char*)messages, 3, 3);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 3, 1);
+        SetByteInRange_020465f0(messages, 3, 3);
+        SetByteAtIndex_020465d8(messages, 3, 1);
 #endif
         for (int i = 0; i < count; i++)
         {

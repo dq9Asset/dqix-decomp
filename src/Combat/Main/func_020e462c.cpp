@@ -1,15 +1,16 @@
 #include <globaldefs.h>
+#include "Resource/ItemNameText.h"
 #include "std_library_functions.h"
 
 int StringLength_020d2ff0(const char* s);
-extern "C" int func_02001aec(void* a, void* b, int n);
+extern "C" int func_02001aec(const void* a, const void* b, int n);
 
 extern char data_020f2dc8;
 extern char data_020f2dcb;
 extern char data_020f2dcf;
 
 // USA: func_020e462c
-extern "C" ARM char* func_020e462c(char* dst, char* str, char* fmt) {
+extern "C" ARM char* func_020e462c(char* dst, const char* str, const char* fmt, const ItemNameText* unused) {
     if (str != 0 && *str != 0) {
         dst += sprintf(dst, &data_020f2dc8, str);
         int flag;

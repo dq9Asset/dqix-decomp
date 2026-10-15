@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -51,7 +52,7 @@ struct Self021b8e8c {
     char pad2[6];
     SafeAllocator allocA;
     SafeAllocator allocB;
-    unsigned char timer[0xe4];
+    MessageControlOwner timer;
     Rec021b8e8c* rec;
     unsigned char* sub;
     int state;
@@ -71,12 +72,9 @@ struct Self021b8e8c {
 extern "C" int func_ov017_021959b4(void);
 extern "C" void func_ov017_021b8d80(Self021b8e8c* self);
 extern "C" unsigned short* func_02012fe4(void);
-char* GetGlobalField0x1c020421a0(void);
 void* GetGlobalPtr021075f4_0203cf4c(void);
 extern "C" void* func_0205ec34(void);
 int GetFieldIfFlag4_020100f8(char* obj);
-void ReinitController02043204(char* obj);
-extern "C" void func_02043124(char* obj);
 void SetField0x23cTrue_020a27ac(void* obj);
 void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
@@ -113,12 +111,10 @@ int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void func_020a0cc4(unsigned int size);
 void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void InitAllocatorsAndBuffers0208b8c4(struct Obj0208b8c4* obj, SafeAllocator* allocator);
-extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 extern "C" void func_0208bb78(void* timer, unsigned int ticks);
 int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
 void SetByteB10AndClearB11_02184a3c(char* obj, unsigned char value);
-void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char* obj);
 void SetFields120_138_021bd38c(void* obj, int a, int b);
 
 extern "C" void __clear(void* buf, int n);
@@ -140,7 +136,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
     GameResources* res = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     unsigned short* area = func_02012fe4();
-    char* msg = GetGlobalField0x1c020421a0();
+    MessageSystem* msg = GetGlobalField0x1c020421a0();
     void* table = GetGlobalPtr021075f4_0203cf4c();
     GameObject* leader = gs->GetUnknownGameObject();
     void* events = func_0205ec34();
@@ -185,8 +181,8 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         }
         Vec3_021b8e8c to = _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8((Node020406f8*)entry);
         SetVecYByMode02033834((Obj02033834*)leader, fix32ReduceAngle0To2Pi(fix32_Atan2(to.x - from.x, to.z - from.z)));
-        *(int*)(msg + 0x1838) = FindEntryByKey0203dfdc(table, self->rec->id);
-        *(int*)(msg + 0x183c) = GetFieldFromActiveChild((Owner02040a90*)entry);
+        msg->selectedEntry = FindEntryByKey0203dfdc(table, self->rec->id);
+        msg->selectedValue = GetFieldFromActiveChild((Owner02040a90*)entry);
         char* info = (char*)GetField0x8_02040528((int*)entry);
         if (info != NULL && strstr(info + 4, &data_ov017_021d7c90) != NULL && !(entry->flags & 0x4000) &&
             entry->combat != NULL) {
@@ -261,9 +257,9 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         }
         IncrementNibble0206ec64((int)nibbles, id, nibbles, 0x80);
         IncrementNibble0206ec64((int)nibbles, id, nibbles + 0x80, 0x80);
-        *(int*)(msg + 0x99c) = self->rec->kind;
-        char* out = *(char**)(msg + 0x5c);
-        char* in = *(char**)(msg + 0x60);
+        msg->state = self->rec->kind;
+        char* out = msg->savedTextBuffer;
+        char* in = msg->formatBuffer->text;
         memset(out, 0, 0x960);
         memset(in, 0, 0x960);
         if (strlen(text) >= 0x960) {
@@ -319,8 +315,8 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
     case 2: {
         func_020a0cc4(0xa000);
         self->allocA.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0xa000), 0xa000);
-        InitAllocatorsAndBuffers0208b8c4((Obj0208b8c4*)self->timer, &self->allocA);
-        char* buffer = *(char**)(msg + 0x5c);
+        InitAllocatorsAndBuffers0208b8c4((Obj0208b8c4*)&self->timer, &self->allocA);
+        char* buffer = msg->savedTextBuffer;
         int scroll = 1;
         switch (areaId) {
         case 1:
@@ -340,12 +336,12 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         }
         }
         func_0204500c(msg, buffer, scroll, 0xe3);
-        *(int*)(msg + 0x998) = 1;
-        *(unsigned char*)(msg + 0x19b2) = 1;
-        *(void**)(msg + 0x8c) = self->timer;
-        *(int*)(msg + 0x99c) = self->rec->kind;
+        msg->active = 1;
+        msg->b19b2 = 1;
+        msg->child = &self->timer;
+        msg->state = self->rec->kind;
         self->state = 5;
-        func_0208bb78(self->timer, gs->GetTickCount());
+        func_0208bb78(&self->timer, gs->GetTickCount());
         if (ListContainsId((ListHead02046b60*)res->unknown_ptr_array_36fc[0], 0x17) == 0) {
             break;
         }
@@ -369,15 +365,15 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         if (self->busy != 0) {
             break;
         }
-        func_0208bb78(self->timer, gs->GetTickCount());
+        func_0208bb78(&self->timer, gs->GetTickCount());
         if (self->hasSub != 0) {
             func_ov008_02184754(self->sub);
         }
-        if (*(int*)(msg + 0x9a0) == 3) {
+        if (msg->mode == 3) {
             ReinitController02043204(msg);
             func_02043124(msg);
         }
-        if (*(int*)(msg + 0x998) != 0) {
+        if (msg->active != 0) {
             break;
         }
         if (self->hasSub != 0) {
@@ -404,7 +400,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         break;
     }
     case 6: {
-        if (*(short*)(self->timer + 0xd2) < 0) {
+        if (self->timer.value < 0) {
             SetByteField0x253_020397c0(leader);
             if (hud != NULL) {
                 SetField0x23cTrue_020a27ac(hud);
@@ -432,13 +428,13 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         break;
     }
     case 7:
-        func_0208bb78(self->timer, gs->GetTickCount());
-        if (*(short*)(self->timer + 0xd2) >= 0) {
+        func_0208bb78(&self->timer, gs->GetTickCount());
+        if (self->timer.value >= 0) {
             if (self->changed == 0) {
-                SetFlag0x2IfByte0xd4Not3_0208beb4(self->timer);
+                SetFlag0x2IfByte0xd4Not3_0208beb4(&self->timer);
                 break;
             }
-            SetFields120_138_021bd38c(res->unknown_ptr_array_36fc[14], (int)self->timer, (int)&self->allocA);
+            SetFields120_138_021bd38c(res->unknown_ptr_array_36fc[14], (int)&self->timer, (int)&self->allocA);
             self->finished = 1;
         }
         SetByteField0x253_020397c0(leader);

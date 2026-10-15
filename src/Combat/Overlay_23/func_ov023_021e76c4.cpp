@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
 #include <System/Cache.h>
@@ -38,15 +39,6 @@ struct ScreenData_021e76c4 {
     void* data_;
 };
 
-struct MessageSystem_021e76c4 {
-#if defined(jpn)
-    char unk_0[0x28];
-#else
-    char unk_0[0x5c];
-#endif
-    void* unk_5c;
-};
-
 struct ProfileCard_021e76c4 {
     SafeAllocator allocators_[3];
     int mode_;
@@ -79,7 +71,6 @@ struct Obj0204c7a8;
 struct Struct_0205cf78;
 struct Elem_0205cf78;
 
-MessageSystem_021e76c4* GetGlobalField0x1c020421a0();
 void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* obj, SafeAllocator* alloc);
 int DispatchViaTable0204b5e8(Obj0204b5e8* obj, int a, int b);
@@ -155,7 +146,7 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
     else if (self->step_ == 2)
     {
         self->allocators_[0].Reset();
-        self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
+        self->text_ = GetGlobalField0x1c020421a0()->savedTextBuffer;
         __clear(screens, sizeof(screens));
         BackgroundGraphics_021e76c4* background;
         int i;

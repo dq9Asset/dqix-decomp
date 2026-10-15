@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 
 struct Struct_0205d81c;
-struct MessageSystem;
 
 struct ProfileCard_021e7d8c {
     char pad0[0x78];
@@ -29,11 +29,9 @@ struct Rodata_021fd75c {
 extern PageTable_021e7d8c data_ov023_021fd7cc;
 extern Rodata_021fd75c data_ov023_021fd75c;
 
-MessageSystem* GetGlobalField0x1c020421a0();
 void SetElementFieldC2_0205deb4(Struct_0205d81c* window, int index, int value);
 
 extern "C" {
-void func_02046380(MessageSystem* messages);
 void func_ov023_021e7cec(ProfileCard_021e7d8c* self, int id, short x, short y);
 void func_0205d304(void* window, char* text, int a, int b, int c, int d, int e, int f);
 }

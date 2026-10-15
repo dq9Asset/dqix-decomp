@@ -1,19 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/MessageSystem.h"
 
 struct Obj021d8c60;
 struct Obj0203a588;
-
-struct Obj020444e0 {
-    char pad0[0x38];
-    void* field38;
-#if defined(jpn)
-    char pad3C[0x868 - 0x3c];
-#else
-    char pad3C[0x998 - 0x3c];
-#endif
-    void* field998;
-};
 
 struct CombatWork02160c84 {
 #if defined(jpn)
@@ -54,8 +44,7 @@ void ResetCombatEntry02184a58(void* obj);
 void CallIfFieldNot0Or3_021d8c60(struct Obj021d8c60* obj);
 struct Obj0203a588* GetData02104b6c_02039e70(void);
 int PeekInputLogB_020a1fa8(void);
-struct Obj020444e0* GetGlobalField0x1c020421a0();
-void ReleaseField0x38IfValid020444e0(struct Obj020444e0* obj);
+void ReleaseField0x38IfValid020444e0(MessageSystem* obj);
 extern "C" void func_ov013_02187784(void* obj);
 extern "C" void func_ov000_02173954(char* obj);
 extern "C" void func_0203a0b4(struct Obj0203a588* data);
@@ -89,8 +78,8 @@ extern "C" ARM void func_ov000_02160c84(struct CombatWork02160c84* work) {
         }
     }
     GameState::GetInstance()->GetTickCount();
-    struct Obj020444e0* global = GetGlobalField0x1c020421a0();
-    if (global->field998) {
+    MessageSystem* global = GetGlobalField0x1c020421a0();
+    if (global->active) {
         ReleaseField0x38IfValid020444e0(global);
     }
 }

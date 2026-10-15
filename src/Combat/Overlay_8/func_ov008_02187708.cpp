@@ -1,5 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <Filesystem/BackgroundLoader.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -58,10 +61,6 @@ struct Canvas {
 
 struct WindowCursor {
     int pad_0[0x40 / 4];
-};
-
-struct Object3D {
-    int pad_0[0xac / 4];
 };
 
 struct BattleRecords {
@@ -142,26 +141,12 @@ static inline char* GetHeroTitle(GameState* gameState)
     return (char*)gameState + 0x569c;
 }
 
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-    static void AddLockGlobal();
-    static void RemoveLockGlobal();
-};
 
-struct MessageSystem {
-    char pad_0[0x10];
-    void* unk_10;
-};
-
-struct MessageName {
-    int pad_0[3];
-};
 
 struct List020727d8;
 struct Container020e0310;
 struct TableA68;
 struct StreamHeader;
-struct Obj02046574;
 
 extern char data_ov008_0218b465[];
 extern char data_ov008_0218b47c[];
@@ -169,14 +154,12 @@ extern char data_ov008_0218b49b[];
 extern char data_ov008_0218b4b0[];
 extern char data_ov008_0218b4c1[];
 
-MessageSystem* GetGlobalField0x1c020421a0();
 void Clear12Bytes020e46c4(void* name);
 void InitObjFromCombatant020e4c74(void* name, GameObject* object);
 void ResetListHeader020727d8(List020727d8* list);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 const char* FindEntryByKey_02072a68(TableA68* texts, int id);
 void SubmitAndRunScript02072928(void* list, StreamHeader* file, int size, int id, void* output, unsigned char female);
-void SetIndexedName02046574(Obj02046574* messages, int index, char* text);
 char* FindSubstring_020d2f88(char* text, char* search);
 void AppendYTag_02041a5c(char* text, int y);
 void AppendString02042058(char* text, const char* append);
@@ -185,10 +168,7 @@ extern "C" {
 void __clear(void* buffer, unsigned long size);
 int sprintf(char* buffer, const char* format, ...);
 void* ExtractFileFromGP2(char* path, char* inner, unsigned int* size);
-void func_02046380(MessageSystem* messages);
 void func_02042764(const void* codes, char* text, int value);
-void func_020e4b34(MessageName* name, char* text, char* text2, int a, int b, int c, int d, int female, int e,
-                   int f, int g, int h);
 const char* func_020e046c(char* output, void* file, unsigned int size, short id);
 void func_02046608(MessageSystem* messages, int value, const char* format, char* output, int size, int a, int b);
 int func_020420e8(const char* text, int large);
@@ -207,10 +187,10 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
     short title = 0;
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
-    unsigned int female = 0;
+    unsigned char female = 0;
     func_02046380(messages);
-    MessageName heroName;
-    MessageName guestName;
+    ItemNameText heroName;
+    ItemNameText guestName;
     const void* codes = self->guest_;
     if (codes == NULL)
     {
@@ -230,7 +210,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
             female = hero->partyData_->female_;
             Clear12Bytes020e46c4(&heroName);
             InitObjFromCombatant020e4c74(&heroName, hero);
-            messages->unk_10 = &heroName;
+            messages->targetNames[0] = &heroName;
         }
     }
     else
@@ -242,7 +222,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
         func_02042764(codes, name, 1);
         Clear12Bytes020e46c4(&guestName);
         func_020e4b34(&guestName, name, name, 0, 0, 0, 0, female, 0, 1, 0, 1);
-        messages->unk_10 = &guestName;
+        messages->targetNames[0] = &guestName;
     }
     if (title > 0)
     {
@@ -290,7 +270,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
                 BackgroundLoader::RemoveLockGlobal();
             }
         }
-        SetIndexedName02046574((Obj02046574*)messages, 0, (char*)titleText);
+        SetIndexedName02046574(messages, 0, (char*)titleText);
     }
     char* output = self->text_;
     int format = 100;

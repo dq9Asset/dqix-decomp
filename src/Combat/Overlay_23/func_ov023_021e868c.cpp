@@ -1,10 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 
-struct MessageSystem;
 struct TableA68;
-struct StoreStruct;
 struct SearchStruct0202c1a4;
 struct Container020e0310;
 
@@ -61,7 +60,6 @@ static inline ProfileData_021e868c* GetProfile(GameState* gameState)
     return &((ProfileSaveView_021e868c*)gameState)->save_.profile_;
 }
 
-int GetGlobalField0x1c020421a0();
 int CheckField0NonZero_0202b7d8(int* unknown);
 PartyMemberData_021e868c* GetFieldAt0x150_02053c6c(unsigned char* member);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* unknown);
@@ -82,9 +80,6 @@ int AppendFormatted02041fac(char* text, int line, int size);
 #endif
 void AppendString02042058(char* text, const char* append);
 const char* FindEntryByKey_02072a68(TableA68* texts, int id);
-void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
-void SetByteAtIndex_020465d8(unsigned char* messages, int index, unsigned char value);
-void SetByteInRange_020465f0(unsigned char* messages, int index, unsigned char digits);
 
 extern "C" {
 void* func_0202ae18();
@@ -104,7 +99,7 @@ int GetFieldByKey020e0434(Container020e0310* strings, int key);
 extern "C" ARM void func_ov023_021e868c(ProfileCard_021e868c* self)
 {
     GameState* gameState = GameState::GetInstance();
-    MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     void* unknown = func_0202ae18();
     PartyMemberData_021e868c* data = NULL;
     if (CheckField0NonZero_0202b7d8((int*)unknown) == 0)
@@ -161,9 +156,9 @@ extern "C" ARM void func_ov023_021e868c(ProfileCard_021e868c* self)
     }
     if (profile->birthdayChosen_)
     {
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, profile->year_);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
-        SetByteInRange_020465f0((unsigned char*)messages, 0, 4);
+        StoreInArray0x8b0_020465c0(messages, 0, profile->year_);
+        SetByteAtIndex_020465d8(messages, 0, 1);
+        SetByteInRange_020465f0(messages, 0, 4);
 #if defined(jpn)
         const char* yearFormat = FindEntryByKey_02072a68(self->strings_, 0x64);
         func_020474a8(messages, 10, yearFormat, buffer);
@@ -172,9 +167,9 @@ extern "C" ARM void func_ov023_021e868c(ProfileCard_021e868c* self)
 #endif
         AppendString02042058(text, buffer);
         memset(buffer, 0, sizeof(buffer));
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, profile->month_);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
-        SetByteInRange_020465f0((unsigned char*)messages, 0, 2);
+        StoreInArray0x8b0_020465c0(messages, 0, profile->month_);
+        SetByteAtIndex_020465d8(messages, 0, 1);
+        SetByteInRange_020465f0(messages, 0, 2);
 #if defined(jpn)
         const char* monthFormat = FindEntryByKey_02072a68(self->strings_, 0x65);
         func_020474a8(messages, 10, monthFormat, buffer);
@@ -183,9 +178,9 @@ extern "C" ARM void func_ov023_021e868c(ProfileCard_021e868c* self)
 #endif
         AppendString02042058(text, buffer);
         memset(buffer, 0, sizeof(buffer));
-        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, profile->day_);
-        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
-        SetByteInRange_020465f0((unsigned char*)messages, 0, 2);
+        StoreInArray0x8b0_020465c0(messages, 0, profile->day_);
+        SetByteAtIndex_020465d8(messages, 0, 1);
+        SetByteInRange_020465f0(messages, 0, 2);
 #if defined(jpn)
         const char* dayFormat = FindEntryByKey_02072a68(self->strings_, 0x66);
         func_020474a8(messages, 10, dayFormat, buffer);

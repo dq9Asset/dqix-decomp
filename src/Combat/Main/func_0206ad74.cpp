@@ -1,22 +1,22 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageUpdate.h"
 #include "std_library_functions.h"
 #if defined(jpn)
 #include "Resource/MessageSystem.h"
 extern "C" int func_02069408(void*, unsigned short);
 extern "C" int func_02069430(void*, unsigned short);
-extern "C" void func_0206cb14(void*, int, unsigned short);
 extern "C" void __clear(void*, int);
-extern "C" int func_02001aec(const void*, const void*, unsigned int);
+extern "C" int func_02001aec(const void*, const void*, int);
 extern const char data_020f07ce[];
 extern const char data_020f0aeb[];
 
 // JPN: func_0206c794
-extern "C" ARM void func_0206c794(void* context) {
-    MessageSystem* self = static_cast<MessageSystem*>(context);
+extern "C" ARM void func_0206c794(MessageSystem* self) {
     unsigned short caption[16];
     unsigned char length = 0;
     __clear(caption, sizeof(caption));
-    unsigned short* cursor = static_cast<unsigned short*>(self->secondLineBuffer);
+    unsigned short* cursor = self->secondLineBuffer;
     int changed = 0;
     self->h1944 = 0;
     unsigned char previousStatus = self->b19c2;
@@ -86,63 +86,33 @@ extern "C" ARM void func_0206c794(void* context) {
 }
 #else
 
-struct Entry0204254c { int value; signed char width; signed char advance : 6; signed char field5 : 2; unsigned char field6[2]; };
-Entry0204254c* FindEntryByKey0204254c(int, int);
 int GetWordFromTable02042648(int);
-struct CombatSlots0206b198;
-void DecrementSlotRef0206b198(CombatSlots0206b198*, unsigned short);
 extern char data_020f08dc[];
 extern char data_020f0979[];
 extern char data_020f097c[];
 extern "C" void __clear(void*, int);
-struct Caption0206ad74 {
-    unsigned char field0[0x50];
-    char* text;
-    unsigned char field54[0x74-0x54];
-    int start;
-    int end;
-    unsigned char field7c[8];
-    int specialStart;
-    int specialEnd;
-    unsigned char field8c[0x912-0x8c];
-    unsigned char mode;
-    unsigned char field913[0x934-0x913];
-    short boxWidth;
-    short boxHeight;
-    unsigned char field938[0x1882-0x938];
-    unsigned short slots[64];
-    char caption[64];
-    unsigned short count;
-    short width;
-    short specialLength;
-    unsigned char field1948[0x19c2-0x1948];
-    unsigned char status;
-    unsigned char changed;
-    unsigned char field19c4[0x19dc-0x19c4];
-    unsigned char font;
-};
 
 // USA: func_0206ad74
-extern "C" ARM void func_0206ad74(Caption0206ad74* self) {
+extern "C" ARM void func_0206ad74(MessageSystem* self) {
     int defaultWidth;
     int length = 0;
-    self->specialStart = 0;
-    self->specialEnd = 0;
-    self->width = 0;
-    self->count = 0;
-    self->specialLength = 0;
-    unsigned char previousStatus = self->status;
+    self->captionStart = 0;
+    self->slotReleaseIndex = 0;
+    self->captionWidth = 0;
+    self->lineGlyphCount = 0;
+    self->h1946 = 0;
+    unsigned char previousStatus = self->b19c2;
     int changed = 1;
     int prefixCount = 0;
     char caption[64];
     __clear(caption, sizeof(caption));
     unsigned char fontWidth;
     char* cursor;
-    char* text = self->text;
+    char* text = static_cast<char*>(self->secondLineBuffer);
     char* start = strstr(text, data_020f08dc);
     char* middle = strstr(text, data_020f0979);
     char* alternate = strstr(text, data_020f097c);
-    fontWidth = GetWordFromTable02042648(self->font);
+    fontWidth = GetWordFromTable02042648(self->b19dc);
     if (start) {
         for (;;) {
             if (text == start) break;
@@ -158,56 +128,56 @@ extern "C" ARM void func_0206ad74(Caption0206ad74* self) {
             length = finish - selected;
             memcpy(caption, selected, length);
             changed = 0;
-            self->status = changed;
+            self->b19c2 = changed;
             cursor = caption;
             for (;;) {
                 defaultWidth = fontWidth + 1;
                 if (!*cursor) break;
-                Entry0204254c* entry = FindEntryByKey0204254c((int)cursor, self->font);
+                FontCharacter* entry = FindEntryByKey0204254c(cursor, self->b19dc);
                 if (entry) {
-                    self->count++;
+                    self->lineGlyphCount++;
                     int width = entry->width;
-                    int advance = entry->advance;
-                    self->width += width + 1;
+                    int advance = entry->byteLength;
+                    self->captionWidth += width + 1;
                     cursor += advance;
                 } else {
-                    self->count++;
+                    self->lineGlyphCount++;
                     cursor++;
-                    self->width += defaultWidth;
+                    self->captionWidth += defaultWidth;
                 }
             }
-            self->specialLength = finish - start;
-            self->specialLength += 3;
-            self->specialLength += prefixCount - 2;
-            self->mode = 4;
-            short padding = 8 - (self->width & 7);
-            self->boxWidth = self->width + 18 + padding;
-            self->boxHeight = 22;
-        } else self->status = previousStatus;
+            self->h1946 = finish - start;
+            self->h1946 += 3;
+            self->h1946 += prefixCount - 2;
+            self->b912 = 4;
+            short padding = 8 - (self->captionWidth & 7);
+            self->foo930.width = self->captionWidth + 18 + padding;
+            self->foo930.height = 22;
+        } else self->b19c2 = previousStatus;
     } else {
-        if (middle || alternate) self->mode = 3;
-        else self->specialLength = -1;
+        if (middle || alternate) self->b912 = 3;
+        else self->h1946 = -1;
     }
-    if (!self->status && length) changed = strcmp(self->caption, caption);
+    if (!self->b19c2 && length) changed = strcmp(self->captionText, caption);
     if (changed) {
-        for (int i = 0; i < self->count; i++) DecrementSlotRef0206b198((CombatSlots0206b198*)self, self->slots[i]);
-        memset(self->slots, 0xff01, sizeof(self->slots));
-        memset(self->caption, 0, sizeof(self->caption));
-        memcpy(self->caption, caption, length);
-        self->changed = 0;
-        if (self->count) {
-            self->specialStart = self->specialLength;
-            self->specialEnd = self->count + prefixCount + 3;
+        for (int i = 0; i < self->lineGlyphCount; i++) DecrementSlotRef0206b198(self, self->lineGlyphSlots[i]);
+        memset(self->lineGlyphSlots, 0xff01, sizeof(self->lineGlyphSlots));
+        memset(self->captionText, 0, sizeof(self->captionText));
+        memcpy(self->captionText, caption, length);
+        self->b19c3 = 0;
+        if (self->lineGlyphCount) {
+            self->captionStart = self->h1946;
+            self->slotReleaseIndex = self->lineGlyphCount + prefixCount + 3;
         }
-    } else if (self->count) {
-        self->specialStart = self->specialLength;
-        self->specialEnd = self->count + prefixCount + 3;
-        self->start = self->count + prefixCount + 3;
-        self->end = self->count + prefixCount + 3;
-        self->count++;
+    } else if (self->lineGlyphCount) {
+        self->captionStart = self->h1946;
+        self->slotReleaseIndex = self->lineGlyphCount + prefixCount + 3;
+        self->lineStart = self->lineGlyphCount + prefixCount + 3;
+        self->tokenIndex = self->lineGlyphCount + prefixCount + 3;
+        self->lineGlyphCount++;
         return;
     }
-    self->count = 0;
+    self->lineGlyphCount = 0;
 }
 
 #endif

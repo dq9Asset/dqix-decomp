@@ -1,13 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
 struct Cont0207fe44;
 struct Container0205a3d0;
-struct Elem0205a3d0 {
-    char pad0[0x15];
-    unsigned char flags;
-};
 struct Struct020a9ea4;
 struct Obj020397cc;
 struct FlagWord020466f4;

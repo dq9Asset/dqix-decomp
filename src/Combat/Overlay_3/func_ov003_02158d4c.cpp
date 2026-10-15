@@ -2,13 +2,10 @@
 #include "Memory/SafeAllocator.h"
 #include "System/Cache.h"
 #include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
 
 int GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(void);
-struct Outer020e28dc;
-int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-struct Obj020e25e8;
-void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
 struct Cont0205d1e0;
@@ -20,9 +17,6 @@ void InitEntries0205d2bc(struct Obj0205d2bc* obj);
 extern "C" void func_0205d048(void* obj);
 extern "C" int LoadToMainBG1CharacterData(int src, int offset, unsigned int size);
 extern "C" int LoadToMainBG1ScreenData(int src, int offset, unsigned int size);
-int GetGlobalField0x1c020421a0(void);
-extern "C" void func_02043124(void* self);
-void ReinitController02043204(char* obj);
 extern "C" void* __clear(void* dst, int count);
 
 struct Screen02158d4c {
@@ -34,7 +28,7 @@ struct Screen02158d4c {
     int field_0x7c;
     char flags80[0xf4 - 0x80];
     char list0f4[0x570 - 0xf4];
-    struct Obj020e25e8* selection;
+    EntryManager020e2490* selection;
     char pad574[0x57c - 0x574];
     int field_0x57c;
 };
@@ -44,7 +38,7 @@ extern "C" ARM void func_ov003_02158d4c(Screen02158d4c* self) {
     GetGlobal02109400_02094a00();
     func_02094ab0();
 
-    if (self->selection != NULL && GetInnerFlagBit0020e28dc((struct Outer020e28dc*)self->selection)) {
+    if (self->selection != NULL && GetInnerFlagBit0020e28dc(self->selection)) {
         ResetSelectionState020e25e8(self->selection);
     }
 
@@ -65,9 +59,9 @@ extern "C" ARM void func_ov003_02158d4c(Screen02158d4c* self) {
     LoadToMainBG1CharacterData((int)buf, 0, 0x20);
     LoadToMainBG1ScreenData((int)buf, 0, 0x800);
 
-    void* g = (void*)GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     func_02043124(g);
-    ReinitController02043204((char*)g);
+    ReinitController02043204(g);
 
     self->field_0x7c = 0;
     self->field_0x57c = 0;

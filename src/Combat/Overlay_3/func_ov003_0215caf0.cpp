@@ -21,7 +21,7 @@ short GetHalfwordChecked(List0206f7f4 *, int);
 extern "C" char *strcpy(char *dst, const char *src);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
 extern "C" void *__clear(void *dst, int count);
-extern "C" int func_02005a94();
+extern "C" int func_02005a94(const char* text);
 extern "C" void func_ov003_0215e1ec(char *self);
 void SetAndMulField_0215ca90(void *self, int v);
 void ResetList0204af64(struct List0204af64 *obj);
@@ -45,7 +45,7 @@ void Init0205a198(struct Struct0205a198 *s);
 void ClearField0And40205a234(struct ClearTarget0205a234 *t);
 extern "C" void func_0205a528(void *a, void *ptr, int val, void *d);
 extern "C" void func_020dfec0(void *dest, void *allocator, void *fileData, unsigned int size);
-int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
+const char* GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 
 struct Bytes2_0215caf0 {
     unsigned char v[2];
@@ -114,8 +114,9 @@ extern "C" ARM void func_ov003_0215caf0(char *self) {
             loader->GetLoadedFileByID(((int *) S32(0x3b4))[0], &data, &len);
             ((SafeAllocator *) self)->Reset();
             func_020dfec0(self + 0x64, self, data, len);
-            if (GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x64), 0x32) != 0) {
-                U8(0x3ee) = func_02005a94();
+            const char* parsedText = GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x64), 0x32);
+            if (parsedText != 0) {
+                U8(0x3ee) = func_02005a94(parsedText);
             }
             if (U8(0x3ee) == 3) {
                 U8(0x3ee) = 0;
@@ -230,10 +231,10 @@ extern "C" ARM void func_ov003_0215caf0(char *self) {
         if (U8(0x3f0) != 0) {
             SetAndMulField_0215ca90(self, 3);
         } else {
-            int g = GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x64), 0x2710);
+            const char* g = GetFieldByKey020e0434((struct Container020e0310 *) (self + 0x64), 0x2710);
             int r = 1;
             if (g != 0) {
-                r = func_02005a94();
+                r = func_02005a94(g);
             }
             SetAndMulField_0215ca90(self, r);
             if (r == 0) {

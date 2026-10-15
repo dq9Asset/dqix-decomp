@@ -13,14 +13,13 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 struct Obj0215c300;
 int DecrementFieldClampZero_0215c300(struct Obj0215c300* obj, int amount);
 extern "C" void func_ov003_02159464(void* obj);
 extern "C" void func_ov003_0215c510(void* obj);
 
-struct Outer020e28dc;
-int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 
 struct Struct_0205d81c;
 struct Elem_0205d81c {
@@ -48,7 +47,7 @@ struct Obj02158e94 {
     unsigned char pad0[0xf4];
     unsigned char elements[0x4];
     unsigned char field_0xf8[0x478];
-    struct Outer020e28dc* choice;
+    EntryManager020e2490* choice;
     int lastAmount;
     unsigned char pad578[0xa];
     unsigned char field_0x582;

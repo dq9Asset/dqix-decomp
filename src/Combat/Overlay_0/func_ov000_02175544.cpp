@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 
 struct Struct_0205d81c;
 struct Elem_0205d81c {
@@ -14,23 +15,12 @@ struct Elem_0205d81c {
 Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
 int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 
-struct Elem0205a3d0 {
-    char pad0[4];
-    short x_;
-    short y_;
-    unsigned short key_;
-    char padA[0x15 - 0xa];
-    unsigned char flags_;
-    char pad16[0x18 - 0x16];
-};
 
 struct Container0205a3d0;
 void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
 void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 
-struct Container0205a330;
-void IterateEntries0205a330(Container0205a330*, int);
 
 extern "C" void func_0205ae8c(void*);
 
@@ -56,14 +46,14 @@ extern "C" ARM void func_ov000_02175544(unsigned char* obj) {
     Container0205a3d0* container = *(Container0205a3d0**)(obj + 0x174);
     SetEntryFlag2ByKey0205a370(container, 0);
     Elem0205a3d0* entry = FindEntryByHalfword0205a3d0(container, 0);
-    if (entry != NULL) entry->flags_ |= 8;
+    if (entry != NULL) entry->flags |= 8;
 
-    IterateEntries0205a330((Container0205a330*)container, *(int*)(obj + 0x94c));
+    IterateEntries0205a330(container, *(int*)(obj + 0x94c));
 
     entry = FindEntryByHalfword0205a3d0(container, 0);
     if (entry != NULL) {
-        entry->x_ = x - 8;
-        entry->y_ = y - 2;
+        entry->x = x - 8;
+        entry->y = y - 2;
     }
 
     SetEntryByte14ByKey0205a42c(container, 0, byte14);

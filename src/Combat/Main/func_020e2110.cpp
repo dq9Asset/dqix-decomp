@@ -1,20 +1,20 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
+#include "Resource/MessageGlyphSlot.h"
 
-ARM void* GetTableEntry020421b0(int idx);
-extern "C" ARM void func_0205b530(void* mgr, void* entry, short x, short y, int w, int h);
 extern "C" ARM void* __clear(void* dst, int count);
 
 extern unsigned char data_020ee94c;
 
 // USA: func_020e2110
-extern "C" ARM void func_020e2110(void* obj) {
-    void* ctx = *(void**)((char*)obj + 4);
-    void* mgr = *(void**)((char*)ctx + 4);
-    unsigned char width = ((unsigned char*)ctx)[0x3a];
-    unsigned char height = ((unsigned char*)ctx)[0x3b];
+extern "C" ARM void func_020e2110(MessageFrame* frame) {
+    MessageFramePanel* panel = frame->panel;
+    GlyphDestination0205b234* mgr = panel->object;
+    unsigned char width = panel->width;
+    unsigned char height = panel->height;
 
-    void* e1 = GetTableEntry020421b0(1);
-    void* e6 = GetTableEntry020421b0(6);
+    unsigned char* e1 = GetTableEntry020421b0(1);
+    unsigned char* e6 = GetTableEntry020421b0(6);
     if (e1 != 0 && e6 != 0) {
         int x, i;
         int n = width - 9;
@@ -24,8 +24,8 @@ extern "C" ARM void func_020e2110(void* obj) {
         }
     }
 
-    void* e3 = GetTableEntry020421b0(3);
-    void* e4 = GetTableEntry020421b0(4);
+    unsigned char* e3 = GetTableEntry020421b0(3);
+    unsigned char* e4 = GetTableEntry020421b0(4);
     if (e3 != 0 && e4 != 0) {
         int y, j;
         int m = height - 9;
@@ -49,7 +49,7 @@ extern "C" ARM void func_020e2110(void* obj) {
     int k;
     for (k = 0; k < 4; k++) {
         int idx = (&data_020ee94c)[k];
-        void* entry = GetTableEntry020421b0(idx);
+        unsigned char* entry = GetTableEntry020421b0(idx);
         if (entry != 0) {
             func_0205b530(mgr, entry, xs[k], ys[k], 8, 0xf);
         }

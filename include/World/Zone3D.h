@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Resource/PairTableEncoder.h"
+
 #include "Grotto/Main/ActiveGrottoClass.h"
 #include "Memory/SafeAllocator.h"
 #include "Graphics/Vector.h"
@@ -89,7 +91,7 @@ public:
         int unknown_3c_;
     } substruct_c_;
     SafeAllocator* pAllocator_4c_;
-    void* unknown_ptr_50_; // referenced in the nsbtx processor, so something graphical
+    Foo0207df50* encoder;
     SafeAllocator internalAllocator_;
     SafeAllocator* pAllocator_68_;
 
@@ -211,3 +213,5 @@ typedef char Zone3DNodeHeadOffsetCheck[offsetof(Zone3D, firstBMDJStruct_41c_) ==
 typedef char Zone3DTerrainArrayOffsetCheck[offsetof(Zone3D, terrainElements_) == 0x824 ? 1 : -1];
 typedef char Zone3DStorageSizeCheck[sizeof(Zone3D) == 0x2824 ? 1 : -1];
 #endif
+
+void InitStruct02013718(Zone3D* zone, SafeAllocator* allocator, Foo0207df50* encoder);

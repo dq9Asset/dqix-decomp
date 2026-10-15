@@ -38,7 +38,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
     ModelTracker14D* tracker = (ModelTracker14D*)trackerData;
     ResourceRecord14D* record = (ResourceRecord14D*)recordData;
     GameState* game = GameState::GetInstance();
-    char* tables = (char*)zone->unknown_ptr_50_;
+    Foo0207df50* tables = zone->encoder;
     SafeAllocator* allocator = zone->pAllocator_68_;
     LightingManager* lighting = LightingManager::GetInstance();
     int lightingIndex = lighting->timeOfDayIndex_;

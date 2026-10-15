@@ -1,20 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "Combat/Overlay15ViewerContext.h"
 
 extern "C" void __clear(void* buffer, unsigned long size);
 
-struct MessageSystem0218f794
-{
-    char unk_0[0x19b0];
-    unsigned char unk_19b0;
-};
-
-MessageSystem0218f794* GetGlobalField0x1c020421a0();
-extern "C" void func_02069fec(MessageSystem0218f794* system, const char* text, char* converted);
-extern "C" void func_02045d14(MessageSystem0218f794* system, const char* converted, unsigned short* line, int unk);
-extern "C" void func_02045f3c(MessageSystem0218f794* system, unsigned short* line, int x, int y, int color, int a, int b, int c, int d, int e);
+extern "C" void func_02069fec(MessageSystem* system, const char* text, char* converted);
 
 extern const char data_ov015_0219417c[];
 extern const char data_ov015_02194192[];
@@ -37,7 +29,7 @@ extern const char data_ov015_02194242[];
 #define PREPARE_TEXT()                                                            \
     {                                                                             \
         memset(line, 0, sizeof(line));                                            \
-        MessageSystem0218f794* system = GetGlobalField0x1c020421a0();        \
+        MessageSystem* system = GetGlobalField0x1c020421a0();        \
         char converted[0x40];                                                     \
         __clear(converted, sizeof(converted));                                    \
         func_02069fec(system, text, converted);                                   \
@@ -46,7 +38,7 @@ extern const char data_ov015_02194242[];
 
 #define DRAW_LINE(y)                                                              \
     {                                                                             \
-        messages->unk_19b0 = 1;                                                   \
+        messages->drawEnabled = 1;                                                   \
         func_02045f3c(messages, &line[1], 0, y, 0x7fff, 8, 0x14, 0, 1, 0x11);     \
     }
 
@@ -56,7 +48,7 @@ extern "C" ARM void func_ov015_0218f794(Obj0218c274* self)
     char text[0x20];
     unsigned short line[0x20];
 
-    MessageSystem0218f794* messages = GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     if (self->kind_ == 0 || self->kind_ == 1)
     {
         PRINT_HEAP(data_ov015_0219417c, self->allocators_[2]);
@@ -67,7 +59,6 @@ extern "C" ARM void func_ov015_0218f794(Obj0218c274* self)
         DRAW_LINE(0xa);
         PRINT_HEAP(data_ov015_021941a8, self->allocators_[7]);
         PREPARE_TEXT();
-        messages->unk_19b0 = 1;
         DRAW_LINE(0x14);
         PRINT_HEAP(data_ov015_021941be, self->allocators_[0]);
         PREPARE_TEXT();

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "Memory/SafeAllocator.h"
@@ -62,11 +63,6 @@ struct List02160094;
 struct List021600f8;
 struct ListNode02160094 { char pad0[0x20]; unsigned short id; };
 struct ListNode021600f8 { int flags; char pad4[8]; int value; char pad10[8]; unsigned char flag18; char pad19[2]; unsigned char flag1b; };
-#if defined(jpn)
-struct MessageSystem { char pad0[0x868]; int active; };
-#else
-struct MessageSystem { char pad0[0x998]; int active; };
-#endif
 
 struct Obj0205eaa0;
 struct Struct0216fe48;
@@ -96,13 +92,11 @@ extern "C" void func_ov025_021dbe10(Work*);
 void ResetStruct0216fe48(Struct0216fe48*);
 void AppendUniqueShort0216fdf8(ShortSetStruct0216fdf8*, int);
 void SetField0FromCallFunc0202fa38(Struct0216fd0c*);
-MessageSystem* GetGlobalField0x1c020421a0();
 void CheckOrSetFlagA0_0216fd38(Struct0216fd38*);
 int GetArrayEntry_021e8a54_021e8a54(char*);
 void BeginListEntryTask_0216fd80(EntryTask0216fd80*, int);
 char* GetFieldByKeyFromWork0x88_ov000_0216fcfc(void*, int);
 #if !defined(jpn)
-extern "C" void func_0204500c(MessageSystem*, char*, int, int);
 #endif
 extern "C" void func_ov025_021eedb0(char*);
 extern "C" void func_ov025_021dcf14(Work*);
@@ -120,7 +114,6 @@ void SetBitsInWord_0203b4a0(unsigned int*, unsigned int);
 inline unsigned int AlignedSize(unsigned int length) { return (length + 3) & ~3; }
 
 #if defined(jpn)
-extern "C" void func_0204500c(MessageSystem*,char*,int);
 #endif
 // USA: func_ov025_021db038
 extern "C" ARM void func_ov025_021db038(Work* work) {

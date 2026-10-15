@@ -1,17 +1,12 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-enum { ARRAY_BYTE_OFFSET = 0x7d2 };
-#else
-enum { ARRAY_BYTE_OFFSET = 0x902 };
-#endif
+#include "Resource/MessageSystem.h"
 
 // USA: func_020465f0
-ARM void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value) {
+ARM void SetByteInRange_020465f0(MessageSystem* messages, int index, unsigned char value) {
     if (index < 0) {
         return;
     }
     if (index < 0x10) {
-        (base + index)[ARRAY_BYTE_OFFSET] = value;
+        messages->indexedNumberWidths[index] = value;
     }
 }

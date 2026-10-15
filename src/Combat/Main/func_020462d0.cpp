@@ -1,16 +1,10 @@
 #include <globaldefs.h>
-
-struct State0204166c;
-void Forward020416c0(struct State0204166c* s);
-
-struct Slot020462d0 {
-    char pad0[8];
-    int field8;
-    char pad1[0x1c - 0xc];
-};
+#include "Resource/MessageSystem.h"
+#if !defined(jpn)
+void Forward020416c0(MessageGlyphSlot*);
 
 // USA: func_020462d0
-extern "C" ARM void func_020462d0(char* obj, unsigned short* codes, int count) {
+extern "C" ARM void func_020462d0(MessageSystem* obj, unsigned short* codes, int count) {
     if (codes == 0) {
         return;
     }
@@ -32,17 +26,19 @@ extern "C" ARM void func_020462d0(char* obj, unsigned short* codes, int count) {
         if (v >= 0x80) {
             continue;
         }
-        struct Slot020462d0* slot = &((struct Slot020462d0*)(obj + 0x9b8))[v];
-        if (slot->field8 < 0) {
+        MessageGlyphSlot* slot = &obj->glyphs[v];
+        if (slot->bitmapIndex < 0) {
             continue;
         }
-        int cnt = ((unsigned char*)(obj + 0x17b8))[v] - 1;
-        ((unsigned char*)(obj + 0x17b8))[v] = cnt;
+        int cnt = obj->glyphReferences[v] - 1;
+        obj->glyphReferences[v] = cnt;
         if ((cnt & 0xff) != 0) {
             continue;
         }
-        Forward020416c0((struct State0204166c*)slot);
-        int* counter = (int*)(obj + 0x9b4);
+        Forward020416c0(slot);
+        int* counter = &obj->allocatedGlyphCount;
         *counter = (*counter - 1) & 0x7f;
     }
 }
+
+#endif

@@ -1,5 +1,4 @@
 #include <globaldefs.h>
-#include "GameState/PartyAccess.h"
 #include "GameState/GameState.h"
 
 struct SearchStruct0202c1a4;
@@ -74,6 +73,7 @@ int CheckField0NonZero_0202b7d8(int* p);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" int func_ov017_02194140(Actor02192700* self, Actor02192700* other);
 int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
+void* GetPtrField0x2a04_02010828(GameState* state);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* arr, int value);
 extern "C" void func_ov017_0219b33c(GameResources* self, Msg02192700* msg);
 void InitState71WithFlag_021c316c(Struct021c316c* p, int flag);
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov017_02192700(GameResources* resources) {
                 if (CheckFlag0x1ceBit2Set_02039d68((unsigned char*)other)) {
                     continue;
                 }
-                ArrayContainsByteStruct* party = GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(state);
+                ArrayContainsByteStruct* party = static_cast<ArrayContainsByteStruct*>(GetPtrField0x2a04_02010828(state));
                 if (party == NULL) {
                     continue;
                 }

@@ -34,9 +34,6 @@ extern "C"
 {
     void* _Z25GetPtrField0x114_02033fa0Pv(void*);
     bool _Z28CheckBits5To9Equal2_0204be20Pt(void*);
-
-    void _Z25RestorePairTables0207df90Pc(void*);
-    void _Z24BackupPairTables0207dfacPc(void*);
 }
 
 void AtmosphericEffect::Initialize()
@@ -325,7 +322,7 @@ bool AtmosphericEffectSet::IsArchiveLoaded()
     return false;
 }
 
-void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllocator *allocator, void *pZone50Thing)
+void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllocator *allocator, Foo0207df50 *encoder)
 {
     if (rawArchive_ == NULL)
         return;
@@ -436,13 +433,13 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
                 fileID++;
             }
             narc.Destroy();
-            _Z25RestorePairTables0207df90Pc(pZone50Thing);
+            RestorePairTables0207df90(encoder);
             loadInfo.allocator = allocator;
             loadInfo.fileData = loopObject->archiveFileData_;
             loadInfo.unk_8 = loopObject->archiveFileSize_;
             loadInfo.unk_10 = 1;
             loopObject->object_.LoadFromCHRArchive(&loadInfo);
-            _Z24BackupPairTables0207dfacPc(pZone50Thing);
+            BackupPairTables0207dfac(encoder);
         }
     }
 

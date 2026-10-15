@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char* obj);
 extern "C" void func_0208bb78(void* obj, int count);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
@@ -21,7 +21,7 @@ struct Obj02154e40 {
 #else
     char pad3[0x120 - 0x52];
 #endif
-    void* field0x120;
+    MessageControlOwner* field0x120;
     char pad4[0x138 - 0x124];
     SafeAllocator* field0x138;
 };
@@ -31,11 +31,11 @@ extern "C" ARM int func_ov001_02154e40(struct Obj02154e40* self) {
     GameState* battle = GameState::GetInstance();
 
     if (!(self->flags0x50 & 0x8) && self->field0x138 != 0 && self->field0x120 != 0) {
-        SetFlag0x2IfByte0xd4Not3_0208beb4((unsigned char*)self->field0x120);
+        SetFlag0x2IfByte0xd4Not3_0208beb4(self->field0x120);
         unsigned int scaleCount = battle->GetTickCount();
         func_0208bb78(self->field0x120, scaleCount);
 
-        if (*(short*)((char*)self->field0x120 + 0xd2) >= 0) {
+        if (self->field0x120->value >= 0) {
             return self->field0xa;
         }
 

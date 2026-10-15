@@ -1,10 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 struct Cont0207fd88;
 void CallFunc0204b088OverList0x2c(struct Cont0207fd88* obj);
-int GetGlobalField0x1c020421a0(void);
-void Forward0204359c(void* obj, int count);
-extern "C" void func_020439b0(void* a, int b);
 
 // USA: func_ov017_021aaec8
 ARM void ResetAndForward_021aaec8(char* p) {
@@ -12,7 +10,7 @@ ARM void ResetAndForward_021aaec8(char* p) {
 		void* p18 = *(void**)(p + 0x18);
 		if (p18 != NULL) CallFunc0204b088OverList0x2c((struct Cont0207fd88*)p18);
 	}
-	void* x = (void*)GetGlobalField0x1c020421a0();
+	MessageSystem* x = GetGlobalField0x1c020421a0();
 	Forward0204359c(x, 8);
 	func_020439b0(x, 0);
 }

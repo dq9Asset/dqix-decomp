@@ -51,7 +51,7 @@ int GetGlobalField0x1c020421a0();
 extern "C" void func_ov017_021d243c(int a);
 extern "C" void func_020dfec0(void* container, SafeAllocator* alloc, void* data, unsigned int size);
 const char* GetFieldByKey020e0434(Container020e0310* container, int key);
-extern "C" int func_02005a94(const char* string);
+extern "C" int func_02005a94(const char* text);
 extern "C" void func_ov003_02159250(void* self, void* text);
 extern "C" void func_ov003_02159464(void* self);
 void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int value);

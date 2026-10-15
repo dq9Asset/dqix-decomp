@@ -1,14 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 #if defined(jpn)
 extern "C" const char data_ov023_021fcdef[];
 extern "C" const char data_ov023_021fcdfe[];
 #endif
-
-class GameState
-{
-public:
-    static GameState* GetInstance();
-};
 
 struct Canvas_021db634;
 
@@ -96,7 +91,7 @@ extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" unsigned int strlen(const char* text);
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
-extern "C" long func_02005a94(const char* text);
+extern "C" int func_02005a94(const char* text);
 extern "C" void* func_02012fe4();
 int LookupBitFromValueRange0201bb78(struct Obj_0201bb78* flags, unsigned int id);
 extern "C" void* func_0205ec34();

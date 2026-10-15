@@ -1,37 +1,29 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
 
-extern "C" int func_020696bc(int p1, int* out, int count);
-int GetGlobalField0x1c020421a0(void);
 
-struct Ctx02069a4c { void* dst; };
 
-struct Table02069a4c {
-    char pad0[0x194e];
-    signed char slotA[4];
-    signed char slotB[4];
-    signed char counter;
-};
 
 // USA: func_02069a4c
-ARM int WriteHistoryEntry02069a4c(struct Ctx02069a4c* ctx, int p1) {
+ARM int WriteHistoryEntry02069a4c(char** ctx, const char* p1) {
     int buf[3];
-    struct Table02069a4c* t;
+    MessageSystem* t;
     int a, b;
 
     func_020696bc(p1, &buf[1], 2);
 
-    t = (struct Table02069a4c*)GetGlobalField0x1c020421a0();
+    t = GetGlobalField0x1c020421a0();
     b = buf[2];
 
-    t->counter = t->counter % 4;
+    t->b1956 = t->b1956 % 4;
     a = buf[1];
-    t->slotA[t->counter] = (signed char)a;
-    t->slotB[t->counter] = (signed char)b;
-    t->counter = t->counter + 1;
+    t->b194e[t->b1956] = (signed char)a;
+    t->b1952[t->b1956] = (signed char)b;
+    t->b1956 = t->b1956 + 1;
 
     {
-        void* d = ctx->dst;
+        void* d = *ctx;
         *(unsigned short*)&buf[0] = 0xff1c;
         memcpy(d, &buf[0], 2);
     }

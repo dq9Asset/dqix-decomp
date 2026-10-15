@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
 enum { kRegion960 = 0x800 };
 enum { kRows = 4 };
@@ -41,15 +42,9 @@ int GetFieldByKey020e0434(Container020e0310*, int);
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
 
-int GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(void* obj);
 int CallFunc020e0434With02153694_020e51cc(int value);
 int AppendString02042058(char* dst, const char* src);
 
-struct StoreStruct;
-void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
-void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
-void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
 
 #if !defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
@@ -58,7 +53,7 @@ extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int 
 // USA: func_ov003_0216982c
 extern "C" ARM void func_ov003_0216982c(unsigned char* self) {
     GameState* battle = GameState::GetInstance();
-    int field = GetGlobalField0x1c020421a0();
+    MessageSystem* field = GetGlobalField0x1c020421a0();
     void* ptr = GetPtrField0x2a04_02010828(battle);
 
     FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(self + kRegione4), 0, 2);
@@ -85,12 +80,12 @@ extern "C" ARM void func_ov003_0216982c(unsigned char* self) {
     AppendString02042058((char*)*(void**)(self + 0x7c), (const char*)msg);
 #endif
 
-    func_02046380((void*)field);
+    func_02046380(field);
 
     int value = *(int*)((char*)ptr + 0xf6c);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)field, 0, value);
-    SetByteInRange_020465f0((unsigned char*)field, 0, 7);
-    SetByteAtIndex_020465d8((unsigned char*)field, 0, 1);
+    StoreInArray0x8b0_020465c0(field, 0, value);
+    SetByteInRange_020465f0(field, 0, 7);
+    SetByteAtIndex_020465d8(field, 0, 1);
 
 #if defined(jpn)
     func_0205d304(self + kRegione4, *(void**)(self + 0x7c), 0, 0, 0, 1, 0);

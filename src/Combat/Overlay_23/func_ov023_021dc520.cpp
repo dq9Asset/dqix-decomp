@@ -23,8 +23,8 @@ struct View021dc520 {
     char pad50[0x74];
     Struct02075db0* table;
     char padc8[REGION(0x60,0x64)];
-    SpriteContext0205ac40 renderer;
-    B174Outer sprites[30];
+    LoadTable renderer;
+    Struct0205a198 sprites[30];
     char pad630[REGION(0xc4,0x144)];
     unsigned short flags;
     char pad776[5];
@@ -40,7 +40,7 @@ extern unsigned char data_ov023_021fd565[2][2];
 extern "C" void* func_0203bd08();
 extern "C" ObjectBuffer021dc520* func_0203be40(void*);
 extern "C" ObjectBuffer021dc520* func_0203be4c(void*);
-extern "C" void func_0205ac40(SpriteContext0205ac40*, B174Outer*);
+extern "C" void func_0205ac40(LoadTable*, Struct0205a198*);
 short LookupValueFromField8(Obj020dee58*);
 int ForwardTableValue02075db0(Struct02075db0*, int, int);
 inline int PaletteOffset021dc520(int index) { return index * 2; }
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov023_021dc520(View021dc520* view) {
         if (!view->allowActive || !(view->flags & 0x2000)) return;
     }
     if (!(view->flags & 2) || !view->selection) return;
-    B174Outer* sprite;
+    Struct0205a198* sprite;
     ObjectBuffer021dc520* objects;
     if (view->subScreen == 0) {
         ObjectBuffer021dc520* screenObjects = func_0203be40(func_0203bd08());

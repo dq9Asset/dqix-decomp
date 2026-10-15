@@ -12,7 +12,6 @@ struct Holder020159c0;
 struct Container020dedd0;
 struct StructDE234_020de234;
 struct HeadNode02046b24;
-struct State0207dfc8;
 struct Vec3copy0202ec84;
 
 #if defined(jpn)
@@ -67,10 +66,7 @@ int GetPreferredPackedField020de234(StructDE234_020de234*, int);
 extern "C" int sprintf(char*, const char*, ...);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void func_0204719c(void*);
-void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
-void RestorePairTables0207df90(char*);
 void Forward02047b30(void*, int, int, int);
-void BackupPairTables0207dfac(char*);
 void* GetField0x3b0Value_020100bc(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
@@ -148,11 +144,11 @@ extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
             entry->object = slot;
             func_0204719c(slot);
             entry->object->bit2 = 1;
-            char saved[0x70];
-            CopyState0207dfc8((State0207dfc8*)self->unknown_ptr_50_, (State0207dfc8*)saved);
-            RestorePairTables0207df90(saved);
+            Foo0207df50 saved;
+            CopyState0207dfc8(self->encoder, &saved);
+            RestorePairTables0207df90(&saved);
             Forward02047b30(entry->object, (int)file, size, (int)self->pAllocator_68_);
-            BackupPairTables0207dfac(saved);
+            BackupPairTables0207dfac(&saved);
             *reinterpret_cast<int*>(self->unk_600 + 0x220) = 0x1f;
             entry->delay = 0;
         } else {

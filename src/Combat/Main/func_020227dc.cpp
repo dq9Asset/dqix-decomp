@@ -24,9 +24,8 @@ void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 
 void Init0205a198(struct Struct0205a198* p);
-void InitStruct0205a444(char* obj);
 
-void InitFourEntrySlots02020aa0(void* obj);
+void InitFourEntrySlots02020aa0(MapDisplay* obj);
 
 struct State0xbb1c;
 void ClearFields0x8_0203bb1c(struct State0xbb1c* obj);
@@ -134,10 +133,10 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
         Init0205a198(&ctx->records[i]);
     }
 
-    InitStruct0205a444((char*)&ctx->entryList);
-    ctx->entryList.active = 1;
+    InitStruct0205a444(&ctx->entryList);
+    ctx->entryList.subScreen = 1;
     ctx->entryList.records = ctx->records;
-    ctx->entryList.count = 0x1c;
+    ctx->entryList.recordCount = 0x1c;
     ctx->displayMode = 1;
 #if defined(jpn)
     func_02020aec(ctx, ctx->taska24, sb);

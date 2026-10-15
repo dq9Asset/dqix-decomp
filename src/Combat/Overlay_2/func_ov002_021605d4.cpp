@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
 
 class GameState;
@@ -6,7 +7,6 @@ struct Container020e0310;
 struct DstHolder0215b8c8 {
     char *dst;
 };
-struct StoreStruct;
 
 extern "C" void func_ov002_02157480(void *self, int *slots);
 unsigned char *GetFieldAt0x150_02053c6c(unsigned char *c);
@@ -14,13 +14,8 @@ const char *GetFieldByKey020e0434(Container020e0310 *tbl, int key);
 extern "C" void __clear(void *buffer, unsigned long size);
 void AppendTaggedString_0215b8c8(DstHolder0215b8c8 *dst, const char *src, int n);
 void AppendFormatted02041fac(char *buf, int str, int n);
-void *GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(void *messages);
-void StoreInArray0x8b0_020465c0(StoreStruct *messages, int index, int value);
-void SetByteInRange_020465f0(unsigned char *messages, int index, unsigned char digits);
-void SetByteAtIndex_020465d8(unsigned char *messages, int index, unsigned char value);
 void AppendHeightTag_02041b00(char *buf, int h);
-extern "C" void func_02046608(void *messages, int a, const char *format, char *output, int size, int b, int c);
+extern "C" void func_02046608(MessageSystem *messages, int a, const char *format, char *output, int size, int b, int c);
 void AppendString02042058(char *buf, const char *str);
 
 // USA: func_ov002_021605d4
@@ -45,11 +40,11 @@ extern "C" ARM void func_ov002_021605d4(char *self, char *buf) {
     holder.dst = text;
     AppendTaggedString_0215b8c8(&holder, name, 0);
     AppendFormatted02041fac(buf, (int) text, 0x10);
-    void *msg = GetGlobalField0x1c020421a0();
+    MessageSystem *msg = GetGlobalField0x1c020421a0();
     func_02046380(msg);
-    StoreInArray0x8b0_020465c0((StoreStruct *) msg, 0, *(unsigned short *) (f + 0x564));
-    SetByteInRange_020465f0((unsigned char *) msg, 0, 4);
-    SetByteAtIndex_020465d8((unsigned char *) msg, 0, 1);
+    StoreInArray0x8b0_020465c0(msg, 0, *(unsigned short *) (f + 0x564));
+    SetByteInRange_020465f0(msg, 0, 4);
+    SetByteAtIndex_020465d8(msg, 0, 1);
     __clear(line, sizeof(line));
     AppendHeightTag_02041b00(buf, -1);
     func_02046608(msg, 8, GetFieldByKey020e0434((Container020e0310 *) (self + 0x20), 0x1006), line,

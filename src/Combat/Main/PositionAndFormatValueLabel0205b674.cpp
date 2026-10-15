@@ -1,21 +1,14 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 #if defined(jpn)
-namespace {
-struct Struct02020520;
-struct S_b20c {
-    void* pixels;
-    Struct02020520* layout;
-    unsigned char mode;
-};
-}
 extern "C" void __clear(void*, int);
-extern "C" void func_0205b234(S_b20c*, int, int, void*, int, int);
+extern "C" void func_0205b234(GlyphDestination0205b234*, int, int, const char*, int, int);
 
 // JPN: func_0205c9ac
-extern "C" ARM void func_0205c9ac(S_b20c* destination, short x, short y, int value,
+extern "C" ARM void func_0205c9ac(GlyphDestination0205b234* destination, short x, short y, int value,
                                   int pixelSize, int color, unsigned char digits, unsigned char align) {
-    if (destination->pixels != NULL && destination->layout != NULL) {
+    if (destination->pixels != NULL && destination->rectangles != NULL) {
         int remaining = value;
         while ((remaining = remaining / 10) != 0) {}
         if (align == 1) {
@@ -33,18 +26,16 @@ extern "C" ARM void func_0205c9ac(S_b20c* destination, short x, short y, int val
 }
 #else
 
-struct Obj0205b674 { int field0; int field4; };
-
 int FormatAbsIntToString02042658(void* obj, int value);
 extern "C" void __clear(void* buf, int n);
 extern "C" int sprintf(void* dst, void* fmt, int val);
-extern "C" void func_0205b234(struct Obj0205b674* a, int b, int c, void* buf, int d, int e);
+extern "C" int func_0205b234(GlyphDestination0205b234*, short, short, const char*, unsigned char, unsigned char);
 extern char data_020f0518;
 
 // USA: func_0205b674
-ARM void PositionAndFormatValueLabel0205b674(struct Obj0205b674* obj, short posX, int param2, int param3,
+ARM void PositionAndFormatValueLabel0205b674(GlyphDestination0205b234* obj, short posX, short param2, int param3,
                                               unsigned char param4, unsigned char param5, unsigned char param6, unsigned char param7) {
-    if (obj->field0 != 0 && obj->field4 != 0) {
+    if (obj->pixels != NULL && obj->rectangles != NULL) {
         int value = param3;
         while ((value = value / 10) != 0) {}
         int r0val = FormatAbsIntToString02042658((void*)param7, param3);

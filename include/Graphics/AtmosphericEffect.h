@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Resource/PairTableEncoder.h"
+
 #include "Vector.h"
 #include "std_library_functions.h"
 #include "../World/Object3D.h"
@@ -71,7 +73,7 @@ public:
     void LoadArchive(const char* name);
     bool IsArchiveLoaded();
 
-    void ProcessArchive(AtmosphericEffectSet* alt, SafeAllocator* allocator, void* pZone50Thing);
+    void ProcessArchive(AtmosphericEffectSet* alt, SafeAllocator* allocator, Foo0207df50* encoder);
     bool Draw();
 
     void AddEffectObject(AtmosphericEffect* obj);

@@ -8,7 +8,8 @@ struct B174Outer;
 struct Container0205a3d0;
 
 struct CreationTextEntry {
-    int key;
+    short key;
+    unsigned short reserved;
     const char* text;
 };
 
@@ -17,6 +18,12 @@ struct Container020e0310 {
     unsigned int unknown : 20;
     CreationTextEntry* entries;
 };
+
+typedef short (*CreationTextKeyReader)(short* key);
+
+CreationTextEntry* BinarySearch020e0310(Container020e0310* table, int key, CreationTextKeyReader readKey);
+const char* LookupFieldByKey020e0440(Container020e0310* table, int key);
+const char* GetFieldByKey020e0434(Container020e0310* table, int key);
 
 struct CreationTileMap {
     unsigned char unknown[0x10];

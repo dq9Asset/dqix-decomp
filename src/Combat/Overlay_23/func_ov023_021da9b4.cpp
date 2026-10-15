@@ -1,17 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
 #include "Resource/CharacterCreationUI.h"
 #include "Graphics/SpriteAffineTransform.h"
 
-struct Elem0205a3d0 {
-    unsigned char unknown0[8];
-    unsigned short key;
-    unsigned char unknownA[11];
-    unsigned char flags;
-    unsigned char unknown16[2];
-};
 struct Elem_0205d81c {
     unsigned char unknown0[0xac];
     short tileX, tileY;
@@ -22,12 +16,10 @@ struct Elem_0205d81c {
     unsigned char unknownC5[0x1b];
 };
 struct Struct_0205d81c;
-struct Container0205a330;
 void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
 void SetEntryPosition_020e27ec(Container0205a3d0*, int, short, short);
-void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0205ae8c(void*);
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
@@ -43,7 +35,7 @@ extern "C" ARM void func_ov023_021da9b4(CharacterCreationUI* self) {
             Elem0205a3d0* entry = FindEntryByHalfword0205a3d0(self->firstSpriteEntries, 0);
             if (entry != NULL) entry->flags |= 8;
             unsigned int ticks = state->GetTickCount();
-            IterateEntries0205a330((Container0205a330*)self->firstSpriteEntries, ticks);
+            IterateEntries0205a330(self->firstSpriteEntries, ticks);
             SetEntryPosition_020e27ec(self->firstSpriteEntries, 0, 0x6c, y);
             func_0205ae8c(self->firstSpriteContext);
         }
@@ -61,7 +53,7 @@ extern "C" ARM void func_ov023_021da9b4(CharacterCreationUI* self) {
     Elem0205a3d0* entry = FindEntryByHalfword0205a3d0(self->spriteEntries, 0);
     if (entry != NULL) entry->flags |= 8;
     unsigned int ticks = state->GetTickCount();
-    IterateEntries0205a330((Container0205a330*)self->spriteEntries, ticks);
+    IterateEntries0205a330(self->spriteEntries, ticks);
     SetEntryPosition_020e27ec(self->spriteEntries, 0, (short)(dx - 8), (short)(dy - 2));
     func_0205ae8c(self->spriteContext);
 }
@@ -76,8 +68,6 @@ struct Elem0205a3d0;
 struct Elem0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
 ARM void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 
-struct Container0205a330;
-void IterateEntries0205a330(struct Container0205a330* c, int arg);
 
 extern "C" void func_0205ae8c(void* obj);
 
@@ -113,7 +103,7 @@ extern "C" ARM void func_ov023_021da9b4(void* obj) {
                 *(unsigned char*)((char*)e + 0x15) |= 8;
             }
             unsigned int scaleCount = bs2->GetTickCount();
-            IterateEntries0205a330((struct Container0205a330*)c, scaleCount);
+            IterateEntries0205a330(c, scaleCount);
             SetEntryPosition_020e27ec(c, 0, posA, posB);
             func_0205ae8c(*(void**)((char*)obj + 0x7d8));
         }
@@ -142,7 +132,7 @@ extern "C" ARM void func_ov023_021da9b4(void* obj) {
         *(unsigned char*)((char*)e2 + 0x15) |= 8;
     }
     unsigned int scaleCount2 = bs1->GetTickCount();
-    IterateEntries0205a330((struct Container0205a330*)c2, scaleCount2);
+    IterateEntries0205a330(c2, scaleCount2);
     SetEntryPosition_020e27ec(c2, 0, (short)(dx - 8), (short)(dy - 2));
     func_0205ae8c(*(void**)((char*)obj + 0x7e4));
 }

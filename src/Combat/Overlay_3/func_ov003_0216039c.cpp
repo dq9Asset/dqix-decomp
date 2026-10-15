@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
+#include "Resource/MessageRenderResources.h"
 
 #if defined(jpn)
 enum { kRegionValue324_20C = 0x20c };
@@ -25,23 +27,15 @@ enum { kRegionValue474_29C = 0x474 };
 #endif
 
 struct Obj2081;
-struct Outer020e28dc;
 struct Container0205a3d0;
-struct Container0205a330;
-struct Elem0205a3d0 {
-    char pad0[0x15];
-    unsigned char flags;
-};
 
 unsigned char* FindElementByByte0xc4_02081da8(Obj2081* obj, int key);
-int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
 void SetEntryByte14ByKey0205a42c(Container0205a3d0* c, int key, int val);
 extern "C" void func_0205ae8c(void* obj);
 int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 void GetLookAndTurnOffsets020809c4(void* obj, int id, int id2, short* out1, short* out2);
 void SetEntryFlag2ByKey0205a370(Container0205a3d0* c, int key);
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0* c, int key);
-void IterateEntries0205a330(Container0205a330* c, int arg);
 void SetEntryPosition_020e27ec(Container0205a3d0* c, int key, short a, short b);
 
 struct Scene0216039c {
@@ -50,7 +44,7 @@ struct Scene0216039c {
     char pad328[kRegionValue334_21C - kRegionValue328_210];
     char x334[kRegionValue38C_274 - kRegionValue334_21C];
     Container0205a3d0* p38c;
-    Outer020e28dc* p390;
+    EntryManager020e2490* p390;
     char pad394[kRegionValue460_288 - kRegionValue394_27C];
     int field_460;
     char pad464[kRegionValue470_298 - kRegionValue464_28C];
@@ -90,7 +84,7 @@ extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
     if (e != NULL) {
         e->flags &= ~8;
     }
-    IterateEntries0205a330((Container0205a330*)self->p38c, self->field_460);
+    IterateEntries0205a330(self->p38c, self->field_460);
     SetEntryPosition_020e27ec(self->p38c, 0, x, y);
     func_0205ae8c(self->x334);
 }

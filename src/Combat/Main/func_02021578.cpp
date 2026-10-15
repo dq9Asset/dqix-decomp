@@ -33,7 +33,6 @@ void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
 struct Struct0205a198;
 void Init0205a198(struct Struct0205a198* p);
-void InitStruct0205a444(char* obj);
 
 int FormatAndCopyNames02020b98(void* obj);
 void ClearRecords02026644(char* obj);
@@ -46,7 +45,7 @@ extern "C" void func_020211b0(char* obj, int* handle);
 #else
 #endif
 int InitAndCopyBuffer02023330(void* obj, int flag);
-void InitFourEntrySlots02020aa0(void* obj);
+void InitFourEntrySlots02020aa0(MapDisplay* obj);
 #if defined(jpn)
 extern "C" void func_02020fc4(void* obj, int handle, SafeAllocator* alloc);
 #else
@@ -151,10 +150,10 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
         for (i0 = 0; i0 < 0x1c; i0++) {
             Init0205a198(&self->records[i0]);
         }
-        InitStruct0205a444((char*)&self->entryList);
-        self->entryList.active = 1;
+        InitStruct0205a444(&self->entryList);
+        self->entryList.subScreen = 1;
         self->entryList.records = self->records;
-        self->entryList.count = 0x1c;
+        self->entryList.recordCount = 0x1c;
         int mode = modes->unknown_c_low_;
         if (mode == 0) {
             self->displayMode = 3;

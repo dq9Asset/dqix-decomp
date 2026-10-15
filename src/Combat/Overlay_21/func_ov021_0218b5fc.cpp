@@ -1,13 +1,14 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "System/Graphics.h"
 
 static inline unsigned long ReadDisplay(volatile unsigned int* p) { return *p; }
 static inline void WriteDisplay(volatile unsigned int* p, unsigned int value) { *p = value; }
 
 #if defined(jpn)
-enum { kGlobalDisplayOffset = 0x608, kControllerBackupOffset = 0x1c4c, kSceneAllocatorSize = 0x48e10, kSceneSize = 0xd90, kSceneSlotOffset = 0xd4c };
+enum { kGlobalDisplayOffset = 0x608, kSceneAllocatorSize = 0x48e10, kSceneSize = 0xd90, kSceneSlotOffset = 0xd4c };
 #else
-enum { kGlobalDisplayOffset = 0x508, kControllerBackupOffset = 0x1e28, kSceneAllocatorSize = 0x4b238, kSceneSize = 0xdb8, kSceneSlotOffset = 0xd88 };
+enum { kGlobalDisplayOffset = 0x508, kSceneAllocatorSize = 0x4b238, kSceneSize = 0xdb8, kSceneSlotOffset = 0xd88 };
 #endif
 
 #include "Filesystem/BackgroundLoader.h"
@@ -16,7 +17,7 @@ enum { kGlobalDisplayOffset = 0x508, kControllerBackupOffset = 0x1e28, kSceneAll
 #include "System/OverlayId.h"
 
 struct AllocatorUnion;
-struct Foo0207df50;
+extern "C" void func_02042c68(MessageSystem*);
 struct S_02010124;
 struct Obj0203bdb0;
 struct GameResources;
@@ -55,15 +56,6 @@ void SetDispcntModeAndFlags020c391c(int mode, int a, int b);
 void SetSubBgMode_020c3984(unsigned int mode);
 void Set3DClearColor_020c5588(int a, int b, int c, int d, int e);
 void CallWithAddr4000330_020c555c(int table);
-extern "C" void func_0207de48(void* p, int a, int b);
-void* GetGlobalField0x1c020421a0();
-extern "C" void func_02042c68(void* controller);
-extern "C" void func_02043124(void* obj);
-void TailForward020440a4(void* controller);
-void CopyInternalFields0207df50(Foo0207df50* obj);
-void RestorePairTables0207df90(char* obj);
-extern "C" void func_020432c4(void* controller);
-void BackupPairTables0207dfac(char* obj);
 void SetField0x3acValue_020100a0(GameState* gs, int value);
 int GetField0x3acValue_020100a8(GameState* gs);
 void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
@@ -86,7 +78,6 @@ void DispatchContextByState0209c678(Actor0209c678* actor, int state);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
 void ResetXYField0203aa08(void* obj);
 void InitActorContext0209c20c(Actor0209c20c* actor);
-void InitControllerObject_02043000(char* controller);
 extern char data_02114e20;
 extern char data_02109bf4;
 extern int data_02114e50;
@@ -103,7 +94,7 @@ struct Battle0218b5fc {
     char pad1[0x2c - 0x29];
     SafeAllocator allocator;
     void* scene;
-    char state44[0xb4 - 0x44];
+    Foo0207df50 state44;
     char* slot;
     int quit;
 };
@@ -183,16 +174,16 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
 
     EdgeColors0218b5fc edges = data_ov021_0218bbc4;
     CallWithAddr4000330_020c555c((int)&edges);
-    func_0207de48(self->state44, 0x4000, 0x40);
-    void* controller = GetGlobalField0x1c020421a0();
+    func_0207de48(&self->state44, 0x4000, 0x40);
+    MessageSystem* controller = GetGlobalField0x1c020421a0();
     func_02042c68(controller);
     func_02043124(controller);
     TailForward020440a4(controller);
-    *(char**)((char*)controller + kControllerBackupOffset) = self->state44;
-    CopyInternalFields0207df50((Foo0207df50*)self->state44);
-    RestorePairTables0207df90(self->state44);
+    controller->encoder = &self->state44;
+    CopyInternalFields0207df50(&self->state44);
+    RestorePairTables0207df90(&self->state44);
     func_020432c4(controller);
-    BackupPairTables0207dfac(self->state44);
+    BackupPairTables0207dfac(&self->state44);
     SetField0x3acValue_020100a0(gs, 0);
     self->allocator.CreateTypeA(AllocateAligned4_02012d88((AllocatorUnion*)&data_02114e20, kSceneAllocatorSize), kSceneAllocatorSize);
     self->allocator.Reset();
@@ -230,8 +221,8 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     ScaleAndNotify0203ad88(&data_02109bf4, 0, 0);
     ResetXYField0203aa08(&data_02109bf4);
     InitActorContext0209c20c((Actor0209c20c*)&data_02109bf4);
-    InitControllerObject_02043000((char*)controller);
-    CopyInternalFields0207df50((Foo0207df50*)self->state44);
+    InitControllerObject_02043000(controller);
+    CopyInternalFields0207df50(&self->state44);
     SetWord0x0_0200fb84((int*)gs, 0);
 #if !defined(jpn)
     PopStack0AndTrigger_020a1e54(1);

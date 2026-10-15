@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <GameState/GameState.h>
 #include <Resource/IndexedResourceEntry.h>
@@ -10,7 +11,6 @@ struct T020545b8;
 struct StreamHeader;
 struct Struct_203dafc { int words[8]; };
 union CombatantLoadInfo02166e5c { Struct_203dafc words; ObjectArchiveLoadInfo archive; };
-struct InternalBlock02166e5c { char bytes[0x70]; };
 struct Field0x19cData { unsigned char data[0x578]; };
 struct CombatantModelState02166e5c { unsigned char data[0x70]; };
 struct BattleWork02166e5c {
@@ -75,9 +75,6 @@ struct RegionCode02166e5c { unsigned char bytes[4]; };
 extern "C" GameResources* func_ov017_0218b5b0();
 void DestroyAllocators020545b8(T020545b8*);
 struct Foo0207df50;
-void CopyInternalFields0207df50(Foo0207df50*);
-void RestorePairTables0207df90(char*);
-void BackupPairTables0207dfac(char*);
 void ClearEightWords_0203dafc(Struct_203dafc*);
 struct Obj02054664;
 void ResetSelectionState02054664(Obj02054664*);
@@ -113,15 +110,15 @@ extern const RegionCode02166e5c data_ov000_02183014;
 
 // USA: func_ov000_02166e5c
 extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
-    InternalBlock02166e5c* blocks;
+    Foo0207df50* blocks;
     GameState* game = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
     SafeAllocator* allocator = &resources->allocator_array_38[3];
-    blocks = (InternalBlock02166e5c*)resources->unknown_2cc;
+    blocks = resources->encoders;
     DestroyAllocators020545b8((T020545b8*)GetIndexedEntry_021a11f4(resources, 2));
     allocator->Reset();
-    CopyInternalFields0207df50((Foo0207df50*)&blocks[3]);
-    RestorePairTables0207df90(blocks[3].bytes);
+    CopyInternalFields0207df50(&blocks[3]);
+    RestorePairTables0207df90(&blocks[3]);
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     if (!LoadFileIntoMemory(data_ov000_02183aa5, data_0211e33c, &size)) {
@@ -209,7 +206,7 @@ extern "C" ARM void func_ov000_02166e5c(BattleWork02166e5c* self) {
     CancelPendingAction020397cc((Obj020397cc*)combatant, 1);
     CopyCombatantStats0208936c(combatant->savedStats, (char*)combatant->stats, (char*)combatant->baseStats);
     combatant->flags |= 0x20;
-    BackupPairTables0207dfac(blocks[3].bytes);
+    BackupPairTables0207dfac(&blocks[3]);
     int level = entry->level;
     CombatantData02166e5c* levelData = combatant->data;
     if (levelData) levelData->level = (unsigned char)level;

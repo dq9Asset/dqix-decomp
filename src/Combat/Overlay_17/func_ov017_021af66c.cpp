@@ -32,15 +32,20 @@ struct CombatStepObj {
     unsigned short clearColor;
     unsigned char restoreDisplay;
     unsigned char unk43[5];
-#if defined(jpn)
-    unsigned char dispatcher[0x210 - 0x48];
-#else
-    unsigned char dispatcher[0x280 - 0x48];
-#endif
+    MessageChoicePanel dispatcher;
     int bgMode;
     int unk284;
     void* allocation;
 };
+
+typedef char VerifyCombatStepPanelOffset[offsetof(CombatStepObj, dispatcher) == 0x48 ? 1 : -1];
+#if defined(jpn)
+typedef char VerifyCombatStepPanelSize[sizeof(MessageChoicePanel) == 0x1c8 ? 1 : -1];
+typedef char VerifyCombatStepDisplayOffset[offsetof(CombatStepObj, bgMode) == 0x210 ? 1 : -1];
+#else
+typedef char VerifyCombatStepPanelSize[sizeof(MessageChoicePanel) == 0x238 ? 1 : -1];
+typedef char VerifyCombatStepDisplayOffset[offsetof(CombatStepObj, bgMode) == 0x280 ? 1 : -1];
+#endif
 
 struct CombatMenuNode {
     unsigned char unk0[2];
@@ -89,7 +94,7 @@ extern "C" void func_ov017_0218b5c0(int a, int b);
 void* GetDataPtr02114e04_020d6c00();
 void* GetGlobal02109030_020936f8();
 void CancelPendingAction020397cc(Obj020397cc* obj, int v);
-void SetupAndDispatch0205c904(unsigned char* obj, int v);
+void SetupAndDispatch0205c904(MessageChoicePanel* obj, int v);
 int TestMaskBitBySignedByteIndex_0202bd34(SearchStruct* obj, int index);
 unsigned char GetField0x397cValue_020100b0(GameState* gs);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
@@ -104,11 +109,10 @@ void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
 void ClearListUntilFlagZero(ClearList02046968* list);
 void SetByteField0x253_020397c0(void* obj);
 void CopyByteField0x253To0x252_02039830(void* obj);
-void ResetGlobalObjAndInitSelfPointer0205ce94(unsigned char* obj);
+void ResetGlobalObjAndInitSelfPointer0205ce94(MessageChoicePanel* obj);
 void ClearFlags020466f4(FlagWord020466f4* obj, unsigned int mask);
 void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 void TailForward02012da4(AllocatorUnion* alloc, void* p);
-char* GetGlobalField0x1c020421a0();
 
 extern CombatStepTable data_ov017_021d6aec;
 extern AllocatorUnion data_02114e20;
@@ -141,7 +145,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
         if (tick == 0) {
             tick = 1;
         }
-        SetupAndDispatch0205c904(obj->dispatcher, tick);
+        SetupAndDispatch0205c904(&obj->dispatcher, tick);
         obj->state = table.fn[obj->state](obj);
     }
     if (obj->requestFinish != 0) {
@@ -222,7 +226,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
             CopyByteField0x253To0x252_02039830(c);
         }
     }
-    ResetGlobalObjAndInitSelfPointer0205ce94(obj->dispatcher);
+    ResetGlobalObjAndInitSelfPointer0205ce94(&obj->dispatcher);
     ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x800000);
     func_ov017_0218b5c0(1, -1);
     DispatchWithGlobalContext020daf9c(0, 1, 0, 1);
@@ -232,7 +236,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
         TailForward02012da4(&data_02114e20, obj->allocation);
         obj->allocation = 0;
     }
-    MessageSystem* messages = reinterpret_cast<MessageSystem*>(GetGlobalField0x1c020421a0());
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
 #if defined(jpn)
     messages->flags17ff.flag2 = 0;
 #else

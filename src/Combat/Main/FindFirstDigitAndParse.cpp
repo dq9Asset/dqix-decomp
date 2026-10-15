@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 
-extern "C" int func_02005a94(signed char*);
+extern "C" int func_02005a94(const char*);
 
 // USA: func_02068200
-ARM int FindFirstDigitAndParse_02068200(signed char* s) {
+ARM int FindFirstDigitAndParse_02068200(const char* s) {
     while (*s != 0) {
         if (*s >= 0x30 && *s <= 0x39)
             return func_02005a94(s);

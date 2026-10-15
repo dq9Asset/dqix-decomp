@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 #if defined(jpn)
 enum { kRegionValue1E6_1E2 = 0x1e2 };
@@ -6,22 +7,19 @@ enum { kRegionValue1E6_1E2 = 0x1e2 };
 enum { kRegionValue1E6_1E2 = 0x1e6 };
 #endif
 
-struct Outer020e28dc;
 struct Obj2081;
 
 extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
-int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 int IsPointInsideElement02080d54(struct Obj2081* obj, int key, int px, int py);
 
 struct Ctx02155208 {
     char pad0[0x18];
     struct Obj2081* field18;
-    struct Outer020e28dc* ptr1c;
+    EntryManager020e2490* ptr1c;
     char pad1[kRegionValue1E6_1E2 - 0x20];
     short key1e6;
 };

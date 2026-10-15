@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 struct Window0204fa0c { char unknown0[0xc5]; unsigned char flags; };
-char* GetTableEntry020421b0(int);
-extern "C" void func_0204e1c8(Window0204fa0c*, char*, int, int, int, int, int, int);
+extern "C" void func_0204e1c8(Window0204fa0c*, unsigned char*, int, int, int, int, int, int);
 // USA: func_0204fa0c
 extern "C" ARM void func_0204fa0c(Window0204fa0c* window, short x, short y) {
     if (!(window->flags & 0x40)) return;
@@ -21,7 +21,7 @@ extern "C" ARM void func_0204fa0c(Window0204fa0c* window, short x, short y) {
     ys[3] = bottom;
     unsigned char graphicIndex = 16;
     for (unsigned char i = 0; i < 4; ++i) {
-        char* graphic = GetTableEntry020421b0(graphicIndex);
+        unsigned char* graphic = GetTableEntry020421b0(graphicIndex);
         if (graphic) {
             func_0204e1c8(window, graphic, xs[i], ys[i], 8, 8, 0xf0, 15);
         }

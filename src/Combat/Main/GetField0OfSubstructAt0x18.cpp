@@ -1,16 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
-struct Substruct020416cc {
-    int value;
-};
-
-struct Holder020416cc {
-    char unk[0x18];
-    struct Substruct020416cc* substruct;
-};
+#if !defined(jpn)
 
 // USA: func_020416cc
-ARM int GetField0OfSubstructAt0x18(struct Holder020416cc* holder) {
-    struct Substruct020416cc* substruct = holder->substruct;
-    return substruct != 0 ? substruct->value : 0;
+ARM const char* GetField0OfSubstructAt0x18(MessageGlyphSlot* slot) {
+    FontCharacter* character = slot->character;
+    return character != 0 ? character->text : 0;
 }
+
+#endif

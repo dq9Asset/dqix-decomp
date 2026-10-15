@@ -4,6 +4,7 @@
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 #include "Resource/MessageSystem.h"
+#include "Resource/GameResources.h"
 
 #if defined(jpn)
 #define data_ov010_02184a80 data_ov010_02185b40
@@ -64,13 +65,7 @@ struct Flags020340b4;
 void SetFlag0x80At0xc2(struct Flags020340b4* p);
 
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
-extern "C" void func_02046380(void* global);
-extern "C" int func_020457e0(void* global);
 
-struct Foo0207df50;
-void CopyInternalFields0207df50(struct Foo0207df50* p);
-void RestorePairTables0207df90(char* obj);
-void BackupPairTables0207dfac(char* obj);
 
 struct NodeList02057de0;
 extern "C" void* func_02057924(void);
@@ -110,7 +105,6 @@ struct Actor02184354 {
     unsigned char pad0[0xc];
     unsigned char combatantId;
 };
-MessageSystem* GetGlobalField0x1c020421a0(void);
 
 struct TableEntry02184354 {
     unsigned char pad0[8];
@@ -170,7 +164,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     caster = bs->GetPartyMemberByIndex(actorInfo->combatantId);
     GameObject* active = bs->GetPartyMemberByIndex(GetField0x397cValue_020100b0(bs));
     void* scene = func_0202ae18();
-    void* ov17 = func_ov017_0218b5b0();
+    GameResources* ov17 = func_ov017_0218b5b0();
     move = (struct MoveRecord02184354*)func_02012fe4();
 #if defined(jpn)
     char message[200];
@@ -315,18 +309,14 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         unsigned int fileLen;
         loader->GetLoadedFileByID(obj->taskId, &filePtr, &fileLen);
 
-#if defined(jpn)
-        char* stage = (char*)ov17 + 0x27c;
-#else
-        char* stage = (char*)ov17 + 0x2cc;
-#endif
+        Foo0207df50* encoders = ov17->encoders;
         struct Vec3i02184354 pos = *(struct Vec3i02184354*)((char*)caster + 0x44);
-        CopyInternalFields0207df50((struct Foo0207df50*)(stage + 0xc40));
-        RestorePairTables0207df90(stage + 0xc40);
+        CopyInternalFields0207df50(&encoders[28]);
+        RestorePairTables0207df90(&encoders[28]);
         void* nodes = func_02057924();
         CreateAndRegisterNode02057de0((struct NodeList02057de0*)nodes, 0x11, &obj->alloc,
                                       (int)filePtr, (int)fileLen);
-        BackupPairTables0207dfac(stage + 0xc40);
+        BackupPairTables0207dfac(&encoders[28]);
 
         struct Vec3i02184354 scale;
         scale.x = 0x10a;

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 enum { kGlobalStateOffset = 0x868, kGlobalFlagOffset = 0x17fc, kSceneFlagOffset = 0x3448, kNodeListOffset = 0x34ec, kPendingActionOffset = 0x4108, kAtmosphericOffset = 0x114 };
@@ -12,17 +13,9 @@ enum { kGlobalStateOffset = 0x998, kGlobalFlagOffset = 0x19cb, kSceneFlagOffset 
 #include "System/Matrix.h"
 
 struct HeadNode02046b24;
-struct Obj020444e0;
 
 struct Timer020707c8 {
     unsigned char field0;
-};
-
-struct Global020421a0 {
-    char pad0[kGlobalStateOffset];
-    int field998;
-    char pad1[kGlobalFlagOffset - (kGlobalStateOffset + 4)];
-    unsigned char field19cb;
 };
 
 struct Field02114e54 {
@@ -52,7 +45,7 @@ void ForwardObjAndField0_021a3b30(int);
 void UpdateInterpTimer020707c8(Timer020707c8*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 unsigned int GetBitsInField4_0203b4fc(unsigned int*, unsigned int);
-void ReleaseField0x38IfValid020444e0(Obj020444e0*);
+void ReleaseField0x38IfValid020444e0(MessageSystem*);
 extern "C" void func_ov017_0219ad84(Battle021960b8*);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern "C" void func_0205337c(GameObject*);
@@ -64,7 +57,6 @@ int* GetGlobal02109030_020936f8();
 void UpdateChannelStateIfEligible02093f68(char*);
 extern "C" void* func_02012fe4(void);
 void MaybeUpdateOrDispatchEntry_021959ec(void*);
-Global020421a0* GetGlobalField0x1c020421a0();
 
 extern Vector3fix data_ov017_021d6408;
 extern Vector3fix data_ov017_021d6414;
@@ -78,7 +70,7 @@ extern int data_ov017_021d8350;
 // USA: func_ov017_021960b8
 extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     GameState* game = GameState::GetInstance();
-    Global020421a0* global = GetGlobalField0x1c020421a0();
+    MessageSystem* global = GetGlobalField0x1c020421a0();
     Timer020707c8* timer = (Timer020707c8*)func_020704fc();
     GameObject* leader = game->GetUnknownGameObject();
     game->GetTickCount();
@@ -103,9 +95,9 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     if (GetHeadNodeIdOrMinusOne(self->nodeList) != 2 &&
         GetHeadNodeIdOrMinusOne(self->nodeList) != 3 &&
         GetHeadNodeIdOrMinusOne(self->nodeList) != 10) {
-        if ((global->field998 != 0 || global->field19cb != 0) &&
+        if ((global->active != 0 || global->compositeBoundsEnabled != 0) &&
             GetBitsInField4_0203b4fc(self->flags, 0x8000) == 0) {
-            ReleaseField0x38IfValid020444e0((Obj020444e0*)global);
+            ReleaseField0x38IfValid020444e0(global);
         }
         func_ov017_0219ad84(self);
         if (GetBitsInField4_0203b4fc(self->flags, 4) == 0) {

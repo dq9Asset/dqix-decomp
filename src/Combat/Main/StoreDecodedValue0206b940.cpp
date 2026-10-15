@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-extern "C" void func_020696bc(int a, int* out, int c);
 
 // USA: func_0206b940
-ARM int StoreDecodedValue0206b940(int input, int* target) {
+ARM int StoreDecodedValue0206b940(const char* input, int* target, int unusedFont, int unusedMargin) {
     int val;
     func_020696bc(input, &val, 1);
     *target = val;

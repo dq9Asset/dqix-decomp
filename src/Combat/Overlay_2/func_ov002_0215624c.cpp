@@ -2,6 +2,7 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
 struct Struct_0205d81c;
 struct Struct_0205c570;
@@ -43,7 +44,6 @@ void LinkArrayPrevPointers0205cf78(struct Struct_0205cf78 *s,
                                                                                      unsigned char count);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" void *memcpy(void *dst, const void *src, unsigned int length);
-void *GetTableEntry020421b0(int idx);
 void CleanInvalidateCacheRange(const void *where, unsigned int len);
 extern "C" void LoadToMainBG1CharacterData(const void *data, unsigned int offset, unsigned int length);
 extern "C" void LoadToMainBG3CharacterData(const void *data, unsigned int offset, unsigned int length);

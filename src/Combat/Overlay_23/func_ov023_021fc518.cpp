@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/GameResources.h"
@@ -108,9 +109,6 @@ extern "C" void func_ov023_021f6ed8(ObjBase021f6ed8* obj);
 extern "C" void* func_ov011_021849c8(void* ctx);
 extern "C" MenuNode_021fc518* func_ov023_021f6880(void* list, int tag);
 extern "C" HeapNode_021fc518* func_ov011_021845f8(void* ctx, int heap);
-void CopyInternalFields0207df50(Foo0207df50* p);
-void RestorePairTables0207df90(char* p);
-void BackupPairTables0207dfac(char* p);
 void InitTenAllocatorsAndClearFields_021e4e8c(void* model);
 void CreateTenAndOne_021e4f64(void* model, SafeAllocator* allocator);
 void InitBlockArray_021e4fd8(void* model);
@@ -145,12 +143,8 @@ extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, 
     HeapNode_021fc518* heapNode = func_ov011_021845f8(ctx, heap);
     int perspective = parent->GetPerspective();
 
-#if defined(jpn)
-    char* pairTables = (char*)func_ov017_0218b5b0() + 0x27c;
-#else
-    char* pairTables = func_ov017_0218b5b0()->unknown_2cc;
-#endif
-    CopyInternalFields0207df50((Foo0207df50*)pairTables);
+    Foo0207df50* pairTables = func_ov017_0218b5b0()->encoders;
+    CopyInternalFields0207df50(pairTables);
     RestorePairTables0207df90(pairTables);
     for (int i = 0; i < 2; i++) {
         InitTenAllocatorsAndClearFields_021e4e8c(&self->models_[i]);

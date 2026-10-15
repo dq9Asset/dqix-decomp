@@ -6,8 +6,8 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
-struct Outer020e28dc;
 
 struct Sprite {
     char unk_0[0x28];
@@ -31,8 +31,6 @@ void func_020813ec(Menu*, int);
 }
 
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
-int GetInnerFlagBit0020e28dc(Outer020e28dc*);
-int GetField0x15UnlessInactive_020e2918(signed char*);
 void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 int RunAndCheckFlagBit02080dd4(void*, int, int, int, unsigned char*, unsigned char);
 
@@ -45,7 +43,7 @@ struct AlchemyMenu {
     void* allocators_;
     AlchemyPot* pot_;
     void* menu_;
-    void* choice_;
+    EntryManager020e2490* choice_;
     void* backgrounds_;
     void* canvases_;
     Sprite* sprites_;
@@ -139,9 +137,9 @@ extern "C" ARM unsigned char func_ov006_02158a28(AlchemyMenu* self)
         confirmed = 1;
     if ((self->flags_ & 2) && TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x400))
         confirmed = 1;
-    if (self->choice_ != 0 && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
+    if (self->choice_ != 0 && GetInnerFlagBit0020e28dc(self->choice_))
     {
-        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918(self->choice_);
         if (choice >= 0)
         {
             confirmed = 1;

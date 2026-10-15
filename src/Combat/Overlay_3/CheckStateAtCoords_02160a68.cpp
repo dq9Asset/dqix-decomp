@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
@@ -19,9 +20,6 @@ int GetWord0x0_0200fb8c(int* obj);
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 int IsFieldNotPositive_021a4e70(unsigned char* base);
 
-struct Outer020e28dc;
-int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 struct Obj2081;
@@ -34,7 +32,7 @@ struct Ctx02160a68 {
     char pad0[kRegionValue324_20C];
     struct Obj2081* field324;
     char pad1[kRegionValue390_278 - kRegionValue328_210];
-    struct Outer020e28dc* ptr390;
+    EntryManager020e2490* ptr390;
     char pad2[kRegionValue488_2B0 - kRegionValue394_27C];
     short key488;
 };

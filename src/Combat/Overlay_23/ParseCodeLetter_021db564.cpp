@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 extern "C" void __clear(void* buf, int len);
-extern "C" int func_02005a94(signed char* s);
+extern "C" int func_02005a94(const char* text);
 
 // USA: func_ov023_021db564
 ARM int ParseCodeLetter_021db564(char* str) {
@@ -11,7 +11,7 @@ ARM int ParseCodeLetter_021db564(char* str) {
     __clear(buf, 5);
     strncpy(buf, str, 4);
     buf[3] = 0;
-    short n = (short)func_02005a94((signed char*)(buf + 1));
+    short n = (short)func_02005a94(buf + 1);
     unsigned short base = (unsigned short)(n * 100);
     char c = buf[0];
     if (c == 'C') {

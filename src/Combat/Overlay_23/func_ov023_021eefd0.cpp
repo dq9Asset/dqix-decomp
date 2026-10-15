@@ -1,7 +1,10 @@
 #include <globaldefs.h>
+#include <Resource/MessageSystem.h>
 #include <std_library_functions.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
+#include <Grotto/Main/ActiveGrottoClass.h>
+#include <GameState/GameState.h>
 
 struct BinarySearchByComparatorStruct;
 struct TableA68;
@@ -26,28 +29,6 @@ struct MessageName_021eefd0 {
     }
 };
 
-struct MessageSystem_021eefd0 {
-    char unk_0[0x10];
-    MessageName_021eefd0* unk_10;
-    char unk_14[0x20 - 0x14];
-    MessageName_021eefd0* unk_20;
-#if defined(jpn)
-    char unk_24[0x868 - 0x24];
-    int busy_;
-    char unk_86c[0x17e2 - 0x86c];
-    unsigned char unk_19b2;
-
-#else
-    char unk_24[0x998 - 0x24];
-    int busy_;
-    char unk_99c[0x19b2 - 0x99c];
-    unsigned char unk_19b2;
-    char unk_19b3[0x19d7 - 0x19b3];
-    unsigned char unk_19d7;
-
-#endif
-};
-
 struct PlayRecords_021eefd0 {
     char unk_0[0xc];
     unsigned int unk_c_0 : 7;
@@ -56,22 +37,6 @@ struct PlayRecords_021eefd0 {
     unsigned int unk_c_28 : 4;
     char unk_10[0x68 - 0x10];
     char unk_68[0xb0 - 0x68];
-};
-
-struct DetailedTreasureMapData_021eefd0 {
-    unsigned char discoveryState_;
-    unsigned char mapType_;
-    char unk_2[0xe - 2];
-    char clearedBy_[0xc];
-    char unk_1a[0x56 - 0x1a];
-    unsigned char legacyLevel_;
-    char unk_57[0x65 - 0x57];
-    unsigned char regularLevel_;
-};
-
-class ActiveGrottoClass {
-public:
-    DetailedTreasureMapData_021eefd0* GetDetailedData();
 };
 
 struct ZoneData_021eefd0 {
@@ -83,31 +48,6 @@ struct ZoneData_021eefd0 {
 #endif
 
     ActiveGrottoClass grotto_;
-};
-
-struct GrottoStruct_021eefd0 {
-    unsigned char unknown_0[4];
-};
-
-struct GameObject_021eefd0 {
-    char unk_0[0x134];
-    void* baseStats_;
-};
-
-struct GameState {
-    static GameState* GetInstance();
-    GameObject_021eefd0* GetProtagonist();
-    GrottoStruct_021eefd0* GetGrottoStruct();
-};
-
-struct GameResources_021eefd0 {
-#if defined(jpn)
-    char unk_0[0x3508];
-#else
-    char unk_0[0x3718];
-#endif
-
-    void* unknown_ptr_3718;
 };
 
 struct Unknown_021b8478_021eefd0 {
@@ -181,10 +121,8 @@ extern char data_02109bf4[];
 #if defined(jpn)
 extern const char data_ov023_021fd4ec[];
 extern const char data_ov023_021fd504[];
-extern "C" void func_0204500c(MessageSystem_021eefd0*, const char*, int);
 #endif
 
-MessageSystem_021eefd0* GetGlobalField0x1c020421a0();
 void Clear12Bytes0206efc4(void* monsters);
 void WrapCall0206f230With1000_0206f200(int monsters, int allocator, int file, int size, int monster);
 void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* monsters, int id);
@@ -203,12 +141,8 @@ void DispatchAndSetTreasureMapUnknownBit_020117cc(char* gameState, int map);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
-GameResources_021eefd0* func_ov017_0218b5b0();
 Unknown_021b8478_021eefd0* func_ov017_021b8478(void* unk);
 MessageName_021eefd0 func_ov023_021ed804(MessageName_021eefd0 name, void* monster);
-#if !defined(jpn)
-void func_0204500c(MessageSystem_021eefd0* messages, const char* text, int a, int b);
-#endif
 void* func_0202ae18();
 int func_0202c508(void* unk);
 int func_0202c540(void* unk);
@@ -227,7 +161,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
     if (end->step_ == 0)
     {
         void* monsters = self->info_->monsters_;
-        MessageSystem_021eefd0* messages = GetGlobalField0x1c020421a0();
+        MessageSystem* messages = GetGlobalField0x1c020421a0();
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
         int load = 1;
         if (_ZZ17GetGlobal021ffefcvE1s->task3_ > BackgroundLoader::TaskStatus_Invalid)
@@ -267,7 +201,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 return self->endState_;
             }
         }
-        GameResources_021eefd0* resources = func_ov017_0218b5b0();
+        GameResources* resources = func_ov017_0218b5b0();
         void* unk = NULL;
         Unknown_021b8478_021eefd0* unk2 = NULL;
         int kind = -1;
@@ -365,8 +299,8 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         if (monster != NULL)
         {
             name = func_ov023_021ed804(name, monster);
-            messages->unk_20 = &name;
-            messages->unk_10 = &name;
+            messages->monsterNames[0] = &name;
+            messages->targetNames[0] = &name;
         }
         char text[0x12c];
         switch (self->victory_)
@@ -375,7 +309,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1));
             break;
         case 1:
-            messages->unk_19d7 = 1;
+            messages->flag19d7 = 1;
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1));
             break;
         case 2:
@@ -388,7 +322,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3));
             break;
         case 4:
-            messages->unk_19d7 = 1;
+            messages->flag19d7 = 1;
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3));
             break;
         case 5:
@@ -398,7 +332,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2));
             break;
         case 7:
-            messages->unk_19d7 = 1;
+            messages->flag19d7 = 1;
             sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2));
             break;
         case 8:
@@ -417,8 +351,8 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         func_0204500c(messages, text, 1, 0xe3);
 #endif
 
-        messages->unk_19b2 = 0;
-        messages->busy_ = 1;
+        messages->b19b2 = 0;
+        messages->active = 1;
         if (self->data_->monsterCount_ > 0)
         {
             PlayRecords_021eefd0 records;
@@ -432,7 +366,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         end->step_++;
         if (self->info_->grotto_ != 0 || self->info_->legacyBoss_ != 0)
         {
-            GrottoStruct_021eefd0* grotto = GameState::GetInstance()->GetGrottoStruct();
+            GrottoStruct* grotto = GameState::GetInstance()->GetGrottoStruct();
             self->unk_6e38 = 1;
             grotto->unknown_0[3] = 1;
             EnqueueEventTag162_021cfc74(1);
@@ -458,7 +392,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         ResetFields_021eefac((Reset_021eefac*)end);
         void* unk = func_0202ae18();
         ZoneData_021eefd0* zone = func_02012fe4();
-        DetailedTreasureMapData_021eefd0* map = zone->grotto_.GetDetailedData();
+        DetailedTreasureMapData* map = zone->grotto_.GetDetailedData();
         if (self->info_->legacyBoss_ != 0)
         {
             if (IsInRange0201b588(zone->id_))
@@ -466,15 +400,15 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
                 AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
-                if (map != NULL && map->mapType_ == 2 && map->legacyLevel_ > records.unk_c_7)
-                    records.unk_c_7 = map->legacyLevel_;
+                if (map != NULL && map->mapType_ == 2 && map->legacy_.level_ > records.unk_c_7)
+                    records.unk_c_7 = map->legacy_.level_;
                 CopyInBattleField0x7540_020ac494(&records);
             }
             return 4;
         }
         if (self->info_->grotto_ != 0)
         {
-            DetailedTreasureMapData_021eefd0* map2 = func_02012fe4()->grotto_.GetDetailedData();
+            DetailedTreasureMapData* map2 = func_02012fe4()->grotto_.GetDetailedData();
             GameState* gameState = GameState::GetInstance();
             if (func_0202c508(unk))
             {
@@ -503,8 +437,8 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
                 AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
-                if (map != NULL && map->mapType_ == 1 && map->regularLevel_ > records.unk_c_0)
-                    records.unk_c_0 = map->regularLevel_;
+                if (map != NULL && map->mapType_ == 1 && map->regular_.level_ > records.unk_c_0)
+                    records.unk_c_0 = map->regular_.level_;
                 CopyInBattleField0x7540_020ac494(&records);
             }
         }

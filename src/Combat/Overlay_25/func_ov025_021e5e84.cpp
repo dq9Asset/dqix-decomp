@@ -1,14 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #include "GameState/GameState.h"
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
-struct Obj02046574;
-struct Obj02046574* GetGlobalField0x1c020421a0(void);
 void* GetActiveCombatWork_ov000_02160130(void);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
-void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 
 struct Param021e5e84 {
     char pad0[8];
@@ -24,7 +22,7 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
     }
 
     GameState* bs = GameState::GetInstance();
-    struct Obj02046574* names = GetGlobalField0x1c020421a0();
+    MessageSystem* names = GetGlobalField0x1c020421a0();
     int id = ids[0];
     GetActiveCombatWork_ov000_02160130();
 #if defined(jpn)

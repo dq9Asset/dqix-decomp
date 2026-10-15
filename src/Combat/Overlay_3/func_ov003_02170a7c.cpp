@@ -1,13 +1,13 @@
 #include <globaldefs.h>
 
 extern "C" void __clear(void* dst, int count);
-int IsPrefixMatch020d857c(signed char* a, signed char* b);
+int IsPrefixMatch020d857c(const char* a, const char* b);
 extern "C" char* strcpy(char* dst, const char* src);
-extern "C" void* memcpy(void* dst, void* src, unsigned int length);
+extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 int StringLength_020d2ff0(const char* s);
 
 struct MatchToken0217f600 {
-    signed char* value;
+    const char* value;
     int pad4;
     int pad8;
 };
@@ -23,10 +23,10 @@ extern MatchToken0217f600 data_ov003_0217f604[];
 extern ReplToken0217f608 data_ov003_0217f608[];
 
 // USA: func_ov003_02170a7c
-extern "C" ARM void func_ov003_02170a7c(signed char* str, void* outBuf) {
+extern "C" ARM void func_ov003_02170a7c(const char* str, void* outBuf) {
     if (outBuf != 0 && str != 0) {
         char localBuf[16];
-        int rawLen = StringLength_020d2ff0((const char*)str) + 1;
+        int rawLen = StringLength_020d2ff0(str) + 1;
         unsigned char remaining = rawLen;
         unsigned char index = 0;
         __clear(localBuf, 0x10);

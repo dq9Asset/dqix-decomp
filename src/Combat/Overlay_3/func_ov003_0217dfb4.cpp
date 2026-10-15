@@ -1,12 +1,8 @@
 #include "Combat/TryApplyElemFields.h"
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #if defined(jpn)
 enum { kMenuPrefix=0x10 };
-extern "C" void func_02046380(void*);
-struct StoreStruct;
-void StoreInArray0x8b0_020465c0(StoreStruct*,int,int);
-void SetByteInRange_020465f0(unsigned char*,int,unsigned char);
-void SetByteAtIndex_020465d8(unsigned char*,int,unsigned char);
 extern "C" void func_02042428(char*, int);
 #else
 enum { kMenuPrefix=0x14 };
@@ -36,7 +32,6 @@ struct ListMenu0217dfb4 {
 };
 
 extern "C" void* func_02012fe4(void);
-int GetGlobalField0x1c020421a0();
 extern "C" void __clear(void* buf, int n);
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
@@ -54,7 +49,7 @@ extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
     char buf[0x400];
     func_02012fe4();
 #if defined(jpn)
-    int global = GetGlobalField0x1c020421a0();
+    MessageSystem* global = GetGlobalField0x1c020421a0();
 #else
     GetGlobalField0x1c020421a0();
 #endif
@@ -78,13 +73,13 @@ extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
     }
     if (menu->field32 > 1) {
 #if defined(jpn)
-        func_02046380((void*)global);
-        StoreInArray0x8b0_020465c0((StoreStruct*)global, 0, page + 1);
-        StoreInArray0x8b0_020465c0((StoreStruct*)global, 1, menu->field32);
-        SetByteInRange_020465f0((unsigned char*)global, 0, 2);
-        SetByteInRange_020465f0((unsigned char*)global, 1, 2);
-        SetByteAtIndex_020465d8((unsigned char*)global, 0, 1);
-        SetByteAtIndex_020465d8((unsigned char*)global, 1, 0);
+        func_02046380(global);
+        StoreInArray0x8b0_020465c0(global, 0, page + 1);
+        StoreInArray0x8b0_020465c0(global, 1, menu->field32);
+        SetByteInRange_020465f0(global, 0, 2);
+        SetByteInRange_020465f0(global, 1, 2);
+        SetByteAtIndex_020465d8(global, 0, 1);
+        SetByteAtIndex_020465d8(global, 1, 0);
         func_02042428(buf, 8);
         AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->names, 0xc8));
 #else

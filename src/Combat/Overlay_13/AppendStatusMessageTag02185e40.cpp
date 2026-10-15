@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 #define func_ov013_02185e40 func_ov013_02186f4c
@@ -9,12 +10,9 @@ extern "C" void __clear(void* buf, int n);
 extern "C" int func_020420e8(void* p, int flag);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 #if defined(jpn)
-extern "C" void func_02046380(void*);
 extern "C" unsigned int strlen(const char*);
 extern "C" int func_02042638(char*, const char*, int);
 extern char data_ov013_02188d4c[];
-#else
-extern "C" void func_02046380(void);
 #endif
 
 struct SkillPointMenu {
@@ -59,12 +57,7 @@ ARM int AppendPaletteTag_02041e70(char* dst, int palette);
 ARM int AppendString02042058(char* dst, const char* src);
 ARM int CallFunc020e0434With02153694_020e51cc(int value);
 ARM int AppendFormatted02041fac(char* buf, int a, int b);
-void* GetGlobalField0x1c020421a0(void);
 
-struct StoreStruct;
-ARM void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
-ARM void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
-ARM void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 extern char data_ov013_02187e3c;
 extern char data_ov013_02187e3f;
@@ -158,12 +151,8 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
     AppendFormatted02041fac(dst, (int)&data_ov013_02187e44, 0x10);
 #endif
 
-    void* textVariables = GetGlobalField0x1c020421a0();
-#if defined(jpn)
+    MessageSystem* textVariables = GetGlobalField0x1c020421a0();
     func_02046380(textVariables);
-#else
-    func_02046380();
-#endif
 
     int stats[7] = {
         menu->currentHP, menu->maxHP, menu->currentMP, menu->maxMP,
@@ -171,9 +160,9 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
     };
 
     for (int i = 0; i < 7; i++) {
-        SetByteAtIndex_020465d8((unsigned char*)textVariables, i, 1);
-        SetByteInRange_020465f0((unsigned char*)textVariables, i, 3);
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)textVariables, i, stats[i]);
+        SetByteAtIndex_020465d8(textVariables, i, 1);
+        SetByteInRange_020465f0(textVariables, i, 3);
+        StoreInArray0x8b0_020465c0(textVariables, i, stats[i]);
     }
 
     for (int i = 0; i < 5; i++) {

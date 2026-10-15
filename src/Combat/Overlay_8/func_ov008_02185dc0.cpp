@@ -46,10 +46,6 @@ struct Canvas {
     int pad_0[0xe0 / 4];
 };
 
-struct WindowCursor {
-    int pad_0[0x40 / 4];
-};
-
 struct BattleRecords {
     SafeAllocator allocator_;
     SafeAllocator backgroundAllocator_;
@@ -73,7 +69,7 @@ struct BattleRecords {
     void* iconSprite_;
     unsigned char items_[8];
     unsigned char itemCount_;
-    WindowCursor cursor_;
+    Struct_0205bef8 cursor_;
     Object3D model_;
     char camera_[0x2c8];
     void* titles_;
@@ -123,7 +119,6 @@ struct S_a05d8;
 struct List020727d8;
 struct StreamHeader;
 struct Container020e0310;
-struct Struct_0205bb84;
 struct Obj0205eaa0;
 
 extern char data_ov008_0218b400[] __attribute__((aligned(4)));
@@ -132,7 +127,6 @@ extern unsigned short data_02114e30[];
 extern Obj0205eaa0 data_02108760;
 
 GameResources* GetWord0x0_0200fb8c(int* gameState);
-MessageSystem* GetGlobalField0x1c020421a0();
 void SetBrightness(GameResources* resources, int screen, int brightness);
 int IsBrightnessTransitionActive(GameResources* resources);
 void LoadBattleBlock020ac4c0(void* records);
@@ -144,7 +138,6 @@ extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list,
 int GetField0x3acValue_020100a8(GameState* gameState);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
-int ComputeScaledSum0205bb84(Struct_0205bb84* cursor);
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
 
@@ -166,7 +159,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     GameState* gameState = GameState::GetInstance();
     GameResources* resources = GetWord0x0_0200fb8c((int*)gameState);
     MessageSystem* messages = GetGlobalField0x1c020421a0();
-    if (messages->active != NULL)
+    if (messages->active != 0)
         messages->b19ae = 0;
     signed char step = self->step_;
     if (step == 0)
@@ -197,7 +190,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #if !defined(jpn)
             int shown = 1;
 #endif
-            messages->active = (void*)1;
+            messages->active = 1;
             if (self->title_ > 0)
             {
 #if !defined(jpn)
@@ -301,7 +294,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     if (step == 3)
     {
         int result = func_ov008_02186a30(self, ticks);
-        int selected = ComputeScaledSum0205bb84((Struct_0205bb84*)&self->cursor_);
+        int selected = ComputeScaledSum0205bb84(&self->cursor_.base);
 #if defined(jpn)
         int limit = 5;
         int first = self->top_;

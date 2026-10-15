@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 #include "Resource/CharacterCreationUI.h"
 
 struct Outer020e28dc;
@@ -17,16 +18,10 @@ struct Elem_0205d81c *FindElementForFieldB0_0205d8c4(struct Struct_0205d81c *s);
 int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char *p);
 
 struct Container0205a3d0;
-struct Elem0205a3d0 {
-    unsigned char pad0[0x15];
-    unsigned char flags;
-};
 struct Elem0205a3d0 *FindEntryByHalfword0205a3d0(struct Container0205a3d0 *c, int key);
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0 *c, int key);
 void SetEntryPosition_020e27ec(struct Container0205a3d0 *c, int key, short a, short b);
 
-struct Container0205a330;
-void IterateEntries0205a330(struct Container0205a330 *c, int arg);
 
 extern "C" void func_0205ae8c(void *obj);
 
@@ -79,7 +74,7 @@ extern "C" ARM void func_ov002_0215afb8(char *obj) {
     if (e != NULL) {
         e->flags |= 8;
     }
-    IterateEntries0205a330(reinterpret_cast<Container0205a330*>(cont), state->animation);
+    IterateEntries0205a330(cont, state->animation);
     SetEntryPosition_020e27ec(cont, 0, x - 8, y - 2);
     func_0205ae8c(state->renderer);
 }

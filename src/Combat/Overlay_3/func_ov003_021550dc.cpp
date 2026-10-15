@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageFrame.h"
 
 #if defined(jpn)
 enum { kRegionValue36_2A = 0x2a };
@@ -8,7 +9,6 @@ enum { kRegionValue36_2A = 0x36 };
 enum { kRegionValue1E6_1E2 = 0x1e6 };
 #endif
 
-struct Outer020e28dc;
 
 struct Menu {
     char unk_0[kRegionValue36_2A];
@@ -19,8 +19,6 @@ extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 
 int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
-int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int GetField0x15UnlessInactive_020e2918(signed char* param);
 void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 int RunAndCheckFlagBit02080dd4(void* obj, int p1, int unused2, int unused3, unsigned char* outFlag, unsigned char extra);
 extern "C" void func_020813ec(void* obj, int key);
@@ -30,7 +28,7 @@ struct Ctx021550dc {
     short* cursor_;
     char unk_c[0x18 - 0xc];
     Menu* menu_;
-    Outer020e28dc* choice_;
+    EntryManager020e2490* choice_;
     char unk_20[kRegionValue1E6_1E2 - 0x20];
     short group_;
     short previousCursor_;
@@ -43,7 +41,7 @@ extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
         confirmed = 1;
     }
     if (self->choice_ != NULL && GetInnerFlagBit0020e28dc(self->choice_)) {
-        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918(self->choice_);
         if (choice >= 0) {
             confirmed = 1;
             *self->cursor_ = choice + 6;

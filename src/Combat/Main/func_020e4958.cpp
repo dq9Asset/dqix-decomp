@@ -1,16 +1,17 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/ItemNameText.h"
 
 struct Struct0200fb08;
 int NormalizeField5_0200fb08(Struct0200fb08*);
 int StringLength_020d2ff0(const char*);
-extern "C" int func_02001aec(const char*, const char*, unsigned int);
+extern "C" int func_02001aec(const void*, const void*, int);
 extern "C" int sprintf(char*, const char*, ...);
 extern "C" void* memset(void*, int, unsigned int);
 extern "C" void* memcpy(void*, const void*, unsigned int);
 extern "C" void __clear(void*, unsigned int);
 extern "C" void func_020e4864(char*, char*, int, int, int, int);
-extern void (*data_020ee9f0[])(char*, int);
+extern char* (*data_020ee9f0[])(char*, ItemNameText*);
 struct TextToken020e4958 {
     signed char choices[4];
     const char* name;
@@ -23,7 +24,7 @@ extern TextChoice020e4958 data_020eea08[];
 extern char data_020f2dcf[];
 
 // USA: func_020e4958
-extern "C" ARM void func_020e4958(char** destination, int value, int inputMode, int kind, int group, int choice) {
+extern "C" ARM char* func_020e4958(char** destination, ItemNameText* value, int inputMode, int kind, int group, int choice) {
     int mode;
     char source[0x100] = {0};
     mode = 1 - inputMode;
@@ -70,5 +71,5 @@ extern "C" ARM void func_020e4958(char** destination, int value, int inputMode, 
     func_020e4864(expanded, source, mode, kind, selection, choice);
     int length = StringLength_020d2ff0(source);
     memcpy(*destination, source, length);
-    *destination += length;
+    return *destination += length;
 }

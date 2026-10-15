@@ -1,40 +1,40 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-void RunStageSequence02067e98(unsigned char* obj, int b);
-extern "C" void func_02044d0c(unsigned char* p);
+#if !defined(jpn)
+extern "C" void func_02044d0c();
+void PrepareEncodeStreamBuffer0204394c(Foo0207df50* encoder);
 
-struct Struct0204394c;
-void PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
-
-// USA: func_02044f3c  (semantic: UpdateStreamStateAndDispatch02044f3c)
-extern "C" ARM void func_02044f3c(unsigned char* obj, int b, int flag3) {
-    (obj + 0x1000)[0x9bd] = 1;
-    RunStageSequence02067e98(obj, b);
-    if ((obj + 0x1000)[0x9cc] == 0 && flag3 == 1) {
-        (obj + 0x1000)[0x9ae] = 0;
-        (obj + 0x1000)[0x9af] = 0;
-        (obj + 0x1000)[0x9cd] = 1;
-        *(int*)(obj + 0x40) = 0;
-        func_02044d0c(obj + 0x1000);
+// USA: func_02044f3c
+extern "C" ARM void func_02044f3c(MessageSystem* message, const char* text, int flag3) {
+    message->b19bd = 1;
+    RunStageSequence02067e98(message, text);
+    if (message->b19cc == 0 && flag3 == 1) {
+        message->b19ae = 0;
+        message->b19af = 0;
+        message->b19cd = 1;
+        message->stream40 = 0;
+        func_02044d0c();
     }
-    (obj + 0x1000)[0x9cc] = 0;
-    (obj + 0x1000)[0x9ce] = 0;
+    message->b19cc = 0;
+    message->b19ce = 0;
     if (flag3 == 1) {
-        (obj + 0x1000)[0x9cc] = 1;
+        message->b19cc = 1;
     } else if (flag3 == 1) {
-        (obj + 0x1000)[0x9ce] = 1;
+        message->b19ce = 1;
     }
-    if ((obj + 0x1000)[0x9cc] != 0) {
-        (obj + 0x1000)[0x9cc] = 1;
-        (obj + 0x1000)[0x9ae] = 0;
-        (obj + 0x1000)[0x9af] = 0;
-        (obj + 0x1000)[0x9cd] = 1;
-        *(int*)(obj + 0x40) = 0;
+    if (message->b19cc != 0) {
+        message->b19cc = 1;
+        message->b19ae = 0;
+        message->b19af = 0;
+        message->b19cd = 1;
+        message->stream40 = 0;
     }
-    if ((obj + 0x1000)[0x9ce] != 0) {
-        *(int*)(obj + 0x44) = 0;
-        PrepareEncodeStreamBuffer0204394c(*(struct Struct0204394c**)(obj + 0x1000 + 0xe28));
+    if (message->b19ce != 0) {
+        message->stream44 = 0;
+        PrepareEncodeStreamBuffer0204394c(message->encoder);
     }
-    ((char*)obj)[0x30] = -1;
-    ((char*)obj)[0x31] = -1;
+    message->cursor30 = -1;
+    message->cursor31 = -1;
 }
+#endif

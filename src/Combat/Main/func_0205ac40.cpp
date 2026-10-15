@@ -11,10 +11,10 @@ struct OAM0205ac40 {
 extern "C" void* func_0203bd08();
 extern "C" OAM0205ac40* func_0203be4c(void*);
 extern "C" OAM0205ac40* func_0203be40(void*);
-extern "C" void func_020b0a1c(OAM0205ac40*, unsigned short, B174Outer*, Matrix2x2*, int*, unsigned short, int);
+extern "C" void func_020b0a1c(OAM0205ac40*, unsigned short, Struct0205a198*, Matrix2x2*, int*, unsigned short, int);
 
 // USA: func_0205ac40
-extern "C" ARM void func_0205ac40(SpriteContext0205ac40* context, B174Outer* sprite) {
+extern "C" ARM void func_0205ac40(LoadTable* context, Struct0205a198* sprite) {
     int palette;
     unsigned short count;
     int priority;

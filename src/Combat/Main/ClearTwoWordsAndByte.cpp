@@ -1,14 +1,9 @@
 #include <globaldefs.h>
-
-struct S_b20c {
-    int field0;
-    int field4;
-    unsigned char field8;
-};
+#include "Resource/MessageFrame.h"
 
 // USA: func_0205b20c
-ARM void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj) {
-    obj->field0 = 0;
-    obj->field4 = 0;
-    obj->field8 = 0;
+ARM void ClearTwoWordsAndByte_0205b20c(GlyphDestination0205b234* destination) {
+    destination->pixels = NULL;
+    destination->rectangles = NULL;
+    destination->rectangleCount = 0;
 }

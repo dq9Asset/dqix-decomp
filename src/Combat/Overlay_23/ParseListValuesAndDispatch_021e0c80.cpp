@@ -2,7 +2,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-extern "C" int func_02005a94(signed char* p);
+extern "C" int func_02005a94(const char* text);
 extern "C" void func_ov023_021e0f44(void* obj);
 
 struct List0202fec8;
@@ -52,7 +52,7 @@ extern "C" ARM int func_ov023_021e0c80(void* obj) {
             if (e->flag == 0 || e->str == 0) continue;
             signed char c = e->str[0];
             if (c < 0x30 || c > 0x39) continue;
-            short val = func_02005a94((signed char*)e->str);
+            short val = func_02005a94(e->str);
             short v = val;
             signed char flag = 0;
             if (10000 <= val) {

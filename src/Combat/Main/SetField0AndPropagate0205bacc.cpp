@@ -1,17 +1,11 @@
 #include <globaldefs.h>
-
-struct Struct_0205bb84;
-int ComputeScaledSum0205bb84(struct Struct_0205bb84* s);
-extern "C" void func_0205bb04(void* s, int n);
-
-struct Node0205bacc {
-    int field0;
-};
+#include "Resource/MessageSystem.h"
+extern "C" void func_0205bb04(void*, int);
 
 // USA: func_0205bacc
-ARM void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val) {
+ARM void SetField0AndPropagate0205bacc(struct Struct_0205ba2c* s, int val) {
     if (val < 0) return;
-    s->field0 = val;
-    if (ComputeScaledSum0205bb84((struct Struct_0205bb84*)s) < val) return;
+    s->count = val;
+    if (ComputeScaledSum0205bb84(s) < val) return;
     func_0205bb04(s, val - 1);
 }

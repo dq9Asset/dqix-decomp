@@ -1,9 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 
-struct FieldArray {
-    char pad[8];
-    int arr[3];
-};
 
 // USA: func_020b033c
 ARM void InitFieldArray_020b033c(struct FieldArray* obj) {

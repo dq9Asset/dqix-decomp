@@ -4,17 +4,13 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Memory/SafeAllocator.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 void DestroyTenAndOne_021e4f18(void* obj);
-int GetGlobalField0x1c020421a0();
-struct CombatSlots02045cac;
-void InitCombatSlots02045cac(struct CombatSlots02045cac* obj);
-void ReinitController02043204(char* obj);
-extern "C" void func_02043124(char* obj);
 void EmptyDestructor0205a494(void* obj);
 void* GetGlobalPtr02105244_0203bd14();
 void ResetBattleObject0203c4c4(char* obj);
@@ -37,10 +33,10 @@ extern "C" ARM void func_ov009_02184848(char* obj) {
     DestroyTenAndOne_021e4f18(*(void**)(obj + R(0x7b4,0x7f0)));
     DestroyTenAndOne_021e4f18(*(void**)(obj + R(0x7b8,0x7f4)));
 
-    void* g = (void*)GetGlobalField0x1c020421a0();
-    InitCombatSlots02045cac((struct CombatSlots02045cac*)g);
-    ReinitController02043204((char*)g);
-    func_02043124((char*)g);
+    MessageSystem* g = GetGlobalField0x1c020421a0();
+    InitCombatSlots02045cac(g);
+    ReinitController02043204(g);
+    func_02043124(g);
 
     if (*(void**)(obj + R(0x79c,0x7d8)) != 0) {
         EmptyDestructor0205a494(*(void**)(obj + R(0x79c,0x7d8)));

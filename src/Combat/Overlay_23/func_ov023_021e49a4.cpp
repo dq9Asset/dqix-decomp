@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
-struct CombatSlots02045cac;
-struct Container020e0310 { unsigned char fields[0x18]; };
 struct BattleTexts021e49a4 {
     unsigned char padding_0[0xc00];
     Container020e0310 dictionary;
@@ -41,20 +41,17 @@ struct Combatant021e49a4 {
     unsigned char padding_138[0x18];
     CombatantData021e49a4* data;
 };
-CombatSlots02045cac* GetGlobalField0x1c020421a0();
-void InitCombatSlots02045cac(CombatSlots02045cac*);
 char* CallFunc020e0434With02153694_020e51cc(int);
 int GetFieldByKey020e0434(Container020e0310*, int);
 int GetByteViaFieldIndirectOffset_021e4250_021e4250(char*);
 extern const char data_ov023_021fdcd8[];
 extern "C" {
-void func_02045d14(CombatSlots02045cac*, const char*, unsigned short*, int);
 int func_020420e8(const char*, int);
 GameResources* func_ov017_0218b5b0();
 int func_ov017_021bdbcc(GameResources*);
 void __clear(void*, unsigned int);
 int sprintf(char*, const char*, ...);
-void func_020439b0(CombatSlots02045cac*, int);
+void func_020439b0(MessageSystem*, int);
 }
 
 // USA: func_ov023_021e49a4
@@ -64,7 +61,7 @@ extern "C" ARM void func_ov023_021e49a4(BattleSetup021e49a4* self) {
     unsigned short (*suffixes)[8];
     unsigned short (*labels)[10];
     unsigned short (*names)[16];
-    CombatSlots02045cac* messages = GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 16; j++) self->names[i][j] = 0xffff;
         for (int j = 0; j < 10; j++) self->labels[i][j] = 0xffff;

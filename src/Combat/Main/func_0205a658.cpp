@@ -1,37 +1,18 @@
 #include <globaldefs.h>
+#include "Resource/MessageRenderResources.h"
 #include <Memory/SafeAllocator.h>
 #include <std_library_functions.h>
 
-struct Cell0205a658 { unsigned short y, x, attributes; };
-struct Struct0205a198 {
-    unsigned short count, flags;
-    Cell0205a658* cells;
-    Cell0205a658* copy;
-    char pad_c[0x12];
-    unsigned short index;
-    char pad_20[2];
-    unsigned char firstCell;
-    char pad_23[5];
-};
 struct Hdr02b00e0 {
     unsigned short count, field_2;
     int field_4, mappingMode;
-};
-struct CellScript0205a658 {
-    char pad_0[0x38];
-    int mappingMode;
-    int field_3c;
-    Struct0205a198* records;
-    int field_44;
-    unsigned int capacity;
-    unsigned short recordCount, entryCount;
 };
 int GetCellBankBlock_020b00a4(void*, void**);
 void* GetEntryVarStride_020b00e0(Hdr02b00e0*, unsigned int);
 void Init0205a198(Struct0205a198*);
 
 // USA: func_0205a658
-extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned int length, SafeAllocator* allocator) {
+extern "C" ARM int func_0205a658(LoadTable* self, void* data, unsigned int length, SafeAllocator* allocator) {
     void* buffer = data;
     Hdr02b00e0* header;
     if (!buffer) buffer = 0;
@@ -43,7 +24,7 @@ extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned 
     if (!buffer) return 1;
     if (allocator && !self->records) {
         self->recordCount = header->count;
-        self->records = (Struct0205a198*)allocator->Allocate(self->recordCount * sizeof(Struct0205a198));
+        self->records = static_cast<Struct0205a198*>(allocator->Allocate(self->recordCount * sizeof(Struct0205a198)));
         for (unsigned short i = 0; i < self->recordCount; ++i) Init0205a198(&self->records[i]);
     }
     Struct0205a198* records;
@@ -58,16 +39,16 @@ extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned 
         unsigned short total = 0;
         for (i = 0; i < count; ++i) {
             if (recordCount <= i) break;
-            entry = (Struct0205a198*)GetEntryVarStride_020b00e0(header, i);
+            entry = static_cast<Struct0205a198*>(GetEntryVarStride_020b00e0(header, i));
             if (!entry) break;
             unsigned short cellCount = entry->count;
             record = &records[i];
             record->index = i;
-            record->firstCell = total;
+            record->firstObject = total;
             record->count = entry->count;
             record->flags = entry->flags;
             record->cells = entry->cells;
-            Cell0205a658* allocated = (Cell0205a658*)allocator->Allocate(cellCount * sizeof(Cell0205a658));
+            Cell0205a658* allocated = static_cast<Cell0205a658*>(allocator->Allocate(cellCount * sizeof(Cell0205a658)));
             record->copy = allocated;
             record->cells = allocated;
             for (unsigned short j = 0; j < entry->count; ++j) {
@@ -83,7 +64,7 @@ extern "C" ARM int func_0205a658(CellScript0205a658* self, void* data, unsigned 
     self->entryCount = header->count;
     self->mappingMode = header->mappingMode;
     int mode;
-    Struct0205a198* last = (Struct0205a198*)GetEntryVarStride_020b00e0(header, (unsigned short)(header->count - 1));
+    Struct0205a198* last = static_cast<Struct0205a198*>(GetEntryVarStride_020b00e0(header, (unsigned short)(header->count - 1)));
     if (!last) return 1;
     struct { int mappingMode; Cell0205a658* cell; } lastCellInfo;
     lastCellInfo.mappingMode = self->mappingMode;

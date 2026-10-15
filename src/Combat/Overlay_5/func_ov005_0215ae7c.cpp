@@ -1,5 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
 
 #if defined(jpn)
 #define func_ov005_0215ae7c func_ov005_0215c33c
@@ -8,10 +10,8 @@
 #define LOW_REGION(j,u) (u)
 #endif
 
-struct MessageSystem;
 struct Field150Holder02052e14;
 struct Container020dedd0;
-struct Container020e0310;
 
 struct MemberScreen
 {
@@ -29,14 +29,14 @@ struct EquipmentMenu
 {
     char unk_0[0xdf4];
     Container020dedd0* items_;
-    char texts_[LOW_REGION(0x3d7c,0x3e04) - 0xdf8];
+    Container020e0310 messages;
+    char unknownAfterMessages[LOW_REGION(0x3d7c,0x3e04) - 0xdf8 - sizeof(Container020e0310)];
     signed char unk_3e04;
     char unk_3e05[0x3e84 - 0x3e05];
     unsigned short names_[8][LOW_REGION(0xa,0x40)];
     unsigned char longNames_[8];
 };
 
-MessageSystem* GetGlobalField0x1c020421a0();
 extern "C" GameResources* func_ov017_0218b5b0(void);
 MemberScreen* GetField1c_021a193c(int* obj);
 short* GetField150Ptr0x488(Field150Holder02052e14* member);
@@ -47,8 +47,6 @@ void CopyTextAndUppercaseIfFlagged0206819c(const char* name, char* output, int f
 extern "C" void func_02046608(MessageSystem* messages, int, const char* format, char* output, int size, int, int);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 int FindSubstring_020d2f88(char* text, char* search);
-extern "C" void func_02045d14(MessageSystem* messages, const char* text, unsigned short* codes, int);
-extern "C" void func_020439b0(MessageSystem* messages, int);
 #if defined(jpn)
 extern "C" void func_020471d0(MessageSystem* messages, int, unsigned short* codes, int);
 extern "C" void func_020469b0(MessageSystem* messages, const char* text, unsigned short* codes, int);
@@ -91,11 +89,11 @@ extern "C" ARM void func_ov005_0215ae7c(EquipmentMenu* self)
         }
         else if (item <= 0)
         {
-            func_020469b0(messages, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x2ee0), self->names_[i], 0xa);
+            func_020469b0(messages, GetFieldByKey020e0434(&self->messages, 0x2ee0), self->names_[i], 0xa);
         }
         else
         {
-            func_020469b0(messages, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x32c7), self->names_[i], 0xa);
+            func_020469b0(messages, GetFieldByKey020e0434(&self->messages, 0x32c7), self->names_[i], 0xa);
         }
 #else
         char text[0x80];
@@ -109,11 +107,11 @@ extern "C" ARM void func_ov005_0215ae7c(EquipmentMenu* self)
         }
         else if (item <= 0)
         {
-            func_02046608(messages, 0, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x2ee0), text, 0x58, 0, 0);
+            func_02046608(messages, 0, GetFieldByKey020e0434(&self->messages, 0x2ee0), text, 0x58, 0, 0);
         }
         else
         {
-            func_02046608(messages, 0, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x32c7), text, 0x58, 0, 0);
+            func_02046608(messages, 0, GetFieldByKey020e0434(&self->messages, 0x32c7), text, 0x58, 0, 0);
         }
         if (FindSubstring_020d2f88(text, data_ov005_0215ce08))
             self->longNames_[i] = 1;

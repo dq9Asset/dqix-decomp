@@ -5,11 +5,14 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 #define func_ov008_02187b20 func_ov008_021888fc
 #endif
 #include <Memory/SafeAllocator.h>
+#include <World/Object3D.h>
+#include <GameState/GameState.h>
 
 struct PlayTime {
     unsigned short hours_;
@@ -105,10 +108,6 @@ struct WindowCursor {
     int pad_0[0x40 / 4];
 };
 
-struct Object3D {
-    int pad_0[0xac / 4];
-};
-
 struct BattleRecords {
     SafeAllocator allocator_;
     SafeAllocator backgroundAllocator_;
@@ -161,22 +160,13 @@ struct BattleRecords {
     PlayTime times_[2];
 };
 
-struct GameState {
-    static GameState* GetInstance();
-};
-
-struct StoreStruct;
 struct Container020e0310;
 
 #if !defined(jpn)
 extern char data_ov008_0218b4c3[];
 #endif
 
-unsigned char* GetGlobalField0x1c020421a0();
 void CopyOutBattleField0x7ac0_020ac0b4(void* count);
-void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
-void SetByteInRange_020465f0(unsigned char* messages, int index, unsigned char digits);
-void SetByteAtIndex_020465d8(unsigned char* messages, int index, unsigned char value);
 void AppendPaletteTag_02041e70(char* text, int color);
 int TestBitInByteArray_0206dfb0(int store, unsigned char* bits, int flag);
 void AppendXYTag_02041a90(char* text, int x, int y);
@@ -185,11 +175,7 @@ void AppendString02042058(char* text, const char* append);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
-void func_02046380(unsigned char* messages);
 char* func_0205ec34();
-unsigned long strlen(const char* text);
-void* memcpy(void* destination, const void* source, unsigned long size);
-char* strstr(const char* text, const char* search);
 }
 
 // USA: func_ov008_02187b20
@@ -199,7 +185,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     int y;
     if (text == NULL)
         return;
-    unsigned char* messages = GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     int count1;
     unsigned int count2;
     unsigned char shown;
@@ -252,23 +238,23 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     if (count6 > 9999)
         count6 = 9999;
     func_02046380(messages);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, count1);
+    StoreInArray0x8b0_020465c0(messages, 0, count1);
     SetByteInRange_020465f0(messages, 0, 5);
     SetByteAtIndex_020465d8(messages, 0, 1);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, count2);
+    StoreInArray0x8b0_020465c0(messages, 1, count2);
     SetByteInRange_020465f0(messages, 1, 5);
     SetByteAtIndex_020465d8(messages, 1, 1);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, count3);
+    StoreInArray0x8b0_020465c0(messages, 2, count3);
     SetByteInRange_020465f0(messages, 2, LOW_REGION(3, 5));
     char* store;
     SetByteAtIndex_020465d8(messages, 2, 1);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 3, count4);
+    StoreInArray0x8b0_020465c0(messages, 3, count4);
     SetByteInRange_020465f0(messages, 3, LOW_REGION(3, 5));
     SetByteAtIndex_020465d8(messages, 3, 1);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 4, count5);
+    StoreInArray0x8b0_020465c0(messages, 4, count5);
     SetByteInRange_020465f0(messages, 4, LOW_REGION(4, 5));
     SetByteAtIndex_020465d8(messages, 4, 1);
-    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 5, count6);
+    StoreInArray0x8b0_020465c0(messages, 5, count6);
     SetByteInRange_020465f0(messages, 5, LOW_REGION(4, 5));
     SetByteAtIndex_020465d8(messages, 5, 1);
     AppendPaletteTag_02041e70(text, 0xe);

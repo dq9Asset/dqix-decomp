@@ -3,7 +3,7 @@
 #include "Graphics/GlyphMetrics.h"
 
 extern int data_020e7a94[];
-int FindEntryIndexByKey020424e4(int, int);
+int FindEntryIndexByKey020424e4(const char*, int);
 FontCharacter* GetBoundedEntry020425b4(int index, int fontIndex);
 int LookupKeyValue020425e4(int previousCharacter, int characterIndex, int fontIndex);
 
@@ -54,7 +54,7 @@ extern "C" ARM void func_02028ce4(const char* text, int* widthOut, int* heightOu
 #else
 
 // USA: func_020420e8
-extern "C" ARM int func_020420e8(char* text, int fontIndex) {
+extern "C" ARM int func_020420e8(const char* text, int fontIndex) {
     if (text == 0) return 0;
     int fallbackGlyphWidth = data_020e7a94[fontIndex] & 0xff;
     int noPreviousCharacter = 0xff;
@@ -64,7 +64,7 @@ extern "C" ARM int func_020420e8(char* text, int fontIndex) {
     for (;;) {
         if (*text == 0) break;
         int advance = fallbackGlyphWidth + 1;
-        int index = FindEntryIndexByKey020424e4((int)text, fontIndex);
+        int index = FindEntryIndexByKey020424e4(text, fontIndex);
         if (index < 0) {
             previousCharacter = noPreviousCharacter;
             text++;

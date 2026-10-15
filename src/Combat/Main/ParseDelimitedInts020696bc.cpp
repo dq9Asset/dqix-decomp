@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-extern "C" int func_02005a94(char* str);
 
 // USA: func_020696bc  (semantic: ParseDelimitedInts020696bc)
-extern "C" ARM int func_020696bc(char* str, int* out, int count) {
+extern "C" ARM int func_020696bc(const char* str, int* out, int count) {
     int i;
     for (i = 0; i < count; i++) {
         char c = *str;

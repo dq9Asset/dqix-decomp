@@ -4,7 +4,7 @@ extern "C" int func_ov031_02218b8c(void* self, int flag);
 extern "C" void* func_ov031_02218e2c(void* self, const char* key);
 int FindAndTerminate_02218e84(void* self, int key, char* buf, int size);
 extern "C" void func_ov031_0221a218(void);
-extern "C" int func_02005a94(const char* s);
+extern "C" int func_02005a94(const char* text);
 void SetGlobal0224e5a4IfNotNine_ov031_02211b08(int a, int b);
 
 extern char* data_ov031_0224e69c;

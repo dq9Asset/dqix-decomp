@@ -1,5 +1,4 @@
 #include <globaldefs.h>
-#include "GameState/PartyAccess.h"
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <World/Zone3D.h>
@@ -82,7 +81,6 @@ extern "C" Zone3D* func_02012fe4();
 extern "C" NodeList02058564* func_02057924();
 extern "C" int* func_0202ae18();
 GameResources* GetWord0x0_0200fb8c(int*);
-int GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
@@ -90,7 +88,6 @@ int GetByteField0x254_02039850(void*);
 int GetField0x3acValue_020100a8(GameState*);
 void ComputeAndCall_021a1178(char*, int);
 void SetBoolFlag0x254_0203983c(unsigned char*, int);
-void ReinitController02043204(char*);
 void SetField0x98Bit0_0203d008(unsigned char*);
 extern "C" void func_0203e0a0(EntryList_203dce4*, unsigned short);
 void SetBitsInWord_0203b4a0(unsigned int*, unsigned int);
@@ -150,7 +147,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
     int* search = func_0202ae18();
     GameObject* player = game->GetUnknownGameObject();
     GameResources* resources = GetWord0x0_0200fb8c((int*)game);
-    void* global = (void*)GetGlobalField0x1c020421a0();
+    MessageSystem* global = GetGlobalField0x1c020421a0();
     CancelPendingAction020397cc((Obj020397cc*)player, 1);
     ((PlayerTransfer021a1284*)player)->field_b2 = 0;
     if (self->stage == 0) {
@@ -171,11 +168,11 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         }
         unsigned char flag = 0;
 #if defined(jpn)
-        func_0204500c((MessageSystem*)global, (char*)&flag, 0);
+        func_0204500c(global, (char*)&flag, 0);
 #else
-        func_0204500c((MessageSystem*)global, (char*)&flag, 0, 0xe3);
+        func_0204500c(global, (char*)&flag, 0, 0xe3);
 #endif
-        ReinitController02043204((char*)global);
+        ReinitController02043204(global);
         SetField0x98Bit0_0203d008((unsigned char*)entries);
         func_0203e0a0(entries, zone->currentZoneID_);
         SetBitsInWord_0203b4a0((unsigned int*)resources, 0x10);
@@ -253,7 +250,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         RestorePairTables0207df90(((ResourceTransfer021a1284*)resources)->restored);
         func_020432c4(global);
         BackupPairTables0207dfac(((ResourceTransfer021a1284*)resources)->restored);
-        ArrayContainsByteStruct* party = GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(game);
+        ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game);
         for (int i = 0; i < 4; ++i) {
             if (func_ov017_0218f5a4(resources, i, 0, 0, 0) && CheckField0NonZero_0202b7d8(search) && ArrayContainsByte_02086ef0(party, i)) {
                 func_ov017_021c3fb4(i, 1);

@@ -1,9 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+
+#if !defined(jpn)
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void*, int);
-char* FindUnescapedAngleBracket_020424ac(char* str);
+const char* FindUnescapedAngleBracket_020424ac(const char* str);
 int StringStartsWithCI020d85dc(const char* str, const char* prefix);
 char* JoinDelimitedParts02068e1c(char* dst, char* first, char* second, char* third);
 ARM void BuildStatusListString02068ea0(signed char* ids, char* dest);
@@ -16,16 +19,16 @@ struct Entry02068f40 {
     signed char ids1[4];
     signed char ids2[4];
     signed char ids3[4];
-    int (*fn)(void*, void*, int);
+    int (*fn)(GameState*, MessageSystem*, int);
 };
 
 // USA: func_02068f40
-extern "C" ARM int func_02068f40(void* obj, char* p, char* out, int flag) {
+extern "C" ARM int func_02068f40(MessageSystem* obj, char* p, char* out, int flag) {
     char b0[0x30];
     char b1[0x30];
     char b2[0x30];
     char b3[0x30];
-    void* gs = GameState::GetInstance();
+    GameState* gs = GameState::GetInstance();
     for (;;) {
         char c = *p;
         if (c == 0) {
@@ -78,3 +81,5 @@ extern "C" ARM int func_02068f40(void* obj, char* p, char* out, int flag) {
     *out = 0;
     return 0;
 }
+
+#endif

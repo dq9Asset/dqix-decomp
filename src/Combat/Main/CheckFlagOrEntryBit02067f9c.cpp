@@ -1,24 +1,15 @@
 #include <globaldefs.h>
+#include "Resource/ItemNameText.h"
+#include "Resource/MessageGlyphSlot.h"
 
-struct Entry0204254c;
-Entry0204254c* FindEntryByKey0204254c(int key, int tableIdx);
-
-// USA: func_02067f9c  (semantic: CheckFlagOrEntryBit02067f9c)
-extern "C" ARM int func_02067f9c(int* a, int b, int c) {
-    if (a != 0) {
-        int v = *(int*)((char*)a + 8);
-        unsigned int bit = ((unsigned int)v << 3) >> 31;
-        if (bit != 0) {
-            return 1;
-        }
+// USA: func_02067f9c
+extern "C" ARM int func_02067f9c(ItemNameText* name, const char* text, int fontIndex) {
+    if (name != 0) {
+        unsigned int bit = ((unsigned int)name->flags << 3) >> 31;
+        if (bit != 0) return 1;
     }
-    if (b == 0) {
-        return 0;
-    }
-    Entry0204254c* e = FindEntryByKey0204254c(b, c);
-    if (e != 0) {
-        signed char byte5 = *((signed char*)e + 5);
-        return (byte5 << 25) >> 31;
-    }
+    if (text == 0) return 0;
+    FontCharacter* entry = FindEntryByKey0204254c(text, fontIndex);
+    if (entry != 0) return entry->reserved;
     return 0;
 }

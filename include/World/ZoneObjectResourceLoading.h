@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Resource/PairTableEncoder.h"
+
 #include "Filesystem/FileIO.h"
 #include "Filesystem/NarcHandle.h"
 #include "GameState/GameState.h"
@@ -23,7 +25,5 @@ struct ZoneLoadState {
 
 void *GetField0x3f8Address_0200fd0c(GameState *state);
 void FormatFilenameAndSetExtension02014d18(int id, char *extension, char *buffer);
-void RestorePairTables0207df90(char *tables);
-void BackupPairTables0207dfac(char *tables);
 extern char data_020ef1e8[];
 extern const ZoneAnimationResources data_020e6f48;

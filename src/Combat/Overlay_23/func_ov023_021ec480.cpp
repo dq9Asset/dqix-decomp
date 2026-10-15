@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include <std_library_functions.h>
 #include <System/ColorEffects.h>
 
@@ -25,29 +26,6 @@ struct BackgroundGraphics_021ec480 {
     unsigned char unk_1c_4_ : 4;
     unsigned char unk_1d;
     char unk_1e[2];
-};
-
-struct MessageSystem_021ec480 {
-#if defined(jpn)
-    char unk_0[0x868];
-#else
-    char unk_0[0x998];
-#endif
-    int busy_;
-#if defined(jpn)
-    char unk_99c[0x17de - 0x86c];
-#else
-    char unk_99c[0x19ae - 0x99c];
-#endif
-    unsigned char unk_19ae;
-    char unk_19af[0x19b2 - 0x19af];
-    unsigned char unk_19b2;
-#if defined(jpn)
-    char unk_19b3[0x17f9 - 0x17e3];
-#else
-    char unk_19b3[0x19c8 - 0x19b3];
-#endif
-    unsigned char unk_19c8;
 };
 
 struct GuideWindow_021ec480 {
@@ -87,7 +65,6 @@ extern unsigned char data_ov023_021fd844[];
 extern char data_02108760[];
 extern char data_02109bf4[];
 
-MessageSystem_021ec480* GetGlobalField0x1c020421a0();
 int IsBrightnessTransitionActive(GameResources* resources);
 void SetForwardAndStore0205ebc0(void* sound, int a, int b);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
@@ -100,7 +77,6 @@ void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
 void ForwardField0xc0_0205ebec(void* sound);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
-void ReinitController02043204(char* messages);
 
 extern "C" {
 GameResources* func_ov017_0218b5b0();
@@ -111,11 +87,6 @@ void func_ov023_021ed354(GuideWindow_021ec480* self);
 void func_ov023_021ed4b8(GuideWindow_021ec480* self);
 void func_ov023_021ed600(GuideWindow_021ec480* self);
 void* func_0205ec34();
-#if defined(jpn)
-void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a);
-#else
-void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a, int b);
-#endif
 }
 
 static inline int WasButtonPressed(GuideWindow_021ec480* self)
@@ -132,7 +103,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
  enum {regionalOffset0=0x960};
 #endif
     GameResources* resources = func_ov017_0218b5b0();
-    MessageSystem_021ec480* messages = GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
     if (self->step_ >= 1 && self->step_ <= 3 && func_ov023_021ed064(self))
     {
         self->step_ = 4;
@@ -249,15 +220,15 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
             memset(self->text_, 0, regionalOffset0);
             AppendString02042058(self->text_, GetFieldByKey020e0434((Container020e0310*)self->texts_, 1000));
             AppendString02042058(self->text_, GetFieldByKey020e0434((Container020e0310*)self->texts_, 1002));
-            messages->busy_ = 1;
+            messages->active = 1;
 #if defined(jpn)
             func_0204500c(messages, self->text_, 0);
 #else
             func_0204500c(messages, self->text_, 0, 0xe3);
 #endif
-            messages->unk_19b2 = 0;
-            messages->unk_19c8 = 0;
-            messages->unk_19ae = 0;
+            messages->b19b2 = 0;
+            messages->b19c8 = 0;
+            messages->b19ae = 0;
         }
         else
         {
@@ -272,7 +243,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
     }
     if (step == 8)
     {
-        messages->unk_19ae = 0;
+        messages->b19ae = 0;
         if (IsAnimationActive0209ca2c(data_02109bf4))
             return;
         self->step_++;
@@ -299,28 +270,28 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
         memset(self->text_, 0, regionalOffset0);
         AppendString02042058(self->text_, GetFieldByKey020e0434((Container020e0310*)self->texts_, 1001));
         AppendString02042058(self->text_, GetFieldByKey020e0434((Container020e0310*)self->texts_, 1002));
-        messages->busy_ = 1;
+        messages->active = 1;
 #if defined(jpn)
         func_0204500c(messages, self->text_, 0);
 #else
         func_0204500c(messages, self->text_, 0, 0xe3);
 #endif
-        messages->unk_19b2 = 0;
-        messages->unk_19c8 = 0;
-        messages->unk_19ae = 0;
+        messages->b19b2 = 0;
+        messages->b19c8 = 0;
+        messages->b19ae = 0;
         SetValueAndActivate0209c830((Struct0209c830*)data_02109bf4, 0x40);
         self->step_++;
     }
     if (step == 11)
     {
-        messages->unk_19ae = 0;
+        messages->b19ae = 0;
         if (IsAnimationActive0209ca2c(data_02109bf4))
             return;
         if (!WasButtonPressed(self))
             return;
         if (self->subBackgrounds_[1].unk_1c_0_ == 0)
         {
-            ReinitController02043204((char*)messages);
+            ReinitController02043204(messages);
             self->state_ = 2;
             self->step_ = 0;
             return;

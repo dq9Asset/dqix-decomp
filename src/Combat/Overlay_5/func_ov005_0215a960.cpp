@@ -13,16 +13,13 @@ struct EquipmentMenu {
 extern "C" char data_ov005_0215ce05[];
 
 extern "C" int sprintf(char* out, const char* format, ...);
-int GetGlobalField0x1c020421a0();
 #if defined(jpn)
 extern "C" unsigned short func_020469b0(MessageSystem* messages, const char* text, unsigned short* codes, int);
 #endif
-extern "C" unsigned short func_02045d14(MessageSystem* messages, const char* text, unsigned short* codes, int unk);
-extern "C" void func_020439b0(MessageSystem* messages, int unk);
 
 // USA: func_ov005_0215a960
 extern "C" ARM void func_ov005_0215a960(EquipmentMenu* self) {
-    MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
+    MessageSystem* messages = GetGlobalField0x1c020421a0();
 #if !defined(jpn)
     messages->b195b &= ~0x80;
 #endif

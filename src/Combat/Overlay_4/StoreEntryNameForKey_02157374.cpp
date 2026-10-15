@@ -1,14 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
 void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 int DispatchAdjustmentIfType4_02157018(void* a, int key);
-int GetGlobalField0x1c020421a0();
-extern "C" void func_02046380(void* global);
-struct StoreStruct;
-void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 // USA: func_ov004_02157374  (semantic: StoreEntryNameForKey_02157374)
 extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, unsigned char flag5) {
@@ -84,8 +81,8 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
     }
     if (name == 0) return;
 
-    void* g = (void*)GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     func_02046380(g);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, key);
+    StoreInArray0x8b0_020465c0(g, 0, key);
     memcpy(dst, (void*)name, strlen(name));
 }

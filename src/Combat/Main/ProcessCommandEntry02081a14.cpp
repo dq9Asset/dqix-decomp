@@ -1,15 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "std_library_functions.h"
 
 struct TableA68;
-struct StoreStruct;
 
-extern int GetGlobalField0x1c020421a0();
 void* FindEntryByKey_02072a68(struct TableA68* table, int key);
-void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
-extern "C" void func_02046380(int g);
-extern "C" void func_02046608(int g, int nibble, void* found, void* buf, int a5, int a6, int a7);
+extern "C" void func_02046608(MessageSystem* g, int nibble, const char* found, char* buf, int a5, int a6, int a7);
 extern "C" int func_020420e8(void* value, int flag);
 extern "C" void func_0204f41c(void* b, short diff, int field8, void* field18, int nibble, int initial4, short* fieldAaddr, short* fieldCaddr, int zero);
 
@@ -50,13 +47,13 @@ ARM void ProcessCommandEntry02081a14(struct AObj02081a14* a, struct BObj02081a14
         initial4 = 5;
     }
 
-    int g = GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     memset(a->field18, 0, 0x960);
     func_02046380(g);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, e->field10, e->field0);
+    StoreInArray0x8b0_020465c0(g, e->field10, e->field0);
 
-    void* found = FindEntryByKey_02072a68(a->field0, e->fieldE);
-    func_02046608(g, e->field13nibble, found, a->field18, 0x100, 0, 0);
+    const char* found = static_cast<const char*>(FindEntryByKey_02072a68(a->field0, e->fieldE));
+    func_02046608(g, e->field13nibble, found, static_cast<char*>(a->field18), 0x100, 0, 0);
 
     int y = 0;
     if (e->field14 != 0) {

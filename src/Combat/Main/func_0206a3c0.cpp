@@ -1,6 +1,25 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Combat/EntryGetterTypes.h"
+#include "std_library_functions.h"
+
+#if defined(jpn)
+#define func_0206a3c0 func_0206bed8
+#define func_02042b98 func_02043270
+#define data_020f0934 data_020f0a2c
+#define data_020f093d data_020f0a54
+#define data_020f0943 data_020f0a5a
+#define data_020f0949 data_020f0abb
+#define data_020f0950 data_020f0ac2
+#define data_020f0956 data_020f0ac8
+#define data_020f095c data_020f0ace
+#define data_020f0963 data_020f0ad5
+#define data_020f096a data_020f0adc
+#define data_020f0972 data_020f0ae4
+extern const char data_020e88a5[][3];
+extern const unsigned short data_020e884a[];
+extern "C" int func_02001aec(const void*, const void*, unsigned int);
+#endif
 
 struct EntryList_203dce4;
 struct Node020406f8;
@@ -21,7 +40,11 @@ extern const char data_020f096a[], data_020f0972[];
 
 struct TextState0206a3c0
 {
+#if defined(jpn)
+    char pad0[0x708];
+#else
     char pad0[0x838];
+#endif
     int entryId;
     int defaultAngle;
     int field840;
@@ -31,11 +54,19 @@ struct TextState0206a3c0
     int height;
     char pad868[0x14];
     unsigned short color;
+#if defined(jpn)
+    char pad87e[0x39];
+#else
     char pad87e[0xdb];
+#endif
     unsigned char wait;
     char pad95a[2];
     unsigned char variant;
+#if defined(jpn)
+    char pad95d[0x56];
+#else
     char pad95d[0x54];
+#endif
     unsigned char flag9b1;
     char pad9b2[4];
     unsigned char active;
@@ -46,12 +77,21 @@ struct TextState0206a3c0
 };
 struct TextOwner0206a3c0
 {
+#if defined(jpn)
+    char pad0[0x874];
+#else
     char pad0[0x9a4];
+#endif
     int repeat;
+#if defined(jpn)
+    char pad9a8[0x788];
+#else
     char pad9a8[0x658];
+#endif
     TextState0206a3c0 state;
 };
 
+// JPN: func_0206bed8
 // USA: func_0206a3c0
 extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* text)
 {
@@ -216,6 +256,20 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
                 close++;
             }
             unsigned char done = 0;
+#if defined(jpn)
+            char name[3] = {};
+            signed char colorIndex = 0;
+            memcpy(name, text + 7, 2);
+            for (; data_020e88a5[colorIndex][0]; colorIndex++) {
+                if (func_02001aec(name, data_020e88a5[colorIndex], 2) == 0) {
+                    self->state.color = data_020e884a[colorIndex];
+                    text += close + 1;
+                    done = 1;
+                    break;
+                }
+            }
+            if (done) continue;
+#endif
             int red = func_02005a94(text + 7);
             if (red < 0) red = 255;
             if (red > 255) red = 255;
@@ -260,3 +314,18 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
     }
     return text;
 }
+
+#if defined(jpn)
+#undef func_0206a3c0
+#undef func_02042b98
+#undef data_020f0934
+#undef data_020f093d
+#undef data_020f0943
+#undef data_020f0949
+#undef data_020f0950
+#undef data_020f0956
+#undef data_020f095c
+#undef data_020f0963
+#undef data_020f096a
+#undef data_020f0972
+#endif

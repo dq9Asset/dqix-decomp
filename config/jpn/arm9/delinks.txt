@@ -6482,6 +6482,10 @@ src/Combat/Main/InitCombatObject0203c73c.cpp:
     complete
     .text start:0x0203cc74 end:0x0203cc94
 
+src/Combat/Main/InitCombatPairState020652d0.cpp:
+    complete
+    .text start:0x020665bc end:0x020666c0
+
 src/Combat/Main/InitCombatRuntimeState_0208b9a0.cpp:
     complete
     .text start:0x0208c294 end:0x0208c348

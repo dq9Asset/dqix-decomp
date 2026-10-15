@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kEnabled = 0x1c4, kActive = 0x1c3 };
+#else
+enum { kEnabled = 0x234, kActive = 0x233 };
+#endif
+
 void InitBigStruct0205c790(char* obj);
 
 struct Struct_0205ba68;
@@ -10,7 +16,12 @@ void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
 
 void ProcessCombatEntry0205cb74(char* obj, int value);
 
+#if defined(jpn)
+extern "C" void func_0205dfa8(void* obj);
+extern "C" void func_0206cfd4(char*);
+#else
 extern "C" void func_0205cc50(void* obj, int a, int b);
+#endif
 
 int GetGlobalField0x1c020421a0(void);
 void StoreClampedDeltas_0206b7b0(char* base);
@@ -25,8 +36,13 @@ void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, i
 
 void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 
+// JPN: func_020665bc
 // USA: func_020652d0
+#if defined(jpn)
+extern "C" ARM void func_020665bc(char* obj, int a, const char* b, const char* c) {
+#else
 ARM void InitCombatPairState020652d0(char* obj, int a, int b, int c) {
+#endif
     InitBigStruct0205c790(obj);
 
     obj[0xb1] = 1;
@@ -37,24 +53,35 @@ ARM void InitCombatPairState020652d0(char* obj, int a, int b, int c) {
     SetField0AndPropagate0205bacc((struct Node0205bacc*)(obj + 0x20), 2);
     SetField0AndPropagate0205bacc((struct Node0205bacc*)(obj + 0x70), 2);
 
+#if defined(jpn)
+    ProcessCombatEntry0205cb74(obj, reinterpret_cast<int>(b));
+    ProcessCombatEntry0205cb74(obj, reinterpret_cast<int>(c));
+#else
     ProcessCombatEntry0205cb74(obj, b);
     ProcessCombatEntry0205cb74(obj, c);
+#endif
 
     *(short*)(obj + 0xb4) = 0;
     *(short*)(obj + 0xb6) = 0;
 
+#if defined(jpn)
+    func_0205dfa8(obj);
+    func_0206cfd4((char*)GetGlobalField0x1c020421a0());
+    func_0205dfa8(obj);
+#else
     func_0205cc50(obj, 1, -4);
     StoreClampedDeltas_0206b7b0((char*)GetGlobalField0x1c020421a0());
     func_0205cc50(obj, 1, -4);
+#endif
 
     SetIndexIfValid0205bcdc((struct Struct_0205bcdc*)(obj + 0x20), a);
     func_0205bb04(obj + 0x70, a);
 
-    obj[0x234] = 1;
+    obj[kEnabled] = 1;
     ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(obj + 0x4), 1);
 
-    obj[0x233] = 1;
-    obj[0x234] = 1;
+    obj[kActive] = 1;
+    obj[kEnabled] = 1;
     ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(obj + 0x4), 1);
 
     SetupGlobalObjType1AndInitSelfPointer_0205cd28((unsigned char*)obj);

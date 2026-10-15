@@ -1,3 +1,4 @@
+#if !defined(jpn)
 #include <globaldefs.h>
 #include "Resource/MessageSystem.h"
 #include <Memory/SafeAllocator.h>
@@ -293,3 +294,5 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
     AppendYTag_02041a5c(text, color);
     AppendString02042058(text, output + 0x760);
 }
+
+#endif

@@ -22,7 +22,6 @@ void SetEntryHalfword0xe_0208103c(void*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
 void SetEntryFieldsAt0x602080854(void*, int, int, int);
-int GetFieldByKey020e0434(struct Container020e0310*, int);
 void SetEntryNibbleByShortId(struct StatusOwner02081198* owner, int id, int enable);
 void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* obj, int id, int value);
 extern "C" int func_020813ec(void* obj, int id);
@@ -148,7 +147,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
                 color = 0xa;
             }
             SetEntryFlagById02080b40(elementObj, idA);
-            nm = (char*)GetFieldByKey020e0434(&self->cont2dc, 0x7530);
+            nm = GetFieldByKey020e0434(&self->cont2dc, 0x7530);
             SetEntryFirstField02080f8c((struct Container02080f8c*)elementObj, idA, (int)nm);
             SetEntryHighNibble0x13(elementObj, idA, color);
         }

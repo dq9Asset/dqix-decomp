@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <World/Zone3D.h>
@@ -10,7 +11,6 @@ enum { PluginMode = 0x4e1, PluginParameter = 0x4f8, PluginFlags = 0x56c, PluginS
 enum { PluginMode = 0x4e5, PluginParameter = 0x4fc, PluginFlags = 0x634, PluginSize = 0x648, InitialResource = 0x2cc, PendingResource = 0x3700, ZonePending = 0x424, TransferBufferSize = 0x17600, PlayerSettings = 0x150 };
 #endif
 
-struct Foo0207df50;
 struct Obj020397cc;
 struct Roster0203de2c;
 struct NodeList02058564;
@@ -95,7 +95,6 @@ extern "C" void func_020a0cc4(unsigned int);
 void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020a0c0c();
 void ResetOverlayAndAllocator_0219bf74();
-void CopyInternalFields0207df50(Foo0207df50*);
 extern "C" void func_ov017_0219b938(GameResources*);
 int IsIdInRange020981e4(int, int);
 extern "C" void func_ov017_021a316c(GameResources*);
@@ -117,9 +116,6 @@ void ProcessCombatantsIfFlagged_0218f79c(void*);
 void ProcessSlotField58_021a2840(GameResources*);
 void CleanupNodeList02058564(NodeList02058564*);
 void SetField0x1e28_02042b30(void*, void*);
-void RestorePairTables0207df90(char*);
-extern "C" void func_020432c4(void*);
-void BackupPairTables0207dfac(char*);
 extern "C" int func_ov017_0218f5a4(GameResources*, int, int, int, int);
 int CheckField0NonZero_0202b7d8(int*);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
@@ -188,9 +184,9 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         ResetOverlayAndAllocator_0219bf74();
         SafeAllocator* current;
         SafeAllocator* primary = &resources->allocator_array_38[0];
-        InternalResource021a1284* internal = &((ResourceTransfer021a1284*)resources)->initial;
+        Foo0207df50* internal = resources->encoders;
         primary->Reset();
-        CopyInternalFields0207df50((Foo0207df50*)internal);
+        CopyInternalFields0207df50(internal);
         func_ov017_0219b938(resources);
         SafeAllocator* secondary = &resources->allocator_array_38[5];
         secondary->Reset();
@@ -245,11 +241,11 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         ProcessCombatantsIfFlagged_0218f79c(resources);
         ProcessSlotField58_021a2840(resources);
         CleanupNodeList02058564(nodes);
-        SetField0x1e28_02042b30(global, ((ResourceTransfer021a1284*)resources)->restored);
-        CopyInternalFields0207df50((Foo0207df50*)((ResourceTransfer021a1284*)resources)->restored);
-        RestorePairTables0207df90(((ResourceTransfer021a1284*)resources)->restored);
+        SetField0x1e28_02042b30(global, &resources->encoders[13]);
+        CopyInternalFields0207df50(&resources->encoders[13]);
+        RestorePairTables0207df90(&resources->encoders[13]);
         func_020432c4(global);
-        BackupPairTables0207dfac(((ResourceTransfer021a1284*)resources)->restored);
+        BackupPairTables0207dfac(&resources->encoders[13]);
         ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game);
         for (int i = 0; i < 4; ++i) {
             if (func_ov017_0218f5a4(resources, i, 0, 0, 0) && CheckField0NonZero_0202b7d8(search) && ArrayContainsByte_02086ef0(party, i)) {

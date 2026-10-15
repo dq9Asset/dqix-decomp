@@ -4,7 +4,6 @@
 extern "C" void* memcpy(void*, const void*, unsigned int);
 
 int GetGlobalField0x1c020421a0();
-int GetFieldByKey020e0434(Container020e0310*, int);
 struct Obj0205eaa0;
 extern Obj0205eaa0 data_02108760;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
@@ -29,7 +28,7 @@ extern "C" ARM int func_ov009_0218aab0(CharacterCreationUI* self, unsigned char 
     char character[3] = {};
     int changedIndex = -1;
     int inserted = 0;
-    const char* page = (const char*)GetFieldByKey020e0434(&self->texts, (short)(self->keyboardPage + 0x4268));
+    const char* page = GetFieldByKey020e0434(&self->texts, (short)(self->keyboardPage + 0x4268));
     memcpy(character, page + choice * 2, 2);
     DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     if (func_02001aec(character, data_ov009_0218bc73, 2) == 0) {

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "Resource/PairTableEncoder.h"
 #include "Combat/Main/BattleList.h"
 #include "Memory/SafeAllocator.h"
@@ -23,13 +24,10 @@ struct CombatantStruct {
     struct ModifiableCombatStats* currentStats;
 };
 
-int GetGlobalField0x1c020421a0();
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18();
 void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void func_ov003_0216d8d4(char* obj, int keyA, int p3, int p4, int p5);
-extern "C" int func_020457e0(char* obj);
-void ReinitController02043204(char* obj);
 void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion*, void*);
 void ResetState02170d38(char*);
@@ -127,7 +125,7 @@ static inline void SetB60(struct Save840* s, unsigned char v) { s->fb60 = v; }
 extern "C" ARM void func_ov003_0216c00c(char* obj) {
     struct BattleStruct* battle = (BattleStruct*)GameState::GetInstance();
     GameResources* ov17 = func_ov017_0218b5b0();
-    char* g = (char*)GetGlobalField0x1c020421a0();
+    MessageSystem* g = GetGlobalField0x1c020421a0();
     void* ctx = func_02012fe4();
     void* w = func_0202ae18();
     void* dataPtr0 = GetDataPtr02114e04_020d6c00();
@@ -135,9 +133,9 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
     short subreq = *(short*)(obj + 0xa);
     if (subreq == 1) {
         func_ov003_0216d8d4(obj, 0x41, -1, -1, -1);
-        *(unsigned char*)(g + 0x1000 + 0x9b2) = 1;
-        *(int*)(g + 0x99c) = 2;
-        *(int*)(g + 0x998) = 1;
+        g->b19b2 = 1;
+        g->state = 2;
+        g->active = 1;
         *(short*)(obj + 6) = 3;
         *(short*)(obj + 0xa) = 0;
     } else if (subreq == 2) {
@@ -149,9 +147,9 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             func_ov003_0216d8d4(obj, 0x43, -1, -1, -1);
         }
         *(short*)(obj + 6) = 0x12c;
-        *(unsigned char*)(g + 0x1000 + 0x9b2) = 1;
-        *(int*)(g + 0x99c) = 2;
-        *(int*)(g + 0x998) = 1;
+        g->b19b2 = 1;
+        g->state = 2;
+        g->active = 1;
         *(short*)(obj + 0xa) = 0;
     }
 
@@ -169,7 +167,7 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             StoreInvalidTreasureMapMetadata_02011a40((char*)battle);
         }
     } else if (state == 1) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         if ((&((struct Battle29c*)battle)->sub.rec)->b26 != 0) {
             func_ov003_0216d8d4(obj, 0x2d, -1, -1, -1);
             *(short*)(obj + 6) = 3;
@@ -178,9 +176,9 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 2;
         }
     } else if (state == 2) {
-        if (*(int*)(g + 0x9a0) != 0) return;
+        if (g->mode != 0) return;
         if (func_020457e0(g) == 1) {
-            *(int*)(g + 0x998) = 1;
+            g->active = 1;
             func_ov003_0216d8d4(obj, 0x40, -1, -1, -1);
             *(short*)(obj + 6) = 3;
             struct CombatantStruct* c = (CombatantStruct*)((GameState*)battle)->GetProtagonist();
@@ -201,8 +199,8 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             InitNodeAndInsertAt_021c1798_021c1798(ov17, 0);
         }
     } else if (state == 3) {
-        if (*(int*)(g + 0x9a0) != 0) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 0) return;
+        g->active = 1;
         if (func_020457e0(g) == 1) {
             if (ReadBattleField0x64f4Byte_02011804((GameState*)battle) != 0) {
                 func_ov003_0216d8d4(obj, 0x4c, -1, -1, -1);
@@ -216,8 +214,8 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 0x67;
         }
     } else if (state == 0x67) {
-        if (*(int*)(g + 0x9a0) != 3) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 3) return;
+        g->active = 1;
         if (ReadBattleField0x64f4Byte_02011804((GameState*)battle) != 0) {
             func_ov003_0216d8d4(obj, 0x4d, -1, -1, -1);
             *(short*)(obj + 6) = 0x64;
@@ -226,8 +224,8 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 0x12c;
         }
     } else if (state == 0x64) {
-        if (*(int*)(g + 0x9a0) != 0) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 0) return;
+        g->active = 1;
         if (func_020457e0(g) == 1) {
             func_ov003_0216d8d4(obj, 0x48, -1, -1, -1);
             *(short*)(obj + 6) = 0x12c;
@@ -236,8 +234,8 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 0x65;
         }
     } else if (state == 4) {
-        if (*(int*)(g + 0x9a0) != 0) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 0) return;
+        g->active = 1;
         if (func_020457e0(g) == 1) {
             func_ov003_0216d8d4(obj, 0x32, -1, -1, -1);
             *(short*)(obj + 6) = 0x63;
@@ -249,16 +247,16 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 5;
         }
     } else if (state == 0x65) {
-        *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
-        if (*(int*)(g + 0x9a0) != 0) return;
+        g->b19ae = 0;
+        if (g->mode != 0) return;
         ReinitController02043204(g);
         *(short*)(obj + 4) = 7;
         *(short*)(obj + 6) = 0;
         SetByte0x6480_020119d8(battle);
         func_ov017_021a9ff0(0);
     } else if (state == 0x66) {
-        if (*(int*)(g + 0x9a0) != 0) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 0) return;
+        g->active = 1;
         if (func_020457e0(g) == 1) {
             func_ov003_0216d8d4(obj, 0x32, -1, -1, -1);
             *(short*)(obj + 6) = 0x63;
@@ -267,9 +265,9 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
             *(short*)(obj + 6) = 5;
         }
     } else if (state == 5) {
-        *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
+        g->b19ae = 0;
         *(int*)(obj + 0x1000 + 0x408) += (int)((GameState*)battle)->GetTickCount();
-        if (*(int*)(g + 0x9a0) != 0) {
+        if (g->mode != 0) {
             if (*(int*)(obj + 0x1000 + 0x408) < 0x12c) return;
         }
         *(int*)(obj + 0x1000 + 0x408) = 0;
@@ -363,12 +361,12 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         }
         }
     } else if (state == 7) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         unsigned char v3ee = *(unsigned char*)(obj + 0x1000 + 0x3ee);
         func_ov003_0216d8d4(obj, 0x35, -1, -1, v3ee);
         *(short*)(obj + 6) = 0x62;
     } else if (state == 8) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         if (*(unsigned char*)(obj + 0x1000 + 0x3ed) != 0) {
             *(unsigned char*)(obj + 0x1000 + 0x3ed) = 0;
             func_ov003_0216d8d4(obj, 0x42, -1, -1, -1);
@@ -378,15 +376,15 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         }
         *(short*)(obj + 6) = 0x62;
     } else if (state == 9) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         func_ov003_0216d8d4(obj, 0x36, -1, -1, -1);
         *(short*)(obj + 6) = 0x62;
     } else if (state == 0xa) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         func_ov003_0216d8d4(obj, 0x37, -1, -1, -1);
         *(short*)(obj + 6) = 8;
     } else if (state == 0xb) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         func_ov003_0216d8d4(obj, 0x38, -1, -1, -1);
         *(short*)(obj + 6) = 8;
     } else if (state == 0xc) {
@@ -403,12 +401,12 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
         SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, val);
         func_0209c2e0(&data_02109bf4, 0x7f, 0);
         if (*(unsigned char*)(obj + 0x1000 + 0x3e9) != 0) {
-            *(int*)(g + 0x998) = 1;
+            g->active = 1;
             func_ov003_0216d8d4(obj, 0x4b, -1, -1, -1);
             *(short*)(obj + 6) = 0x62;
             return;
         }
-        *(int*)(g + 0x998) = 1;
+        g->active = 1;
         func_ov003_0216d8d4(obj, 0x33, -1, -1, -1);
         unsigned char v3ee = *(unsigned char*)(obj + 0x1000 + 0x3ee);
         if (v3ee == 0) {
@@ -427,8 +425,8 @@ extern "C" ARM void func_ov003_0216c00c(char* obj) {
 phase2:;
     state = *(short*)(obj + 6);
     if (state == 0x12c) {
-        if (*(int*)(g + 0x9a0) != 0) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 0) return;
+        g->active = 1;
         if (func_020457e0(g) == 1) {
             func_ov003_0216d8d4(obj, 0x32, -1, -1, -1);
             *(short*)(obj + 6) = 0x63;
@@ -440,7 +438,7 @@ phase2:;
         }
         return;
     } else if (state == 0x12e) {
-        *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
+        g->b19ae = 0;
         *(unsigned char*)(obj + 0x1000 + 0x3ec) |= 4;
         BackgroundLoader::AddLockGlobal();
         if (func_020aad1c((int)(obj + 0xc + 0x1400), (int)data_0211e33c, 8, 0) == 1) {
@@ -452,7 +450,7 @@ phase2:;
         return;
     } else if (state == 0x12f) {
         ClearFlags020466f4((FlagWord020466f4*)dataPtr0, 0x80);
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (g->mode != 3) return;
         func_ov003_0216d8d4(obj, 0x30, -1, -1, -1);
         *(short*)(obj + 6) = 5;
         return;
@@ -481,9 +479,9 @@ phase2:;
             *(short*)(obj + 6) = 0xf;
             return;
         }
-        Foo0207df50* fields = &ov17->encoders[28];
-        CopyInternalFields0207df50(fields);
-        RestorePairTables0207df90(fields);
+        Foo0207df50* encoders = ov17->encoders;
+        CopyInternalFields0207df50(&encoders[28]);
+        RestorePairTables0207df90(&encoders[28]);
         struct ObjectArchiveLoadInfo loadInfo;
         loadInfo.unk_0 = 0;
         loadInfo.unk_14 = 0;
@@ -494,7 +492,7 @@ phase2:;
         loadInfo.fileData = fileData;
         loadInfo.unk_8 = fileSize;
         ((Object3D*)(obj + 0x33c + 0x1000))->LoadFromCHRArchive(&loadInfo);
-        BackupPairTables0207dfac(fields);
+        BackupPairTables0207dfac(&encoders[28]);
         *(unsigned char*)(obj + 0x1000 + 0x3e8) = 1;
         ((Object3D*)(obj + 0x33c + 0x1000))->MaybeSetRegularAnimation(data_ov003_021801f8, 1);
         struct CombatantStruct* c = (CombatantStruct*)((GameState*)battle)->GetUnknownGameObject();
@@ -514,14 +512,14 @@ phase2:;
         }
         *(unsigned char*)(obj + 0x1000 + 0x3e8) = 0;
         void* combatant2 = *(void**)((char*)ov17 + 0x3b48);
-        *(int*)(g + 0x998) = 1;
+        g->active = 1;
         int byte28 = GetByteField28_021b1fa8(combatant2);
         int byte29 = GetByteField29_021b1fb0(combatant2);
         func_ov003_0216d8d4(obj, 0x4f, byte28 + 0x64, byte29, -1);
         *(short*)(obj + 6) = 0x10;
         return;
     } else if (state == 0x10) {
-        if (*(int*)(g + 0x998) != 0) return;
+        if (g->active != 0) return;
         SetBrightness(ov17, -16, 0x1e);
         *(short*)(obj + 6) = 0x11;
         return;
@@ -553,10 +551,10 @@ phase2:;
         func_0209c2e0(&data_02109bf4, 0x7f, 0);
         if ((unsigned int)ReadBattleField0x64f4Byte_02011804((GameState*)battle) >= 0x63) {
             *(short*)(obj + 6) = 0x13;
-            char* g2 = (char*)GetGlobalField0x1c020421a0();
-            *(int*)(g2 + 0x998) = 1;
+            MessageSystem* g2 = GetGlobalField0x1c020421a0();
+            g2->active = 1;
             func_ov003_0216d8d4(obj, 0x72, -1, -1, -1);
-            *(int*)(g + 0x2c8) = 1;
+            g->choicePending = 1;
         } else {
             void* mb = func_ov017_0218b5b0();
             struct CombatantStruct* c3 = *(struct CombatantStruct**)((char*)mb + 0x3000 + 0xb48);
@@ -580,8 +578,8 @@ phase2:;
         }
         return;
     } else if (state == 0x13) {
-        char* g2 = (char*)GetGlobalField0x1c020421a0();
-        if (*(int*)(g2 + 0x998) != 0) return;
+        MessageSystem* g2 = GetGlobalField0x1c020421a0();
+        if (g2->active != 0) return;
         int fr = func_020457e0(g2);
         if (fr == 0) {
             *(short*)(obj + 6) = 0xc;
@@ -625,15 +623,15 @@ phase2:;
         }
         return;
     } else if (state == 0x63) {
-        if (*(int*)(g + 0x9a0) != 3) return;
-        *(int*)(g + 0x998) = 1;
+        if (g->mode != 3) return;
+        g->active = 1;
         func_ov003_0216d8d4(obj, 0x29, -1, -1, -1);
         *(short*)(obj + 6) = 0;
         *(short*)(obj + 4) = 2;
         *(short*)(obj + 6) = 0;
         return;
     } else if (state == 0x62) {
-        if (*(int*)(g + 0x9a0) != 0 || *(int*)(g + 0x998) != 0) return;
+        if (g->mode != 0 || g->active != 0) return;
         ReinitController02043204(g);
         *(short*)(obj + 4) = 7;
         *(short*)(obj + 6) = 0;

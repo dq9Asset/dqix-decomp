@@ -1,3 +1,6 @@
+#if !defined(jpn)
+#include "Resource/MessageSystem.h"
+#include "Resource/PairTableEncoder.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -13,7 +16,6 @@ struct BattleWork;
 struct BattleState;
 struct PartyState;
 struct Roster;
-struct MessageWork;
 struct SlotWork;
 struct OwnerInfo;
 struct ViewInfo;
@@ -31,7 +33,6 @@ struct FlagObj_021dd3c4;
 struct Obj0203c108;
 struct S02053dc0;
 struct Bytes02033b88;
-struct State0207dfc8;
 struct TagValueEntry020e385c;
 struct Obj02046574;
 struct FlagWord02046708;
@@ -78,7 +79,6 @@ struct Group {
 
 int GetField0x3acValue_020100a8(GameState*);
 SlotWork* FindSlotById_021dae60(Container_021dae60*, int);
-MessageWork* GetGlobalField0x1c020421a0();
 void* GetData02100044_0202ae24();
 void* GetDataPtr02114e04_020d6c00();
 unsigned char* GetData02153634_020e3580();
@@ -113,7 +113,6 @@ void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 int GetSubstructByte0x1c_020493a4(unsigned char*);
 void SetSubstructByte0x1c_02049390(unsigned char*, unsigned char);
 void SetSubstructFields0x10And0x18ClearFlag0x1_02049bd4(unsigned char*, int*);
-void ReinitController02043204(char*);
 void ReleaseEntriesTwoGroups02174dc0(void*);
 GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 char* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
@@ -129,7 +128,6 @@ void Process02181364(void*);
 void ClearFlag_021816e8_021816e8(void*, int);
 void SetFlag_02181694_02181694(void*, int);
 void ClearByteField_0217f5d0_0217f5d0(void*);
-void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void EnqueueEventTag89_021ca174(unsigned short);
 TagValueEntry020e385c* GetData02153660_020e3808();
 int IsEntryCompleteOrMissing020e3ad0(TagValueEntry020e385c*, int, int);
@@ -140,8 +138,6 @@ void SetBrightness(GameResources*, int, int);
 int IsField0Null_02046b08(void**);
 void UpdateFieldIfDiffers_02174514_02174514(void*);
 void ClearFlag0x1000AndBytes7eA1_02088e64(unsigned char*);
-void* GetFieldByKey020e0434(Container020e0310*, int);
-void SetIndexedName02046574(Obj02046574*, int, char*);
 int TestFlags02046708(FlagWord02046708*, unsigned int);
 void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
@@ -173,12 +169,11 @@ int func_ov000_0215e9fc(BattleState*, short*, int, int);
 int func_ov000_0215ec1c(BattleState*, short*, int, int);
 int func_ov000_0215eb1c(BattleState*, short*, int, int);
 Pos2i func_ov000_0216f74c(int* cell);
-void func_02043124(MessageWork*);
 void func_ov026_021daec8(BattleState*, void*, int);
 void func_ov000_02174614(void*, int);
 void func_020e4864(void*, char*, int, int, int, int);
 void __clear(void*, int);
-void func_02046608(MessageWork*, int, char*, char*, int, int, int);
+extern "C" void func_02046608(MessageSystem*, unsigned char, const char*, char*, int, int, unsigned char);
 void func_ov000_0217f518(SlotWork*);
 void func_ov000_02162c14( BattleWork*, int, void*);
 void func_ov000_0217fa60(void*);
@@ -193,12 +188,10 @@ void func_ov017_021c6814(unsigned short, unsigned short, Cmd*, unsigned char, in
 int func_ov026_021ddd84(GameResources*, BattleWork*, BattleState*, PartyState*, void*, void*, int);
 void func_ov017_021c847c();
 void func_020dd0b0(int, void*);
-void func_0204500c(MessageWork*, void*, int, int);
 int func_ov026_021d8a40();
 void func_ov026_021dce34(int, BattleWork*, BattleState*, PartyState*, void*, void*, void*, void*, void*, void*, void*, void*);
 void func_ov026_021dd8a8(BattleState*, PartyState*);
 void func_ov000_0217fbf4(void*, int);
-void func_02046380(MessageWork*);
 void func_020e4ce8(void*, char*, int);
 void func_ov000_0216258c( BattleWork*);
 void func_ov026_021db3d8( BattleWork*);
@@ -258,18 +251,6 @@ struct NetSession {
     int state;
 };
 
-struct MessageWork {
-    char pad0[0x20];
-    char* namePtr;
-    char pad24[0x38];
-    char* scriptWork;
-    char pad60[0x938];
-    int busy;
-    char pad99c[0x1013];
-    unsigned char flag19af;
-    char pad19b0[0x1a];
-    unsigned char flag19ca;
-};
 
 struct Roster {
     char pad[0xf78];
@@ -309,7 +290,8 @@ struct BattleState {
 struct BattleWork {
     char pad0[0x30];
     char alloc[0x11c];
-    char stateA[0x150];
+    Foo0207df50 stateA;
+    char afterStateA[0x150 - sizeof(Foo0207df50)];
     BattleState* battle;
     PartyState* party;
     char pad2a4[0x974];
@@ -392,7 +374,8 @@ struct BattleWork {
     unsigned char slotsDirty;
     char pad774b[0x1];
     char cmdAlloc[0x14];
-    char stateB[0x150];
+    Foo0207df50 stateB;
+    char afterStateB[0x150 - sizeof(Foo0207df50)];
     Container020e0310* GetMsgBox() { return &msgBox; }
 };
 
@@ -402,7 +385,7 @@ extern "C" ARM void func_ov026_021d8ba0(BattleWork* self) {
     NameBuf fmt2;
     char text[0x80];
     NameBuf fmt;
-    char name[12];
+    ItemNameText name;
     Cmd cmdA;
     Cmd cmdB;
     Cmd cmdC;
@@ -419,7 +402,7 @@ extern "C" ARM void func_ov026_021d8ba0(BattleWork* self) {
     GameResources* res;
     BattleState* battle;
     SlotWork* slot;
-    MessageWork* ctrl;
+    MessageSystem* ctrl;
     int* link;
     BackgroundLoader* loader;
     void* slots;
@@ -438,7 +421,7 @@ extern "C" ARM void func_ov026_021d8ba0(BattleWork* self) {
     unsigned char first;
     int g;
     int ownerCount;
-    MessageWork* ctrl2;
+    MessageSystem* ctrl2;
     char* memberNames;
     char* ownerNames;
     GameState* gs3;
@@ -639,7 +622,7 @@ state1:
             }
         }
     shifted:
-        ReinitController02043204((char*)ctrl);
+        ReinitController02043204(ctrl);
         func_02043124(ctrl);
         func_ov026_021daec8(self->battle, self->view, autoMode);
         {
@@ -763,7 +746,7 @@ state1:
         }
         if (((SafeAllocator*)self->cmdAlloc)->GetSignedAllocator() == 0) {
             ((SafeAllocator*)self->cmdAlloc)->CreateTypeA(((SafeAllocator*)(self->alloc))->Allocate(0x16000), 0x16000);
-            CopyState0207dfc8((State0207dfc8*)(self->stateA), (State0207dfc8*)(self->stateB));
+            CopyState0207dfc8(&self->stateA, &self->stateB);
         }
         self->state = 0xe;
         {
@@ -805,8 +788,8 @@ state1:
         int online;
         TagValueEntry020e385c* tags;
         online = battle->netInfo->state >= 0 ? 1 : 0;
-        ctrl->flag19af = 0;
-        ctrl->flag19ca = 0;
+        ctrl->b19af = 0;
+        ctrl->b19ca = 0;
         tags = GetData02153660_020e3808();
         if (!online || (IsEntryCompleteOrMissing020e3ad0(tags, 1, -1) && online)) {
             unsigned char* entry = FindEntryByTagAndValue(tags, 1, -1);
@@ -820,7 +803,7 @@ state1:
                 all = 1;
             }
             if (all || !mine || !entry) {
-                ReinitController02043204((char*)ctrl);
+                ReinitController02043204(ctrl);
                 self->state = 4;
                 ResetTaggedEntryAndNotifyOverlay020e3994(tags, 1, -1);
                 return;
@@ -828,12 +811,12 @@ state1:
         }
         if (((POWCNT & 0x8000) >> 15) == 1 && (IsChannelValueZero0203b5e0(res, 0) || IsChannelValueZero0203b5e0(res, 1)) && self->phase == 0) {
             SetBrightness(res, 0, 0xf);
-            if (ctrl->busy == 0) {
-                void* work = GetGlobalField0x1c020421a0()->scriptWork;
+            if (ctrl->active == 0) {
+                char* work = GetGlobalField0x1c020421a0()->savedTextBuffer;
                 memset(work, 0, 0x960);
                 func_020dd0b0(0, work);
                 func_0204500c(ctrl, work, 0, 0xe3);
-                ctrl->busy = 1;
+                ctrl->active = 1;
             }
         }
         if (func_ov026_021ddd84(res, self, self->battle, self->party, self->list, &self->turnFlag, 1) != 0) {
@@ -854,7 +837,7 @@ state1:
             func_ov026_021dd8a8(battle, self->party);
             self->revivePending = 0;
         }
-        if (self->inputOn & (ctrl->busy == 0)) {
+        if (self->inputOn & (ctrl->active == 0)) {
             func_ov000_0217fbf4(self->list, -1);
             self->inputOn = 0;
         }
@@ -887,17 +870,17 @@ state1:
         }
     checked:
         if (revived) {
-            MessageWork* msg = GetGlobalField0x1c020421a0();
+            MessageSystem* msg = GetGlobalField0x1c020421a0();
             Container020e0310* box = self->GetMsgBox();
             GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, target);
-            void* text = GetFieldByKey020e0434(box, 0x28);
+            char* text = GetFieldByKey020e0434(box, 0x28);
             if (text != 0 && c != 0) {
                 func_02046380(msg);
-                SetIndexedName02046574((Obj02046574*)msg, 0, (char*)c + 0x14c);
-                func_020e4ce8(name, (char*)c, 1);
-                msg->namePtr = name;
+                SetIndexedName02046574(msg, 0, (char*)c + 0x14c);
+                func_020e4ce8(&name, (char*)c, 1);
+                msg->monsterNames[0] = &name;
                 func_0204500c(msg, text, 0, 0xe3);
-                msg->busy = 1;
+                msg->active = 1;
                 self->state = 0xf;
                 return;
             }
@@ -928,7 +911,7 @@ state1:
             int changed = redo;
             int locked = redo;
             if (CheckField0NonZero_0202b7d8(link) && battle->turns == 0 && self->battle->kind == 2) {
-                if (ctrl->busy != 0) {
+                if (ctrl->active != 0) {
                     locked = 1;
                 }
             }
@@ -958,7 +941,7 @@ state1:
             if (redo) {
                 func_ov000_0217fcc4(self->list, -1);
             }
-            if (GetByteField_02168720_02168720((char*)self) > 0 || ctrl->busy != 0) {
+            if (GetByteField_02168720_02168720((char*)self) > 0 || ctrl->active != 0) {
                 redo = 0;
             }
             if (redo && CheckField0NonZero_0202b7d8(link) && MatchesActiveIndex020a36a8((Combatant020A36A8*)self->party)) {
@@ -1248,7 +1231,9 @@ state1:
             self->state = 0;
         }
     }
-    if (self->state == 0xf && GetGlobalField0x1c020421a0()->busy == 0) {
+    if (self->state == 0xf && GetGlobalField0x1c020421a0()->active == 0) {
         self->state = 4;
     }
 }
+
+#endif

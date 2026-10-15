@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 #include "Resource/CharacterCreationUI.h"
@@ -6,12 +7,6 @@
 #include <std_library_functions.h>
 
 struct Obj02048350;
-struct StoreStruct;
-struct Obj02046574 {
-    void* actor;
-    unsigned char unknown_4[12];
-    void* target;
-};
 struct CommandEntry0215a0a4 {
     char* name;
     int unknown_4;
@@ -65,20 +60,15 @@ struct PartyFlags0215a0a4 {
 
 void* GetData02153637_020e2ff8();
 void Dispatch020e3428(void*, int);
-Obj02046574* GetGlobalField0x1c020421a0();
 CommandEntry0215a0a4* SearchBothTables02079e2c(char*, int);
 void* Clear12Bytes020e46c4(void*);
-void SetIndexedName02046574(Obj02046574*, int, char*);
 void InitObjFromCombatantId020e4bf4(void*, int);
 int ConsumeCounter02048350(Obj02048350*, int);
 int CheckField0NonZero_0202b7d8(int*);
-int GetFieldByKey020e0434(Container020e0310*, int);
 int AppendString02042058(char*, const char*);
-void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 extern "C" int* func_0202ae18();
-extern "C" void func_02046380(void*);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
-extern "C" void func_02046608(void*, int, int, void*, int, int, int);
+extern "C" void func_02046608(MessageSystem*, int, const char*, char*, int, int, int);
 
 static inline char* CombatantName0215a0a4(GameObject* target) { SDK_NULL_ASSERT(target); return target->baseStats_->unk; }
 
@@ -92,7 +82,7 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
     char* buffer;
     signed char* targetIds;
     GameState* gs;
-    Obj02046574* message;
+    MessageSystem* message;
     CommandEntry0215a0a4* entry;
     int index;
     Dispatch020e3428(GetData02153637_020e2ff8(), 1);
@@ -111,7 +101,7 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
     if (actor) {
         SetIndexedName02046574(message, 0, actor->baseStats_->unk);
         InitObjFromCombatantId020e4bf4(self->actorName, event->actor);
-        message->actor = self->actorName;
+        message->actorNames[0] = self->actorName;
     }
     SetIndexedName02046574(message, 1, entry->name);
     if (self->command == 0x1e || self->command == 0x1f || self->command == 0x20 ||
@@ -174,10 +164,10 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
                     func_02046380(message);
                     SetIndexedName02046574(message, 2, CombatantName0215a0a4(target));
                     InitObjFromCombatantId020e4bf4(self->targetName, targetIds[index]);
-                    message->target = self->targetName;
-                    StoreInArray0x8b0_020465c0((StoreStruct*)message, 9, target->obj3D_.unknown_4_);
+                    message->targetNames[0] = self->targetName;
+                    StoreInArray0x8b0_020465c0(message, 9, target->obj3D_.unknown_4_);
                     func_02046608(message, 0xc, GetFieldByKey020e0434(&self->texts, key), buffer + 0x860, 0xe3, 0, 1);
-                    AppendString02042058(self->textState.text, (const char*)GetFieldByKey020e0434(&self->texts, 8));
+                    AppendString02042058(self->textState.text, GetFieldByKey020e0434(&self->texts, 8));
                     AppendString02042058(self->textState.text, buffer + 0x860);
                 }
             }
@@ -190,15 +180,15 @@ extern "C" ARM void func_ov002_0215a0a4(BattleMessage0215a0a4* self, BattleEvent
         if (target) {
             SetIndexedName02046574(message, 2, CombatantName0215a0a4(target));
             InitObjFromCombatantId020e4bf4(self->targetName, target->obj3D_.unknown_4_);
-            message->target = self->targetName;
+            message->targetNames[0] = self->targetName;
         }
-        AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2333));
-        AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 8));
+        AppendString02042058(buffer + 0x860, GetFieldByKey020e0434(&self->texts, 0x2333));
+        AppendString02042058(buffer + 0x860, GetFieldByKey020e0434(&self->texts, 8));
         if (GetByteField0x5721_02011538(gs) == 1)
-            AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2334));
+            AppendString02042058(buffer + 0x860, GetFieldByKey020e0434(&self->texts, 0x2334));
         else
-            AppendString02042058(buffer + 0x860, (const char*)GetFieldByKey020e0434(&self->texts, 0x2335));
-        func_02046608(message, 0xc, (int)(buffer + 0x860), self->textState.text, 0xe3, 0, 1);
+            AppendString02042058(buffer + 0x860, GetFieldByKey020e0434(&self->texts, 0x2335));
+        func_02046608(message, 0xc, buffer + 0x860, self->textState.text, 0xe3, 0, 1);
     }
     self->pending = 1;
     memcpy(self->textState.textCopy, self->textState.text, 0x960);

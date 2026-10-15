@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/PairTableEncoder.h"
 #include <GameState/GameState.h>
 #include <World/Zone3D.h>
 #include <System/Cache.h>
@@ -11,7 +13,6 @@ struct Obj020979c0;
 struct SubBgControlBackup02074b64;
 struct Struct02074bd0;
 struct Struct02074bf4;
-struct Foo0207df50;
 struct TailList020469b4;
 struct TailNode020469b4;
 struct Transition021b1564 {
@@ -26,29 +27,13 @@ struct Transition021b1564 {
     unsigned int savedFlags, savedFlags4, savedFlags8;
     unsigned char stage, alternate, result;
 };
-struct Controller021b1564 {
-#if defined(jpn)
-    char pad_0[0x28];
-#else
-    char pad_0[0x5c];
-#endif
-    signed char* action;
-#if defined(jpn)
-    char pad_60[0x868 - 0x2c];
-#else
-    char pad_60[0x998 - 0x60];
-#endif
-    int busy;
-};
 struct Overlay006021b1564 { char pad_0[0x394]; unsigned short flags; char pad_396[0x9e]; unsigned char result; };
 struct BufferTail021b1564 { char pad_0[0x1000]; char work[1]; };
 struct Buffer021b1564 { char pad_0[0x820]; BufferTail021b1564 tail; };
 struct PlayerView021b1564 { char pad_0[0xae]; short angle; };
-struct ResourceBlock021b1564 { char initial[0x5b0]; char restored[1]; };
 struct EntryNode021b1564 { char pad_0[0x114]; void* entry; char pad_118[0xc]; int id; char pad_128[0x11]; unsigned char active; };
 GameResources* GetWord0x0_0200fb8c(int*);
 unsigned int* GetDataPtr02114e04_020d6c00();
-Controller021b1564* GetGlobalField0x1c020421a0();
 unsigned char* GetFieldIfFlag4_020100f8(char*);
 void ClearIntAt0x23c_020a27b8(unsigned char*);
 unsigned int GetWord_0203b498(unsigned int*);
@@ -57,15 +42,11 @@ unsigned int GetField8_0203b508(unsigned int*);
 void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
 void CancelPendingAction020397cc(Obj020397cc*, int);
 #if defined(jpn)
-extern "C" void func_0204500c(void*, signed char*, int);
 #define func_ov006_021576a0 func_ov006_02158ca8
 enum { TransitionArenaSize = 0x3b000, TransitionAllocationSize = 0x3c820 };
 #else
-extern "C" void func_0204500c(void*, signed char*, int, int);
 enum { TransitionArenaSize = 0x3cc00, TransitionAllocationSize = 0x3e420 };
 #endif
-void ReinitController02043204(char*);
-extern "C" int func_020457e0(void*);
 void SetField0x23cTrue_020a27ac(void*);
 void SetBrightness(GameResources*, int, int);
 void DispatchContextByState0209c678(Actor0209c678*, int);
@@ -75,7 +56,6 @@ void OrGlobalFlag0x40_020dc2bc();
 extern "C" void func_020a0cc4(unsigned int);
 void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020a0c0c();
-extern "C" void func_02043124(void*);
 void PushInputLogA_020a1df8(int);
 void PushInputLogB_020a1ef0(int);
 void SetPowCnt1Bit15_021b1ca8(int);
@@ -116,10 +96,6 @@ extern "C" void func_ov017_0219bd1c(int, int, int, int);
 extern "C" void func_ov017_021a2fa0(GameResources*);
 extern "C" void func_ov017_0219b624(GameResources*);
 extern "C" void func_ov017_0219ba0c(GameResources*, int);
-void CopyInternalFields0207df50(Foo0207df50*);
-void RestorePairTables0207df90(char*);
-extern "C" void func_020432c4(void*);
-void BackupPairTables0207dfac(char*);
 void UnlockAndSetMainBrightness(GameResources*, int, int);
 int* FindEntryPointerByKey0203df78(void*, int);
 void* GetField0x8_02040528(int*);
@@ -139,7 +115,7 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
     GameState* game = GameState::GetInstance();
     GameResources* resources = GetWord0x0_0200fb8c((int*)game);
     unsigned int* global = GetDataPtr02114e04_020d6c00();
-    Controller021b1564* controller = GetGlobalField0x1c020421a0();
+    MessageSystem* controller = GetGlobalField0x1c020421a0();
     unsigned char* field = GetFieldIfFlag4_020100f8((char*)game);
     GameObject* player = game->GetUnknownGameObject();
     if (field) ClearIntAt0x23c_020a27b8(field);
@@ -151,28 +127,28 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         if (!self->alternate) {
             GameObject* current = game->GetUnknownGameObject();
             if (current) CancelPendingAction020397cc((Obj020397cc*)current, 1);
-            if (*controller->action) {
+            if (*controller->savedTextBuffer) {
 #if defined(jpn)
-                func_0204500c(controller, controller->action, 0);
+                func_0204500c(controller, controller->savedTextBuffer, 0);
 #else
-                func_0204500c(controller, controller->action, 0, 0xe3);
+                func_0204500c(controller, controller->savedTextBuffer, 0, 0xe3);
 #endif
-                controller->busy = 1;
-            } else ReinitController02043204((char*)controller);
+                controller->active = 1;
+            } else ReinitController02043204(controller);
             self->stage = 100;
             return;
         }
         ++self->stage;
         return;
     } else if (self->stage == 100) {
-        if (controller->busy) return;
+        if (controller->active) return;
         if (func_020457e0(controller) == 1) {
-            ReinitController02043204((char*)controller);
+            ReinitController02043204(controller);
             self->inactive = 1;
             if (field) SetField0x23cTrue_020a27ac(field);
             return;
         }
-        ReinitController02043204((char*)controller);
+        ReinitController02043204(controller);
         SetBrightness(resources, -16, 16);
         DispatchContextByState0209c678((Actor0209c678*)data_02109bf4, 15);
         OrBitsIntoField0_020466e4(global, 1);
@@ -193,8 +169,8 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
             return;
         }
         BufferTail021b1564* tail = &buffer->tail;
-        Controller021b1564* current = GetGlobalField0x1c020421a0();
-        ReinitController02043204((char*)current);
+        MessageSystem* current = GetGlobalField0x1c020421a0();
+        ReinitController02043204(current);
         func_02043124(current);
         self->allocator.CreateTypeA(buffer, TransitionArenaSize);
         self->allocator.Reset();
@@ -286,12 +262,12 @@ extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469
         func_ov017_021a2fa0(resources);
         func_ov017_0219b624(resources);
         func_ov017_0219ba0c(resources, 0);
-        ResourceBlock021b1564* block = (ResourceBlock021b1564*)resources->unknown_2cc;
-        Controller021b1564* current = GetGlobalField0x1c020421a0();
-        CopyInternalFields0207df50((Foo0207df50*)block->restored);
-        RestorePairTables0207df90(block->restored);
+        Foo0207df50* encoders = resources->encoders;
+        MessageSystem* current = GetGlobalField0x1c020421a0();
+        CopyInternalFields0207df50(&encoders[13]);
+        RestorePairTables0207df90(&encoders[13]);
         func_020432c4(current);
-        BackupPairTables0207dfac(block->restored);
+        BackupPairTables0207dfac(&encoders[13]);
         ++self->stage;
         return;
     } else if (self->stage == 6) {

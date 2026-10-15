@@ -32,7 +32,6 @@ int IsPrefixMatch020d857c(const char* a, const char* b);
 int StringLength_020d2ff0(const char* s);
 extern "C" int func_02005a94(const char* p);
 extern "C" int func_02001aec(const void* a, const void* b, int n);
-extern "C" char* func_020e4958(char** dst, void* val, int a2, int a3, int a4, int a5);
 
 typedef void (*TagHandler02069234)(const char* tag, char** dst, MessageSystem* sb, int index);
 
@@ -105,7 +104,7 @@ extern "C" ARM void func_02069234(MessageSystem* sb, const char* str, char* dst,
             int localC;
             int localSl;
             localSl = localC = local14 = -1;
-            void* val;
+            ItemNameText* val;
             local10 = 0;
             val = 0;
             struct OptTable02069234 opts = data_020e7f04;
@@ -133,11 +132,11 @@ extern "C" ARM void func_02069234(MessageSystem* sb, const char* str, char* dst,
                         case 2: localC = opt->value; break;
                         case 3: localSl = opt->value; break;
                         case 4: val = sb->itemNames[index]; break;
-                        case 5: val = sb->monsterNames[index]; break;
-                        case 6: val = sb->actorNames[index]; break;
-                        case 7: val = sb->targetNames[index]; break;
-                        case 8: val = sb->actionNames[index]; break;
-                        case 9: val = sb->field2c; break;
+                        case 5: val = static_cast<ItemNameText*>(sb->monsterNames[index]); break;
+                        case 6: val = static_cast<ItemNameText*>(sb->actorNames[index]); break;
+                        case 7: val = static_cast<ItemNameText*>(sb->targetNames[index]); break;
+                        case 8: val = static_cast<ItemNameText*>(sb->actionNames[index]); break;
+                        case 9: val = static_cast<ItemNameText*>(sb->field2c); break;
                     }
                 }
                 opt++;

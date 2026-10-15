@@ -1,3 +1,4 @@
+#include "Resource/CharacterCreationUI.h"
 #if defined(jpn)
 #include <globaldefs.h>
 #include "std_library_functions.h"
@@ -14,7 +15,6 @@ struct Elem_0205d81c {
     unsigned char unknown0c5[0xe0 - 0xc5];
 };
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
-int GetFieldByKey020e0434(Container020e0310*, int);
 int AppendString02042058(char*, const char*);
 extern "C" int func_02042428(char*, int);
 
@@ -30,8 +30,8 @@ ARM void BuildFieldTag_021d9e60(char* obj) {
         func_02042428(self->textBuffer, 12);
         AppendString02042058(self->textBuffer, self->names[self->sex]);
     } else {
-        int field = GetFieldByKey020e0434(&self->texts, 0x4274);
-        AppendString02042058(self->textBuffer, (const char*)field);
+        char* field = GetFieldByKey020e0434(&self->texts, 0x4274);
+        AppendString02042058(self->textBuffer, field);
     }
     TryApplyElemFields0205d5d0((StructA0205d5d0*)&self->windows[1], 3, (int)self->textBuffer, 0);
     self->flags &= ~0x8000;
@@ -48,7 +48,6 @@ struct StructA0205d5d0;
 int TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 
 struct Container020e0310;
-int GetFieldByKey020e0434(Container020e0310*, int);
 
 int AppendString02042058(char*, const char*);
 int AppendXTag_02041a28(char*, int);
@@ -80,8 +79,8 @@ ARM void BuildFieldTag_021d9e60(char* obj) {
 		AppendXTag_02041a28(buf, (0x50 - len) >> 1);
 		AppendString02042058(buf, outBuf);
 	} else {
-		int val = GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274);
-		AppendString02042058(buf, (const char*)val);
+		char* val = GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274);
+		AppendString02042058(buf, val);
 	}
 	TryApplyElemFields0205d5d0((StructA0205d5d0*)(obj + 0x2b4), 3, (int)buf, 0, 0);
 	*(int*)(obj + 0xd9c) &= ~0x8000;

@@ -2,7 +2,6 @@
 #include "std_library_functions.h"
 #include "Resource/CharacterCreationUI.h"
 
-int GetFieldByKey020e0434(Container020e0310*, int);
 struct Ctx0205d304;
 extern "C" void func_0205d304(Ctx0205d304* renderer, const char* text, int mode,
                             unsigned char border, unsigned char flagBit3,
@@ -29,8 +28,8 @@ ARM void SetupTag021d9da4(void* objRaw) {
     self->windows[1].flags = 1;
     self->windows[1].noHorizontalInset = 1;
     memset(self->textBuffer, 0, 0x800);
-    int fmt = GetFieldByKey020e0434(&self->texts, 0x4274);
-    sprintf(self->textBuffer, (const char*)fmt);
+    char* fmt = GetFieldByKey020e0434(&self->texts, 0x4274);
+    sprintf(self->textBuffer, fmt);
     func_0205d304((Ctx0205d304*)&self->windows[1], self->textBuffer, 0, 0, 0, 0, 0);
 #else
     CreationWindow* tag = &self->windows[1];
@@ -48,8 +47,8 @@ ARM void SetupTag021d9da4(void* objRaw) {
     tag->noHorizontalInset = 1;
     char* buf = self->textBuffer;
     memset(buf, 0, 0x960);
-    int fmt = GetFieldByKey020e0434(&self->texts, 0x4274);
-    sprintf(buf, (const char*)fmt);
+    char* fmt = GetFieldByKey020e0434(&self->texts, 0x4274);
+    sprintf(buf, fmt);
     func_0205d304((Ctx0205d304*)tag, buf, 0, 0, 0, 0, 0, 0);
 #endif
 }

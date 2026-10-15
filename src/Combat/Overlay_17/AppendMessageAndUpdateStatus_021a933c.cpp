@@ -22,7 +22,6 @@ struct MessageSelectionController {
 };
 
 MessageSelectionController* GetGlobalField0x1c020421a0(void);
-int GetFieldByKey020e0434(struct Container020e0310*, int);
 #if !defined(jpn)
 extern "C" void func_0204500c(void*, const char*, int, int);
 #endif
@@ -37,9 +36,9 @@ extern "C" ARM void func_ov017_021a933c(MessageSelection* selection, int key) {
         if (selection->alternateSet == 1) key += 0x64;
     }
 #if defined(jpn)
-    func_0204500c(controller, (const char*)GetFieldByKey020e0434(&selection->messages, (short)key), 0);
+    func_0204500c(controller, GetFieldByKey020e0434(&selection->messages, (short)key), 0);
 #else
-    func_0204500c(controller, (const char*)GetFieldByKey020e0434(&selection->messages, (short)key), 0, 0xe3);
+    func_0204500c(controller, GetFieldByKey020e0434(&selection->messages, (short)key), 0, 0xe3);
 #endif
 
     if (key <= 0x12b && key >= 0x64) {

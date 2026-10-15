@@ -2,6 +2,7 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "Resource/CharacterCreationUI.h"
+#include "Resource/MessageSystem.h"
 
 #if defined(jpn)
 enum { ValueOffset = 0x604, TagOffset = 0x14 };
@@ -25,15 +26,7 @@ struct ProfileTagFormats {
 };
 }
 
-int GetGlobalField0x1c020421a0(void);
-
-struct StoreStruct;
-void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
-void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
-void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
-
 struct Container020e0310;
-int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
 #if defined(jpn)
 extern "C" void func_020474a8(void* messages, unsigned char font, const char* format, char* output);
@@ -57,7 +50,7 @@ struct EntryTagData021e83c8 { char pad[0x38]; int a; int b; };
 // JPN: func_ov023_021e8404
 extern "C" ARM void func_ov023_021e83c8(void* obj) {
     ProfileFormatState* state = static_cast<ProfileFormatState*>(obj);
-    int field = GetGlobalField0x1c020421a0();
+    MessageSystem* field = GetGlobalField0x1c020421a0();
 
     int* p_arr1;
     int i;
@@ -71,16 +64,16 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
     p_arr1 = arr1;
     i = 0;
     for (; i < 2; i++) {
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)field, i, arr2[i]);
-        SetByteAtIndex_020465d8((unsigned char*)field, i, 1);
-        SetByteInRange_020465f0((unsigned char*)field, i, p_arr1[i] & 0xff);
+        StoreInArray0x8b0_020465c0(field, i, arr2[i]);
+        SetByteAtIndex_020465d8(field, i, 1);
+        SetByteInRange_020465f0(field, i, p_arr1[i] & 0xff);
     }
 
-    int key = GetFieldByKey020e0434(&state->messages, 0);
+    char* key = GetFieldByKey020e0434(&state->messages, 0);
 #if defined(jpn)
-    func_020474a8(reinterpret_cast<void*>(field), 0xa, reinterpret_cast<const char*>(key), state->text);
+    func_020474a8(field, 0xa, key, state->text);
 #else
-    func_02046608(reinterpret_cast<void*>(field), 0xa, reinterpret_cast<void*>(key), state->text, 0x100, 0, 0);
+    func_02046608(field, 0xa, key, state->text, 0x100, 0, 0);
 
     int a, b;
     char* p1 = strstr(state->text, &data_ov023_021fddb0);

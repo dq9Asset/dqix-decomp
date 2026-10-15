@@ -29,7 +29,6 @@ void SetEntryHalfword0xe_0208103c(void*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
 void SetEntryFieldsAt0x602080854(void*, int, int, int);
-int GetFieldByKey020e0434(struct Container020e0310*, int);
 extern "C" void func_ov003_0215f5e8(void* menu, int page, int count);
 extern "C" void func_ov003_02160c58(void* self, short* outHigh, short* outLow);
 void SetEntryNibbleByShortId(struct StatusOwner02081198* owner, int id, int enable);

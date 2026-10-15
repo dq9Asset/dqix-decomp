@@ -1,3 +1,4 @@
+#if !defined(jpn)
 #include <globaldefs.h>
 #include "Resource/MessageSystem.h"
 #include "GameState/GameState.h"
@@ -42,7 +43,6 @@ struct Combatant021e49a4 {
     CombatantData021e49a4* data;
 };
 char* CallFunc020e0434With02153694_020e51cc(int);
-int GetFieldByKey020e0434(Container020e0310*, int);
 int GetByteViaFieldIndirectOffset_021e4250_021e4250(char*);
 extern const char data_ov023_021fdcd8[];
 extern "C" {
@@ -86,7 +86,7 @@ extern "C" ARM void func_ov023_021e49a4(BattleSetup021e49a4* self) {
             if (ConditionValue021e49a4(combatant->condition) <= 0) {
                 func_02045d14(messages, self->buffers[combatant->data->selector], labels[i], 0);
             } else {
-                func_02045d14(messages, (const char*)GetFieldByKey020e0434(&texts->dictionary, label), labels[i], 0);
+                func_02045d14(messages, GetFieldByKey020e0434(&texts->dictionary, label), labels[i], 0);
             }
             unsigned char suffix = GetByteViaFieldIndirectOffset_021e4250_021e4250((char*)combatant);
             char buffer[16];
@@ -99,3 +99,5 @@ extern "C" ARM void func_ov023_021e49a4(BattleSetup021e49a4* self) {
         }
     }
 }
+
+#endif

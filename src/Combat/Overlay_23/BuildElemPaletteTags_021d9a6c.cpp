@@ -1,10 +1,10 @@
+#include "Resource/CharacterCreationUI.h"
 #if defined(jpn)
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Resource/CharacterCreationUI.h"
 #include "Combat/TryApplyElemFields.h"
 
-int GetFieldByKey020e0434(Container020e0310*, int);
 int AppendPaletteTag_02041e70(char*, int);
 extern "C" int func_02042158(char*, int);
 int AppendString02042058(char*, const char*);
@@ -41,12 +41,12 @@ extern "C" ARM void func_ov023_021d9a6c(char* storage) {
             AppendPaletteTag_02041e70(editor->textBuffer, 15);
         if (i < 7) {
             short key = keys[i];
-            func_02042158(editor->textBuffer, (10 - StringLength_020d2ff0((const char*)GetFieldByKey020e0434(&editor->texts, key))) * 5);
-            AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, key));
-            AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, 0x4273));
+            func_02042158(editor->textBuffer, (10 - StringLength_020d2ff0(GetFieldByKey020e0434(&editor->texts, key))) * 5);
+            AppendString02042058(editor->textBuffer, GetFieldByKey020e0434(&editor->texts, key));
+            AppendString02042058(editor->textBuffer, GetFieldByKey020e0434(&editor->texts, 0x4273));
         } else if (i == 7) {
-            if (CompareStrings_020d3018(editor->names[editor->sex], (const char*)GetFieldByKey020e0434(&editor->texts, 0x4272)) == 0) {
-                AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, 0x4274));
+            if (CompareStrings_020d3018(editor->names[editor->sex], GetFieldByKey020e0434(&editor->texts, 0x4272)) == 0) {
+                AppendString02042058(editor->textBuffer, GetFieldByKey020e0434(&editor->texts, 0x4274));
             } else {
                 char name[11] = {};
                 memcpy(name, editor->names[editor->sex], sizeof(name));
@@ -71,7 +71,6 @@ extern "C" ARM void func_ov023_021d9a6c(char* storage) {
 #include "std_library_functions.h"
 
 struct Container020e0310;
-extern int GetFieldByKey020e0434(Container020e0310*, int);
 extern int AppendPaletteTag_02041e70(char*, int);
 extern int AppendXTag_02041a28(char*, int);
 extern int AppendString02042058(char*, const char*);
@@ -115,16 +114,16 @@ extern "C" ARM void func_ov023_021d9a6c(char* obj) {
 
         if (i < 7) {
             short v = arr[i];
-            AppendXTag_02041a28(buf, 0x32 - func_020420e8((void*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v), 0));
-            AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v));
-            AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4273));
+            AppendXTag_02041a28(buf, 0x32 - func_020420e8(GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v), 0));
+            AppendString02042058(buf, GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v));
+            AppendString02042058(buf, GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4273));
         } else if (i == 7) {
             char* entry = (*(char***)(obj + 0xdb0))[*(unsigned char*)(obj + 0xda3)];
             if (*(signed char*)entry != 0) {
                 AppendXTag_02041a28(buf, 0x32 - func_020420e8(entry, 0));
                 AppendString02042058(buf, entry);
             } else {
-                AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274));
+                AppendString02042058(buf, GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274));
             }
         }
     }

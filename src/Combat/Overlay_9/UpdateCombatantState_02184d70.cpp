@@ -4,7 +4,6 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/CharacterCreationUI.h"
 
-int GetFieldByKey020e0434(Container020e0310*, int);
 
 ARM void UpdateCombatantState_02184d70(void* storage) {
     CharacterCreationUI* editor = (CharacterCreationUI*)storage;
@@ -23,11 +22,11 @@ ARM void UpdateCombatantState_02184d70(void* storage) {
         if ((state == 3) | ((state == 2) | (state == 5)))
             key = editor->sex * 100 + key;
 #if defined(jpn)
-        const char* filename = (const char*)GetFieldByKey020e0434(&editor->texts, key);
+        const char* filename = GetFieldByKey020e0434(&editor->texts, key);
         editor->resourceTask = loader->QueueLoadFile(filename, 0);
 #else
-        const char* filename = (const char*)GetFieldByKey020e0434(&editor->texts, (short)(key + 50));
-        const char* archive = (const char*)GetFieldByKey020e0434(&editor->texts, key);
+        const char* filename = GetFieldByKey020e0434(&editor->texts, (short)(key + 50));
+        const char* archive = GetFieldByKey020e0434(&editor->texts, key);
         editor->resourceTask = loader->QueueLoadFileInGP2(archive, filename, 0);
 #endif
         editor->resourceStep = 1;

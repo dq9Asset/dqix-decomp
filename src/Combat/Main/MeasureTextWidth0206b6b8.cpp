@@ -26,7 +26,7 @@ extern "C" ARM void func_0206cf44(MessageSystem* obj) {
 
 // USA: func_0206b6b8
 ARM void MeasureTextWidth0206b6b8(MessageSystem* obj) {
-    char* p = static_cast<char*>(obj->secondLineBuffer);
+    char* p = obj->secondLineBuffer;
     int count = 0;
 
     for (;;) {

@@ -1,120 +1,81 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
-
-struct Entry0204254c {
-    int value;
-    char pad_04;
-    signed char length : 6;
-    signed char flags : 2;
-    char pad_06[2];
-};
-struct Container02045c00;
-struct TextContext02067b28 {
-    char pad_00[0x4c];
-    unsigned short* output;
-    char* input;
-    void* field_54;
-    void* field_58;
-    char pad_5c[0x10];
-    unsigned int outputCursor;
-    unsigned int outputLimit;
-    char pad_74[8];
-    unsigned int inputCursor;
-    char pad_80[0x8b4];
-    short wrapX, wrapY;
-    char pad_938[0x7c];
-    unsigned int entryCursor;
-    char pad_9b8[0xe00];
-    unsigned char usage[0x80];
-    char pad_1838[0x4a];
-    unsigned short ring[64];
-    char pad_1902[0x40];
-    unsigned short ringIndex;
-    short positionX;
-    short available;
-    char pad_1948[0x7a];
-    unsigned char wrapped;
-    unsigned char wrapPending;
-    unsigned char canWrap;
-    char pad_19c5[0x17];
-    unsigned char table;
-};
-int IsHighByteFF02044494(void*, void*);
-int Dispatch02044420(void*, void*);
-Entry0204254c* FindEntryByKey0204254c(int, int);
-int FindEntryIndexByKey020424e4(int, int);
-int FindMatchingEntryIndex(Container02045c00*, int);
-extern "C" int func_020459b8(TextContext02067b28*, unsigned char, Entry0204254c*, unsigned char);
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageUpdate.h"
+#if !defined(jpn)
+int FindMatchingEntryIndex(MessageSystem*, FontCharacter*);
+extern "C" int func_020459b8(MessageSystem*, unsigned char, FontCharacter*, unsigned char);
 extern "C" int func_02001aec(const void*, const void*, int);
 extern char data_020f08dc[3];
-
 // USA: func_02067b28
-extern "C" ARM void func_02067b28(TextContext02067b28* state) {
-    if (!state->field_54 || !state->field_58) return;
-    if (state->outputLimit <= state->outputCursor) return;
-    while (state->outputCursor < state->outputLimit) {
-        char* source = state->input + state->inputCursor;
-        unsigned short* destination = state->output + state->outputCursor;
+extern "C" ARM void func_02067b28(MessageSystem* state) {
+    if (!state->tokenStart || !state->tokenCursor) return;
+    if (state->producedLength <= state->tokenCount) return;
+    while (state->tokenCount < state->producedLength) {
+        char* source = state->secondLineBuffer + state->field7c;
+        unsigned short* destination = state->firstLineBuffer + state->tokenCount;
         unsigned short token;
         memcpy(&token, source, 2);
         if (IsHighByteFF02044494(state, &token)) {
             *destination = token;
-            state->inputCursor += 2;
-            ++state->outputCursor;
+            state->field7c += 2;
+            ++state->tokenCount;
             int length = Dispatch02044420(state, &token);
             memcpy(destination + 1, source + 2, length * 2);
-            state->inputCursor += length * 2;
-            state->outputCursor += length;
+            state->field7c += length * 2;
+            state->tokenCount += length;
             continue;
         }
-        if (!state->wrapped) {
-            state->canWrap = 1;
-            if (state->available <= 0) state->canWrap = 0;
+        if (!state->b19c2) {
+            state->b19c4 = 1;
+            if (state->h1946 <= 0) state->b19c4 = 0;
             if (!func_02001aec(source, data_020f08dc, 2)) {
-                if (state->ringIndex == 0) state->canWrap = 0;
+                if (state->lineGlyphCount == 0) state->b19c4 = 0;
                 else {
-                    state->wrapX = state->positionX + 18 + (short)(8 - (state->positionX & 7));
-                    state->wrapY = 22;
-                    state->wrapped = 1;
+                    state->foo930.width = state->captionWidth + 18 + (short)(8 - (state->captionWidth & 7));
+                    state->foo930.height = 22;
+                    state->b19c2 = 1;
                 }
-                state->wrapPending = 1;
+                state->b19c3 = 1;
             }
         }
-        Entry0204254c* entry = FindEntryByKey0204254c((int)source, state->table);
-        int tableIndex = FindEntryIndexByKey020424e4((int)source, state->table);
+        FontCharacter* entry = FindEntryByKey0204254c(source, state->b19dc);
+        int tableIndex = FindEntryIndexByKey020424e4(source, state->b19dc);
         if (entry && tableIndex >= 0) {
-            int index = FindMatchingEntryIndex((Container02045c00*)state, (int)entry);
-            state->inputCursor += entry->length;
+            int index = FindMatchingEntryIndex(state, entry);
+            state->field7c += entry->byteLength;
             if (index < 0) {
-                unsigned short inserted = func_020459b8(state, (unsigned char)tableIndex, entry, state->table);
-                if (!state->wrapped) state->ring[state->ringIndex] = inserted;
+                unsigned short inserted = func_020459b8(state, (unsigned char)tableIndex, entry, state->b19dc);
+                if (!state->b19c2) state->lineGlyphSlots[state->lineGlyphCount] = inserted;
                 *destination = inserted;
-                ++state->outputCursor;
-                state->entryCursor = (state->entryCursor + 1) & 0x7f;
+                ++state->tokenCount;
+                state->allocatedGlyphCount = (state->allocatedGlyphCount + 1) & 0x7f;
                 break;
             }
             unsigned short selected = index;
-            if (!state->wrapped) {
-                state->ring[state->ringIndex] = selected;
-                ++state->ringIndex;
-                state->ringIndex &= 0x3f;
+            if (!state->b19c2) {
+                state->lineGlyphSlots[state->lineGlyphCount] = selected;
+                ++state->lineGlyphCount;
+                state->lineGlyphCount &= 0x3f;
             }
             *destination = selected;
-            if (state->usage[selected] < 255) ++state->usage[selected];
+            if (state->glyphReferences[selected] < 255) ++state->glyphReferences[selected];
         } else {
             signed char character = *source;
-            if (!state->wrapped && character == 32) {
-                state->ring[state->ringIndex] = 0xff19;
-                ++state->ringIndex;
-                state->ringIndex &= 0x3f;
+            if (!state->b19c2 && character == 32) {
+                state->lineGlyphSlots[state->lineGlyphCount] = 0xff19;
+                ++state->lineGlyphCount;
+                state->lineGlyphCount &= 0x3f;
             }
             *destination = 0xff19;
-            ++state->inputCursor;
+            ++state->field7c;
         }
-        ++state->outputCursor;
+        ++state->tokenCount;
     }
-    if (!state->wrapped) {
-        ++state->ringIndex;
-        state->ringIndex &= 0x3f;
+    if (!state->b19c2) {
+        ++state->lineGlyphCount;
+        state->lineGlyphCount &= 0x3f;
     }
 }
+
+#endif

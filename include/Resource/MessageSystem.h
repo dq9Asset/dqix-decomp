@@ -442,7 +442,7 @@ struct MessageSystem {
     int stream44;
     void* textBuffer;
     unsigned short* firstLineBuffer;
-    void* secondLineBuffer;
+    char* secondLineBuffer;
     char* tokenStart;
     char* tokenCursor;
     char* savedTextBuffer;
@@ -626,7 +626,7 @@ struct MessageSystemGlobals {
     MessageSystem* messageSystem;
     unsigned char pad20[4];
     char* savedTextBuffer;
-    void* secondLineBuffer;
+    char* secondLineBuffer;
 #endif
 };
 

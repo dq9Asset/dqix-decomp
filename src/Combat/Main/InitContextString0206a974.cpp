@@ -43,7 +43,7 @@ ARM void InitContextString0206a974(MessageSystem* p, const char* src, int boxWid
     memset(p->firstLineBuffer, 0, 0x280);
     memset(p->secondLineBuffer, 0, 0x280);
     func_0206aa28(p);
-    func_0206b974(p, true, static_cast<char*>(p->secondLineBuffer), p->formatBuffer->text, boxWidth, 0, true, 1);
+    func_0206b974(p, true, p->secondLineBuffer, p->formatBuffer->text, boxWidth, 0, true, 1);
     {
         int len2 = StringLength_020d2ff0(p->formatBuffer->text);
         memcpy(p->secondLineBuffer, p->formatBuffer->text, len2);

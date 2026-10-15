@@ -34,7 +34,7 @@ extern "C" ARM void func_0206b224(MessageSystem* obj) {
 
     func_0206aa28(obj);
 #if !defined(jpn)
-    func_0206b974(obj, true, static_cast<char*>(obj->secondLineBuffer), obj->formatBuffer->text, 0xe3, 0, true, 1);
+    func_0206b974(obj, true, obj->secondLineBuffer, obj->formatBuffer->text, 0xe3, 0, true, 1);
     int len = StringLength_020d2ff0(obj->formatBuffer->text);
     memcpy(obj->secondLineBuffer, obj->formatBuffer->text, len);
 #endif

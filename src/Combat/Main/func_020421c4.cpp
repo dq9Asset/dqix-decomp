@@ -67,7 +67,7 @@ extern "C" ARM void func_020421c4(SafeAllocator* alloc) {
     data_02107800.messageSystem->textContext = static_cast<MessageTextContext*>(alloc->Allocate(sizeof(MessageTextContext)));
     data_02107800.textBuffer = alloc->Allocate(0x960);
     data_02107800.firstLineBuffer = static_cast<unsigned short*>(alloc->Allocate(0x280));
-    data_02107800.secondLineBuffer = alloc->Allocate(0x280);
+    data_02107800.secondLineBuffer = static_cast<char*>(alloc->Allocate(0x280));
     data_02107800.savedTextBuffer = static_cast<char*>(alloc->Allocate(0x960));
     data_02107800.formatBuffer = static_cast<MessageScratchBuffer*>(alloc->Allocate(0x960));
     data_02107800.expandedBuffer = static_cast<char*>(alloc->Allocate(0x960));

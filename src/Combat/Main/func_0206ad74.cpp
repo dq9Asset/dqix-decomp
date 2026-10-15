@@ -108,7 +108,7 @@ extern "C" ARM void func_0206ad74(MessageSystem* self) {
     __clear(caption, sizeof(caption));
     unsigned char fontWidth;
     char* cursor;
-    char* text = static_cast<char*>(self->secondLineBuffer);
+    char* text = self->secondLineBuffer;
     char* start = strstr(text, data_020f08dc);
     char* middle = strstr(text, data_020f0979);
     char* alternate = strstr(text, data_020f097c);

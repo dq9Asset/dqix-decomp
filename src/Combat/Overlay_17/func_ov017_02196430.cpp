@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/PartyAccess.h"
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "Graphics/Vector.h"
@@ -167,7 +168,7 @@ extern "C" ARM int func_ov017_02196430(GameResources* resources) {
     Ctx02196430* res = (Ctx02196430*)func_ov017_0218b5b0();
     Work02196430* work = func_02012fe4();
     LightingManager* lighting = LightingManager::GetInstance();
-    ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game);
+    ArrayContainsByteStruct* party = GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(game);
     unsigned short tag;
     int special;
     int facing;

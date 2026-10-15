@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/PartyAccess.h"
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <World/Zone3D.h>
@@ -252,7 +253,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         RestorePairTables0207df90(((ResourceTransfer021a1284*)resources)->restored);
         func_020432c4(global);
         BackupPairTables0207dfac(((ResourceTransfer021a1284*)resources)->restored);
-        ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game);
+        ArrayContainsByteStruct* party = GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(game);
         for (int i = 0; i < 4; ++i) {
             if (func_ov017_0218f5a4(resources, i, 0, 0, 0) && CheckField0NonZero_0202b7d8(search) && ArrayContainsByte_02086ef0(party, i)) {
                 func_ov017_021c3fb4(i, 1);

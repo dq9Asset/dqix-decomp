@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/PartyAccess.h"
 #include "Resource/FontBankLoader.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
@@ -129,7 +130,6 @@ extern "C" BattleEnd_021f1234* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02108760[];
 
 MessageSystem_021f1234* GetGlobalField0x1c020421a0();
-ArrayContainsByteStruct* GetPtrField0x2a04_02010828(GameState* gameState);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* array, int id);
 void InitCombatEntry_021d8b6c(void* window);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
@@ -185,7 +185,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
     void* unk = func_0205ec34();
     MessageSystem_021f1234* messages = GetGlobalField0x1c020421a0();
     int id = end->current_;
-    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828(gameState), id);
+    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(gameState), id);
     if (self->skillMenu_ == NULL)
     {
         if (self->resultWindow_ != NULL)

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/PartyAccess.h"
 #include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include <Filesystem/BackgroundLoader.h>
@@ -136,7 +137,6 @@ extern const char data_ov023_021fe2b7[];
 extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 
 MessageSystem_021f1868* GetGlobalField0x1c020421a0();
-ArrayContainsByteStruct* GetPtrField0x2a04_02010828(GameState* gameState);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* array, int id);
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
@@ -199,7 +199,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
     MessageSystem_021f1868* messages = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int id = end->current_;
-    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828(gameState), id);
+    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828<ArrayContainsByteStruct>(gameState), id);
     if (end->step_ == 0)
     {
         self->busy_ = 1;

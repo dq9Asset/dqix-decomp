@@ -31,7 +31,11 @@ struct Combatant021b2fac {
     short field4;
     char pad6[0x9c - 6];
     unsigned short field9c;
+#if defined(jpn)
+    char padA0[0x144 - 0x9e];
+#else
     char padA0[0x150 - 0x9e];
+#endif
     struct Stats021b2fac* stats;
     struct Alloc021b2fac* alloc;
     char pad158[0x1c4 - 0x158];
@@ -63,11 +67,31 @@ void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void SetFlag0x1ceBit0x4_02039d48(unsigned char*);
 extern "C" void func_ov017_02191fec(void* p, int v);
 
+#if defined(jpn)
+#define data_ov017_021d7a78 data_ov017_021d81c8
+#define data_ov017_021d7a9c data_ov017_021d81dc
+enum { HandlerStorageSize = 0xa4, EntryRecordSize = 0x20, EntryCharacterOffset = 0xc };
+#else
+enum { HandlerStorageSize = 0xb8, EntryRecordSize = 0x24, EntryCharacterOffset = 0x11 };
+#endif
 extern char data_ov017_021d7a78[];
 extern char data_ov017_021d7a8c[];
 extern char data_ov017_021d7a9c[];
 
+typedef char ReloadTaskIdCheck[(int)&((Task021b2fac*)0)->taskId == 0x10 ? 1 : -1];
+typedef char ReloadArchiveInfoCheck[sizeof(ObjectArchiveLoadInfo) == 0x20 ? 1 : -1];
+#if defined(jpn)
+typedef char ReloadStatsCheck[(int)&((Combatant021b2fac*)0)->stats == 0x144 ? 1 : -1];
+typedef char ReloadAllocatorCheck[(int)&((Combatant021b2fac*)0)->alloc == 0x148 ? 1 : -1];
+typedef char ReloadEntryCheck[(int)&((Combatant021b2fac*)0)->entry == 0x1b8 ? 1 : -1];
+#else
+typedef char ReloadStatsCheck[(int)&((Combatant021b2fac*)0)->stats == 0x150 ? 1 : -1];
+typedef char ReloadAllocatorCheck[(int)&((Combatant021b2fac*)0)->alloc == 0x154 ? 1 : -1];
+typedef char ReloadEntryCheck[(int)&((Combatant021b2fac*)0)->entry == 0x1c4 ? 1 : -1];
+#endif
+
 // USA: func_ov017_021b2fac
+// JPN: func_ov017_021b36bc
 extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     struct Alloc021b2fac* a5;
     void* m;
@@ -85,7 +109,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     int kind;
     void* file4;
     unsigned int size4;
-    char handlers[0xb8];
+    char handlers[HandlerStorageSize];
     char name[0x50];
     void* file5;
     unsigned int size5;
@@ -111,7 +135,11 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             a0 = c->alloc;
             ((SafeAllocator*)((char*)a0 + 4))->Reset();
             ((SafeAllocator*)((char*)a0 + 0x18))->Reset();
+#if defined(jpn)
+            task->taskId = loader->QueueLoadFile(data_ov017_021d7a78, 0);
+#else
             task->taskId = loader->QueueLoadFileInGP2(data_ov017_021d7a78, data_ov017_021d7a8c, 0);
+#endif
             task->state = 4;
         } else if (func_ov017_021b3444(task) != 0) {
             task->state = 1;
@@ -165,9 +193,9 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
                     InitHandlerArrayAndRunScript020d3c84((HandlerSlotArray020d3c84*)handlers, (StreamHeader*)file4, size4);
                     kind = c->stats != 0 ? c->stats->kind : 0;
                     src = FindEntryByKind((FindEntryByKindContainer020d3d90*)handlers, kind);
-                    e = ((SafeAllocator*)((char*)c->alloc + 0x18))->Allocate(0x24);
+                    e = ((SafeAllocator*)((char*)c->alloc + 0x18))->Allocate(EntryRecordSize);
                     if (e != 0) {
-                        memcpy(e, src, 0x24);
+                        memcpy(e, src, EntryRecordSize);
                         c->entry = (unsigned char*)e;
                         func_ov017_02191508(task->combatantId, e);
                     }
@@ -178,7 +206,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             ent = c->entry;
             a4 = c->alloc;
             if (ent != 0) {
-                sprintf(name, data_ov017_021d7a9c, ent[0x11]);
+                sprintf(name, data_ov017_021d7a9c, ent[EntryCharacterOffset]);
                 task->taskId = loader->QueueLoadFile(name, (SafeAllocator*)((char*)a4 + 4));
             }
             task->state = 5;
@@ -214,3 +242,8 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
         }
     }
 }
+
+#if defined(jpn)
+#undef data_ov017_021d7a78
+#undef data_ov017_021d7a9c
+#endif

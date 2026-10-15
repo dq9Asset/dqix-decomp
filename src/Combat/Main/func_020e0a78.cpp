@@ -19,13 +19,12 @@ void *GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
 extern "C" void VectorizedInvertedMemcpy(void *dst, void *src, unsigned int size);
 #if defined(jpn)
-extern "C" void func_020e292c(void *, void *, int, int);
 extern "C" void func_020e2ad4(void *, void *, int, int);
 #else
-void SetupWeightedEntriesAndSubmitPair020e0cfc(void*, int, int, int);
 extern "C" void func_020e0ec4(void *obj, void *buf, int offset, int dead_r3);
 #endif
 void SetupWeightedEntriesAndSubmit_020e0df8(void*, int, int, int);
+void SetupWeightedEntriesAndSubmitPair020e0cfc(void*, int, int, int);
 extern "C" void func_020e0b4c(void *, void *, int, int);
 void DelayThenSyncBit0_020c9820();
 void CleanInvalidateCacheRange(const void *addr, unsigned int size);
@@ -48,7 +47,7 @@ extern "C" ARM int func_020e0a78(void *receiver) {
 #if defined(jpn)
     SetupWeightedEntriesAndSubmit_020e0df8(receiver, (int)buf, 0, 0x720);
     func_020e0b4c(receiver, buf, 0x720, 0xfc0);
-    func_020e292c(receiver, buf, 0x1c60, 0x680);
+    SetupWeightedEntriesAndSubmitPair020e0cfc(receiver, (int)buf, 0x1c60, 0x680);
     func_020e2ad4(receiver, buf, 0x16e0, 0x580);
 #else
     SetupWeightedEntriesAndSubmit_020e0df8(receiver, (int)buf, 0, 0x700);

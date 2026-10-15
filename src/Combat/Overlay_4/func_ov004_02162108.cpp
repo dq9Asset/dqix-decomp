@@ -1,11 +1,21 @@
 #include <globaldefs.h>
 
 struct MenuState02162108 {
+#if defined(jpn)
+    unsigned char pad0[4];
+    signed char field6;
+    unsigned char pad5;
+    unsigned char field7;
+    unsigned char pad7;
+    signed char fieldB;
+    unsigned char pad9[3];
+#else
     unsigned char pad0[6];
     signed char field6;
     unsigned char field7;
     unsigned char pad8[3];
     signed char fieldB;
+#endif
     char* textBuf;
     unsigned char pad10[0xc];
     int combatantId;
@@ -59,7 +69,10 @@ void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" Node02162108* func_ov023_021f6880(void* list, int key);
 extern "C" int func_ov023_021f6f10(Node02162108* node);
 extern "C" struct TableA68* func_ov023_021fa598(Node02162108* node);
+#if !defined(jpn)
+// Retained upstream USA/EUR-only declaration; JP has no formatted-text lookup path.
 extern "C" char* _Z23FindEntryByKey_02072a68P8TableA68i(struct TableA68* table, short key);
+#endif
 char* FindSubstring_020d2f88(char* str, char* sub);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046608(int g, int mode, char* fmt, char* dst, int size, int a, int b);
@@ -67,85 +80,93 @@ void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag)
 
 extern struct MenuState02162108 data_ov004_021707e8;
 extern struct MenuPage02162108 data_ov004_02170b90[];
+#if defined(jpn)
+extern MenuPage02162108 data_ov004_02171660;
+extern short data_ov004_021710a8[];
+extern unsigned char data_ov004_02171090[];
+#else
 extern struct MenuPage02162108 data_ov004_02170dd0;
+#endif
 extern int data_ov004_0216fe90[];
 extern short data_ov004_02170818[];
 extern unsigned char data_ov004_02170814[];
 extern char data_ov004_02170527[];
 
+// JPN: func_ov004_02162108 (02162964)
 // USA: func_ov004_02162108
 extern "C" ARM int func_ov004_02162108(void* self) {
-    int state;
-    int btn;
-    void* obj;
-    int dim;
-    int side;
-    int j;
-    int i;
-    int st;
-    int k;
-    short id;
-    Node02162108* node;
-    int found;
-    int idx;
-    int next;
-    unsigned char mark[2];
-    struct MenuPage02162108* page;
-
     data_ov004_021707e8.field7 = 0x67;
-    dim = 0;
+    int dim = 0;
+#if !defined(jpn)
     memset(data_ov004_021707e8.textBuf, 0, 0x800);
-    obj = func_ov011_021849c8(self);
+#endif
+    void* obj = func_ov011_021849c8(self);
     if (data_ov004_021707e8.field6 == 0) {
-        node = func_ov004_0215e47c(self, 3);
+        Node02162108* node = func_ov004_0215e47c(self, 3);
         if (node != 0) node->flags &= ~4;
     } else {
-        node = func_ov004_0215e47c(self, 3);
+        Node02162108* node = func_ov004_0215e47c(self, 3);
         if (node != 0) node->flags |= 4;
     }
+#if !defined(jpn)
     func_ov004_0215e574(self, 0xc, 0xff, 0, 0);
+#endif
 
     if (data_ov004_02170b90[1].count != 0) {
-        for (i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
-        for (i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
+        for (int i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
+        for (int i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
         SetField38IfState8_0215e49c(self, 0x31, 0x3a);
         SetField38IfState8_0215e49c(self, 0x32, 0x3a);
-        for (j = 0; j < 3; j++) {
-            node = func_ov023_021f6880(obj, j + 0x65);
+        for (int j = 0; j < 3; j++) {
+            Node02162108* node = func_ov023_021f6880(obj, j + 0x65);
             if (node != 0) node->flags &= ~8;
         }
+#if !defined(jpn)
         func_ov004_0215e574(self, 0xc, 0xff, 0, 0);
+#endif
 
-        page = &data_ov004_02170dd0;
+#if defined(jpn)
+        MenuPage02162108* page = &data_ov004_02171660;
+#else
+        MenuPage02162108* page = &data_ov004_02170dd0;
+#endif
         if (page->count <= 1) page->cursor = 0;
-        next = page->cursor;
+        int next = page->cursor;
         if (next >= 26) next = 0;
-        side = 0;
+        int side = 0;
+        unsigned char mark[2];
         __clear(mark, 2);
-        found = 0;
-        for (i = next; i < 26; i++) {
-            idx = data_ov004_0216fe90[i];
+        int found = 0;
+        for (int i = next; i < 26; i++) {
+            int idx = data_ov004_0216fe90[i];
             if (!page->entries[idx - 1].active) continue;
             {
                 int cid = data_ov004_021707e8.combatantId;
                 int off;
                 short* ids;
-                st = 0xf;
+                int st = 0xf;
+#if defined(jpn)
+                if (idx != data_ov004_021710a8[cid] && idx <= 0xe) st = 3;
+                if (idx == 0xd && data_ov004_02171090[cid] != 0) st = 0xf;
+#else
                 if (idx != data_ov004_02170818[cid] && idx <= 0xe) st = 3;
                 if (idx == 0xd && data_ov004_02170814[cid] != 0) st = 0xf;
+#endif
                 if (st == 0xf) mark[side] = 1;
-                id = side + 0xd;
+                short id = side + 0xd;
                 ids = page->entries[idx - 1].ids;
                 SetField38IfState8_0215e49c(self, id, i + 0x19f);
+#if !defined(jpn)
                 if (side == 0) {
                     func_ov004_0215e574(self, id, 0x80, 0, 0);
                 } else {
                     func_ov004_0215e574(self, id, 0x80, 0x80, 0);
                 }
-                node = func_ov023_021f6880(obj, id);
+#endif
+                Node02162108* node = func_ov023_021f6880(obj, id);
                 if (node != 0) node->SetState(st);
 
-                for (k = 0; k < 7; k++) {
+                for (int k = 0; k < 7; k++) {
                     int key = ids[k];
                     short n;
                     Node02162108* msg;
@@ -158,6 +179,9 @@ extern "C" ARM int func_ov004_02162108(void* self) {
                         id = n + 0x16;
                         off = 7;
                     }
+#if defined(jpn)
+                    SetField38IfState8_0215e49c(self, id, key);
+#else
                     msg = func_ov004_0215e47c(self, 0x320);
                     if (msg != 0 && func_ov023_021f6f10(msg) == 4) {
                         int indent;
@@ -173,7 +197,8 @@ extern "C" ARM int func_ov004_02162108(void* self) {
                         label = func_ov004_0215e47c(self, id);
                         if (label != 0 && func_ov023_021f6f10(label) == 8) label->data = text;
                     }
-                    node = func_ov023_021f6880(obj, id);
+#endif
+                    Node02162108* node = func_ov023_021f6880(obj, id);
                     if (node != 0) node->SetState(st);
                 }
             }
@@ -195,29 +220,31 @@ extern "C" ARM int func_ov004_02162108(void* self) {
         if (mark[0] == 0 && mark[1] == 0) dim = 1;
     } else {
         void* obj2;
-        for (i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
-        for (i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
+        for (int i = 0xd; i < 0xf; i++) SetField38IfState8_0215e49c(self, i, 0x3a);
+        for (int i = 0xf; i < 0x1d; i++) SetField38IfState8_0215e49c(self, i, 0x11e);
         obj2 = func_ov011_021849c8(self);
-        for (i = 0; i < 3; i++) {
-            node = func_ov023_021f6880(obj2, i + 0x65);
+        for (int i = 0; i < 3; i++) {
+            Node02162108* node = func_ov023_021f6880(obj2, i + 0x65);
             if (node != 0) node->flags |= 8;
         }
         SetField38IfState8_0215e49c(self, 0x31, 0x1e0);
         SetField38IfState8_0215e49c(self, 0x32, 0x1e3);
+#if !defined(jpn)
         func_ov004_0215e574(self, 0x31, 0xff, 0, 0);
         func_ov004_0215e574(self, 0x32, 0xff, 0, 0);
+#endif
         if (data_ov004_021707e8.field6 == 0) {
-            node = func_ov004_0215e47c(self, 3);
+            Node02162108* node = func_ov004_0215e47c(self, 3);
             if (node != 0) node->flags &= ~4;
         }
     }
 
-    state = 0xf;
+    int state = 0xf;
     if (dim) state = 3;
-    node = func_ov023_021f6880(obj, 0xc);
+    Node02162108* node = func_ov023_021f6880(obj, 0xc);
     if (node != 0 && func_ov023_021f6f10(node) == 8) node->SetState(state);
-    for (btn = 0; btn < 4; btn++) {
-        node = func_ov023_021f6880(obj, btn + 0x64);
+    for (int btn = 0; btn < 4; btn++) {
+        Node02162108* node = func_ov023_021f6880(obj, btn + 0x64);
         if (node != 0 && func_ov023_021f6f10(node) == 0x13) node->SetState(state);
     }
     SetNodeFieldsAndMaybeNotify_0215f6f4(self, data_ov004_021707e8.fieldB, data_ov004_021707e8.field6, dim);

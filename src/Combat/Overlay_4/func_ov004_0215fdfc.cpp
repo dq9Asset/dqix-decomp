@@ -26,12 +26,20 @@ extern "C" void func_ov004_0216276c(void*);
 void CallVTableFnAt240_021f66bc(void* a, int b, void* c);
 
 struct Sub950 {
+#if defined(jpn)
+    char pad[0x8b8];
+#else
     char pad[0x950];
+#endif
     int field950;
 };
 
 struct FlagBitHolder {
+#if defined(jpn)
+    char pad[0x144];
+#else
     char pad[0x150];
+#endif
     Sub950* sub;
 };
 
@@ -50,6 +58,20 @@ struct NodeShorts {
 extern "C" Node0215e47c* func_ov004_0215e47c(void* a, int key);
 
 struct CursorState {
+#if defined(jpn)
+    signed char f5;
+    unsigned char index;
+    unsigned char f2;
+    unsigned char f1;
+    signed char f6;
+    signed char f9;
+    unsigned char type;
+    unsigned char entry;
+    signed char fb;
+    unsigned char f3;
+    unsigned char padA;
+    unsigned char busy;
+#else
     unsigned char busy;
     unsigned char f1;
     unsigned char f2;
@@ -62,20 +84,32 @@ struct CursorState {
     signed char f9;
     unsigned char index;
     signed char fb;
+#endif
     char pad[0x10];
     int combatant;
+#if defined(jpn)
+    char pad2[0x40];
+#else
     char pad2[0x4c];
+#endif
     int f6c;
     int f70;
 };
 
 extern CursorState data_ov004_021707e8;
+#if defined(jpn)
+extern int data_ov004_021705c4[];
+extern unsigned char data_ov004_021710d5[];
+extern "C" void func_ov004_0215fa1c();
+#else
 extern int data_ov004_0216fe5c[];
+#endif
 extern int data_ov004_02170854[];
 extern unsigned char data_ov004_02170838[];
 extern unsigned char data_ov004_02170845[];
 extern unsigned char data_ov004_02170b90[];
 
+// JPN: func_ov004_0215fdfc (02160780)
 // USA: func_ov004_0215fdfc
 extern "C" ARM int func_ov004_0215fdfc(void* a) {
     if (data_ov004_021707e8.busy == 1) return 0;
@@ -164,7 +198,11 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
     unsigned char i = 1;
     unsigned char j = 2;
     while (j < 0xd) {
+#if defined(jpn)
+        int t = data_ov004_021705c4[i];
+#else
         int t = data_ov004_0216fe5c[i];
+#endif
         data_ov004_02170854[j] = t;
         if (key != t) {
             j++;
@@ -183,17 +221,31 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
     for (int k = 0; k < 13; k++) {
         if (GetFlagBitFromField150_0215eb20(c, data_ov004_02170854[k]) != 0) data_ov004_02170838[k] = 1;
         else data_ov004_02170838[k] = 0;
+#if defined(jpn)
+        if (GetFlagBitFromField150_0215eb20(c, data_ov004_021705c4[k]) != 0) data_ov004_021710d5[k] = 1;
+        else data_ov004_021710d5[k] = 0;
+#else
         if (GetFlagBitFromField150_0215eb20(c, data_ov004_0216fe5c[k]) != 0) data_ov004_02170845[k] = 1;
         else data_ov004_02170845[k] = 0;
+#endif
     }
     data_ov004_021707e8.f3 = data_ov004_021707e8.entry;
     func_ov004_0215ee90(data_ov004_02170b90);
     data_ov004_021707e8.f9 = 0;
     data_ov004_021707e8.f5 = 0;
+#if defined(jpn)
+    func_ov004_0215e5fc(a, data_ov004_021707e8.combatant);
+    func_ov004_0215f0c0(a);
+#else
     func_ov004_0215f0c0(a);
     func_ov004_0215e5fc(a, data_ov004_021707e8.combatant);
+#endif
     func_ov004_0215eb40(a);
+#if defined(jpn)
+    func_ov004_0215fa1c();
+#else
     func_ov004_0215ef14();
+#endif
     data_ov004_021707e8.f1 = 1;
     DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     Node0215e47c* nd = func_ov004_0215e47c(a, 0x82);

@@ -1,30 +1,61 @@
 #include <globaldefs.h>
+#include "Graphics/SpriteAffineTransform.h"
 
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-extern void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-extern "C" int func_0205ac40(void*, void*);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
+extern "C" void func_0205ac40(SpriteContext0205ac40*, B174Outer*);
 
 // USA: func_ov023_021e6b04
+// JPN: func_ov023_021e7074
 ARM void UpdateEntryFromDoublePtr_021e6b04(char* base) {
-	if (*(unsigned char*)(base + 0x1000 + 0x371) != 0xe) return;
-	if (*(unsigned char*)(base + 0x1000 + 0x370) >= 0xa) return;
+#if defined(jpn)
+    const int selectionOffset = 0x1340;
+    const int windowOffset = 0x90;
+    const int rendererOffset = 0x1334;
+#else
+    const int selectionOffset = 0x1370;
+    const int windowOffset = 0xac;
+    const int rendererOffset = 0x135c;
+#endif
+    if (*(unsigned char*)(base + selectionOffset + 1) != 0xe) return;
+    if (*(unsigned char*)(base + selectionOffset) >= 0xa) return;
 
-	void* elem = FindElementByC40205d81c((struct Struct_0205d81c*)(base + 0xac), 0xe);
-	if (elem == NULL) return;
+    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)(base + windowOffset), 0xe);
+    if (elem == NULL) return;
 
-	void *p1 = *(void**)(base + 0x0);
-	void *p2 = *(void**)((char*)p1 + 0x0);
-	if (p2 == NULL) return;
+#if defined(jpn)
+    short elementX = *(short*)((char*)elem + 0xac);
+    short elementY = *(short*)((char*)elem + 0xae);
+    int selected = *(int*)(base + 0x13b8);
+    int column = selected / 7;
+    int x = column * 16 + 14;
+    int y = selected % 7 * 16 + 28;
+    if (column >= 5) x += 8;
+    if (column >= 10) x += 16;
+    B174Outer* entry;
+    if (column >= 10) entry = *(B174Outer**)(base + 0x133c) + 16;
+    else entry = *(B174Outer**)(base + 0x133c) + 15;
+    short offsetX = elementX << 3;
+    int cursorX = x + offsetX;
+    short offsetY = elementY << 3;
+    int cursorY = y + offsetY;
+    entry->position[0] = cursorX << 12;
+    entry->position[1] = cursorY << 12;
+    entry->priority = 2;
+#else
+    void* p1 = *(void**)base;
+    void* p2 = *(void**)p1;
+    if (p2 == NULL) return;
 
-	unsigned char fieldE = *((unsigned char*)p2 + 0xe);
-	char *arrBase = *(char**)(base + 0x1000 + 0x364);
-	char *entry = arrBase + (fieldE + 15) * 0x28;
-	short v0 = *(short*)((char*)p2 + 0x0);
-	short v2 = *(short*)((char*)p2 + 0x2);
-	*(int*)(entry + 0x14) = v0 << 0xc;
-	*(int*)(entry + 0x18) = v2 << 0xc;
-	*(unsigned char*)(entry + 0x26) = 0;
-
-	func_0205ac40(*(void**)(base + 0x1000 + 0x35c), entry);
+    unsigned char fieldE = *((unsigned char*)p2 + 0xe);
+    B174Outer* sprites = *(B174Outer**)(base + 0x1364);
+    B174Outer* entry = sprites + (fieldE + 15);
+    short v0 = *(short*)p2;
+    short v2 = *(short*)((char*)p2 + 2);
+    entry->position[0] = v0 << 12;
+    entry->position[1] = v2 << 12;
+    entry->priority = 0;
+#endif
+    func_0205ac40(*(SpriteContext0205ac40**)(base + rendererOffset), entry);
 }

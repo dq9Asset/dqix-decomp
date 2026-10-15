@@ -80,6 +80,10 @@ src/Combat/Overlay_8/func_ov008_02186a30.cpp:
     complete
     .text start:0x0218790c end:0x021879f4
 
+src/Combat/Overlay_8/func_ov008_02188408.cpp:
+    complete
+    .text start:0x021890ec end:0x02189444
+
 src/Combat/Overlay_8/func_ov008_021894b8.cpp:
     complete
     .text start:0x0218a1c0 end:0x0218a2b0

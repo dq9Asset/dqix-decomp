@@ -15,12 +15,15 @@ struct Entry02192700 {
     unsigned short group : 2;
 };
 
+#if defined(jpn)
+enum { EntryOffset = 0x34e8, ActorFlagsOffset = 0x180, StateOffset = 0x3994 };
+#else
+enum { EntryOffset = 0x36f8, ActorFlagsOffset = 0x18c, StateOffset = 0x3bb4 };
+#endif
+
 struct Ctx02192700 {
-    unsigned int flags;
-    char pad4[0x36f8 - 0x4];
+    char unknownBeforeEntry[EntryOffset];
     Entry02192700* entry;
-    char pad36fc[0x3bb4 - 0x36fc];
-    Struct021c316c* state;
 };
 
 struct Actor02192700 {
@@ -30,9 +33,15 @@ struct Actor02192700 {
     unsigned short fieldb2;
     char padb4[0xc2 - 0xb4];
     unsigned char nearMask : 4;
-    char padc3[0x18c - 0xc3];
+    char padc3[ActorFlagsOffset - 0xc3];
     unsigned int flags18c;
 };
+
+typedef char EntryLayoutCheck[offsetof(Ctx02192700, entry) == EntryOffset ? 1 : -1];
+typedef char ActorFlagsLayoutCheck[offsetof(Actor02192700, flags18c) == ActorFlagsOffset ? 1 : -1];
+typedef char OwnerFlagsLayoutCheck[offsetof(GameResources, brightnessFlags_0) == 0 ? 1 : -1];
+typedef char OwnerStateLayoutCheck[(int)&((GameResources*)0)->unknown_ptr_array_3afc[46] == StateOffset ? 1 : -1];
+typedef char StateBusyLayoutCheck[offsetof(Struct021c316c, busy) == 2 ? 1 : -1];
 
 void InitObj0219a674(unsigned char* self);
 
@@ -66,15 +75,15 @@ extern "C" int func_ov017_02194140(Actor02192700* self, Actor02192700* other);
 int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
 void* GetPtrField0x2a04_02010828(GameState* state);
 int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* arr, int value);
-extern "C" void func_ov017_0219b33c(Ctx02192700* self, Msg02192700* msg);
+extern "C" void func_ov017_0219b33c(GameResources* self, Msg02192700* msg);
 void InitState71WithFlag_021c316c(Struct021c316c* p, int flag);
 int HasFlagBit_0218d4ec(void* obj, int bit);
 int TestBitInByteArray_0206dfb0(int base, unsigned char* bits, int index);
 int GetSignedByte0x1c8_02039860(void* obj);
-extern "C" void func_ov017_0219344c(Actor02192700* actor, int a, int b, int c, int d, int e);
+extern "C" int func_ov017_0219344c(Actor02192700* actor, int a, Vector3i* position, int c, int* d, int* e);
 
-static inline Ctx02192700* PostFound() {
-    Ctx02192700* res = (Ctx02192700*)func_ov017_0218b5b0();
+static inline GameResources* PostFound() {
+    GameResources* res = func_ov017_0218b5b0();
     Msg02192700 msg;
     InitObj0219a674((unsigned char*)&msg);
     msg.kind = 1;
@@ -88,7 +97,7 @@ static inline void InitNotice(Msg02192700* msg) {
     msg->field1 = 0x11;
 }
 
-static inline void PostNotice(Ctx02192700* res, Actor02192700* member) {
+static inline void PostNotice(GameResources* res, Actor02192700* member) {
     Msg02192700 msg;
     InitNotice(&msg);
     msg.field2 = member->obj3D.unknown_4_;
@@ -96,9 +105,10 @@ static inline void PostNotice(Ctx02192700* res, Actor02192700* member) {
 }
 
 // USA: func_ov017_02192700
-extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
-    if ((GetBitsInField0_0203b4c4(&ctx->flags, 0x20) != 0 && TestFlagMask_02012430(&data_02114e30, 1) != 0) ||
-        GetBitsInField0_0203b4c4(&ctx->flags, 0x2000) != 0) {
+// JPN: func_ov017_021932c8
+extern "C" ARM void func_ov017_02192700(GameResources* resources) {
+    if ((GetBitsInField0_0203b4c4(&resources->brightnessFlags_0, 0x20) != 0 && TestFlagMask_02012430(&data_02114e30, 1) != 0) ||
+        GetBitsInField0_0203b4c4(&resources->brightnessFlags_0, 0x2000) != 0) {
         return;
     }
     GameState* game = GameState::GetInstance();
@@ -110,7 +120,7 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
     }
     unsigned short leaderMap = leader->obj3D.GetField06();
     GetEntryTableBase_02027ca4();
-    Entry02192700* entry = ctx->entry;
+    Entry02192700* entry = reinterpret_cast<Ctx02192700*>(resources)->entry;
     if (CheckField0NonZero_0202b7d8((int*)search)) {
         for (int i = 0; i <= 3; i++) {
             Actor02192700* member = (Actor02192700*)game->GetPartyMemberByIndex(i);
@@ -141,23 +151,24 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
                 if (CheckFlag0x1ceBit2Set_02039d68((unsigned char*)other)) {
                     continue;
                 }
-                ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(state);
+                ArrayContainsByteStruct* party = static_cast<ArrayContainsByteStruct*>(GetPtrField0x2a04_02010828(state));
                 if (party == NULL) {
                     continue;
                 }
                 if (ArrayContainsByte_02086ef0(party, member->obj3D.unknown_4_)) {
                     continue;
                 }
-                Ctx02192700* res = PostFound();
-                if (res->state->busy == 0) {
-                    InitState71WithFlag_021c316c(res->state, member->obj3D.unknown_4_ & 0xff);
+                GameResources* res = PostFound();
+                Struct021c316c* fieldState = static_cast<Struct021c316c*>(res->unknown_ptr_array_3afc[46]);
+                if (fieldState->busy == 0) {
+                    InitState71WithFlag_021c316c(fieldState, member->obj3D.unknown_4_ & 0xff);
                 }
                 continue;
             }
-            if (HasFlagBit_0218d4ec(ctx, member->obj3D.unknown_4_) &&
+            if (HasFlagBit_0218d4ec(resources, member->obj3D.unknown_4_) &&
                 TestBitInByteArray_0206dfb0((int)save, save->flags, 0x799) &&
                 func_ov017_02194140(leader, member)) {
-                PostNotice((Ctx02192700*)func_ov017_0218b5b0(), member);
+                PostNotice(func_ov017_0218b5b0(), member);
             }
             if (GetSignedByte0x1c8_02039860(member) >= 0) {
                 continue;

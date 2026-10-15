@@ -1,7 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 
 struct Struct_0205d81c;
-struct Elem_0205d81c;
+struct Elem_0205d81c {
+    unsigned char unknown0[0xac];
+    short x, y;
+};
 struct ShortArrays0204c654;
 
 struct Offsets_0216c98a {
@@ -22,16 +26,28 @@ enum { WindowOffset = 0xec8, SpriteOffset = 0x1a68, SelectionOffset = 0x1c06,
 #endif
 extern Offsets_0216c98a data_ov002_0216c98a;
 
+namespace {
+struct BattleChoiceGridState {
+    unsigned char unknown0[WindowOffset];
+    CreationWindow window;
+    unsigned char unknownAfterWindow[SpriteOffset - WindowOffset - sizeof(CreationWindow)];
+    void* renderer;
+    unsigned char unknownAfterRenderer[SelectionOffset - SpriteOffset - 4];
+    short selection;
+};
+}
+
 // USA: func_ov002_0215ad70
 // JPN: func_ov002_0215c0d8
 extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
+    BattleChoiceGridState* state = reinterpret_cast<BattleChoiceGridState*>(obj);
     struct Elem_0205d81c *elem =
-        FindElementByC40205d81c((struct Struct_0205d81c *) (obj + WindowOffset), GridKey);
+        FindElementByC40205d81c(reinterpret_cast<Struct_0205d81c*>(&state->window), GridKey);
     if (elem == 0) {
         return;
     }
-    int baseX             = (short) (*(short *) ((char *) elem + 0xac) * 8);
-    int baseY             = (short) (*(short *) ((char *) elem + 0xae) * 8);
+    int baseX             = static_cast<short>(elem->x * 8);
+    int baseY             = static_cast<short>(elem->y * 8);
     Offsets_0216c98a offs = data_ov002_0216c98a;
     unsigned char k       = 0;
     unsigned short tile   = FirstTile;
@@ -44,25 +60,25 @@ extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
             short dy = offs.v[row];
             short px = (short) (dx + baseX);
             py       = (short) (dy + baseY);
-            SetEntryFields02154bcc(px, py, *(void **) (obj + SpriteOffset), tile++, (unsigned char) (k * 4 + 0xc),
+            SetEntryFields02154bcc(px, py, state->renderer, tile++, (unsigned char) (k * 4 + 0xc),
                                               0xff);
             idx = (short) (col + row * 4);
-            if (*(short *) (obj + SelectionOffset) == idx) {
-                SetEntryFields02154bcc(px, py, *(void **) (obj + SpriteOffset), CursorTile, 8, 0xff);
+            if (state->selection == idx) {
+                SetEntryFields02154bcc(px, py, state->renderer, CursorTile, 8, 0xff);
             }
-            SetFourShortsAtIndex((ShortArrays0204c654 *) elem, idx, dx, dy, 0x18, 0x18);
+            SetFourShortsAtIndex(reinterpret_cast<ShortArrays0204c654*>(elem), idx, dx, dy, 0x18, 0x18);
             k++;
         }
     }
-    elem = FindElementByC40205d81c((struct Struct_0205d81c *) (obj + WindowOffset), LabelKey);
+    elem = FindElementByC40205d81c(reinterpret_cast<Struct_0205d81c*>(&state->window), LabelKey);
     if (elem == 0) {
         return;
     }
-    int x2 = *(short *) ((char *) elem + 0xac);
-    int y2 = *(short *) ((char *) elem + 0xae);
+    int x2 = elem->x;
+    int y2 = elem->y;
     x2     = (short) (x2 * 8) + 0x10;
     y2     = (short) (y2 * 8) + 0x18;
-    SetEntryFields02154bcc(x2, y2, *(void **) (obj + SpriteOffset), LabelTile, 0x54, 8);
+    SetEntryFields02154bcc(x2, y2, state->renderer, LabelTile, 0x54, 8);
 }
 
 #if defined(jpn)

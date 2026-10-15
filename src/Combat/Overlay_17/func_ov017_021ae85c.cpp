@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include "Resource/FontBankLoader.h"
 #include "Resource/TextQueue.h"
 #include <std_library_functions.h>
@@ -18,8 +19,6 @@ struct Container020dedd0 { unsigned int fields[4]; };
 struct StructDE234_020de234 {
     int fields[4]; unsigned int low:10, mid:10, kind:8, unused:4;
 };
-struct State0207dfc8 { unsigned int words[28]; };
-struct ResourceState021ae85c { char pad0[0x230]; State0207dfc8 spriteTables; };
 struct Zone021ae85c {
 #if defined(jpn)
     char pad0[0x620];
@@ -64,10 +63,7 @@ int GetField0x3acValue_020100a8(GameState*);
 unsigned short GetPreferredPackedField020de234(StructDE234_020de234*, int);
 void SetByteField0x253_020397c0(void*);
 void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
-void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
-void RestorePairTables0207df90(char*);
 void Forward02047b30(void*, int, int, int);
-void BackupPairTables0207dfac(char*);
 Controller021ae85c* GetGlobalField0x1c020421a0();
 extern "C" void __clear(void*, int);
 void* ZeroInitReturn020de824(void*);
@@ -84,8 +80,9 @@ extern Obj0205eaa0 data_02108760;
 #endif
 extern const char data_ov017_021d79a8[];
 extern AllocatorUnion data_02114e20;
-static inline ResourceState021ae85c* ResourceStateBuffer021ae85c(GameResources* resources) {
-    return (ResourceState021ae85c*)resources->unknown_2cc;
+
+static inline Foo0207df50* ResourceEncoders021ae85c(GameResources* resources) {
+    return resources->encoders;
 }
 
 // USA: func_ov017_021ae85c
@@ -143,11 +140,11 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
                 self->allocator.ResetAllocatorPointer();
                 self->allocator.CreateTypeA(buffer, 0x100); self->allocator.Reset();
                 MaybeInvoke0204719c_02047230(self->sprite); func_0204719c(self->sprite);
-                State0207dfc8 saved;
-                CopyState0207dfc8(&ResourceStateBuffer021ae85c(resources)->spriteTables, &saved);
-                RestorePairTables0207df90((char*)&saved);
+                Foo0207df50 saved;
+                CopyState0207dfc8(&ResourceEncoders021ae85c(resources)[5], &saved);
+                RestorePairTables0207df90(&saved);
                 Forward02047b30(self->sprite, (int)file, length, (int)&self->allocator);
-                BackupPairTables0207dfac((char*)&saved);
+                BackupPairTables0207dfac(&saved);
             } else {
                 func_ov017_021aeea8(self); self->done = 1;
                 SetByteField0x253_020397c0(game->GetUnknownGameObject());

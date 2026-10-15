@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -16,10 +17,6 @@ ARM int InitObjWithMisc_021f6f20(void* obj, int p1, int p3, int p4, int arg5, un
 ARM void* AddOffset20_021f7318(void* p);
 ARM void SetField1cTo2_021f7320(void* p);
 
-struct Foo0207df50;
-void CopyInternalFields0207df50(struct Foo0207df50* p);
-void RestorePairTables0207df90(char* obj);
-void BackupPairTables0207dfac(char* obj);
 extern "C" void func_0204719c(void* obj);
 void Forward02047b30(void* a, int b, int c, int d);
 
@@ -27,7 +24,7 @@ struct ListHead_021f67ac;
 struct ListNode_021f67ac;
 void AppendNodeToList_021f67ac(struct ListHead_021f67ac* head, struct ListNode_021f67ac* node);
 
-static inline char* GetPairTable(GameResources* res, int index) { return res->unknown_2cc + index * 0x70; }
+static inline Foo0207df50* GetPairTable(GameResources* res, int index) { return &res->encoders[index]; }
 
 struct LocalNodeBuf_0215c30c {
     int words[0xac / 4];
@@ -55,9 +52,9 @@ extern "C" ARM int func_ov004_0215c30c(void* ctx) {
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     void* file = LoadFileIntoMemory(data_ov004_021703ff, data_0211e33c, &size);
-    char* pairs = GetPairTable(func_ov017_0218b5b0(), 0);
+    Foo0207df50* pairs = GetPairTable(func_ov017_0218b5b0(), 0);
     void* model = AddOffset20_021f7318(block);
-    CopyInternalFields0207df50((struct Foo0207df50*)pairs);
+    CopyInternalFields0207df50(pairs);
     RestorePairTables0207df90(pairs);
     func_0204719c(model);
     if (file != 0) {

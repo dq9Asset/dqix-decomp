@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include "Combat/Main/BattleList.h"
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -71,10 +72,6 @@ struct Vec3_02059f38;
 void CopyVec3ToField0x44(Target02059f38*, Vec3_02059f38*);
 struct Obj02033874;
 void SetVecYFromValue02033874(Obj02033874*, int);
-struct Foo0207df50;
-void CopyInternalFields0207df50(struct Foo0207df50* p);
-void RestorePairTables0207df90(char* obj);
-void BackupPairTables0207dfac(char* obj);
 int GetByteField28_021b1fa8(void* p);
 int GetByteField29_021b1fb0(void* p);
 void* GetPtrField2a_021b1fb8(void* p);
@@ -484,9 +481,9 @@ phase2:;
             *(short*)(obj + 6) = 0xf;
             return;
         }
-        struct Foo0207df50* fields = (struct Foo0207df50*)((char (*)[0x70])ov17->unknown_2cc)[0x1c];
+        Foo0207df50* fields = &ov17->encoders[28];
         CopyInternalFields0207df50(fields);
-        RestorePairTables0207df90((char*)fields);
+        RestorePairTables0207df90(fields);
         struct ObjectArchiveLoadInfo loadInfo;
         loadInfo.unk_0 = 0;
         loadInfo.unk_14 = 0;
@@ -497,7 +494,7 @@ phase2:;
         loadInfo.fileData = fileData;
         loadInfo.unk_8 = fileSize;
         ((Object3D*)(obj + 0x33c + 0x1000))->LoadFromCHRArchive(&loadInfo);
-        BackupPairTables0207dfac((char*)fields);
+        BackupPairTables0207dfac(fields);
         *(unsigned char*)(obj + 0x1000 + 0x3e8) = 1;
         ((Object3D*)(obj + 0x33c + 0x1000))->MaybeSetRegularAnimation(data_ov003_021801f8, 1);
         struct CombatantStruct* c = (CombatantStruct*)((GameState*)battle)->GetUnknownGameObject();

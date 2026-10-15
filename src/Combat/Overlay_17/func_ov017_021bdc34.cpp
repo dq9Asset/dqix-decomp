@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Resource/PairTableEncoder.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Combat/CombatantRecovery.h"
 
-struct Foo0207df50 { unsigned char fields[0x70]; };
 struct S021a11b4;
 struct LoadEntry021bdc34 {
     unsigned char padding_0[4];
@@ -35,9 +35,6 @@ struct LoadState021bdc34 {
     unsigned char mode;
 };
 LoadEntry021bdc34* FindNegativeEntry_021a11b4(S021a11b4*);
-void CopyInternalFields0207df50(Foo0207df50*);
-void RestorePairTables0207df90(char*);
-void BackupPairTables0207dfac(char*);
 void SetFieldndDispatch_021bdb78_021bdb78(int);
 void CallHelperIfCheckPasses_0218fcf8(int, int, int);
 extern "C" void func_ov017_0218f5a4(void*, int, int, int, int);
@@ -127,10 +124,10 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
                     info.allocator = allocator;
                     info.unk_8 = length;
                     Foo0207df50* pair = pairs[i];
-                    RestorePairTables0207df90((char*)pair);
+                    RestorePairTables0207df90(pair);
                     object->Initialize();
                     object->LoadFromCCHROrCMOTArchive(&info, 0);
-                    BackupPairTables0207dfac((char*)pair);
+                    BackupPairTables0207dfac(pair);
                     switch (i) {
                     case 0: globals->first = object; break;
                     case 1: globals->second = object; break;

@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#include "Resource/FontGlyphTable.h"
+#endif
 
 struct Rect0205b1ac { int offset; short x, y, width, height; };
 struct GlyphEntry0205b36c { const char* text; signed char width; unsigned char flags; short bitOffset; };
@@ -8,6 +11,54 @@ extern int GetWordFromTable02042638(int);
 extern Rect0205b1ac* FindRectContainingPoint0205b1ac(Rect0205b1ac*, unsigned int, int, int);
 
 // USA: func_0205b36c
+#if defined(jpn)
+// JPN: func_0205c68c
+extern "C" ARM void func_0205b36c(GlyphDestination0205b36c* destination, const unsigned char* source, short x, short y, unsigned char font, unsigned char color) {
+    if (source == NULL) return;
+    FontGlyphTable* table = GetFontGlyphTable_020429bc(font);
+    if (table == NULL) return;
+    unsigned char shift = 0;
+    short row = 0;
+    short width = table->glyphWidth;
+    short height = table->glyphHeight;
+    unsigned int count = destination->rectangleCount;
+    Rect0205b1ac* rectangles = destination->rectangles;
+    unsigned char upperColor = color << 4;
+    unsigned char lowerColor = color & 15;
+    for (; row < height; ++row) {
+        short destinationY = y + row;
+        for (short column = 0; column < width; ++column) {
+            if (*source & (1 << shift)) {
+                short destinationX = x + column;
+                Rect0205b1ac* rectangle = FindRectContainingPoint0205b1ac(rectangles, count, destinationX, destinationY);
+                if (rectangle) {
+                    unsigned char* pixels = destination->pixels + rectangle->offset;
+                    short localX = destinationX - rectangle->x;
+                    short localY = destinationY - rectangle->y;
+                    short tileX = localX >> 3;
+                    short tileY = localY >> 3;
+                    short tileWidth = rectangle->width >> 3;
+                    short tile = tileY * tileWidth + tileX;
+                    pixels += tile << 5;
+                    short withinX = localX & 7;
+                    short withinY = localY & 7;
+                    int within = (withinY << 2) + (withinX >> 1);
+                    unsigned char* pixel = pixels + within;
+                    if (destinationX & 1) {
+                        *pixel &= 15;
+                        *pixel |= upperColor;
+                    } else {
+                        *pixel &= 240;
+                        *pixel |= lowerColor;
+                    }
+                }
+            }
+            ++shift;
+            if (shift >= 8) { ++source; shift = 0; }
+        }
+    }
+}
+#else
 extern "C" ARM void func_0205b36c(GlyphDestination0205b36c* destination, GlyphEntry0205b36c* glyph, short x, short y, unsigned char color, unsigned char font) {
     GlyphSheet0205b36c* sheet = (GlyphSheet0205b36c*)GetWordFromTable02042638(font);
     short bitOffset = glyph->bitOffset;
@@ -52,3 +103,4 @@ extern "C" ARM void func_0205b36c(GlyphDestination0205b36c* destination, GlyphEn
         }
     }
 }
+#endif

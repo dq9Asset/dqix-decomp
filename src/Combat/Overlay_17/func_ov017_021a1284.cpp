@@ -2,6 +2,13 @@
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <World/Zone3D.h>
+#include "Resource/MessageSystem.h"
+
+#if defined(jpn)
+enum { PluginMode = 0x4e1, PluginParameter = 0x4f8, PluginFlags = 0x56c, PluginSize = 0x578, InitialResource = 0x27c, PendingResource = 0x34f0, ZonePending = 0x444, TransferBufferSize = 0x16c00, PlayerSettings = 0x144 };
+#else
+enum { PluginMode = 0x4e5, PluginParameter = 0x4fc, PluginFlags = 0x634, PluginSize = 0x648, InitialResource = 0x2cc, PendingResource = 0x3700, ZonePending = 0x424, TransferBufferSize = 0x17600, PlayerSettings = 0x150 };
+#endif
 
 struct Foo0207df50;
 struct Obj020397cc;
@@ -16,12 +23,12 @@ struct Plugin021a1284 {
     SafeAllocator* secondaryAllocator;
     SafeAllocator* currentAllocator;
     SafeAllocator* eventAllocator;
-    char pad_18[0x4cd];
+    char pad_18[PluginMode - 0x18];
     signed char mode;
     signed char result;
     char pad_4e7[0x15];
     int parameter;
-    char pad_500[0x134];
+    char pad_500[PluginFlags - PluginParameter - 4];
     unsigned short flags;
 };
 struct TransferEvent021a1284 {
@@ -36,14 +43,14 @@ struct TransferEvent021a1284 {
 };
 struct InternalResource021a1284 { char bytes[0x5b0]; };
 struct ResourceTransfer021a1284 {
-    char pad_0[0x2cc];
+    char pad_0[InitialResource];
     InternalResource021a1284 initial;
     char restored[1];
-    char pad_87d[0x2e83];
+    char pad_87d[PendingResource - InitialResource - 0x5b1];
     void** pending;
 };
 struct ZoneTransfer021a1284 {
-    char pad_0[0x424];
+    char pad_0[ZonePending];
     int pending;
     char pad_428[0x418];
     char range[1];
@@ -53,17 +60,28 @@ struct PlayerTransfer021a1284 {
     unsigned short field_b0;
     unsigned short field_b2;
     unsigned short field_b4;
-    char pad_b6[0x9a];
+    char pad_b6[PlayerSettings - 0xb6];
     void* settings;
 };
 struct SettingsTransfer021a1284 { char pad_0[0x56b]; unsigned char unavailable : 4; unsigned char reserved : 4; };
+typedef char TransferPluginModeCheck[offsetof(Plugin021a1284, mode) == PluginMode ? 1 : -1];
+typedef char TransferPluginParameterCheck[offsetof(Plugin021a1284, parameter) == PluginParameter ? 1 : -1];
+typedef char TransferPluginFlagsCheck[offsetof(Plugin021a1284, flags) == PluginFlags ? 1 : -1];
+typedef char TransferInitialResourceCheck[offsetof(ResourceTransfer021a1284, initial) == InitialResource ? 1 : -1];
+typedef char TransferRestoredResourceCheck[offsetof(ResourceTransfer021a1284, restored) == InitialResource + 0x5b0 ? 1 : -1];
+typedef char TransferPendingResourceCheck[offsetof(ResourceTransfer021a1284, pending) == PendingResource ? 1 : -1];
+typedef char TransferZonePendingCheck[offsetof(ZoneTransfer021a1284, pending) == ZonePending ? 1 : -1];
+typedef char TransferZoneRangeCheck[offsetof(ZoneTransfer021a1284, range) == ZonePending + 0x41c ? 1 : -1];
+typedef char TransferPlayerSettingsCheck[offsetof(PlayerTransfer021a1284, settings) == PlayerSettings ? 1 : -1];
+typedef char TransferEventStageCheck[offsetof(TransferEvent021a1284, stage) == 0x22 ? 1 : -1];
+
 struct EntryList_203dce4;
 EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c();
 extern "C" Zone3D* func_02012fe4();
 extern "C" NodeList02058564* func_02057924();
 extern "C" int* func_0202ae18();
 GameResources* GetWord0x0_0200fb8c(int*);
-void* GetGlobalField0x1c020421a0();
+int GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
@@ -71,7 +89,6 @@ int GetByteField0x254_02039850(void*);
 int GetField0x3acValue_020100a8(GameState*);
 void ComputeAndCall_021a1178(char*, int);
 void SetBoolFlag0x254_0203983c(unsigned char*, int);
-extern "C" void func_0204500c(void*, unsigned char*, int, int);
 void ReinitController02043204(char*);
 void SetField0x98Bit0_0203d008(unsigned char*);
 extern "C" void func_0203e0a0(EntryList_203dce4*, unsigned short);
@@ -132,7 +149,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
     int* search = func_0202ae18();
     GameObject* player = game->GetUnknownGameObject();
     GameResources* resources = GetWord0x0_0200fb8c((int*)game);
-    void* global = GetGlobalField0x1c020421a0();
+    void* global = (void*)GetGlobalField0x1c020421a0();
     CancelPendingAction020397cc((Obj020397cc*)player, 1);
     ((PlayerTransfer021a1284*)player)->field_b2 = 0;
     if (self->stage == 0) {
@@ -152,19 +169,23 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
             SetBoolFlag0x254_0203983c((unsigned char*)player, 0);
         }
         unsigned char flag = 0;
-        func_0204500c(global, &flag, 0, 0xe3);
+#if defined(jpn)
+        func_0204500c((MessageSystem*)global, (char*)&flag, 0);
+#else
+        func_0204500c((MessageSystem*)global, (char*)&flag, 0, (void*)0xe3);
+#endif
         ReinitController02043204((char*)global);
         SetField0x98Bit0_0203d008((unsigned char*)entries);
         func_0203e0a0(entries, zone->currentZoneID_);
         SetBitsInWord_0203b4a0((unsigned int*)resources, 0x10);
-        func_020a0cc4(0x17600);
-        void* buffer = AllocateAligned4_02012d88(&data_02114e20, 0x17600);
+        func_020a0cc4(TransferBufferSize);
+        void* buffer = AllocateAligned4_02012d88(&data_02114e20, TransferBufferSize);
         if (!buffer) {
             func_020a0c0c();
             self->stage = 4;
             return;
         }
-        self->allocator.CreateTypeA(buffer, 0x17600);
+        self->allocator.CreateTypeA(buffer, TransferBufferSize);
         self->allocator.Reset();
         ResetOverlayAndAllocator_0219bf74();
         SafeAllocator* current;
@@ -183,7 +204,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         }
         PushInputLogA_020a1df8(5);
         PushInputLogB_020a1ef0(1);
-        self->plugin = (Plugin021a1284*)current->Allocate(0x648);
+        self->plugin = (Plugin021a1284*)current->Allocate(PluginSize);
         self->plugin->mode = self->mode;
         self->plugin->parameter = self->parameter;
         func_ov023_021e2dd8(self->plugin);

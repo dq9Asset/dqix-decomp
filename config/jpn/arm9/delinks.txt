@@ -7807,6 +7807,10 @@ src/Combat/Main/NotifyLocalizedResourceLoad020dcfc8.cpp:
     complete
     .text start:0x020de9cc end:0x020dea34
 
+src/Combat/Main/NotifyLocalizedResourceLoad020dd040.cpp:
+    complete
+    .text start:0x020dea34 end:0x020dea98
+
 src/Combat/Main/NotifyManagerForSetArrayEntries020e3ed8.cpp:
     complete
     .text start:0x020e5a78 end:0x020e5abc
@@ -12738,6 +12742,10 @@ src/Combat/Main/func_0205a528.cpp:
 src/Combat/Main/func_0205ac40.cpp:
     complete
     .text start:0x0205bfdc end:0x0205c178
+
+src/Combat/Main/func_0205b36c.cpp:
+    complete
+    .text start:0x0205c68c end:0x0205c830
 
 src/Combat/Main/func_0205bd78.cpp:
     complete

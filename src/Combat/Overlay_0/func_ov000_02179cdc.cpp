@@ -73,12 +73,7 @@ StoreStruct* GetGlobalField0x1c020421a0(void);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" SkillEntry* func_ov000_02170cf8(MenuEntry* entry, int key);
 GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int idx);
-#if defined(jpn)
-extern "C" void func_020dea34(int id, char* buf);
-#define NotifyLocalizedResourceLoad020dd040 func_020dea34
-#else
 void NotifyLocalizedResourceLoad020dd040(int id, char* buf);
-#endif
 extern "C" void func_02046608(StoreStruct* store, int kind, char* src, char* dst, int a, int b, int c);
 extern "C" void func_02046380(StoreStruct* store);
 int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject* obj);

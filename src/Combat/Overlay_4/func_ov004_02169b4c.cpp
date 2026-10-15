@@ -134,9 +134,9 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     if (!areas) return 0;
 
 #if defined(jpn)
-    struct Grid02169b4c* grid = (struct Grid02169b4c*)func_ov004_02168f08(a, 0x64);
+    struct Grid02169b4c* grid = static_cast<Grid02169b4c*>(func_ov004_02168f08(a, 0x64));
 #else
-    struct Grid02169b4c* grid = (struct Grid02169b4c*)func_ov023_021f6524(a, 0x64);
+    struct Grid02169b4c* grid = static_cast<Grid02169b4c*>(func_ov023_021f6524(a, 0x64));
 #endif
 #if defined(jpn)
     struct TableA68* tblA = func_ov004_02169040(a, 3);
@@ -192,52 +192,52 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
 
 #if defined(jpn)
     func_02046380(g);
-    char* format = (char*)FindEntryByKey_02072a68(tblA, 0x23);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, rec->w0A);
-    SetByteInRange_020465f0((unsigned char*)g, 0, 4);
-    SetByteAtIndex_020465d8((unsigned char*)g, 0, 1);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, rec->w8A);
-    SetByteInRange_020465f0((unsigned char*)g, 1, 2);
-    SetByteAtIndex_020465d8((unsigned char*)g, 1, 1);
+    char* format = static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23));
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 0, rec->w0A);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 0, 4);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 0, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 1, rec->w8A);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 1, 2);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 1, 1);
     func_020474a8(g, 8, format, out);
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x190);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x190));
     node->text = out;
     out += strlen(out) + 1;
 
     func_02046380(g);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, rec->w4A);
-    SetByteInRange_020465f0((unsigned char*)g, 0, 4);
-    SetByteAtIndex_020465d8((unsigned char*)g, 0, 1);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, rec->w8B);
-    SetByteInRange_020465f0((unsigned char*)g, 1, 2);
-    SetByteAtIndex_020465d8((unsigned char*)g, 1, 1);
-    func_020474a8(g, 8, (char*)FindEntryByKey_02072a68(tblA, 0x23), out);
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x191);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 0, rec->w4A);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 0, 4);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 0, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 1, rec->w8B);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 1, 2);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 1, 1);
+    func_020474a8(g, 8, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23)), out);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x191));
     node->text = out;
     out += strlen(out) + 1;
 
 #else
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x190);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x190));
     node->mode = 2;
-    sprintf(out, (char*)FindEntryByKey_02072a68(tblA, 0x23), rec->w0A);
+    sprintf(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23)), rec->w0A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c2);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x1c2));
     node->mode = 2;
-    sprintf(out, (char*)FindEntryByKey_02072a68(tblA, 0x23), rec->w8A);
+    sprintf(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23)), rec->w8A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x191);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x191));
     node->mode = 2;
-    sprintf(out, (char*)FindEntryByKey_02072a68(tblA, 0x23), rec->w4A);
+    sprintf(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23)), rec->w4A);
     node->text = out;
     out += strlen(out) + 1;
 
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c3);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x1c3));
     node->mode = 2;
-    sprintf(out, (char*)FindEntryByKey_02072a68(tblA, 0x23), rec->w8B);
+    sprintf(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x23)), rec->w8B);
     node->text = out;
     out += strlen(out) + 1;
 
@@ -245,21 +245,21 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     func_02046380(g);
     char* title;
     if (rec->f14 >= 700) {
-        title = (char*)FindEntryByKey_02072a68(tbl9, (short)(rec->f14 + 20000));
+        title = static_cast<char*>(FindEntryByKey_02072a68(tbl9, (short)(rec->f14 + 20000)));
     } else if (rec->f16) {
-        title = (char*)FindEntryByKey_02072a68(tbl7, rec->f14);
+        title = static_cast<char*>(FindEntryByKey_02072a68(tbl7, rec->f14));
     } else {
-        title = (char*)FindEntryByKey_02072a68(tbl6, rec->f14);
+        title = static_cast<char*>(FindEntryByKey_02072a68(tbl6, rec->f14));
     }
     SetIndexedName02046574((struct Obj02046574*)g, 0, title);
     SetIndexedName02046574((struct Obj02046574*)g, 1, name);
 #if defined(jpn)
-    func_020474a8(g, 0xa, (char*)FindEntryByKey_02072a68(tblA, 0x22), out);
+    func_020474a8(g, 0xa, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x22)), out);
 #else
-    func_02046608(g, 0xa, (char*)FindEntryByKey_02072a68(tblA, 0x22), out, 0xf0, 1, 0);
+    func_02046608(g, 0xa, static_cast<char*>(FindEntryByKey_02072a68(tblA, 0x22)), out, 0xf0, 1, 0);
 #endif
 
-    node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x192);
+    node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x192));
     node->text = out;
 #if !defined(jpn)
     struct Triple02169b4c t = node->Get();
@@ -275,44 +275,44 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     struct Blk02169b4c blk;
     LoadBattleBlock020ac4c0(&blk);
     mask |= 1;
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w4B);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->w4B);
     if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 0x1198)) {
         mask |= 2;
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w0B);
+        StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->w0B);
     }
     mask |= 4;
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->wcA);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->wcA);
     if (blk.f08hi) {
         mask |= 8;
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w10A);
+        StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->w10A);
     }
     if (blk.f0cB) {
         mask |= 0x10;
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->wcB);
+        StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->wcB);
     }
     if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 0x1199)) {
         mask |= 0x20;
-        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w10B);
+        StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), count++, rec->w10B);
     }
 
     unsigned char k = 0;
     int i;
     for (i = 0; i < 6; i++) {
         if (mask & (1 << i)) {
-            SetByteInRange_020465f0((unsigned char*)g, k, 5);
-            SetByteAtIndex_020465d8((unsigned char*)g, k, 1);
-            strcpy(out, (char*)FindEntryByKey_02072a68(tblA, (short)(i + 0x28)));
+            SetByteInRange_020465f0(static_cast<unsigned char*>(g), k, 5);
+            SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), k, 1);
+            strcpy(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, (short)(i + 0x28))));
             int base = k * 3;
-            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f4);
+            node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f4));
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
 #if defined(jpn)
-            func_020474a8(g, 8, (char*)FindEntryByKey_02072a68(tblA, (short)(k + 0x14)), out);
+            func_020474a8(g, 8, static_cast<char*>(FindEntryByKey_02072a68(tblA, (short)(k + 0x14))), out);
 #else
-            func_02046608(g, 8, (char*)FindEntryByKey_02072a68(tblA, (short)(k + 0x14)), out, 0x100, 0, 0);
+            func_02046608(g, 8, static_cast<char*>(FindEntryByKey_02072a68(tblA, (short)(k + 0x14))), out, 0x100, 0, 0);
 #endif
-            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f5);
+            node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f5));
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
@@ -324,8 +324,8 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
             } else {
                 key = 0x2e;
             }
-            strcpy(out, (char*)FindEntryByKey_02072a68(tblA, key));
-            node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f6);
+            strcpy(out, static_cast<char*>(FindEntryByKey_02072a68(tblA, key)));
+            node = static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f6));
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
@@ -334,39 +334,39 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     }
     for (int j = k; j < 6; j++) {
         int base = j * 3;
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f4))->hidden = 1;
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f5))->hidden = 1;
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f6))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f4)))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f5)))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, base + 0x1f6)))->hidden = 1;
     }
 
     func_02046380(g);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, rec->w8C);
-    SetByteInRange_020465f0((unsigned char*)g, 0, 3);
-    SetByteAtIndex_020465d8((unsigned char*)g, 0, 1);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, rec->wcC);
-    SetByteInRange_020465f0((unsigned char*)g, 1, 3);
-    SetByteAtIndex_020465d8((unsigned char*)g, 1, 1);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 2, rec->w8D);
-    SetByteInRange_020465f0((unsigned char*)g, 2, 3);
-    SetByteAtIndex_020465d8((unsigned char*)g, 2, 1);
-    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 3, rec->w10C);
-    SetByteInRange_020465f0((unsigned char*)g, 3, 3);
-    SetByteAtIndex_020465d8((unsigned char*)g, 3, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 0, rec->w8C);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 0, 3);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 0, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 1, rec->wcC);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 1, 3);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 1, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 2, rec->w8D);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 2, 3);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 2, 1);
+    StoreInArray0x8b0_020465c0(static_cast<StoreStruct*>(g), 3, rec->w10C);
+    SetByteInRange_020465f0(static_cast<unsigned char*>(g), 3, 3);
+    SetByteAtIndex_020465d8(static_cast<unsigned char*>(g), 3, 1);
 
     int rows = (mask & 2) ? 4 : 3;
     for (int r = 0; r < rows; r++) {
 #if defined(jpn)
-        func_020474a8(g, 8, (char*)FindEntryByKey_02072a68(tblA, (short)(r + 0x1e)), out);
+        func_020474a8(g, 8, static_cast<char*>(FindEntryByKey_02072a68(tblA, (short)(r + 0x1e))), out);
 #else
-        func_02046608(g, 8, (char*)FindEntryByKey_02072a68(tblA, (short)(r + 0x1e)), out, 0x100, 0, 0);
+        func_02046608(g, 8, static_cast<char*>(FindEntryByKey_02072a68(tblA, (short)(r + 0x1e))), out, 0x100, 0, 0);
 #endif
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, r * 2 + 6 + 0x200))->text = out;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, r * 2 + 6 + 0x200)))->text = out;
         out += strlen(out) + 1;
     }
     if (rows == 3) {
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x19c))->hidden = 1;
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x20c))->hidden = 1;
-        ((Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x20d))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x19c)))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x20c)))->hidden = 1;
+        (static_cast<Node02169b4c*>(GetNodeIfType8_02168a6c(a, 0x20d)))->hidden = 1;
     }
 
 #if defined(jpn)

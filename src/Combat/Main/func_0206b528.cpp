@@ -9,7 +9,7 @@ extern "C" int func_020694a0(void*, unsigned short);
 extern "C" ARM void func_0206cdcc(void* context, int* outA, int* outB) {
     MessageSystem* self = static_cast<MessageSystem*>(context);
     unsigned short* buffer = static_cast<unsigned short*>(self->secondLineBuffer);
-    int start = *reinterpret_cast<int*>(static_cast<char*>(context) + 0x40);
+    int start = self->lineStart;
     int limit = self->tokenIndex;
     int center;
     int line;

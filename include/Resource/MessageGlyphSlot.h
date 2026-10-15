@@ -22,7 +22,10 @@ struct State0204166c {
     int y;
 #if defined(jpn)
     int depth;
-    unsigned char encodedCharacter[2];
+    union {
+        unsigned char encodedCharacter[2];
+        unsigned short encodedCode;
+    };
     unsigned char fontPixelSize;
     unsigned char pendingUpload : 1;
     unsigned char renderFlag1 : 1;

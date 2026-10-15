@@ -60,38 +60,46 @@ extern "C" ARM int func_ov004_02164928(void* self) {
     if (func_ov023_021f6f10(node) != 7) return 0;
     unsigned int detailIndex = GetShort28_021f9bb0(node);
 #if defined(jpn)
-// JPN reads the current owner again after calls; USA/EUR retain the selected detail.
-#define SELECTED_MAPS data_ov004_02171010
-#define SELECTED_MAP_DETAIL (data_ov004_02171010->details[detailIndex])
+    if (data_ov004_02171010->details[detailIndex].mapType_ == 1) {
+        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &data_ov004_02171010->maps[mapIndex], data_ov004_02171010->details[detailIndex].entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&data_ov004_02171010->details[detailIndex].entranceX_), data_ov004_02171010->details[detailIndex].regular_.environ_, data_ov004_02171010->details[detailIndex].regular_.startingMonsterRank_);
+        grotto->unknown_8 = func_02090294(area);
+    } else if (data_ov004_02171010->details[detailIndex].mapType_ == 2) {
+        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &data_ov004_02171010->maps[mapIndex], data_ov004_02171010->details[detailIndex].entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&data_ov004_02171010->details[detailIndex].entranceX_), 0, 0);
+        grotto->unknown_8 = func_02090294(area);
+    }
+    strcpy(grotto->activeMapImageName, data_ov004_02171010->details[detailIndex].mapImageName_);
+    if (data_ov004_02171010->details[detailIndex].mapType_ == 1) {
+        DetailedTreasureMapData::RegularMapData* regular = &data_ov004_02171010->details[detailIndex].regular_;
+        sprintf(grotto->activeMapNameNoLevel, regular->nameNoLevel_);
+        grotto->activeMapLevel = data_ov004_02171010->details[detailIndex].regular_.level_;
+    } else if (data_ov004_02171010->details[detailIndex].mapType_ == 2) {
+        DetailedTreasureMapData::LegacyBossMapData* legacy = &data_ov004_02171010->details[detailIndex].legacy_;
+        sprintf(grotto->activeMapNameNoLevel, legacy->mapNameNoLevel_);
+        grotto->activeMapLevel = data_ov004_02171010->details[detailIndex].legacy_.level_;
+    }
 #else
     MapList02164928* maps = data_ov004_02171010;
     DetailedTreasureMapData* detail = &maps->details[detailIndex];
-#define SELECTED_MAPS maps
-#define SELECTED_MAP_DETAIL (*detail)
-#endif
-    if (SELECTED_MAP_DETAIL.mapType_ == 1) {
-        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &SELECTED_MAPS->maps[mapIndex], SELECTED_MAP_DETAIL.entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&SELECTED_MAP_DETAIL.entranceX_), SELECTED_MAP_DETAIL.regular_.environ_, SELECTED_MAP_DETAIL.regular_.startingMonsterRank_);
+    if (detail->mapType_ == 1) {
+        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &maps->maps[mapIndex], detail->entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&detail->entranceX_), detail->regular_.environ_, detail->regular_.startingMonsterRank_);
         grotto->unknown_8 = func_02090294(area);
-    } else if (SELECTED_MAP_DETAIL.mapType_ == 2) {
-        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &SELECTED_MAPS->maps[mapIndex], SELECTED_MAP_DETAIL.entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&SELECTED_MAP_DETAIL.entranceX_), 0, 0);
+    } else if (detail->mapType_ == 2) {
+        reinterpret_cast<InitMap02164928>(InitTreasureMapEntry0201165c)(reinterpret_cast<char*>(state), &maps->maps[mapIndex], detail->entranceZoneID_, *reinterpret_cast<MapCoordinates02164928*>(&detail->entranceX_), 0, 0);
         grotto->unknown_8 = func_02090294(area);
     }
-    strcpy(grotto->activeMapImageName, SELECTED_MAP_DETAIL.mapImageName_);
-    if (SELECTED_MAP_DETAIL.mapType_ == 1) {
-        DetailedTreasureMapData::RegularMapData* regular = &SELECTED_MAP_DETAIL.regular_;
+    strcpy(grotto->activeMapImageName, detail->mapImageName_);
+    if (detail->mapType_ == 1) {
+        DetailedTreasureMapData::RegularMapData* regular = &detail->regular_;
         sprintf(grotto->activeMapNameNoLevel, regular->nameNoLevel_);
-        grotto->activeMapLevel = SELECTED_MAP_DETAIL.regular_.level_;
-#if !defined(jpn)
-        *reinterpret_cast<unsigned short*>(grotto->unk_a) = SELECTED_MAP_DETAIL.regular_.suffix_;
-#endif
-    } else if (SELECTED_MAP_DETAIL.mapType_ == 2) {
-        DetailedTreasureMapData::LegacyBossMapData* legacy = &SELECTED_MAP_DETAIL.legacy_;
+        grotto->activeMapLevel = detail->regular_.level_;
+        *reinterpret_cast<unsigned short*>(grotto->unk_a) = detail->regular_.suffix_;
+    } else if (detail->mapType_ == 2) {
+        DetailedTreasureMapData::LegacyBossMapData* legacy = &detail->legacy_;
         sprintf(grotto->activeMapNameNoLevel, legacy->mapNameNoLevel_);
-        grotto->activeMapLevel = SELECTED_MAP_DETAIL.legacy_.level_;
-#if !defined(jpn)
+        grotto->activeMapLevel = detail->legacy_.level_;
         *reinterpret_cast<unsigned short*>(grotto->unk_a) = 0;
-#endif
     }
+#endif
     GrottoStruct* active = state->GetGrottoStruct();
     char* event = zone->unk_2664;
     if (active->unknown_0[0]) {
@@ -109,7 +117,11 @@ extern "C" ARM int func_ov004_02164928(void* self) {
         func_ov017_021cf730(-1, 0);
         EnqueueEventTag167_021d3ec8();
     }
-    if (SELECTED_MAP_DETAIL.discoveryState_ == 1) {
+#if defined(jpn)
+    if (data_ov004_02171010->details[detailIndex].discoveryState_ == 1) {
+#else
+    if (detail->discoveryState_ == 1) {
+#endif
         TailList020469b4* list;
         Obj020d8080* object = static_cast<Obj020d8080*>(resources->unknown_ptr_array_3afc[42]);
         list = static_cast<TailList020469b4*>(resources->unknown_ptr_array_36fc[0]);
@@ -118,6 +130,3 @@ extern "C" ARM int func_ov004_02164928(void* self) {
     }
     return 0;
 }
-
-#undef SELECTED_MAP_DETAIL
-#undef SELECTED_MAPS

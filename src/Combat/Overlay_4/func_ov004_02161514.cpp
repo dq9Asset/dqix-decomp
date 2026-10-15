@@ -1,12 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-#if defined(jpn)
-enum { field6=4,field7=6,field8=7,fieldB=8 };
-#else
-enum { field6=6,field7=7,field8=8,fieldB=0xb };
-#endif
-
 extern "C" void* func_ov011_021849c8(void* p);
 struct GameState;
 extern int GetFieldAt0x150_02053c6c(unsigned char* obj);
@@ -54,7 +48,31 @@ struct Buf02161514 {
     int counts[13];
 };
 
-extern unsigned char data_ov004_021707e8;
+struct Selection02161514 {
+    unsigned char unknown0[2];
+    unsigned char equippedCategory;
+#if defined(jpn)
+    unsigned char unknown3;
+    signed char itemCount;
+    unsigned char unknown5;
+#else
+    unsigned char unknown3[3];
+    signed char itemCount;
+#endif
+    unsigned char state;
+    unsigned char selectedCategory;
+#if !defined(jpn)
+    unsigned char unknown9[2];
+#endif
+    signed char categoryDelta;
+#if defined(jpn)
+    unsigned char unknown9[0x1c - 9];
+#else
+    unsigned char unknownc[0x1c - 0xc];
+#endif
+    int combatant;
+};
+extern Selection02161514 data_ov004_021707e8;
 extern int data_ov004_02170854[];
 #if defined(jpn)
 extern unsigned char data_ov004_02170568[];
@@ -64,8 +82,6 @@ extern unsigned char data_ov004_0216fde8[];
 #endif
 extern unsigned char data_ov004_02170838[];
 extern unsigned char data_ov004_02170820[];
-#define D0 (&data_ov004_021707e8)
-#define D1 (data_ov004_02170854)
 
 // JPN: func_ov004_02161514 (02161ea4)
 // USA: func_ov004_02161514
@@ -87,14 +103,14 @@ extern "C" ARM int func_ov004_02161514(void* a) {
     int same;
     FNode02161514* node;
 
-    D0[field7] = 0x65;
+    data_ov004_021707e8.state = 0x65;
     obj = func_ov011_021849c8(a);
     showAll = 0;
     flag = 0;
-    if (D0[2] != D1[D0[field8]]) flag = 1;
+    if (data_ov004_021707e8.equippedCategory != data_ov004_02170854[data_ov004_021707e8.selectedCategory]) flag = 1;
 
 #if defined(jpn)
-    if (*(signed char*)(D0 + field6) == 0) {
+    if (data_ov004_021707e8.itemCount == 0) {
         func_ov004_0215e47c(a, 3)->field0xc &= ~4;
     } else {
         func_ov004_0215e47c(a, 3)->field0xc |= 4;
@@ -103,17 +119,17 @@ extern "C" ARM int func_ov004_02161514(void* a) {
     func_ov004_0215e47c(a, 3)->field0xc |= 4;
 #endif
 
-    t = D1[D0[field8]];
+    t = data_ov004_02170854[data_ov004_021707e8.selectedCategory];
     if (t != 1 && t != 4 && t != 7) {
-        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c((GameState*)(void*)GameState::GetInstance(), *(int*)(D0 + 0x1c));
+        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c((GameState*)(void*)GameState::GetInstance(), data_ov004_021707e8.combatant);
         if (!combatant) return 0;
         field = (unsigned char*)GetFieldAt0x150_02053c6c(combatant);
         if (!field) return 0;
-        limit = *(unsigned short*)(field + D1[D0[field8]] * 2 + 0x16c);
+        limit = *(unsigned short*)(field + data_ov004_02170854[data_ov004_021707e8.selectedCategory] * 2 + 0x16c);
         ClearField00209a804((int*)&ctx);
         SetupAndRunBufferedScript0209a810(&ctx, &buf);
-        count = buf.counts[D1[D0[field8]]];
-        rows = buf.rows[D1[D0[field8]]];
+        count = buf.counts[data_ov004_02170854[data_ov004_021707e8.selectedCategory]];
+        rows = buf.rows[data_ov004_02170854[data_ov004_021707e8.selectedCategory]];
         cnt = 0;
 
         for (i = 0xc; i < 0x30; i++) SetField38IfState8_0215e49c(a, i, 0x3a);
@@ -124,10 +140,10 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         if (CheckAfterTwoCalls_0215e460()) {
             SetField38IfState8_0215e49c(a, 0xe, 4);
         } else {
-            SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
+            SetField38IfState8_0215e49c(a, 0xe, data_ov004_02170854[data_ov004_021707e8.selectedCategory] + 4);
         }
 
-        if (D0[2] != D1[D0[field8]]) {
+        if (data_ov004_021707e8.equippedCategory != data_ov004_02170854[data_ov004_021707e8.selectedCategory]) {
             for (k = 0; k < 3; k++) {
                 node = func_ov023_021f6880(obj, k + 0xc);
                 if (node) node->SetState(3);
@@ -150,7 +166,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
                 int st;
                 SetField38IfState8_0215e49c(a, cnt + 0xf, id + 0x3f);
                 st = 0xf;
-                if (D0[2] != D1[D0[field8]]) st = 3;
+                if (data_ov004_021707e8.equippedCategory != data_ov004_02170854[data_ov004_021707e8.selectedCategory]) st = 3;
                 node = func_ov023_021f6880(obj, cnt + 0xf);
                 if (node) node->SetState(st);
                 cnt++;
@@ -173,10 +189,10 @@ extern "C" ARM int func_ov004_02161514(void* a) {
             if (CheckAfterTwoCalls_0215e460()) {
                 SetField38IfState8_0215e49c(a, 0xe, 4);
             } else {
-                SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
+                SetField38IfState8_0215e49c(a, 0xe, data_ov004_02170854[data_ov004_021707e8.selectedCategory] + 4);
             }
             same = 1;
-            if (D0[2] != D1[D0[field8]]) same = 0;
+            if (data_ov004_021707e8.equippedCategory != data_ov004_02170854[data_ov004_021707e8.selectedCategory]) same = 0;
             for (int i = 0; i < 5; i++) {
 #if defined(jpn)
                 node = func_ov023_021f6880(obj, data_ov004_02170568[i]);
@@ -206,10 +222,10 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         if (CheckAfterTwoCalls_0215e460()) {
             SetField38IfState8_0215e49c(a, 0xe, 4);
         } else {
-            SetField38IfState8_0215e49c(a, 0xe, D1[D0[field8]] + 4);
+            SetField38IfState8_0215e49c(a, 0xe, data_ov004_02170854[data_ov004_021707e8.selectedCategory] + 4);
         }
         same = 1;
-        if (D0[2] != D1[D0[field8]]) same = 0;
+        if (data_ov004_021707e8.equippedCategory != data_ov004_02170854[data_ov004_021707e8.selectedCategory]) same = 0;
         for (int i = 0; i < 5; i++) {
 #if defined(jpn)
             node = func_ov023_021f6880(obj, data_ov004_02170568[i]);
@@ -225,7 +241,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         if (!same) st = 3;
         node = func_ov023_021f6880(obj, 0x64);
         if (node) node->SetState(st);
-        if (*(signed char*)(D0 + field6) == 0) {
+        if (data_ov004_021707e8.itemCount == 0) {
             TagNode02161514* tag = func_ov004_0215e47c(a, 3);
             if (tag) tag->field0xc &= ~4;
         }
@@ -247,15 +263,15 @@ extern "C" ARM int func_ov004_02161514(void* a) {
     {
         int d;
 #if defined(jpn)
-        *(signed char*)(D0 + fieldB) = data_ov004_021710b0[D1[D0[field8]] - 1];
-        d = *(signed char*)(D0 + fieldB) - data_ov004_021710b0[D0[2] - 1];
+        data_ov004_021707e8.categoryDelta = data_ov004_021710b0[data_ov004_02170854[data_ov004_021707e8.selectedCategory] - 1];
+        d = data_ov004_021707e8.categoryDelta - data_ov004_021710b0[data_ov004_021707e8.equippedCategory - 1];
 #else
-        *(signed char*)(D0 + fieldB) = data_ov004_02170820[D1[D0[field8]] - 1];
-        d = *(signed char*)(D0 + fieldB) - data_ov004_02170820[D0[2] - 1];
+        data_ov004_021707e8.categoryDelta = data_ov004_02170820[data_ov004_02170854[data_ov004_021707e8.selectedCategory] - 1];
+        d = data_ov004_021707e8.categoryDelta - data_ov004_02170820[data_ov004_021707e8.equippedCategory - 1];
 #endif
-        if (d < 0) d += *(signed char*)(D0 + field6);
-        *(signed char*)(D0 + fieldB) = d;
+        if (d < 0) d += data_ov004_021707e8.itemCount;
+        data_ov004_021707e8.categoryDelta = d;
     }
-    SetNodeFieldsAndMaybeNotify_0215f6f4(a, *(signed char*)(D0 + fieldB), *(signed char*)(D0 + field6), flag);
+    SetNodeFieldsAndMaybeNotify_0215f6f4(a, data_ov004_021707e8.categoryDelta, data_ov004_021707e8.itemCount, flag);
     return 0;
 }

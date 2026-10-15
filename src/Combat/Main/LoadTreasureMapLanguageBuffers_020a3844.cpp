@@ -17,21 +17,18 @@ extern const char data_020f1a9c[];
 extern const char data_020f1ab0[];
 #endif
 
-enum { kLanguageOffsets = offsetof(GameResources, pTMapLanguageOffsets) };
-
 // JPN: func_020a55a0
 // USA: func_020a3844  (semantic: LoadTreasureMapLanguageBuffers_020a3844)
 extern "C" ARM int func_020a3844(SafeAllocator* alloc) {
     GameState* battleStruct = GameState::GetInstance();
-    int base = ((int)func_ov017_0218b5b0());
+    GameResources* resources = func_ov017_0218b5b0();
     unsigned char* word = battleStruct->GetTreasureMapLanguageData();
-    if (word != 0 || *(void**)(base + kLanguageOffsets) != 0) {
+    if (word != 0 || resources->pTMapLanguageOffsets != 0) {
         ReleaseBattleBuffers020a39d8(alloc);
     }
 
-    unsigned char* buf = (unsigned char*)alloc->Allocate(0x2000);
-    unsigned char* buf2 = (unsigned char*)alloc->Allocate(0x44);
-    *(unsigned char**)(base + kLanguageOffsets) = buf2;
+    unsigned char* buf = static_cast<unsigned char*>(alloc->Allocate(0x2000));
+    resources->pTMapLanguageOffsets = static_cast<TreasureMapLanguageDataOffsets*>(alloc->Allocate(sizeof(TreasureMapLanguageDataOffsets)));
 
     unsigned int fileSize = 0;
 #if defined(jpn)
@@ -52,8 +49,8 @@ extern "C" ARM int func_020a3844(SafeAllocator* alloc) {
     srcOff += 4;
 
     for (unsigned int i = 0; i < count; i++) {
-        unsigned char* base4000 = (unsigned char*)base + 0x4000;
-        VectorizedInvertedMemcpy(buf + srcOff, *(unsigned char**)(base4000 + kLanguageOffsets - 0x4000) + i * 4, 4);
+        unsigned char* offsets = reinterpret_cast<unsigned char*>(resources->pTMapLanguageOffsets);
+        VectorizedInvertedMemcpy(buf + srcOff, offsets + i * 4, 4);
         srcOff += 4;
     }
 

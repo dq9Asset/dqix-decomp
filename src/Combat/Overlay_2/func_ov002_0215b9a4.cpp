@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/TryApplyElemFields.h"
+#include "Resource/CharacterCreationUI.h"
 
-class Battle0215b9a4;
 
 #if defined(jpn)
 enum { WindowOffset = 0xe20, TextOffset = 0x1a98, DirtyOffset = 0x1a94, ModeOffset = 0x1a80, TextCapacity = 0x800, PageCount = 47 };
@@ -12,6 +12,17 @@ enum { WindowOffset = 0xe20, TextOffset = 0x1a98, DirtyOffset = 0x1a94, ModeOffs
 #else
 enum { WindowOffset = 0xec8, TextOffset = 0x1bd0, DirtyOffset = 0x1bcc, ModeOffset = 0x1bb8, TextCapacity = 0x960, PageCount = 44 };
 #endif
+
+class Battle0215b9a4 {
+public:
+    unsigned char unknown0[WindowOffset];
+    CreationWindow window;
+    unsigned char unknownAfterWindow[ModeOffset - WindowOffset - sizeof(CreationWindow)];
+    int mode;
+    unsigned char unknownAfterMode[DirtyOffset - ModeOffset - sizeof(int)];
+    int dirty;
+    void* text;
+};
 
 typedef void (Battle0215b9a4::*PageFn0215b9a4)(void *buf, int flag);
 
@@ -28,27 +39,31 @@ extern ModePage0215b9a4 data_ov002_0216caec[];
 
 extern "C" void *memset(void *dst, int value, unsigned int length);
 struct Struct_0205d81c;
-struct Elem_0205d81c;
+struct Elem_0205d81c {
+    unsigned char unknown0[0xc4];
+    unsigned char key;
+    unsigned char flags;
+    unsigned char unknownC6[0xe0 - 0xc6];
+};
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 
 // USA: func_ov002_0215b9a4
 // JPN: func_ov002_0215cb1c
 extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key, int flag) {
-    char *base          = (char *) self;
-    unsigned char *elem = (unsigned char*)FindElementByC40205d81c((Struct_0205d81c*)(base + WindowOffset), key);
+    Elem_0205d81c* elem = FindElementByC40205d81c(reinterpret_cast<Struct_0205d81c*>(&self->window), key);
     if (elem == 0) {
         return;
     }
     if (flag) {
-        elem[0xc5] |= 0x40;
+        elem->flags |= 0x40;
     } else {
-        elem[0xc5] &= ~0x40;
+        elem->flags &= ~0x40;
     }
     int hl = 0;
-    if (elem[0xc5] & 2) {
+    if (elem->flags & 2) {
         hl = 1;
     }
-    memset(*(void **) (base + TextOffset), 0, TextCapacity);
+    memset(self->text, 0, TextCapacity);
     if (!(data_ov002_0216d3b0[1] & 1)) {
         PageFn0215b9a4 nul      = data_020e6d5c;
         data_ov002_0216cfac[0]  = nul;
@@ -76,25 +91,25 @@ extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key,
     if (data_ov002_0216cfac[key] == 0) {
         return;
     }
-    (self->*data_ov002_0216cfac[key])(*(void **) (base + TextOffset), hl);
-    TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + WindowOffset), key, (int)(*(void **) (base + TextOffset)),
+    (self->*data_ov002_0216cfac[key])(self->text, hl);
+    TryApplyElemFields0205d5d0(reinterpret_cast<StructA0205d5d0*>(&self->window), key, reinterpret_cast<int>(self->text),
 #if defined(jpn)
                              1);
 #else
                              0, 0);
 #endif
-    if (*(int *) (base + DirtyOffset) == 0) {
+    if (self->dirty == 0) {
         return;
     }
     for (int i = 0; data_ov002_0216cae8[i].a >= 0; i++) {
-        if (*(int *) (base + ModeOffset) == data_ov002_0216cae8[i].a) {
+        if (self->mode == data_ov002_0216cae8[i].a) {
             int page = data_ov002_0216caec[i].a;
-            memset(*(void **) (base + TextOffset), 0, TextCapacity);
+            memset(self->text, 0, TextCapacity);
             if (data_ov002_0216cfac[page] == 0) {
                 break;
             }
-            (self->*data_ov002_0216cfac[page])(*(void **) (base + TextOffset), hl);
-            TryApplyElemFields0205d5d0((StructA0205d5d0*)(base + WindowOffset), (unsigned char) page, (int)(*(void **) (base + TextOffset)),
+            (self->*data_ov002_0216cfac[page])(self->text, hl);
+            TryApplyElemFields0205d5d0(reinterpret_cast<StructA0205d5d0*>(&self->window), static_cast<unsigned char>(page), reinterpret_cast<int>(self->text),
 #if defined(jpn)
                                      1);
 #else
@@ -102,7 +117,7 @@ extern "C" ARM void func_ov002_0215b9a4(Battle0215b9a4 *self, unsigned char key,
 #endif
         }
     }
-    *(int *) (base + DirtyOffset) = 0;
+    self->dirty = 0;
 }
 
 #if defined(jpn)

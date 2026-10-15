@@ -3,7 +3,14 @@
 #include "Memory/SafeAllocator.h"
 #include <globaldefs.h>
 
-struct Container020dedd0;
+struct Element020de650;
+struct Container020dedd0 {
+    unsigned short count;
+    unsigned char pad[10];
+    struct Element020de650* base;
+    unsigned char pad2[4];
+    unsigned char useBinarySearch;
+};
 struct Field150Holder02052e2c;
 struct Field150Holder02052df8;
 
@@ -54,14 +61,13 @@ struct Menu0217599c {
     char pad78[0x103a - 0x78 - 0x800];
 };
 struct MenuB {
-    char pad0[0x74];
-    #if defined(jpn)
-    char container[0x77c];
+#if defined(jpn)
+    char padding0[0x7f0];
 #else
-    char container[0x800];
+    char padding0[0x874];
 #endif
-    char pad874[0x1000 - 0x874];
-    char pad1000[0x3a];
+    Container020dedd0 entries;
+    char paddingAfterEntries[0x103a - 0x874 - sizeof(Container020dedd0)];
     short selected;
     unsigned char count;
     char pad3d[6];
@@ -107,7 +113,7 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
     if (!c) return 0;
     if (!GetField150Ptr0x488_02052e2c((Field150Holder02052e2c *) c)) return 0;
     EquipEntry *elem =
-        FindElementByKey020dedd0((Container020dedd0 *) (menu->container + sizeof(menu->container)), menu->selected);
+        FindElementByKey020dedd0(&menu->entries, menu->selected);
     if (!elem) return 0;
     unsigned int category = elem->category;
     TextContext context;
@@ -115,7 +121,7 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
     ZeroInitReturn020de824(context.list);
     InitStruct0207cbe8((char *) &context);
     InitStruct0207cbe8((char *) &context);
-    context.containerData = (Container020dedd0 *) (menu->container + sizeof(menu->container));
+    context.containerData = &menu->entries;
     func_0207cc18(&context, elem);
     InitStruct0207cc0c((char *) &context);
     if (!IsType0217599c(category)) return 0;
@@ -133,7 +139,7 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
         func_02052d7c(c, slotId, menu->selected);
         func_0208358c(GetFieldAt0x150_02053c6c((unsigned char *) c), elem, -1);
     }
-    if (FindElementByKey020dedd0((Container020dedd0 *) (menu->container + sizeof(menu->container)), equippedId)) {
+    if (FindElementByKey020dedd0(&menu->entries, equippedId)) {
         func_0207c378(bag + 0x1d4, equippedId, 1, category);
     }
     menu->count--;

@@ -4,6 +4,16 @@
 #include "Resource/Brightness.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define data_ov017_021d771c data_ov017_021d7b58
+#define data_ov017_021d6aa8 data_ov017_021d6ea8
+#define data_ov017_021d6ab4 data_ov017_021d6eb4
+#define data_ov017_021d7778 data_ov017_021d7bb4
+#define data_ov017_021d777a data_ov017_021d7bb6
+#define data_ov017_021d6aa9 data_ov017_021d6ea9
+#define data_ov017_021d6aaa data_ov017_021d6eaa
+#endif
+
 struct Obj020397cc;
 struct Foo0207df50 { char storage[0x70]; };
 struct BattleStateTable021a6648 {

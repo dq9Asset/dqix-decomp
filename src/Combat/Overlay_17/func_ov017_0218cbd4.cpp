@@ -123,7 +123,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3)
         func_ov017_0219a6b8(self);
     if (message->active && !((unsigned char*)self->unknown_ptr_array_3afc[13])[2]) {
-        Forward020444d4(message, ticks);
+        message->Forward020444d4(ticks);
     }
     func_020966e0(self->unknown_ptr_4328);
     ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)self->unknown_ptr_array_36fc[0]);

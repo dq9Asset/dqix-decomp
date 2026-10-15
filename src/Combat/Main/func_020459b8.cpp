@@ -6,7 +6,6 @@ extern const unsigned char data_020e7a8c[];
 extern const short data_020e7aa6[];
 extern const short data_020e7ab0[];
 
-int FindAndSetFirstFreeBit_02042a90(MessageSystem*, unsigned char*, unsigned int);
 void InitState0204166c020416e0(State0204166c*, unsigned char, int, int, int, int, unsigned char);
 extern "C" void func_02045864(int x, int y, FontCharacter* glyph, unsigned char* dst, int width, int height,
                               unsigned char color, unsigned char font);
@@ -24,7 +23,7 @@ extern "C" ARM int func_020459b8(MessageSystem* sys, unsigned char charIndex, Fo
     unsigned char* pixels = data_02107800.glyphPixels;
     unsigned char* refs = sys->glyphReferences;
     State0204166c* slots = sys->glyphs;
-    int bitmapIndex = FindAndSetFirstFreeBit_02042a90(sys, sys->bitmapAllocationBits, 4);
+    int bitmapIndex = sys->FindAndSetFirstFreeBit_02042a90(sys->bitmapAllocationBits, 4);
     if (bitmapIndex < 0) {
         return 0;
     }

@@ -117,7 +117,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         return;
     }
 
-    CheckAndClearFlag020656e4(message, step);
+    message->CheckAndClearFlag020656e4(step);
     if (UpdateCounterAndFlag02065758(message, step) != 0) return;
 
     if (message->b19b1 != 0) {
@@ -166,7 +166,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         }
 
         StepCounter020456d0(message);
-        if (func_020440cc(message) != 0) {
+        if (message->func_020440cc() != 0) {
             REGION_FLAG(flag3, b19d1) = 1;
             message->b1958 = 5;
             return;
@@ -175,17 +175,17 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
         if (message->mode != 5) {
             ResetOrConsumeCounter02065920(message, step);
             if (message->b19bc != 0) {
-                HandleRepeatInput02045740(message);
+                message->HandleRepeatInput02045740();
             }
             func_020676e0(message, step);
-            ProcessPendingFlag02045688(message);
+            message->ProcessPendingFlag02045688();
             return;
         }
     }
 
     if (REGION_VALUE(message->h1944, message->h1946) < 0 && message->b19c8 == 0) {
         message->b912 = 0;
-        ProcessPendingFlag02045688(message);
+        message->ProcessPendingFlag02045688();
     }
 #if defined(jpn)
     else {
@@ -194,8 +194,8 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
 #endif
         if (message->b912 >= 4) {
             message->b912 = message->b912 - 4;
-            ProcessPendingFlag02045688(message);
-            HandleStateChange020455f8(message);
+            message->ProcessPendingFlag02045688();
+            message->HandleStateChange020455f8();
         }
         message->b912 =
             message->b912 + GameState::GetInstance()->GetTickCount();
@@ -234,21 +234,21 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     message->b195b = message->b195b | 8;
                 }
                 message->mode = 0;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == 0xff02) {
                 message->mode = 0;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == 0xff03) {
                 message->mode = 0;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 ReinitController02043204(message);
                 func_02043124(message);
                 return;
             } else if (tok == 0xff0b) {
                 message->mode = 4;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 message->advanceCountdown = REGION_VALUE(message->field178c, message->field195e);
                 message->b912 = 0;
                 if (message->delayOverride >= 0) {
@@ -259,15 +259,15 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
             } else if (tok == 0xff0c) {
                 message->inputDelay = message->b1960;
                 message->mode = 1;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == 0xff0d) {
                 message->mode = 1;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == 0xff0a) {
                 message->mode = 3;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == REGION_VALUE(0xff1d, 0xff1b)) {
                 nm.f0 = 0;
@@ -320,7 +320,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 return;
             } else if (tok == REGION_VALUE(0xff1c, 0xff1a)) {
                 if (REGION_FLAG(flag2, b19d0) != 0) return;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 message->textDelayCounters[message->b19ac] =
                     message->textDelayCounters[message->b19ac] - 1;
                 if (message->textDelayCounters[message->b19ac] > 0) return;
@@ -332,10 +332,10 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 return;
             } else if (tok == REGION_VALUE(0xff1f, 0xff1d)) {
                 message->mode = 2;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == REGION_VALUE(0xff20, 0xff1e)) {
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 message->textDelayCounters[message->b19ac] =
                     message->textDelayCounters[message->b19ac] - 1;
                 if (message->textDelayCounters[message->b19ac] > 0) {
@@ -353,7 +353,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
             } else if (tok == REGION_VALUE(0xff21, 0xff1f)) {
                 message->b19ca = 0;
                 message->mode = 2;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == REGION_VALUE(0xff28, 0xff26)) {
                 message->b19b1 = 1;
@@ -369,13 +369,13 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 message->pendingValue = REGION_VALUE(message->unknown1710, message->unknown1840);
                 message->pendingValueActive = 1;
                 message->tokenIndex = message->tokenIndex + 1;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == REGION_VALUE(0xff2e, 0xff2c)) {
                 message->pendingValue = message->selectedValue;
                 message->pendingValueActive = 1;
                 message->tokenIndex = message->tokenIndex + 1;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 return;
             } else if (tok == REGION_VALUE(0xff2f, 0xff2d)) {
                 unsigned char* who = (unsigned char*)GameState::GetInstance()->GetUnknownGameObject();
@@ -386,12 +386,12 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     dst = src;
                     message->pendingValue = fix32ReduceAngle0To2Pi(fix32_Atan2(here.v[0] - dst.v[0], here.v[2] - dst.v[2]));
                     message->pendingValueActive = 1;
-                    ProcessPendingFlag02045688(message);
+                    message->ProcessPendingFlag02045688();
                 }
                 message->tokenIndex = message->tokenIndex + 1;
                 return;
             } else if (tok == REGION_VALUE(0xff30, 0xff2e)) {
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 message->textWaitTicks = 0x3c;
                 message->textAnimationActive = 1;
                 message->textVariant = 0;
@@ -400,7 +400,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 6, 0);
                 return;
             } else if (tok == REGION_VALUE(0xff31, 0xff2f)) {
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 message->textWaitTicks = 0x3c;
                 message->textAnimationActive = 1;
                 message->textVariant = 1;
@@ -424,7 +424,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 message->choiceEnabled = 1;
                 message->choiceMode = 0;
                 message->mode = 6;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
                 int alive = 1;
                 unsigned char* bs = (unsigned char*)GameState::GetInstance();
@@ -449,7 +449,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 message->choiceEnabled = 1;
                 message->choiceMode = 1;
                 message->mode = 6;
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
                 unsigned char* w = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
                 if (w != 0) (w + 0x4000)[REGION_VALUE(0x134, 0x354)] = 0xa;
@@ -477,7 +477,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x32);
                 }
             } else if (tok > REGION_VALUE(0xff39, 0xff34) && tok < REGION_VALUE(0xff4e, 0xff49)) {
-                ProcessPendingFlag02045688(message);
+                message->ProcessPendingFlag02045688();
                 SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, tok - REGION_VALUE(0xff08, 0xff03));
                 message->b19c9 = 1;
                 return;

@@ -246,6 +246,14 @@ struct Struct0204394c;
 struct MessageSystem0219050c;
 
 struct MessageSystem {
+    int CheckAndClearFlag020656e4(int unusedDelta);
+    unsigned short GetIndexedHalfword_020656d0();
+    void Forward020444d4(int ticks);
+    int FindAndSetFirstFreeBit_02042a90(unsigned char* p, unsigned int count);
+    void HandleRepeatInput02045740();
+    void HandleStateChange020455f8();
+    void ProcessPendingFlag02045688();
+    int func_020440cc();
     void DispatchStateChange(int state);
     void HandleActorStateTransition(int state);
     void HandleMultipleChoiceResult(int result);
@@ -407,6 +415,14 @@ struct CombatSlots0206b198;
 struct RingBuffer02045824;
 
 struct MessageSystem {
+    int CheckAndClearFlag020656e4(int unusedDelta);
+    unsigned short GetIndexedHalfword_020656d0();
+    void Forward020444d4(int ticks);
+    int FindAndSetFirstFreeBit_02042a90(unsigned char* p, unsigned int count);
+    void HandleRepeatInput02045740();
+    void HandleStateChange020455f8();
+    void ProcessPendingFlag02045688();
+    int func_020440cc();
     void DispatchStateChange(int state);
     void HandleActorStateTransition(int state);
     void* actorNames[2];

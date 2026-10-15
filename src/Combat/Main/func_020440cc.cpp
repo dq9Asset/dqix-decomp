@@ -29,63 +29,63 @@ extern "C" void func_0206b224(MessageSystem*);
 #endif
 
 // USA: func_020440cc
-extern "C" ARM int func_020440cc(MessageSystem* self) {
-    if (!self->active) return 1;
-    if (!self->b19c1) {
-        if (self->b19c0) return 0;
+ARM int MessageSystem::func_020440cc() {
+    if (!this->active) return 1;
+    if (!this->b19c1) {
+        if (this->b19c0) return 0;
     }
     unsigned short mask = 0x403;
     int triggered = 0;
-    if (self->b19bf) mask |= 0x200;
+    if (this->b19bf) mask |= 0x200;
 #if defined(jpn)
-    if (self->flags17ff.flag1) mask |= 0x100;
+    if (this->flags17ff.flag1) mask |= 0x100;
 #else
-    if (self->b19cf) mask |= 0x100;
+    if (this->b19cf) mask |= 0x100;
 #endif
     if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, mask)) triggered = 1;
     if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0xf0)) triggered = 1;
     if (data_02114e54.active && data_02114e54.ticks < 20) triggered = 1;
-    if (GetIndexedHalfword_020656d0(self) == 0xff0c) {
+    if (GetIndexedHalfword_020656d0() == 0xff0c) {
         unsigned int ticks = GameState::GetInstance()->GetTickCount();
-        if (self->inputDelay) {
-            if (self->inputDelay <= ticks) {
-                self->inputDelay = 0;
+        if (this->inputDelay) {
+            if (this->inputDelay <= ticks) {
+                this->inputDelay = 0;
                 triggered = 1;
-            } else self->inputDelay -= ticks;
+            } else this->inputDelay -= ticks;
         }
     }
     if (!triggered) return 0;
-    switch (self->mode) {
+    switch (this->mode) {
     case 0:
-        if (self->b19be) return 0;
-        if (GetIndexedHalfword_020656d0(self) == 0xff02) {
-            Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)GetGlobalPtr021075f4_0203cf4c(), self->selectedEntry);
-            if (entry) SetValueOnActiveChild02040af0(entry, self->selectedValue);
+        if (this->b19be) return 0;
+        if (GetIndexedHalfword_020656d0() == 0xff02) {
+            Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)GetGlobalPtr021075f4_0203cf4c(), this->selectedEntry);
+            if (entry) SetValueOnActiveChild02040af0(entry, this->selectedValue);
         }
         return 1;
     case 1:
-        self->b19ae = 0;
-        self->b19af = 0;
-        self->b19cd = 1;
-        self->stream40 = 0;
-        self->stream44 = 0;
-        self->b912 = 0;
-        func_0206b104(self);
+        this->b19ae = 0;
+        this->b19af = 0;
+        this->b19cd = 1;
+        this->stream40 = 0;
+        this->stream44 = 0;
+        this->b912 = 0;
+        func_0206b104(this);
 #if defined(jpn)
-        func_0206cba0(self);
-        self->mode = 5;
-        if (!self->flags17ff.flag5) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
+        func_0206cba0(this);
+        this->mode = 5;
+        if (!this->flags17ff.flag5) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 #else
-        self->mode = 5;
-        func_0206b224(self);
-        if (!self->b19d3) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
+        this->mode = 5;
+        func_0206b224(this);
+        if (!this->b19d3) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 #endif
         break;
     case 3:
-        self->b19bd = 0;
+        this->b19bd = 0;
         break;
     case 2: {
-        unsigned short command = GetIndexedHalfword_020656d0(self);
+        unsigned short command = GetIndexedHalfword_020656d0();
 #if defined(jpn)
         if (command == 0xff21) {
 #else
@@ -100,44 +100,44 @@ extern "C" ARM int func_020440cc(MessageSystem* self) {
 #endif
             int childFlag = 0xff12;
             unsigned short token;
-            while (self->tokenIndex < self->tokenCount) {
-                token = self->firstLineBuffer[self->tokenIndex];
+            while (this->tokenIndex < this->tokenCount) {
+                token = this->firstLineBuffer[this->tokenIndex];
 #if defined(jpn)
-                if (func_02069430(self, token)) {
-                    int skip = func_02069444(self, token);
+                if (func_02069430(this, token)) {
+                    int skip = func_02069444(this, token);
 #else
-                if (IsHighByteFF02044494(self, &token)) {
-                    int skip = Dispatch02044420(self, &token);
+                if (IsHighByteFF02044494(this, &token)) {
+                    int skip = Dispatch02044420(this, &token);
 #endif
                     if (skip) {
-                        self->tokenIndex = self->tokenIndex + skip + 1;
+                        this->tokenIndex = this->tokenIndex + skip + 1;
                         continue;
                     }
                     if (token == stopA || token == stopB) break;
                     if (token == store) {
-                        self->pendingValue = self->selectedValue;
-                        self->pendingValueActive = 1;
-                        CheckAndClearFlag020656e4(self, 1);
-                    } else if (token == childFlag && self->child) {
-                        SetFlag0x2IfByte0xd4Not3_0208beb4(self->child);
+                        this->pendingValue = this->selectedValue;
+                        this->pendingValueActive = 1;
+                        CheckAndClearFlag020656e4(1);
+                    } else if (token == childFlag && this->child) {
+                        SetFlag0x2IfByte0xd4Not3_0208beb4(this->child);
                     }
                 }
-                ++self->tokenIndex;
+                ++this->tokenIndex;
             }
-            ProcessPendingFlag02045688(self);
-            self->mode = 0;
-            InitCombatSlots02043040(self);
-            func_02043124(self);
-            ResetControllerState020430b0(self);
+            ProcessPendingFlag02045688();
+            this->mode = 0;
+            InitCombatSlots02043040(this);
+            func_02043124(this);
+            ResetControllerState020430b0(this);
         } else {
 #if defined(jpn)
-            if (!self->flags17ff.flag5) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
+            if (!this->flags17ff.flag5) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 #else
-            if (!self->b19d3) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
+            if (!this->b19d3) DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 #endif
-            self->mode = 5;
-            ++self->tokenIndex;
-            self->b912 = 0;
+            this->mode = 5;
+            ++this->tokenIndex;
+            this->b912 = 0;
         }
         break;
     }

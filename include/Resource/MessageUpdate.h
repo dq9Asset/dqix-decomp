@@ -63,12 +63,7 @@ void SetIndexedName02046574(MessageSystem* window, int index, const char* name);
 void SetByteAtIndex_020465d8(MessageSystem* window, int index, unsigned char value);
 void SetByteInRange_020465f0(MessageSystem* window, int index, unsigned char value);
 
-void Forward020444d4(MessageSystem* window, int ticks);
 extern "C" void func_02065990(MessageSystem* window, int ticks);
-extern "C" int func_020440cc(MessageSystem* window);
-int CheckAndClearFlag020656e4(MessageSystem* window, int unusedDelta);
-unsigned short GetIndexedHalfword_020656d0(MessageSystem* window);
-void ProcessPendingFlag02045688(MessageSystem* window);
 void InitCombatSlots02043040(MessageSystem* window);
 void InitCombatSlots02045cac(MessageSystem* window);
 void TailForward020440a4(MessageSystem* window);
@@ -85,12 +80,10 @@ void RepeatStepClampedToField0x3c4_02067e58(MessageSystem* window, int count);
 #endif
 void ResetControllerState020430b0(MessageSystem* window);
 extern "C" int func_020657c8(MessageSystem* window, int step);
-void HandleRepeatInput02045740(MessageSystem* window);
 int UpdateCounterAndFlag02065758(MessageSystem* window, int step);
 void StepCounter020456d0(MessageSystem* window);
 void ProcessTextTokens0206b61c(MessageSystem* window);
 void UpdateStatusTimer_020658ac(MessageSystem* window, unsigned int amount);
-void HandleStateChange020455f8(MessageSystem* window);
 #if defined(jpn)
 extern "C" void func_0206cb14(MessageSystem* window, int fontSize, unsigned short index);
 #else

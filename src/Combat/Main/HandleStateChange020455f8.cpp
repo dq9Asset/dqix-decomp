@@ -14,11 +14,11 @@ extern int data_02108760;
 extern int data_02107820;
 
 // USA: func_020455f8
-ARM void HandleStateChange020455f8(MessageSystem* obj) {
-    if (obj->b19b3 == 1 || obj->b19b2 == 0) {
+ARM void MessageSystem::HandleStateChange020455f8() {
+    if (this->b19b3 == 1 || this->b19b2 == 0) {
         return;
     }
-    switch (obj->state) {
+    switch (this->state) {
         case 0:
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0xa, (int)&data_02107820);
             break;
@@ -29,5 +29,5 @@ ARM void HandleStateChange020455f8(MessageSystem* obj) {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0xb, (int)&data_02107820);
             break;
     }
-    obj->b19b3 = 1;
+    this->b19b3 = 1;
 }

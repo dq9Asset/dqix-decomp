@@ -3,6 +3,6 @@
 #include "Resource/MessageUpdate.h"
 
 // USA: func_020656d0
-ARM unsigned short GetIndexedHalfword_020656d0(MessageSystem* window) {
-    return window->firstLineBuffer[window->tokenIndex];
+ARM unsigned short MessageSystem::GetIndexedHalfword_020656d0() {
+    return this->firstLineBuffer[this->tokenIndex];
 }

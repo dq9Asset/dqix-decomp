@@ -69,7 +69,11 @@ struct Params021605d0 {
 };
 
 struct Holder021b7284 {
+#if defined(jpn)
+    unsigned char pad0[0x125];
+#else
     unsigned char pad0[0x105];
+#endif
     unsigned char flags;
 };
 
@@ -84,8 +88,13 @@ struct ActiveEntry021b7284 {
 };
 
 struct BattleTable021b7284 {
+#if defined(jpn)
+    unsigned char pad0[0x5c];
+    unsigned char active[0x120 - 0x5c];
+#else
     unsigned char pad0[0x60];
     unsigned char active[0x124 - 0x60];
+#endif
     unsigned char rows[4];
 };
 
@@ -95,6 +104,21 @@ struct Combatant021b7284 {
     unsigned char pad4[0x168 - 0x4];
     unsigned short group;
 };
+
+typedef char BattleSceneAllocatorCheck[offsetof(BattleScene021b7284, allocator) == 8 ? 1 : -1];
+typedef char BattleSceneDecodedCheck[offsetof(BattleScene021b7284, decoded) == 0x2c ? 1 : -1];
+typedef char BattleSceneContextCheck[offsetof(BattleScene021b7284, context) == 0x6b0 ? 1 : -1];
+typedef char BattleSceneFlagsCheck[offsetof(BattleScene021b7284, flags) == 0x6b6 ? 1 : -1];
+typedef char BattleCombatantGroupCheck[offsetof(Combatant021b7284, group) == 0x168 ? 1 : -1];
+#if defined(jpn)
+typedef char BattleHolderFlagsCheck[offsetof(Holder021b7284, flags) == 0x125 ? 1 : -1];
+typedef char BattleTableActiveCheck[offsetof(BattleTable021b7284, active) == 0x5c ? 1 : -1];
+typedef char BattleTableRowsCheck[offsetof(BattleTable021b7284, rows) == 0x120 ? 1 : -1];
+#else
+typedef char BattleHolderFlagsCheck[offsetof(Holder021b7284, flags) == 0x105 ? 1 : -1];
+typedef char BattleTableActiveCheck[offsetof(BattleTable021b7284, active) == 0x60 ? 1 : -1];
+typedef char BattleTableRowsCheck[offsetof(BattleTable021b7284, rows) == 0x124 ? 1 : -1];
+#endif
 
 struct Obj020397cc {
     unsigned char pad0[0xb2];
@@ -125,8 +149,9 @@ struct Entry0207d9bc {
 };
 
 extern "C" Holder021b7284* func_02012fe4(void);
-BattleTable021b7284* FindEntryByCurrentId02027cb0(void);
-Combatant021b7284* FindCombatantByField16a_021a278c(void* unused, int val);
+struct Entry_02028bd0;
+Entry_02028bd0* FindEntryByCurrentId02027cb0(void);
+GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 int PickWeightedSubEntry_021b8a34(FindRowByIdRow* table, int id, int key12);
 int DecodeEntry_021b8abc(int id, Out021b8abc* out);
 void ClearSixHalfwords_021b8b34(Halfwords6_021b8b34* obj);
@@ -138,7 +163,8 @@ int FindKeyGetBitflag02099a68(SearchList02099a68* list, unsigned short key);
 ActiveEntry021b7284* FindActiveEntry0209bdc8(Container0209bdc8* c, int flag, unsigned int mask);
 extern "C" void func_0209afd4(FindRowByIdRow* table, short key, short value, short group, Halfwords6_021b8b34* out, BattleTable021b7284* entry);
 extern "C" void func_ov000_0215d414(BattleContext021b7284* context, Request021b7284* req);
-extern "C" void func_ov000_02160140(void* p);
+struct CombatWork02160140;
+extern "C" void func_ov000_02160140(CombatWork02160140* p);
 void ClearFlag320_02195540(unsigned char* obj);
 void SetParamsAndRandomState021605d0(unsigned char* obj, Params021605d0* params);
 extern "C" MainBlock0205859c* func_02057924(void);
@@ -209,11 +235,11 @@ extern "C" ARM void func_ov017_021b7284(BattleScene021b7284* self) {
     } else {
         sub = -1;
         if (useAlt != 0) {
-            BattleTable021b7284* table = FindEntryByCurrentId02027cb0();
+            BattleTable021b7284* table = (BattleTable021b7284*)FindEntryByCurrentId02027cb0();
             if (table == NULL) {
                 goto done;
             }
-            Combatant021b7284* comb = FindCombatantByField16a_021a278c(res, id);
+            Combatant021b7284* comb = (Combatant021b7284*)FindCombatantByField16a_021a278c(res, id);
             if (comb != NULL) {
                 sub = PickWeightedSubEntry_021b8a34((FindRowByIdRow*)table->rows, group, comb->key);
             }
@@ -230,8 +256,8 @@ extern "C" ARM void func_ov017_021b7284(BattleScene021b7284* self) {
         } else {
             Combatant021b7284* comb;
             LightingManager* lighting = LightingManager::GetInstance();
-            BattleTable021b7284* table = FindEntryByCurrentId02027cb0();
-            comb = FindCombatantByField16a_021a278c(res, id);
+            BattleTable021b7284* table = (BattleTable021b7284*)FindEntryByCurrentId02027cb0();
+            comb = (Combatant021b7284*)FindCombatantByField16a_021a278c(res, id);
             void* obj = state->GetUnknownGameObject();
             if (table == NULL || comb == NULL) {
                 goto done;
@@ -270,8 +296,12 @@ done:
     req.bytes[1] = result.bytes[1];
     req.bytes[2] = result.bytes[2];
     func_ov000_0215d414(self->context, &req);
+#if defined(jpn)
+    self->field_6ac = self->allocator.Allocate(0x79fc);
+#else
     self->field_6ac = self->allocator.Allocate(0x780c);
-    func_ov000_02160140(self->field_6ac);
+#endif
+    func_ov000_02160140((CombatWork02160140*)self->field_6ac);
     ClearFlag320_02195540((unsigned char*)func_ov017_0218b5b0());
     params.context = self->context;
     params.allocator = &self->allocator;

@@ -1,4 +1,26 @@
 #include <globaldefs.h>
+#if defined(jpn)
+extern "C" void func_02043270(void*, int, int, int, int);
+
+// JPN: func_0206cf44
+extern "C" ARM void func_0206cf44(unsigned char* obj) {
+    unsigned short* p = *(unsigned short**)(obj + 0x20);
+    unsigned short* end = *(unsigned short**)(obj + 0x24);
+    int count = 0;
+    while (p != end) {
+        unsigned short token = *p;
+        if (token == 0xff01 || token == 0xff0c || token == 0xff0d) break;
+        if (token == 0xff18) count++;
+        p++;
+    }
+    int glyphWidth = *(int*)(obj + 0x1734);
+    int width = (count - 1) * glyphWidth + 12;
+    int x = (0xc0 - width) >> 1;
+    int left = x - 0x10;
+    int right = 0xc0 - left;
+    func_02043270(obj, 2, left, 0xfc, right);
+}
+#else
 #include "std_library_functions.h"
 
 struct Entry0206b6b8 {
@@ -43,3 +65,5 @@ ARM void MeasureTextWidth0206b6b8(unsigned char* obj) {
     int c = 0xc0 - b;
     func_02042b98(obj, 2, b, 0xfc, c);
 }
+
+#endif

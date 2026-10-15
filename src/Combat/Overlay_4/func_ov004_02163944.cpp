@@ -25,7 +25,7 @@ extern MapDisplayPointers data_ov004_02171010;
 extern char data_ov004_0217055c[];
 extern char data_ov004_02170572[];
 extern "C" MapAllocatorNode* func_ov011_021845f8(void*, int);
-extern "C" void func_020a3844(SafeAllocator*);
+extern "C" int func_020a3844(SafeAllocator*);
 void InitBufferAndCopyByte_0216342c(void*);
 bool CopyOutBattleRegion0x64f4_020ac760(void*);
 extern "C" void VectorizedInvertedMemcpy(const void*, void*, unsigned int);

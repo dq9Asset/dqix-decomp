@@ -15,19 +15,30 @@ struct Entry02196430 {
     unsigned short group : 2;
 };
 
+#if defined(jpn)
+enum { EntryOffset = 0x34e8, ListEndOffset = 0x34f0, NodeOffset = 0x3508,
+       BusyOffset = 0x40c2, ForceEventOffset = 0x40c6, PendingIdOffset = 0x41fe,
+       ActorFlagsOffset = 0x180 };
+#define data_ov017_021d6438 data_ov017_021d6888
+#else
+enum { EntryOffset = 0x36f8, ListEndOffset = 0x3700, NodeOffset = 0x3718,
+       BusyOffset = 0x42e2, ForceEventOffset = 0x42e6, PendingIdOffset = 0x44ae,
+       ActorFlagsOffset = 0x18c };
+#endif
+
 struct Ctx02196430 {
-    char pad0[0x36f8];
+    char pad0[EntryOffset];
     Entry02196430* entry;
     void* list;
-    char pad3700[0x3718 - 0x3700];
+    char pad3700[NodeOffset - ListEndOffset];
     void* node;
-    char pad371c[0x42e2 - 0x371c];
+    char pad371c[BusyOffset - (NodeOffset + 4)];
     unsigned char busy;
-    char pad42e3[0x42e6 - 0x42e3];
+    char pad42e3[ForceEventOffset - (BusyOffset + 1)];
     unsigned char forceEvent;
     unsigned char locked;
     unsigned char allowRepeat;
-    char pad42e9[0x44ae - 0x42e9];
+    char pad42e9[PendingIdOffset - (ForceEventOffset + 3)];
     unsigned short pendingId;
     unsigned short pendingArg;
 };
@@ -46,12 +57,20 @@ struct Actor02196430 {
     unsigned short eventId;
     char pad16c[0x17d - 0x16c];
     unsigned char flags17d;
-    char pad17e[0x18c - 0x17e];
+    char pad17e[ActorFlagsOffset - 0x17e];
     unsigned int flags18c;
 
     int GetFieldC3() const { return fieldc3; }
-    unsigned char HasPartyFlag() const { return flags17d & 8; }
 };
+
+typedef char EntryLayoutCheck[(int)&((Ctx02196430*)0)->entry == EntryOffset ? 1 : -1];
+typedef char NodeLayoutCheck[(int)&((Ctx02196430*)0)->node == NodeOffset ? 1 : -1];
+typedef char BusyLayoutCheck[(int)&((Ctx02196430*)0)->busy == BusyOffset ? 1 : -1];
+typedef char ForceEventLayoutCheck[(int)&((Ctx02196430*)0)->forceEvent == ForceEventOffset ? 1 : -1];
+typedef char PendingIdLayoutCheck[(int)&((Ctx02196430*)0)->pendingId == PendingIdOffset ? 1 : -1];
+typedef char ActorFlagsLayoutCheck[(int)&((Actor02196430*)0)->flags18c == ActorFlagsOffset ? 1 : -1];
+typedef char RealOwnerBusyCheck[(int)&((GameResources*)0)->unknown_flag_42e2 == BusyOffset ? 1 : -1];
+typedef char RealOwnerNodeCheck[(int)&((GameResources*)0)->unknown_ptr_3718 == NodeOffset ? 1 : -1];
 
 struct Zone02196430 {
     char pad0[2];
@@ -138,7 +157,9 @@ extern unsigned short data_02114e30;
 extern Kinds02196430 data_ov017_021d6438;
 
 // USA: func_ov017_02196430
-extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
+// JPN: func_ov017_02196ff8
+extern "C" ARM int func_ov017_02196430(GameResources* resources) {
+    Ctx02196430* self = (Ctx02196430*)resources;
     GameState* game = GameState::GetInstance();
     void* session = func_0202ae18();
     Entry02196430* entry = self->entry;
@@ -248,10 +269,12 @@ extern "C" ARM int func_ov017_02196430(Ctx02196430* self) {
                 if (other->flags17d & 1) {
                     continue;
                 }
+#if !defined(jpn)
                 if (HasMatchingHalfword_0219735c((unsigned char*)self, other->eventId)) {
                     continue;
                 }
-                if (!(other->HasPartyFlag() &&
+#endif
+                if (!((unsigned char)(other->flags17d & 8) &&
                       ArrayContainsByte_02086ef0(party, GetField0x17dBits4To5IfFlag8_020795cc((unsigned char*)other)))) {
                     if (allowRepeat != 0) {
                         continue;

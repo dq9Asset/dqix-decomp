@@ -2894,6 +2894,10 @@ src/Combat/Main/CollectPairsBelowThreshold0209ab20.cpp:
     complete
     .text start:0x0209c898 end:0x0209c8f4
 
+src/Combat/Main/CollectScriptStringsFromFile_02073864.cpp:
+    complete
+    .text start:0x02073864 end:0x02073914
+
 src/Combat/Main/CollectSetBitIndicesAt0x34.cpp:
     complete
     .text start:0x020a53ac end:0x020a53f4
@@ -6162,6 +6166,10 @@ src/Combat/Main/HaltSystem020c9be0.cpp:
     complete
     .text start:0x020cb6ac end:0x020cb6bc
 
+src/Combat/Main/HandleActorStateTransition_020679d4.cpp:
+    complete
+    .text start:0x02069294 end:0x0206935c
+
 src/Combat/Main/HandleBrightnessOrDispatchState02012de8.cpp:
     complete
     .text start:0x02012bb0 end:0x02012cc4
@@ -6177,6 +6185,10 @@ src/Combat/Main/HandleCommandType2Event020bc4f8.cpp:
 src/Combat/Main/HandleMsg1SetFlag.cpp:
     complete
     .text start:0x020d3370 end:0x020d339c
+
+src/Combat/Main/HandleMultipleChoiceResult0206935c.cpp:
+    complete
+    .text start:0x0206935c end:0x02069408
 
 src/Combat/Main/HardwareSqrt.cpp:
     complete

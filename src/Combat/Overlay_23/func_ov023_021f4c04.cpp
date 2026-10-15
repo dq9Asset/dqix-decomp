@@ -152,7 +152,7 @@ extern const char data_ov023_021fe1d8[];
 extern const char data_ov023_021fe1ee[];
 #if defined(jpn)
 extern const char data_ov023_021fd49e[];
-extern "C" void func_02073864(void*, void*, const char*, int, int, int);
+extern "C" void func_02073864(void*, void*, const char*, int, unsigned short, unsigned char);
 extern "C" void func_0204500c(void*, const char*, int);
 #endif
 

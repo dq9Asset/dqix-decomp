@@ -173,7 +173,7 @@ extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int m
 extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text, int mode, int boxWidth) {
     GameState* gs = GameState::GetInstance();
 
-    short itemId = *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]);
+    short itemId = gs->unk_7f58;
     ItemNameText itemName;
     Clear12Bytes020e46c4(&itemName);
     if (itemId > 0) {
@@ -343,7 +343,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
     window->cursor30 = -1;
     window->cursor31 = -1;
     if (itemId > 0) {
-        *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]) = 0;
+        gs->unk_7f58 = 0;
     }
 }
 

@@ -7995,6 +7995,10 @@ src/Combat/Main/PopulateTableRow020a6090.cpp:
     complete
     .text start:0x020a7e34 end:0x020a7f24
 
+src/Combat/Main/PositionAndFormatValueLabel0205b674.cpp:
+    complete
+    .text start:0x0205c9ac end:0x0205ca98
+
 src/Combat/Main/PostEvent0x0E.cpp:
     complete
     .text start:0x020d3b04 end:0x020d3b50

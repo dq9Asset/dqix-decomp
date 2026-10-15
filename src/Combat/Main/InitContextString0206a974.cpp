@@ -1,5 +1,27 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#if defined(jpn)
+int StringLength_020d2ff0(const char*);
+extern "C" void func_0206aa28(void*);
+
+// JPN: func_0206c570
+extern "C" ARM void func_0206c570(void* context, const char* src) {
+    unsigned char* p = static_cast<unsigned char*>(context);
+    if (src == NULL) return;
+    {
+        void* buffer = *(void**)(p + 0x14);
+        memcpy(buffer, src, (*(int*)(p + 0x34) = StringLength_020d2ff0(src)));
+    }
+    {
+        void* buffer = *(void**)(p + 0x14);
+        *(void**)(p + 0x24) = buffer;
+        *(void**)(p + 0x20) = buffer;
+    }
+    memset(*(void**)(p + 0x18), 0, 0x140);
+    memset(*(void**)(p + 0x1c), 0, 0x140);
+    func_0206aa28(context);
+}
+#else
 
 extern int StringLength_020d2ff0(const char* s);
 
@@ -40,3 +62,5 @@ ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, int b
         memcpy(p->field50, p->field60, len2);
     }
 }
+
+#endif

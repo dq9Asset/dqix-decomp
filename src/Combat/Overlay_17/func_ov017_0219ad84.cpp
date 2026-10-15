@@ -15,15 +15,36 @@ struct SearchStruct0202c1a4;
 struct Vec3copy0202ec84;
 
 struct Zone0219ad84 { unsigned short id; };
-struct Controller0219ad84 { char pad0[0x998]; unsigned int busy; };
+struct Controller0219ad84 {
+#if defined(jpn)
+    char pad0[0x868];
+#else
+    char pad0[0x998];
+#endif
+    unsigned int busy;
+};
 struct Window0219ad84 { char pad0[2]; unsigned char open; };
 struct Combatant0219ad84 {
-    Object3D obj3D; char padac[0x1b2 - 0xac]; unsigned short field1b2;
+    Object3D obj3D;
+#if defined(jpn)
+    char padac[0x1a6 - sizeof(Object3D)];
+#else
+    char padac[0x1b2 - sizeof(Object3D)];
+#endif
+    unsigned short field1b2;
 };
+
+#if defined(jpn)
+typedef char FieldControllerBusyCheck[(int)&((Controller0219ad84*)0)->busy == 0x868 ? 1 : -1];
+typedef char FieldCombatantMarkerCheck[(int)&((Combatant0219ad84*)0)->field1b2 == 0x1a6 ? 1 : -1];
+#else
+typedef char FieldControllerBusyCheck[(int)&((Controller0219ad84*)0)->busy == 0x998 ? 1 : -1];
+typedef char FieldCombatantMarkerCheck[(int)&((Combatant0219ad84*)0)->field1b2 == 0x1b2 ? 1 : -1];
+#endif
 
 int GetBitsInField4_0203b4fc(unsigned int*, unsigned int);
 extern "C" Zone0219ad84* func_02012fe4();
-Controller0219ad84* GetGlobalField0x1c020421a0();
+int GetGlobalField0x1c020421a0();
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void AdvanceStreamRecord0204724c(Obj0204724C*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
@@ -36,9 +57,9 @@ int CheckSubstructByte0x7cPositive_020535c8(signed char*);
 int IsField0Null_02046b08(void**);
 extern "C" SearchStruct0202c1a4* func_0202ae18();
 int CheckField0NonZero_0202b7d8(int*);
-int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
+signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 void* GetField0x3f8Address_0200fd0c(GameState*);
-void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 int HasFlagBit_0218d4ec(void*, int);
 
 static inline Foo02048004* CurrentSprite(GameResources* res) {
@@ -49,12 +70,13 @@ static inline unsigned char WindowOpen(void* window) {
 }
 
 // USA: func_ov017_0219ad84
+// JPN: func_ov017_0219b924
 extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
     if (GetBitsInField4_0203b4fc((unsigned int*)self, 0x40)) return;
     GameState* game = GameState::GetInstance();
     Zone0219ad84* zone = func_02012fe4();
     void* camera = GetField0x3b0Value_020100bc(game);
-    Controller0219ad84* controller = GetGlobalField0x1c020421a0();
+    Controller0219ad84* controller = (Controller0219ad84*)GetGlobalField0x1c020421a0();
     Window0219ad84* field = (Window0219ad84*)GetField0x3f8Address_0200fd0c(game);
     GameObject* actor = game->GetUnknownGameObject();
     if (!actor) return;

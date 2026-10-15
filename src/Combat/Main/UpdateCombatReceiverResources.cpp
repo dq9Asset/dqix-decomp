@@ -5,7 +5,6 @@
 #define IS_JPN 0
 #endif
 #if defined(jpn)
-#define func_020e0a78 func_020e26ac
 #define func_020e0f74 func_020e2b6c
 #define func_02026f34 func_02026898
 #endif

@@ -15,30 +15,68 @@ struct T020545b8 {
     SafeAllocator allocator;
 };
 struct InternalBlock0218f064 { char bytes[0x70]; };
+#if defined(jpn)
+struct InternalOwner0218f064 { char pad_0[0x27c]; InternalBlock0218f064 blocks[22]; };
+struct DisposableOwner0218f064 { char pad_0[0x4114]; Object3D* first; Object3D* second; Object3D* third; Object3D* fourth; };
+// The real zone entry context also owns the special actor pair.
+struct ZoneEntryContext0218f064 { char pad_0[0x1b58]; T020545b8* special; char* companion; };
+struct ZoneOwner0218f064 {
+    char pad_0[0x860];
+    ZoneEntryContext0218f064 entries;
+    ZoneEntryContext0218f064* GetEntries() { return &entries; }
+};
+#else
 struct InternalOwner0218f064 { char pad_0[0x2cc]; InternalBlock0218f064 blocks[22]; };
 struct DisposableOwner0218f064 { char pad_0[0x4334]; Object3D* first; Object3D* second; Object3D* third; Object3D* fourth; };
 struct ZoneSpecial0218f064 { char pad_0[0xb58]; T020545b8* special; char* companion; };
 struct ZoneOwner0218f064 { char pad_0[0x1840]; ZoneSpecial0218f064 tail; };
 static inline ZoneSpecial0218f064* ZoneSpecials0218f064(Zone3D* zone) { SDK_NULL_ASSERT(zone); return &((ZoneOwner0218f064*)zone)->tail; }
+#endif
 struct Ticket0218f064 { char pad_0[0x10]; Vector3i position; short rotation; };
 struct Combatant0218f064 {
     Object3D object;
     char pad_ac[4];
     unsigned short field_b0, field_b2, field_b4;
+#if defined(jpn)
+    char pad_b6[0x148 - 0xb6];
+#else
     char pad_b6[0x9e];
+#endif
     T020545b8* entry;
     char pad_158[0x17a];
     unsigned char sequence;
 };
 struct Components0218f064 { Object3D objects[11]; };
-Ticket0218f064* GetField0x3f8Address_0200fd0c(GameState*);
+#if defined(jpn)
+enum { ActorBaseSize = 0x2c4, ActorExtendedSize = 0x2c8, ActorSpecialSize = 0x2ec };
+#else
+enum { ActorBaseSize = 0x2d0, ActorExtendedSize = 0x2d4, ActorSpecialSize = 0x2f8 };
+#endif
+typedef char SpawnComponentsSizeCheck[sizeof(Components0218f064) == 0x764 ? 1 : -1];
+typedef char SpawnEntryAllocatorCheck[(int)&((T020545b8*)0)->allocator == 0x5d8 ? 1 : -1];
+#if defined(jpn)
+typedef char SpawnBlocksCheck[(int)&((InternalOwner0218f064*)0)->blocks == 0x27c ? 1 : -1];
+typedef char SpawnDisposableCheck[(int)&((DisposableOwner0218f064*)0)->first == 0x4114 ? 1 : -1];
+typedef char SpawnActorEntryCheck[(int)&((Combatant0218f064*)0)->entry == 0x148 ? 1 : -1];
+typedef char SpawnActorSequenceCheck[(int)&((Combatant0218f064*)0)->sequence == 0x2c6 ? 1 : -1];
+typedef char SpawnContextCheck[(int)&((ZoneOwner0218f064*)0)->entries == 0x860 ? 1 : -1];
+typedef char SpawnSpecialCheck[(int)&((ZoneEntryContext0218f064*)0)->special == 0x1b58 ? 1 : -1];
+#else
+typedef char SpawnBlocksCheck[(int)&((InternalOwner0218f064*)0)->blocks == 0x2cc ? 1 : -1];
+typedef char SpawnDisposableCheck[(int)&((DisposableOwner0218f064*)0)->first == 0x4334 ? 1 : -1];
+typedef char SpawnActorEntryCheck[(int)&((Combatant0218f064*)0)->entry == 0x154 ? 1 : -1];
+typedef char SpawnActorSequenceCheck[(int)&((Combatant0218f064*)0)->sequence == 0x2d2 ? 1 : -1];
+typedef char SpawnContextCheck[(int)&((ZoneOwner0218f064*)0)->tail == 0x1840 ? 1 : -1];
+typedef char SpawnSpecialCheck[(int)&((ZoneSpecial0218f064*)0)->special == 0xb58 ? 1 : -1];
+#endif
+void* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void func_0202ae18();
 void CopyInternalFields0207df50(Foo0207df50*);
 void DestroyAllocators020545b8(T020545b8*);
 extern "C" void func_020542b4(T020545b8*, SafeAllocator*, InternalBlock0218f064*);
 extern "C" int func_ov017_021925e0();
-T020545b8* FindNegativeEntry_021a11b4(S021a11b4*);
+void* FindNegativeEntry_021a11b4(S021a11b4*);
 extern "C" void func_02054464(T020545b8*, SafeAllocator*, InternalBlock0218f064*);
 extern "C" void func_02037d10(Combatant0218f064*);
 void SetFlag0x20002048104(Obj02048104*);
@@ -53,22 +91,36 @@ void SetPointerFields02053c4c(char*, char*);
 void RegisterOrAllocateCombatant02053c74(char*, int);
 void SetLowNibble56b_0218f57c(void*, int);
 extern "C" int func_ov017_0218f5a4(GameResources*, int, int, int, int);
+#if defined(jpn)
+#define data_ov017_021d73a4 data_ov017_021d7804
+#endif
 extern const char data_ov017_021d73a4[];
 
 static inline InternalBlock0218f064* InternalBlocks0218f064(GameResources* resources) { SDK_NULL_ASSERT(resources); return ((InternalOwner0218f064*)resources)->blocks; }
 
 // USA: func_ov017_0218f064
+// JPN: func_ov017_0218fc44
 extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int kind, int registerEffect, int mode) {
     GameState* game = GameState::GetInstance();
+#if !defined(jpn)
     Zone3D* zone;
-    Ticket0218f064* ticket = GetField0x3f8Address_0200fd0c(game);
+#endif
+    Ticket0218f064* ticket = (Ticket0218f064*)GetField0x3f8Address_0200fd0c(game);
+#if defined(jpn)
+    ZoneEntryContext0218f064* entries = ((ZoneOwner0218f064*)func_02012fe4())->GetEntries();
+#else
     zone = func_02012fe4();
+#endif
     func_0202ae18();
     int initialize = 1;
     SafeAllocator* allocator;
     T020545b8* entry;
     if (kind == 0x4000) {
+#if defined(jpn)
+        entry = entries->special;
+#else
         entry = ZoneSpecials0218f064(zone)->special;
+#endif
         if (!entry) return;
         SafeAllocator* primaryAllocators = resources->allocator_array_1a0;
         SafeAllocator* specialAllocator = &primaryAllocators[3];
@@ -85,7 +137,7 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
                 if (((T020545b8*)&resources->substruct_array_12c8[i])->id == id) return;
             }
         }
-        entry = FindNegativeEntry_021a11b4((S021a11b4*)resources);
+        entry = (T020545b8*)FindNegativeEntry_021a11b4((S021a11b4*)resources);
         if (!entry) return;
         allocator = &entry->allocator;
         int index = entry->index + 1;
@@ -103,20 +155,20 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
     allocator->Reset();
     Combatant0218f064* combatant = 0;
     if (kind == 0x800) {
-        combatant = (Combatant0218f064*)allocator->Allocate(0x2d0);
+        combatant = (Combatant0218f064*)allocator->Allocate(ActorBaseSize);
         func_02037d10(combatant);
     } else if (kind == 0x200) {
-        combatant = (Combatant0218f064*)allocator->Allocate(0x2d0);
+        combatant = (Combatant0218f064*)allocator->Allocate(ActorBaseSize);
         SetFlag0x20002048104((Obj02048104*)combatant);
     } else if (kind == 0x1000) {
-        combatant = (Combatant0218f064*)allocator->Allocate(0x2d4);
+        combatant = (Combatant0218f064*)allocator->Allocate(ActorExtendedSize);
         ResetSelectionState02054664((Obj02054664*)combatant);
         if (combatant) combatant->sequence = GetMaxFieldPlus1_02192548_02192548();
     } else if (kind == 0x4000) {
-        combatant = (Combatant0218f064*)allocator->Allocate(0x2f8);
+        combatant = (Combatant0218f064*)allocator->Allocate(ActorSpecialSize);
         ResetState020415d8((State020415d8*)combatant);
     } else if (kind == 4) {
-        combatant = (Combatant0218f064*)allocator->Allocate(0x2d4);
+        combatant = (Combatant0218f064*)allocator->Allocate(ActorExtendedSize);
         ResetSelectionState02054664((Obj02054664*)combatant);
         if (combatant) combatant->sequence = GetMaxFieldPlus1_02192548_02192548();
         initialize = 0;
@@ -166,9 +218,17 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
     StoreVec3AtField0x50_0203db34((unsigned char*)combatant, combatant->object.rotation_.x, ticket->rotation, combatant->object.rotation_.z);
     SetByte0xbeShiftPrev((Bytes02033b88*)combatant, 0);
     if (kind == 0x4000) {
+#if defined(jpn)
+        char* companion = entries->companion;
+#else
         char* companion = ZoneSpecials0218f064(zone)->companion;
+#endif
         if (companion) SetPointerFields02053c4c((char*)combatant, companion);
     } else RegisterOrAllocateCombatant02053c74((char*)combatant, id);
     if (mode > 0) SetLowNibble56b_0218f57c(combatant, mode);
     if (registerEffect) func_ov017_0218f5a4(resources, id, 0, 0, 0);
 }
+
+#if defined(jpn)
+#undef data_ov017_021d73a4
+#endif

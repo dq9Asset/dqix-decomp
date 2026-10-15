@@ -1,5 +1,91 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#if defined(jpn)
+#include "Resource/MessageSystem.h"
+extern "C" int func_02069408(void*, unsigned short);
+extern "C" int func_02069430(void*, unsigned short);
+extern "C" void func_0206cb14(void*, int, unsigned short);
+extern "C" void __clear(void*, int);
+extern "C" int func_02001aec(const void*, const void*, unsigned int);
+extern const char data_020f07ce[];
+extern const char data_020f0aeb[];
+
+// JPN: func_0206c794
+extern "C" ARM void func_0206c794(void* context) {
+    MessageSystem* self = static_cast<MessageSystem*>(context);
+    unsigned short caption[16];
+    unsigned char length = 0;
+    __clear(caption, sizeof(caption));
+    unsigned short* cursor = static_cast<unsigned short*>(self->secondLineBuffer);
+    int changed = 0;
+    // This position uses -1 as a sentinel; access its shared halfword as signed.
+    self->h1944 = 0;
+    unsigned char previousStatus = self->b19c2;
+    for (;;) {
+        if (func_02069408(self, *cursor)) {
+            length = 0;
+            reinterpret_cast<short&>(self->h1944) = -1;
+            self->lineGlyphCount = 0;
+            self->b19c4 = 0;
+            changed = 1;
+            break;
+        }
+        if (!func_02069430(self, *cursor)) {
+            if (func_02001aec(cursor, data_020f07ce, 2) == 0) {
+                self->b19c2 = 0;
+                break;
+            }
+            caption[length] = *cursor;
+            length = (unsigned char)(length + 1) & 15;
+        }
+        reinterpret_cast<short&>(self->h1944)++;
+        cursor++;
+    }
+    cursor++;
+    for (;;) {
+        if (func_02069408(self, *cursor)) break;
+        if (!func_02069430(self, *cursor)) {
+            if (func_02001aec(cursor, data_020f0aeb, 2) == 0) {
+                length = 0;
+                reinterpret_cast<short&>(self->h1944) = -1;
+                self->lineGlyphCount = 0;
+                self->b19c4 = 0;
+                self->b19c2 = previousStatus;
+                changed = 1;
+                break;
+            }
+            if (func_02001aec(cursor, data_020f07ce, 2) == 0) break;
+        }
+        cursor++;
+    }
+    if (!self->b19c2 && length) {
+        unsigned short slot;
+        for (unsigned char i = 0; i < self->lineGlyphCount; i++) {
+            slot = self->lineGlyphSlots[i];
+            if (!func_02069430(self, slot)) {
+                MessageGlyphSlot* glyph = &self->glyphs[slot];
+                if (glyph->bitmapIndex >= 0 &&
+                    *reinterpret_cast<unsigned short*>(glyph->encodedCharacter) != caption[i]) {
+                    changed = 1;
+                    break;
+                }
+            }
+        }
+    }
+    if (changed) {
+        for (unsigned char i = 0; i < self->lineGlyphCount; i++)
+            func_0206cb14(self, 10, self->lineGlyphSlots[i]);
+        memset(self->lineGlyphSlots, 0xff01, sizeof(self->lineGlyphSlots));
+        self->b19c3 = 0;
+    } else if (self->lineGlyphCount) {
+        self->tokenCount = (short)self->h1944;
+        *reinterpret_cast<int*>(reinterpret_cast<char*>(self) + 0x40) = (short)self->h1944;
+        self->tokenIndex = (short)self->h1944;
+        return;
+    }
+    self->lineGlyphCount = 0;
+}
+#else
 
 struct Entry0204254c { int value; signed char width; signed char advance : 6; signed char field5 : 2; unsigned char field6[2]; };
 Entry0204254c* FindEntryByKey0204254c(int, int);
@@ -124,3 +210,5 @@ extern "C" ARM void func_0206ad74(Caption0206ad74* self) {
     }
     self->count = 0;
 }
+
+#endif

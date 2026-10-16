@@ -1,5 +1,12 @@
 #include "globaldefs.h"
 
+#if defined(jpn)
+enum { WindowOffset = 0xe20, ModeOffset = 0x1a80, HeightPreset = 22, PositionPreset = 14, PositionMode = 12, PositionX = 14, LongAnimationPreset = 41 };
+#define data_ov002_0216cb48 data_ov002_0216d150
+#else
+enum { WindowOffset = 0xec8, ModeOffset = 0x1bb8, HeightPreset = 21, PositionPreset = 13, PositionMode = 11, PositionX = 17, LongAnimationPreset = 38 };
+#endif
+
 struct Overlay2LayoutPreset {
     unsigned char id, width, height;
     signed char x, y;
@@ -15,14 +22,16 @@ struct Overlay2LayoutParameters {
     inline void setExtra(short a, short b) { extra0 = a; extra1 = b; }
 };
 struct Overlay2LayoutState {
-    unsigned char unknown00[0xec8];
+    unsigned char unknown00[WindowOffset];
     Overlay2LayoutParameters parameters;
-    unsigned char unknownF80[0x1bb8 - 0xf80];
+    unsigned char unknownAfterParameters[ModeOffset - WindowOffset - sizeof(Overlay2LayoutParameters)];
     int mode;
 };
 extern "C" const Overlay2LayoutPreset data_ov002_0216cb48[];
-extern "C" void func_ov002_02156080(Overlay2LayoutState*, short*, short*);
+extern "C" void func_ov002_02156080(void*, short*, short*);
 
+// USA: func_ov002_0215be00
+// JPN: func_ov002_0215cf30
 extern "C" ARM void func_ov002_0215be00(Overlay2LayoutState* state, int id, short inputX, short inputY) {
     for (int i = 0; data_ov002_0216cb48[i].id != 255; ++i) {
         const Overlay2LayoutPreset* preset = &data_ov002_0216cb48[i];
@@ -35,7 +44,7 @@ extern "C" ARM void func_ov002_0215be00(Overlay2LayoutState* state, int id, shor
         parameters->setPosition(preset->x, preset->y);
         parameters->setExtra(preset->extra0, preset->extra1);
         parameters->active = 1;
-        if (preset->id == 21) {
+        if (preset->id == HeightPreset) {
             short entries[9], height;
             short displacement = 0;
             func_ov002_02156080(state, entries, &height);
@@ -47,13 +56,17 @@ extern "C" ARM void func_ov002_0215be00(Overlay2LayoutState* state, int id, shor
             if (displacement < 0) displacement = 0;
             parameters->setPosition(preset->x, preset->y - displacement);
         }
-        if (preset->id == 13 && state->mode == 11) {
-            parameters->x = 17;
+        if (preset->id == PositionPreset && state->mode == PositionMode) {
+            parameters->x = PositionX;
             parameters->y = 16;
         }
         int frames = 10;
-        if (id == 38) frames = 12;
+        if (id == LongAnimationPreset) frames = 12;
         parameters->frames = frames;
         break;
     }
 }
+
+#if defined(jpn)
+#undef data_ov002_0216cb48
+#endif

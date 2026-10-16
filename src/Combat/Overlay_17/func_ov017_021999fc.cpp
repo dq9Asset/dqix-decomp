@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
+#include "Resource/GameResources.h"
 #include "System/ColorEffects.h"
 #include "System/Graphics.h"
 
@@ -37,6 +38,15 @@ struct BackgroundBytes021999fc {
     unsigned char values[2];
 };
 
+#if defined(jpn)
+#define data_ov017_021d73f8 data_ov017_021d7858
+#define data_ov017_021d7423 data_ov017_021d7872
+#define data_ov017_021d643c data_ov017_021d688c
+enum { MenuWindowOffset = 0x3a90, MenuPixelsOffset = 0x3e54 };
+#else
+enum { MenuWindowOffset = 0x3cb0, MenuPixelsOffset = 0x4074 };
+#endif
+
 extern char data_ov017_021d73f8[];
 extern char data_ov017_021d7412[];
 extern char data_ov017_021d7423[];
@@ -66,7 +76,7 @@ struct TextWindow021999fc {
 struct FieldMenu021999fc {
     char unk_0[0x178];
     SafeAllocator allocator_;
-    char unk_18c[0x3cb0 - 0x18c];
+    char unk_18c[MenuWindowOffset - 0x18c];
     TextWindow021999fc* window_;
     BackgroundGraphics021999fc backgrounds_[2];
     Canvas021999fc canvases_[4];
@@ -77,7 +87,15 @@ struct FieldMenu021999fc {
     Struct020dfc40* texts_;
 };
 
+typedef char MenuWindowLayout[(int)&((FieldMenu021999fc*)0)->window_ == MenuWindowOffset ? 1 : -1];
+typedef char MenuPixelsLayout[(int)&((FieldMenu021999fc*)0)->canvasPixels_ == MenuPixelsOffset ? 1 : -1];
+typedef char MenuAllocatorLayout[(int)&((FieldMenu021999fc*)0)->allocator_ == 0x178 ? 1 : -1];
+typedef char RealMenuAllocatorLayout[(int)&((GameResources*)0)->allocator_array_38[16] == 0x178 ? 1 : -1];
+typedef char MenuBackgroundSize[sizeof(BackgroundGraphics021999fc) == 0x20 ? 1 : -1];
+typedef char MenuCanvasSize[sizeof(Canvas021999fc) == 0xe0 ? 1 : -1];
+
 // USA: func_ov017_021999fc
+// JPN: func_ov017_0219a5ac
 extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
     if (self->canvasPixels_ != 0)
         return;
@@ -88,7 +106,11 @@ extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
         self->allocator_.Reset();
         self->texts_ = (Struct020dfc40*)self->allocator_.Allocate(0x18);
         ResetStruct020dfc40(self->texts_);
+#if defined(jpn)
+        self->task_ = BackgroundLoader::GetInstance()->QueueLoadFile(data_ov017_021d73f8, NULL);
+#else
         self->task_ = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d73f8, data_ov017_021d7412, NULL);
+#endif
         self->step_++;
     }
     else if (self->step_ == 1)

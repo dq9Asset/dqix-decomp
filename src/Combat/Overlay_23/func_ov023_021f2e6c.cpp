@@ -130,7 +130,6 @@ struct BinarySearchByComparatorStruct;
 void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
-extern "C" void func_020de968(int,char*);
 extern "C" void func_0204500c(void*,char*,int);
 extern "C" int func_020e052c(void*,void*,const char*,void*,short,unsigned char);
 #endif
@@ -174,7 +173,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                 if (name != 0) SetIndexedName02046574((Obj02046574*)st, 0, *(char**)name);
                 char rawName[0x40];
                 __clear(rawName,0x40);
-                func_020de968(count,rawName);
+                DispatchIfCountPositive020dcf7c(count,rawName);
                 SetIndexedName02046574((Obj02046574*)st, 1, rawName);
 #else
                 int key = 0x29;

@@ -82,7 +82,6 @@ struct Menu_02158b3c {
 };
 
 #if defined(jpn)
-extern "C" void func_020de968(int value, char* text);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
 #endif
 
@@ -125,7 +124,7 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
 #if defined(jpn)
             char name[0x40];
             __clear(name, 0x40);
-            func_020de968(e->count_, name);
+            DispatchIfCountPositive020dcf7c(e->count_, name);
             _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
 #else
             DispatchIfCountPositive020dcf7c(e->count_, &s);
@@ -139,7 +138,7 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
 #if defined(jpn)
         char name[0x40];
         __clear(name, 0x40);
-        func_020de968(value, name);
+        DispatchIfCountPositive020dcf7c(value, name);
         _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
 #else
         DispatchIfCountPositive020dcf7c(value, &s);

@@ -1,4 +1,22 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#include "Resource/MessageGlyphSlot.h"
+
+// JPN: func_02041c10
+extern "C" ARM void func_02041c10(State0204166c* slot, const char* character, unsigned char* pixels, int bitmapIndex, unsigned int textureOffset, unsigned char fontSize) {
+    if (!pixels) return;
+    ResetState0204166c(slot);
+    slot->encodedCharacter[0] = character[0];
+    slot->encodedCharacter[1] = character[1];
+    slot->bitmapIndex = bitmapIndex;
+    slot->pixels = pixels;
+    slot->textureOffset = textureOffset;
+    slot->fontPixelSize = fontSize;
+    slot->pendingUpload = 1;
+    slot->renderFlag1 = 0;
+    slot->renderFlag2 = 0;
+}
+#else
 
 struct State0204166c {
     int f0;
@@ -32,3 +50,5 @@ ARM void InitState0204166c020416e0(struct State0204166c* s, unsigned char arg1, 
     s->flag2 = 0;
     s->flag3 = arg7;
 }
+
+#endif

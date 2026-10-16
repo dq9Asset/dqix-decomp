@@ -28,6 +28,14 @@ int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* records);
 int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* records);
 void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
 
+#if defined(jpn)
+extern char data_ov008_0218c0d5[];
+extern "C" int func_020e2168(char*, const char*, int, int, bool);
+extern "C" void func_02041f50(char*, char*);
+int StringLength_020d2ff0(const char*);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
+#endif
 extern char data_ov008_0218b465[];
 extern char data_ov008_0218b47c[];
 
@@ -75,7 +83,11 @@ struct PartyData
 
 struct Hero
 {
+#if defined(jpn)
+    char unk_0[0x144];
+#else
     char unk_0[0x150];
+#endif
     PartyData* partyData_;
 };
 
@@ -84,10 +96,15 @@ struct BattleRecords
     char unk_0[0xa0];
     char texts_[0x18];
     char* text_;
+#if defined(jpn)
+    char unk_bc[0xb30 - 0xbc];
+#else
     char unk_bc[0xb34 - 0xbc];
+#endif
     GuestRecords* guestRecords_;
 };
 
+// JPN: func_ov008_02188408 (021890ec)
 // USA: func_ov008_02188408
 extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kind, ClearRecords* records)
 {
@@ -97,6 +114,19 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
     if (records != NULL)
     {
         Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
+#if defined(jpn)
+        char* name = self->text_ + 0x780;
+        func_020e2168(name, data_ov008_0218c0d5, records->title_, hero->partyData_->appearance_.female_, 1);
+        char plainName[0x80];
+        __clear(plainName, sizeof(plainName));
+        func_02041f50(name, plainName);
+        int length = StringLength_020d2ff0(plainName);
+        int x = (0x80 - (length / 2) * 12) / 2;
+        int y = 6;
+        if (length != StringLength_020d2ff0(name)) y = 8;
+        AppendXYTag_02041a90(text, x, y);
+        AppendString02042058(text, name);
+#else
         char* name = self->text_ + 0x8e0;
         BackgroundLoader::AddLockGlobal();
         unsigned int size = 0;
@@ -116,6 +146,7 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         AppendXYTag_02041a90(text, x, 6);
         if (name != NULL)
             AppendString02042058(text, name);
+#endif
         return;
     }
     int count = 3;
@@ -167,13 +198,33 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         }
         func_02046380(messages);
         StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, count1);
+#if defined(jpn)
+        SetByteInRange_020465f0((unsigned char*)messages, 0, 3);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+#endif
         StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, count2);
+#if defined(jpn)
+        SetByteInRange_020465f0((unsigned char*)messages, 1, 3);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 1, 1);
+#endif
         StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, count3);
+#if defined(jpn)
+        SetByteInRange_020465f0((unsigned char*)messages, 2, 3);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 2, 1);
+#endif
         StoreInArray0x8b0_020465c0((StoreStruct*)messages, 3, count4);
+#if defined(jpn)
+        SetByteInRange_020465f0((unsigned char*)messages, 3, 3);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 3, 1);
+#endif
         for (int i = 0; i < count; i++)
         {
+#if defined(jpn)
+            AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x8c)));
+#else
             AppendYTag_02041a5c(text, i * 15 + 4);
             AppendFormatted0204201c(text, (int)GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x8c)), 0x18);
+#endif
         }
     }
 }

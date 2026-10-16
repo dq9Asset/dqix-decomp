@@ -6770,6 +6770,10 @@ src/Combat/Main/InitStageAndNotify02001578.cpp:
     complete
     .text start:0x02001494 end:0x020014b8
 
+src/Combat/Main/InitState0204166c020416e0.cpp:
+    complete
+    .text start:0x02041c10 end:0x02041c7c
+
 src/Combat/Main/InitState0204a120.cpp:
     complete
     .text start:0x0204af40 end:0x0204af90

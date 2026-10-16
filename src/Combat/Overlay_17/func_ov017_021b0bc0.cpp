@@ -33,13 +33,16 @@ void CopyRegionsAndClearField0206e70c(char*);
 void ApplySlotBytesToBattleStruct_0206df14(unsigned char*);
 float GetActiveBitIndex_020103e8(GameState*);
 void InitFieldsFromCombatant_0219bcac(unsigned char);
-unsigned char* GetField0x3f8Address_0200fd0c(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 void* GetGlobal02109418_02094d6c();
 void* CallFunc0205ec34_020965f8();
 void* ZeroInitReturn020de824(void*);
 void ZeroInit020de848(void*);
 void InitStruct020de1d4(StructDE1D4*);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
+#if defined(jpn)
+extern "C" void* func_020e08f0(int index, unsigned int* outLength);
+#endif
 int InitAndDispatch020def44(int, int, int, short);
 void InitStruct0207cbe8(char*);
 extern "C" void func_0207cc18(void*, void*);
@@ -63,13 +66,21 @@ struct ZoneState021b0bc0 {
     int f1b48;
     char pad1b4c[0x1b61 - 0x1b4c];
     unsigned char f1b61;
+#if defined(jpn)
+    char pad1b62[0x1f94 - 0x1b62];
+#else
     char pad1b62[0x1f74 - 0x1b62];
+#endif
     unsigned short f1f74;
     unsigned short f1f76;
 };
 
 struct Zone021b0bc0 {
+#if defined(jpn)
+    char pad0[0x860];
+#else
     char pad0[0x840];
+#endif
     ZoneState021b0bc0 state;
 };
 
@@ -108,7 +119,11 @@ struct Self021b0bc0 {
     unsigned char mode;
     char padA[2];
     unsigned char leader;
+#if defined(jpn)
+    char padD[0x214 - 0xd];
+#else
     char padD[0x284 - 0xd];
+#endif
     unsigned char f284;
     char pad285[3];
     Snapshot021b0bc0* snapshot;
@@ -122,7 +137,22 @@ struct TextContext021b0bc0 {
     int field34;
 };
 
+typedef char RestoreSnapshotWordCheck[(int)&((Snapshot021b0bc0*)0)->f2c4 == 0x2c4 ? 1 : -1];
+typedef char RestoreContextStateCheck[(int)&((ZoneState021b0bc0*)0)->f1b34 == 0x1b34 ? 1 : -1];
+#if defined(jpn)
+typedef char RestoreFlagCheck[(int)&((Self021b0bc0*)0)->f284 == 0x214 ? 1 : -1];
+typedef char RestoreSnapshotCheck[(int)&((Self021b0bc0*)0)->snapshot == 0x218 ? 1 : -1];
+typedef char RestoreZoneContextCheck[(int)&((Zone021b0bc0*)0)->state == 0x860 ? 1 : -1];
+typedef char RestoreZonePairCheck[(int)&((ZoneState021b0bc0*)0)->f1f74 == 0x1f94 ? 1 : -1];
+#else
+typedef char RestoreFlagCheck[(int)&((Self021b0bc0*)0)->f284 == 0x284 ? 1 : -1];
+typedef char RestoreSnapshotCheck[(int)&((Self021b0bc0*)0)->snapshot == 0x288 ? 1 : -1];
+typedef char RestoreZoneContextCheck[(int)&((Zone021b0bc0*)0)->state == 0x840 ? 1 : -1];
+typedef char RestoreZonePairCheck[(int)&((ZoneState021b0bc0*)0)->f1f74 == 0x1f74 ? 1 : -1];
+#endif
+
 // USA: func_ov017_021b0bc0
+// JPN: func_ov017_021b1258
 extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
     char list[0x18];
     StructDE1D4 entry;
@@ -134,6 +164,9 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
     GameResources* res = func_ov017_0218b5b0();
     SearchStruct* search = (SearchStruct*)func_0202ae18();
     Zone021b0bc0* zone = (Zone021b0bc0*)func_02012fe4();
+#if defined(jpn)
+    ZoneState021b0bc0* state = GetZoneState(zone);
+#endif
     func_0202c288(search);
 
     int show = 1;
@@ -185,15 +218,28 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
 
         Snapshot021b0bc0* snap = self->snapshot;
         SetByte0x5cdaAndClearField0xa_020120d4((unsigned char*)gs, snap->f0);
+#if defined(jpn)
+        memcpy((char*)gs + 0x5a7c, snap->block4, sizeof(snap->block4));
+        memcpy((char*)gs + 0x5c0c, snap->block194, sizeof(snap->block194));
+#else
         memcpy((char*)gs + 0x5cdc, snap->block4, sizeof(snap->block4));
         memcpy((char*)gs + 0x5e6c, snap->block194, sizeof(snap->block194));
+#endif
         memcpy(GetField0x74deForValidIndex_020120a0((char*)gs, 0), snap->block2a4, sizeof(snap->block2a4));
         SetWord0x71f8_0201206c(gs, snap->f2c4);
+#if defined(jpn)
+        SetF1b34(state, snap->f2c8);
+        SetF1b48(state, snap->f2cc);
+        SetF1b38(state, snap->f2d0);
+        SetF1b3c(state, (unsigned char)snap->f2d2);
+        SetF1b61(state, 0);
+#else
         SetF1b34(GetZoneState(zone), snap->f2c8);
         SetF1b48(GetZoneState(zone), snap->f2cc);
         SetF1b38(GetZoneState(zone), snap->f2d0);
         SetF1b3c(GetZoneState(zone), (unsigned char)snap->f2d2);
         SetF1b61(GetZoneState(zone), 0);
+#endif
         zone->state.f1f74 = snap->f2d4;
         zone->state.f1f76 = snap->f2d5;
         for (int i = 0; i < 4; i++) {
@@ -213,7 +259,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         lighting->dayNightTimer_ = gs->GetDayTimer();
         lighting->timeOfDayIndex_ = gs->GetTimeOfDay();
         InitFieldsFromCombatant_0219bcac(1);
-        GetField0x3f8Address_0200fd0c(gs)[0xa] = 0;
+        ((unsigned char*)GetField0x3f8Address_0200fd0c(gs))[0xa] = 0;
         GetGlobal02109418_02094d6c();
         CallFunc0205ec34_020965f8();
 
@@ -221,7 +267,11 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         ZeroInit020de848(list);
         InitStruct020de1d4(&entry);
         BackgroundLoader::AddLockGlobal();
+#if defined(jpn)
+        void* data = func_020e08f0(8, &size);
+#else
         void* data = ExtractFileFromGP2(data_020f2a18, data_020f2a0c, &size);
+#endif
         if (data != NULL) {
             InitAndDispatch020def44((int)&entry, (int)data, size, 0x5612);
         }

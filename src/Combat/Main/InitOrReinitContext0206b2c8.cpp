@@ -1,5 +1,30 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#if defined(jpn)
+extern "C" unsigned short* func_0206c730(void*, unsigned short, unsigned short*);
+void ReinitController02043204(char*);
+extern "C" void func_02043124(void*);
+extern "C" void func_0206b104(void*);
+extern "C" void func_0206aa28(void*);
+
+// JPN: func_0206cbe8
+extern "C" ARM void func_0206cbe8(void* context, unsigned short token, unsigned short* cursor) {
+    char* obj = static_cast<char*>(context);
+    unsigned short* found = func_0206c730(context, token, cursor);
+    if (found == NULL) {
+        ReinitController02043204(obj);
+        func_02043124(context);
+        return;
+    }
+    func_0206b104(context);
+    memset(*reinterpret_cast<void**>(obj + 0x18), 0, 0x140);
+    memset(*reinterpret_cast<void**>(obj + 0x1c), 0, 0x140);
+    *reinterpret_cast<unsigned short**>(obj + 0x24) = found;
+    *reinterpret_cast<unsigned short**>(obj + 0x20) = found;
+    func_0206aa28(context);
+    *reinterpret_cast<int*>(obj + 0x870) = 5;
+}
+#else
 
 extern "C" void* func_0206ac94(void* obj);
 void ReinitController02043204(char* obj);
@@ -41,3 +66,5 @@ ARM void InitOrReinitContext0206b2c8(Ctx0206b2c8* obj, int, void*) {
     int len = StringLength_020d2ff0((const char*)obj->field60);
     memcpy(obj->field50, obj->field60, len);
 }
+
+#endif

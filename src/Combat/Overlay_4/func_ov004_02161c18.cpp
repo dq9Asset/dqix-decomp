@@ -1,11 +1,21 @@
 #include <globaldefs.h>
 
 struct MenuState02161c18 {
+#if defined(jpn)
+    unsigned char pad0[4];
+    signed char field6;
+    unsigned char pad5;
+    unsigned char field7;
+    unsigned char pad7;
+    signed char fieldB;
+    unsigned char pad9[3];
+#else
     unsigned char pad0[6];
     signed char field6;
     unsigned char field7;
     unsigned char pad8[3];
     signed char fieldB;
+#endif
     char* textBuf;
     unsigned char pad10[0xc];
     int combatantId;
@@ -58,9 +68,15 @@ void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag)
 extern struct MenuState02161c18 data_ov004_021707e8;
 extern struct MenuPage02161c18 data_ov004_02170b90;
 extern int data_ov004_0216fe90[];
+#if defined(jpn)
+extern short data_ov004_021710a8[];
+extern unsigned char data_ov004_02171090[];
+#else
 extern short data_ov004_02170818[];
 extern unsigned char data_ov004_02170814[];
+#endif
 
+// JPN: func_ov004_02161c18 (021624fc)
 // USA: func_ov004_02161c18
 extern "C" ARM int func_ov004_02161c18(void* self) {
     int state;
@@ -100,7 +116,9 @@ extern "C" ARM int func_ov004_02161c18(void* self) {
             node = func_ov023_021f6880(obj, j + 0x65);
             if (node != 0) node->flags &= ~8;
         }
-        func_ov004_0215e574(self, 0xc, 0xff, 0, 0);
+    #if !defined(jpn)
+    func_ov004_0215e574(self, 0xc, 0xff, 0, 0);
+#endif
 
         page = &data_ov004_02170b90;
         if (page->count <= 1) page->cursor = 0;
@@ -117,17 +135,25 @@ extern "C" ARM int func_ov004_02161c18(void* self) {
                 int cid;
                 int base;
                 SetField38IfState8_0215e49c(self, side + 0xd, i + 0x19f);
+#if !defined(jpn)
                 if (side == 0) {
                     func_ov004_0215e574(self, side + 0xd, 0x80, 0, 0);
                 } else {
                     func_ov004_0215e574(self, side + 0xd, 0x80, 0x80, 0);
                 }
+#endif
                 node = func_ov023_021f6880(obj, side + 0xd);
                 if (node == 0) continue;
                 cid = data_ov004_021707e8.combatantId;
+#if defined(jpn)
+                if (idx != data_ov004_021710a8[cid] && idx <= 0xe) st = 3;
+                else st = 0xf;
+                if (idx == 0xd && data_ov004_02171090[cid] == 1) st = 0xf;
+#else
                 if (idx != data_ov004_02170818[cid] && idx <= 0xe) st = 3;
                 else st = 0xf;
                 if (idx == 0xd && data_ov004_02170814[cid] == 1) st = 0xf;
+#endif
                 node->SetState(st);
                 if (st == 0xf) mark[side] = 1;
 
@@ -166,8 +192,10 @@ extern "C" ARM int func_ov004_02161c18(void* self) {
         }
         SetField38IfState8_0215e49c(self, 0x31, 0x1e2);
         SetField38IfState8_0215e49c(self, 0x32, 0x1e3);
+#if !defined(jpn)
         func_ov004_0215e574(self, 0x31, 0xff, 0, 0);
         func_ov004_0215e574(self, 0x32, 0xff, 0, 0);
+#endif
     }
 
     state = 0xf;

@@ -56,12 +56,18 @@ struct Buf02161514 {
 
 extern unsigned char data_ov004_021707e8;
 extern int data_ov004_02170854[];
+#if defined(jpn)
+extern unsigned char data_ov004_02170568[];
+extern unsigned char data_ov004_021710b0[];
+#else
 extern unsigned char data_ov004_0216fde8[];
+#endif
 extern unsigned char data_ov004_02170838[];
 extern unsigned char data_ov004_02170820[];
 #define D0 (&data_ov004_021707e8)
 #define D1 (data_ov004_02170854)
 
+// JPN: func_ov004_02161514 (02161ea4)
 // USA: func_ov004_02161514
 extern "C" ARM int func_ov004_02161514(void* a) {
     Ctx0209a810 ctx;
@@ -87,7 +93,15 @@ extern "C" ARM int func_ov004_02161514(void* a) {
     flag = 0;
     if (D0[2] != D1[D0[field8]]) flag = 1;
 
+#if defined(jpn)
+    if (*(signed char*)(D0 + field6) == 0) {
+        func_ov004_0215e47c(a, 3)->field0xc &= ~4;
+    } else {
+        func_ov004_0215e47c(a, 3)->field0xc |= 4;
+    }
+#else
     func_ov004_0215e47c(a, 3)->field0xc |= 4;
+#endif
 
     t = D1[D0[field8]];
     if (t != 1 && t != 4 && t != 7) {
@@ -148,8 +162,12 @@ extern "C" ARM int func_ov004_02161514(void* a) {
             for (j = 0xc; j < 0x30; j++) SetField38IfState8_0215e49c(a, j, 0x3a);
             SetField38IfState8_0215e49c(a, 0x31, 0x1e1);
             SetField38IfState8_0215e49c(a, 0x32, 0x1e3);
+#if !defined(jpn)
             func_ov004_0215e574(a, 0x31, 0xff, 0, 0);
+#endif
+#if !defined(jpn)
             func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
+#endif
             SetField38IfState8_0215e49c(a, 0xc, 0x3b);
             SetField38IfState8_0215e49c(a, 0xd, 1);
             if (CheckAfterTwoCalls_0215e460()) {
@@ -159,8 +177,12 @@ extern "C" ARM int func_ov004_02161514(void* a) {
             }
             same = 1;
             if (D0[2] != D1[D0[field8]]) same = 0;
-            for (i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
+#if defined(jpn)
+                node = func_ov023_021f6880(obj, data_ov004_02170568[i]);
+#else
                 node = func_ov023_021f6880(obj, data_ov004_0216fde8[i]);
+#endif
                 if (node) {
                     if (same) node->SetState(0xf);
                     else node->SetState(3);
@@ -173,8 +195,12 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         for (j = 0xc; j < 0x30; j++) SetField38IfState8_0215e49c(a, j, 0x3a);
         SetField38IfState8_0215e49c(a, 0x31, 0x1e1);
         SetField38IfState8_0215e49c(a, 0x32, 0x1e3);
+#if !defined(jpn)
         func_ov004_0215e574(a, 0x31, 0xff, 0, 0);
+#endif
+#if !defined(jpn)
         func_ov004_0215e574(a, 0x32, 0xff, 0, 0);
+#endif
         SetField38IfState8_0215e49c(a, 0xc, 0x3b);
         SetField38IfState8_0215e49c(a, 0xd, 1);
         if (CheckAfterTwoCalls_0215e460()) {
@@ -184,8 +210,12 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         }
         same = 1;
         if (D0[2] != D1[D0[field8]]) same = 0;
-        for (i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
+#if defined(jpn)
+            node = func_ov023_021f6880(obj, data_ov004_02170568[i]);
+#else
             node = func_ov023_021f6880(obj, data_ov004_0216fde8[i]);
+#endif
             if (node) {
                 if (same) node->SetState(0xf);
                 else node->SetState(3);
@@ -201,6 +231,7 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         }
     }
 
+#if !defined(jpn)
     if (showAll) {
         unsigned char n = 0;
         int m;
@@ -211,10 +242,17 @@ extern "C" ARM int func_ov004_02161514(void* a) {
         if (n <= 1) func_ov004_0215e47c(a, 3)->field0xc &= ~4;
     }
 
+#endif
+
     {
         int d;
+#if defined(jpn)
+        *(signed char*)(D0 + fieldB) = data_ov004_021710b0[D1[D0[field8]] - 1];
+        d = *(signed char*)(D0 + fieldB) - data_ov004_021710b0[D0[2] - 1];
+#else
         *(signed char*)(D0 + fieldB) = data_ov004_02170820[D1[D0[field8]] - 1];
         d = *(signed char*)(D0 + fieldB) - data_ov004_02170820[D0[2] - 1];
+#endif
         if (d < 0) d += *(signed char*)(D0 + field6);
         *(signed char*)(D0 + fieldB) = d;
     }

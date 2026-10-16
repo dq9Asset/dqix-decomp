@@ -50,12 +50,7 @@ struct Struct_0205d81c;
 struct StructA0205d5d0;
 TextResources* GetGlobalField0x1c020421a0();
 MenuSkill* GetBoundedField420_0217199c(void*, int);
-#if defined(jpn)
-extern "C" void func_020dea34(int, char*);
-#define NotifyLocalizedResourceLoad020dd040 func_020dea34
-#else
 void NotifyLocalizedResourceLoad020dd040(int, char*);
-#endif
 extern "C" void func_02046608(TextResources*, int, char*, char*, int, int, int);
 extern "C" void func_02046380(TextResources*);
 int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject*);

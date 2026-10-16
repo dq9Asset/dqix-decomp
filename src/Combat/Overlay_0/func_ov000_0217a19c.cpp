@@ -27,12 +27,7 @@ struct Entry02170cf8 {
 
 int GetGlobalField0x1c020421a0();
 extern "C" struct Entry02170cf8* func_ov000_02170cf8(char* obj, int val);
-#if defined(jpn)
-extern "C" void func_020dea34(int len, char* buf);
-#define NotifyLocalizedResourceLoad020dd040 func_020dea34
-#else
 void NotifyLocalizedResourceLoad020dd040(int len, char* buf);
-#endif
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" void func_02046608(int g, int b, char* src, char* dst, int size, int f, int h);
 void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);

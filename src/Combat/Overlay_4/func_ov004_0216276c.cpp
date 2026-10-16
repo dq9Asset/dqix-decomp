@@ -31,10 +31,22 @@ struct Equipment0216276c {
     unsigned short items[13];
     unsigned char levels[13];
 };
-struct Selection0216276c { char padding[7]; unsigned char state; char padding8[0x14]; int combatant; };
+struct Selection0216276c {
+#if defined(jpn)
+    char padding[6]; unsigned char state; char padding7[0x15];
+#else
+    char padding[7]; unsigned char state; char padding8[0x14];
+#endif
+    int combatant;
+};
 extern Selection0216276c data_ov004_021707e8;
+#if defined(jpn)
+extern int data_ov004_021705c4[];
+extern unsigned char data_ov004_021710d5[];
+#else
 extern int data_ov004_0216fe5c[];
 extern unsigned char data_ov004_02170845[];
+#endif
 Equipment0216276c* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void func_ov004_0215e574(void*, int, int, int, int);
@@ -53,7 +65,9 @@ extern "C" ARM int func_ov004_0216276c(void* self) {
     Equipment0216276c* equipment = GetFieldAt0x150_02053c6c(reinterpret_cast<unsigned char*>(combatant));
     if (!equipment) return 0;
     void* list = func_ov011_021849c8(self);
+#if !defined(jpn)
     func_ov004_0215e574(self, 12, 255, 0, 0);
+#endif
     unsigned char index = 0;
     while (index < 12) {
         SlotNode0216276c* node = func_ov023_021f6880(list, index + 0x51);
@@ -71,10 +85,16 @@ extern "C" ARM int func_ov004_0216276c(void* self) {
         ++index;
     }
     unsigned char row = 0;
+#if defined(jpn)
+    int* slots = data_ov004_021705c4;
+    unsigned char* enabled = data_ov004_021710d5;
+#else
     int* slots = data_ov004_0216fe5c;
+    unsigned char* enabled = data_ov004_02170845;
+#endif
     for (int index = 0; index < 12; ++index) {
         int tableIndex = index + 1;
-        if (!GetFlagBitFromField150_0215eb20(combatant, slots[tableIndex]) || !data_ov004_02170845[tableIndex]) continue;
+        if (!GetFlagBitFromField150_0215eb20(combatant, slots[tableIndex]) || !enabled[tableIndex]) continue;
         SlotNode0216276c* node = func_ov023_021f6880(list, row + 13);
         if (!node) continue;
         node->flags &= ~8;
@@ -105,6 +125,9 @@ extern "C" ARM int func_ov004_0216276c(void* self) {
                 const Vector3i& source = node->GetPosition();
                 position = source;
                 position.x += (width + 2) << 12;
+#if defined(jpn)
+                position.y += 0x2000;
+#endif
                 node = func_ov004_0215e47c(self, row + 38);
                 if (node) {
                     node->SetPosition(position);

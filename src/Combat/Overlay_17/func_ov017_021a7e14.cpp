@@ -297,7 +297,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if defined(jpn)
         func_0204500c((MessageSystem*)g, message, 0);
 #else
-        func_0204500c((MessageSystem*)g, message, 0, (void*)0xe3);
+        func_0204500c((MessageSystem*)g, message, 0, 0xe3);
 #endif
         self->state = 3;
     } else if (self->state == 3) {
@@ -335,7 +335,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if defined(jpn)
             func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0);
 #else
-            func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0, (void*)0xe3);
+            func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0, 0xe3);
 #endif
             self->state = 7;
         }
@@ -350,7 +350,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0);
 #else
-                func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0, (void*)0xe3);
+                func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x71), 0, 0xe3);
 #endif
                 self->state = 7;
             } else {
@@ -375,7 +375,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x6f), 0);
 #else
-                func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x6f), 0, (void*)0xe3);
+                func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x6f), 0, 0xe3);
 #endif
                 self->state = 7;
             }
@@ -386,7 +386,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
 #if defined(jpn)
         func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x65), done);
 #else
-        func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x65), done, (void*)0xe3);
+        func_0204500c((MessageSystem*)g, (char*)GetFieldByKey020e0434(self->strings, 0x65), done, 0xe3);
 #endif
         self->state = 7;
     } else if (self->state == 7) {

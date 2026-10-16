@@ -172,7 +172,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
 #if defined(jpn)
         func_0204500c((MessageSystem*)global, (char*)&flag, 0);
 #else
-        func_0204500c((MessageSystem*)global, (char*)&flag, 0, (void*)0xe3);
+        func_0204500c((MessageSystem*)global, (char*)&flag, 0, 0xe3);
 #endif
         ReinitController02043204((char*)global);
         SetField0x98Bit0_0203d008((unsigned char*)entries);

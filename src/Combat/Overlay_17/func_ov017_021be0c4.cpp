@@ -117,7 +117,7 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
 #else
             sprintf(buffer, CallFunc020e0434With02153694_020e51cc(0x3f));
             SetIndexedName02046574(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
-            func_0204500c((MessageSystem*)controller, buffer, 0, (void*)0xe3);
+            func_0204500c((MessageSystem*)controller, buffer, 0, 0xe3);
 #endif
             controller->field_19b2 = 0;
             controller->active = 1;

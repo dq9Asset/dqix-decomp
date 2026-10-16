@@ -164,7 +164,7 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
                 func_0204500c((MessageSystem*)controller, text, 0);
 #else
                 sprintf(text, data_ov017_021d7eb2, grotto->GetPopupName());
-                func_0204500c((MessageSystem*)controller, text, 0, (void*)256);
+                func_0204500c((MessageSystem*)controller, text, 0, 256);
 #endif
                 controller->flag19b8 = 1;
                 controller->flag19af = 0;

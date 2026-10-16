@@ -200,14 +200,14 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0, (void*)0xe3);
+                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x23), 0, 0xe3);
 #endif
                 self->state = 0xc8;
             } else {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0, (void*)0xe3);
+                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x24), 0, 0xe3);
 #endif
                 self->state = 0x12c;
             }
@@ -251,7 +251,7 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
 #if defined(jpn)
                     func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0);
 #else
-                    func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0, (void*)0xe3);
+                    func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x26), 0, 0xe3);
 #endif
                     self->state = 0x12d;
                     SetFlagsAt0x244_020a28a0(flags, 2);
@@ -261,7 +261,7 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
 #if defined(jpn)
                 func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0);
 #else
-                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0, (void*)0xe3);
+                func_0204500c((MessageSystem*)window, (const char*)GetFieldByKey020e0434((Container020e0310*)self->container, 0x25), 0, 0xe3);
 #endif
                 self->state = 0x12d;
                 SetFlagsAt0x244_020a28a0(flags, 2);

@@ -30,16 +30,26 @@ struct Struct_0205d81c {
     u8 selected;
     u8 padb5[3];
 };
+#if defined(jpn)
+enum { WindowOffset = 0xe20, SpriteOffset = 0x19c0, MemberOffset = 0x1b32,
+       BlockingKey = 0x1a, PositionsKey = 0x19, FirstIcon = 0x14, SecondIcon = 0x17 };
+#else
+enum { WindowOffset = 0xec8, SpriteOffset = 0x1a68, MemberOffset = 0x1c6e,
+       BlockingKey = 0x19, PositionsKey = 0x18, FirstIcon = 0x12, SecondIcon = 0x15 };
+#endif
+
 struct FormationMenu {
-    u8 pad0[0xec8];
+    u8 pad0[WindowOffset];
     Struct_0205d81c elements;
-    u8 padf80[0x1a68 - 0xf80];
+    u8 padf80[SpriteOffset - WindowOffset - sizeof(Struct_0205d81c)];
     void* entryList;
-    u8 pad1a6c[0x1c6e - 0x1a6c];
+    u8 pad1a6c[MemberOffset - SpriteOffset - 4];
     s8 memberIds[5];
     u8 count;
+#if !defined(jpn)
     u8 pad1c74[0x245c - 0x1c74];
     short xOffset;
+#endif
 };
 struct FormationCombatStats {
     u8 pad0[0x3c];
@@ -51,15 +61,20 @@ Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
 void SetEntryFields02154bcc(int, int, void*, int, u8, u8);
 
+#if !defined(jpn)
 static inline short GetX(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->xOrigin; }
 static inline short GetY(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->yOrigin; }
 static inline short GetOffset(FormationMenu* self) { SDK_NULL_ASSERT(self); return self->xOffset; }
 
+#endif
+
 static inline int AddOrigin(const short* value, short origin) { SDK_NULL_ASSERT(value); return *value + origin; }
-static inline short AddPosition(short offset, short x) { short result = x + (offset + 3); return result; }
+static inline short AddPosition(short offset, short x) { return x + (offset + 3); }
 
 // USA: func_ov002_0215ab60
+// JPN: func_ov002_0215bf4c
 extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
+#if !defined(jpn)
     Elem_0205d81c* entry = FindElementByC40205d81c(&self->elements, 0x1a);
     if (entry && !(entry->flags & 0x20)) {
         short y = GetY(entry) * 8;
@@ -68,8 +83,9 @@ extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
         short positionX = AddPosition(GetOffset(self), x);
         SetEntryFields02154bcc(positionX, positionY, self->entryList, 0x2a, 0xc, 0xff);
     }
-    if (!FindElementByC40205d81c(&self->elements, 0x19)) {
-        Elem_0205d81c* positions = FindElementByC40205d81c(&self->elements, 0x18);
+#endif
+    if (!FindElementByC40205d81c(&self->elements, BlockingKey)) {
+        Elem_0205d81c* positions = FindElementByC40205d81c(&self->elements, PositionsKey);
         if (positions) {
             GameState* gameState = GameState::GetInstance();
             GetPtrField0x2a04_02010828(gameState);
@@ -86,10 +102,10 @@ extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
                     int positionX = AddOrigin(&x, originX);
                     int positionY = AddOrigin(&y, originY);
                     u16 icon = ((FormationCombatStats*)member->baseStats_)->icon;
-                    icon = icon + 0x12;
+                    icon = icon + FirstIcon;
                     SetEntryFields02154bcc(positionX, positionY, self->entryList, icon, (u8)(i + 0x4c), 0xff);
                     GetFourShortsAtIndex(positions, (short)(index + count + 1), &x, &y, &width, &height);
-                    SetEntryFields02154bcc(x + originX, y + originY, self->entryList, 0x15, (u8)(memberId + 0x50), (u8)(memberId + 9));
+                    SetEntryFields02154bcc(x + originX, y + originY, self->entryList, SecondIcon, (u8)(memberId + 0x50), (u8)(memberId + 9));
                 }
             }
         }

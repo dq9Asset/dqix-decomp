@@ -13,6 +13,11 @@ void InvokeTableEntryHandler020435a8(int, void*, void*, int);
 
 inline short GetLeft02043600(const Rectangle02043600* rectangle) { return rectangle->x; }
 
+#if defined(jpn)
+#define func_02043600 func_02043de0
+#endif
+
+// JPN: func_02043de0
 // USA: func_02043600
 extern "C" ARM void func_02043600(Border02043600* border, const Rectangle02043600* rectangle) {
     if (border == NULL || rectangle == NULL) return;
@@ -24,7 +29,9 @@ extern "C" ARM void func_02043600(Border02043600* border, const Rectangle0204360
     bottom -= border->rowOffset * 8;
     right -= 8;
     bottom -= 8;
+#if !defined(jpn)
     if (left < 0 || top < 0 || bottom < 0 || right < 0) return;
+#endif
     for (short x = left + 8; x < right; x += 8)
         InvokeTableEntryHandler020435a8((int)border, (void*)x, (void*)top, 1);
     for (short x = left + 8; x < right; x += 8)
@@ -38,3 +45,7 @@ extern "C" ARM void func_02043600(Border02043600* border, const Rectangle0204360
     InvokeTableEntryHandler020435a8((int)border, (void*)left, (void*)bottom, 5);
     InvokeTableEntryHandler020435a8((int)border, (void*)right, (void*)bottom, 7);
 }
+
+#if defined(jpn)
+#undef func_02043600
+#endif

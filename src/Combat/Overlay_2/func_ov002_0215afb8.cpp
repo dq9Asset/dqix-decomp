@@ -29,13 +29,22 @@ void IterateEntries0205a330(struct Container0205a330 *c, int arg);
 
 extern "C" void func_0205ae8c(void *obj);
 
+#if defined(jpn)
+enum { FlagsOffset = 0x22ac, WindowOffset = 0xe20, EntryListOffset = 0x19c4,
+       AnimationOffset = 0x1a68, RendererOffset = 0x19c0 };
+#else
+enum { FlagsOffset = 0x247c, WindowOffset = 0xec8, EntryListOffset = 0x1a6c,
+       AnimationOffset = 0x1ba0, RendererOffset = 0x1a68 };
+#endif
+
+// JPN: func_ov002_0215c318
 // USA: func_ov002_0215afb8  (semantic: UpdateCursorEntry_0215afb8)
 extern "C" ARM void func_ov002_0215afb8(char *obj) {
     struct Elem0205a3d0 *e;
 
-    if (!(*(int *) (obj + 0x2000 + 0x47c) & 4)) return;
+    if (!(*(int *) (obj + FlagsOffset) & 4)) return;
 
-    struct Elem_0205d81c *elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00));
+    struct Elem_0205d81c *elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c *) (obj + WindowOffset));
     if (elem == NULL) return;
     if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char *) elem)) return;
     struct Outer020e28dc *choice = *(struct Outer020e28dc **) (obj + 4);
@@ -46,13 +55,13 @@ extern "C" ARM void func_ov002_0215afb8(char *obj) {
     short y = (short) (elem->fae * 8);
     x += elem->fbc;
     y += elem->fbe;
-    struct Container0205a3d0 *cont = *(struct Container0205a3d0 **) (obj + 0x1000 + 0xa6c);
+    struct Container0205a3d0 *cont = *(struct Container0205a3d0 **) (obj + EntryListOffset);
     SetEntryFlag2ByKey0205a370(cont, 0);
     e = FindEntryByHalfword0205a3d0(cont, 0);
     if (e != NULL) {
         e->flags |= 8;
     }
-    IterateEntries0205a330((struct Container0205a330 *) cont, *(int *) (obj + 0x1000 + 0xba0));
+    IterateEntries0205a330((struct Container0205a330 *) cont, *(int *) (obj + AnimationOffset));
     SetEntryPosition_020e27ec(cont, 0, x - 8, y - 2);
-    func_0205ae8c(*(void **) (obj + 0x1000 + 0xa68));
+    func_0205ae8c(*(void **) (obj + RendererOffset));
 }

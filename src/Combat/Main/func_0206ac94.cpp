@@ -1,10 +1,12 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #if defined(jpn)
+#include "Resource/MessageSystem.h"
 extern "C" int func_02069430(void*, unsigned short);
 
 // JPN: func_0206c730
 extern "C" ARM unsigned short* func_0206c730(void* obj, unsigned short token, unsigned short* cursor) {
+    MessageSystem* self = static_cast<MessageSystem*>(obj);
     if (!cursor) return NULL;
     if (!func_02069430(obj, token)) return NULL;
     unsigned int count = 0;
@@ -12,7 +14,7 @@ extern "C" ARM unsigned short* func_0206c730(void* obj, unsigned short token, un
         if (*cursor == token) return cursor;
         count++;
         cursor++;
-        if (*reinterpret_cast<unsigned int*>(static_cast<char*>(obj) + 0x34) < count) break;
+        if (self->tokenLength < count) break;
     }
     return NULL;
 }

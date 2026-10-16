@@ -5,12 +5,13 @@
 // JPN: func_ov023_021e7414
 ARM void CreateThreeAllocators_021e71b4(void* obj, SafeAllocator* src) {
     if (src == NULL) return;
+    SafeAllocator* arenas = static_cast<SafeAllocator*>(obj);
 
     void* buf = src->Allocate(0x5000);
-    ((SafeAllocator*)obj)->CreateTypeA(buf, 0x5000);
+    arenas[0].CreateTypeA(buf, 0x5000);
 
     buf = src->Allocate(0x3400);
-    ((SafeAllocator*)((char*)obj + 0x14))->CreateTypeA(buf, 0x3400);
+    arenas[1].CreateTypeA(buf, 0x3400);
 
 #if defined(jpn)
     const unsigned int thirdArenaSize = 0xc00;
@@ -18,5 +19,5 @@ ARM void CreateThreeAllocators_021e71b4(void* obj, SafeAllocator* src) {
     const unsigned int thirdArenaSize = 0xccc;
 #endif
     buf = src->Allocate(thirdArenaSize);
-    ((SafeAllocator*)((char*)obj + 0x28))->CreateTypeA(buf, thirdArenaSize);
+    arenas[2].CreateTypeA(buf, thirdArenaSize);
 }

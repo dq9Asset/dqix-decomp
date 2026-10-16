@@ -18,13 +18,12 @@ extern "C" ARM void func_0206c794(void* context) {
     __clear(caption, sizeof(caption));
     unsigned short* cursor = static_cast<unsigned short*>(self->secondLineBuffer);
     int changed = 0;
-    // This position uses -1 as a sentinel; access its shared halfword as signed.
     self->h1944 = 0;
     unsigned char previousStatus = self->b19c2;
     for (;;) {
         if (func_02069408(self, *cursor)) {
             length = 0;
-            reinterpret_cast<short&>(self->h1944) = -1;
+            self->h1944 = -1;
             self->lineGlyphCount = 0;
             self->b19c4 = 0;
             changed = 1;
@@ -38,7 +37,7 @@ extern "C" ARM void func_0206c794(void* context) {
             caption[length] = *cursor;
             length = (unsigned char)(length + 1) & 15;
         }
-        reinterpret_cast<short&>(self->h1944)++;
+        self->h1944++;
         cursor++;
     }
     cursor++;
@@ -47,7 +46,7 @@ extern "C" ARM void func_0206c794(void* context) {
         if (!func_02069430(self, *cursor)) {
             if (func_02001aec(cursor, data_020f0aeb, 2) == 0) {
                 length = 0;
-                reinterpret_cast<short&>(self->h1944) = -1;
+                self->h1944 = -1;
                 self->lineGlyphCount = 0;
                 self->b19c4 = 0;
                 self->b19c2 = previousStatus;
@@ -65,7 +64,7 @@ extern "C" ARM void func_0206c794(void* context) {
             if (!func_02069430(self, slot)) {
                 MessageGlyphSlot* glyph = &self->glyphs[slot];
                 if (glyph->bitmapIndex >= 0 &&
-                    *reinterpret_cast<unsigned short*>(glyph->encodedCharacter) != caption[i]) {
+                    glyph->encodedCode != caption[i]) {
                     changed = 1;
                     break;
                 }
@@ -79,7 +78,7 @@ extern "C" ARM void func_0206c794(void* context) {
         self->b19c3 = 0;
     } else if (self->lineGlyphCount) {
         self->tokenCount = (short)self->h1944;
-        *reinterpret_cast<int*>(reinterpret_cast<char*>(self) + 0x40) = (short)self->h1944;
+        self->lineStart = self->h1944;
         self->tokenIndex = (short)self->h1944;
         return;
     }

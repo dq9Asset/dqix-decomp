@@ -1,5 +1,15 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "Resource/CharacterCreationUI.h"
+
+struct ProfileInitState {
+    unsigned char unknown0[0x78];
+    CreationWindow window;
+    unsigned char unknownAfterWindow[0x5d8 - 0x78 - sizeof(CreationWindow)];
+    char* text;
+    unsigned char unknown5dc[0x5f4 - 0x5dc];
+    void* profile;
+};
 
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
@@ -15,17 +25,18 @@ extern "C" void func_0205d304(void* window, const char* text, int mode, unsigned
 // USA: func_ov023_021e7f68
 // JPN: func_ov023_021e8144
 ARM void InitEntryListAndReset_021e7f68(void* obj) {
-    ResetEntryList0205d6a0((struct Entry_0205d6a0*)((char*)obj + 0x78), 1);
+    ProfileInitState* state = static_cast<ProfileInitState*>(obj);
+    ResetEntryList0205d6a0(reinterpret_cast<Entry_0205d6a0*>(&state->window), 1);
     func_ov023_021e7cec(obj, 0xb, 3, 5);
 #if defined(jpn)
-    memset(*(void**)((char*)obj + 0x5d8), 0, 0x800);
+    memset(state->text, 0, 0x800);
 #else
-    memset(*(void**)((char*)obj + 0x5d8), 0, 0x960);
+    memset(state->text, 0, 0x960);
 #endif
-    if (*(void**)((char*)obj + 0x5f4) != NULL) {
+    if (state->profile != NULL) {
         func_ov023_021e868c(obj);
     }
-    func_0205d304((char*)obj + 0x78, *(char**)((char*)obj + 0x5d8), 0, 0, 0, 1, 0
+    func_0205d304(&state->window, state->text, 0, 0, 0, 1, 0
 #if !defined(jpn)
                    , 0
 #endif

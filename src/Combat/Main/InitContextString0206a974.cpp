@@ -1,24 +1,25 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #if defined(jpn)
+#include "Resource/MessageSystem.h"
 int StringLength_020d2ff0(const char*);
 extern "C" void func_0206aa28(void*);
 
 // JPN: func_0206c570
 extern "C" ARM void func_0206c570(void* context, const char* src) {
-    unsigned char* p = static_cast<unsigned char*>(context);
+    MessageSystem* p = static_cast<MessageSystem*>(context);
     if (src == NULL) return;
     {
-        void* buffer = *(void**)(p + 0x14);
-        memcpy(buffer, src, (*(int*)(p + 0x34) = StringLength_020d2ff0(src)));
+        void* buffer = p->textBuffer;
+        memcpy(buffer, src, (p->tokenLength = StringLength_020d2ff0(src)));
     }
     {
-        void* buffer = *(void**)(p + 0x14);
-        *(void**)(p + 0x24) = buffer;
-        *(void**)(p + 0x20) = buffer;
+        unsigned short* buffer = static_cast<unsigned short*>(p->textBuffer);
+        p->tokenCursor = buffer;
+        p->tokenStart = buffer;
     }
-    memset(*(void**)(p + 0x18), 0, 0x140);
-    memset(*(void**)(p + 0x1c), 0, 0x140);
+    memset(p->firstLineBuffer, 0, 0x140);
+    memset(p->secondLineBuffer, 0, 0x140);
     func_0206aa28(context);
 }
 #else

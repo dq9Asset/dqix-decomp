@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #if defined(jpn)
+#include "Resource/MessageSystem.h"
 extern "C" unsigned short* func_0206c730(void*, unsigned short, unsigned short*);
 void ReinitController02043204(char*);
 extern "C" void func_02043124(void*);
@@ -9,6 +10,7 @@ extern "C" void func_0206aa28(void*);
 
 // JPN: func_0206cbe8
 extern "C" ARM void func_0206cbe8(void* context, unsigned short token, unsigned short* cursor) {
+    MessageSystem* self = static_cast<MessageSystem*>(context);
     char* obj = static_cast<char*>(context);
     unsigned short* found = func_0206c730(context, token, cursor);
     if (found == NULL) {
@@ -17,12 +19,12 @@ extern "C" ARM void func_0206cbe8(void* context, unsigned short token, unsigned 
         return;
     }
     func_0206b104(context);
-    memset(*reinterpret_cast<void**>(obj + 0x18), 0, 0x140);
-    memset(*reinterpret_cast<void**>(obj + 0x1c), 0, 0x140);
-    *reinterpret_cast<unsigned short**>(obj + 0x24) = found;
-    *reinterpret_cast<unsigned short**>(obj + 0x20) = found;
+    memset(self->firstLineBuffer, 0, 0x140);
+    memset(self->secondLineBuffer, 0, 0x140);
+    self->tokenCursor = found;
+    self->tokenStart = found;
     func_0206aa28(context);
-    *reinterpret_cast<int*>(obj + 0x870) = 5;
+    self->mode = 5;
 }
 #else
 

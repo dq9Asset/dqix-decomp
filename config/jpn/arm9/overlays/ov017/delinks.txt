@@ -2453,6 +2453,10 @@ src/Combat/Overlay_17/func_ov017_021b621c.cpp:
     complete
     .text start:0x021b67d0 end:0x021b6844
 
+src/Combat/Overlay_17/func_ov017_021b7284.cpp:
+    complete
+    .text start:0x021b7834 end:0x021b7ebc
+
 src/Combat/Overlay_17/func_ov017_021b88d0.cpp:
     complete
     .text start:0x021b8dc8 end:0x021b8f2c

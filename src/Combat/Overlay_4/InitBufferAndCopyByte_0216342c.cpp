@@ -18,13 +18,8 @@ struct MapSelectionBuffer {
     unsigned char unknownFF[0x15];
 };
 
-#if defined(jpn)
-// USA: func_ov004_0216342c
-extern "C" ARM void func_ov004_02163a20(void* a) {
-#else
 // USA: func_ov004_0216342c
 ARM void InitBufferAndCopyByte_0216342c(void* a) {
-#endif
     GameResources* resources = func_ov017_0218b5b0();
     VectorizedMemset(a, 0, sizeof(MapSelectionBuffer));
     MapSelectionBuffer* buffer = (MapSelectionBuffer*)a;

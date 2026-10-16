@@ -12,11 +12,18 @@ void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
+#if defined(jpn)
+extern "C" void func_020474a8(void* messages, unsigned char font, const char* format, char* output);
+#else
 extern "C" ARM void func_02046608(void* a, int b, void* c, void* d, int e, int f, int g);
+#endif
 
 struct Struct0200fb08;
 ARM unsigned char NormalizeField5_0200fb08(Struct0200fb08* obj);
 
+#if defined(jpn)
+#define data_ov023_021fd75c data_ov023_021fd760
+#endif
 extern int data_ov023_021fd75c;
 extern char data_ov023_021fddb0;
 extern char data_ov023_021fddb4;
@@ -24,6 +31,7 @@ extern char data_ov023_021fddb4;
 struct EntryTagData021e83c8 { char pad[0x38]; int a; int b; };
 
 // USA: func_ov023_021e83c8  (semantic: FormatAndStoreEntryTags_021e83c8)
+// JPN: func_ov023_021e8404
 extern "C" ARM void func_ov023_021e83c8(void* obj) {
     int field = GetGlobalField0x1c020421a0();
 
@@ -31,10 +39,17 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
     int i;
     int arr2[2];
     int arr1[2];
+#if defined(jpn)
+    arr2[0] = *(unsigned short*)((char*)obj + 0x604);
+    arr2[1] = *(unsigned char*)((char*)obj + 0x606);
+    arr1[0] = *(int*)((char*)&data_ov023_021fd75c + 0x14);
+    arr1[1] = *(int*)((char*)&data_ov023_021fd75c + 0x18);
+#else
     arr2[0] = *(unsigned short*)((char*)obj + 0x60e);
     arr2[1] = *(unsigned char*)((char*)obj + 0x610);
     arr1[0] = *(int*)((char*)&data_ov023_021fd75c + 0x38);
     arr1[1] = *(int*)((char*)&data_ov023_021fd75c + 0x3c);
+#endif
 
     p_arr1 = arr1;
     i = 0;
@@ -45,6 +60,9 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
     }
 
     int key = GetFieldByKey020e0434((struct Container020e0310*)((char*)obj + 0x4c), 0);
+#if defined(jpn)
+    func_020474a8((void*)field, 0xa, (const char*)key, *(char**)((char*)obj + 0x5d8));
+#else
     func_02046608((void*)field, 0xa, (void*)key, *(void**)((char*)obj + 0x5d8), 0x100, 0, 0);
 
     int a, b;
@@ -68,4 +86,9 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
     sprintf(buf2, &data_ov023_021fddb4, b);
     memcpy(p1 + 3, buf1, 3);
     memcpy(p2 + 3, buf2, 3);
+#endif
 }
+
+#if defined(jpn)
+#undef data_ov023_021fd75c
+#endif

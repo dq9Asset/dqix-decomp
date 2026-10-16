@@ -4,6 +4,10 @@
     .data       start:0x021fcd20 end:0x021fec40 kind:data align:32
     .bss        start:0x021fec40 end:0x021ff1a0 kind:bss align:32
 
+src/Combat/Overlay_23/AppendTagAndStoreEntries_021e853c.cpp:
+    complete
+    .text start:0x021e84c0 end:0x021e8574
+
 src/Combat/Overlay_23/ResetAndApplyLoop_021e7eb0.cpp:
     complete
     .text start:0x021e8094 end:0x021e8144
@@ -1611,6 +1615,10 @@ src/Combat/Overlay_23/func_ov023_021e5020.cpp:
 src/Combat/Overlay_23/func_ov023_021e5e68.cpp:
     complete
     .text start:0x021e604c end:0x021e61c0
+
+src/Combat/Overlay_23/func_ov023_021e83c8.cpp:
+    complete
+    .text start:0x021e8404 end:0x021e84c0
 
 src/Combat/Overlay_23/func_ov023_021e8f28.cpp:
     complete

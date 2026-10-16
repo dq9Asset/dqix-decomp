@@ -7727,6 +7727,10 @@ src/Combat/Main/MaybeSwapPairTables020555a0.cpp:
     complete
     .text start:0x02056918 end:0x02056984
 
+src/Combat/Main/MeasureTextWidth0206b6b8.cpp:
+    complete
+    .text start:0x0206cf44 end:0x0206cfd4
+
 src/Combat/Main/Memchr02001ac0.cpp:
     complete
     .text start:0x020019dc end:0x02001a08

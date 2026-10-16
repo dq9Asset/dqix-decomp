@@ -11,7 +11,14 @@ struct MapDisplayPointers { MapDisplayBuffer* buffer; void* scratch; void* file;
 struct SavedMapList { unsigned char count; unsigned char padding; TreasureMapMetadata maps[99]; };
 struct ResourcePanel { char pad[0x14]; int state; };
 struct MapZone { char pad[0x26]; char name[17]; };
-struct MapController { char pad[0x1962]; unsigned char active; char pad1963; int first[9]; int second[3]; };
+struct MapController {
+#if defined(jpn)
+    char pad[0x1790]; unsigned char active; char alignment[3];
+#else
+    char pad[0x1962]; unsigned char active; char alignment;
+#endif
+    int first[9]; int second[3];
+};
 struct AxisFloats0203b5a0;
 struct MapAllocatorNode { int field0; SafeAllocator allocator; };
 extern MapDisplayPointers data_ov004_02171010;
@@ -38,19 +45,21 @@ char* GetGlobalField0x1c020421a0();
 void ReinitController02043204(char*);
 void SetFieldsAt0x4And0x8_020e2d24(int*, int, int);
 
-// USA: func_ov004_02163944
+// JPN: 0x02163efc; USA/EUR: 0x02163944.
 extern "C" ARM int func_ov004_02163944(void* obj) {
     MapAllocatorNode* heap = func_ov011_021845f8(obj, 0);
     if (!heap) return 0;
     SafeAllocator* allocator = &heap->allocator;
     if (!allocator) return 0;
     func_020a3844(allocator);
-    data_ov004_02171010.buffer = (MapDisplayBuffer*)allocator->Allocate(0x1914);
+    data_ov004_02171010.buffer = (MapDisplayBuffer*)allocator->Allocate(sizeof(MapDisplayBuffer));
     if (!data_ov004_02171010.buffer) return 0;
     InitBufferAndCopyByte_0216342c(data_ov004_02171010.buffer);
     data_ov004_02171010.buffer->busy = 1;
+#if !defined(jpn)
     data_ov004_02171010.scratch = func_ov011_021845f8(obj, 4)->allocator.Allocate(0x333);
     memset(data_ov004_02171010.scratch, 0, 0x333);
+#endif
     SavedMapList saved;
     if (CopyOutBattleRegion0x64f4_020ac760(&saved)) {
         data_ov004_02171010.buffer->count = saved.count;
@@ -64,6 +73,7 @@ extern "C" ARM int func_ov004_02163944(void* obj) {
     for (int i = 0; i < 8; i++) {
         ExportDetailedTreasureMapData(&data_ov004_02171010.buffer->maps[i + page * 8], &data_ov004_02171010.buffer->details[i], true, 0);
     }
+#if !defined(jpn)
     MapAllocatorNode* fileHeap = func_ov011_021845f8(obj, 3);
     if (!fileHeap) return 0;
     data_ov004_02171010.file = fileHeap->allocator.Allocate(12);
@@ -73,6 +83,7 @@ extern "C" ARM int func_ov004_02163944(void* obj) {
     void* file = ExtractFileFromGP2(data_ov004_0217055c, data_ov004_02170572, &length);
     func_020e5604(data_ov004_02171010.file, &fileHeap->allocator, file, length);
     BackgroundLoader::RemoveLockGlobal();
+#endif
     MapZone* zone = func_02012fe4();
     ResourcePanel* panel = (ResourcePanel*)func_ov017_0218b5b0()->unknown_ptr_36d0;
     data_ov004_02171010.buffer->state = panel->state;

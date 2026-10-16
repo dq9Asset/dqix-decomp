@@ -5,10 +5,15 @@
 #include "System/Memory.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define data_020f1ae4 data_020f1c5c
+#define data_020f1af8 data_020f1c70
+#endif
 extern const char data_020f1ae4[];
 extern const char data_020f1af8[];
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
+// JPN: func_020a7588
 // USA: func_020a57e4
 void DetailedTreasureMapData::LoadLegacyBossStats(bool compute, const unsigned char* providedArchive)
 {
@@ -109,3 +114,8 @@ void DetailedTreasureMapData::LoadLegacyBossStats(bool compute, const unsigned c
         offset += 1;
     }
 }
+
+#if defined(jpn)
+#undef data_020f1ae4
+#undef data_020f1af8
+#endif

@@ -8,18 +8,23 @@
 
 struct MapList3C40 {
     TreasureMapMetadata maps[99];
-    char field_ad4[0x18f4 - 0xad4];
+    DetailedTreasureMapData details[8];
     unsigned char count;
     char field_18f5[5];
     unsigned char sortMode;
     char field_18fb[3];
     unsigned char field_18fe;
 };
-struct Node3C40 { char field_0[0x38]; unsigned short selected; };
+struct Node3C40 { char field_0[0xc]; unsigned char flags; char field_d[0x38 - 0xd]; unsigned short selected; };
 struct Obj0205eaa0;
 extern MapList3C40* data_ov004_02171010;
 extern Obj0205eaa0 data_02108760;
+#if defined(jpn)
+extern unsigned short data_ov004_02170660[3];
+#else
 extern unsigned short data_ov004_0216fef8[3];
+#endif
+extern "C" void func_ov023_021f809c(void*, void*);
 MessageSystem* GetGlobalField0x1c020421a0();
 int DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov004_02163478(MapList3C40*);
@@ -31,6 +36,7 @@ void ClearNodeMaskById_021f6600(void*, int, int);
 extern "C" void func_ov004_02164084(void*);
 
 // USA: func_ov004_02163c40
+// JPN: 0x02164150.
 extern "C" ARM int func_ov004_02163c40(void* self) {
     TreasureMapMetadata maps[99];
     unsigned short indices[99];
@@ -50,7 +56,11 @@ extern "C" ARM int func_ov004_02163c40(void* self) {
     if (!data_ov004_02171010->field_18fe) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     }
+#if defined(jpn)
+    COPY_ARRAY(modes, data_ov004_02170660);
+#else
     COPY_ARRAY(modes, data_ov004_0216fef8);
+#endif
     selected = modes[data_ov004_02171010->sortMode];
     VectorizedInvertedMemcpy(data_ov004_02171010, maps, sizeof(maps));
     for (int i = 0; i < 99; i++) indices[i] = i;
@@ -119,8 +129,16 @@ extern "C" ARM int func_ov004_02163c40(void* self) {
     func_ov004_02163478(data_ov004_02171010);
     Node3C40* node = func_ov023_021f6880(func_ov011_021849c8(self), 0x35);
     if (node && func_ov023_021f6f10(node) == 8) node->selected = selected;
+#if defined(jpn)
+    Node3C40* refreshNode = func_ov023_021f6880(func_ov011_021849c8(self), 0x16);
+    if (!refreshNode) return 0;
+    if (func_ov023_021f6f10(refreshNode) != 6) return 0;
+    func_ov023_021f809c(refreshNode, self);
+    refreshNode->flags &= ~8;
+#else
     DispatchNodeIfState6_021f6680(self, 0x16);
     ClearNodeMaskById_021f6600(self, 0x16, 8);
+#endif
     func_ov004_02164084(self);
     return 0;
 }

@@ -6486,6 +6486,10 @@ src/Combat/Main/InitContext020e1154.cpp:
     complete
     .text start:0x020e2d4c end:0x020e2d9c
 
+src/Combat/Main/InitContextString0206a974.cpp:
+    complete
+    .text start:0x0206c570 end:0x0206c5d8
+
 src/Combat/Main/InitControllerFields_02042c68.cpp:
     complete
     .text start:0x02043340 end:0x020436a8
@@ -11080,6 +11084,10 @@ src/Combat/Main/SetupViewport02029384.cpp:
     complete
     .text start:0x02028f3c end:0x02029028
 
+src/Combat/Main/SetupWeightedEntriesAndSubmit.cpp:
+    complete
+    .text start:0x020e29f0 end:0x020e2ad4
+
 src/Combat/Main/ShiftRecords0202c478.cpp:
     complete
     .text start:0x0202c004 end:0x0202c094
@@ -11159,6 +11167,10 @@ src/Combat/Main/StoreByteToTable02109404.cpp:
 src/Combat/Main/StoreCellWordHalf.cpp:
     complete
     .text start:0x0209d700 end:0x0209d720
+
+src/Combat/Main/StoreClampedDeltas.cpp:
+    complete
+    .text start:0x0206cfd4 end:0x0206d028
 
 src/Combat/Main/StoreCombatantFlagsInTable0209d974.cpp:
     complete
@@ -12772,6 +12784,10 @@ src/Combat/Main/func_02065990.cpp:
     complete
     .text start:0x02066dc4 end:0x02067ea0
 
+src/Combat/Main/func_0206ad74.cpp:
+    complete
+    .text start:0x0206c794 end:0x0206ca50
+
 src/Combat/Main/func_0206c010.cpp:
     complete
     .text start:0x0206d164 end:0x0206d24c
@@ -13435,6 +13451,14 @@ src/Combat/Main/func_020dfec0.cpp:
 src/Combat/Main/func_020e0688.cpp:
     complete
     .text start:0x020e22cc end:0x020e245c
+
+src/Combat/Main/func_020e0a78.cpp:
+    complete
+    .text start:0x020e26ac end:0x020e2788
+
+src/Combat/Main/func_020e0b4c.cpp:
+    complete
+    .text start:0x020e2788 end:0x020e292c
 
 src/Combat/Main/func_020e1438.cpp:
     complete

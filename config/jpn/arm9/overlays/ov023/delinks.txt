@@ -8,6 +8,14 @@ src/Combat/Overlay_23/AppendTagAndStoreEntries_021e853c.cpp:
     complete
     .text start:0x021e84c0 end:0x021e8574
 
+src/Combat/Overlay_23/ApplyElemFieldsTwice_021e81f4.cpp:
+    complete
+    .text start:0x021e83a0 end:0x021e8404
+
+src/Combat/Overlay_23/InitEntryListAndReset_021e7f68.cpp:
+    complete
+    .text start:0x021e8144 end:0x021e81bc
+
 src/Combat/Overlay_23/ResetAndApplyLoop_021e7eb0.cpp:
     complete
     .text start:0x021e8094 end:0x021e8144
@@ -23,6 +31,10 @@ src/Combat/Overlay_23/SetFields_021dceac.cpp:
 src/Combat/Overlay_23/SetupTag021d9f88.cpp:
     complete
     .text start:0x021da7ac end:0x021da8cc
+
+src/Combat/Overlay_23/StoreAndDispatchEntry_021e8604.cpp:
+    complete
+    .text start:0x021e8574 end:0x021e85e0
 
 src/Combat/Overlay_23/func_ov023_021dda04.cpp:
     complete
@@ -1619,6 +1631,10 @@ src/Combat/Overlay_23/func_ov023_021e5e68.cpp:
 src/Combat/Overlay_23/func_ov023_021e83c8.cpp:
     complete
     .text start:0x021e8404 end:0x021e84c0
+
+src/Combat/Overlay_23/func_ov023_021e868c.cpp:
+    complete
+    .text start:0x021e85e0 end:0x021e8bc4
 
 src/Combat/Overlay_23/func_ov023_021e8f28.cpp:
     complete

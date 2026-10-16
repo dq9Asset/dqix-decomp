@@ -3686,6 +3686,10 @@ src/Combat/Main/DispatchSizedRequest020d5974.cpp:
     complete
     .text start:0x020d73d0 end:0x020d7418
 
+src/Combat/Main/DispatchStateChange_020678bc.cpp:
+    complete
+    .text start:0x0206917c end:0x02069294
+
 src/Combat/Main/DispatchTableEntry0204ffc0.cpp:
     complete
     .text start:0x020514ac end:0x02051550
@@ -7582,6 +7586,10 @@ src/Combat/Main/LoadObjLoadingGraphicsResources020db0f0.cpp:
 src/Combat/Main/LoadObjectResourceFiles02039f04.cpp:
     complete
     .text start:0x0203995c end:0x02039a44
+
+src/Combat/Main/LoadTreasureMapLanguageBuffers_020a3844.cpp:
+    complete
+    .text start:0x020a55a0 end:0x020a5698
 
 src/Combat/Main/LockAndAcquireGBABus.cpp:
     complete

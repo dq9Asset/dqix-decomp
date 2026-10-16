@@ -84,7 +84,7 @@ jobs:
     env:
       DQIX_REPO: ${{ github.workspace }}/source
       DQIX_KIT: ${{ github.workspace }}/kit
-      DQIX_STATE: ${{ runner.temp }}/dqix-state
+      DQIX_STATE: ${{ github.workspace }}/dqix-state
     steps:
       - uses: actions/checkout@v4
         with:

@@ -28,14 +28,22 @@ struct BattleBlk_02157a28 {
     short extra;
     char pad3c[0xb];
     unsigned char used;
+#if defined(jpn)
+    char pad48[0x61];
+#else
     char pad48[0x55];
+#endif
     unsigned char dirty;
 };
 struct Data021707d8_02157a28 { char pad[8]; BattleBlk_02157a28* ptr; };
 extern Data021707d8_02157a28 data_ov004_021707d8;
 
 struct SlotTable_02157a28 { int v[8]; };
+#if defined(jpn)
+extern SlotTable_02157a28 data_ov004_02170318;
+#else
 extern SlotTable_02157a28 data_ov004_0216fb90;
+#endif
 
 struct TextContext_02157a28 {
     SafeAllocator allocator;
@@ -70,6 +78,7 @@ int CheckField0NonZero_0202b7d8(int*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 
+// JPN: func_ov004_02157a28 (02158b38)
 // USA: func_ov004_02157a28
 extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
     short id = func_ov004_02157128(a);
@@ -100,7 +109,11 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
         }
     }
     if (!found) return 0;
+#if defined(jpn)
+    SlotTable_02157a28 table = data_ov004_02170318;
+#else
     SlotTable_02157a28 table = data_ov004_0216fb90;
+#endif
     int slot = table.v[i];
     if (slot < 0) return 0;
 

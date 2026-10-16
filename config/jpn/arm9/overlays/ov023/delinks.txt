@@ -12,6 +12,10 @@ src/Combat/Overlay_23/ApplyElemFieldsTwice_021e81f4.cpp:
     complete
     .text start:0x021e83a0 end:0x021e8404
 
+src/Combat/Overlay_23/CheckElemNearTouchPoint_021e63bc.cpp:
+    complete
+    .text start:0x021e6630 end:0x021e66bc
+
 src/Combat/Overlay_23/CreateThreeAllocators_021e71b4.cpp:
     complete
     .text start:0x021e7414 end:0x021e747c

@@ -1,4 +1,38 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#include "Resource/MessageSystem.h"
+extern "C" int func_0206cc50(void*, unsigned short*);
+extern "C" int func_02069408(void*, unsigned short);
+extern "C" int func_020694a0(void*, unsigned short);
+
+// JPN: func_0206cdcc
+extern "C" ARM void func_0206cdcc(void* context, int* outA, int* outB) {
+    MessageSystem* self = static_cast<MessageSystem*>(context);
+    unsigned short* buffer = static_cast<unsigned short*>(self->secondLineBuffer);
+    int start = *reinterpret_cast<int*>(static_cast<char*>(context) + 0x40);
+    int limit = self->tokenIndex;
+    int center;
+    int line;
+    unsigned short* cursor = buffer + start;
+    unsigned short* end = buffer + limit;
+    center = self->w990;
+    line = 0;
+    outA[line] = center - (func_0206cc50(self, cursor) >> 1);
+    outB[line] = 0;
+    cursor++;
+    line++;
+    while (cursor != end) {
+        if (func_02069408(self, *cursor)) return;
+        if (func_020694a0(self, *cursor)) {
+            cursor++;
+            outA[line] = center - (func_0206cc50(self, cursor) >> 1);
+            outB[line] = 0;
+            line++;
+        }
+        cursor++;
+    }
+}
+#else
 
 extern "C" int func_0206b37c(void* obj, void* p);
 int IsHighByteFF0206ac6c(void* obj, void* p);
@@ -52,3 +86,5 @@ extern "C" ARM int func_0206b528(unsigned char* obj, int* outA, int* outB) {
     again: ;
     }
 }
+
+#endif

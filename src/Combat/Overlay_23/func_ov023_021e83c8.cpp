@@ -1,6 +1,29 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
+#include "Resource/CharacterCreationUI.h"
+
+#if defined(jpn)
+enum { ValueOffset = 0x604, TagOffset = 0x14 };
+#else
+enum { ValueOffset = 0x60e, TagOffset = 0x38 };
+#endif
+namespace {
+struct ProfileFormatState {
+    unsigned char unknown0[0x4c];
+    Container020e0310 messages;
+    unsigned char unknown54[0x5d8 - 0x54];
+    char* text;
+    unsigned char unknown5dc[ValueOffset - 0x5dc];
+    unsigned short firstValue;
+    unsigned char secondValue;
+};
+struct ProfileTagFormats {
+    unsigned char unknown0[TagOffset];
+    int first;
+    int second;
+};
+}
 
 int GetGlobalField0x1c020421a0(void);
 
@@ -24,7 +47,7 @@ ARM unsigned char NormalizeField5_0200fb08(Struct0200fb08* obj);
 #if defined(jpn)
 #define data_ov023_021fd75c data_ov023_021fd760
 #endif
-extern int data_ov023_021fd75c;
+extern ProfileTagFormats data_ov023_021fd75c;
 extern char data_ov023_021fddb0;
 extern char data_ov023_021fddb4;
 
@@ -33,23 +56,17 @@ struct EntryTagData021e83c8 { char pad[0x38]; int a; int b; };
 // USA: func_ov023_021e83c8  (semantic: FormatAndStoreEntryTags_021e83c8)
 // JPN: func_ov023_021e8404
 extern "C" ARM void func_ov023_021e83c8(void* obj) {
+    ProfileFormatState* state = static_cast<ProfileFormatState*>(obj);
     int field = GetGlobalField0x1c020421a0();
 
     int* p_arr1;
     int i;
     int arr2[2];
     int arr1[2];
-#if defined(jpn)
-    arr2[0] = *(unsigned short*)((char*)obj + 0x604);
-    arr2[1] = *(unsigned char*)((char*)obj + 0x606);
-    arr1[0] = *(int*)((char*)&data_ov023_021fd75c + 0x14);
-    arr1[1] = *(int*)((char*)&data_ov023_021fd75c + 0x18);
-#else
-    arr2[0] = *(unsigned short*)((char*)obj + 0x60e);
-    arr2[1] = *(unsigned char*)((char*)obj + 0x610);
-    arr1[0] = *(int*)((char*)&data_ov023_021fd75c + 0x38);
-    arr1[1] = *(int*)((char*)&data_ov023_021fd75c + 0x3c);
-#endif
+    arr2[0] = state->firstValue;
+    arr2[1] = state->secondValue;
+    arr1[0] = data_ov023_021fd75c.first;
+    arr1[1] = data_ov023_021fd75c.second;
 
     p_arr1 = arr1;
     i = 0;
@@ -59,14 +76,14 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
         SetByteInRange_020465f0((unsigned char*)field, i, p_arr1[i] & 0xff);
     }
 
-    int key = GetFieldByKey020e0434((struct Container020e0310*)((char*)obj + 0x4c), 0);
+    int key = GetFieldByKey020e0434(&state->messages, 0);
 #if defined(jpn)
-    func_020474a8((void*)field, 0xa, (const char*)key, *(char**)((char*)obj + 0x5d8));
+    func_020474a8(reinterpret_cast<void*>(field), 0xa, reinterpret_cast<const char*>(key), state->text);
 #else
-    func_02046608((void*)field, 0xa, (void*)key, *(void**)((char*)obj + 0x5d8), 0x100, 0, 0);
+    func_02046608(reinterpret_cast<void*>(field), 0xa, reinterpret_cast<void*>(key), state->text, 0x100, 0, 0);
 
     int a, b;
-    char* p1 = strstr(*(char**)((char*)obj + 0x5d8), &data_ov023_021fddb0);
+    char* p1 = strstr(state->text, &data_ov023_021fddb0);
     char* p2 = strstr(p1 + 1, &data_ov023_021fddb0);
     a = 0x82; b = 0xb4;
     int norm = NormalizeField5_0200fb08((struct Struct0200fb08*)GameState::GetInstance());

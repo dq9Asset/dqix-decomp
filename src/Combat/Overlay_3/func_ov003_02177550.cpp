@@ -28,7 +28,7 @@ struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0 *obj, int id, int value);
 int SetEntryFlagById02080b2c(void *obj, int id);
 struct Field150Holder02052df8;
-short GetHalfwordEntryFromField150(Field150Holder02052df8 *obj, int index);
+int GetHalfwordEntryFromField150(Field150Holder02052df8 *obj, int index);
 struct Container02080fa8;
 void SetEntryFirstField02080fa8(struct Container02080fa8 *obj, int id, int value);
 struct Container02080fc4;
@@ -37,7 +37,11 @@ extern "C" int func_020dd4c4(int id, void *node);
 extern "C" int func_ov003_021753a0(void *obj, int id, void *a, void *b);
 extern "C" void func_020813ec(void *obj, int key);
 
+#if defined(jpn)
+extern int data_ov003_0217e3ac[];
+#else
 extern int data_ov003_0217fb3c[];
+#endif
 
 struct Node02177550 {
     char pad0[4];
@@ -60,6 +64,7 @@ struct Menu02177550 {
     signed char combatantId;
 };
 
+// JPN: func_ov003_02177550 (0217650c)
 // USA: func_ov003_02177550
 extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
     GameState *battle     = GameState::GetInstance();
@@ -78,7 +83,9 @@ extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
     SetEntryLowNibbleAndElement02080c68(elemObj, 0xf, 0);
     ClearSublistEntriesFlag1_02080bac(elemObj, 0xf);
     SetEntryFirstField02080f8c((struct Container02080f8c *) elemObj, 0x70, node->value);
+#if !defined(jpn)
     Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, 0x70);
+#endif
     int ready         = func_020dd4c4(self->combatantId, node);
     unsigned int tier = node->tier;
     if (tier != 0) {
@@ -95,11 +102,15 @@ extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
         SetEntryFlagById02080b2c(elemObj, 0x15a);
     } else {
         SetEntryHighNibble0x13((struct Container02080cc0 *) elemObj, 0x75, 0xf);
+#if defined(jpn)
+        int index = data_ov003_0217e3ac[node->kind];
+#else
         int index = data_ov003_0217fb3c[node->kind];
+#endif
         if (index < 0) {
             return;
         }
-        short have = GetHalfwordEntryFromField150((Field150Holder02052df8 *) combatant, index);
+        int have = GetHalfwordEntryFromField150((Field150Holder02052df8 *) combatant, index);
         if (have == node->count) {
             SetEntryHalfword0xe_0208103c(elemObj, 0x75, 0x22);
             SetEntryFlagById02080b2c(elemObj, 0x72);

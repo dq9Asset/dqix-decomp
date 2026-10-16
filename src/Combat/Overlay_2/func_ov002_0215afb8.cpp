@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 
 struct Outer020e28dc;
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc *o);
@@ -37,17 +38,34 @@ enum { FlagsOffset = 0x247c, WindowOffset = 0xec8, EntryListOffset = 0x1a6c,
        AnimationOffset = 0x1ba0, RendererOffset = 0x1a68 };
 #endif
 
+namespace {
+struct BattleActiveCursorState {
+    unsigned char unknown0[4];
+    Outer020e28dc* choice;
+    unsigned char unknown8[WindowOffset - 8];
+    CreationWindow window;
+    unsigned char unknownAfterWindow[RendererOffset - WindowOffset - sizeof(CreationWindow)];
+    void* renderer;
+    Container0205a3d0* entries;
+    unsigned char unknownAfterEntries[AnimationOffset - EntryListOffset - 4];
+    int animation;
+    unsigned char unknownAfterAnimation[FlagsOffset - AnimationOffset - 4];
+    int flags;
+};
+}
+
 // JPN: func_ov002_0215c318
 // USA: func_ov002_0215afb8  (semantic: UpdateCursorEntry_0215afb8)
 extern "C" ARM void func_ov002_0215afb8(char *obj) {
+    BattleActiveCursorState* state = reinterpret_cast<BattleActiveCursorState*>(obj);
     struct Elem0205a3d0 *e;
 
-    if (!(*(int *) (obj + FlagsOffset) & 4)) return;
+    if (!(state->flags & 4)) return;
 
-    struct Elem_0205d81c *elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c *) (obj + WindowOffset));
+    struct Elem_0205d81c *elem = FindElementForFieldB0_0205d8c4(reinterpret_cast<Struct_0205d81c*>(&state->window));
     if (elem == NULL) return;
-    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char *) elem)) return;
-    struct Outer020e28dc *choice = *(struct Outer020e28dc **) (obj + 4);
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0(reinterpret_cast<unsigned char*>(elem))) return;
+    struct Outer020e28dc *choice = state->choice;
     if (choice == NULL) return;
     if (GetInnerFlagBit0020e28dc(choice)) return;
 
@@ -55,13 +73,13 @@ extern "C" ARM void func_ov002_0215afb8(char *obj) {
     short y = (short) (elem->fae * 8);
     x += elem->fbc;
     y += elem->fbe;
-    struct Container0205a3d0 *cont = *(struct Container0205a3d0 **) (obj + EntryListOffset);
+    struct Container0205a3d0 *cont = state->entries;
     SetEntryFlag2ByKey0205a370(cont, 0);
     e = FindEntryByHalfword0205a3d0(cont, 0);
     if (e != NULL) {
         e->flags |= 8;
     }
-    IterateEntries0205a330((struct Container0205a330 *) cont, *(int *) (obj + AnimationOffset));
+    IterateEntries0205a330(reinterpret_cast<Container0205a330*>(cont), state->animation);
     SetEntryPosition_020e27ec(cont, 0, x - 8, y - 2);
-    func_0205ae8c(*(void **) (obj + RendererOffset));
+    func_0205ae8c(state->renderer);
 }

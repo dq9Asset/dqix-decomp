@@ -30,7 +30,25 @@ enum {
 
 unsigned char GetTableByte0207ca94(int index);
 int ComputePositiveCount_02175f90(void *obj);
-struct S_a0b8c;
+struct S_a0b8c {
+    short* keys;
+    signed char* values;
+    short count;
+};
+struct PoolTables0207c258 {
+    char pad0[0xbd0];
+    short* group1[8];
+    unsigned char* group2[8];
+    short counts[8];
+    unsigned char index[8];
+    unsigned char used[8];
+};
+struct Inventory02177dd4 {
+    S_a0b8c list;
+    short keys[152];
+    signed char values[152];
+    PoolTables0207c258 categories;
+};
 int CountNonZeroValues020a0b8c(struct S_a0b8c *p);
 struct Obj2081;
 void ClearElementFlag0x20_02080c20(struct Obj2081 *obj, int key);
@@ -40,9 +58,14 @@ void ClearSublistEntriesFlag2_0208065c(void *obj, int id);
 void SetOrClearEntryFlag0x102081130(void *obj, int id, int set);
 void AddSublistEntryFlag2_020806b0(void *obj, int id);
 int SetEntryFlagById02080b2c(void *obj, int id);
-short FindNthPositiveShort0207c6b8(unsigned char *obj, unsigned int index, int target);
+int FindNthPositiveShort0207c6b8(unsigned char *obj, unsigned int index, int target);
+struct Element020de650;
 struct Container020dedd0 {
-    unsigned char data[kRegion89c - kRegion800 - 0x74];
+    unsigned short count;
+    unsigned char pad[10];
+    struct Element020de650* base;
+    unsigned char pad2[4];
+    unsigned char useBinarySearch;
 };
 struct Element020de650 {
     char pad0[4];
@@ -51,7 +74,7 @@ struct Element020de650 {
     unsigned short count;
 };
 struct Element020de650 *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
-int GetNthPositiveEntryValue_0207c72c(void *obj, unsigned int index, short n);
+short GetNthPositiveEntryValue_0207c72c(void *obj, unsigned int index, short n);
 extern "C" void func_ov003_0217818c(void *self, struct Element020de650 *elem, int id, int value);
 void Forward0207f7acObjPlus4Size0x40_020805f4(void *obj, int value);
 struct Container02080f8c;
@@ -64,6 +87,7 @@ extern "C" void func_020813ec(void *obj, int key);
 struct ListMenu_02177dd4 {
     unsigned char pad0[kRegion800 + 0x74];
     struct Container020dedd0 container;
+    unsigned char paddingAfterContainer[kRegion89c - kRegion800 - 0x74 - sizeof(Container020dedd0)];
     struct Obj2081 *elemObj;
     unsigned char pad8a0[kRegion100c - kRegion8a0];
     short mode;
@@ -74,9 +98,10 @@ struct ListMenu_02177dd4 {
     short pageCount;
 };
 
+// JPN: func_ov003_02177dd4 (02176d60)
 // USA: func_ov003_02177dd4
 extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
-    unsigned char *list = (unsigned char *) GetPtrField0x2a04_02010828(GameState::GetInstance());
+    Inventory02177dd4* inventory = static_cast<Inventory02177dd4*>(GetPtrField0x2a04_02010828(GameState::GetInstance()));
     unsigned int table  = 0;
     short hdr;
     short idD;
@@ -118,9 +143,9 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
         pageCountId = 0x141;
         perPage     = 5;
     } else {
-        count = CountNonZeroValues020a0b8c((struct S_a0b8c *) list);
-        keys  = (short *) (list + 0xc);
-        vals  = (signed char *) (list + 0x13c);
+        count = CountNonZeroValues020a0b8c(&inventory->list);
+        keys  = inventory->keys;
+        vals  = inventory->values;
         key   = 0x7a;
     }
 
@@ -143,11 +168,11 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
         } else {
             int value = 0;
             int num   = 0;
-            short k;
+            int k;
             if (keys != 0) {
                 k = keys[i];
             } else {
-                k = FindNthPositiveShort0207c6b8(list + 0x1d4, table, i);
+                k = FindNthPositiveShort0207c6b8(reinterpret_cast<unsigned char*>(&inventory->categories), table, i);
             }
             struct Element020de650 *elem = FindElementByKey020dedd0(&self->container, k);
             if (elem != NULL) {
@@ -158,10 +183,12 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
             if (vals != 0) {
                 extra = vals[i];
             } else {
-                extra = GetNthPositiveEntryValue_0207c72c(list + 0x1d4, table, i);
+                extra = GetNthPositiveEntryValue_0207c72c(&inventory->categories, table, i);
             }
             func_ov003_0217818c(self, elem, idB, idC);
+#if !defined(jpn)
             Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, idA);
+#endif
             SetEntryFirstField02080f8c((struct Container02080f8c *) elemObj, idA, value);
             SetEntryFirstField02080fa8((struct Container02080fa8 *) elemObj, idB, num);
             SetEntryFirstField02080fa8((struct Container02080fa8 *) elemObj, idE, extra);

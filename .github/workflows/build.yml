@@ -25,6 +25,8 @@ jobs:
         shard: [0, 1, 2, 3]
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: 496212804aebff49edaead6be1a293ae24783b59
 
       - uses: actions/setup-python@v5
         with:
@@ -64,6 +66,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: 496212804aebff49edaead6be1a293ae24783b59
 
       - uses: actions/setup-python@v5
         with:

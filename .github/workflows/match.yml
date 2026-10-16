@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   usa:
-    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
+    if: github.event_name != 'pull_request'
     uses: ./.github/workflows/build.yml
     with:
       version: usa
@@ -24,7 +24,7 @@ jobs:
     secrets: inherit
 
   jpn:
-    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
+    if: github.event_name != 'pull_request'
     uses: ./.github/workflows/build.yml
     with:
       version: jpn
@@ -33,7 +33,7 @@ jobs:
     secrets: inherit
 
   eur:
-    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
+    if: github.event_name != 'pull_request'
     uses: ./.github/workflows/build.yml
     with:
       version: eur
@@ -76,6 +76,30 @@ jobs:
     concurrency:
       group: publish-badges
       cancel-in-progress: false
+
+  prready:
+    needs: [usa, eur, jpn]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DQIX_REPO: ${{ github.workspace }}/source
+      DQIX_KIT: ${{ github.workspace }}/kit
+      DQIX_STATE: ${{ runner.temp }}/dqix-state
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 496212804aebff49edaead6be1a293ae24783b59
+          fetch-depth: 0
+          path: source
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Clone current official kit and check readiness
+        run: |
+          git clone https://github.com/ZevyaDev/dqix-decomp-kit.git "$DQIX_KIT"
+          mkdir -p "$DQIX_STATE"
+          test "$(git -C "$DQIX_REPO" rev-parse HEAD)" = 496212804aebff49edaead6be1a293ae24783b59
+          python "$DQIX_KIT/prready.py" decomp
 
   match:
     needs: usa

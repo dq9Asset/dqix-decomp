@@ -32,6 +32,7 @@ SDK_MWCC_VERSION = "2.0/sp1p2" # OS_VSNPrintf (0x020d3160) overgenerates on sp1p
 SDK_OPT_LEVEL = "-O4,p"
 LIBRARY_BUILDS = {
     "sdk": ("NitroSDK", SDK_MWCC_VERSION, [SDK_OPT_LEVEL]),
+    "nitrowifi": ("NitroWiFi", "2.0/sp1p2", ["-O4,p"]),
     "msl": ("MSL", MWCC_VERSION, ["-O4,p", "-ipa", "file", "-str", "nopool"]),
     "runtime": ("Runtime", MWCC_VERSION, ["-O4,p", "-char", "unsigned"]),
 }
